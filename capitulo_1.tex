@@ -10,46 +10,25 @@
 
 Implementar un system on chip OpenSource con un microprocesador embebido Soft-core que soporte un sistema operativo libre , con la finalidad de entregar un sitema integral FPGA-SoC-Sistema Operativo completamente funcional y bajo licencia GPL v2.
 
-
 \subsection{Objetivo Especìfico}
 \begin{itemize}
-\item Evaluar, seleccionar y validar las prestaciones de los Kit de desarrollos con FPGA disponibles en el área de trabajo.
-\item Obtener un System on Chip completamente funcional sobre un kit de desarrollo XILINX XtremeDSP Starter Platform Spartan 3A DSP 1800.
-\item Implementar un Sistema Operativo en el Kit de desarrollo XILINX XtremeDSP Starter Platform Spartan 3A DSP 1800.
-\item Probar el adecuado funcionamiento de el sistema global que tenga las  prestaciones funcional  
-tradicionales de diseño
+\item Seleccionar, analizar y determinar un microprocesador Sof-Core.
+\item Establecer un system on chip Open Source donde poder implementar un Soft-Core.
+\item Determinar sistemas operativo con licencia GPL v2 que tengan las prestaciones funcionales adecuadas.
 \end{itemize}
 
 \section{Motivación} 
 
-Desde el comienzo de la tecnología de semiconductores, los sistemas electrónicos han experimentando un constante crecimiento en complejidad, en consecuencia las prestaciones que tiene que ofrecer una aplicación concreta son cada vez mayores y de naturalezasmás diversas.
- Esto ha dado lugar a que un sistema tenga a la vez restricciones aparentemente incompatibles, como pueden ser de trabajo en tiempo real, de tolerancia a fallos o de procesado de grandes flujos de datos. 
-Este incremento de complejidad y diversidad en las restricciones ha motivado  al desarrollo de diseños híbridos en los que interactúan elementos hardware y software, dichos elementos pueden complementarse para resolver problemas de distinta naturaleza.
-
-Entre las alternativas para diseñar e implementar un hardware específico se encuentran FPGAs (Fieldprogrammable gate array) circuitos de alta densidad programables por el usuario en un tiempo reducido y sin la necesidad de verificación de sus componentes, tarea ya realizada por el fabricante al tratarse de un producto estándar.
-
-Los lenguajes que se utilizan para diseñar e implementar un sistema digital sobre una FPGA proporcionan gran versatilidad para el desarrollo de hardware, permitiendo especificar, diseñar, simular y verificar sistemas digitales complejos, mediante el apoyo de un universo de herramientas EDA (Electronic Design Automation)
-Las arquitecturas reconfigurables de las FPGA combinan parte de la flexibilidad del software con la gran performace del hardware.
-
-Los  a veces requieren nuevas características de los cores existentes.El proveedor del núcleo puede hacer estas modificaciones (solución comercial) con un incremento sustancial del coste del núcleo. Otra posibilidad (Solución Ad-hoc) es el uso de cores de código abierto con el fin de crear un núcleo de desarrollo adaptable. El enfoque de código abierto tiene varias ventajas: el núcleo posee un costo muy bajo e inclusive cero, los usuarios puede tener acceso al código fuente y hay un grupo de desarrolladores que proporcionan conocimientos para mantener y mejorar el núcleo.
-
-Los microprocesadores “softcore"(núcleo software) son aquellos cuyo hardware está íntegramente implementado en un lenguaje de descripción de hardware.Posibilitan un desarrollo confiable con facilidad de ajustar el mismo a las necesidades de aplicación que deben satisfacerse e incluso el desarrollo de microprocesadores doble o múltiple núcleo.
-Entre los microprocesadores softcore encontramos los Open Source (Código Abierto) uno de ellos OpenRISC de Open Cores.
-El procesador OpenRISC de 32 bits se comunica con sus periféricos por medio de un bus tipo Wishbone , también de código abierto. OpenRISC puede ser implementado
-fácilmente en chips de cualquier fabricante (Xilinx , Altera , Actel) razón por la cual es el elemento central de algunos proyectos SoC de código abierto como MinSoC y 
-de OpenCores u ORPSoC de OpenCores. 
-Toda la implementación del proyecto posee una licencia LGPL lo que otorga al programador la capacidad de modificar el código a necesidad. Un conjunto de herramientas de desarrollo de software (compilador, ensamblador, debugger) también de código abierto ayudan al desarrollo de aplicaciones para esta arquitectura y son provistas en el proyecto OpenRISC.
-
-Si bien la placa seleccionada, ZedBoard, soporta tanto Android como GNU/Linux nos motivó utilizar este último por lo siguiente:
-Es el SO que por defecto viene instalado en la placa
-Es un SO abierto con vasta documentación detallada y una gran comunidad.
-La mayoría de los proyectos documentados con la utilización de esta placa han sido con GNU/Linux.
-Todas las guías provistas por el fabricante se basan en este SO.
-
-Que el sistema operativo sea multitarea.
-2
-Que el sistema operativo disponga de mecanismos de sincronización. 3 Que el sistema operativo soporte arquitecturas de sistemas embebidos.
-Por todo esto, y puesto que se cumplen los requerimientos enunciados en al apartado 8.2, es que decidimos desarrollar este proyecto sobre GNU/Linux.
+Existe un grupo de cores Sof-Core de código abierto que no están limitados por la tecnología. Los cores destacados de microprocesadores de 32 bits, son los procesadores SPARC LEON OpenRISC 1200 , y el core de LatticeMico32. Usar cores de  codigo abierto,  va unido a una serie de conceptos como:
+ \begin {itemize}
+\item Flexibilidad. Si el codigo fuente está disponible, los desarrolladores pueden modificar el codigo de acuerdo a sus necesidades.Adémas, se produce un flujo constante de ideas que mejora la calidad del codigo.
+\item Fiabilidad y seguridad. Con muchos programadores a la vez escrutando el mismo trabajo, los errores se detectan y corrigen antes, por lo que el producto resultante es mas fiable y eficaz que el comercial.
+\item Rapidez de desarrollo. Las actualizaciones y ajustes se realizan a través de una comunicación constante vía Internet.
+\item Relación con el usuario. El programador se acerca mucho mas a las necesidades reales de su cliente, y puede crear un producto especifíco para él
+ \end {itemize}
+ 
+Obtener un sitema integral de código abierto en donde hay código HDL, assembler y C. Con la principal ventaja del acceso al código pudiendo personalizarlo como por ejemplo en la descripción RTL del SoC para implementar la optimización o funcionalidad deseada y la ausencia de restricciones sobre lo que se puede hacer sobre el sistema final. Ademas de la portabilidad con la que obtengo la capacidad de migrar de una plataforma a otra. Logrando menor dependencia entre el código fuente y la plataforma objetivo. Pudiendo ser usado sobre una ASICs (Application-specific integrated circuit) o con modificaciones menores en cualquier FPGA (Field Programmable Gate Array) de Xilinx, Altera, Lattice, etc. 
+Estos tres de los más grandes proveedores de FPGA , Xilinx , Altera y Lattice , ofrecen sus propios micro core RISC de 32bits los dos mayores proveedores de dispositivos FPGA , Altera y Xilinx , proporcionan el micro core Nios y Microblaze, respectivamente. Son micro cores  en donde el codigo fuente RTL no se encuera disponible y solo pueden ser implementados en sus respectivas FPGA.
 
 \section{Metodologìa}
 
