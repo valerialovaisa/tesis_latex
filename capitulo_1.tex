@@ -3,69 +3,13 @@
 
 \section{Descripción General}
 
-Desde los principios de la tecnología de semiconductores, los sistemas
-electrónicos han venido experimentando un constante crecimiento en complejidad,
-debido a que las prestaciones que tiene que ofrecer una aplicaciòn concreta son
-cada vez mayores y de naturalezas màs diversas. Esto ha dado lugar a que un
-sistema  tenga a la vez restricciones aparentemente incompatibles, como pueden
-ser de trabajo en tiempo real, de tolerancia a fallos o de procesado de grandes
-flujos de datos. Este incremento de complejidad y diversidad en las
-restricciones ha motivado la apariciòn de diseños hìbridos en los que
-interactùan elementos hardware y software, ya que dichos elementos pueden
-complementarse para resolver problemas de distinta naturaleza.
 
-
-Entre las alternativas para diseñar e implementar un hardware especìfico
-encontramos ASICs  (Application-specific integrated circuit), FPGAs
-(Field-programmable gate array), CPLDs (Complex Programmable Logic Device)
-entre otros. El uso de ASICs posibilita desarrollos con producciòn a gran
-escala a bajo costo y es de masiva utilizaciòn en este tipo de aplicaciones.
-Los  CPLD  y las FPGA son circuitos de de alta densidad programables por el
-usuario en un tiempo reducido y sin la necesidad de verificación de sus
-componentes, tarea ya realizada por el fabricante al tratarse de un producto
-estándar. El procesamiento digital de señales , prototipado de ASICs ,
-tratamiento de imágenes , reconocimiento de voz , glue logic son algunas de las
-aplicaciones de este tipo de dispositivos. Existen diferentes formas de llevar
-adelante el diseño e implementación de un sistema digital para FPGA, entre
-ellas tenemos la realización de un diseño esquemático , herramientas
-específicas (provistas por el fabricante) y la utilización de un lenguaje de
-descripción de hardware HDL (Hardware description language) entre los que  se
-encuentran lenguajes como Verilog y VHDL, ambos de gran aceptación en los
-ambientes industrial y académico. Estos lenguajes proporcionan gran
-versatilidad para el desarrollo de hardware, permitiendo especificar, diseñar,
-simular y verificar sistemas digitales complejos, mediante el apoyo de un
-universo de herramientas EDA (Electronic Design Automation).
-
- Actualmente las FPGA cuentan con una gran cantidad de recursos disponibles
-(Compuertas lógicas , Bloques de RAM) para implementar diseños digitales
-complejos. Las FPGA pueden ser usadas para implementar cualquier función lógica
-que un ASIC  pueda realizar. Una de las grandes ventajas del uso de FPGA en la
-etapa de prototipado es su capacidad de reconfigurar el diseño parcial o
-totalmente para su actualización o corrección de errores con un costo
-relativamente bajo a diferencia del prototipado sobre ASICs. Durante la etapa
-de producción los  ASIC resultan de muy bajo costo respecto de la producción de
-FPGA y esto se traduce en una gran ventaja para desarrollos que deben ser
-producidos a gran escala.
-
-El desarrollo de aplicaciones de software se ve limitado a los recursos
-disponibles en los microprocesadores comerciales. El software necesita del
-soporte de un procesador para su ejecución, así la elección de este elemento
-conlleva algunas dependencias respecto de las herramientas a utilizar , algunas
-de estas son : compiladores , ensambladores , depuradores y herramientas de
-
-
-
-\begin{figure}
-\centerline{
-        \includegraphics[width=12cm]{images/OR1200.png}
-}
-\caption{OpenRISC 1200 - Diagrama de Modulos}
-\end{figure}
 
 \section{Objetivos}
 \subsection{Objetivo General}
 
-Implementar un system on chip Open Source con un Softcore OpenRisc que soporte Linux, con la finalidad de entregar un  sitema integral FPGA-SoC-Sistema Operativo completamente funcional.
+Implementar un system on chip OpenSource con un microprocesador embebido Soft-core que soporte un sistema operativo libre , con la finalidad de entregar un sitema integral FPGA-SoC-Sistema Operativo completamente funcional y bajo licencia GPL v2.
+
 
 \subsection{Objetivo Especìfico}
 \begin{itemize}
