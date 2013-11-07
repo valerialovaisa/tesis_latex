@@ -1,0 +1,377 @@
+\documentclass[a4paper,11pt]{article} 
+
+% \documentclass[a4paper,11pt]{book} 
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{graphicx}
+
+\usepackage{colortbl}
+\usepackage{color}
+
+\usepackage{hyperref}
+
+\usepackage[margin=1in]{geometry}
+\pagestyle{plain}
+
+%\usepackage{fancyhdr} 
+%\usepackage{lastpage}
+%\usepackage{float} 
+%\floatstyle{boxed} 
+%\restylefloat{figure} 
+%\pagestyle{fancy}
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{6}
+
+\definecolor{orange}{RGB}{0,0,255}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+%\title{\textcolor{orange}{Guia Practica Instalación de MinSoc}}
+%\author{Gomez,Roberto Pablo - Lovaisa Michelini, Valeria  \\ Universidad Tecnológica Nacional \\ CUDAR }
+
+\begin{document}
+
+%\lhead{\includegraphics[width=1\textwidth]{encab.png}}
+%\lfoot{{\includegraphics[width=1\textwidth]{pie.png}}}
+%\rfoot{\thepage}
+
+%\maketitle 
+%\newpage
+
+\tableofcontents
+
+
+\newpage
+
+\section{\textcolor{orange}{Introducción}}
+\subsection{\textcolor{orange}{Descripción General}}
+Descripción por arriba del trabajo. por ejemplo la industria dispone de herramientas que nosotros usamos para un fin determinado.
+
+\subsection{\textcolor{orange}{Objetivos}}
+\subsubsection{\textcolor{orange}{Objetivo General}}
+
+Implementar un system on chip OpenSource con un microprocesador embebido Soft-core que soporte un sistema operativo libre , con la finalidad de entregar un sitema integral FPGA-SoC-Sistema Operativo completamente funcional y bajo licencia GPL v2.
+
+\subsubsection{\textcolor{orange}{Objetivo Específico}}
+\begin{itemize}
+\item Seleccionar, analizar y determinar un microprocesador Sof-Core.
+\item Establecer un system on chip Open Source donde poder implementar un Soft-Core.
+\item Determinar sistemas operativo con licencia GPL v2 que tengan las prestaciones funcionales adecuadas.
+%\item Evaluar, seleccionar una plataforma objetivo un entorno de trabajo  las prestaciones de los Kit de desarrollos con FPGA disponibles en el área de trabajo.
+%\item Evaluar, seleccionar y validar las prestaciones de los Kit de desarrollos con FPGA disponibles en el área de trabajo.
+%\item Analizar un soft-core que me de las prestaciones funcionales que cumplan de  los requerimientos 
+%\ Obtener  completamente funcional sobre un kit de desarrollo XILINX XtremeDSP Starter Platform Spartan 3A DSP 1800.
+%\item Implementar un Sistema Operativo eCos sobre un SoC de codigo abierto en el Kit de desarrollo XILINX XtremeDSP Starter Platform Spartan 3A DSP 1800.
+%\item Implementar un Sistema Operativo Linux sobre un SoC de codigo abierto en el Kit de desarrollo XILINX XtremeDSP Starter Platform Spartan 3A DSP 1800 .
+%\item Probar el adecuado funcionamiento de el sistema global que tenga las  prestaciones funcional  
+%tradicionales de diseño
+\end{itemize}
+
+\subsection{\textcolor{orange}{Motivación}}
+
+Existe un grupo de cores Sof-Core de código abierto que no están limitados por la tecnología. Los cores destacados de microprocesadores de 32 bits, son los procesadores SPARC LEON OpenRISC 1200 , y el core de LatticeMico32. Usar cores de  codigo abierto,  va unido a una serie de conceptos como:
+ \begin {itemize}
+\item Flexibilidad. Si el codigo fuente está disponible, los desarrolladores pueden modificar el codigo de acuerdo a sus necesidades.Adémas, se produce un flujo constante de ideas que mejora la calidad del codigo.
+\item Fiabilidad y seguridad. Con muchos programadores a la vez escrutando el mismo trabajo, los errores se detectan y corrigen antes, por lo que el producto resultante es mas fiable y eficaz que el comercial.
+\item Rapidez de desarrollo. Las actualizaciones y ajustes se realizan a través de una comunicación constante vía Internet.
+\item Relación con el usuario. El programador se acerca mucho mas a las necesidades reales de su cliente, y puede crear un producto especifíco para él
+ \end {itemize}
+ 
+Obtener un sitema integral de código abierto en donde hay código HDL, assembler y C. Con la principal ventaja del acceso al código pudiendo personalizarlo como por ejemplo en la descripción RTL del SoC para implementar la optimización o funcionalidad deseada y la ausencia de restricciones sobre lo que se puede hacer sobre el sistema final. Ademas de la portabilidad con la que obtengo la capacidad de migrar de una plataforma a otra. Logrando menor dependencia entre el código fuente y la plataforma objetivo. Pudiendo ser usado sobre una ASICs (Application-specific integrated circuit) o con modificaciones menores en cualquier FPGA (Field Programmable Gate Array) de Xilinx, Altera, Lattice, etc. 
+Estos tres de los más grandes proveedores de FPGA , Xilinx , Altera y Lattice , ofrecen sus propios micro core RISC de 32bits los dos mayores proveedores de dispositivos FPGA , Altera y Xilinx , proporcionan el micro core Nios y Microblaze, respectivamente. Son micro cores  en donde el codigo fuente RTL no se encuera disponible y solo pueden ser implementados en sus respectivas FPGA.
+
+\subsection{\textcolor{orange}{Importancia del Problema}}
+
+El problema es el acceso a la tecnología
+
+El problema que ustedes están resolviendo es el que cualquier diseñador que va a plantear un sistema embebido y dice bueno con q micro vamos a trabajar?
+estamos explorando una líneas de esas opciones que vos podes tener cuando planteas un sistema embebido 
+
+lo que están haciendo es explorar una línea donde lo que queres es dar al diseñador una solución muy flexible. que no tenga que pagar y que tenga libertad de usar lo que tenga
+
+ante la creación de un sistema embebido que opciones tengo?
+el problema es ese las opciones de desarrollo para sistemas embebidos donde ustedes van a ofrecer una respuesta entonces es importante tener muchas opciones para poder desarrollar 
+gregaria algo nuevo ? o una solución no tan aprovechada?
+
+hoy en día vos te sentas a hacer sistemas embebidos y vas te compras una placa con un micro tal con nose q cosa con una FPGA tenes un ARM ahí metido 
+esa es tu única solución?
+hay lugar para otras opciones?
+
+puedo pensar en un sistema embebido soc fuera de lo que son micros comprados comercialmente o puedo pensar en algo q sea mas independiente del hardware?
+me puedo abstraer del hardware?
+en definitiva pueden usar cosas de alterea xilinx litix sobre AISIC
+
+el alcance del problema?
+de donde hasta donde vamos a ir
+primero elegimos un micro después lo embebemos en un soc y después le metimos un sistema operativo
+
+\subsection{\textcolor{orange}{Alcance del Estudio}}
+
+de donde hasta donde vamos a ir
+primero elegimos un micro después lo embebemos en un soc y después le metimos un sistema operativo
+
+\subsection{\textcolor{orange}{Alcance del Estudio}}
+aca la realización de lo q se plantea. Por ejemplo Primero implementamos el Soc base y luego se procede a montar sistemas operativos open source  en los Soc tb open source sobre las herramientas que me da la industria 
+\subsection{\textcolor{orange}{Modelo de Desarrollo}}
+aca voy a hablar del modelo en espiral 
+\subsection{\textcolor{orange}{Metodología}}
+voy a escribir que usamos un desarrollo experimental y de simulación.
+
+%\section{\textcolor{orange}{Perspectiva Historica}}
+%	\subsection{\textcolor{orange}{El Comienzo de los Microprocesadores}}
+%	\subsection{\textcolor{orange}{FPGAs y Microsprocesadores Soft-Core}}
+%	\subsection{\textcolor{orange}{Software OpenSource y Libre}}
+
+\section{\textcolor{orange}{FPGA y microprocesadores Soft-Core}}%julius
+	\subsection{\textcolor{orange}{FPGAs}}
+ problema q resuelven.papel dual que cumplen como prototipo y otro como objetivo final de ejecución 
+
+Entre las alternativas para diseñar e implementar un hardware específico encontramos ASICs (Application-specific integrated circuit), FPGAs (Fieldprogrammable
+gate array), CPLDs (Complex Programmable Logic Device) entre otros.
+El uso de ASICs posibilita desarrollos con producción a gran escala a bajo costo y es de masiva utilización en este tipo de aplicaciones. Los CPLD y las FPGA son circuitos de de alta densidad programables por el usuario en un tiempo reducido y sin la necesidad de verificación de sus componentes, tarea ya realizada por el fabricante al tratarse de un
+producto estándar. El procesamiento digital de señales , prototipado de ASICs , tratamiento de imágenes , reconocimiento de voz , glue logic son algunas de las aplicaciones
+de este tipo de dispositivos. Existen diferentes formas de llevar adelante el diseño e implementación de un sistema digital para FPGA, entre ellas tenemos la realización de un
+diseño esquemático , herramientas específicas (provistas por el fabricante) y la utilización de un lenguaje de descripción de hardware HDL (Hardware description language) entre los que se encuentran lenguajes como Verilog y VHDL, ambos de gran aceptación en los ambientes industrial y académico. Estos lenguajes proporcionan gran versatilidad para
+el desarrollo de hardware, permitiendo especificar, diseñar, simular y verificar sistemas digitales complejos, mediante el apoyo de un universo de herramientas EDA (Electronic
+Design Automation).
+
+Actualmente las FPGA cuentan con una gran cantidad de recursos disponibles (Compuertas
+lógicas , Bloques de RAM) para implementar diseños digitales complejos. Las
+FPGA pueden ser usadas para implementar cualquier función lógica que un ASIC pueda
+realizar. Una de las grandes ventajas del uso de FPGA en la etapa de prototipado
+es su capacidad de reconfigurar el diseño parcial o totalmente para su actualización o
+corrección de errores con un costo relativamente bajo a diferencia del prototipado sobre
+ASICs. Durante la etapa de producción los ASIC resultan de muy bajo costo respecto de
+la producción de FPGA y esto se traduce en una gran ventaja para desarrollos que deben
+ser producidos a gran escala.
+Las arquitecturas reconfigurables combinan parte de la flexibilidad del software con la
+gran performace del hardware utilizando chips reconfigurables como FPGAs. Una opción
+de gran potencialidad son las arquitecturas reconfigurables run-time o dinámicas que se
+sostienen en DRL (Dynamically reconfigurable logic ). Un ejemplo de esto es la familia
+Virtex de Xilinx, que es parcialmente reconfigurable en tiempo de ejecución, este método
+se conoce como run-time. Claramente este tipo de dispositivos puede ser usado como arquitecturas
+destino de codiseños hardware/software (HW/SW) que proveen la flexibilidad
+de los procesadores software y la eficiencia y rendimiento de los coprocesadores hardware.
+El desarrollo de aplicaciones de software se ve limitado a los recursos disponibles en los
+microprocesadores comerciales. El software necesita del soporte de un procesador para su
+ejecución, así la elección de este elemento conlleva algunas dependencias respecto de las
+herramientas a utilizar , algunas de estas son : compiladores , ensambladores , depuradores
+y herramientas de simulación. Con ellas se logra trasladar el software a un entorno de
+ejecución adecuado dentro del procesador y depurarlo . El lenguaje de programación
+elegido debe permitir trabajar con el nivel de abstracción necesario para simplificar la
+tarea de desarrollo de software. El lenguaje C es uno de los más utilizados para desarrollar
+aplicaciones que requieran ,por ejemplo , de compilación cruzada (Cross-compilling) y se
+complementa con las herramientas libres de compilación y depuración como son GCC y
+GDB.
+Los nuevos proyectos a veces requieren nuevas características de los cores existentes.
+El proveedor del núcleo puede hacer estas modificaciones (solución comercial) con un incremento
+sustancial del coste del núcleo. Otra posibilidad (Solución Ad-hoc) es el uso de
+cores de código abierto con el fin de crear un núcleo de desarrollo adaptable. El enfoque de
+código abierto tiene varias ventajas: el núcleo posee un costo muy bajo e inclusive cero, los
+usuarios puede tener acceso al código fuente y hay un grupo de desarrolladores que proporcionan
+conocimientos para mantener y mejorar el núcleo. Sin embargo, también puede
+tener varias desventajas como la inestabilidad (el grupo de cambio o de desarrollo desaparece),
+desarrollo incompleto, deficiente , documentación pobre y una mala metodología de
+verificación.
+Los microprocesadores “softcore"(núcleo software
+
+%\Como FPGAs y CPLDs se han convertido en más barato y más eficiente de la energía estan siendo considerado para su uso en lugar de soluciones ASIC en ciertas aplicaciones Si los criterios tales como el tiempo de comercialización y capacidad de actualización de campo son cruciales , con el máximo rendimiento y utilizar menos energía de lo que , a continuación, una implementación FPGA puede ser adecuado .Para una aplicación adecuada orientación general de medio a bajo volumen y no móvil utilizar (y por lo tanto el área relajado y limitaciones de potencia ) sistemas basados ​​en FPGA procesadores softcore utilizando son de gran utilidad ya que permiten un alto grado de personalización y flexibilidad . Además de los usos estrictamente orientadas al mercado de dichos núcleos , existe uso aficionado y académico importante de tales núcleos en aplicaciones que van desde pequeños ajustes para el diseño de exploración espacial de los nuevos conceptos de procesamiento .
+
+		%\subsubsection{\textcolor{orange}{Definición}}
+		\subsubsection{\textcolor{orange}{Topología}}	
+arquitectura de una fpga
+		\subsubsection{\textcolor{orange}{Bloques Lógicos Configurables y Lookup Tables}}
+		\subsubsection{\textcolor{orange}{Bloques de Entrada y Salida}}
+		\subsubsection{\textcolor{orange}{Bloques de Memoria}}
+	\subsection{\textcolor{orange}{Microprocesadores Soft-Core }}
+		\subsubsection{\textcolor{orange}{ IP-Core}}
+itro definición y licencias
+			\paragraph{\textcolor{orange}{ Tipos de IP-Core}}
+hard soft y intermedios
+%El producto , en este caso se conoce como un núcleo IP (propiedad intelectual a menudocore) en el sentido de que el diseño es la propiedad intelectual de los desarrolladores de terceros y le da derecho a usarlo  recibe la licencia del cliente. Se utilizan los términos IP y el núcleo indistintamente y en combinación para significar la misma cosa .IP puede ser en una variedad de formas cuando licencia . Cuando está en la forma de sintetizable RTL entonces el IP se conoce como un núcleo blando . Si se trata de una forma menos abstraído forma , tal como un formato de un mensaje - diseño listo lista de conexiones o para la fabricación, que se conoce como IP núcleo duro .
+
+		\subsubsection{\textcolor{orange}{Soft-Core}}%%julius
+ intro,  deferencias entre micros soft y hard. fabricantes.ventajas de uno sobre el otro.
+ Ejemplo:
+En la industria existe un grupo ligeramente diferente de microprocesadores  Soft-Core , apuntando principalmente al hardware reconfigurable . Tres de los más grandes proveedores de FPGA , Xilinx , Altera y Lattice , ofrecen sus propios núcleos de microprocesadores RISC de 32 bits. Los dos mayores proveedores de dispositivos FPGA , Altera y Xilinx , proporcionan la Nios y Microblaze núcleos , respectivamente. Ellos se consideran hard-core en los que la fuente RTL no se encuentra  disponibles y sólo pueden ser implementadas en sus  Tecnologías FPGA .
+
+Existe un grupo de cores opensource que no están limitados por la tecnología, y
+son cores intrínsecamente soft . Los cores mas destacados en esta categoría son los  microprocesadores de 32 bits  SPARC LEON OpenRISC 1200 , y el núcleo LatticeMico32 de la empresa Lattice.
+
+Para el desarrollo de una aplicación reconfigurable existe los micro cores de 32bist que ofrece los proveedores de las FPGA y los micro soft-core opensource disponibles de forma gratuita.
+
+ Sin embargo , cuando se trata de ser capaz de desarrollar y vender un producto a base de estos núcleos , hay consideraciones adicionales sobre la concesión de licencias de los diseños. Estas cuestiones relacionadas con licencias voluntad se discutirá en una sección posterior.
+%Las ventajas de un verdadero  sobre un soft-core y hard-core,%\ tienen que ver con la apertura del diseño, y la ausencia de restricciones sobre lo que se puede hacer con la obra. Con un diseño de la fuente verdaderamente abierta existe la opción de personalizar la descripción RTL para implementar la optimización o la funcionalidad deseada . Portabilidad y el producto se refiere al final de su vida también no surgir con la descripción RTL del diseño .
+
+
+
+\section{\textcolor{orange}{Benchmark}}
+Este capitulo lo puse para darle una intro a el estudio de los test que voy a poner en el estudio de los micor soft-core
+	\subsection{\textcolor{orange}{Introducción}}
+explico un poco para q los uso y en que se usan
+
+En informática , un punto de referencia es el acto de ejecutar un programa de ordenador, un conjunto de programas , u otras operaciones , a fin de evaluar el rendimiento relativo de un objeto , normalmente mediante la ejecución de una serie de pruebas estándar y los ensayos en contra de ella . El término ' benchmark ' también se utiliza sobre todo para los fines de los propios programas de benchmarking elaboradamente diseñados.
+
+Benchmarking se asocia generalmente con la evaluación de las características de rendimiento de hardware , por ejemplo , el rendimiento de punto flotante de funcionamiento de una CPU , pero hay circunstancias en que la técnica también es aplicable al software . Puntos de referencia de software están , por ejemplo, van en contra de los compiladores o sistemas de gestión de bases de datos .
+
+	\subsection{\textcolor{orange}{CPU core benchmarking}}
+ 
+A pesar de que no se corresponde con la forma en que utilizaría un procesador en una aplicación real , a veces es importante aislar el núcleo de la CPU de los otros elementos del procesador y centrarse en un elemento clave. Por ejemplo , es posible que desee tener la capacidad de hacer caso omiso de la memoria y los efectos de E / S y se centran principalmente en la operación de el pipeline. Este es el dominio de CoreMark . CoreMark es capaz de probar la estructura de pipeline básica de un procesador , así como la capacidad de prueba de lectura / escritura de operaciones básicas , operaciones de enteros y operaciones de control
+
+	\subsection{\textcolor{orange}{CoreMark}}
+
+CoreMark es un punto de referencia que tiene como objetivo medir el rendimiento de las unidades centrales de procesamiento ( CPU) utilizados en sistemas embebidos. Fue desarrollado en 2009 por Shay Gal -On en EEMBC y está destinado a convertirse en un estándar de la industria , en sustitución de la referencia Dhrystone anticuada . El código está escrito en código C y contiene las implementaciones de los algoritmos siguientes : procesamiento de lista ( encontrar y ordenar ) , Matrix (matemáticas) manipulación ( operaciones con matrices comunes ) , máquina de estados ( determinar si un flujo de entrada contiene números válidos ) y CRC
+
+%No es OpenSource y Free?? -- PABLO JULIUS :P
+\section{\textcolor{orange}{Software OpenSource y Libre}}%julius
+la intro al tema contando un poco  las comunidades de codigo abierto y por ulitmo de OpenCore
+
+Ejemplo: 
+A medida que la popularidad y la utilidad de Internet ha crecido , también lo han hecho las comunidades de opensource.
+La comunicación fue el inicio para las grandes comunidades de opensource. Lo que  dio como resultado un sinnúmero de comunidades y grupos que contribuye a abrir el desarrollo fuente de casi cualquier cosa.
+
+Sitios web de gran tamaño para que las comunidades se centraron en el desarrollo de software de aplicaciones informáticas , como SourceForce , freshmeat , Ohloh y hacia arriba de acogida CPAN de decenas de miles de proyectos . Un grupo llamado Freenode proporciona Internet Relay Chat ( IRC ) servidores donde decenas de miles de desarrolladores de código abierto se reúnen para interactuar .
+
+Hay una serie de pequeños servicios de alojamiento de proyectos libres dirigidos a grupos desarrollo de software como Google Code, Launchpad, GitHub, GNU Savannah,
+así como los sitios de la comunidad antes mencionados.
+
+OpenCores es  sitio/ comunidad más grande para el desarrollo de los  IP core de hardware como de código abierto del mundo.
+OpenCores.org proporciona el código fuente de los diferentes proyectos HW digitales (IP-cores, SoC, boards, etc) y apoyar a los usuarios con diferentes herramientas, plataformas, foros y otras informaciones útiles. 
+
+		\subsection{\textcolor{orange}{Deferencias}}%http://www.slideshare.net/wilberth1594/tesis-alex-8795926,julius
+Aca vamos a poner las libertades que permiten uno y otro
+		\subsection{\textcolor{orange}{GPL}}
+		\subsection{\textcolor{orange}{LGPL}}
+%Revisemos este título -- PABLO JULIUS :P
+		\subsection{\textcolor{orange}{OpenSource}}
+intro a opensource
+
+EJ
+La apertura del código de la propiedad intelectual desarrollada para el proyecto OpenRISC, y otros en OpenCores, ha sido a la vez un obstáculo y una ayuda, pone a la vista el estado de el desarrollo, pero es útil, ya que permite que cualquiera pueda participar en el continuo desarrollo de cores. %\Esta sección discutirá los pros y los contras del opensource
+		\subsection{\textcolor{orange}{¿Quien tiene el Hardware?}} 
+
+la idea es poner pro y contra de trabajar con open source
+EJ
+El uno de los problemas que enfrentan los desarroladores del opensource que no lo tiene lo desarrolladores  de software es la necesidad de usar plataformas privativas para implementar el diseño.Estas plataformas que como elemento base una FPGA, contienen múltiples periféricos ICs , que tienen que ser comprados , así como la depuración y la programación de hardware.
+Se suma a esto que generalmente las complicadas herramientas de programación de los proveedores, 
+%así como el desarrollo de hardware curva de aprendizaje relativamente empinada impone a los principiantes , y no es demasiado sorprendente que técnicamente bien las personas que deseen participar en un proyecto de código abierto podrían elegir un software proyectar sobre un proyecto de hardware casi siempre.
+ %También es cierto que la utilidad de cualquier diseño de hardware que se podría implementar en FPGA está limitado por el hecho de que se que se hace a un muy bajo nivel de abstracción, y para lograr cualquier resultado " útil" para un experimentador o aficionado, que por lo general requiere una gran cantidad de trabajo a lo largo de muchos niveles de abstracción para lograr algo que es fácilmente utilizable a partir de una interfaz en un modernoPC . Un ejemplo podría ser el desarrollo de un núcleo para llevar a cabo no estándar 
+%\I / O con las transacciones de un sensor u otro boutique de IC, para proporcionar información a un programa de asistencia en la automatización del hogar , o el control de un modelo a escala y la similares. Esto requeriría el desarrollo y prueba del modelo de hardware y implementación en FPGA . Suponiendo que no era un microprocesador está ejecutando en ese FPGA proporcionar servicios de red a través de un RTOS , este nuevo módulo personalizado haría luego exigir su capa de software desarrollado , lo que significa que un conductor, y la satisfacción de diversas Ganchos de nivel operativo en la aplicación que se ejecuta en la FPGA , el AM microprocesador, a proporcionar los datos a través del enlace de red . Sólo entonces sería este sensor , los datos del AM y luego estará disponible para la aplicación de nivel superior. Este es sólo un ejemplo en el que , muy probablemente el diseñador podría haber elegido una solución que utiliza un bus estándar, sin embargo no , el AM con frecuencia casos de control personalizado o núcleos de interfaz en FPGAs para proporcionar el acceso a la herencia , o las normas de muy nuevas o esotérica de autobús, y pone de relieve el extra trabajo que se requiere más allá de la escritura RTL para proporcionar la interfaz física. en vista de la cantidad de desarrollo y pruebas requeridas para poner en práctica estas soluciones típicamente , sería fácil sentirse abrumado por la cantidad de trabajo necesario para completar una tarea tan aparentemente trivial.
+
+%Compare esto con el trabajo que participan en empezar a trabajar en una fuente abierta proyecto de software , que normalmente consisten en la descarga de una fuente de desarrollo árbol y el edificio ( en minutos ) que el proyecto con herramientas de desarrollo ya incluidos , o fácilmente obtenido , en el sistema operativo . La aplicación puede entonces ser
+%ejecutar en el sistema host para comprobar la funcionalidad y el ciclo de desarrollo en gran medida termina allí. Las diferencias son el acceso inherentes a la plataforma de desarrollo ( el máquina host) , las herramientas de desarrollo más simples ( gcc, make en el sistema host ) y el ciclo de desarrollo y pruebas más corto y más fácil (que se ejecuta en el equipo host a través de un shell. ) 
+%A medida que se desarrollan los proyectos de hardware de código abierto más y más ágil sistemas de desarrollo se ponen en su lugar , se puede esperar que estas barreras a entrada se convertirá disminuido . Los primeros días de desarrollo de software de código abierto habría parecido igual de difícil y laborioso . Con el tiempo , sin embargo , mejoras en los proyectos de forma en que se organizan y las herramientas utilizadas para su desarrollo , se han producido. La cantidad de software de código abierto disponible ha crecido y sigue hacerlo a un ritmo creciente . Se puede esperar que con el tiempo y el aumento participación , hardware de código abierto permitirá alcanzar un éxito similar .
+		
+
+		\subsection{\textcolor{orange}{OpenRISC}}
+
+aca vamos a poner el objetivo del proyecto openRisc 
+
+EJ:
+ La mayoría de los proyectos de software libre tienen por objeto poner en práctica soluciones relativamente bien conocidas de una manera que permite la apertura y elimine las restricciones que se encuentran en otra implementaciones propietarias . 
+
+El objetivo del proyecto OpenRisc de codigo abierto es proporcionar algo útil , productivo y abierto.
+Los objetivos de estos proyectos de código abierto por lo general están alineados. 
+Por ejemplo , considere el éxito obtenido por el proyecto del kernel de Linux, con miles de colaboradores y decenas de empresas que participan regularmente
+en el desarrollo . El kernel Linux compite claramente con el propietario variantes de UNIX y de los productos de Microsoft y Apple  en todos los casos está experimentando un enorme éxito.
+%\Para un proyecto como OpenRISC , un objetivo puede ser el uso generalizado entre los vendedores que  Actualmente utilizar procesadores por el líder de la industria , ARM , por su microprocesador sistemas basados ​​en . Por las razones que ya se ha esbozado sobre la verificación de abierto IP de origen y de los riesgos que implica , este tipo de absorción es poco probable que suceda en su actual estado, sin embargo eso no quiere decir que nunca pudo. En el momento de la OpenRISC de creación, los observadores indicaron que la IP de origen abierto podría convertirse en un jugador importante en la industria, si se hace bien ( 43 ) . Podría ser el caso que para los diseños que son en gran medida re- implementaciones de la tecnología conocida , los fundamentos de lo que son 25 - años de edad, de desarrollo de código abierto es un enfoque realista . Esto podría potencialmente conducir a menores costos ASICs , y por lo tanto la electrónica de consumo de bajo costo , como las regalías se eliminan , y los equipos de ingenieros la tarea de implementar en la casa controladores o microprocesadores, en lugar de trabajar para implementar y apoyar un un diseño de gran parte superflua , o bien podría ser la tarea de perfeccionar las partes específicas del el procesador de código abierto para lograr una mayor eficiencia en su aplicación, o sea reprogramado por completo el diseño más innovador IP .
+%Es muy probablemente el caso , sin embargo, que se trata de un escenario de " crear y ellos vendrá " . Es poco probable que un esfuerzo concertado entre los desarrolladores de propiedad intelectual sería ocurrir espontáneamente . Incluso si fuera a aparecer de la talla de las universidades y casas de investigación financiados por el gobierno , la probabilidad del capó de desarrollar microprocesador diseños de atraer la atención de las casas de ASIC , a continuación, estimulando el desarrollo colaborativo , es baja. Los factores ya discutidos , como la dificultad de garantizar su diseños y altas barreras de entrada debido al costo y la experiencia están ahí, pero también restricciones sobre el tipo de información necesaria para perfeccionar implementaciones ASIC - biblioteca de tecnología específicos de las propias plantas de fabricación , que están estrechamente secretos guardados y con pocas probabilidades de ser liberados para los proyectos de código abierto para preparar los diseños para . Es probable que haya una distinción para dibujar aquí, también, entre los ASICs derivados su ventaja competitiva de su microprocesador o de otra medida IP . Potencialmente, las que se basan en un procesador del borde inferior de corte podría ser feliz de ayudar a contribuir a un proyecto de desarrollo de código abierto para un microprocesador, ayuda aportando horas de ingeniería para la verificación y tal vez incluso la adición de características , con el fin de evitar el pago de regalías que podría reducir su coste por unidad .
+
+	\section{\textcolor{orange}{Microprocesadores Soft-Core}}
+	\subsection{\textcolor{orange}{LEON3}}
+		\subsubsection{\textcolor{orange}{Características}}
+		\subsubsection{\textcolor{orange}{Benchmarking}}
+	\subsection{\textcolor{orange}{OpenRISC}}
+		\subsubsection{\textcolor{orange}{Características}}
+		\subsubsection{\textcolor{orange}{Benchmarking}}
+	\subsection{\textcolor{orange}{Nios II}}
+		\subsubsection{\textcolor{orange}{Características}}
+		\subsubsection{\textcolor{orange}{Benchmarking}}
+	\subsection{\textcolor{orange}{MicroBlaze}}
+		\subsubsection{\textcolor{orange}{Características}}
+		\subsubsection{\textcolor{orange}{Benchmarking}}
+
+\section{\textcolor{orange}{Análisis de el OpenRISC }}
+		\subsection{\textcolor{orange}{Arquitectura}}
+		\subsection{\textcolor{orange}{Implementación}}
+			\subsubsection{\textcolor{orange}{ORPSoC}}
+			\subsubsection{\textcolor{orange}{MinSoc}}
+		\subsection{\textcolor{orange}{Toolchain}}
+		\subsection{\textcolor{orange}{Software}}
+			\subsubsection{\textcolor{orange}{Librerías}}
+			\subsubsection{\textcolor{orange}{Sistema Operativo}}
+			
+%%%%%%%%%%%ESTUDIO DEL PROBLEMA%%%%%%%%%%%%%%%%
+	
+\section{\textcolor{orange}{Estudio del Problema}}
+	\subsection{\textcolor{orange}{Introducción}}
+	\subsection{\textcolor{orange}{Requerimientos del Usuario}}
+			\subsubsection{\textcolor{orange}{En cuanto al Hardware}}
+			\subsubsection{\textcolor{orange}{En cuanto al las licencias}} 
+			\subsubsection{\textcolor{orange}{En cuanto Sistema Operativo}} 	 
+				 		\subsection{\textcolor{orange}{Estudio de componentes y de la viabilidad para el proyecto}}	
+		\subsubsection{\textcolor{orange}{Objetivo}} 	 
+		\subsubsection{\textcolor{orange}{Comparación de los Soft-Core}} 
+	 	\subsection{\textcolor{orange}{Conclusiones de la elección del micro Soft-Core}}
+ 		\subsubsection{\textcolor{orange}{Placas de Desarrollo}}
+			\paragraph{\textcolor{orange}{Xilinx}}
+			\paragraph{\textcolor{orange}{Digilent}} 	 
+			\paragraph{\textcolor{orange}{Altera}}
+ 		\subsubsection{\textcolor{orange}{CONCLUSIONES DE LA ELECCIÓN DE LA PLACA DE DESARROLLO}}
+ 		\subsubsection{\textcolor{orange}{SELECCIÓN DE LAS HERRAMIENTAS DE DESARROLLO}} 	 
+ 		\subsubsection{\textcolor{orange}{Elección de Sistema Operativo}}
+%\paragraph{\textcolor{orange}{}}
+			
+\section{\textcolor{orange}{Requerimientos y Riesgos Del Sistema}}
+
+\section{\textcolor{orange}{Implementación}}
+	\subsection{\textcolor{orange}{Introducción}}
+	\subsection{\textcolor{orange}{Arquitectura}}
+%Criterios para la realización de testing  (o algo asi) -- PABLO JULIUS :P
+	\subsection{\textcolor{orange}{Criterio para la realización de testing}}
+	\subsection{\textcolor{orange}{Entorno de ejecución}}
+		\subsubsection{\textcolor{orange}{Entorno de ejecución Standalone}}
+		\subsubsection{\textcolor{orange}{Entorno de ejecución linux}}
+	\subsection{\textcolor{orange}{PROTOTIPO UNO: Implementación del SoC MinSoc en FPGA}}
+		\subsubsection{\textcolor{orange}{Introducción}}
+		\subsubsection{\textcolor{orange}{Requerimientos del prototipo}}
+		\subsubsection{\textcolor{orange}{Implementación}}
+			\subsubsection{\textcolor{orange}{Diagrama de Secuencia}}
+			\subsubsection{\textcolor{orange}{Testing}}
+		\subsection{\textcolor{orange}{Conclusión}}
+	\subsection{\textcolor{orange}{PROTOTIPO DOS: Implementación del SoC OrpSoc en FPGA}}
+		\subsubsection{\textcolor{orange}{Introducción}}
+		\subsubsection{\textcolor{orange}{Requerimientos del prototipo}}
+		\subsubsection{\textcolor{orange}{Implementación}}
+			\subsubsection{\textcolor{orange}{Diagrama de Secuencia}}
+			\subsubsection{\textcolor{orange}{Testing}}
+		\subsection{\textcolor{orange}{Conclusión}}
+	\subsection{\textcolor{orange}{PROTOTIPO TRES: Implementación del SoC OrpSoc en FPGA con Sistema Operativo eCos}}
+		\subsubsection{\textcolor{orange}{Introducción}}
+		\subsubsection{\textcolor{orange}{Requerimientos del prototipo}}
+		\subsubsection{\textcolor{orange}{Implementación}}
+			\subsubsection{\textcolor{orange}{Diagrama de Secuencia}}
+			\subsubsection{\textcolor{orange}{Testing}}
+		\subsection{\textcolor{orange}{Conclusión}}
+	\subsection{\textcolor{orange}{PROTOTIPO tres: Implementación OrpSoc en FPGA con Linux}}
+		\subsubsection{\textcolor{orange}{Introducción}}
+		\subsubsection{\textcolor{orange}{Requerimientos del prototipo}}
+		\subsubsection{\textcolor{orange}{Implementación}}
+			\subsubsection{\textcolor{orange}{Diagrama de Secuencia}}
+			\subsubsection{\textcolor{orange}{Testing}}
+		\subsection{\textcolor{orange}{Conclusión}}
+
+
+
+
+	
+
+
+\section{\textcolor{orange}{Bibliografía}}
+\subsection{\textcolor{orange}{Documentos}}
+\subsection{\textcolor{orange}{sitios web}}
+
+\end{document}

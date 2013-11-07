@@ -1,0 +1,89 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage[spanish]{babel} \usepackage[T1]{fontenc}
+\usepackage{times} \usepackage[utf8]{inputenc}
+
+\usepackage{verbatim} \usepackage{amsmath}
+\usepackage[usenames]{color}
+
+\usepackage{graphicx} \usepackage{subfigure}
+\usepackage[utf8]{inputenc}
+
+\usepackage[Conny]{fncychap}
+\ChTitleVar{\vspace{1.5cm}\centering\Huge\rm\bfseries}
+\ChNameVar{\vspace{1.5cm}\centering\Huge\rm\bfseries}
+
+\hyphenation{con-ti-nua-men-te}
+
+%\usepackage[Rejne]{fncychap}
+%\usepackage[Bjarne]{fncychap}
+%\usepackage{makeidx}
+\definecolor{DarkBlue}{rgb}{0.1,0.1,.1}
+\usepackage[linkcolor=DarkBlue,urlcolor=DarkBlue,colorlinks,breaklinks]{hyperref}
+\usepackage[left=2.5cm,top=3.0cm,right=2.5cm,bottom=3.0cm]{geometry} 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark} %\fancyhead[R]{\rightmark}
+\fancyfoot[L]{Gomez, Pablo - Lovaisa Michelini, Valeria}
+\fancyfoot[R]{P\'agina: \thepage} %\fancyfoot[LE,RO]{P\'agina: \thepage}                               
+\renewcommand{\headrulewidth}{1.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\begin{document}
+
+
+\title{\vspace{-4cm} \textbf{Proyecto Integrador \\ \line(1,0){350}}\\
+  \vspace{0.5cm}\centering{\includegraphics[scale=0.53]{images/logoUNC.png}}\\}
+\author{\vspace{-0.25cm} Autor \vspace{0.25cm}\\ Gomez, Gomez - Lovaisa Michelini Valeria \bigskip \bigskip \bigskip \\
+  % Tema \vspace{0.25cm} \\ \textbf{Estudio y simulaci\'on de un lazo de Recuperaci\'on de Portadora con}\\ \textbf{modulaci\'on QPSK y 16-QAM para Receptores de} \\ \textbf{Alta Velocidad empleando Procesamiento Paralelo} \bigskip \bigskip \bigskip \bigskip\\
+  Tema \vspace{0.25cm} \\ \textbf{Implementación de un sistema SoC con microprocesado  }\\ \textbf{OpenRisc con soporte Linux} \\ \textbf{} \bigskip \bigskip \bigskip \bigskip\\
+ %\begin{normalsize}Director\end{normalsize}\\
+%  \begin{normalsize}Ing. Pablo Gianni \bigskip \bigskip \end{normalsize} \\
+ % \begin{normalsize}CoDirector \end{normalsize} \\
+  \begin{normalsize}---- \bigskip \bigskip \end{normalsize}\\ }
+\date{}
+
+\maketitle{}
+
+\newpage
+\tableofcontents{}
+
+\newpage
+\listoffigures{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\input{capitulo_1}
+\newpage
+%\input{capitulo_2}
+\newpage
+%\input{capitulo_3}
+\newpage
+%\input{capitulo_4}
+\newpage
+%\input{capitulo_5}
+\newpage
+%\input{capitulo_6}
+\newpage
+%\input{conclusiones}
+\newpage
+%\input{apendix}
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem{Etiqueta00} Claude Herard and Alain Lacourt, 1991.
+  \textit{New multiplexing technique using polarization of light}.
+
+
+\bibitem{Etiqueta10}Wikipedia, the free encyclopedia, Free and open source software.
+\url{http://en.wikipedia.org}
+
+\end{thebibliography}
+
+\end{document}
