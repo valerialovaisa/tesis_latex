@@ -1,11 +1,45 @@
 %%%%%%%%%%%ESTUDIO DEL PROBLEMA%%%%%%%%%%%%%%%%
 \chapter{Estudio del Problema}
 	\section{Introducción}
-	Como primera apreciación se analizó la factibilidad de implementación de un
-	SoC  en FPGA con 
+	Como primera acción se analizó la factibilidad de implementación de un
+	SoC con licencia OpenSource en FPGA, razón que condujo a la investigación del
+	tópico en búsqueda de información necesaria que determine si existe
+	tal factibilidad. Las características relevadas durante la investigación
+	aportaron información respecto al hardware, las herramientas de desarrollo y
+	el sistema operativo necesario para llevar a cabo la implementación. 
+	
+	Se debió discernir entre las diversas alternativas de hardware que se tenían
+	disponibles al momento del desarrollo de este trabajo. Esta situación derivó en
+	una valoración de los diferentes entornos de desarrollo y sistemas operativos 
+	asociados que cumplan con el paradigma del software libre. 
+	
 	\section{Requerimientos del Usuario}
-			\subsection{En cuanto al Hardware}
-			\subsection{En cuanto al las licencias} 
+	Se realizó en este apartado un listado de los requerimientos elecitados que
+	tienen como objetivo comprender el dominio del problema para trabajar en una
+	solición eficiente del problema.
+		\subsection{En cuanto al Hardware}
+		A continuación se listaron los requerimientos de hardware a utilizar para la
+		implementación del sistema.
+		
+		\begin{tabular}{||c|c|c||}
+		\hline
+		N° Req & Descripción  & Tipo\\
+		\hline
+		1 &  Se debe implementar un Microprocesador Softcore de núcleo simple &
+		Cantidad y tipo de núcleos. \\
+		2 &  El SoC seleccionado debe poseer la menor cantidad de restricciones
+		respecto de su implementación en placas de desarrollo de diversos fabricantes.
+		& Portabilidad a nivel Hardware\\
+		3 & La placa de desarrollo elegida debe poseer al menos 32 MB de memoria RAM
+		disponible que permita al ejecución del kernel de linux. & Memoria Disponible
+		\\
+		
+		\hline
+		\end{tabular}
+					
+	
+			\subsection{En cuanto a las Licencias}
+			\subsection{En cuanto a las Herramientas de Desarrollo}
 			\subsection{En cuanto Sistema Operativo} 	 
 	\section{Estudio de componentes y de la viabilidad para el proyecto}	
 			\subsection{Objetivo} 	 
