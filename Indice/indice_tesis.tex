@@ -80,49 +80,50 @@ Existe un grupo de cores Sof-Core de código abierto que no están limitados por
 \item Relación con el usuario. El programador se acerca mucho mas a las necesidades reales de su cliente, y puede crear un producto especifíco para él
  \end {itemize}
  
-Obtener un sitema integral de código abierto en donde hay código HDL, assembler y C. Con la principal ventaja del acceso al código pudiendo personalizarlo como por ejemplo en la descripción RTL del SoC para implementar la optimización o funcionalidad deseada y la ausencia de restricciones sobre lo que se puede hacer sobre el sistema final. Ademas de la portabilidad con la que obtengo la capacidad de migrar de una plataforma a otra. Logrando menor dependencia entre el código fuente y la plataforma objetivo. Pudiendo ser usado sobre una ASICs (Application-specific integrated circuit) o con modificaciones menores en cualquier FPGA (Field Programmable Gate Array) de Xilinx, Altera, Lattice, etc. 
+Obtener un sistema integral de código abierto en donde se tiene código HDL, assembler y C disponible para adaptarse de acuerdo a los requerimientos del proyecto. Ademas de la de la capacidad de migrar de una plataforma a otra. Logrando menor dependencia entre el código fuente y la plataforma objetivo. 
+La portabilidad del codigo abierto nos permite implementarlo sobre una ASICs (Application-specific integrated circuit) o con modificaciones menores en cualquier FPGA (Field Programmable Gate Array) de Xilinx, Altera, Lattice, etc. 
 Estos tres de los más grandes proveedores de FPGA , Xilinx , Altera y Lattice , ofrecen sus propios micro core RISC de 32bits los dos mayores proveedores de dispositivos FPGA , Altera y Xilinx , proporcionan el micro core Nios y Microblaze, respectivamente. Son micro cores  en donde el codigo fuente RTL no se encuera disponible y solo pueden ser implementados en sus respectivas FPGA.
 
 \subsection{\textcolor{orange}{Importancia del Problema}}
 
-En el diseño del sistema embebido se usan diferentes procesos depende del tipo de sistema, el hardware disponible y la organización que desarrolle el sistema. Una de las actividades principales en un proceso de diseño de software es la elección del hardware y del sistema operativo que se efectua antes del comienzo del software. Ante tal situación , se debe diseñar el software par considerar las restricciones impuestas por las capacidades del hardware.
-Los efectos que influyen dichas elecciones comprenden restricciones de de temporización sobre el sistema, limitacion en la energia disponible, experiencia del equipo de desarrollo y precio topo pa el sistema entregable.
-
-
-El problema es el acceso a la tecnología
-
-El problema que se están resolviendo es el de que cualquier diseñador que va a plantear un sistema embebido. 
-bueno con q micro vamos a trabajar?
-estamos explorando una líneas de esas opciones que vos podes tener cuando planteas un sistema embebido 
-
-lo que están haciendo es explorar una línea donde lo que queres es dar al diseñador una solución muy flexible. que no tenga que pagar y que tenga libertad de usar lo que tenga
-
-ante la creación de un sistema embebido que opciones tengo?
-el problema es ese las opciones de desarrollo para sistemas embebidos donde ustedes van a ofrecer una respuesta entonces es importante tener muchas opciones para poder desarrollar 
-gregaria algo nuevo ? o una solución no tan aprovechada?
-
-hoy en día vos te sentas a hacer sistemas embebidos y vas te compras una placa con un micro tal con nose q cosa con una FPGA tenes un ARM ahí metido 
-esa es tu única solución?
-hay lugar para otras opciones?
-
-puedo pensar en un sistema embebido soc fuera de lo que son micros comprados comercialmente o puedo pensar en algo q sea mas independiente del hardware?
-me puedo abstraer del hardware?
-en definitiva pueden usar cosas de alterea xilinx litix sobre AISIC
-
-el alcance del problema?
-de donde hasta donde vamos a ir
-primero elegimos un micro después lo embebemos en un soc y después le metimos un sistema operativo
+En el diseño del sistema embebido se usan diferentes procesos depende del tipo de sistema, el hardware disponible y la organización que desarrolle el sistema. Una de las actividades principales en un proceso de diseño de software es la elección del hardware y del sistema operativo que se efectúa antes del comienzo del software. Ante tal situación , se debe diseñar el software par considerar las restricciones impuestas por las capacidades del hardware.
+Los efectos que influyen dichas elecciones comprenden restricciones de de temporización sobre el sistema, limitación en la energía disponible, experiencia del equipo de desarrollo y limites en el costos del sistema entregable.
+ 
+Se está explorando una linea donde se busca dar al diseñador del sistema embebido una solución flexible en la primera etapa de la elección de plataforma. Donde a través del análisis de diferentes plataformas de desarrollo OpenSource y privativas pueda elegir la mejor opción para el tipo de sistema a desarrollar y requerimientos de proceso. 
+ 
+Una vez que se ha elegido la plataforma de ejecucion para el sistema, se ha diseñado una arquitectura de proceso y se a determinado una políticas de planeación, es necesario comprobar que el sistema cumplirá sus con sus requerimientos.
 
 \subsection{\textcolor{orange}{Alcance del Estudio}}
 
-de donde hasta donde vamos a ir
-primero elegimos un micro después lo embebemos en un soc y después le metimos un sistema operativo
+Debido al plazo estipulado para el desarrollo del proyecto, el mismo involucra tres etapas: 
 
-\subsection{\textcolor{orange}{Alcance del Estudio}}
-aca la realización de lo q se plantea. Por ejemplo Primero implementamos el Soc base y luego se procede a montar sistemas operativos open source  en los Soc tb open source sobre las herramientas que me da la industria 
+ \begin {itemize}
+\item Especificación y Análisis de requerimientos.
+\item Implementación.
+\item Testing.
+ \end {itemize}
+
+
+%de donde hasta donde vamos a ir
+%primero elegimos un micro después lo embebemos en un soc y después le metimos un sistema operativo
 \subsection{\textcolor{orange}{Modelo de Desarrollo}}
-aca voy a hablar del modelo en espiral 
+
+
+El modelo de desarrollo a utilizar es el Modelo en Espiral tipificado por Ian Sommerville [2] . El modelo en espiral de ingeniería de software, mostrado en la Ilustración 1, fue originalmente propuesto por Boehm en año 1988, en su artículo A Spiral Model of Software Development and Enhancement. Propuso un marco del proceso de software dirigido por el riesgo. Aquí, el proceso de software se representa como una es espiral, cada ciclo en la espiral representa una fase del proceso de software. Por ende el, ciclo más interno puede relacionarse con la factibilidad del sistema, el siguiente ciclo con la definición de requerimientos, el siguiente ciclo al diseño del sistema, y así sucesivamente.
+Cada ciclo del espiral se divide en 4 sectores:
+ 
+\begin {itemize}
+\item Establecimiento de objetivo  Se definen objetivos específicos para dicha fase del proyecto. Se identifican restricciones en el preceso y el producto, y se traza un plan detallado de gestión. Se identifican los riesgos del proyecto. Dependiendo de estos riegos, se planean estrategias alternativas
+\item Validación y reducción del riesgo  En cada uno de los riesgos identificados del proyecto, se realiza un análisis minucioso. Se dan acciones para reducir el riesgo.
+\item Desarrollo y validación  Despues de una evaluacion del riesgo, se elige un modelo de desarrollo para el sistema.
+\item Planeción  El proyecto se revisa y se toma una decisión sobre si hay que continuar con otro ciclo de la espiral. Si se opta por continuar, se trazan los planes para la siguente fase del proyecto.
+ \end {itemize}
+
+Como característica principal de esta metodología es que posee una consideración explícita del riesgo. Informalmente, el riesgo significa sencillamente que algo puede ir mal. Los riegos originan problemas en el proyecto, como los de confección de agendas y excesos en los costos; por lo tanto, la disminución de riegos es una actividad sumamente importante en la gestión del proyecto.
+Un ciclo en la espiral comienza con la elaboración de objetivos, como el rendimiento y la funcionalidad. Entonces se enumeran formas alternativas de alcanzar estos objetivos y las restricciones impuestas en cada una de ellas. Cada alternativa se evalúa contra cada objetivo y se identifican las fuentes de riegos del proyecto. El siguiente paso es resolver estos riesgos mediante actividades de recopilación de información como la de detallar más el análisis, la construcción de prototipos y la simulación. Una vez que se han evaluado los riesgos se llevará a cabo cierto desarrollo, seguido de una actividad de planificación para la siguiente fase del proceso.
+
 \subsection{\textcolor{orange}{Metodología}}
+
 voy a escribir que usamos un desarrollo experimental y de simulación.
 
 %\section{\textcolor{orange}{Perspectiva Historica}}
