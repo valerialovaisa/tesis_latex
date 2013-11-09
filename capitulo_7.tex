@@ -52,7 +52,7 @@
 		RQX-HD 1 &  Las herramientas de desarrollo elegidas en base a la arquitectura a implementar deben tener la menor cantidad de restricciones respecto
 		del sistema operativo donde serán ejecutadas & Portabilidad\\
 		\hline 
-		RQX-HD 2 &  Las herramientas de desarrollo deben brindar la capacidad de desarrollar y depurar programas para la arquiectura seleccionada &
+		RQX-HD 2 &  Las herramientas de desarrollo deben brindar la capacidad de desarrollar y depurar programas para la arquitectura seleccionada &
 		XXXXXXXXXXXX\\ % Revisar tipo de requerimiento
 		\hline
 		RQX-HD 3 &  Las herramientas de desarrollo de la placa seleccionada deben proveer soporte para el acceso a sus periféricos on board &
@@ -82,20 +82,35 @@
 			\subsection{Objetivo}
 			Se estudiaron los componentes del proyecto y sus diversas alternativas de implementación por medio de un análisis comparativo que permitió evidenciar
 			las características relevantes de cada uno de ellas. Inicialmente se realizó una comparativa de las prestaciones de los microprocesadores softcore
-			más importantes para evaluar su capacidad de procesamiento 
+			más importantes para evaluar su capacidad de procesamiento. 
 			
 			\subsection{Selección del Microprocesador Soft-Core}
-			
+		
 				\subsubsection{Comparación de Microprocesadores Soft-Core} 
 	
 				\subsubsection{Conclusiones de la elección del micro Soft-Core}
- 			
+					 			
  			\subsection{Selección del SoC}
-			
 				\subsubsection{Comparación de proyectos SoC con procesador OpenRisc} 
-			
- 			
- 			
+				
+				\paragraph{Proyecto MinSoC}
+				La implementación llamada Minimal OpenRISC System on Chip utiliza IP cores estándar disponibles en OpenCores. Agrupa los cores necesarios para un
+				SoC utilizando el procesador softcore OpenRISC OR1200. Este SoC puede ser sintetizado para cualquier FPGA y placa de desarrollo sin necesidad de
+				realizar cambios en su descripción RTL. Para cumplir con esta premisa el proyecto se basa en una implementación básica de memoria y posee una
+				unidad de debug llamada Advanced Debug System, que permite depurar el sistema y cargar los programas a ejecutar con la misma interfase utilizada
+				para la configuración de la FPGA.
+				
+				El proyecto brinda soporte nativo a diversas placas y FPGAs mediante definiciones en el código RTL y archivos de constantes (constraint files)
+				pero puede adaptarse a otras siguiendo una mínima serie de pasos. Se cuenta además con una serie testbenchs y firmwares que permiten realizar
+				pruebas funcionales del sistema y son sirven de guía en los primeros desarrollos. Los testbenchs de MinSoC pueden ser ejecutados mediante la
+				aplicación Icarus Verilog v.9.1. disponible en los repositorios estándar de la mayoría de las distribuciones Linux. 
+				
+				Existe una instancia de memoria on-chip de tamaño adaptable necesaria para soportar el firmware del CPU que conjuntamente con los cores que
+				soportan los periféricos básicos son adaptados de acuerdo a las capacidades de la FPGA destino. 
+				
+				
+				
+				\subsubsection{Conclusiones de la elección del micro Soft-Core}
  			
  			
  			\subsection{Selección de la Placa de Desarrollo}
@@ -106,7 +121,7 @@
 				son soportadas por los SoC elegidos.
 				\subparagraph{S3ADSP1800A}
 				El dispositivo XtremeDSP™ Starter Platform cuenta con una FPGA de la familia Spartan®-3A que permite la evaluación diseños para diferentes
-				apliaciones tales como Prototipado General, Sistemas Embebidos, Video Digital, DSP, Procesamiento de Imagenes, Comunicaciones digitales y
+				aplicaciones tales como Prototipado General, Sistemas Embebidos, Video Digital, DSP, Procesamiento de Imagenes, Comunicaciones digitales y
 				Coprocesamiento. Esta plataforma provee acceso a las capacidades de la familia de FPGA Spartan®-3A y cuenta con periféricos,conectores e
 				interfaces estándar de la industria. Fue diseñada para para ser utilizada con Xilinx System Generator para aplicaciones DSP y las herramientas de
 				diseño ISE® o el entorno desarrollado en Linux llamado PetaLinux Software Development Kit (SDK) ambas herramientas provistas por el fabricante. 
@@ -140,7 +155,7 @@
 				\hline                         & System ACE module connector\\   
 				\end{tabular}
 				
-				Las implementaciones MinSoC y ORPSoC proveen soporte nativo para los siguientes perisféricos:
+				Las implementaciones MinSoC y ORPSoC proveen soporte nativo para los siguientes periféricos:
 				
 				\begin{itemize}
 				  \item Ethernet
@@ -151,7 +166,7 @@
 				\end{itemize}
 			
 				\subparagraph{ML501}
-				La ML501 es una plataforma de desarrollo de bajo costo y gran funcionalidad que provee un acceso práctico a los recursos dispobibles en el
+				La ML501 es una plataforma de desarrollo de bajo costo y gran funcionalidad que provee un acceso práctico a los recursos disponibles en el
 				dispositivo FPGA Virtex®-5 LX50. Posee interfases y conectores industriales estándar y presenta gran versatilidad para su utilización en
 				múltiples aplicaciones como Video, Audio y puertos de comunicación.
 				
@@ -182,7 +197,7 @@
 			\hline Medioambiente & EU-RoHS compliant \\
 			\end{tabular}
 				
-				Las implementación ORPSoC fue probada con éxito en esta plataforma y provee soporte para los siguientes perisféricos:
+				Las implementación ORPSoC fue probada con éxito en esta plataforma y provee soporte para los siguientes periféricos:
 				
 				\begin{itemize}
 				  \item Ethernet
@@ -200,8 +215,8 @@
 				\paragraph{Digilent}
 				\subparagraph{Atlys}
 				La placa de desarrollo Atlys es una plataforma que permite el desarrollo de circuitos digitales y esta soportada por una FPGA Xilinx Spartan 6
-				LX45. Posee perisféricos entre los que se destacan Gbit Ethernet, Video HDMI, Audio, puertos USB y Memoria Ram 128 MB DDR2 que permiten el
-				desarrollo de Sistemas Digitales sobre procesadores embebidos como  MicroBlaze de Xilinx. Atlys es compatible con todas las herrmientas CAD de
+				LX45. Posee periféricos entre los que se destacan Gbit Ethernet, Video HDMI, Audio, puertos USB y Memoria Ram 128 MB DDR2 que permiten el
+				desarrollo de Sistemas Digitales sobre procesadores embebidos como  MicroBlaze de Xilinx. Atlys es compatible con todas las herramientas CAD de
 				Xilinx como ChipScope, EDK y WebPack (gratuito) lo que permite completar diseños sin mayor costo. Como alternativa puede utilizarse un entorno de
 				desarrollo para Linux llamado PetaLinux Software Development Kit (SDK) provisto por el fabricante de la FPGA.
 				
@@ -232,7 +247,7 @@
 				\hline I/O y Expansión & 48 I/O’s routed to expansion connectors\\
 				\end{tabular}
 				
-				La implementación ORPSoC proveen soporte nativo para los siguientes perisféricos:
+				La implementación ORPSoC proveen soporte nativo para los siguientes periféricos:
 				
 				\begin{itemize}
 				  \item AC97
@@ -251,8 +266,8 @@
 				utilizada con una implementación simple utilizando como destino una FPGA Cyclone IV de Altera con 22,320 LEs (Elementos Lógicos). Entre sus
 				características princpiales se encuentran diversas interfases que incluyen dos puertos de expanxión GPIO, dispositivos de memoria on board SDRAM y
 				EEPROM. Las mayores ventajas del DE0-Nano son su reducido tamaño y peso, así como la capacidad de ser reconfigurado sin la necesidad de
-				utilización de hardware extra. Los requerimientos de energía para dispositivos portables son cruciales , la DE-0 Nano posee 3 esquemas posibiles
-				de conexión : un puerto USB mini-AB, conectores de 2 pines para alimentacion externa de 5V, y 2 pines de 5V.
+				utilización de hardware extra. Los requerimientos de energía para dispositivos portables son cruciales , la DE-0 Nano posee 3 esquemas posibles
+				de conexión : un puerto USB mini-AB, conectores de 2 pines para alimentación externa de 5V, y 2 pines de 5V.
 
 				Las características generales de la plataforma son:
 				
@@ -283,7 +298,7 @@
 				\hline 				& 2-pin external power header (3.6-5.7V)\\
 				\end{tabular}
 				
-				La implementación ORPSoC proveen soporte nativo para los siguientes perisféricos:
+				La implementación ORPSoC proveen soporte nativo para los siguientes periféricos:
 				
 				\begin{itemize}
 				  	\item GPIO
@@ -294,6 +309,8 @@
 				\end{itemize}				
 				
  				\subsubsection{Conclusiones de la elección de la Placa de Desarrollo}
+ 				Se seleccionó entre los items analizados y teniendo en cuenta la disponibilidad de recursos al momento de realizar este trabajo utilizar las
+ 				placas S3ADSP1800A de Xilinx para soportar los SoC a implementar.
  			
  			\subsection{Selección de las herramientas de desarrollo} 	 
  		
