@@ -1,41 +1,32 @@
 %%%%%%%%%%%ESTUDIO DEL PROBLEMA%%%%%%%%%%%%%%%%
 \chapter{Estudio del Problema}
 	\section{Introducción}
-	Como primera acción se analizó la factibilidad de implementación de un
-	SoC con licencia OpenSource en FPGA, razón que condujo a la investigación del
-	tópico en búsqueda de información necesaria que determine si existe
-	tal factibilidad. Las características relevadas durante la investigación
-	aportaron información respecto al hardware, las herramientas de desarrollo y
-	el sistema operativo necesario para llevar a cabo la implementación. 
+	Como primera acción se analizó la factibilidad de implementación de un SoC con licencia OpenSource en FPGA, razón que condujo a la investigación del
+	tópico en búsqueda de información necesaria que determine si existe tal factibilidad. Las características relevadas durante la investigación
+	aportaron información respecto al hardware, las herramientas de desarrollo y el sistema operativo necesario para llevar a cabo la implementación. 
 	
-	Se debió discernir entre las diversas alternativas de hardware que se tenían
-	disponibles al momento del desarrollo de este trabajo. Esta situación derivó en
-	una valoración de los diferentes entornos de desarrollo y sistemas operativos 
-	asociados que cumplan con el paradigma del software libre. 
+    Se debió discernir entre las diversas alternativas de hardware que se tenían disponibles al momento del desarrollo de este trabajo. Esta situación
+    derivó en una valoración de los diferentes entornos de desarrollo y sistemas operativos asociados que cumplan con el paradigma del software
+    libre.
 	
 	\section{Requerimientos del Usuario}
-	Se presenta en este apartado un listado de los requerimientos elecitados que
-	tienen como objetivo comprender el dominio del problema y permiten trabajar en
-	la realización de una solución eficiente.
+	Se presenta en este apartado un listado de los requerimientos elecitados que tienen como objetivo comprender el dominio del problema y permiten
+	trabajar en la realización de una solución eficiente.
 	
 		\subsection{En cuanto al Hardware}
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción & Tipo\\
 		\hline
-		RQX-HW 1 &  Se debe implementar un Microprocesador Softcore de núcleo simple &
-		Cantidad y tipo de núcleos. \\
+		RQX-HW 1 &  Se debe implementar un Microprocesador Softcore de núcleo simple & Cantidad y tipo de núcleos. \\
 		\hline
-		RQX-HW 2 &  El SoC seleccionado debe poseer la menor cantidad de restricciones
-		respecto de su implementación en placas de desarrollo de diversos fabricantes.
-		& Portabilidad a nivel Hardware\\
+		RQX-HW 2 &  El SoC seleccionado debe poseer la menor cantidad de restricciones respecto de su implementación en placas de desarrollo de diversos
+		fabricantes. & Portabilidad a nivel Hardware\\
 		\hline
-		RQX-HW 3 & La placa de desarrollo elegida debe poseer al menos 32 MB de
-		memoria RAM disponible que permita al ejecución del kernel de linux. & Memoria Disponible
-		\\
+		RQX-HW 3 & La placa de desarrollo elegida debe poseer al menos 32 MB de memoria RAM disponible que permita al ejecución del kernel de linux. &
+		Memoria Disponible\\
 		\hline
-		RQX-HW 4 & La placa de desarrollo elegida debe poseer al menos 8 MB de
-		memoria flash disponible que permita guardar la configuración de la FPGA y un
+		RQX-HW 4 & La placa de desarrollo elegida debe poseer al menos 8 MB de memoria flash disponible que permita guardar la configuración de la FPGA y un
 		bootloader & Memoria Disponible\\
 		\hline
 		\end{tabular}
@@ -44,34 +35,122 @@
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
+		\hline 
+		RQX-LC 1 &  Todo el hardware implementado debe tener licencia LGPL o GPLv2 en su defecto & Licencias de hardware\\
+		\hline 
+		RQX-LC 2 &  Las herramientas de desarrollo utilizadas deben poseer licencias LGPL o GPLv2 en su defecto & Licencias de Software\\
 		\hline
-		RQX-LC 1 &  Todo el hardware implementado debe tener licencia LGPL o GPLv2 
-		en su defecto & Licencias de hardware\\
-		\hline
-		RQX-LC 2 &  Las herramientas de desarrollo utilizadas deben poseer licencias
-		LGPL o GPLv2 en su defecto & Licencias de Software\\
-		\hline
-		RQX-LC 3 & El sistema operativo elegido debe poseer licencia LGPL o GPLv2 &
-		Licencias de Software\\
+		RQX-LC 3 & El sistema operativo elegido debe poseer licencia LGPL o GPLv2 & Licencias de Software\\
 		\hline
 		\end{tabular}
 			
 		\subsection{En cuanto a las Herramientas de Desarrollo}
+		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
+		\hline 
+		RQX-HD 1 &  Las herramientas de desarrollo elegidas en base a la arquitectura a implementar deben tener la menor cantidad de restricciones respecto
+		del sistema operativo donde serán ejecutadas & Portabilidad\\
+		\hline 
+		RQX-HD 2 &  Las herramientas de desarrollo deben brindar la capacidad de desarrollar y depurar programas para la arquiectura seleccionada &
+		XXXXXXXXXXXX\\ % Revisar tipo de requerimiento
+		\hline
+		RQX-HD 3 &  Las herramientas de desarrollo de la placa seleccionada deben proveer soporte para el acceso a sus periféricos on board &
+		XXXXXXXXXXXX\\ % Revisar tipo de requerimiento
+		\hline 
+		\end{tabular}
 		
 		\subsection{En cuanto Sistema Operativo} 	 
+		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
+		\hline 
+		RQX-SO 1 &  El sistema operativo elegido debe disponer de drivers y librerías que permitan el acceso a todos los dispositivos incluídos en el SoC &
+		XXXXXXXXXXXXX\\ % Revisar tipo de requerimiento
+		\hline 
+		RQX-SO 2 &  El sistema operativo elegido debe tener la capacidad de ejecución multitarea e hilos & XXXXXXXXXXXX\\ % Revisar tipo de
+		% requerimiento
+		\hline
+		RQX-SO 3 &  El sistema operativo elegido debe posibilitar la ejecución de aplicaciones de tiempo real & XXXXXXXXXXXX\\ % Revisar tipo de
+		% requerimiento
+		\hline 
+		\end{tabular}
+		
 	
-	\section{Estudio de componentes y viabilidad para el proyecto}	
-			\subsection{Objetivo} 	 
-			\subsection{Comparación de Microprocesadores Soft-Core} 
+	\section{Estudio de componentes y viabilidad para el proyecto}
+		
+			\subsection{Objetivo}
+			Se estudiaron los componentes del proyecto y sus diversas alternativas de implementación por medio de un análisis comparativo que permitió evidenciar
+			las características relevantes de cada uno de ellas. Inicialmente se realizó una comparativa de las prestaciones de los microprocesadores softcore
+			más importantes para evaluar su capacidad de procesamiento 
+			
+			\subsection{Selección del Microprocesador Soft-Core}
+			
+				\subsubsection{Comparación de Microprocesadores Soft-Core} 
 	
-	\section{Conclusiones de la elección del micro
-	 	Soft-Core}
- 			\subsection{Placas de Desarrollo}
-				\subsubsection{Xilinx}
-				\subsubsection{Digilent} 	 
-				\subsubsection{Altera}
- 			\subsection{CONCLUSIONES DE LA ELECCIÓN DE LA PLACA DE
- 		DESARROLLO}
- 			\subsection{SELECCIÓN DE LAS HERRAMIENTAS DE DESARROLLO} 	 
- 			\subsection{Elección de Sistema Operativo}
+				\subsubsection{Conclusiones de la elección del micro Soft-Core}
+ 			
+ 			\subsection{Selección de la Placa de Desarrollo}
+ 				\subsubsection{Análisis de las alternativas} 
+				Los proyectos MinSoC y OrpSoc cuentan actualmente con soporte para diversas placas de desarrollo. 
+				\paragraph{Xilinx}
+				La empresa Xilinx provee kits de desarrollo de diversas características y prestaciones. A continuación se detallan algunas de las alternativas que
+				son soportadas por los SoC elegidos.
+				\subparagraph{S3ADSP1800A}
+				El dispositivo XtremeDSP™ Starter Platform cuenta con una FPGA de la familia Spartan®-3A que permite la evaluación diseños para diferentes
+				apliaciones tales como Prototipado General, Sistemas Embebidos, Video Digital, DSP, Procesamiento de Imagenes, Comunicaciones digitales y
+				Coprocesamiento. Esta plataforma provee acceso a las capacidades de la familia de FPGA Spartan®-3A y cuenta con periféricos,conectores e
+				interfaces estándar de la industria. Fue diseñada para para ser utilizada con Xilinx System Generator para aplicaciones DSP y las herramientas de
+				diseño ISE® provistas por el fabricante. 
+				
+				%Traducir esto ???
+				Las características generales del kit son:
+				
+				\begin{tabular}{ p{4cm} p{10cm} }
+				\rowcolor[gray]{0.8} Caracteristica & Descripción \\		
+				\hline FPGA   & XC3SD1800A-4FGG676C Spartan-3A DSP FPGA\\
+				\hline Clocks & 125 MHz LVTTL SMT oscillator\\
+				\hline        & LVTTL oscillator socket\\
+				\hline		  & 25.175 MHz LVTTL SMT oscillator (video clock)\\
+				\hline		  & 25 MHz Ethernet clock (accessible to FPGA)\\
+				\hline Memory & 128 MB (32M x 32) DDR2 SDRAM\\
+				\hline		  & 16Mx8 parallel / BPI configuration flash\\
+				\hline 		  & 64 Mb SPI configuration / storage flash (with 4 extra SPI selects)\\
+				\hline Interfaces & 10/100/1000 PHY\\
+				\hline			  & JTAG programming/configuration port\\
+				\hline            & RS232 Port\\
+				\hline			  & Low-cost VGA\\
+				\hline			  & 4 SPI select lines\\
+				\hline Buttons and Switches & 8 user LEDs\\
+				\hline  		  & 8-position user DIP switch\\
+				\hline            & 4 user push button switches\\
+				\hline 			  & Reset push button switch\\
+				\hline User I/O and Expansion & Digilent 6-pin header\\
+				\hline			 			  & EXP expansion connector\\
+				\hline 						  & 30-pin GPIO connector: can be used for System ACE™ Compact Flash daughter card (not included)\\
+				\hline Configuration and Debug & JTAG\\
+				\hline                         & System ACE module connector\\   
+				\end{tabular}
+				
+				Las implementaciones MinSoC y ORPSoC proveen soporte nativo para los siguientes perisféricos:
+				\begin{itemize}
+				  \item Ethernet
+				  \item GPIO (Solo ORPSoC)
+				  \item DDR2 SDRAM (128MB) (Solo ORPSoC)
+				  \item SPI
+				  \item UART				
+				\end{itemize}
+				
+				\paragraph{Digilent}
+				
+				 	 
+				\paragraph{Altera}
+				
+				
+ 				\subsubsection{Conclusiones de la elección de la Placa de Desarrollo}
+ 			
+ 			\subsection{Selección de las herramientas de desarrollo} 	 
+ 		
+ 		
+ 			\subsection{Selección del Sistema Operativo}
  			
