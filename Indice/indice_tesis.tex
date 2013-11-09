@@ -113,23 +113,27 @@ El modelo de desarrollo a utilizar es el Modelo en Espiral tipificado por Ian So
 Cada ciclo del espiral se divide en 4 sectores:
  
 \begin {itemize}
-\item Establecimiento de objetivo  Se definen objetivos específicos para dicha fase del proyecto. Se identifican restricciones en el preceso y el producto, y se traza un plan detallado de gestión. Se identifican los riesgos del proyecto. Dependiendo de estos riegos, se planean estrategias alternativas
+\item Establecimiento de objetivo  Se definen objetivos específicos para dicha fase del proyecto. Se identifican restricciones en el proceso y el producto, y se traza un plan detallado de gestión. Se identifican los riesgos del proyecto. Dependiendo de estos riegos, se planean estrategias alternativas
 \item Validación y reducción del riesgo  En cada uno de los riesgos identificados del proyecto, se realiza un análisis minucioso. Se dan acciones para reducir el riesgo.
 \item Desarrollo y validación  Despues de una evaluacion del riesgo, se elige un modelo de desarrollo para el sistema.
 \item Planeción  El proyecto se revisa y se toma una decisión sobre si hay que continuar con otro ciclo de la espiral. Si se opta por continuar, se trazan los planes para la siguente fase del proyecto.
- \end {itemize}
+ \end {itemize}mn
 
 Como característica principal de esta metodología es que posee una consideración explícita del riesgo. Informalmente, el riesgo significa sencillamente que algo puede ir mal. Los riegos originan problemas en el proyecto, como los de confección de agendas y excesos en los costos; por lo tanto, la disminución de riegos es una actividad sumamente importante en la gestión del proyecto.
 Un ciclo en la espiral comienza con la elaboración de objetivos, como el rendimiento y la funcionalidad. Entonces se enumeran formas alternativas de alcanzar estos objetivos y las restricciones impuestas en cada una de ellas. Cada alternativa se evalúa contra cada objetivo y se identifican las fuentes de riegos del proyecto. El siguiente paso es resolver estos riesgos mediante actividades de recopilación de información como la de detallar más el análisis, la construcción de prototipos y la simulación. Una vez que se han evaluado los riesgos se llevará a cabo cierto desarrollo, seguido de una actividad de planificación para la siguiente fase del proceso.
 
 \subsection{\textcolor{orange}{Metodología}}
 
-voy a escribir que usamos un desarrollo experimental y de simulación.
+Considerando que el objetivo planteado es un desarrollo que se realiza por primera vez, se aplicará un desarrollo experimental y de simulación. La falta de documentación al respecto y al ser un desarrollo de vanguardia son factores que acentúan en esta decisión. Sumado a lo anteriormente dicho, en el laboratorio donde se desarrolla este proyecto no existen antecedentes de trabajos similares.
+ 
+Se utilizó como metodología en este desarrollo el modelo de componentes, donde se define estándares para la implementación, documentación y el despliegue de componentes. 
+
 
 %\section{\textcolor{orange}{Perspectiva Historica}}
 %	\subsection{\textcolor{orange}{El Comienzo de los Microprocesadores}}
 %	\subsection{\textcolor{orange}{FPGAs y Microsprocesadores Soft-Core}}
 %	\subsection{\textcolor{orange}{Software OpenSource y Libre}}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%CAPITULO 2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{\textcolor{orange}{FPGA y microprocesadores Soft-Core}}%julius
 	\subsection{\textcolor{orange}{FPGAs}}
@@ -217,6 +221,7 @@ Para el desarrollo de una aplicación reconfigurable existe los micro cores de 3
 %Las ventajas de un verdadero  sobre un soft-core y hard-core,%\ tienen que ver con la apertura del diseño, y la ausencia de restricciones sobre lo que se puede hacer con la obra. Con un diseño de la fuente verdaderamente abierta existe la opción de personalizar la descripción RTL para implementar la optimización o la funcionalidad deseada . Portabilidad y el producto se refiere al final de su vida también no surgir con la descripción RTL del diseño .
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CAPITULO 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{\textcolor{orange}{Benchmark}}
 Este capitulo lo puse para darle una intro a el estudio de los test que voy a poner en el estudio de los micor soft-core

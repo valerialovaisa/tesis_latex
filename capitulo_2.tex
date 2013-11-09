@@ -1,57 +1,13 @@
-\chapter{INTRODUCCIÓN}
 
+\chapter{FPGA y microprocesadores Soft-Core}
+	
 
-\section{Descripción General}
+\section{FPGAs}
+		
+\section{Microprocesadores Soft-Core}
+		\subsection{ IP-Core}
+itro definición y licencias
+		\subsection{Tipos de IP-Core}
+			%\paragraph{\textcolor{orange}{ Tipos de IP-Core}}
+		\subsection{Soft-Core}%%julius
 
-
-
-\section{Objetivos}
-\section{Objetivo General}
-
-Implementar un system on chip OpenSource con un microprocesador embebido Soft-core que soporte un sistema operativo libre , con la finalidad de entregar un sitema integral FPGA-SoC-Sistema Operativo completamente funcional y bajo licencia GPL v2.
-
-\section{Objetivo Especìfico}
-\begin{itemize}
-\item Seleccionar, analizar y determinar un microprocesador Sof-Core.
-\item Establecer un system on chip Open Source donde poder implementar un Soft-Core.
-\item Determinar sistemas operativo con licencia GPL v2 que tengan las prestaciones funcionales adecuadas.
-\end{itemize}
-
-\section{Motivación} 
-
-Existe un grupo de cores Sof-Core de código abierto que no están limitados por la tecnología. Los cores destacados de microprocesadores de 32 bits, son los procesadores SPARC LEON OpenRISC 1200 , y el core de LatticeMico32. Usar cores de  codigo abierto,  va unido a una serie de conceptos como:
- \begin {itemize}
-\item Flexibilidad. Si el codigo fuente está disponible, los desarrolladores pueden modificar el codigo de acuerdo a sus necesidades.Adémas, se produce un flujo constante de ideas que mejora la calidad del codigo.
-\item Fiabilidad y seguridad. Con muchos programadores a la vez escrutando el mismo trabajo, los errores se detectan y corrigen antes, por lo que el producto resultante es mas fiable y eficaz que el comercial.
-\item Rapidez de desarrollo. Las actualizaciones y ajustes se realizan a través de una comunicación constante vía Internet.
-\item Relación con el usuario. El programador se acerca mucho mas a las necesidades reales de su cliente, y puede crear un producto especifíco para él
- \end {itemize}
- 
-Obtener un sitema integral de código abierto en donde hay código HDL, assembler y C. Con la principal ventaja del acceso al código pudiendo personalizarlo como por ejemplo en la descripción RTL del SoC para implementar la optimización o funcionalidad deseada y la ausencia de restricciones sobre lo que se puede hacer sobre el sistema final. Ademas de la portabilidad con la que obtengo la capacidad de migrar de una plataforma a otra. Logrando menor dependencia entre el código fuente y la plataforma objetivo. Pudiendo ser usado sobre una ASICs (Application-specific integrated circuit) o con modificaciones menores en cualquier FPGA (Field Programmable Gate Array) de Xilinx, Altera, Lattice, etc. 
-Estos tres de los más grandes proveedores de FPGA , Xilinx , Altera y Lattice , ofrecen sus propios micro core RISC de 32bits los dos mayores proveedores de dispositivos FPGA , Altera y Xilinx , proporcionan el micro core Nios y Microblaze, respectivamente. Son micro cores  en donde el codigo fuente RTL no se encuera disponible y solo pueden ser implementados en sus respectivas FPGA.
-
-\section{Metodologìa}
-
-
-
-\section{Importancia del Problema}
-
-El softcore OpenRisc  que se encuentra en el SoC OrpSoc y MinSoc se tiene que implementado en una Spartan 3A de Xilinx. Tenemos como fin montar un Linux para validar y verificar el sistema global entregando un sistema funcional bajo licencia libre.
-Actualmente las FPGAs nos birndan la posibilidad de implementar estos proyectos, donde el Hardware y el Software son una misma entidad. Este nuevo enfoque nos permite aprovechar la facilidad de implementar soluciones por Hardware.
-
-\section{Alcance de Estudio}
-\section{Modelo de Desarollo}
-\section{Metodologìa}
-
-
-
- \section{Organización del Proyecto Integrador}
-
- Una vez detalladas  las motivaciones y expuestas las  ventajas que un
- receptor  coherente puede  aportar a  las comunicaciones  ópticas, el
- presente proyecto tiene como  principal objetivo el estudio, diseño y
- la simulación de los  diferentes métodos de recuperación de portadora
- de un receptor digital coherente para lo cual se organiza
- su contenido de la siguiente manera:\\
-
-%%%%% poner en negrita asi \textit{Python} 
