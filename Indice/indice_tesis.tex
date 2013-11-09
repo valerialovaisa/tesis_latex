@@ -82,7 +82,10 @@ Existe un grupo de cores Sof-Core de código abierto que no están limitados por
  
 Obtener un sistema integral de código abierto en donde se tiene código HDL, assembler y C disponible para adaptarse de acuerdo a los requerimientos del proyecto. Ademas de la de la capacidad de migrar de una plataforma a otra. Logrando menor dependencia entre el código fuente y la plataforma objetivo. 
 La portabilidad del codigo abierto nos permite implementarlo sobre una ASICs (Application-specific integrated circuit) o con modificaciones menores en cualquier FPGA (Field Programmable Gate Array) de Xilinx, Altera, Lattice, etc. 
+
 Estos tres de los más grandes proveedores de FPGA , Xilinx , Altera y Lattice , ofrecen sus propios micro core RISC de 32bits los dos mayores proveedores de dispositivos FPGA , Altera y Xilinx , proporcionan el micro core Nios y Microblaze, respectivamente. Son micro cores  en donde el codigo fuente RTL no se encuera disponible y solo pueden ser implementados en sus respectivas FPGA.
+ 
+Una de principales ventajas de usar plataformas con FPGA, es que son flexibles asi que pueden adaptarse a diferentes funciones. Los componentes de hardware ofrecen mucho mayor rendimiento que el software equivalente. Los cuellos de botella de procesamiento del sistema pueden identificarse y sustituirse por hardware, de manera que se evita la costosa optimizan del software.
 
 \subsection{\textcolor{orange}{Importancia del Problema}}
 
@@ -137,11 +140,23 @@ Se utilizó como metodología en este desarrollo el modelo de componentes, donde
 
 \section{\textcolor{orange}{FPGA y microprocesadores Soft-Core}}%julius
 	\subsection{\textcolor{orange}{FPGAs}}
- problema q resuelven.papel dual que cumplen como prototipo y otro como objetivo final de ejecución 
 
-%mati desventajas de FPGA
-%debido a la arquitectura de la fpga, comparada con una sintesis de compuertas para ASIC's en general tienen mas area, menos performance y consumen mas 
-%y el uso de LUTs hace que tengan mas delays
+La fabricación de dispositivos semiconductores es un proceso complicado de plazos largos y costoso. Esto lleva a que los diseños destinados para la  implementacion en chip de silicio tengan poco oportunidad de ser prototipados antes de que comience la producción en grandes volúmenes. Esto supone una gran importancia  en las faces de prueba y verificación de un diseño antes de ser fabricado.
+
+Basándose en la predicción de la ley de Moore donde expresa que aproximadamente cada dos años se duplica el número de transistores en un circuito integrado\cite{Etiqueta01}, Ross Freeman postulo que los transistores serian menos costoso cada año, haciendo asequible la fabricación de chips programables personalizables \cite{Etiqueta03}.
+La compañía Xilinx, ofreció su primer chip en 1984 , que contiene arrays celdas lógicas (LCAs) , programables por el usuario en casi cualquier configuración que quisieran. Estos se conocen como Field Programmable Gate Array (FPGAs) .
+
+Las FPGAs desempeñan un papel dual, uno como objetivo final de ejecución en un diseño y otro papel como prototipo para la implmentacion definitiva de un diseño.
+
+
+
+Diseños implementados en FPGA casi siempre uso el área inferior, el rendimiento y las características de energía en comparación con un IC de aplicación específica ( ASIC ) aplicación. Esto es debido a la naturaleza inherente de las arquitecturas de FPGA 
+
+
+
+
+
+
 
 Entre las alternativas para diseñar e implementar un hardware específico encontramos ASICs (Application-specific integrated circuit), FPGAs (Fieldprogrammable
 gate array), CPLDs (Complex Programmable Logic Device) entre otros.
@@ -194,6 +209,10 @@ Los microprocesadores “softcore"(núcleo software
 
 %\Como FPGAs y CPLDs se han convertido en más barato y más eficiente de la energía estan siendo considerado para su uso en lugar de soluciones ASIC en ciertas aplicaciones Si los criterios tales como el tiempo de comercialización y capacidad de actualización de campo son cruciales , con el máximo rendimiento y utilizar menos energía de lo que , a continuación, una implementación FPGA puede ser adecuado .Para una aplicación adecuada orientación general de medio a bajo volumen y no móvil utilizar (y por lo tanto el área relajado y limitaciones de potencia ) sistemas basados ​​en FPGA procesadores softcore utilizando son de gran utilidad ya que permiten un alto grado de personalización y flexibilidad . Además de los usos estrictamente orientadas al mercado de dichos núcleos , existe uso aficionado y académico importante de tales núcleos en aplicaciones que van desde pequeños ajustes para el diseño de exploración espacial de los nuevos conceptos de procesamiento .
 
+%problema q resuelven.papel dual que cumplen como prototipo y otro como objetivo final de ejecución 
+%mati desventajas de FPGA
+%debido a la arquitectura de la fpga, comparada con una sintesis de compuertas para ASIC's en general tienen mas area, menos performance y consumen mas 
+%y el uso de LUTs hace que tengan mas delays
 		%\subsubsection{\textcolor{orange}{Definición}}
 		\subsubsection{\textcolor{orange}{Topología}}	
 arquitectura de una fpga
