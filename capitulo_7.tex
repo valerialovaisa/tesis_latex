@@ -14,36 +14,56 @@
 	asociados que cumplan con el paradigma del software libre. 
 	
 	\section{Requerimientos del Usuario}
-	Se realizó en este apartado un listado de los requerimientos elecitados que
-	tienen como objetivo comprender el dominio del problema para trabajar en una
-	solición eficiente del problema.
+	Se presenta en este apartado un listado de los requerimientos elecitados que
+	tienen como objetivo comprender el dominio del problema y permiten trabajar en
+	la realización de una solución eficiente.
+	
 		\subsection{En cuanto al Hardware}
-		A continuación se listaron los requerimientos de hardware a utilizar para la
-		implementación del sistema.
-		
-		\begin{tabular}{||c|c|c||}
+		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción & Tipo\\
 		\hline
-		N° Req & Descripción  & Tipo\\
-		\hline
-		1 &  Se debe implementar un Microprocesador Softcore de núcleo simple &
+		RQX-HW 1 &  Se debe implementar un Microprocesador Softcore de núcleo simple &
 		Cantidad y tipo de núcleos. \\
-		2 &  El SoC seleccionado debe poseer la menor cantidad de restricciones
+		\hline
+		RQX-HW 2 &  El SoC seleccionado debe poseer la menor cantidad de restricciones
 		respecto de su implementación en placas de desarrollo de diversos fabricantes.
 		& Portabilidad a nivel Hardware\\
-		3 & La placa de desarrollo elegida debe poseer al menos 32 MB de memoria RAM
-		disponible que permita al ejecución del kernel de linux. & Memoria Disponible
+		\hline
+		RQX-HW 3 & La placa de desarrollo elegida debe poseer al menos 32 MB de
+		memoria RAM disponible que permita al ejecución del kernel de linux. & Memoria Disponible
 		\\
-		
+		\hline
+		RQX-HW 4 & La placa de desarrollo elegida debe poseer al menos 8 MB de
+		memoria flash disponible que permita guardar la configuración de la FPGA y un
+		bootloader & Memoria Disponible\\
 		\hline
 		\end{tabular}
 					
+		\subsection{En cuanto a las Licencias}
+		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
+		\hline
+		RQX-LC 1 &  Todo el hardware implementado debe tener licencia LGPL o GPLv2 
+		en su defecto & Licencias de hardware\\
+		\hline
+		RQX-LC 2 &  Las herramientas de desarrollo utilizadas deben poseer licencias
+		LGPL o GPLv2 en su defecto & Licencias de Software\\
+		\hline
+		RQX-LC 3 & El sistema operativo elegido debe poseer licencia LGPL o GPLv2 &
+		Licencias de Software\\
+		\hline
+		\end{tabular}
+			
+		\subsection{En cuanto a las Herramientas de Desarrollo}
+		
+		\subsection{En cuanto Sistema Operativo} 	 
 	
-			\subsection{En cuanto a las Licencias}
-			\subsection{En cuanto a las Herramientas de Desarrollo}
-			\subsection{En cuanto Sistema Operativo} 	 
-	\section{Estudio de componentes y de la viabilidad para el proyecto}	
+	\section{Estudio de componentes y viabilidad para el proyecto}	
 			\subsection{Objetivo} 	 
-			\subsection{Comparación de los Soft-Core} 
+			\subsection{Comparación de Microprocesadores Soft-Core} 
+	
 	\section{Conclusiones de la elección del micro
 	 	Soft-Core}
  			\subsection{Placas de Desarrollo}
