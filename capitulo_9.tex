@@ -1,38 +1,70 @@
 \chapter{Diseño e Implementación}
 	\section{Introducción}
-	Debido a que se adoptó un modelo de desarrollo en espiral se plantearon una
-	serie de prototipos que incluyen mayor funcionalidad en cada iteración del
-	modelo. Inicialmente se planteó un prototipo de básico para determinar
-	factibilidad de puesta en funcionamiento de un SoC con microprocesador
-	OpenRISC y el desarrollo de aplicaciones que se ejecuten en él.
-	Debido a su funcionalidad reducida y menor consumo de recursos para su
-	síntesiss se seleccionó el proyecto MinSoC para el desarrollo del primer
-	prototipo con el cual se evaluaron las diferentes herramientas
-	necesarias para que el sistema se encuentre funcional.
-	
-%DEBE IR EN CADA PROTOTIPO ----------- PABLO!	
-	\section{Descripción de la Arquitectura}
-
-	 
+	Debido a que se adoptó un modelo de desarrollo en espiral se plantearon una serie de prototipos que incluyen mayor funcionalidad en cada iteración
+	del modelo. Inicialmente se planteó un prototipo de básico para determinar factibilidad de puesta en funcionamiento de un SoC con microprocesador
+	OpenRISC y el desarrollo de aplicaciones que se ejecuten en él. Debido a su funcionalidad reducida y menor consumo de recursos para su
+	síntesis se seleccionó el proyecto MinSoC para el desarrollo del primer prototipo con el cual se evaluaron y documentaron las capacidades del mismo
+	permitiendo valorar este proyecto para aplicaciones donde no se requieren grandes 
+		 
 	\section{Criterio para la realización de testing}
 	\section{Entorno de ejecución}
 		\section{Entorno de ejecución Standalone}
 		\section{Entorno de ejecución linux}
 	
-	\section{PROTOTIPO UNO: Implementación del SoC MinSoc en FPGA}
+	\section{PROTOTIPO UNO: Implementación del SoC MinSoC en FPGA}
 		\section{Introducción}
+		En este primer prototipo se implementó el proyecto MinSoC en la placa de desarrollo S3ADSP1800A con el fin de verificar el funcionamiento
+		del procesador y sus periféricos. Para lograr este objetivo se requiere de la instalación y puesta en funcionamiento de las herramientas
+		de síntensis, place \& route(PAR) y programación de la FPGA Spartan 3A. 
+		
 		\section{Requerimientos del prototipo}
+		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
+		\hline 
+		RQX-PA 1 & El prototipo debe implementar un SoC MinSoC en la placa desarrollo S3ADSP1800A\\ 
+		\hline 
+		RQX-PA 2 & El prototipo debe garantizar el correcto funcionamiento de todos los periféricos conectados al SoC mediante el bus Wishbone\\ 
+		\hline 
+		RQX-PA 3 & El prototipo debe interactuar correctamente con las interfaces hardware de la placa de desarrollo S3ADSP1800A\\ 
+		\hline
+		RQX-PA 4 & El prototipo debe se capaz de ejecutar programas con capacidad de depuración generados mediante compilación
+		cruzada en una arquitectura x86 y/o x86\_64 para arquitectura la OpenRISC\\
+		\hline
+		RQX-PA 5 & Se debe lograr depurar paso a paso y mediante break points las aplicaciones desarrolladas\\
+		\hline
+		RQX-PA 6 & El prototipo debe ser evaluado mediante el benchmark CoreMark para el posterior análisis de las capacidades del SoC\\
+		\hline		
+		\end{tabular}
+		
+		\section{Descripción de la Arquitectura}
+		
+			
 		\section{Implementación}
+		
+		\section{Diseño de aplicaciones de prueba}
+		
 		\section{Diagrama de Secuencia}
+		
 		\section{Testing}
+		
 		\section{Conclusión}
-	\section{PROTOTIPO DOS: Implementación del SoC OrpSoc en FPGA}
+		Se pudo implementar con éxito el prototipo número uno cuyos resultados muestran que es de vital importancia 
+			
+	\section{PROTOTIPO DOS: Implementación del SoC ORPSoc en FPGA}
 		\section{Introducción}
+		Para el prototipo dos se planteó la implementación de un SoC ORPSoC 
+		
 		\section{Requerimientos del prototipo}
+
 		\section{Implementación}
+
 		\section{Diagrama de Secuencia}
+
 		\section{Testing}
+
 		\section{Conclusión}
+
 	\section{PROTOTIPO TRES: Implementación del SoC OrpSoc en FPGA con Sistema Operativo eCos}
 		\section{Introducción}
 		\section{Requerimientos del prototipo}
