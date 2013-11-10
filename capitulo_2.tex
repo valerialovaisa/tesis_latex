@@ -23,23 +23,111 @@ Los componentes de una \textit{FPGA} se pueden dividir en cinco grupos:
 \item  Bloques de entrada y salida.
 \item  Bloques multiplicadores
 \item  Bloques Manejadores de Clock Digitales.
-
  \end {itemize}
-
-
 
 \begin{figure}[h!]
  \begin{center}
-  \includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/fpga1a}
-  \caption{Etapas del modelo de desarrollo en espiral}
+   \includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/fpga1a}
+  \caption{Componentes de una FPGA}
   \label{fig:esquema}
  \end{center}
 \end{figure}
 
-\section{Microprocesadores Soft-Core}
-		\subsection{ IP-Core}
-itro definición y licencias
-		\subsection{Tipos de IP-Core}
-			%\paragraph{\textcolor{orange}{ Tipos de IP-Core}}
-		\subsection{Soft-Core}%%julius
+		\subsubsection{Bloques Lógicos Configurables y Lookup Tables}
 
+Todas las\textit{FPGAs} se basan en arrays de pequeños elementos de lógica digital. Los problemas de lógica digital se descomponen en circuitos lógicos que puedan ser mapeados a uno o más de estas “celdas lógicas” a través de un proceso llamado \textit{“technology mapping"}.
+
+Cada bloque de logica configurable varia de acuerdo a su fabricante, en el caso de Xilinx tienen el nombre\textit{Logic cell} (LC) contiene una 4 input LUT, un multiplexor y un registro. Se puede configurar la polaridad del clock, el clock enable y la señal de reset.
+
+
+\begin{figure}[h!]
+ \begin{center}
+ \includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/celda}
+  \caption{Componentes de una FPGA}
+  \label{fig:esquema}
+ \end{center}
+\end{figure}
+
+También se encuentran las \textit{Lookup Tables}, que son elementos lógicos que están compuestos de al menos un registro programable (flip\-flop) y alguna lógica de entrada, que usualmente está implementada como una lookup table de n entradas, donde n es 5 o menos. Estas LUTs son capaces de implementar cualquier función combinacional de sus entradas.
+
+	\subsubsection{Bloques de Entrada y Salida de propósito general}
+
+Las \textit{FPGAs} poseen pines TTL, CMOS, PCI, LVDS y muchos otros que les permiten hacer de interface y convertir muchas tecnologías diferentes. Las \textit{FPGAs} tienen bloques de I/O dedicados para clocks y resets globales.  
+
+También incluyen PLL y esquemas para el manejo de clocks permitiendo múltiples dominios del mismo.Las \textit{FPGAs} actuales tienen impedancias de I/O configurables,  permiten el uso de resistencias internas terminales cuyos valores pueden ser configurados por el usuario.
+
+\subsubsection{Multiplicadores}
+
+Algunas funciones como los multiplicadores son muy lentos si se implementan mediante la conexión de un gran numero de bloques lógicos. Por eso muchas \textit{FPGAs} incorporan bloques \textit{multiplicadores} hardware. Estos bloques se encuentran muy cerca de los bloques de RAM embebidos. 
+
+\begin{figure}[h!]
+ \begin{center}
+ \includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/multram}
+  \caption{Multiplicadores}
+  \label{fig:esquema}
+ \end{center}
+\end{figure}
+
+\subsubsection{Manejadores de Clock Digitales}
+
+El \textit{clock manager} se usa para generar un número determinado de “daughter clocks". Es utilizado para remover el \textit{jitter}, como \textit{sintetizador de frecuencia} donde a partir de una frecuencia de referencia permite obtener un conjunto discreto de frecuencias, tratando de mantener en todos los casos las características de estabilidad de la frecuencia de referencia \cite{Etiqueta03}, también\textit{Phase shifting} algunos diseños requieren clocks que estén corridos en fase unos con respecto a otros.
+
+\begin{figure}[h!]
+ \begin{center}
+ \includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/dougther}
+  \caption{Clock Manager}
+  \label{fig:esquema}
+ \end{center}
+\end{figure}
+
+Se tiene  una estructura \textit{clock tree} por la que se distribuye la señal de clock principal que es ramificada para que alcance a todos los flip-flops. Esta estructura es así para asegurarse que todos los flip-flop estén lo mas cerca posible del clock y evitar el problema del \textit{skew}.
+
+EL \textit{clock tree} es implementado usando canales separados de los de propósito general para interconectar los bloques.
+
+\begin{figure}[h!]
+ \begin{center}
+ \includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/clocktree}
+  \caption{Clock Tree}
+  \label{fig:esquema}
+ \end{center}
+\end{figure}
+
+
+\section{Microprocesadores Soft-Core}
+
+EL avance en la en la tecnología de fabricación de VLSI (Very Large Scale Integratio) a medida que se agregaron más y más transistores,y en consecuencia más y más funciones fueron integradas en un mismo chip, por lo tanto también las capacidades en FPGAs. Grandes diseños de sistemas digitales que fueron sólo para ser implementado como ASICs, luego tuvieron la opción de ser ejecutados en FPGA.
+
+El microprocesador, ya sea como un componente discreto o  como parte de otra lógica en el mismo chip, es una candidato  para ser  implementado en FPGA. Esto introdujo un mayor potencial para la exploración del espacio de diseño haciendo que la logica de computo especifica sea implemetada junto con un microprocesador estándar %\cita{estiqueta20}
+		
+		\subsection{ IP-Core}
+
+El diseños de circuitos digitales se dividen normalmente en bloques funcionales, que se refiere como módulos, o \textit{cores}. Un \textit{core} estara formado por sub-bloques que ayudan a poner en práctica su funcionalidad. Los \textit{cores} pueden variar en tamaño hasta el tamaño total de un microprocesador. Un \textit{core} puede ocupar una FPGA entera al ser implementado, mientras que sólo se crea una instancia entre otros en una FPGA más grande o en un ASIC. Los \textit{núcleos} se describen generalmente utilizando un lenguaje de descripción de hardware (HDL) en un nivel de abstracción conocida como registro nivel de transferencia (RTL).
+
+El proceso de tomar la descripción RTL de un diseño y convertirlo en un lista de primitivas o puertas lógicas y las conexiones entre ellos, dejando luego que la  implementación se realice en una tecnología de destino, se conoce como\textit{síntesis}. Analogamente a la compilación de software - que se tiene un programa en un lenguaje de alto nivel, como C, y  es convertido a codigo maquina. 
+
+El resultado de la síntesis, conocida como una \textit{netlist}, está en un nivel de abstracción denominado nivel de la puerta.En pocas palabras, es esta lista de conexiones que se utiliza para su posterior procesamiento en una configuración para FPGA o en un diseño para ASIC.
+
+Los cores pueden ser diseñados por una persona o entidad, los desarrolladores de \textit{cores} y licenciatarios varían en tamaño desde particulares a empresas de miles de millones de dólares. El producto, en este caso se conoce como un \textit{IP core  Intellectual Property Core} el diseño es la propiedad intelectual de los desarrolladores de terceros y la derecho a usarla recibe la licencia del cliente. La \textit{Intellectual Property IP} varia  de  acuerdo a las licencia.
+
+		\subsection{Tipos de IP-Cores}
+
+\textit{IP} puede ser en una variedad de formas de acuerdo a la licencia. Las categorías con las que se clasifican los IP-Cores son:Hard-Cores, Firmes-core y soft-Cores.
+		
+			\subsubsection{Soft-Core}
+
+Son los más flexibles y se presentan para \textit{IP} en forma netlist (lista de compuertas e interconexiones) o en forma de sintetizable RTL, lo que los hace tecnológicamente independientes.Los \textit{cores} sintetizable se entregan en un lenguaje de descripción de hardware como Verilog o VHDL. 
+ Óptimos para diferentes aplicaciones, a costas de menor predictibilidad en la implementación y suelen tener un mayor costo y menor desempeño de procesamiento.
+
+		\subsubsection{Firm-Core}
+
+Los cores firmes están optimizados para ser implementados en una FPGA, arquitectura o dispositivo en particular. Esta optimización puede ser realizada por el fabricante o por un tercero. Utilizar este tipo de IP-Cores requiere disponer de cierto nivel de conocimiento de la arquitectura, ya que es posible rutear señales físicas y especificar la colocación de los elementos de diseño. Un ejemplo de cores firmes es el procesador MicroBlaze de Xilinx.\cite{Etiqueta04}
+
+		\subsubsection{Hard-Core}
+
+Están optimizados para una tecnología específica y no pueden ser modificados por el diseñador que los utiliza. Son manifestaciones físicas del diseño del core ya que tienen un layout predefinido incluido en la arquitectura. Son los mejores para aplicaciones plug\&play. Si bien son poco flexibles, portables y configurables, son muy predictibles (el timing es fijo) y fiables una vez implementados.
+Si se trata de una forma menos abstraído forma , tal como un formato de un mensaje - diseño listo lista de conexiones o para la fabricación, que se conoce como
+IP núcleo duro. \cite{Etiqueta04}
+
+		\subsection{Tipos de IP-Cores}
+
+		

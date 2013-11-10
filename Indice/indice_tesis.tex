@@ -146,82 +146,78 @@ La fabricación de dispositivos semiconductores es un proceso complicado de plaz
 Basándose en la predicción de la ley de Moore donde expresa que aproximadamente cada dos años se duplica el número de transistores en un circuito integrado\cite{Etiqueta01}, Ross Freeman postulo que los transistores serian menos costoso cada año, haciendo asequible la fabricación de chips programables personalizables \cite{Etiqueta03}.
 La compañía Xilinx, ofreció su primer chip en 1984 , que contiene arrays celdas lógicas (LCAs) , programables por el usuario en casi cualquier configuración que quisieran. Estos se conocen como Field Programmable Gate Array (FPGAs) .
 
-Las FPGAs desempeñan un papel dual, uno como objetivo final de ejecución en un diseño y otro papel como prototipo para la implmentacion definitiva de un diseño.
+Las FPGAs desempeñan un papel dual, uno como objetivo final de ejecución en un diseño y otro papel como prototipo para la implmentacion definitiva de un diseño. Su capacidad de reconfigurar el diseño parcial o totalmente para su actualización o corrección de errores tiene un costo relativamente bajo a diferencia del prototipado sobre ASICs.
+Actualmente las FPGA cuentan con una gran cantidad de recursos disponibles (Compuertas lógicas , Bloques de RAM) para implementar diseños digitales complejos.
 
+Una desventaja de las FPGA  es debido a la naturaleza inherente de las arquitecturas de FPGA, los diseños implementados en FPGA comparados con una ASICs en general tienen mas area, menos porformance y consumen mas energía.
 
+		\subsubsection{\textcolor{orange}{Arquitectura}}	
 
-Diseños implementados en FPGA casi siempre uso el área inferior, el rendimiento y las características de energía en comparación con un IC de aplicación específica ( ASIC ) aplicación. Esto es debido a la naturaleza inherente de las arquitecturas de FPGA 
+Los componentes de una \textit{FPGA} se pueden dividir en cinco grupos:
 
+\begin {itemize}
+\item  Bloques lógicos configurables y \textit{Lookup Tables}.
+\item  Bloques de entrada y salida.
+\item  Bloques multiplicadores
+\item  Bloques Manejadores de Clock Digitales.
+ \end {itemize}
 
+\begin{figure}[h!]
+ \begin{center}
+ % \includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/fpga1a.gif}
+  \caption{Componentes de una FPGA}
+  \label{fig:esquema}
+ \end{center}
+\end{figure}
 
-
-
-
-
-Entre las alternativas para diseñar e implementar un hardware específico encontramos ASICs (Application-specific integrated circuit), FPGAs (Fieldprogrammable
-gate array), CPLDs (Complex Programmable Logic Device) entre otros.
-El uso de ASICs posibilita desarrollos con producción a gran escala a bajo costo y es de masiva utilización en este tipo de aplicaciones. Los CPLD y las FPGA son circuitos de de alta densidad programables por el usuario en un tiempo reducido y sin la necesidad de verificación de sus componentes, tarea ya realizada por el fabricante al tratarse de un
-producto estándar. El procesamiento digital de señales , prototipado de ASICs , tratamiento de imágenes , reconocimiento de voz , glue logic son algunas de las aplicaciones
-de este tipo de dispositivos. Existen diferentes formas de llevar adelante el diseño e implementación de un sistema digital para FPGA, entre ellas tenemos la realización de un
-diseño esquemático , herramientas específicas (provistas por el fabricante) y la utilización de un lenguaje de descripción de hardware HDL (Hardware description language) entre los que se encuentran lenguajes como Verilog y VHDL, ambos de gran aceptación en los ambientes industrial y académico. Estos lenguajes proporcionan gran versatilidad para
-el desarrollo de hardware, permitiendo especificar, diseñar, simular y verificar sistemas digitales complejos, mediante el apoyo de un universo de herramientas EDA (Electronic
-Design Automation).
-
-Actualmente las FPGA cuentan con una gran cantidad de recursos disponibles (Compuertas
-lógicas , Bloques de RAM) para implementar diseños digitales complejos. Las
-FPGA pueden ser usadas para implementar cualquier función lógica que un ASIC pueda
-realizar. Una de las grandes ventajas del uso de FPGA en la etapa de prototipado
-es su capacidad de reconfigurar el diseño parcial o totalmente para su actualización o
-corrección de errores con un costo relativamente bajo a diferencia del prototipado sobre
-ASICs. Durante la etapa de producción los ASIC resultan de muy bajo costo respecto de
-la producción de FPGA y esto se traduce en una gran ventaja para desarrollos que deben
-ser producidos a gran escala.
-Las arquitecturas reconfigurables combinan parte de la flexibilidad del software con la
-gran performace del hardware utilizando chips reconfigurables como FPGAs. Una opción
-de gran potencialidad son las arquitecturas reconfigurables run-time o dinámicas que se
-sostienen en DRL (Dynamically reconfigurable logic ). Un ejemplo de esto es la familia
-Virtex de Xilinx, que es parcialmente reconfigurable en tiempo de ejecución, este método
-se conoce como run-time. Claramente este tipo de dispositivos puede ser usado como arquitecturas
-destino de codiseños hardware/software (HW/SW) que proveen la flexibilidad
-de los procesadores software y la eficiencia y rendimiento de los coprocesadores hardware.
-El desarrollo de aplicaciones de software se ve limitado a los recursos disponibles en los
-microprocesadores comerciales. El software necesita del soporte de un procesador para su
-ejecución, así la elección de este elemento conlleva algunas dependencias respecto de las
-herramientas a utilizar , algunas de estas son : compiladores , ensambladores , depuradores
-y herramientas de simulación. Con ellas se logra trasladar el software a un entorno de
-ejecución adecuado dentro del procesador y depurarlo . El lenguaje de programación
-elegido debe permitir trabajar con el nivel de abstracción necesario para simplificar la
-tarea de desarrollo de software. El lenguaje C es uno de los más utilizados para desarrollar
-aplicaciones que requieran ,por ejemplo , de compilación cruzada (Cross-compilling) y se
-complementa con las herramientas libres de compilación y depuración como son GCC y
-GDB.
-Los nuevos proyectos a veces requieren nuevas características de los cores existentes.
-El proveedor del núcleo puede hacer estas modificaciones (solución comercial) con un incremento
-sustancial del coste del núcleo. Otra posibilidad (Solución Ad-hoc) es el uso de
-cores de código abierto con el fin de crear un núcleo de desarrollo adaptable. El enfoque de
-código abierto tiene varias ventajas: el núcleo posee un costo muy bajo e inclusive cero, los
-usuarios puede tener acceso al código fuente y hay un grupo de desarrolladores que proporcionan
-conocimientos para mantener y mejorar el núcleo. Sin embargo, también puede
-tener varias desventajas como la inestabilidad (el grupo de cambio o de desarrollo desaparece),
-desarrollo incompleto, deficiente , documentación pobre y una mala metodología de
-verificación.
-Los microprocesadores “softcore"(núcleo software
-
-%\Como FPGAs y CPLDs se han convertido en más barato y más eficiente de la energía estan siendo considerado para su uso en lugar de soluciones ASIC en ciertas aplicaciones Si los criterios tales como el tiempo de comercialización y capacidad de actualización de campo son cruciales , con el máximo rendimiento y utilizar menos energía de lo que , a continuación, una implementación FPGA puede ser adecuado .Para una aplicación adecuada orientación general de medio a bajo volumen y no móvil utilizar (y por lo tanto el área relajado y limitaciones de potencia ) sistemas basados ​​en FPGA procesadores softcore utilizando son de gran utilidad ya que permiten un alto grado de personalización y flexibilidad . Además de los usos estrictamente orientadas al mercado de dichos núcleos , existe uso aficionado y académico importante de tales núcleos en aplicaciones que van desde pequeños ajustes para el diseño de exploración espacial de los nuevos conceptos de procesamiento .
-
-%problema q resuelven.papel dual que cumplen como prototipo y otro como objetivo final de ejecución 
-%mati desventajas de FPGA
-%debido a la arquitectura de la fpga, comparada con una sintesis de compuertas para ASIC's en general tienen mas area, menos performance y consumen mas 
-%y el uso de LUTs hace que tengan mas delays
-		%\subsubsection{\textcolor{orange}{Definición}}
-		\subsubsection{\textcolor{orange}{Topología}}	
-arquitectura de una fpga
 		\subsubsection{\textcolor{orange}{Bloques Lógicos Configurables y Lookup Tables}}
-		\subsubsection{\textcolor{orange}{Bloques de Entrada y Salida}}
+Todas las \textit{FPGA} se basan en arrays de pequeños elementos de lógica digital. Los problemas de lógica digital se descomponen en circuitos lógicos que puedan ser mapeados a uno o más de estas “celdas lógicas” a través de un proceso llamado “technology mapping".
+
+Cada bloque de logica configurable varia de acuerdo a su fabricante, en el caso de Xilinx tienen el nombre Logic cell (LC) contiene una 4 input LUT, un multiplexor y un registro. Se puede configurar la polaridad del clock, el clock enable y la señal de reset.
+
+
+\begin{figure}[h!]
+ \begin{center}
+ %\includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/celda}
+  \caption{Componentes de una FPGA}
+  \label{fig:esquema}
+ \end{center}
+\end{figure}
+
+También se encuentran las Lookup Tables, que son elementos lógicos que están compuestos de al menos un registro programable (flip\-flop) y alguna lógica de entrada, que usualmente está implementada como una lookup table de n entradas, donde n es 5 o menos. Estas LUTs son capaces de implementar cualquier función combinacional de sus entradas.
+
+		\subsubsection{\textcolor{orange}{Bloques de Entrada y Salida de propósito general }}
+
+Las FPGAs poseen pines TTL, CMOS, PCI, LVDS y muchos otros que les permiten hacer de interface y convertir muchas tecnologías diferentes. Las FPGAs tienen bloques de I/O dedicados para clocks y resets globales. También incluyen PLL y esquemas para el manejo de clocks permitiendo múltiples dominios del mismo.
+
+Las FPGAs actuales tienen impedancias de I/O configurables,  permiten el uso de resistencias internas terminales cuyos valores pueden ser configurados por el usuario. 
+
+
 		\subsubsection{\textcolor{orange}{Bloques de Memoria}}
-	\subsection{\textcolor{orange}{Microprocesadores Soft-Core }}
-		\subsubsection{\textcolor{orange}{ IP-Core}}
-itro definición y licencias
+
+Las FPGAs actuales incorporan memorias on-chip, tales como las SRAM. Estas memorias pueden ser accedidas en forma jerárquica, desde la memoria local de cada celda a la memoria global de los bloques compartidos de memoria. Si bien esto no hace a la esencia de la FPGA, todas hoy en día poseen estos bloques para dar solución al impacto que conlleva utilizar una memoria externa al chip, mayormente soluciona los problemas de latencia.
+
+		\subsubsection{\textcolor{orange}{Multiplicadores}}
+Algunas funciones como los multiplicadores son muy lentos si se implementan mediante la conexión de un gran numero de bloques lógicos. Por eso muchas FPGAs incorporan bloques multiplicadores hardware. Estos bloques se encuentran muy cerca de los bloques de RAM embebidos. 
+\subsubsection{\textcolor{orange}{Manejadores de Clock Digitales}}
+ Se llama clock tree porque la señal de clock principal es ramificada para que alcance a todos los flip-flops.Esta estructura es así para asegurarse que todos los flip flop estén lo mas cerca posible del clock y evitar el problema del skew.El clock tree es implementado usando canales separados de los de propósito general para interconectar los bloques.
+
+		\subsection{\textcolor{orange}{Microprocesadores Soft-Core }}
+
+El avance en la en la tecnología de fabricación de VLSI (Very Large Scale Integratio) a medida que se agregaron más y más transistores,y en consecuencia más y más funciones fueron integradas en un mismo chip, por lo tanto también las capacidades en FPGAs. Grandes diseños de sistemas digitales que fueron sólo para ser implementado como ASICs, luego tuvieron la opción de ser ejecutados en FPGA.
+
+El microprocesador, ya sea como un componente discreto o  como parte de otra lógica en el mismo chip, es una candidato  para ser  implementado en FPGA. Esto introdujo un mayor potencial para la exploración del espacio de diseño haciendo que la logica de computo especifica sea implemetada junto con un microprocesador estándar %\cita{estiqueta20}
+		
+	\subsubsection{\textcolor{orange}{ IP-Core}}
+
+El diseños de circuitos digitales se dividen normalmente en bloques funcionales, que se refiere como módulos, o \textit{cores}. Un \textit{core} estara formado por sub-bloques que ayudan a poner en práctica su funcionalidad. Los \textit{cores} pueden variar en tamaño hasta el tamaño total de un microprocesador. Un \textit{core} puede ocupar una FPGA entera al ser implementado, mientras que sólo se crea una instancia entre otros en una FPGA más grande o en un ASIC. Los \textit{núcleos} se describen generalmente utilizando un lenguaje de descripción de hardware (HDL) en un nivel de abstracción conocida como registro nivel de transferencia (RTL).
+
+El proceso de tomar la descripción RTL de un diseño y convertirlo en un lista de primitivas o puertas lógicas y las conexiones entre ellos, dejando luego que la  implementación se realice en una tecnología de destino, se conoce como\textit{síntesis}. Analogamente a la compilación de software - que se tiene un programa en un lenguaje de alto nivel, como C, y  es convertido a codigo maquina. 
+
+El resultado de la síntesis, conocida como una \textit{netlist}, está en un nivel de abstracción denominado nivel de la puerta.En pocas palabras, es esta lista de conexiones que se utiliza para su posterior procesamiento en una configuración para FPGA o en un diseño para ASIC.
+
+Los cores pueden ser diseñados por una persona o entidad, los desarrolladores de \textit{cores} y licenciatarios varían en tamaño desde particulares a empresas de miles de millones de dólares. El producto, en este caso se conoce como un \textit{IP core  Intellectual Property Core} el diseño es la propiedad intelectual de los desarrolladores de terceros y la derecho a usarla recibe la licencia del cliente. La \textit{Intellectual Property IP} varia  de  acuerdo a las licencia.
+
 			\paragraph{\textcolor{orange}{ Tipos de IP-Core}}
 hard soft y intermedios
 %El producto , en este caso se conoce como un núcleo IP (propiedad intelectual a menudocore) en el sentido de que el diseño es la propiedad intelectual de los desarrolladores de terceros y le da derecho a usarlo  recibe la licencia del cliente. Se utilizan los términos IP y el núcleo indistintamente y en combinación para significar la misma cosa .IP puede ser en una variedad de formas cuando licencia . Cuando está en la forma de sintetizable RTL entonces el IP se conoce como un núcleo blando . Si se trata de una forma menos abstraído forma , tal como un formato de un mensaje - diseño listo lista de conexiones o para la fabricación, que se conoce como IP núcleo duro .
