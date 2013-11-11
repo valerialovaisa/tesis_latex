@@ -18,7 +18,7 @@
 	de uso cotidiano de los usuarios. Mientras los benchmarks de aplicaciones generalmente proporcionan una mejor medición de la performace del sistema
 	respecto de aplicaciones cotidianas, los benchmarks sintéticos son más efectivos para probar compenentes individuales como discos rígidos o
 	dispositivos de red.
-
+	
 	Los benchmarks tienen gran importancia en el diseño de CPUs, proveyendo a los diseñadores la habilidad de medir y realizar compartivas duranta las
 	decisiones respecto a la microarquitectura. Hasta el año 2000 utilizaban el benchmark de Standard Performance Evaluation Corporation (SPEC) aunque
 	las versiones SPEC para sistemas operativos Unix eran aún de gran tamaño y difíciles de usar sin modificar.
@@ -31,7 +31,7 @@
 	de los compiladores en lo relativo a la performace. Actualmente, los benchmarks son utilizados por los desarrolladores de compiladores para
 	incrementar no solo sus indicadores de benchmark sino también su performance en aplicaciones reales. Las CPUs que poseen mas unidades de ejecución
 	usualmente completan tareas reales y de benchmark en menos tiempo que los supuestos más rápidos, procesadores de mayores frecuencias de clock.
-	
+
 	\section{Tipos de Benchmarks}
 	Como se ha mencionado en el apartado anterior existen diferentes tipo de benchmarks que permiten obtener un valor cuantitativo de la performace de un
 	componente en diferentes circunstancias de ejecución.
@@ -41,7 +41,7 @@
 		\rowcolor[gray]{0.8} Tipo & Descripción & Ejemplo \\
 		\hline
 		De programas reales  &  Diseñados para evaluar el rendimiento de el procesador en aplicaciones de uso cotidiano: procesadores de texto
-		como \LaTeX, software de diseño asistido por computadora (CAD) y aplicaciones generales de usuario \& SPECint y SPECfp\\
+		como \LaTeX, software de diseño asistido por computadora (CAD) y aplicaciones generales de usuario & SPECint y SPECfp\\
 		\hline
 		Microbenchmark  &  Diseñados para medir la performance de una pequeña y específica porción de código \\
 		\hline
@@ -51,43 +51,62 @@
 		Benchmark de componentes & Programas diseñados para medir la performance de componentes básicos. Detectan automáticamente parametros de hardware
 		como el numero de registros, tamaño de cache, latencia de memoria,etc. &  SPEC CPU2006\\
 		\hline
-		Benchmarks Sintéticos  &  Diseñados para medir la performance de una pequeña y específica porción de código &  \\
+		Benchmarks Sintéticos  &  Diseñados para medir la performance de una pequeña y específica porción de código & Whetstone y Dhrystone\\
 		\hline
-		
+		Benchmarks I/O  &  Utilizados para medir la performace de los dispositivos de entrada y salida & \\
+		\hline
+		Benchmark de Base de Datos  & Pretenden medir el throughtput y los tiempos de respuesta de los sistemas de gestión de base de datos & Transaction
+		Processing Performance Council (TPC)\\
+		\hline
+		Benchmarks Paralelos  &  Diseñados para ser utilizados en procesadores multicore o sistemas distribuidos & NAS Parallel Benchmarks (NPB)\\
+		\hline
 		\end{tabular}
 	
-	Synthetic Benchmark
-		Procedure for programming synthetic benchmark:
-			take statistics of all types of operations from many application programs
-			get proportion of each operation
-			write program based on the proportion above
-	
-		Types of Synthetic Benchmark are:
-			Whetstone
-			Dhrystone
-		These were the first general purpose industry standard computer benchmarks. They do not necessarily obtain high scores on modern pipelinedcomputers.
-	I/O benchmarks
-	
-	Database benchmarks: to measure the throughput and response times of database management systems (DBMS')
-	Parallel benchmarks: used on machines with multiple cores, processors or systems consisting of multiple machines
-	
 	\section{Benchmarking de Sistemas Embebidos}
-	The Embedded Microprocessor Benchmark Consortium (EEMBC) develops benchmark software to help system designers select the optimal processors, and
-	benchmark tools to help consumers and IT professionals select the appropriate smart phones/tablets and networking firewall appliances. EEMBC
-	organizes its benchmark suites targeting Automotive, Digital Media, Java, Multicore Processors, Networking, Office Automation, Signal Processing,
-	Smartphones/Tablets and Browsers.
  	
-	\section{CPU core benchmarking}
- 	A pesar de que no se corresponde con la forma en que utilizaría un procesador en una aplicación real , a veces es importante aislar el núcleo de la
- 	CPU de los otros elementos del procesador y centrarse en un elemento clave. Por ejemplo , es posible que desee tener la capacidad de hacer caso
- 	omiso de la memoria y los efectos de E / S y se centran principalmente en la operación de el pipeline. Este es el dominio de CoreMark . CoreMark es
- 	capaz de probar la estructura de pipeline básica de un procesador , así como la capacidad de prueba de lectura / escritura de operaciones básicas ,
- 	operaciones de enteros y operaciones de control
+	Surge entonces la necesidad de un Benchmark que permita verificar las prestaciones de Sistemas Embebidos y que proporcione datos estadísticos
+	comparables acerca de otros Sistemas Embebidos. El Embedded Microprocessor Benchmark Consortium (EEMBC) desarrolló una serie de aplicaciones
+	benchmark que facilitan a los diseñadores de sistemas la selección de los procesadores óptimos para sus desarrollos. EEMBC organiza su conjunto de
+	benchmarks apuntando a diferentes ramas de aplicación tales como Automotriz, Sistemas Digitales, Java, Procesadores Multicore, Redes, Procesamiento
+	de señales, Smartphones/tablets y Browsers.
+	
+	A pesar de que no se corresponde con la forma en que se utilizaría un procesador ejecutando una aplicación real, a veces es importante aislar el
+ 	núcleo de la CPU de los otros elementos del procesador y centrarse en este elemento clave. Es posible, por ejemplo,  que desee tener la capacidad de
+ 	hacer caso omiso de la memoria y los efectos de E/S con el fin de focalizar el análisis principalmente en la operación de un pipeline. 
 
-	\section{CoreMark}
+	\section{CoreMark}	
+	CoreMark es un Benchmark que pretende medir la performance de las CPU utilizadas en Sistemas Embebidos. Fue desarrollado en 2009 por Shay Gal-On en
+	el EEMBC y se ha convertido un estándar de facto de la industria llegando a reemplazar al antiguo benchmark Dhrystone. CoreMark esta desarrollado en
+	C y contiene implementaciones de los siguientes algoritmos:
+	
+	\begin{itemize}
+	\item Procesamiento de listas (Find and sort)
+	\item Manipulación de matrices (Operaciones comunes de matrices)
+	\item Máquina de estados 
+	\item Códigos de redundancia cíclica (CRC)  
+	\end{itemize}	 
+	
+	Las actuales plataformas con procesadores embebidos no solo están compuestas por un CPU y un subsistema de memoria. De hecho, los SoC pueden estar
+	compuestos por más de un núcleo de CPU, aceleradores de hardware, periféricos complejos y grandes cantidades de memoria. CoreMark es el punto de
+	partida para la evaluación de éstos dispositivos complejo. El benchmark es capaz de probar la estructura de pipeline básica de un procesador, así
+	como la capacidad de prueba de lectura/escritura de operaciones básicas, operaciones de enteros y operaciones de control. Respecto de los periféricos
+	y mecanismos de interrupción el EEMBC desarrolla una colección de tests basados en escenarios y conducidos por hardware que evalúan dichos
+	periféricos y la capacidad del CPU de prestar servicio a los mismos y a otras interrupciones a nivel sistema.
+	
+	Los resultados del Benchmark pueden ser encontrados en la página principal del proyecto y se presentan en el siguiente formato:
+	
+	CoreMark 1.0 : N / C [/ P] [/ M]
+	
+	Donde:
+	\begin{itemize}
+	\item N: Numero de iteraciones por segundo 
+	\item C: Versión del compilador y flags
+	\item P: Parámetros específicos de memoria y datos
+	\item M: Tipo de ejecución de algoritmo paralelo y el numero de contextos.
+	\end{itemize}	 
+	
+	Por ejemplo: CoreMark 1.0 : 128 / GCC 4.1.2 -O2 -fprofile-use / Heap in TCRAM / FORK:2
+	
+ 	
 
-	CoreMark es un punto de referencia que tiene como objetivo medir el rendimiento de las unidades centrales de procesamiento ( CPU) utilizados en
-	sistemas embebidos. Fue desarrollado en 2009 por Shay Gal -On en EEMBC y está destinado a convertirse en un estándar de la industria , en sustitución
-	de la referencia Dhrystone anticuada . El código está escrito en código C y contiene las implementaciones de los algoritmos siguientes :
-	procesamiento de lista ( encontrar y ordenar ) , Matrix (matemáticas) manipulación ( operaciones con matrices comunes ) , máquina de estados (
-	determinar si un flujo de entrada contiene números válidos ) y CRC
+
