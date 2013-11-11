@@ -1,5 +1,5 @@
 
-\chapter{FPGA y microprocesadores Soft-Core}
+\chapter{FPGA, microprocesadores Soft-Core y System on Chip}
 	
 
 \section{FPGAs}
@@ -95,11 +95,13 @@ EL \textit{clock tree} es implementado usando canales separados de los de propó
 
 \section{Microprocesadores Soft-Core}
 
+ \subsection{Introducción}
+
 EL avance en la en la tecnología de fabricación de VLSI (Very Large Scale Integratio) a medida que se agregaron más y más transistores,y en consecuencia más y más funciones fueron integradas en un mismo chip, por lo tanto también las capacidades en FPGAs. Grandes diseños de sistemas digitales que fueron sólo para ser implementado como ASICs, luego tuvieron la opción de ser ejecutados en FPGA.
 
 El microprocesador, ya sea como un componente discreto o  como parte de otra lógica en el mismo chip, es una candidato  para ser  implementado en FPGA. Esto introdujo un mayor potencial para la exploración del espacio de diseño haciendo que la logica de computo especifica sea implemetada junto con un microprocesador estándar %\cita{estiqueta20}
 		
-		\subsection{ IP-Core}
+		\subsubsection{ IP-Core}
 
 El diseños de circuitos digitales se dividen normalmente en bloques funcionales, que se refiere como módulos, o \textit{cores}. Un \textit{core} estara formado por sub-bloques que ayudan a poner en práctica su funcionalidad. Los \textit{cores} pueden variar en tamaño hasta el tamaño total de un microprocesador. Un \textit{core} puede ocupar una FPGA entera al ser implementado, mientras que sólo se crea una instancia entre otros en una FPGA más grande o en un ASIC. Los \textit{núcleos} se describen generalmente utilizando un lenguaje de descripción de hardware (HDL) en un nivel de abstracción conocida como registro nivel de transferencia (RTL).
 
@@ -109,25 +111,27 @@ El resultado de la síntesis, conocida como una \textit{netlist}, está en un ni
 
 Los cores pueden ser diseñados por una persona o entidad, los desarrolladores de \textit{cores} y licenciatarios varían en tamaño desde particulares a empresas de miles de millones de dólares. El producto, en este caso se conoce como un \textit{IP core  Intellectual Property Core} el diseño es la propiedad intelectual de los desarrolladores de terceros y la derecho a usarla recibe la licencia del cliente. La \textit{Intellectual Property IP} varia  de  acuerdo a las licencia.
 
-		\subsection{Tipos de IP-Cores}
+		\paragraph{Tipos de IP-Cores}
 
 \textit{IP} puede ser en una variedad de formas de acuerdo a la licencia. Las categorías con las que se clasifican los IP-Cores son:Hard-Cores, Firmes-core y soft-Cores.
 		
-			\subsubsection{Soft-Core}
+			\subparagraph{Soft-Core}
 
 Son los más flexibles y se presentan para \textit{IP} en forma netlist (lista de compuertas e interconexiones) o en forma de sintetizable RTL, lo que los hace tecnológicamente independientes.Los \textit{cores} sintetizable se entregan en un lenguaje de descripción de hardware como Verilog o VHDL. 
  Óptimos para diferentes aplicaciones, a costas de menor predictibilidad en la implementación y suelen tener un mayor costo y menor desempeño de procesamiento.
 
-		\subsubsection{Firm-Core}
+			\subparagraph{Firm-Core}
 
 Los cores firmes están optimizados para ser implementados en una FPGA, arquitectura o dispositivo en particular. Esta optimización puede ser realizada por el fabricante o por un tercero. Utilizar este tipo de IP-Cores requiere disponer de cierto nivel de conocimiento de la arquitectura, ya que es posible rutear señales físicas y especificar la colocación de los elementos de diseño. Un ejemplo de cores firmes es el procesador MicroBlaze de Xilinx.\cite{Etiqueta04}
 
-		\subsubsection{Hard-Core}
+			\subparagraph{Hard-Core}
 
 Están optimizados para una tecnología específica y no pueden ser modificados por el diseñador que los utiliza. Son manifestaciones físicas del diseño del core ya que tienen un layout predefinido incluido en la arquitectura. Son los mejores para aplicaciones plug\&play. Si bien son poco flexibles, portables y configurables, son muy predictibles (el timing es fijo) y fiables una vez implementados.
 Si se trata de una forma menos abstraído forma , tal como un formato de un mensaje - diseño listo lista de conexiones o para la fabricación, que se conoce como
 IP núcleo duro. \cite{Etiqueta04}
 
-		\subsection{Tipos de IP-Cores}
-
 		
+
+	\subsection{Características de los micro Soft-Core}
+
+\section{System on Chip}
