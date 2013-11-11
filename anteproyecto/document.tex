@@ -1,0 +1,142 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[spanish]{babel} \usepackage[T1]{fontenc}
+\usepackage{times} \usepackage[utf8]{inputenc}
+
+\usepackage{verbatim} \usepackage{amsmath}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{colortbl}
+
+\usepackage{graphicx} 
+\usepackage{subfigure}
+\usepackage[utf8]{inputenc}
+
+\usepackage[Conny]{fncychap}
+\ChTitleVar{\vspace{1.5cm}\centering\Huge\rm\bfseries}
+\ChNameVar{\vspace{1.5cm}\centering\Huge\rm\bfseries}
+
+\hyphenation{con-ti-nua-men-te}
+
+%\usepackage[Rejne]{fncychap}
+%\usepackage[Bjarne]{fncychap}
+%\usepackage{makeidx}
+\definecolor{DarkBlue}{rgb}{0.1,0.1,.1}
+\usepackage[linkcolor=DarkBlue,urlcolor=DarkBlue,colorlinks,breaklinks]{hyperref}
+\usepackage[left=2.5cm,top=3.0cm,right=2.5cm,bottom=3.0cm]{geometry} 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark} %\fancyhead[R]{\rightmark}
+\fancyfoot[L]{Gomez, Roberto Pablo - Lovaisa Michelini, Valeria}
+\fancyfoot[R]{P\'agina: \thepage} %\fancyfoot[LE,RO]{P\'agina: \thepage}                               
+\renewcommand{\headrulewidth}{1.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+
+\title{\vspace{2cm} \textbf{Cátedra Proyecto Integrador \\ \line(1,0){350}}\\
+  \vspace{0.5cm}\centering{\includegraphics[scale=0.53]{images/logoUNC.png}}\\}
+\author{\vspace{-0.25cm} Autor \vspace{0.25cm}\\ Gomez, Roberto Pablo - Lovaisa
+Michelini Valeria \bigskip \bigskip \bigskip \\
+  Tema \vspace{0.25cm} \\ \textbf{Anteproyecto de Trabajo Final}\\ 
+}
+\date{}
+
+\maketitle{}
+\newpage
+
+\section{Anteproyecto del trabajo final de la asignatura Proyecto Integrador}
+
+\subsection{Título}
+Implementación de un Sistema en Chip con Microprocesador Soft-Core y soporte Linux
+
+\subsection{Palabras Clave}
+System on Chip, Microprocesador Soft-Core, Sistemas Embebidos, Sistemas Operativos
+		
+\subsection{Descripción}
+Se implementará un sistema en chip (SoC) con microprocesador Soft-Core sobre FPGA. El proyecto estará bajo el paradigma de software libre incluyendo
+el código RTL del SoC, las herramientas de desarrollo y los Sistema Operativos. Inicialmente se analizarán las diferentes alternativas de
+Microprocesadores Soft-Core que permitan su implentación en proyectos SoC Open-Source tales como MinSoC y ORPSoC. El elemento central de
+ambos proyectos es el microprocesador soft OpenRisc1200, de capacidades comparables a los microprocesadores soft MicroBlaze de Xilinx y NiOS II de
+Altera. Este procesador está soportado por el compilador GCC y permite correr el sistema operativo Linux. El funcionamiento del sistema se comproborá
+implementándose sobre un Kit XtremeDSP Starter Platform disponible en el Centro Universitario de Automatización y Robótica UTN-FRC.
+
+
+\subsection{Objetivos}
+
+Implementar un system on chip OpenSource con un microprocesador embebido Soft-core que soporte un sistema operativo libre , con la finalidad de
+entregar un sitema integral FPGASoC- Sistema Operativo completamente funcional y bajo licencia GPL v2.
+
+\subsection{Antecedentes}
+
+No existen.
+
+\subsection{Datos de los Alumnos}
+\subsubsection{Alumno 1}
+\begin{itemize}
+  \item Apellido : Gomez
+  \item Nombre : Roberto Pablo
+  \item Matrícula : 200404250
+  \item Email : rpg2101@gmail.com
+\end{itemize} 
+\subsubsection{Alumno 2}
+\begin{itemize}
+  \item Apellido : Lovaisa Michelini
+  \item Nombre : Valeria
+  \item Matrícula : 200404512
+  \item Email : valerialovaisa@gmail.com
+\end{itemize} 
+
+\subsection{Datos de Director y Co-Director}
+\subsubsection{Director}
+\begin{itemize}
+  \item Apellido : Micolini
+  \item Nombre : Orlando
+  \item Cargo : Director del Lab. de Arquitectura de Computadoras FCEFyN - UNC
+  \item Email : omicolini@compuar.com
+\end{itemize} 
+\subsubsection{Co-Director}
+\begin{itemize}
+  \item Apellido : Paredes
+  \item Nombre : Federico
+  \item Cargo : Integrante del Centro Universitario de Automatización y Robótica UTN-FRC
+  \item Email : fedesor@gmail.com
+\end{itemize} 
+
+\subsection{Metodología}
+\begin{itemize}
+  	\item Lugar de trabajo : Centro Universitario de Automatización y Robótica (CUDAR) UTN-FRC
+	\item Equipamiento Previsto : Placas de desarrollo provistas por el CUDAR :  S3ADSP1800A de Xilinx, Nexys de Digilent.
+	\item Costo estimado : No aplicable.
+	\item Apoyo económico : El lugar de trabajo cubre el costo total del proyecto.
+\end{itemize} 
+
+\begin{thebibliography}{99}	  
+\bibitem{Etiqueta00}  Página principal del proyecto MinSOC
+\url{http://www.minsoc.com/}
+
+\bibitem{Etiqueta01} Página principal del proyecto microprocesador OpenRISC
+\url{http://opencores.org/or1k/OR1200_OpenRISC_Processor}
+
+\bibitem{Etiqueta02} Placa de desarrollo S3ADSP1800A
+\url{http://www.xilinx.com/products/boards-and-kits/HW-SD1800A-DSP-SB-UNI-G.htm}
+
+\bibitem{Etiqueta03} Somemerville Ian,2011 .
+\textit{Software engineering, 9th edition}
+
+\bibitem{Etiqueta04} D. A. Patterson y J. L. Hennessy ,2012.
+ \textit{Computer Architecture A Quantitative Aprroach, 9th edition}
+
+\bibitem{Etiqueta05}Wikipedia, the free encyclopedia, Free and open source software.
+\url{http://en.wikipedia.org}
+
+\bibitem{Etiqueta06}Open Source Initiative, The Open Source Definition
+\url{http://www.opensource.org/docs/osd}
+
+\bibitem{Etiqueta07}Joseph Feller , 2005 
+\textit{Perspectives on Free and Open Source Software.}
+
+\end{thebibliography}
+
+\end{document}
