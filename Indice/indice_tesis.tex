@@ -222,7 +222,17 @@ Los cores pueden ser diseñados por una persona o entidad, los desarrolladores d
 hard soft y intermedios
 %El producto , en este caso se conoce como un núcleo IP (propiedad intelectual a menudocore) en el sentido de que el diseño es la propiedad intelectual de los desarrolladores de terceros y le da derecho a usarlo  recibe la licencia del cliente. Se utilizan los términos IP y el núcleo indistintamente y en combinación para significar la misma cosa .IP puede ser en una variedad de formas cuando licencia . Cuando está en la forma de sintetizable RTL entonces el IP se conoce como un núcleo blando . Si se trata de una forma menos abstraído forma , tal como un formato de un mensaje - diseño listo lista de conexiones o para la fabricación, que se conoce como IP núcleo duro .
 
-		\subsubsection{\textcolor{orange}{Soft-Core}}%%julius
+\subsection{System on Chip}
+
+La innovación continua en la tecnología de fabricación de semiconductores, ha visto al
+disponible "real estate" en los chips de aumento en línea con la predicción de 1965 por Gordon E. Moore. La capacidad de los ingenieros de diseño digital para hacer uso de estos transistores adicionales no ha seguido el ritmo de este incremento en la capacidad de fabricación (21). El tiempo para las necesidades del mercado de estos diseños cadam vez más complejos ha permanecido estático, si no apretado.
+
+Esto ha llevado a la aparición de la industria de núcleo IP compuesta de las empresas especializadas en el desarrollo y concesión de licencias IP a las personas la construcción de sistemas de FPGA o ASIC aplicación.
+
+Esto permite a los equipos de diseño para montar un sistema formado por componentes básicos desarrollados por terceros para implementar el soporte para los protocolos de comunicación estándar, como Ethernet, IIC o SPI, mientras se concentra sus esfuerzos en el diseño de lo que es lo que hace que su diseño único o
+particularmente valiosa
+
+
  intro,  deferencias entre micros soft y hard. fabricantes.ventajas de uno sobre el otro.
  Ejemplo:
 En la industria existe un grupo ligeramente diferente de microprocesadores  Soft-Core , apuntando principalmente al hardware reconfigurable . Tres de los más grandes proveedores de FPGA , Xilinx , Altera y Lattice , ofrecen sus propios núcleos de microprocesadores RISC de 32 bits. Los dos mayores proveedores de dispositivos FPGA , Altera y Xilinx , proporcionan la Nios y Microblaze núcleos , respectivamente. Ellos se consideran hard-core en los que la fuente RTL no se encuentra  disponibles y sólo pueden ser implementadas en sus  Tecnologías FPGA .
@@ -255,8 +265,13 @@ A pesar de que no se corresponde con la forma en que utilizaría un procesador e
 
 CoreMark es un punto de referencia que tiene como objetivo medir el rendimiento de las unidades centrales de procesamiento ( CPU) utilizados en sistemas embebidos. Fue desarrollado en 2009 por Shay Gal -On en EEMBC y está destinado a convertirse en un estándar de la industria , en sustitución de la referencia Dhrystone anticuada . El código está escrito en código C y contiene las implementaciones de los algoritmos siguientes : procesamiento de lista ( encontrar y ordenar ) , Matrix (matemáticas) manipulación ( operaciones con matrices comunes ) , máquina de estados ( determinar si un flujo de entrada contiene números válidos ) y CRC
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%CAPITULO 4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %No es OpenSource y Free?? -- PABLO JULIUS :P
+
 \section{\textcolor{orange}{Software OpenSource y Libre}}%julius
+
+Conclusión!!Trabajar con un sistema final bajo licencias de hardware siguiendo el modelo de la Licencia LGPL para el software. Estamos comprometidos con el ideal de libre disposición, de libre uso y hardware de código abierto reutilizable.
+
 la intro al tema contando un poco  las comunidades de codigo abierto y por ulitmo de OpenCore
 
 Ejemplo: 
@@ -281,6 +296,8 @@ intro a opensource
 
 EJ
 La apertura del código de la propiedad intelectual desarrollada para el proyecto OpenRISC, y otros en OpenCores, ha sido a la vez un obstáculo y una ayuda, pone a la vista el estado de el desarrollo, pero es útil, ya que permite que cualquiera pueda participar en el continuo desarrollo de cores. %\Esta sección discutirá los pros y los contras del opensource
+		
+
 		\subsection{\textcolor{orange}{¿Quien tiene el Hardware?}} 
 
 la idea es poner pro y contra de trabajar con open source
@@ -309,6 +326,11 @@ Por ejemplo , considere el éxito obtenido por el proyecto del kernel de Linux, 
 en el desarrollo . El kernel Linux compite claramente con el propietario variantes de UNIX y de los productos de Microsoft y Apple  en todos los casos está experimentando un enorme éxito.
 %\Para un proyecto como OpenRISC , un objetivo puede ser el uso generalizado entre los vendedores que  Actualmente utilizar procesadores por el líder de la industria , ARM , por su microprocesador sistemas basados ​​en . Por las razones que ya se ha esbozado sobre la verificación de abierto IP de origen y de los riesgos que implica , este tipo de absorción es poco probable que suceda en su actual estado, sin embargo eso no quiere decir que nunca pudo. En el momento de la OpenRISC de creación, los observadores indicaron que la IP de origen abierto podría convertirse en un jugador importante en la industria, si se hace bien ( 43 ) . Podría ser el caso que para los diseños que son en gran medida re- implementaciones de la tecnología conocida , los fundamentos de lo que son 25 - años de edad, de desarrollo de código abierto es un enfoque realista . Esto podría potencialmente conducir a menores costos ASICs , y por lo tanto la electrónica de consumo de bajo costo , como las regalías se eliminan , y los equipos de ingenieros la tarea de implementar en la casa controladores o microprocesadores, en lugar de trabajar para implementar y apoyar un un diseño de gran parte superflua , o bien podría ser la tarea de perfeccionar las partes específicas del el procesador de código abierto para lograr una mayor eficiencia en su aplicación, o sea reprogramado por completo el diseño más innovador IP .
 %Es muy probablemente el caso , sin embargo, que se trata de un escenario de " crear y ellos vendrá " . Es poco probable que un esfuerzo concertado entre los desarrolladores de propiedad intelectual sería ocurrir espontáneamente . Incluso si fuera a aparecer de la talla de las universidades y casas de investigación financiados por el gobierno , la probabilidad del capó de desarrollar microprocesador diseños de atraer la atención de las casas de ASIC , a continuación, estimulando el desarrollo colaborativo , es baja. Los factores ya discutidos , como la dificultad de garantizar su diseños y altas barreras de entrada debido al costo y la experiencia están ahí, pero también restricciones sobre el tipo de información necesaria para perfeccionar implementaciones ASIC - biblioteca de tecnología específicos de las propias plantas de fabricación , que están estrechamente secretos guardados y con pocas probabilidades de ser liberados para los proyectos de código abierto para preparar los diseños para . Es probable que haya una distinción para dibujar aquí, también, entre los ASICs derivados su ventaja competitiva de su microprocesador o de otra medida IP . Potencialmente, las que se basan en un procesador del borde inferior de corte podría ser feliz de ayudar a contribuir a un proyecto de desarrollo de código abierto para un microprocesador, ayuda aportando horas de ingeniería para la verificación y tal vez incluso la adición de características , con el fin de evitar el pago de regalías que podría reducir su coste por unidad .
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%CAPITULO 5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 	\section{\textcolor{orange}{Microprocesadores Soft-Core}}
 	\subsection{\textcolor{orange}{LEON3}}
