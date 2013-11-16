@@ -266,11 +266,189 @@ A pesar de que no se corresponde con la forma en que utilizaría un procesador e
 CoreMark es un punto de referencia que tiene como objetivo medir el rendimiento de las unidades centrales de procesamiento ( CPU) utilizados en sistemas embebidos. Fue desarrollado en 2009 por Shay Gal -On en EEMBC y está destinado a convertirse en un estándar de la industria , en sustitución de la referencia Dhrystone anticuada . El código está escrito en código C y contiene las implementaciones de los algoritmos siguientes : procesamiento de lista ( encontrar y ordenar ) , Matrix (matemáticas) manipulación ( operaciones con matrices comunes ) , máquina de estados ( determinar si un flujo de entrada contiene números válidos ) y CRC
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%CAPITULO 4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%No es OpenSource y Free?? -- PABLO JULIUS :P
 
 \section{\textcolor{orange}{Software OpenSource y Libre}}%julius
+		\subsection{\textcolor{orange}{Deferencias}}%http://www.slideshare.net/wilberth1594/tesis-alex-8795926,julius
+Una interpretación sencilla de lo que se entiende por el término \textit {open source} o \textit{código abierto}, cuando se utiliza en el contexto de la descripción de un programa de software o diseño de hardware , es que el codigo fuente  de alguna manera está disponibles a la vista. A pesar de que es un amplio y potencial término ambiguo, un común acuerdo sobre la definición está en un documento llamado  Open Source Definition (OSD), publicado por la Open Source Initiative (OSI).
 
-Conclusión!!Trabajar con un sistema final bajo licencias de hardware siguiendo el modelo de la Licencia LGPL para el software. Estamos comprometidos con el ideal de libre disposición, de libre uso y hardware de código abierto reutilizable.
+ La definición no es una licencia de software libre en sí, si no algo que se utiliza para medir condiciones frente a la distribución, si se determina que cumplen con las condiciones, entonces se puede decir que es \textit{open source}. Lo que no es claro es lo que podría o debería ser hecho con una copia del código fuente.Cuando el software \textit{libre} o \textit{free} se utiliza para describir el software de código abierto, se refiere a los derechos y no al costo del usuario. La Fundación para el Software Libre (FSF) ofrece una definición para mostrar claramente qué se tiene que cumplir sobre el software para que pueda ser considerado libre (35). El termino Free Software Foundation (FOSS) es usado para referirse al software que se adhiere al OSD y FSF. El software \textit{libre} y de \textit{código abierto} es una sociedad inclusiva término que abarca tanto el software libre y software de código abierto que a pesar de describir modelos de desarrollo similares, tienen diferentes culturas y filosofías.
+
+El software \textit{libre} se refiere a la libertad de los usuarios para ejecutar, copiar, distribuir, estudiar, cambiar y mejorar el software. El vocablo \textit{free} en ingles significa :gratis y/o libre. Por ello el término ha ocasionado confusiones dándose a entender, equivocadamente, que el software libre es gratuito o regalado. Pero no es una cuestión de presencia o ausencia de costo, puesto que el software libre no significa que no pueda ser comercial.
+
+Stallman fundó la Free Software Foundation (FSF ) en 1985 para promover la libertad del usuario y para defender los derechos de todo el software libre( 28 ). La FSF patrocina el proyecto GNU. El software libre permite al usuario el ejercicio de cuatro libertades básicas:
+
+\begin {itemize}
+\item
+ \textit{Libertad 0} Además el software \textit{libre} permite estudiar cómo funcionan y adaptarlo a las necesidades de quien lo use. Tener acceso a su código fuente posibilita, entre otras cosas, descubrir qué posibilidades tiene, etc. El adaptar el programa a las necesidades del usuario se puede suprimir partes que no le interesen, agregar otras partes que considere importantesm copiar una parte que realiza una tarea y/o adicinarla a otro programa, etc.
+
+\item
+\textit{Libertad 1} El software, sus copias y las modificaciones se pueden distribuir libremente, lo que significa poseer la libertad de redistribuir el programa, gratis o con algún costo, ya sea por mail, FTP, o en CD, redistibuyéndolo a una persona o a varias, a una persona que vive en otro país, etc.
+
+\item 
+\textit{Libertad 2} Es posible mejorarlo y hacer pública esas mejoras. La libretad de hacer un programa mejor, implica que se puede hacer menores los requerimientos de hardware para funcionar, que tenga mayores prestaciones, que sus requerimientos no sean tan altos, que tenga menos errores, etc. El poder liberar las mejoras al público quiere decir que si se realiza una mejora que permita un requerimiento menor de hardware, o que haga que ocupe menos espacio, se puede redistribuir ese programa mejorando o simplenete propoenr la mejora en lugar público (un foro de noticias, una lista de correo, un sitio web, un FTP, un canal de chat).
+
+\item 
+\textit{Libertad 3} El usuario al poseer el código fuente tiene poder de decisón, ya que podrá elegir quién puede modifica los programas que ha adquirido para mejorarlos (o bien mejorarlos el mismo). Es decir esto permite que no exista un monopolio, porque en el caso de que un software sea discontinuado el usuario podrá nuevamente (al poseer el código) elegir a un desarrollador para continuar utilizando el software que fue discontinuado. Además el usuario no estará completamente a merced de tener que renovar su hardware y software constantemente según ocurre a menudo con las políticas de las empresas que producen software privativo y también será libre de vender o redistribuir software libre.
+ 
+ \end {itemize}
+ 
+Mediante la licencias un autor permite el uso de su creación a otras personas, de la manera que el cree aceptable. En ese sentido la licencia es el intrumento que regula las maneras en que el usuario puede utilizar el software.
+
+También una licencia de software es un contrato que determina en qué condiciones el usuario puede utilizar el programa informático y qué obligaciones asquiere para su uso. Cuando se instala un programa informático, o a veces, incluso, por el simple hecho de abrir el sobre que lo contiene, se esta aceptando las condiciones de su licencia de software.
+
+Cuando IBM comenzó la venta de computadoras a gran escala en la década de 1960, el software venia incluido como código fuente. Una década más tarde, sin embargo, comenzaron a "desagregar"  el software, y se convirtió en habitual para los fabricantes de computadoras, no solo limito  el uso del mismo código fuente a los competidores, sino que también elimino la capacidad de modificar el código libremente y compartirlo%\cita{}(26).  
+
+La licencia División de Software de Berkeley (BSD) y la Pública General del proyecto GNU (GNU GPL) son dos de las primeras licencias de código abierto. Ambos proporcionan la libertad de usar software de código fuente abierto para cualquier propósito y permitir la modificación y la distribución de su código fuente sin tener que pagar regalías. Las diferencias entre los dos pone de relieve una diferencia ideológica entre los defensores del código abierto .
+
+Un punto significativo de diferencia entre las licencias BSD y GPL es que este último le permite
+\textit{modificar su copia o copias del Programa o cualquier parte de el, y copie
+y distribuir tales modificaciones ... supuesto que además ... hace que la
+totalidad de cualquier trabajo que distribuya o publique y que en todo o en
+parte contenga el Programa o cualquier parte del mismo, ya sea con o sin
+modificaciones, para ser autorizadas sin cargo alguno para terceras partes bajo el
+términos de esta Licencia Pública General.(GPLv1) ( 29 ). } %\cita{}
+
+La GNU GPL se conoce como una licencia \textit{viral}, en que cualquier diseño haciendo uso de código ya licenciado bajo la GNU GPL debe ser entonces licenciado bajo la
+GNU GPL o cualquier licencia juzgados como igualmente sin restricciones por la FSF. En pocas palabras, una condición de uso del código licenciado bajo GPL es que su diseño se debe tener licencia bajo la GPL o una licencia compatible. Las licencias que se consideran compatibles con la GPL por la FSF son generalmente similares en las libertades que garantiza el software libres. La licencia se transmite al código que hacen uso de ella. El GNU GPLv3 exige que cuando un proyecto adopta esta licencia el código fuente debe estar disponible y que las patentes o derechos digitales (DRM) no inhiben a otros del uso del diseño. 
+
+La licencia BSD modificada es básicamente la misma que la original sin la clausula de publicidad. De acuerdo con dicha cláusula, todo el material de publicidad en el cual se menciona características o la utilización de este software tenia que mostrar el siguiente asentimiento:"este producto incluye software desarrollado por la Universidad de California, Berkeley y sus contribuyentes ".
+
+Esta cláusula de publicidad no permitía que fuera compatible con la lincencia GPL pero a partir de su versión 2.0 fue eliminada y la licencia pasó a ser compatible con la GPL.
+
+La GNU GPL es en cierto modo, más restrictiva que la licencia BSD sobre las libertad de hacer lo que uno quiere con el código fuente. En la GNU se estipula que el código modificado debe estar disponible, y cualquier diseño utilizado con código GPL tiene también que venir bajo la GNU GPL. Sin embargo, esto no es diferente a cualquier licencia comercial, donde el código fuente escrito por un empleado de una empresa,o todo el código que se modifican o crean esta bajo la licencia exclusiva de la empresa. En el caso de la licencia de GNU, sin embargo, los usuarios están obligados a mantener su diseño abierto y libre como la GPL de GNU hace, de la misma manera el empleado de la empresa está obligado a mantener su código propietario en secreto para cualquiera que no sea de la  empresa.
+
+Otro punto de controversia es el uso combinado de los diseños en los que cada uno es bajo
+una licencia diferente , y ha dado lugar al concepto de compatibilidad de la licencia . El significado
+de uso aquí es ambiguo y depende del contexto , sin embargo, en este ejemplo, será
+implicar el uso de un formato de la versión binaria precompilada de un diseño. En el caso de que uno
+diseño utiliza una biblioteca binaria GPL , aunque no de origen se ve o se modifica
+el usuario del diseño GPL , la GNU GPL especifica que no se puede utilizar a menos
+el otro diseño está también bajo la GPL. El uso de las bibliotecas precompilados , compuesto
+de funciones comunes , en los programas informáticos es muy común y es equivalente a la
+ejemplo dado aquí . En el caso de que una biblioteca es bajo la GPL , cualquier cosa que utiliza
+él ( también conocida como la creación de un vínculo a la biblioteca, o la vinculación con la biblioteca ) debe
+también vienen bajo la GPL.
+Sin embargo , la cuestión de la inclusión real en una aplicación compilada
+Binario GPL (conocido como la vinculación estática ) no es tan contencioso - esto se considera
+para ser el equivalente de la inclusión y la compilación de la fuente original - el debate
+es sobre la vinculación dinámica. Esto implica el uso de una biblioteca de software precompilado que residen
+en otro lugar ( no dentro de una aplicación compilada ) cuando se ejecuta una aplicación .
+Si un programa que vincule dinámicamente a una biblioteca se considera un derivado
+el trabajo es un tema debatido. El Proyecto GNU considera estas aplicaciones como derivado
+obras y requiere que se adhieran a los requisitos de la licencia GPL de GNU .
+Una visión alternativa es que estos programas utilizan la vinculación dinámica no son derivados
+obras ( 30 ) ( 31 ) . Una solución para aquellos que deseen escribir bibliotecas , y no tienen la
+interpretación más estricta de la obra derivada se les aplica , a propuesta de la GNU
+Proyecto en su poca licencia de uso general ( LGPL ) . Se trata de un trade-off , lo que permite
+para demostrar que la tecnología licenciada Proyecto GNU es de alta calidad y
+fomentando así la participación de las personas en el proyecto, al tiempo que conserva algo de
+sus requisitos de libertad . El Proyecto GNU , sin embargo , prefiere a los desarrolladores liberan
+bibliotecas bajo la GPL , lo que obliga a quienes lo utilizan para su trabajo contribuyen a
+el cuerpo de la GNU GPL licencia de software.
+
+
+El objetivo del Proyecto GNU de implementar un operativo completamente libre y gratuito
+sistema , se avanza a buen ritmo en la década de 1990 , pero le faltaba el nivel más bajo llave
+componentes . En ese momento un estudiante universitario finlandés, Linus Torvalds, había escrito
+un núcleo de reemplazo ( componente de interfaz de hardware central de un sistema operativo )
+para Minix , un sistema operativo de tipo Unix bajo costo mínimo restringido a
+uso educativo solamente. Una vez kernel Torvalds había llegado a un estado relativamente estable el
+aplicaciones del sistema operativo de MINIX fueron reemplazados por los disponibles
+por el Proyecto GNU. Torvalds vuelva a autorizar el núcleo ( como el propietario del copyright
+esto era admisible ) a la GNU GPL y el primer funcionamiento y totalmente GNU
+Sistema operativo GPL vino a la existencia ( 32 ) .
+
+La combinación del núcleo de Torvald , conocido como el kernel Linux y el GNU
+Aplicaciones y bibliotecas de software del proyecto se ha convertido en el servidor más utilizado
+sistema operativo en el mundo.
+
+Su adopción entre escritorio , estación de trabajo y plataformas móviles no es tan alto , pero son
+aumentando rápidamente a medida que los paquetes del sistema operativo , conocido como distribuciones o simplemente
+distribuciones , cada vez más ampliamente disponibles y proporcionar equivalentes , si no mejor , el usuario
+experiencias que los sistemas operativos propietarios 
+
+ Ejemplos de otros exitosos y ampliamente adoptado proyectos de código abierto son el servidor web Apache , la oficina de los servicios públicos paquete OpenOffice.org y el proyecto Mozilla, que crea software de correo electrónico y navegador web. A pesar de que esta última pareja no eran originalmente de código abierto, el lanzamiento de su código fuente bajo licencias de código abierto fue significativa, y continúan los proyectos populares de la actualidad 
+
+A medida que la popularidad y la utilidad de Internet ha crecido , también lo han hecho en línea
+comunidades por diversas causas 
+La captación de Internet y la comunicación en línea proporcionan la chispa para la gran fuente abierto
+comunidades. En cualquier caso, lo que ha dado como resultado es un sinnúmero de comunidades y sueltos tejer
+grupos que contribuye a abrir el desarrollo fuente de casi cualquier cosa.
+
+Sitios web de gran tamaño para que las comunidades se centraron en el desarrollo de software de aplicaciones informáticas ,
+como SourceForce , freshmeat , Ohloh y hacia arriba de acogida CPAN de decenas de
+miles de proyectos . Un grupo llamado Freenode proporciona Internet Relay Chat ( IRC )
+servidores donde decenas de miles de desarrolladores de código abierto se reúnen para interactuar .
+
+Hay una serie de pequeños servicios de alojamiento de proyectos libres dirigidos a grupos
+desarrollo de software como Google Code , Launchpad , GitHub , GNU Savannah,
+así como los sitios de la comunidad antes mencionados .
+
+Un sitio, comenzando justo después de que el año 2000 , llamado OpenCores centra en proporcionar
+un sitio para la comunidad de hardware de código abierto. Fue de los primeros en
+proporcionar a la comunidad de desarrollo de hardware y es actualmente el más grande , con
+más de cien mil usuarios y cerca de mil proyectos
+
+Software como software multimedia avanzada, de productividad de oficina , gráficos herramientas , sistemas operativos y software de comunicaciones tienen alternativas de código abierto , desarrollado en el abierto, y por lo general libre para descargar y utilizar. Los gobiernos y las grandes empresas están aprovechando cada vez más software de código abierto existente y se están convirtiendo en importantes contribuyentes a los proyectos del software que adoptan. Las tendencias recientes han hecho mucho para disipar la imagen de la legión de solitarios desarrolladores de código abierto que son los únicos contribuyentes de trabajo. Como las grandes entidades comerciales aumentan su adopción y utilización de los proyectos de software libre, que se están convirtiendo , por el momento, los contribuyentes más frecuentes. El kernel de Linux tiene ahora la mayor proporción de sus contribuciones de código vienen no de los aficionados o entusiastas individuales, sino en lugar de las entidades comerciales ya sea trabajando con el núcleo Linux en sus productos, tales como Red Hat, o que deseen asegurar el apoyo a su hardware en el kernel, tales como Intel , AMD e IBM. Lo mismo es cierto para proyectos como Apache y MySQL.
+
+La gran cantidad de software de código abierto disponible ofrece la elección entre
+la adopción de software libre , pero con el lanzamiento de su obra derivada, y el desarrollo de una solución interna o la compra de una solución propietaria y revelando el trabajo no uno . El proyecto GNU GCC y binutils , el desarrollo del AM y el mantenimiento está siendo realizado en gran parte por los empleados por las empresas que tienen interés en mantener el apoyo o las plataformas en las mejores condiciones . La salud del proyecto y, a continuación , obviamente,
+es impulsado por el uso generalizado de las herramientas del CCG , que es debido a la fuerte inicial aplicación . El aumento del potencial comercial del software de código abierto tiene resultado en empresas aportando recursos a estos proyectos en lugar de , el desarrollo de y el mantenimiento de su propia suite compilador de propiedad en el caso de GCC , por ejemplo . Este es uno de los objetivos de los creadores de código abierto - para proporcionar una base del software de código abierto tan rico que los desarrolladores están en mejor situación y la adopción de software libre liberación de su obra derivada y por lo tanto el aumento de la masa existente de software en lugar de desarrollar desde cero o comprar una solución propietaria.
+Aunque sólo se ha descrito aquí , las motivaciones para la adopción y contribuir a código abierto podrían ser muchas y variado y dependerá en gran medida de la funcionalidad real de la fuente abierta 
+
+No hay duda de algún tipo de software de gran utilidad se ha escrito y contribuido
+para abrir proyectos de software , sin embargo fuente abierta no debe ser visto como un innovador
+fuerza , en lugar de un paso en el camino hacia una mayor mercantilización de la tecnología.
+El espíritu empresarial y el afán de lucro por lo general conducen al alto riesgo y alta innovación
+las empresas que participan en la implementación de la tecnología de corte del borde 
+
+Una de las motivaciones para el desarrollo de código abierto desde el punto de vista comercial,
+como ya se ha eludido a , proviene de la capacidad de proporcionar y cobrar por servicios
+en relación con el proyecto de código abierto. A pesar del hecho de que el IP está disponible públicamente ,
+implementar o personalizar el proyecto normalmente requiere experiencia en el correspondiente
+disciplina y con el proyecto en particular. Las empresas adoptar y mantener un
+solución de código abierto por lo general tienen sólo el costo de los conocimientos necesarios para hacerlo, con
+sin regalías o licencias adicionales tasas que se pagan
+
+en la actualidad hay alternativas de código abierto para los sistemas de software de TI de propiedad de hace cinco o diez años , lo que resulta en el costo de la misma funcionalidad ahora es sólo el personal de apoyo especializado necesario.
+Esta necesidad de conocimientos potencialmente podría ser compartida entre el personal y el apoyo de la casa
+los trabajadores contratados a consultores especializados, o incluso desarrolladores del proyecto
+a sí mismos . En resumen, los desarrolladores de código abierto renunciar a ciertas reclamaciones sobre
+la IP , lo que potencialmente gran parte no era su propia idea o considera especialmente
+innovadora , para empezar, la recompensa en forma de empleo continuado realizando
+servicios relacionados con el proyecto.
+
+A pesar de fuente abierta no es un controlador tradicional a la innovación no se opone a
+que de ser la estrategia de desarrollo elegida para una tecnología innovadora .
+Cualquier diseño bastante innovador suele verá retornos valiosos para la inversión necesaria para llevarla a cabo . Sin embargo, con alternativas de código abierto que brotan de forma relativamente rápida , su ventaja no puede durar por mucho tiempo ya que otros toman nota de lo que han hecho desarrollos innovadores y si , hay que vale la pena en forma de soluciones de código abierto. Puede llegar a ser una opción para el desarrollador si persiguen el desarrollo de código abierto , para empezar , en base a la duración de una ventaja competitiva se puede mantener con una implementación propietaria frente a la capacidad de proporcionar apoyo a largo plazo para una aplicación que potencialmente ver más utilizar ( la versión de código abierto. ) lo mejor de ambos mundos puede ser un buen método , donde inicialmente el producto está autorizado por una cuota, antes de liberar el código fuente que permite a otros a desarrollar y espero mejorar el proyecto. Como producto es el ciclo de la vida llega a su fin , puede ser ventajoso para liberar la fuente
+para permitir que cualquier usuario ampliados para solucionar los problemas derivados de la plataforma inevitable
+cambios que se producen . Todavía hay un problema aquí, sin embargo , como la implementación propietaria mantiene su dominio , mientras que no hay , una fuente equivalente abierto ,
+el diseñador nunca puede elegir para liberar la fuente , pero entonces se corre el riesgo de un diferente
+aplicación con funciones equivalentes ganando más popularidad , y por lo tanto
+el diseñador original es vida , pero no idea sobre su capacidad para proporcionar apoyo a la misma .
+
+
+Esta breve mirada a la situación actual de código abierto ha indicado que el código abierto
+se ha convertido en una fuerza a tener en cuenta en el mundo del software , pero este es sin duda
+no es el caso en la actualidad para el desarrollo de hardware de código abierto. Las razones de esto se
+ser explorado en los tramos finales . Sin embargo , el enfoque moderno de código abierto
+el desarrollo y los beneficios y las motivaciones de la misma se presentaron e indican
+sin duda hay un caso para la adopción del enfoque de desarrollo de código abierto. allí
+hay duda de que habrá seguir aumentando la adopción del código abierto
+desarrollo y modelo de licencia en el futuro. A medida que la cantidad de abierto disponible
+aumenta diseños de origen , y la comprensión de los márgenes de aproximación , lo hará
+seguramente continuará para demostrar que es un enfoque valioso para el desarrollo de
+tecnología
+%Conclusión!!Trabajar con un sistema final bajo licencias de hardware siguiendo el modelo de la Licencia LGPL para el software. Estamos comprometidos con el ideal de libre disposición, de libre uso y hardware de código abierto reutilizable.
+
+Una interpretación sencilla de lo que se entiende por el término \textit{open source}, cuando se utiliza en la contexto de la descripción de un programa de software o diseño de hardware, es que el diseño Fuentes de alguna manera están disponibles a la vista. A pesar de que es una amplia y potencialmente término ambiguo , un común acuerdo sobre la definición está en un documento llamado la Open Source Definition (OSD ), publicado por la Open Source Initiative (OSI ) 
+
+La definición no es una licencia de software libre en sí , más bien algo para medir condiciones de distribución frente para determinar si cumplen y , si lo hacen, entonces se puede decir a ser de código abierto ( 36 ) . Lo que no es inmediatamente claro es lo que podría o debería ser hecho con una copia de la fuente de diseño , práctica y legalmente. Cuando el software libre se utiliza para describir el software de código abierto , se refiere no al costo para el usuario, pero los derechos del usuario. La Fundación para el Software Libre (FSF ) ofrece una definición para mostrar claramente qué debe cumplir sobre una pieza de software para que pueda ser considerado libre ( 35 ) .
+
+El software libre de código abierto plazo ( FOSS) se usa para referirse al software adherirse tanto al OSD y FSD . El software libre y de código abierto es una sociedad inclusiva término que abarca tanto el software libre y software de código abierto que , a pesar de describir los modelos de desarrollo similares , tienen diferentes culturas y filosofías.
+El software libre se enfoca en las libertades filosóficas que da a los usuarios, mientras que abierto origen se centra en las fortalezas percibidas de su modelo de desarrollo peer-to -peer ( 37 ) ( 38 ) .
+
+
 
 la intro al tema contando un poco  las comunidades de codigo abierto y por ulitmo de OpenCore
 
@@ -286,9 +464,26 @@ así como los sitios de la comunidad antes mencionados.
 OpenCores es  sitio/ comunidad más grande para el desarrollo de los  IP core de hardware como de código abierto del mundo.
 OpenCores.org proporciona el código fuente de los diferentes proyectos HW digitales (IP-cores, SoC, boards, etc) y apoyar a los usuarios con diferentes herramientas, plataformas, foros y otras informaciones útiles. 
 
-		\subsection{\textcolor{orange}{Deferencias}}%http://www.slideshare.net/wilberth1594/tesis-alex-8795926,julius
+	%	\subsection{\textcolor{orange}{Deferencias}}%http://www.slideshare.net/wilberth1594/tesis-alex-8795926,julius
 Aca vamos a poner las libertades que permiten uno y otro
 		\subsection{\textcolor{orange}{GPL}}
+
+GPL es que el
+este último le permite modificar su copia o copias del Programa o de cualquier porción de él , y copiar y distribuir esa modificación ... supuesto que además ... hacer que el
+totalidad de cualquier trabajo que distribuya o publique y que en todo o en
+parte contiene el Programa o cualquier parte del mismo , ya sea con o sin
+modificaciones, para ser autorizadas sin cargo alguno para terceras partes bajo el
+términos de esta Licencia Pública General. ( GPL v1 ) ( 29 )
+
+La GNU GPL se conoce como una licencia viral , en que cualquier diseño haciendo uso de código ya licenciado bajo la GNU GPL debe entonces , sí , ser licenciado bajo la GNU GPL o cualquier licencia juzgados como igualmente sin restricciones por la FSF. En pocas palabras, una condición de uso del código licenciado bajo GPL es que su diseño se debe tener licencia bajo la GPL o una licencia compatible. Licencias considerarse compatibles con la GPL por la FSF son generalmente similares en las libertades que garantiza el software. En otra.
+Es decir, que se ven obligados a compartir, si piensas que no, y ser objeto de la licencia de GNU, o un equivalente aprobado . La licencia , en efecto, infecta elcódigo que hacen uso de ella. El GNU GPLv3 exige que cuando un proyecto adopta esta la licencia del código fuente debe estar disponible y que las patentes o derechos digitales (DRM ) no inhiben a otros del uso del diseño
+
+La GNU GPL está en cierto modo, irónicamente, más restrictiva que la licencia BSD
+sobre las libertad de hacer lo que uno va con el código fuente . En él se estipula la
+código modificado debe estar disponible , y cualquier diseño utilizado con código GPL debe
+también vienen bajo la GNU GPL.
+
+Sin embargo, esto no es diferente a cualquier licencia propietaria , escrito por un empleado de una empresa, todo el código que modifican o crean viene en la empresa , licencia propietaria marca. En la licencia GNU, caso del AM , sin embargo , los usuarios se ven obligados a mantener su diseño abierto y libre como la GPL de GNU hace que , de la misma manera que el empleado está obligado a mantener su código propietario y secreto para nadie que no sea de la compañía .
 		\subsection{\textcolor{orange}{LGPL}}
 %Revisemos este título -- PABLO JULIUS :P
 		\subsection{\textcolor{orange}{OpenSource}}
