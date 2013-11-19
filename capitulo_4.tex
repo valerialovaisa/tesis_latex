@@ -182,8 +182,30 @@ la tecnología .
 
 As the wealth of available open source designs increases, and the understanding of the approach spreads, it will surely continue to prove itself as a worthwhile approach to the development of technology.
 
+\section{ OpenSource}
+
+La apertura del código de la propiedad intelectual desarrollada para el proyecto OpenRISC, y otros en OpenCores, ha sido a la vez un obstáculo y una ayuda, ya que pone al desnudo el estado del desarrollo, pero es útil, ya que permite que cualquiera pueda participar en el continuo desarrollo de núcleos. Esta subsección discutirá los pros y los contras de la fuente abierta enfoque.
+
+		\subsection{No verificado y No populares}
+
+A pesar del uso y la aceptación del software desarrollado bajo licencia de código abierto, los proyectos RTL de código abierto no han recibido el mismo tipo de interés o la participación de las empresas más grandes de IP. 
+
+Un problema es para las personas que desarrollan IP destinados para su implementación en ASIC, es la falta de un conjunto de herramientas de verificación para los IP de codigo abierto, y por lo tanto la incapacidad para verificar rápidamente la funcionalidad de un core, esto es inaceptable dado el elevado costo de la corrección de errores. Se podria sugerir la inclusión obligatoria de una herramienta de verificacióne con el core, sin embargo, las herramientas estándares de verificación que se encuentran disponibles en la industria son de entidades propietarias y tienen un elevado costo y pueden variar de un proveedor a otro. 
+
+Es sorprendente que no existen herramientas de verificación de código abierto en la industria todavía, esto pone un serio obstáculo para la entrada al mercado de desarrolladores IP por el importante costo del conjunto de herramientas de Entorno de desarrllo integrado (EDA) capaces de realizar la verificación.A falta de las opciones de EDA de código abierto continuarán limitando las aplicaciones de estos núcleos opensource, y para minimizar el riesgo las implementaciones se realizaran en dispositivos como las FPGAs donde generalmente se pueden hacer cambios  del RTL con un bajo costo 
+ 
 
 		\subsection{¿Quien tiene el Hardware?}
+
+Una barrera para el desarrollo de hardware de código abierto que no la tiene el desarrollo de software, es el requerimiento de una plataforma donde implementar el diseño del prototipo. Estas plataformas, típicamente placas que contienen múltiples periféricos ICs basadas en una FPGA, así como la depuración de hardware y programación no son independientes de un proveedor. A esto se suman las herramientas de programación de proveedores para la FPGA generalmente complicados, así como el desarrollo de hardware con una curva de aprendizaje relativamente empinada que perjudica a los principiantes.
+También  la utilidad de cualquier diseño de hardware que se podría implementar en una FPGA está limitada por el hecho de que se realiza a un nivel muy bajo de abstracción, y para lograr un resultado positivo "útil" para los experimentador o aficionado, por lo general requiere un gran trabajo a través de muchos niveles de abstracción para lograr algo que sea fácilmente utilizable a partir de una interfaz de una PC. 
+
+Un ejemplo podría ser el desarrollo de un core para que realice transacciones de I/O de un sensor, para proporcionar información a una aplicación por ejemplo que controle la temperatura en un espacio determinado. Esto requeriría el desarrollo y prueba del modelo de hardware y la implementación en FPGA . Asumiendo que es un microprocesador el que se encuentra corriendo sobre la FPGA, dando servicios de red a través de un sistema operativo de tiempo real (RTOS), este módulo personalizado debería requerir el desarrollo de una capa de software, lo que significa la necesidad de un driver para que permita al sistema operativo en tiempo real interaccionar con el periférico, haciendo una abstracción del hardware y proporcionando una interfaz para usarlo. El sistema operativo en tiempo real se conecta con la aplicación que se ejecuta en el microprocesador de la FPGA para proporcionan lo datos a través del enlace de red, solo entonces los datos de este sensor se encontraran disponibles para la aplicación de nivel superior. This is just one example where, quite probably the designer might have chosen a solution that uses a standard bus, however there’s often cases for custom controller or interface cores in FPGAs to provide
+access to legacy, or very-new or esoteric bus standards, and highlights the extra work required beyond writing RTL to provide the physical interface.
+Viendo la cantidad de desarrollo y pruebas requeridas para poner en práctica estas soluciones típicamente, es fácil sentirse abrumado por la cantidad de trabajo necesario para completar una tarea tan aparentemente trivial.
+
+Comparando esto con adoptar un trabajo opensource de software, que consiste en la descargar de una código fuente,of downloading a development source tree and building (within minutes) el proyecto con lsd herramientas de desarrollo incluidas, o  
+or easily obtained, on the operating system. La aplicación puede ser ejecutada en el  host para comprobar la funcionalidad y la mayor parde del ciclo de desarrollo termina allí. Las diferencias son el acceso inherentes a la plataforma de desarrollo (el host), las herramientas de desarrollo mucho mas simples (gcc, make en el sistema host) el ciclo de desarrollo, pruebas más cortas y más fácil (que se ejecuta en el equipo host a través de un shell.)
 
 		\subsection{OpenRISC}
 
