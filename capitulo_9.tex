@@ -50,8 +50,26 @@
 		
 		\subsection{Descripción de la Arquitectura}
 		
+		La Figura ~\ref{fig:minsoc} muestra un esquema de la arquitectura planteada en el prototipo. Se utiliza un estación de trabajo corriendo las
+		herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada para arquitecturas destino openRISC. Se requiere de un
+		servidor que proporcione un puerto para la depuración con GDB , acción realizada por la aplicación Advanced JTAG Bridge que provee la interfase de
+		comunicación entre el TAP JTAG conectado al SoC a través el cable JTAG y la estación de trabajo.
+		
+		\begin{figure}[!h]
+ 		\begin{center}
+  		\includegraphics[width=0.8\textwidth,keepaspectratio=true]{./images/minsoc}
+  		\caption{Arquitectura Prototipo 1}
+  		\label{fig:minsoc}
+ 		\end{center}
+		\end{figure}
+		
+		El módulo Advanced Debug Interface proporciona soporte para la depuración via JTAG, está conectado directamente al microprocesador y a su vez al bus
+		general Wishbone donde se conectan el resto de los periféricos. Se conectan al sistema mediante el bus antes mencionado : un modulo	de RAM
+		sintetizado, un módulo de arranque (startup), un módulo SPI que interactúa con la memoria flash on board de la placa S3ADSP1800A , un módulo UART y
+		un módulo ETHERNET. El sistema inyecta un pequeño código de arranque directamente al bus de instrucciones al iniciar o luego de un reset. 
 			
 		\subsection{Implementación}
+		
 		 
 		
 		\subsection{Diagrama de Secuencia}
@@ -59,15 +77,19 @@
 		
 		\subsection{Testing}
 		\subsubsection{Modo de prueba de requerimientos}
+		La capacidad de procesamiento del sistema se probó mediante alguno programas de cálculo matricial (matrices binarias). 
+		
+		Se utilizaron diferentes aplicaciones de prueba de periféricos para validar el correcto funcionamiento de los mismos. 
 		
 		\subsubsection{Diseño y selección de aplicaciones de prueba}
+		Como primer programa de prueba se realizó un multiplicador de matrices binarias generadas mediante una Secuencia binaria pseudo aleatoria (PRBS).  
 		
 		
 		\subsubsection{Resultados obtenidos}
 		
 	
 		\subsection{Conclusión}
-		Se pudo implementar con éxito el prototipo número uno cuyos resultados muestran que es de vital importancia 
+		Se pudo implementar con éxito el prototipo número uno cuyos resultados muestran
 			
 	\section{PROTOTIPO DOS: Implementación del SoC ORPSoc en FPGA}
 		\subsection{Introducción}
