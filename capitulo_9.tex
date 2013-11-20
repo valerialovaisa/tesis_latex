@@ -22,6 +22,9 @@
 			opción para sistemas embebidos de la librería glibc utilizada en los sistemas estándar.
 		
 		\subsection{Criterio para la realización de testing}
+		El testing desarrollado apunta verificar el cumplimiento de los requerimientos individualmente e incrementalmente. Se pretende utilizar las
+		aplicaciones de prueba provistas y desarrollar algunas que verfiquen los requerimientos de compilación , depuración y ejecución de aplicaciones para
+		openRISC. 
 		
 	
 	\section{PROTOTIPO UNO: Implementación del SoC MinSoC en FPGA}
@@ -31,6 +34,8 @@
 		de síntensis, place \& route(PAR) y programación de la FPGA Spartan 3A. 
 		
 		\subsection{Requerimientos del prototipo}
+		\begin{table}[h]
+		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
@@ -47,9 +52,10 @@
 		RQX-PA 5 & Se debe lograr depurar paso a paso y mediante break points las aplicaciones desarrolladas\\
 		\hline		
 		\end{tabular}
+		\end{table}
 		
 		\subsection{Descripción de la Arquitectura}
-		
+	
 		La Figura ~\ref{fig:minsoc} muestra un esquema de la arquitectura planteada en el prototipo. Se utiliza un estación de trabajo corriendo las
 		herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada para arquitecturas destino openRISC. Se requiere de un
 		servidor que proporcione un puerto para la depuración con GDB , acción realizada por la aplicación Advanced JTAG Bridge que provee la interfase de
@@ -57,7 +63,7 @@
 		
 		\begin{figure}[!h]
  		\begin{center}
-  		\includegraphics[width=0.8\textwidth,keepaspectratio=true]{./images/minsoc}
+  		\includegraphics[width=1\textwidth,keepaspectratio=true]{./images/minsoc}
   		\caption{Arquitectura Prototipo 1}
   		\label{fig:minsoc}
  		\end{center}
@@ -69,20 +75,32 @@
 		un módulo ETHERNET. El sistema inyecta un pequeño código de arranque directamente al bus de instrucciones al iniciar o luego de un reset. 
 			
 		\subsection{Implementación}
+		\subsubsection{Síntesis , PAR , Generación del bitfile del proyecto}
 		
-		 
+		El proceso de completo se detalla en el ANEXO I de este trabajo. 
+		
+		\subsubsection{Configuración de la FPGA}
+		Este proceso de grabación se realizó mediante las herramientas del fabricante (iMPACT) y mediante un herramienta Open Source llamada xc3sprog. 
 		
 		\subsection{Diagrama de Secuencia}
 		
 		
 		\subsection{Testing}
 		\subsubsection{Modo de prueba de requerimientos}
-		La capacidad de procesamiento del sistema se probó mediante alguno programas de cálculo matricial (matrices binarias). 
+		La capacidad de procesamiento del sistema se probó mediante alguno programas de cálculo matricial (matrices binarias).  
 		
 		Se utilizaron diferentes aplicaciones de prueba de periféricos para validar el correcto funcionamiento de los mismos. 
 		
 		\subsubsection{Diseño y selección de aplicaciones de prueba}
-		Como primer programa de prueba se realizó un multiplicador de matrices binarias generadas mediante una Secuencia binaria pseudo aleatoria (PRBS).  
+		\paragraph{Prueba del perisférico UART}
+		Para la realización de este test se utilizó el programa 
+		
+		\paragraph{Prueba de procesamiento: Multiplicador de matrices binarias}
+		Como primer programa de prueba se realizó un multiplicador de matrices binarias generadas mediante una Secuencia binaria pseudo aleatoria (PRBS). Se
+		realizaron los productos con matrices cuadradas incrementando su tamaño iteración a iteración. 
+		
+		
+		
 		
 		
 		\subsubsection{Resultados obtenidos}
@@ -99,6 +117,8 @@
 		periféricos y las herramientas de desarrollo y depuración. 
 		
 		\subsection{Requerimientos del prototipo}
+		\begin{table}[h]
+		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
@@ -119,6 +139,7 @@
 		RQX-PB 7 & El prototipo debe ser evaluado mediante el benchmark CoreMark para el posterior análisis de las capacidades del SoC\\
 		\hline		
 		\end{tabular}
+		\end{table}
 
 		\subsection{Descripción de la Arquitectura}
 
@@ -141,7 +162,9 @@
 		adiciona la capacidad de ejecución un proceso con múltiples hilos. 
 
 		\subsection{Requerimientos del prototipo}
-		
+
+		\begin{table}[h]
+		\centering		
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
@@ -161,6 +184,7 @@
 		RQX-PC 7 & \\
 		\hline		
 		\end{tabular}
+		\end{table}
 		
 		
 		\subsection{Implementación}
@@ -177,6 +201,9 @@
 	    reducida del núcleo de Linux y herramientas provistas por el paquete BusyBox. 
 		
 		\subsection{Requerimientos del prototipo}
+		
+		\begin{table}[h]
+		\centering	
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
@@ -196,6 +223,8 @@
 		RQX-PC 7 & \\
 		\hline		
 		\end{tabular}
+		\end{table}
+		
 		
 		\subsection{Implementación}
 		
