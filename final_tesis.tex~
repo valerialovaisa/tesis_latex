@@ -65,6 +65,7 @@ Michelini Valeria \bigskip \bigskip \bigskip \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newpage
+
 \input{capitulo_1}
 \newpage
 \input{capitulo_2}
@@ -101,17 +102,17 @@ Michelini Valeria \bigskip \bigskip \bigskip \\
 \bibitem{Etiqueta04}A.Martina y A.Maschio, Cordoba 2012.
   \textit{Diseño,Implementación y Testing de un Driver Para El Procesador De Redes De Petri En Un Ambiente Multicore}.
 
-\bibitem{Etiqueta05} Edwards, M.D. and Forrest, J, IEE Colloquiumon, 1995.
-  \textit{ Hardware/software partitioning for performance enhancement. Partitioning in Hardware-Software Codesigns}.
+\bibitem{Etiqueta05} Edwards, M.D. and Forrest, J, IEE Colloquium
+on, 1995.
+  \textit{ Hardware/software partitioning for performance
+enhancement. Partitioning in Hardware-Software Codesigns}.
 
 \bibitem{Etiqueta06} Open Source Initiative, The Open Source Definition.
  \url{http://www.opensource.org}
 
 \bibitem{Etiqueta07} Free Software Foundation, Inc., The Free Software Definition - GNU Project - Free Software Foundation(FSF), 2010.
  \url{http://www.gnu.org/philosophy/free-sw.html}
- 
-\bibitem{etiqueta_OR_01} Damjan Lampret, Nov 2007.
-  \textit{OpenRISC 1000 Architecture Manual, Rev 1.3}
+
 
 \end{thebibliography}
 
