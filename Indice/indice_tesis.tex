@@ -511,9 +511,8 @@ A medida que mas proyectos opnesource son desarrollados y los sistemas de desarr
 
 		\subsection{\textcolor{orange}{Licencias}}
 
-Una cuestión que queda por resolver es el de la concesión de licencias para hardware de código abierto diseños. El proyecto OpenRISC utiliza licencias públicas del proyecto GNU. estos refieren específicamente a software, y no se sabe lo bien que se aplican a hardware.
-El sitio web del proyecto GNU contiene una sección con frecuencia-preguntó-preguntas (FAQ)
-que se ocupa de esta consulta. Afirma lo siguiente.
+Una cuestión que queda por resolver es el de la concesión de licencias para el diseño de hardware de código abierto. El proyecto OpenRISC utiliza licencias públicas del proyecto GNU. Estos refieren específicamente a software, y no se sabe lo bien que se aplican a hardware.
+El sitio web del proyecto GNU contiene una sección con preguntas frecuentes (FAQ) que se ocupa de esta consulta. Afirma lo siguiente.
 
 \textit{Cualquier material que puede ser licenciado con derechos de autor puede ser licenciado bajo la GPL.
 GPLv3 también se puede utilizar para materiales de licencia cubiertos por otras leyes copyrightlike, como máscaras de semiconductores. Así, por ejemplo, puede liberar un dibujo de un diseño de hardware bajo la GPL. Sin embargo, si
@@ -522,7 +521,7 @@ no tienen obligaciones de la licencia al distribuir o vender el dispositivo: se
 queda fuera del ámbito del derecho de autor y por lo tanto la propia GPL.}
 
 Esto no es claro para los diseños específicos para FPGA o código, incluso RTL, ya que puede terminar como un conjunto de máscaras, o puede terminar como un flujo de bits binario para configuración de una FPGA.
-Una indicación de la naciente idea de desarrollo de hardware de código abierto es proviene de la relativamente reciente publicación (febrero de 2011) de un conjunto de principios para los participantes de la comunidad de hardware de código abierto. El siguiente es el código abierto Hardware (OSHW) Declaración de Principios 1.0 de FreedomDefined.org.
+Una indicación de la naciente idea de desarrollo de hardware de código abierto proviene de la publicación reciente (febrero de 2011) de un conjunto de principios para los participantes de la comunidad de hardware de código abierto. El siguiente es el código abierto Hardware (OSHW) Declaración de Principios 1.0 de FreedomDefined.org.
 
 \textit{El Hardware de código abierto cuyo diseño está a disposición del público
 por lo que cualquier persona puede estudiar, modificar, distribuir, poner, y vender el
@@ -533,18 +532,27 @@ contenida, herramientas de diseño y de código abierto para maximizar la capaci
 de las personas para hacer y usar el hardware} %\cita{}(65)
 
 Estas publicaciones proporcionan un punto de referencia para saber si el diseño puede estar bajo licencia "open source hardware".
- These guidelines are provided as a benchmark against which the licenses of designs
-using the “open source hardware” label should be measured. What follows
-the principles on FreedomDefined.org is a list of guidelines dealing with the specific
-topics of source and documentation, derived works, and the limitations of the
-licenses. It is expected, according to these principles, that all source and documentation
-material for the design be made available. Any derived or modified works
-should be permissible. There is also the acknowledgment that any Open Hardware
-license can probably be used to restrict (or, in this case, intentionally un-restrict)
-the plans of a design, but not the use of the manufactured device. These are all
-concepts found often in open source software licenses, but again, it is not so clear
-in every use case of open source hardware designs how these licenses for software
-would apply.
+El FreedomDefined.org es una lista con principios que específicade  fuente y  documentación, trabajos derivados y las limitaciones de la licencias. Se espera de acuerdo con estos principios, que todo el material este disponible como código fuente y la documentación para el diseño. Cualquier trabajos derivados o modificado deba estar disponible. 
+Cualquier licencia de hardware de código abierto se puede utilizar para restringir (o en este caso, de forma deliberada sin restringir)los planes de un diseño, pero no el uso del dispositivo fabricado. Estos son conceptos que se encuentran a menudo en las licencias de software de código abierto, pero de nuevo, no es tan claro como se aplica en el casos del diseño del hardware de código abierto como es para el software. 
+
+Por ahora, la primera licencia de hardware de código abierto es la  Amateur Packet Radio Licencia Open Hardware Tucson ( TAPR OHL). Los autores OHL TAPR identifican el problema con las licencias de software existentes, si bien los derechos de autor protegen la documentación de copias, modificaciones y distribuciones, que tiene poco que ver con el derecho de hacer , distribuir o usar un producto basado en la documentación %\cita{} ( 66 ) .
+Su licencia identifica patentes como un problema, pero afirma que quienes se beneficien de la OHL no podran
+presentar una demanda alegando que el diseño infringen sus patentes u otra propiedad intelectual.
+How open source hardware licenses and patent law will be compatible with regards to handling infringement is yet to be seen
+En consecuencia, la TAPR OHL ha sido adoptada por un puñado de aficionados y para los intereses de empresas comerciales. Ha recibido críticas
+del Instituto de Código Abierto (OSI) en la adopción de un significado diferente de la  palabra " distribución " que se suele utilizar en sus licencias, y por lo tanto no tiene un amplio apoyo entre los promovedores de código abierto%\cita{} (67) . 
+Sin embargo, es posibles que licencias alternativas de hardware de código abierto surjan para adaptarse a necesidades.
+Para el proyecto OpenRISC hay un equilibrio para afrontar la adopción entre una licencia que es demasiado liberal, y por lo tanto menos probable que resulte en la contribución a la comunidad de desarrollo, y una licencia que fomenta mas el desarrollo de código abierto, pero se considera entonces demasiado restrictiva con respecto a la utilización de codigo abierto IP con una IP patentada.
+
+Por un lado, hay un deseo de aumentar la participación en el desarrollo de hardware de código abierto en general, y específicamente en el proyecto OpenRISC MinSoc y OrpSoc,para aumentar el conjunto de trabajos disponibles, esto se puede lograr utilizando un licencia viral como lo es la GNU GPL (considerando la síntesis del codigo RTL como un proceso de compilación estatica). 
+
+Por otra parte el trabajo de desarrollo de diseños ASIC privativos de gran escala ayuda a demostrar valor de los IP, por lo que una licencia que permita el uso de IPs Open Source en conjunto con  IPs privativos es deseable.
+Para la implementación RTL del OpenRISC, el OR1200, la no-viral menor GNU Lesser (L) licencia GPL se ha utilizado y, a pesar de la creación de instancias de un bloque de IP RTL
+en un diseño de "hardware" no se trata de forma específica en el (L) GPL, es la última
+(más liberal) criterio de la licencia que se ha tomado para el proyecto OpenRISC
+hasta el momento.
+ 
+
 What remains, however, is for actual licenses to be written, applied to works
 and their validity tested. For now, the first major open source hardware license to
 be released is the Tuscon Amateur Packet Radio Open Hardware License (TAPR
@@ -585,6 +593,15 @@ under the GPL, which ensured all other code used with it came under a similarly
 public domain. However, not all open source software was released under these viral
 licenses, with the BSD and MIT licenses being less restrictive with enforcing the
 freedom of the user.
+
+		\subsection{OpenRisc}
+
+Como se dijo anteriormente en el debate sobre la tecnología de código abierto por lo general los modelos de desarrollo de código abierto no son imnovadores.
+ La mayor parte de los proyectos de software libre tienen como objetivo utilizar recursos ya existentes y bien conocidos de manera que permitan la apertura y eliminación de restricciones que se encuentran en otra implementaciones propietarias. Esta es la duda en el caso de la OpenRISC proyecto. Es en gran medida tomando ideas que ya son bien conocidos y comoditizados
+y la creación de una versión con más libertad para el usuario final. Había muy poco, si
+nada, innovador en la especificación arquitectónica OR1K. Esto no quiere decir
+los resultados no tienen ningún valor. Tampoco necesariamente excluye cualquier OpenRISC futuro
+o implementaciones de arquitecturas con el objetivo de innovar.
 
 		\subsection{\textcolor{orange}{conclución}}
 
