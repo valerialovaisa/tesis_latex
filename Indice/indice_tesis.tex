@@ -612,22 +612,42 @@ A día de hoy los diseños hardware de código abierto son una realidad palpable
 
 	\section{\textcolor{orange}{Microprocesadores Soft-Core}}
 \chapter{Análisis del microprocesador OpenRISC}
-	\section{Introducción}
-	El proyecto OpenRISC apunta al desarrollo de arquitecturas RISC de propósito general. OpenRISC 1000, desarrollada por OpenCores, describe una
-	familia de procesadores de 32 y 64-bits con procesamiento opcional de punto flotante y vectores.\cite{etiqueta_OR_01}. Su primera implementación
-	llamada OpenRISC 1200 (OR1200), escrita en Verilog fue diseñada bajo licencia LGPL con modelos y firmware bajo licencia GPL. 
+	\section{Soft-Core Processors}
 	
-	El OR1200 es un RISC escalar con microarquitectura Harvard, un pipeline de enteros de 5 etapas, soporte de memoria virtual (MMU) y capacidades DSP
-	básicas. Las memorias cache por defecto son directas, de 1 vía con 8KB de datos y 1 vía con 8KB de instrucciones respectivamente, cada  una con
-	16-bytes de tamaño de línea. Son implementadas inicialmente y constituidas por un TLB de datos de 1 vía y 64 entradas basada en hash en conjunto con
-	una TLB de instrucciones de 1 vía y 64 entradas basada en hash. Incluye una unidad de debug de tiempo-real, tick timer, controlador de interrupciones
-	programable y soporte para el manejo de energía. La mayoría de sus características pueden ser configuradas por el usuario.
+Un soft-core processor o abreviado SCP, también llamado soft microprocessor o soft 
+processor, es un microprocesador que puede ser implementado utilizando síntesis lógica en  diferentes dispositivos lógicos programables como CPLDs o FPGAs, o incluso puede ser incluido en un diseño para ASIC %\cita{}(37).
+ Suelen ser distribuidos en forma de código fuente en algún lenguaje de descripción de hardware, principalmente VHDL o Verilog, aunque  algunos SCPs comerciales se distribuyen en formatos propietarios. 
+Los principales fabricantes de dispositivos lógicos programables como se dijo en capitulos anteriores tienen su propio  SCP comercial especialmente diseñado y optimizado para funcionar en sus propias 
+FPGAs. Así Xilinx tiene el PicoBlaze %\cita{}(38) 
+y el MicroBlaze (39), Altera proporciona el Nios 
+II (40), y Lattice distribuye su LatticeMico32 (41). 
+También existen una gran variedad de SCPs distribuidos en forma de código 
+abierto, como el OpenRISC 1200 (42) mantenido por la comunidad Opencores (43), o los 
+SCPs LEON2 y LEON3 (44) (45) que proporciona la compañía Gaisler Research (46).
 		
-	\section{Arquitectura}
+A continuación se presentan más detalladamente las características de estos SCPs, y un resumen comparativo de sus características
+	\section{PicoBlaze}
 	
-	La arquitectura OR1000 se basa en la arquitectura del DLX, que es similar a la arquitectura del primer MIPS (MIPS-I). Posee un espacio de direcciones
-	lógicas lineal de 32 o 64 bits y espacio de direcciones físicas de implementación opcional. Utiliza un formato de instrucciones simple y de largo
-	uniforme en 4 versiones:
+	PicoBlaze es un microcontrolador RISC de 8 bits desarrollado por Xilinx y optimizado para sus FPGAs. Esta optimizado para ocupar muy poco área, tan sólo 96 slices, y en cuanto a velocidad puede llegar a ejecutar entre 44 y 100 millones de instrucciones por segundo, dependiendo del speedgrade y la familia de FPGA sobre la que se implemente. Las principales características del PicoBlaze son:
+	
+  
+	\begin{itemize}
+	  \item  16 Registros de propósito general de 1 byte.
+	  \item 1024 bytes de instrucciones en memoria on-chip que se cargan al programarse la FPGA.
+	  \item 256 puertos de entrada y 256 de salida para conectar lógica o periféricos externos.
+	\end{itemize}
+	
+	
+	  
+	La arquitectura general consiste en una serie de bloques presentados en la figura ~\ref{fig:PicoBlazer}.
+		
+	\begin{figure}[h!]
+ 	\begin{center}
+  	%\includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/estructurapico}
+  	\caption{estructura interna del microcontrolador PicoBlaze}
+  	\label{fig:ArqOR1200}
+ 	\end{center}
+	\end{figure}
 	
 	\begin{itemize}
 	  \item  Set de instrucciones Básico de OpenRISC (ORBIS 32/64) con instucciones de 32 bits alineados en memoria operando con datos de 32 o 64
