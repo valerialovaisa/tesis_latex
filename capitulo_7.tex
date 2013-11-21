@@ -1,19 +1,31 @@
 %%%%%%%%%%%ESTUDIO DEL PROBLEMA%%%%%%%%%%%%%%%%
 \chapter{Estudio del Problema}
-	\section{Introducción}
-	Como primera acción se analizó la factibilidad de implementación de un SoC con licencia OpenSource en FPGA, razón que condujo a la investigación del
-	tópico en búsqueda de información necesaria que determine si existe tal factibilidad. Las características relevadas durante la investigación
-	aportaron información respecto al hardware, las herramientas de desarrollo y el sistema operativo necesario para llevar a cabo la implementación. 
 	
-    Se debió discernir entre las diversas alternativas de hardware que se tenían disponibles al momento del desarrollo de este trabajo. Esta situación
-    derivó en una valoración de los diferentes entornos de desarrollo y sistemas operativos asociados que cumplan con el paradigma del software
-    libre.
+	\section{Introducción}
+	\par
+	Como primera acción se analizó la factibilidad de implementación de un SoC con licencia OpenSource en FPGA, razón que condujo a la investigación del
+	tópico en búsqueda de información necesaria que determine si existe tal posibilidad. Las características relevadas durante la investigación
+	aportaron información respecto al hardware, las herramientas de desarrollo y el sistema operativo necesario para llevar a cabo la implementación. 
+	\vspace{0.5cm}
+	\par
+	Para la selección del SoC se debió definir el microprocesador y los periféricos a utilizar, como así también las herramientas necesarias para la
+	compilación y depuración de aplicaciones que corran sobre él. Esta situación derivó en una valoración de los diferentes entornos de desarrollo y
+	sistemas operativos asociados que cumplan con el paradigma del software libre. Fue necesario además discernir entre las diversas alternativas de
+	hardware que se tenían disponibles al momento del desarrollo de este trabajo compatibles con el SoC seleccionado. 
+	\vspace{0.5cm}
+	\par
+	Fue necesario evaluar la posibilidad de implementar un Sistema Operativo que provea acceso mediante drivers a todos los periféricos conectados a
+	la plataforma hardware elegida. La síntesis e implementación sobre FPGA requiere de aplicaciones específicas que debieron ponderarse para alcanzar el
+	cumplimiento de los requerimientos.
 	
 	\section{Requerimientos del Usuario}
-	Se presenta en este apartado un listado de los requerimientos elecitados que tienen como objetivo comprender el dominio del problema y permiten
-	trabajar en la realización de una solución eficiente.
+	\par
+	Se presenta en este apartado un listado ~\ref{tab:requsr} de los requerimientos elecitados que tienen como objetivo comprender el dominio del
+	problema y permiten trabajar en la realización de una solución eficiente.
 	
 		\subsection{En cuanto al Hardware}
+		\begin{table}[h]
+		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción & Tipo\\
@@ -30,6 +42,9 @@
 		bootloader & Memoria Disponible\\
 		\hline
 		\end{tabular}
+		\caption{Listado de requerimientos de usuario}
+		\label{tab:requsr}
+		\end{table}
 					
 		\subsection{En cuanto a las Licencias}
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
@@ -77,14 +92,72 @@
 		\end{tabular}
 	
 	\section{Análisis de Riesgo}
-			\subsection{Introducción}
-			Antes de comenzar la implementación del sistema se debió realizar una 	
-			\subsection{Clasificación de los riesgos}
+		\subsection{Introducción}
+        Para lograr producir aquello que se requiere, en el plazo solicitado y ajustados al presupuesto asignado, se necesita desarrollar
+        un proceso que incluya desde la etapa más temprana la gestión de los riesgos asociados a los requerimientos, de forma que se contribuya al
+        mejoramiento gradual del proceso de desarrollo y la gestión de un proyecto.
+		\vspace{0.5cm}
+		\par
+        La gestión de riesgos procura formalizar conocimiento orientado a la minimización de riesgos en proyectos, mediante la
+        generación de principios y buenas prácticas de aplicación realista \cite{etiqueta_riegos1}. Hasta el momento se ha propuesto
+        y utilizado diferentes enfoques de gestión del riesgo desde que Boehm \cite{etiqueta_riegos2} atrajo a la comunidad de ingeniería del
+        software hacia la gestión del riesgo. Sin embargo, es evidente que pocas organizaciones utilizan todavía de una forma explícita y sistemática
+        métodos específicos para gestionar los riesgos en sus proyectos.
+		\vspace{0.5cm}
+		\par
+        En \cite{etiqueta_riegos3} se presenta la definición de riesgo que plantea que el riesgo afecta a los futuros acontecimientos, implica
+        cambios, e implica elección conjunto a la incertidumbre asociada a la misma. Es indiscutible que están presentes permanentemente las características de
+        incertidumbre (acontecimiento que caracteriza al riesgo y que puede o no ocurrir) y de pérdida (si el riesgo se convierte en una realidad
+        ocurrirán consecuencias no deseables o pérdidas).
+		\vspace{0.5cm}
+		\par
+		Están definidas las categorías de riesgos: los riesgos del proyecto, que amenazan el plan; los riesgos técnicos, que amenazan la calidad y la
+		planificación temporal; y los riesgos del negocio, que amenazan la viabilidad del proyecto o del producto. Otra categorización a considerar a
+		partir del conocimiento que se tenga de ellos: los riesgos conocidos (los que se descubren en las evaluaciones); los riesgos predecibles (se
+		extrapolan de la experiencia) y los riesgos impredecibles (pueden ocurrir, pero es muy difícil identificarlos de antemano).
+		\vspace{0.5cm}
+		\par
+     	También son claras las estrategias frente al riesgo. Por un lado están las reactivas, cuyo método es evaluar las consecuencias del riesgo cuando
+ 		este ya se ha producido (ya no es un riesgo) y actuar en consecuencia. Este tipo de estrategias acarrea consecuencias negativas, al poner el
+ 		proyecto en peligro. Y por el otro las proactivas, que aplican el método de evaluación previa y sistemática de los riesgos y sus posibles
+ 		consecuencias, a la par que conforman planes de contingencias para de evitar y minimizar las consecuencias. Consecuentemente, este tipo de
+ 		estrategias permite lograr un menor tiempo de reacción ante la aparición de riesgos impredecibles.
+		\vspace{0.5cm}
+		\par
+		De acuerdo con \cite{etiqueta_riegos3}, la administración o gestión de riesgos es un proceso iterativo que se aplica durante todo el proyecto y se
+		desarrolla en cuatro etapas detalladas en la Figura ~\ref{fig:riesgos}. Se utilizó este modelo como guía para el análisis de los riegos del
+		proyecto.
+		
+		\begin{figure}[!h]
+ 		\begin{center}
+  		\includegraphics[width=0.8\textwidth,keepaspectratio=true]{./images/riesgos}
+  		\caption{Procedimiento para la gestión de riesgos}
+  		\label{fig:riesgos}
+ 		\end{center}
+		\end{figure}
+		
+		\subsection{Identificación y análisis de riesgos}
+		\par
+		Se realizó un relevamiento inicial de riegos respecto de cada requerimiento de usuario planteado. Fue efectuado un análisis de severidad,
+		probabilidad de ocurrencia y causas para cada riesgo asociado. La severidad	del	impacto	de un riesgo concretado	se medió de la siguiente
+		manera:
+		
+		\begin{itemize}
+		  \item Catastrófico
+		  \item Crítico	
+		  \item Severo	
+		  \item Menor	
+		  \item Despreciable 
+		\end{itemize}
+		
+		
+			
+		\subsection{Diagrama del sistema}
 			
 			
-			\subsection{Diagrama del sistema}
+		\subsection{Identificación de riesgos}
 			
-			\subsection{Identificación de riesgos}
+			
 			
 	\section{Estudio de componentes}
 		
