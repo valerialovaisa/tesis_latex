@@ -51,11 +51,13 @@
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
 		\hline 
-		RQX-LC 1 &  Todo el hardware implementado debe tener licencia LGPL o GPLv2 en su defecto & Licencias de hardware\\
+		RQX-LC 1 &  Todo el codigo RTL implementado debe tener licencia LGPL o GPL en su defecto & Licencias de hardware\\
 		\hline 
-		RQX-LC 2 &  Las herramientas de desarrollo utilizadas deben poseer licencias LGPL o GPLv2 en su defecto & Licencias de Software\\
+		RQX-LC 2 &  Las herramientas de desarrollo utilizadas para el diseño de hardware  deben poseer licencias LGPL o GPL en su defecto & Licencias de Software\\
+		\hline 
+		RQX-LC 3 &  Las herramientas de desarrollo de saoftware utilizadas para deben poseer licencias LGPL o GPL en su defecto & Licencias de Software\\
 		\hline
-		RQX-LC 3 & El sistema operativo elegido debe poseer licencia LGPL o GPLv2 & Licencias de Software\\
+		RQX-LC 4 & El sistema operativo elegido debe poseer licencia LGPL o GPL & Licencias de Software\\
 		\hline
 		\end{tabular}
 			
@@ -64,14 +66,13 @@
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
 		\hline 
-		RQX-HD 1 &  Las herramientas de desarrollo elegidas en base a la arquitectura a implementar deben tener la menor cantidad de restricciones respecto
-		del sistema operativo donde serán ejecutadas & Portabilidad\\
+		RQX-HD 1 &  Las herramientas de desarrollo de Software y Hardware deben tener la menor cantidad de restricciones respecto del sistema operativo donde serán ejecutadas & Portabilidad\\
 		\hline 
-		RQX-HD 2 &  Las herramientas de desarrollo deben brindar la capacidad de desarrollar y depurar programas para la arquitectura seleccionada &
-		XXXXXXXXXXXX\\ % Revisar tipo de requerimiento
+		RQX-HD 2 &  Las herramientas de desarrollo de Software deben brindar la capacidad de compilar y depurar programas para la arquitectura seleccionada &
+		Herramientas de Software\\
 		\hline
-		RQX-HD 3 &  Las herramientas de desarrollo de la placa seleccionada deben proveer soporte para el acceso a sus periféricos on board &
-		XXXXXXXXXXXX\\ % Revisar tipo de requerimiento
+		RQX-HD 3 &  Las herramientas de desarrollo de Hardware para la placa seleccionada deben proveer soporte para el acceso a sus periféricos on board &
+		Herramientas de Hardware\\ 
 		\hline 
 		\end{tabular}
 		
@@ -81,13 +82,11 @@
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
 		\hline 
 		RQX-SO 1 &  El sistema operativo elegido debe disponer de drivers y librerías que permitan el acceso a todos los dispositivos incluídos en el SoC &
-		XXXXXXXXXXXXX\\ % Revisar tipo de requerimiento
+		Driver y Librerías\\
 		\hline 
-		RQX-SO 2 &  El sistema operativo elegido debe tener la capacidad de ejecución multitarea e hilos & XXXXXXXXXXXX\\ % Revisar tipo de
-		% requerimiento
+		RQX-SO 2 &  El sistema operativo elegido debe tener la capacidad de ejecución multitarea e hilos & capacidad de ejecución del SO\\ 
 		\hline
-		RQX-SO 3 &  El sistema operativo elegido debe posibilitar la ejecución de aplicaciones de tiempo real & XXXXXXXXXXXX\\ % Revisar tipo de
-		% requerimiento
+		RQX-SO 3 &  El sistema operativo elegido debe posibilitar la ejecución de aplicaciones de tiempo real & Sistema Operativo\\ 
 		\hline 
 		\end{tabular}
 	
