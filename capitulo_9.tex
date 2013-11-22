@@ -180,7 +180,7 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
-		\rowcolor[gray]{0.8}  Caso de Prueba& Ejecución de la aplicación multiplicadora de matrices binarias  desarrollada \\
+		\rowcolor[gray]{0.8}  Caso de Prueba& Ejecución de la aplicación multiplicadora de matrices binarias generadas mediante una Secuencia binaria pseudo aleatoria (PRBS) \\
 		\hline 
 		Código de Requerimiento & RQX-PA 4\\ 
 		\hline 
@@ -188,7 +188,8 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline 
 		Código de Testing & T003\\ 
 		\hline
-		Propósito &  Compilación y Ejecución de un  programa sencillo en c.Verificar si el sistema de hardware está funcionando y  prueba del entorno de desarrollo de software. \\
+		Propósito &  Compilación y Ejecución de un  programa sencillo en c.Verificación de la capacidad de procesamiento del sistema mediante la realización de los productos con matrices cuadradas incrementando su tamaño iteración a iteración.  
+\\
 		\hline
 		Realizado Por & Gomez, Pablo \\
 		\hline	
@@ -312,28 +313,14 @@ Fin del programa
 
 \newpage
 
-
-		\subsubsection{Modo de prueba de requerimientos}
-		La capacidad de procesamiento del sistema se probó mediante alguno programas de cálculo matricial (matrices binarias).  
-		
-		Se utilizaron diferentes aplicaciones de prueba de periféricos para validar el correcto funcionamiento de los mismos. 
-		
-		\subsubsection{Diseño y selección de aplicaciones de prueba}
-		\paragraph{Prueba del perisférico UART}
-		Para la realización de este test se utilizó el programa 
-		
-		\paragraph{Prueba de procesamiento: Multiplicador de matrices binarias}
-		Como primer programa de prueba se realizó un multiplicador de matrices binarias generadas mediante una Secuencia binaria pseudo aleatoria (PRBS). Se
-		realizaron los productos con matrices cuadradas incrementando su tamaño iteración a iteración. 
-		
-		
-		
-		\subsubsection{Resultados obtenidos}
-		
 	
 		\subsection{Conclusión}
-		Se pudo implementar con éxito el prototipo número uno cuyos resultados muestran
+Este prototipo fue de vital importancia permitiendo mostrar que es posible instanciar sobre el kit de desarrollo disponible un system on de chip básico open source en una FPGA saprtam 3a.
+La mayor cantidad de tiempo fue para la  determinación de las herramientas de desarrollo necesarias para el hardware disponible, ya que la documentación sobre el tema era insuficiente o nula. Sin embargo una vez que se pudo logrado encontrar las herramientas adecuadas y  la corrección de error en el código RTL fue mucho más sencillo la implementación del prototipo.
+		
 \newpage
+
+
 		
 	\section{PROTOTIPO DOS: Implementación del SoC ORPSoc en FPGA}
 		\subsection{Introducción}
