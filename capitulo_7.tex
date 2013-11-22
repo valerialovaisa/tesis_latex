@@ -1,5 +1,5 @@
-%%%%%%%%%%%ESTUDIO DEL PROBLEMA%%%%%%%%%%%%%%%%
-\chapter{Estudio del Problema}
+
+\chapter{Analisis Requerimientos y Riesgos}
 	
 	\section{Introducción}
 	\par
@@ -183,6 +183,8 @@
 		En la Tabla ~\ref {tab:riegos} se listan los riesgos asociados, su severidad y probabilidad de ocurrencia para cada uno de los
 		requerimientos de usuario.
 		
+		\newpage
+		
 		\begin{table}[!h]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
@@ -234,16 +236,15 @@
 		\caption{Tabla de Riegos vs. Requerimientos}
 		\label{tab:riegos}
 		\end{table}
-		
-	\newpage
-	\subsection{Planificación de los riesgos}	
+	
+		\newpage
+		\subsection{Planificación de los riesgos}	
 
 Se presentan a continuación en la Tabla ~\ref {tab:planificación} las estrategias para reducir o eliminar el impacto de los riesgos detectados y analizados anteriormente. Estas estrategias generarán requerimientos de confiabilidad del sistema debido a que definen una defensa frente al riesgo y cómo este se gestionará en caso de ocurrir.
-
-			
-\begin{table}[!h]
+	
+        \begin{table}[!h]
 		\centering
-		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
 		\hline
@@ -263,10 +264,19 @@ Se presentan a continuación en la Tabla ~\ref {tab:planificación} las estrateg
 		\hline
 		 Inexistencia de herramientas de desarrollo de hardware con licencias Open Source & Imposibilidad de diseñar e implementar el Hardware & Verificar previamente la existencia de herramientas libres & Utilización de herramientas privativas con costos\\
 		\hline
+		\end{tabular}
+		\end{table}
+		\newpage
+		\begin{table}[!h]
+		\centering
+		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
+		\hline
 		Inexistencia de herramientas de desarrollo de software con licencias Open Source & Imposibilidad de compilación y depuración de aplicaciones &Comprobación de la existencia de herramientas libres & Desarrollo de las herramientas necesarias\\
 		\hline
 		Inexistencia de un sistema operativo embebido con licencia Open Source  & Ejecución única de aplicaciones bare metal  & Análisis previo de los sistemas operativos embebidos disponibles & Desarrollo de las aplicaciones necesarias que fueran provistas por el SO\\
-		\hline
+		\hline		
 		 Falta de herramientas de desarrollo portables a diversos sistemas operativos & Imposibilidad de desarrollo de aplicaciones& Verificar la posibilidad de ejecución de las herramientas en diferentes SO& Utilización de las herramientas en alguno de los SO compatibles\\
 		\hline		
 		 Compilación cruzada incompatible con la arquitectura destino& Imposibilidad de ejecución de las aplicaciones desarrolladas & Analizar la compatibilidad previa a la elección del SO &  Verificación y depuración del código de la herramienta de complilación cruzada. \\
@@ -275,12 +285,20 @@ Se presentan a continuación en la Tabla ~\ref {tab:planificación} las estrateg
 		\hline
 		Imposibilidad de depuración de programas en la arquitectura destino& Imposibilidad de ejecución paso a paso y eliminación de errores &Prueba del depurador con simulador de arquitectura & Revisión del código del depurador \\
 		\hline
-		Soporte de acceso a periféricos inexistente o con presencia de bugs & Imposibilidad de desarrollar soluciones que involucren el uso de estos periféricos & Verificación individual de las herramientas que proveen el acceso a estos periféricos & Búsqueda  de  aplicaciones alternativa o desarrollo de las mismas
- \\
+		Soporte de acceso a periféricos inexistente o con presencia de bugs & Imposibilidad de desarrollar soluciones que involucren el uso de estos periféricos & Verificación individual de las herramientas que proveen el acceso a estos periféricos & Búsqueda  de  aplicaciones alternativa o desarrollo de las mismas\\
 		\hline
 		 Drivers necesarios inexistentes o con fallos & Imposibilidad de utilización de los dispositivos necesarios&Análisis previo de los driver de los dispositivos a utilizar &  Desarrollo de los drivers necesarios\\
 		\hline
 		Librerías necesarias inexistentes o con fallos& Imposibilidad de ejecución de aplicaciones sobre el sistema operativo embebido elegido & Análisis previo de las librerías disponibles y revisión de posibles bugs informados &  Desarrollo de las librerías necesarias o corrección de errores\\
+		\hline
+		\end{tabular}
+		\end{table}
+		\newpage
+		\begin{table}[!h]
+		\centering
+		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
 		\hline
 		Incapacidad de ejecución de hilos en los SO compatibles con el microprocesador elegido &  Imposibilidad de ejecución para aplicaciones multitarea y/o multihilo & Análisis de los SO que cumplan con este requerimiento & Modificación del SO para el cumplimiento de las capacidades necesarias\\
 		\hline
@@ -291,7 +309,6 @@ Se presentan a continuación en la Tabla ~\ref {tab:planificación} las estrateg
 		\label{tab:planificación}
 		\end{table}
 		
-	\newpage	
 	\section{Estudio de componentes}
 		
 			\subsection{Objetivo}
