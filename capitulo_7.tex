@@ -210,8 +210,7 @@
 		RQX-LC 3& Inexistencia de herramientas de desarrollo de software con licencias Open Source & Severo  &  Improbable\\
 		\hline
 		RQX-LC 4& Inexistencia de un sistema operativo embebido con licencia Open Source  & Critico  &  Improbable\\
-		\hline
-		 		& Inexistencia de herramientas y librerias de sistema necesarias          & Critico  &  Probable\\
+		
 		\hline
 		RQX-HD 1& Falta de herramientas de desarrollo portables a diversos sistemas operativos & Severo  &  Ocasional\\
 		\hline		
@@ -219,7 +218,7 @@
 		\hline
 				& Falta de mecanismos de optimización de código del compilador  & Severo  &  Probable\\
 		\hline
-				& Imposibilidad de depuración de programas & Crítico  &  Probable\\
+				& Imposibilidad de depuración de programas en la arquitectura destino& Crítico  &  Probable\\
 		\hline
 		RQX-HD 3& Soporte de acceso a periféricos inexistente o con presencia de bugs & Critico &  Probable\\
 		\hline
@@ -227,7 +226,7 @@
 		\hline
 				& Librerías necesarias inexistentes o con fallos & Severo &  Probable\\
 		\hline
-		RQX-SO 2& Incapacidad de ejección de hilos de los SO compatibles con el microprocesador elegido & Catastróficos & Improbable\\
+		RQX-SO 2& Incapacidad de ejecución de hilos en los SO compatibles con el microprocesador elegido & Catastróficos & Improbable\\
 		\hline
 		RQX-SO 3& Limitaciones para la ejecución de SO de tiempo real & Critico & Probable\\
 		\hline
@@ -236,8 +235,63 @@
 		\label{tab:riegos}
 		\end{table}
 		
-	\newpage	
+	\newpage
+	\subsection{Planificación de los riesgos}	
+
+Se presentan a continuación en la Tabla ~\ref {tab:planificación} las estrategias para reducir o eliminar el impacto de los riesgos detectados y analizados anteriormente. Estas estrategias generarán requerimientos de confiabilidad del sistema debido a que definen una defensa frente al riesgo y cómo este se gestionará en caso de ocurrir.
+
 			
+\begin{table}[!h]
+		\centering
+		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\hline 
+		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
+		\hline
+		Código RTL con fallas reconocidas durante el proceso de síntesis& Retraso en los tiempos de implementación & Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\
+		\hline
+		 Capacidad insuficiente para implementar la lógica del proyecto & Imposibilidad de implementación en el hardware disponible  & Verificación de datos de espacio lógico necesario  & Cambio de kit de desarrollo\\	 
+		\hline
+		 Imposibilidad de acceso a alguno de los periféricos de la placa de desarrollo & Imposibilitad de implementar cualquier diseño de Hardware que involucren esos periféricos& Verificar previamente e individualmente el funcionamiento de los periféricos & Cambiar el kit de desarrollo\\
+		\hline
+		Limitaciones de memoria RAM en las placas de desarrollo disponibles& Imposibilidad de ejecución de las aplicaciones requeridas & Verificación previa de los recursos utilizados por las aplicaciones a ejecutar & Adición de un nuevo módulo al código RTL  \\	 
+		\hline
+		Limitaciones de memoria FLASH en las placas de desarrollo disponibles& Incapacidad de disponer en memoria no volátil de una aplicación de arranque (bootloader) & Verificación previa del espacio necesario para la aplicación de arranque & Búsqueda de un modo alternativo de arranque\\ 
+		\hline
+		Inexistencia de los Cores Open Source necesarios& Perdida de tiempo y dinero en la búsqueda de nuevo hardaware& Analisis previo de los cores Open Source existentes & Adquisición de IP cores\\
+		\hline
+		Falta de documentación de apoyo para la implentación de los Cores & Perdida de tiempo en realizar la implementación de los componentes & Revisión previa de la documentación existente para la elección de los  componentes & Dedicación de mayor tiempo para la implementación\\ 
+		\hline
+		 Inexistencia de herramientas de desarrollo de hardware con licencias Open Source & Imposibilidad de diseñar e implementar el Hardware & Verificar previamente la existencia de herramientas libres & Utilización de herramientas privativas con costos\\
+		\hline
+		Inexistencia de herramientas de desarrollo de software con licencias Open Source & Imposibilidad de compilación y depuración de aplicaciones &Comprobación de la existencia de herramientas libres & Desarrollo de las herramientas necesarias\\
+		\hline
+		Inexistencia de un sistema operativo embebido con licencia Open Source  & Ejecución única de aplicaciones bare metal  & Análisis previo de los sistemas operativos embebidos disponibles & Desarrollo de las aplicaciones necesarias que fueran provistas por el SO\\
+		\hline
+		 Falta de herramientas de desarrollo portables a diversos sistemas operativos & Imposibilidad de desarrollo de aplicaciones& Verificar la posibilidad de ejecución de las herramientas en diferentes SO& Utilización de las herramientas en alguno de los SO compatibles\\
+		\hline		
+		 Compilación cruzada incompatible con la arquitectura destino& Imposibilidad de ejecución de las aplicaciones desarrolladas & Analizar la compatibilidad previa a la elección del SO &  Verificación y depuración del código de la herramienta de complilación cruzada. \\
+		\hline
+		Falta de mecanismos de optimización de espacio de código por parte del  compilador&Exceso de tamaño de los binarios generados & Análisis previo de los compiladores disponibles & Implementación del core de memoria necesario\\
+		\hline
+		Imposibilidad de depuración de programas en la arquitectura destino& Imposibilidad de ejecución paso a paso y eliminación de errores &Prueba del depurador con simulador de arquitectura & Revisión del código del depurador \\
+		\hline
+		Soporte de acceso a periféricos inexistente o con presencia de bugs & Imposibilidad de desarrollar soluciones que involucren el uso de estos periféricos & Verificación individual de las herramientas que proveen el acceso a estos periféricos & Búsqueda  de  aplicaciones alternativa o desarrollo de las mismas
+ \\
+		\hline
+		 Drivers necesarios inexistentes o con fallos & Imposibilidad de utilización de los dispositivos necesarios&Análisis previo de los driver de los dispositivos a utilizar &  Desarrollo de los drivers necesarios\\
+		\hline
+		Librerías necesarias inexistentes o con fallos& Imposibilidad de ejecución de aplicaciones sobre el sistema operativo embebido elegido & Análisis previo de las librerías disponibles y revisión de posibles bugs informados &  Desarrollo de las librerías necesarias o corrección de errores\\
+		\hline
+		Incapacidad de ejecución de hilos en los SO compatibles con el microprocesador elegido &  Imposibilidad de ejecución para aplicaciones multitarea y/o multihilo & Análisis de los SO que cumplan con este requerimiento & Modificación del SO para el cumplimiento de las capacidades necesarias\\
+		\hline
+		Limitaciones para la ejecución de SO de tiempo real& Inviabilidad para la ejecución de aplicaciones en tiempo real & Análisis de los RTOS & Modificación del SO  para el cumplimiento de las capacidades de ejecución en tiempo real \\
+		\hline
+		\end{tabular}
+		\caption{Planificación de riesgos}
+		\label{tab:planificación}
+		\end{table}
+		
+	\newpage	
 	\section{Estudio de componentes}
 		
 			\subsection{Objetivo}
