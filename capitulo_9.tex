@@ -1,9 +1,9 @@
 \chapter{Implementación y Diseño}
 	\section{Introducción}
 	Debido a que se adoptó un modelo de desarrollo en espiral se plantearon una serie de prototipos que incluyen mayor funcionalidad en cada iteración
-	del modelo. Inicialmente se planteó un prototipo de básico para determinar factibilidad de puesta en funcionamiento de un SoC con microprocesador
+	del modelo. Inicialmente se planteó un prototipo básico para determinar factibilidad de puesta en funcionamiento de un SoC con microprocesador
 	OpenRISC y el desarrollo de aplicaciones que se ejecuten en él. Debido a su funcionalidad reducida y menor consumo de recursos  para su síntesis se
-	seleccionó el proyecto MinSoC para el desarrollo del primer prototipo con el cual se evaluaron y documentaron las capacidades del mismo permitiendo
+	seleccionó el proyecto MinSoC para el desarrollo del primer prototipo con el cual se evaluaron y documentaron las capacidades del mismo, permitiendo
 	valorar este proyecto para aplicaciones donde no se requieren grandes cantidades de memoria y juegan un papel primordial las entradas/salidas junto
 	a la capacidad de procesamiento.  
 		 
@@ -22,9 +22,9 @@
 			opción para sistemas embebidos de la librería glibc utilizada en los sistemas estándar.
 		
 		\subsection{Criterio para la realización de testing}%%corregir esto
-		El testing desarrollado apunta verificar el cumplimiento de los requerimientos individualmente e incrementalmente. Se pretende utilizar las
-		aplicaciones de prueba provistas y desarrollar algunas que verfiquen los requerimientos de compilación , depuración y ejecución de aplicaciones para
-		openRISC. 
+		El testing desarrollado apunta a verificar el cumplimiento de los requerimientos individualmente e incrementalmente. Se pretende utilizar las
+		aplicaciones de prueba provistas y desarrollar algunas que verfiquen los requerimientos de compilación, depuración y ejecución de aplicaciones para
+		OpenRISC. 
 Los testing sirven para poder detectar la presencia de errores, pero aún si un testing no arroja resultados erróneos, esto no nos garantiza el correcto funcionamiento del sistema 
 El tipo de testing realizado es de verificación. La verificación es el proceso de evaluación de un sistema o componente para determinar si el producto cumple con lo que se ha diseñado, es decir, si cada fase de desarrollo dado cumplen con los requisitos impuestos al inicio de dicha fase
 
@@ -66,7 +66,7 @@ El tipo de testing realizado es de verificación. La verificación es el proceso
 		\begin{figure}[!h]
  		\begin{center}
   		\includegraphics[width=1\textwidth,keepaspectratio=true]{./images/minsoc}
-  		\caption{Arquitectura Prototipo 1}
+  		\caption{Arquitectura Prototipo Uno}
   		\label{fig:minsoc}
  		\end{center}
 		\end{figure}
@@ -98,11 +98,7 @@ La implementación se realiza normalmente en cinco pasos básicos:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%testing%%%%%%%%%%%%%%%%%%		
 		\subsection{Testing de Requerimientos del Prototipo Uno}
 
-%%%%%%%%%%%%%%%%%%%%%%%REQ 1%%%%%%%%%%%%%%%%%%
-		
-%%%%%%%%%%%%%%%%%%%%%%%REQ 2%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%REQ 3%%%%%%%%%%%%%%%%%%
 \begin{table}[!h]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -113,21 +109,25 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline 
 		Requerimiento  &  El prototipo debe interactuar correctamente con las interfaces hardware soportadas de la placa de desarrollo S3ADSP1800A\\ 
 		\hline 
-		Código de Testing & T003\\ 
+		Código de Testing & T001\\ 
 		\hline
-		Propósito &  \\
+		Propósito & Comprobación del correcto funcionamiento de el componente UART \\
 		\hline
-		Realizado Por & Gomez, Pablo \\
+		Realizado Por & Lovaisa Michelini, Valeria \\
 		\hline	
 		Entorno de Ejecución & Bare Metal \\
 		\hline
-		Precondiciones &  \\
+		Precondiciones &  \begin {itemize}
+							\item Instanseación en la FPGA del SoC.
+							\item Ejecución de una terminal serie en la PC
+							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\end {itemize}\\
 		\hline
-		Secuencia de Ejecución &  \\
+		Secuencia de Ejecución & Ejecutación de la aplicación de prueba uart.or32  \\
 		\hline
-		Postcondiciones & \\
+		Postcondiciones & MinSoc corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminar remota en la PC\\
 		\hline
-		\rowcolor[gray]{0.8}  v&Resultados\\
+ \multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial una cadena de string.\\
 		\hline	
@@ -146,7 +146,7 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline 
 		Requerimiento  &  El prototipo debe interactuar correctamente con las interfaces hardware soportadas de la placa de desarrollo S3ADSP1800A\\ 
 		\hline 
-		Código de Testing & T004\\ 
+		Código de Testing & T002\\ 
 		\hline
 		Propósito &  El envío de paquetes de Ethernet mediante broadcast desde el SoC  \\
 		\hline
@@ -154,13 +154,18 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline	
 		Entorno de Ejecución & Bare Metal \\
 		\hline
-		Precondiciones &  \\
+		Precondiciones & \begin {itemize}
+							\item Instanseación en la FPGA del SoC.
+							\item Ejecución de una terminal serie en la PC
+							\item Ejecución de una aplicación snifer en la PC
+							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\end {itemize} \\
 		\hline
-		Secuencia de Ejecución &  \\
+		Secuencia de Ejecución &  Ejecutación de la aplicación de prueba eth.or32\\
 		\hline
-		Postcondiciones & \\
+		Postcondiciones &  MinSoc corriendo sobre FPGA, lo que se manifista en la impresión de pantalla de la terminar serie en la PC y en los paquetes captados por la aplicación wireshark \\
 		\hline
-		\rowcolor[gray]{0.8}  v&Resultados\\
+ 		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial una cadena de string indicando el inicio del envío de paquetes Ethernet y verificar la llegada de los mismos por medio de una aplicación sniffer \\
 		\hline	
@@ -168,10 +173,9 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline
 		\end{tabular}
 		\end{table}
-
-
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%REQ 4%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[!h]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -182,7 +186,7 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline 
 		Requerimiento  &  El prototipo debe ser capaz de ejecutar programas con capacidad de depuración, generados mediante compilación cruzada en una arquitectura x86 y/o x86\_64 para arquitectura la OpenRISC\\ 
 		\hline 
-		Código de Testing & T005\\ 
+		Código de Testing & T003\\ 
 		\hline
 		Propósito &  Compilación y Ejecución de un  programa sencillo en c.Verificar si el sistema de hardware está funcionando y  prueba del entorno de desarrollo de software. \\
 		\hline
@@ -190,22 +194,81 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline	
 		Entorno de Ejecución & Bare Metal \\
 		\hline
-		Precondiciones & descarga e instalación del complicador cruzado \\
+		Precondiciones &\begin {itemize}
+							\item Instanciación en la FPGA del SoC.
+							\item Ejecución de una terminal serie en la PC
+							\item Descarga e instalación del complicador cruzado 
+							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\end {itemize}
+ \\
 		\hline
-		Secuencia de Ejecución &  \\
+		Secuencia de Ejecución & Ejecución de la aplicación multiplicadora de matrices mult mat.or32 \\
 		\hline
-		Postcondiciones & \\
+		Postcondiciones & Aplicación corriendo sobre el MinSoc instanciado en la FPGA, lo que se manifiesta en la impresión de pantalla de los tiempos de resolución del conjunto de matrices cuadradas multiplicadas en la terminar serie en la PC \\
 		\hline
-		\rowcolor[gray]{0.8}  v&Resultados\\
+ 		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
-		Resultados Esperados & \\
+		Resultados Esperados & Poder ver la ejecución correcta de un programa de prueba desarrollado \\
 		\hline	
-		Resultados Obtenidos & \\
+		Resultados Obtenidos & Al ser ejecutado se observaron los resultados...ref   \\
 		\hline
 		\end{tabular}
 		\end{table}
-\newpage
-%%%%%%%%%%%%%%%%%%%%%%%REQ 5%%%%%%%%%%%%%%%%%%
+
+\begin{verbatim}
+
+Tick de ejecucion setup tick :0x00000029 En us = 0x00000802
+0x00000001
+Tick de ejecucion seteo de variables :0x000177a6
+Tick de ejecucion de la multiplicacion :0x00000316
+0x00000002
+Tick de ejecucion seteo de variables :0x0001be62
+Tick de ejecucion de la multiplicacion :0x00000fc8
+0x00000003
+Tick de ejecucion seteo de variables :0x0002344b
+Tick de ejecucion de la multiplicacion :0x00002e98
+0x00000004
+Tick de ejecucion seteo de variables :0x0002d952
+Tick de ejecucion de la multiplicacion :0x000067a8
+0x00000005
+Tick de ejecucion seteo de variables :0x0003ad86
+Tick de ejecucion de la multiplicacion :0x0000c31a
+0x00000006
+Tick de ejecucion seteo de variables :0x0004b0e7
+Tick de ejecucion de la multiplicacion :0x00014910
+0x00000007
+Tick de ejecucion seteo de variables :0x0005e366
+Tick de ejecucion de la multiplicacion :0x000201ac
+0x00000008
+Tick de ejecucion seteo de variables :0x00074512
+Tick de ejecucion de la multiplicacion :0x0002f510
+0x00000009
+Tick de ejecucion seteo de variables :0x0008d5eb
+Tick de ejecucion de la multiplicacion :0x00042b5e
+0x0000000a
+Tick de ejecucion seteo de variables :0x000a95e7
+Tick de ejecucion de la multiplicacion :0x0005acb8
+0x0000000b
+Tick de ejecucion seteo de variables :0x000c850b
+Tick de ejecucion de la multiplicacion :0x00078140
+0x0000000c
+Tick de ejecucion seteo de variables :0x000ea357
+Tick de ejecucion de la multiplicacion :0x0009b118
+0x0000000d
+Tick de ejecucion seteo de variables :0x0010f0d0
+Tick de ejecucion de la multiplicacion :0x000c4462
+0x0000000e
+Tick de ejecucion seteo de variables :0x00136d62
+Tick de ejecucion de la multiplicacion :0x000f4340
+0x0000000f
+Tick de ejecucion seteo de variables :0x00161921
+Tick de ejecucion de la multiplicacion :0x0012b5d4
+Fin del programa
+
+\end{verbatim}
+
+%%%%%%
+
 
 \begin{table}[!h]
 		\centering
@@ -217,25 +280,32 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline 
 		Requerimiento  &  Se debe lograr depurar paso a paso y mediante break points las aplicaciones desarrolladas\\ 
 		\hline 
-		Código de Testing & T002\\ 
+		Código de Testing & T005\\ 
 		\hline
-		Propósito &  \\
+		Propósito &   Compilación en modio debug y Ejecución de un programa  en c mediante GDB.Verificar si la cadena de debug está funcionando.  \\
 		\hline
 		Realizado Por & Gomez, Pablo \\
 		\hline	
 		Entorno de Ejecución & Bare Metal \\
 		\hline
-		Precondiciones & Pasado con éxito los casos de prueba anteriores \\
+		Precondiciones & \begin {itemize}
+							\item Instanciación en la FPGA del SoC.
+							\item Ejecución de una terminal serie en la PC
+							\item Aplicación compilada con flag de depuración. 
+							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\end {itemize}
+\\
 		\hline
-		Secuencia de Ejecución &  \\
+		Secuencia de Ejecución &  Ejecución de la aplicación multiplicadora de matrices multmat.or32\\
+		
 		\hline
-		Postcondiciones & \\
+		Postcondiciones & Aplicación corriendo en modo debug sobre el MinSoc instanciado en la FPGA, lo que se manifiesta en la detención de la ejecución en cada punto de parada.\\
 		\hline
-		\rowcolor[gray]{0.8}  v&Resultados\\
+ 		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
-		Resultados Esperados & \\
+		Resultados Esperados & Poder observar paso a paso le ejecución del programa. \\
 		\hline	
-		Resultados Obtenidos & \\
+		Resultados Obtenidos & El programa puede verse a través de la terminal serie detenido en cada punto de parada. \\
 		\hline
 		\end{tabular}
 		\end{table}
