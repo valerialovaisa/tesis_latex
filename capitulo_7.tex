@@ -18,10 +18,12 @@
 	la plataforma hardware elegida. La síntesis e implementación sobre FPGA requiere de aplicaciones específicas que debieron ponderarse para alcanzar el
 	cumplimiento de los requerimientos.
 	
+	\newpage 
+	
 	\section{Requerimientos del Usuario}
 	\par
-	Se presenta en este apartado un listado ~\ref{tab:requsr} de los requerimientos elecitados que tienen como objetivo comprender el dominio del
-	problema y permiten trabajar en la realización de una solución eficiente.
+	Se presenta en este apartado un listado de los requerimientos elecitados que tienen como objetivo comprender el dominio del problema y permiten
+	trabajar en la realización de una solución eficiente.
 	
 		\subsection{En cuanto al Hardware}
 		\begin{table}[h]
@@ -42,11 +44,13 @@
 		bootloader & Memoria Disponible\\
 		\hline
 		\end{tabular}
-		\caption{Listado de requerimientos de usuario}
-		\label{tab:requsr}
+		\caption{Listado de requerimientos de usuario - Hardware}
+		\label{tab:requsr1}
 		\end{table}
 					
 		\subsection{En cuanto a las Licencias}
+		\begin{table}[h]
+		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
@@ -58,8 +62,13 @@
 		RQX-LC 3 & El sistema operativo elegido debe poseer licencia LGPL o GPLv2 & Licencias de Software\\
 		\hline
 		\end{tabular}
+		\caption{Listado de requerimientos de usuario - Licencias}
+		\label{tab:requsr2}
+		\end{table}
 			
 		\subsection{En cuanto a las Herramientas de Desarrollo}
+		\begin{table}[h]
+		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
@@ -74,8 +83,13 @@
 		XXXXXXXXXXXX\\ % Revisar tipo de requerimiento
 		\hline 
 		\end{tabular}
+		\caption{Listado de requerimientos de usuario - Herramientas de Desarrollo}
+		\label{tab:requsr3}
+		\end{table}
 		
 		\subsection{En cuanto Sistema Operativo} 	 
+		\begin{table}[h]
+		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
@@ -90,6 +104,9 @@
 		% requerimiento
 		\hline 
 		\end{tabular}
+		\caption{Listado de requerimientos de usuario - Sistema Operativo}
+		\label{tab:requsr4}
+		\end{table}
 	
 	\section{Análisis de Riesgo}
 		\subsection{Introducción}
@@ -138,8 +155,8 @@
 		
 		\subsection{Identificación y análisis de riesgos}
 		\par
-		Se realizó un relevamiento inicial de riegos respecto de cada requerimiento de usuario planteado. Fue efectuado un análisis de severidad,
-		probabilidad de ocurrencia y causas para cada riesgo asociado. La severidad	del	impacto	de un riesgo concretado	se medió de la siguiente
+		Se realizó un relevamiento inicial de riegos respecto de cada requerimiento de usuario planteado. Fue efectuado un análisis de severidad y
+		probabilidad de ocurrencia para cada riesgo asociado. La severidad	del	impacto	de un riesgo concretado	se medió de la siguiente
 		manera:
 		
 		\begin{itemize}
@@ -149,15 +166,74 @@
 		  \item Menor	
 		  \item Despreciable 
 		\end{itemize}
+	
+		La probabilidad de ocurrencia se midió en base a la siguiente categorización:
+	
+		\begin{itemize}
+		  \item Muy Probable
+		  \item Probable	
+		  \item Ocasional
+		  \item Improbable 	
+		  \item Remoto
+		\end{itemize}
 		
+		En la Tabla ~\ref {tab:riegos} se listan los riesgos asociados, su severidad y probabilidad de ocurrencia para cada uno de los
+		requerimientos de usuario.
 		
-			
-		\subsection{Diagrama del sistema}
-			
-			
-		\subsection{Identificación de riesgos}
-			
-			
+		\begin{table}[!h]
+		\centering
+		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req & Riegos Asociados & Severidad  & Ocurrencia \\
+		\hline
+		RQX-HW 1& Código RTL con fallas reconocidas durante el proceso de síntesis & Crítica       & Probable \\
+		\hline
+				& Capacidad insuficiente para implementar la lógica del proyecto   & Catastrófico  & Ocasional\\	 
+		\hline
+		RQX-HW 2& Imposibilidad de acceso a alguno de los periféricos de la placa de desarrollo &  Crítica  & Probable\\
+		\hline
+		RQX-HW 3& Limitaciones de memoria RAM en las placas de desarrollo disponibles 	& Crítico  &  Improbable\\	 
+		\hline
+		RQX-HW 4& Limitaciones de memoria FLASH en las placas de desarrollo disponibles & Severo  &  Improbable\\ 
+		\hline
+		RQX-LC 1& Inexistencia de los Cores Open Source necesarios  	& Catastrófico  &  Ocasional\\
+		\hline
+				& Falta de documentación de apoyo para la implentación de los Cores  & Severo  &  Muy Probable\\ 
+		\hline
+		 		& Código RTL con fallas reconocidas durante el proceso de síntesis   & Critica & Probable\\ 
+		\hline
+		RQX-LC 2& Inexistencia de herramientas de desarrollo de hardware con licencias Open Source & Severo  &  Probable\\
+		\hline
+		RQX-LC 3& Inexistencia de herramientas de desarrollo de software con licencias Open Source & Severo  &  Improbable\\
+		\hline
+		RQX-LC 4& Inexistencia de un sistema operativo embebido con licencia Open Source  & Critico  &  Improbable\\
+		\hline
+		 		& Inexistencia de herramientas y librerias de sistema necesarias          & Critico  &  Probable\\
+		\hline
+		RQX-HD 1& Falta de herramientas de desarrollo portables a diversos sistemas operativos & Severo  &  Ocasional\\
+		\hline		
+		RQX-HD 2& Compilación cruzada incompatible con la arquitectura destino  & Critico &  Ocasional\\
+		\hline
+				& Falta de mecanismos de optimización de código del compilador  & Severo  &  Probable\\
+		\hline
+				& Imposibilidad de depuración de programas & Crítico  &  Probable\\
+		\hline
+		RQX-HD 3& Soporte de acceso a periféricos inexistente o con presencia de bugs & Critico &  Probable\\
+		\hline
+		RQX-SO 1& Drivers necesarios inexistentes o con fallos & Critico &  Probable\\
+		\hline
+				& Librerías necesarias inexistentes o con fallos & Severo &  Probable\\
+		\hline
+		RQX-SO 2& Incapacidad de ejección de hilos de los SO compatibles con el microprocesador elegido & Catastróficos & Improbable\\
+		\hline
+		RQX-SO 3& Limitaciones para la ejecución de SO de tiempo real & Critico & Probable\\
+		\hline
+		\end{tabular}
+		\caption{Tabla de Riegos vs. Requerimientos}
+		\label{tab:riegos}
+		\end{table}
+		
+	\newpage	
 			
 	\section{Estudio de componentes}
 		
