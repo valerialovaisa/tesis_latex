@@ -25,10 +25,12 @@
 		El testing desarrollado apunta a verificar el cumplimiento de los requerimientos individualmente e incrementalmente. Se pretende utilizar las
 		aplicaciones de prueba provistas y desarrollar algunas que verfiquen los requerimientos de compilación, depuración y ejecución de aplicaciones para
 		OpenRISC. 
-Los testing sirven para poder detectar la presencia de errores, pero aún si un testing no arroja resultados erróneos, esto no nos garantiza el correcto funcionamiento del sistema 
-El tipo de testing realizado es de verificación. La verificación es el proceso de evaluación de un sistema o componente para determinar si el producto cumple con lo que se ha diseñado, es decir, si cada fase de desarrollo dado cumplen con los requisitos impuestos al inicio de dicha fase
+		Los testing sirven para poder detectar la presencia de errores, pero aún si un testing no arroja resultados erróneos, esto no nos garantiza el
+		correcto funcionamiento del sistema El tipo de testing realizado es de verificación. La verificación es el proceso de evaluación de un sistema o
+		componente para determinar si el producto cumple con lo que se ha diseñado, es decir, si cada fase de desarrollo dado cumplen con los requisitos
+		impuestos al inicio de dicha fase.
 
-\newpage
+	\newpage
 	\section{PROTOTIPO UNO: Implementación del SoC MinSoC en FPGA}
 		\subsection{Introducción}
 		
@@ -77,7 +79,7 @@ El tipo de testing realizado es de verificación. La verificación es el proceso
 		un módulo ETHERNET. El sistema inyecta un pequeño código de arranque directamente al bus de instrucciones al iniciar o luego de un reset. 
 			
 		\subsection{Implementación}
-		%\subsubsection{Síntesis , PAR , Generación del bitfile del proyecto}
+
 %%%%%%%%%%%%%%%%%%%%%into al tema%%%%%%%%%%%%%%%		
 La implementación se realiza normalmente en cinco pasos básicos: 
 \begin {itemize}
@@ -87,7 +89,8 @@ La implementación se realiza normalmente en cinco pasos básicos:
 \item Generación del flujo de bits.
 \item Programación de la FPGA Spartan 3a.
  \end {itemize}
- Consulte la Guía de MinSoc en el Anexo1 para una comprensión más profunda de los pasos a seguir en la implementación sobre la placa de desarrollo S3ADSP1800A.
+ Consulte la Guía de MinSoc en el Anexo 1 para una comprensión más profunda de los pasos a seguir en la implementación sobre la placa de desarrollo
+ S3ADSP1800A.
 
 
 		%\subsubsection{Configuración de la FPGA}
@@ -96,14 +99,20 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		%%%%%%%\subsection{Diagrama de Secuencia}
 		%%%%%%%%%%agregar al anexo xc3cprog
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%testing%%%%%%%%%%%%%%%%%%		
-		\subsection{Testing de Requerimientos del Prototipo Uno}
+		\subsection{Selección y Desarrollo de aplicaciones de prueba}
 
 
-\begin{table}[!h]
+
+		\subsection{Testing}
+
+% Escribir sobre el testing del proto uno
+
+\newpage
+\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
-	\rowcolor[gray]{0.8}  Caso de Prueba&  Interactuar correctamente con las interfaz hardware UART\\
+	    \rowcolor[gray]{0.8}  Caso de Prueba&  Interactuar correctamente con las interfaz hardware UART\\
 		\hline 
 		Código de Requerimiento & RQX-PA 3\\ 
 		\hline 
@@ -118,7 +127,7 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		Entorno de Ejecución & Bare Metal \\
 		\hline
 		Precondiciones &  \begin {itemize}
-							\item Instanseación en la FPGA del SoC.
+							\item Instanciación en la FPGA del SoC.
 							\item Ejecución de una terminal serie en la PC
 							\item Comunicación establecida entre la placa de desarrollo y la PC
 							\end {itemize}\\
@@ -136,7 +145,8 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\end{tabular}
 		\end{table}
 
-\begin{table}[!h]
+\newpage
+\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
@@ -155,7 +165,7 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		Entorno de Ejecución & Bare Metal \\
 		\hline
 		Precondiciones & \begin {itemize}
-							\item Instanseación en la FPGA del SoC.
+							\item Instanciación en la FPGA del SoC.
 							\item Ejecución de una terminal serie en la PC
 							\item Ejecución de una aplicación snifer en la PC
 							\item Comunicación establecida entre la placa de desarrollo y la PC
@@ -173,10 +183,10 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline
 		\end{tabular}
 		\end{table}
-\newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[!h]
+\newpage
+\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
@@ -216,6 +226,7 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\end{tabular}
 		\end{table}
 
+\newpage
 \begin{lstlisting}[caption={Salida de la terminal serie durante la ejecución del programa multmat.or32},label={lst:salidamult}]
 Tick de ejecucion setup tick :0x00000029 En us = 0x00000802
 0x00000001
@@ -269,8 +280,8 @@ Fin del programa
 
 %%%%%%
 
-
-\begin{table}[!h]
+\newpage
+\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
@@ -310,26 +321,22 @@ Fin del programa
 		\end{tabular}
 		\end{table}
 
-\newpage
 
-	
 		\subsection{Conclusión}
 Este prototipo fue de vital importancia permitiendo mostrar que es posible instanciar sobre el kit de desarrollo disponible un system on de chip básico open source en una FPGA saprtam 3a.
 La mayor cantidad de tiempo fue para la  determinación de las herramientas de desarrollo necesarias para el hardware disponible, ya que la documentación sobre el tema era insuficiente o nula. Sin embargo una vez que se pudo logrado encontrar las herramientas adecuadas y  la corrección de error en el código RTL fue mucho más sencillo la implementación del prototipo.
 		
 \newpage
-
-
 		
-	\section{PROTOTIPO DOS: Implementación del SoC ORPSoc en FPGA}
+	\section{PROTOTIPO DOS: Implementación del SoC ORPSoC en FPGA}
 		\subsection{Introducción}
-		Para el prototipo dos se planteó la implementación de un SoC ORPSoC que dispone de mayor cantidad de periféricos que el MinSoC entre ellos un módulo
-		que permite manejar las memorias RAM DDR2 incluídas en la placa de desarrollo S3ADSP1800A. Se verificó inicialmente si la herramientas utilizadas en
-		el prototipo uno proporcionaban los mismos resultados en este prototipo y luego se ejecutaron las pruebas de funcionamiento del procesador, los
-		periféricos y las herramientas de desarrollo y depuración. 
+		Para el prototipo dos se planteó la implementación de un sistema ORPSoC que dispone de mayor cantidad de periféricos que el MinSoC entre ellos un
+		módulo que permite manejar las memorias RAM DDR2 incluídas en la placa de desarrollo S3ADSP1800A. Se verificó inicialmente si la herramientas
+		utilizadas en el prototipo uno proporcionaban los mismos resultados en este prototipo y luego se ejecutaron las pruebas de funcionamiento del
+		procesador, los periféricos y las herramientas de desarrollo y depuración. 
 		
 		\subsection{Requerimientos del prototipo}
-		\begin{table}[h]
+		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
@@ -354,19 +361,88 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 		\end{table}
 
 		\subsection{Descripción de la Arquitectura}
+		La Figura ~\ref{fig:orpsoc} muestra un esquema de la arquitectura planteada en el prototipo. Al igual que en el prototipo uno se utiliza un estación
+		de trabajo corriendo las herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada. Se requiere de un servidor
+		que proporcione un puerto para la depuración con GDB y a diferencia del prototipo uno este servicio lo proporciona la aplicación OpenRISC Debug
+		Proxy.
+		
+		\begin{figure}[!h]
+ 		\begin{center}
+  		\includegraphics[width=.7\textwidth,keepaspectratio=true]{./images/orpsoc}
+  		\caption{Arquitectura Prototipo Dos}
+  		\label{fig:orpsoc} 
+ 		\end{center}
+		\end{figure}
 
-	
+		El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee
+		acceso a las memorias SDRAM on board de la placa S3ADSP1800A, un módulo SPI que interactúa con la memoria flash on board
+		de la placa antes mencionada, un módulo UART y un módulo ETHERNET. 
+		
 		\subsection{Implementación}
+		La implementación se realiza normalmente en cinco pasos básicos: 
+		\begin {itemize}
+		\item Descarga del script de instalación.
+		\item Ejecución del script de instalación.
+		\item Configuración de la placa especifica para la síntesis.
+		\item Generación del flujo de bits.
+		\item Programación de la FPGA Spartan 3a.
+ 		\end {itemize}
+ 
+ Consulte la Guía de ORPSoC en el Anexo 2 para una comprensión más profunda de los pasos a seguir en la implementación sobre la placa de desarrollo
+ S3ADSP1800A.
+		
+		
+		\subsection{Selección y Desarrollo de aplicaciones de prueba}
 
-		
-		\subsection{Diseño y selección de aplicaciones de prueba}
-		
-		
+
+
 		\subsection{Testing}
 
+		%% Hacer TCase T006 para comprobación de RQX-PB 2 y RQX-PB 3
 
+			
+		\newpage
+		\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{5cm} p{10cm}  }
+		\hline 
+	    \rowcolor[gray]{0.8}  Caso de Prueba&  Ejecución del Benchmark CoreMark\\
+		\hline 
+		Código de Requerimiento & RQX-PB 4 , RQX-PB 5 , RQX-PB 7\\ 
+		\hline 
+		Requerimiento  &  Se debe garantizar el acceso a las memorias RAM DDR2 de la plataforma S3ADSP1800A\\ 
+		\hline 
+		Código de Testing & T007\\ 
+		\hline
+		Propósito & Comprobación del correcto funcionamiento del módulo de RAM implementado en el SoC\\
+		\hline
+		Realizado Por & Lovaisa Michelini, Valeria \\
+		\hline	
+		Entorno de Ejecución & Bare Metal \\
+		\hline
+		Precondiciones &  \begin {itemize}
+							\item Instanciación del SoC en la FPGA.
+							\item Ejecución de una terminal serie en la PC
+							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\end {itemize}\\
+		\hline
+		Secuencia de Ejecución & Ejecutación de la aplicación de prueba uart.or32  \\
+		\hline
+		Postcondiciones & MinSoc corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminar remota en la PC\\
+		\hline
+ \multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+		\hline
+		Resultados Esperados & Poder observar por la terminal serial una cadena de string.\\
+		\hline	
+		Resultados Obtenidos & Al ejecutarse la aplicación de prueba del uart se pudo observar la cadena de string esperada "HELLO WORLD" \\
+		\hline
+		\end{tabular}
+		\end{table}
+		
+	
 		\subsection{Conclusión}
 
+\newpage
 
 	\section{PROTOTIPO TRES: Implementación del SoC ORPSoC en FPGA con Sistema Operativo eCos}
 		\subsection{Introducción}
@@ -375,7 +451,7 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 
 		\subsection{Requerimientos del prototipo}
 
-		\begin{table}[h]
+		\begin{table}[h!]
 		\centering		
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
@@ -404,8 +480,10 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 		\subsection{Testing}
 		
 		\subsection{Conclusión}
-		
-		
+
+
+\newpage
+				
 	\section{PROTOTIPO CUATRO: Implementación del SoC ORPSoC en FPGA con Sistema Operativos Linux}
 		\subsection{Introducción}
 		El núcleo Linux, combinado con un conjunto de algunas otras utilidades de software libre, puede ajustarse dentro del limitado espacio de hardware 
