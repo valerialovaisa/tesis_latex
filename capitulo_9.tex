@@ -40,7 +40,6 @@ En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se a
 	En este primer prototipo se implementó el proyecto MinSoC en la placa de desarrollo S3ADSP1800A con el fin de verificar el funcionamiento del procesador y sus periféricos. Para lograr este objetivo se requiere de la instalación y puesta en funcionamiento de las herramientas de síntensis, place \& route(PAR) y programación de la FPGA Spartan 3A. 
 
 		\subsection{Requerimientos del prototipo}
-		
 		\begin{table}[h]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
@@ -54,13 +53,85 @@ En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se a
 		RQX-PA 3 & El prototipo debe interactuar correctamente con las interfaces hardware soportadas de la placa de desarrollo S3ADSP1800A\\ 
 		\hline
 		RQX-PA 4 & El prototipo debe ser capaz de ejecutar programas con capacidad de depuración generados mediante compilación
-		cruzada en una arquitectura x86 y/o x86\_64 para arquitectura la OpenRISC\\
+		cruzada en una arquitectura x86 y/o x86\_64 para la arquitectura OpenRISC\\
 		\hline
 		RQX-PA 5 & Se debe lograr depurar paso a paso y mediante break points las aplicaciones desarrolladas\\
 		\hline		
 		\end{tabular}
 		\end{table}
+
+\newpage
+	%%%%%%%%%%%%%%%%%%RIESGO	
+\begin{table}[!h]
+		\centering
+		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados& Riegos Asociados & Severidad  & Ocurrencia \\
+		\hline
+		RQX-PA 1& EL código RTL disponible en la web tenga  fallas reconocidas durante el proceso de síntesis & Crítica       & Probable \\
+		\hline
+				& Vencimiento de licencias de las herramientas privativas para el proceso de síntesis  & Menor  & Ocasional\\	 
+		\hline
+				& Falta de documentación de apoyo para la implentación
+del Soc & Crítico & Ocasional\\	 
+		\hline
+
+		RQX-PA 2,RQX-PA 3 & Imposibilidad de acceso a alguno de los periféricos de la placa de desarrollo &  Catastrófico  & Probable\\
+		\hline
+		& Soporte de acceso a periféricos inexistente o con presencia
+de bugs & Crítica  & Ocasional\\	 
+		\hline
+		RQX-PA 4& Compilación cruzada realizada con compiladores obsoletos & Severo  &  Ocasional\\ 
+		\hline
+		&Prblemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
+		\hline
+		RQX-PA 5&Problemas con el driver provisto por el fabricante del  dispositivo programador JTAG -USB  & Severo&  Ocasional\\
+		\hline
+		\hline
+		\end{tabular}
+		\caption{Tabla de Riegos vs. Requerimientos}
+		%\label{tab:riegos}
+		\end{table}\subsection{Matriz de Riesgo para el prototipo}
+
+
+ \begin{table}[!h]
+		\centering
+		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
+		\hline
+		Código RTL con fallas reconocidas durante el proceso de síntesis& Retraso en los tiempos de implementación & Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\
 		
+		Limitaciones de memoria RAM en las placas de desarrollo disponibles& Imposibilidad de ejecución de las aplicaciones requeridas & Verificación previa de los recursos utilizados por las aplicaciones a ejecutar & Adición de un nuevo módulo al código RTL  \\	 
+		\hline
+		Limitaciones de memoria FLASH en las placas de desarrollo disponibles& Incapacidad de disponer en memoria no volátil de una aplicación de arranque (bootloader) & Verificación previa del espacio necesario para la aplicación de arranque & Búsqueda de un modo alternativo de arranque\\ 
+		
+		\hline
+		\end{tabular}
+		\end{table}
+		\newpage
+		\begin{table}[!h]
+		\centering
+		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
+		\hline
+		Inexistencia de herramientas de desarrollo de software con licencias Open Source & Imposibilidad de compilación y depuración de aplicaciones &Comprobación de la existencia de herramientas libres & Desarrollo de las herramientas necesarias\\
+		
+		
+		\hline
+		 Drivers necesarios inexistentes o con fallos & Imposibilidad de utilización de los dispositivos necesarios&Análisis previo de los driver de los dispositivos a utilizar &  Desarrollo de los drivers necesarios\\
+		\hline
+		Librerías necesarias inexistentes o con fallos& Imposibilidad de ejecución de aplicaciones sobre el sistema operativo embebido elegido & Análisis previo de las librerías disponibles y revisión de posibles bugs informados &  Desarrollo de las librerías necesarias o corrección de errores\\
+				
+		\hline
+		\end{tabular}
+		\caption{Planificación de riesgos}
+		\label{tab:planificación}
+		\end{table}
+
+
+
 \newpage
 		\subsection{Descripción de la Estructura del Prototipo Uno}
 			
