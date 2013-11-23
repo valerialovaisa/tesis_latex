@@ -20,14 +20,17 @@
 			\subsubsection{Entorno de ejecución Linux}
 			Por otro lado, para el uso de aplicaciones bajo el sistema operativo Linux el toolchain puede ser compilado en base a la librería uClibc que es la
 			opción para sistemas embebidos de la librería glibc utilizada en los sistemas estándar.
+
+		\subsection{Matriz de riesgo}
+En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se amplían según la nueva visión del sistema.
 		
 		\subsection{Criterio para la realización de testing}%%corregir esto
 		El testing desarrollado apunta a verificar el cumplimiento de los requerimientos individualmente e incrementalmente. Se pretende utilizar las
 		aplicaciones de prueba provistas y desarrollar algunas que verfiquen los requerimientos de compilación, depuración y ejecución de aplicaciones para
 		OpenRISC. 
 		Los testing sirven para poder detectar la presencia de errores, pero aún si un testing no arroja resultados erróneos, esto no nos garantiza el
-		correcto funcionamiento del sistema El tipo de testing realizado es de verificación. La verificación es el proceso de evaluación de un sistema o
-		componente para determinar si el producto cumple con lo que se ha diseñado, es decir, si cada fase de desarrollo dado cumplen con los requisitos
+		correcto funcionamiento del sistema. El tipo de testing realizado es de verificación. La verificación es el proceso de evaluación de un sistema o
+		componente para determinar si el producto cumple con lo que se ha diseñado, es decir, si cada fase de desarrollo dada cumple con los requisitos
 		impuestos al inicio de dicha fase.
 
 	\newpage
@@ -37,6 +40,7 @@
 	En este primer prototipo se implementó el proyecto MinSoC en la placa de desarrollo S3ADSP1800A con el fin de verificar el funcionamiento del procesador y sus periféricos. Para lograr este objetivo se requiere de la instalación y puesta en funcionamiento de las herramientas de síntensis, place \& route(PAR) y programación de la FPGA Spartan 3A. 
 
 		\subsection{Requerimientos del prototipo}
+		
 		\begin{table}[h]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
@@ -58,12 +62,11 @@
 		\end{table}
 		
 \newpage
-		\subsection{Descripción de la Arquitectura}
-	
-		La Figura ~\ref{fig:minsoc} muestra un esquema de la arquitectura planteada en el prototipo. Se utiliza un estación de trabajo corriendo las
-		herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada para arquitecturas destino openRISC. Se requiere de un
-		servidor que proporcione un puerto para la depuración con GDB , acción realizada por la aplicación Advanced JTAG Bridge que provee la interfase de
-		comunicación entre el TAP JTAG conectado al SoC a través el cable JTAG y la estación de trabajo.
+		\subsection{Descripción de la Estructura del Prototipo Uno}
+			
+
+		La Figura ~\ref{fig:minsoc} muestra un diagrama de despliegue del prototipo planteado. Se utiliza un estación de trabajo corriendo las herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada para arquitecturas destino OpenRISC. Se requiere de un
+		servidor que proporcione un puerto para la depuración con GDB, acción realizada por la aplicación Advanced JTAG Bridge que provee la interfase de comunicación entre el TAP JTAG conectado al SoC a través el cable JTAG y la estación de trabajo.
 		
 		\begin{figure}[!h]
  		\begin{center}
@@ -74,13 +77,14 @@
 		\end{figure}
 		
 		El módulo Advanced Debug Interface proporciona soporte para la depuración via JTAG, está conectado directamente al microprocesador y a su vez al bus
-		general Wishbone donde se conectan el resto de los periféricos. Se conectan al sistema mediante el bus antes mencionado : un modulo	de RAM
+		general Wishbone donde se conectan el resto de los periféricos. Se conectan al sistema mediante el bus antes mencionado: un modulo	de RAM
 		sintetizado, un módulo de arranque (startup), un módulo SPI que interactúa con la memoria flash on board de la placa S3ADSP1800A , un módulo UART y
 		un módulo ETHERNET. El sistema inyecta un pequeño código de arranque directamente al bus de instrucciones al iniciar o luego de un reset. 
+
+\newpage
 			
 		\subsection{Implementación}
 
-%%%%%%%%%%%%%%%%%%%%%into al tema%%%%%%%%%%%%%%%		
 La implementación se realiza normalmente en cinco pasos básicos: 
 \begin {itemize}
 \item Descarga del script de instalación.
@@ -89,15 +93,12 @@ La implementación se realiza normalmente en cinco pasos básicos:
 \item Generación del flujo de bits.
 \item Programación de la FPGA Spartan 3a.
  \end {itemize}
- Consulte la Guía de MinSoc en el Anexo 1 para una comprensión más profunda de los pasos a seguir en la implementación sobre la placa de desarrollo
- S3ADSP1800A.
+ Consulte la Guía de MinSoc en el Anexo 1 para la realización pasos a seguir en la implementación sobre la placa de desarrollo  S3ADSP1800A.
 
 
-		%\subsubsection{Configuración de la FPGA}
-		%Este proceso de grabación se realizó mediante las herramientas del fabricante (iMPACT) y mediante un herramienta Open Source llamada xc3sprog. 
 		
 		%%%%%%%\subsection{Diagrama de Secuencia}
-		%%%%%%%%%%agregar al anexo xc3cprog
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%testing%%%%%%%%%%%%%%%%%%		
 		\subsection{Selección y Desarrollo de aplicaciones de prueba}
 
@@ -360,7 +361,7 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 		\end{tabular}
 		\end{table}
 
-		\subsection{Descripción de la Arquitectura}
+		\subsection{Descripción de la Estructura del Prototipo Dos}
 		La Figura ~\ref{fig:orpsoc} muestra un esquema de la arquitectura planteada en el prototipo. Al igual que en el prototipo uno se utiliza un estación
 		de trabajo corriendo las herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada. Se requiere de un servidor
 		que proporcione un puerto para la depuración con GDB y a diferencia del prototipo uno este servicio lo proporciona la aplicación OpenRISC Debug
@@ -378,7 +379,6 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 
 	
 		\subsection{Implementación}
-
 
 
 		El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee
@@ -524,6 +524,7 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 		
 		
 		\subsection{Implementación}
+
 		
 		\subsection{Testing}
 		
