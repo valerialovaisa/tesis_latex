@@ -44,12 +44,26 @@ En la GNU se estipula que el código modificado debe estar disponible, y que cua
 
 Otro punto de controversia es el uso combinado del código fuente donde cada uno esta bajo una licencia diferente, dando lugar al concepto de \textit{compatibilidad de la licencia}. En el caso de que un desarrollo  utilizara una librería bajo licencia GPL, la GNU GPL especifica que se puede utilizar tal librería si el diseño  que la requiere este también bajo la licencia GPL. 
 
+ El uso de librerías precompilados es muy común en aplicaciones. En el caso de que librería se encuentra bajo la licencia GPL , cualquier programa que haga uso de ell ( también conocido como la creación de un \textit{link} a la librería ) debe también estar bajo la GPL.
+
+Sin embargo, la inclusión en una aplicación compilada de un binario GPL  (conocido como \textit{vinculación estática} ) no es realmente un problema, esto es equivalente a incluir el código fuente completo y generar mediante la compilación de todo el código un binario ejecutable. El debate es sobre la \textit{vinculación dinámica}. Esto implica el uso de una librería de software precompilado que reside en memoria (no dentro de una aplicación compilada ) cuando se ejecuta una aplicación.Ya sea un programa que vincula dinámicamente a una librería se considera un trabajo derivado, esto es un  tema de debate. El proyecto GNU considera esas aplicaciones como derivadas y les obliga a cumplir con los requisitos de la licencia GNU GPL.
+
+%%%%
+ Una solución para aquellos que deseen escribir bibliotecas , y no tener la
+interpretación más estricta de trabajo derivado se aplica a ellos , fue propuesto por la filosofía GNU
+Proyecto en su Licencia de Uso General Menor (LGPL ) . Se trata de un trade-off , lo que permite
+que demuestran que la tecnología licenciada Proyecto GNU es de alta calidad y
+fomentando así la participación de las personas en el proyecto, al tiempo que conserva algo de
+sus requisitos de la libertad. El proyecto GNU , sin embargo , prefiere a los desarrolladores para liberar
+bibliotecas bajo la GPL , lo que obliga a quienes lo utilizan para contribuir con su trabajo a
+el cuerpo de GNU con licencia GPL .
 %%%%%%%%%%%revisar bibliotecas
- Una solución para aquellos que deseen escribir bibliotecas, y no tienen la
-interpretación más estricta de la trabajos derivados se les aplica la propuesta de el  Proyecto GNU la Licencia Pública General Reducida de GNU, o más conocida por su nombre en inglés GNU Lesser General Public License (antes GNU Library General Public License o Licencia Pública General para Bibliotecas de GNU),o simplemente por su acrónimo del inglés GNU LGPL, esta licencia permisiva se aplica a cualquier programa o trabajo que contenga una nota puesta por el propietario de los derechos del trabajo estableciendo que su trabajo puede ser distribuido bajo los términos de esta "LGPL Lesser General Public License". El "Programa", utilizado en lo subsecuente, se refiere a cualquier programa o trabajo original, y el "trabajo basado en el Programa" significa ya sea el programa o cualquier trabajo derivado del mismo bajo la ley de derechos de autor: es decir, un trabajo que contenga el Programa o alguna porción de él, ya sea íntegra o con modificaciones o traducciones a otros idiomas.
+ Una solución para aquellos que deseen escribir librería, y no tienen la
+interpretación más estricta de los trabajos derivados se aplica la propuesta del Proyecto GNU la Licencia Pública General Reducida de GNU, o más conocida por su nombre en inglés GNU Lesser General Public License (antes GNU Library General Public License o Licencia Pública General para Bibliotecas de GNU)
+,o simplemente por su acrónimo del inglés GNU LGPL, esta licencia permisiva se aplica a cualquier programa o trabajo que contenga una nota puesta por el propietario de los derechos del trabajo estableciendo que su trabajo puede ser distribuido bajo los términos de esta "LGPL Lesser General Public License". El "Programa", utilizado en lo subsecuente, se refiere a cualquier programa o trabajo original, y el "trabajo basado en el Programa" significa ya sea el programa o cualquier trabajo derivado del mismo bajo la ley de derechos de autor: es decir, un trabajo que contenga el Programa o alguna porción de él, ya sea íntegra o con modificaciones o traducciones a otros idiomas.
 Otras actividades que no sean copia, distribución o modificación no están cubiertas en esta licencia y están fuera de su alcance. El acto de ejecutar el programa no está restringido, y la salida de información del programa está cubierta sólo si su contenido constituye un trabajo basado en el Programa (es independiente de si fue resultado de ejecutar el programa). Si esto es cierto o no depende de la función del programa.\cite{Etiqueta03}
 
-Estas diferencias de opinión con respecto a lo que constituye una obra derivada, y
+Estas diferencias de opinión con respecto a lo que constituye un trabajo derivada, y
 la ambigüedad en torno a otros aspectos de la concesión de licencias de código abierto podría tener consecuencias para campos como el diseño de hardware y se discutirá en una sección posterior.
 
 La principal diferencia de opinión, sin embargo , se deriva del hecho de que la libre
