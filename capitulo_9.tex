@@ -232,13 +232,13 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline
 		Secuencia de Ejecución &  Ejecutación de la aplicación de prueba eth.or32\\
 		\hline
-		Postcondiciones &  MinSoc corriendo sobre FPGA, lo que se manifista en la impresión de pantalla de la terminar serie en la PC y en los paquetes captados por la aplicación wireshark \\
+		Postcondiciones &  MinSoc corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminar serie en la PC y en los paquetes captados por la aplicación wireshark \\
 		\hline
  		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial una cadena de string indicando el inicio del envío de paquetes Ethernet y verificar la llegada de los mismos por medio de una aplicación sniffer \\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse un programa de prueba pudo observarse la cadena de string "HELLO WORLD " y observar la cadena 0xFF02B4050" \\
+		Resultados Obtenidos & Al ejecutarse un programa de prueba pudo observarse la cadena de string "HELLO WORLD " y observar 0xFF02B4050 en los paquetes catados por la aplicación wireshark" \\
 		\hline
 		\end{tabular}
 		\end{table}
@@ -441,7 +441,6 @@ del Soc & Crítico & Ocasional\\
 		\hline
 		RQX-PB 7 & Problemas con el compilador para la generación del binario del benchmark CoreMark  & Crítico&  Ocasional\\
 		\hline
-		\hline
 		\end{tabular}
 		\caption{Tabla de Riegos vs. Requerimientos}
 		%\label{tab:riegos}
@@ -507,19 +506,72 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee acceso a las memorias SDRAM on board de la placa S3ADSP1800A, un módulo SPI que interactúa con la memoria flash on board de la placa antes mencionada, un módulo UART y un módulo ETHERNET. 
 		
 			%\subsection{Selección y Desarrollo de aplicaciones de prueba}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%TESTING DOS
 \newpage
 		\subsection{Testing}
-		%% Hacer TCase T006 para comprobación de RQX-PB 2 y RQX-PB 3
 
-		\begin{table}[h!]
+\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
-	    \rowcolor[gray]{0.8}  Caso de Prueba&  Ejecución del Benchmark CoreMark\\
+	\rowcolor[gray]{0.8}  Caso de Prueba&  Interactuar correctamente con las interfaces hardware de Ethernet\\
 		\hline 
-		Código de Requerimiento & RQX-PB 4 , RQX-PB 5 , RQX-PB 7\\ 
+		Código de Requerimiento & RQX-PB 2 , RQX-PB 3\\ 
 		\hline 
-		Requerimiento  &  Se debe garantizar el acceso a las memorias RAM DDR2 de la plataforma S3ADSP1800A\\ 
+		Requerimiento  &El prototipo debe garantizar el correcto funcionamiento de todos los periféricos conectados al SoC mediante el bus Wishbone\\ 
+						&  El prototipo debe Interactuar correctamente con las interfaces hardware soportadas de la placa de desarrollo S3ADSP1800A\\
+		\hline 
+		Código de Testing & T008\\ 
+		\hline
+		Propósito &  El envío de paquetes echo del protocolo ICMP desde el SoC  \\
+		\hline
+		Realizado Por & Gomez, Pablo \\
+		\hline	
+		Entorno de Ejecución & Bare Metal \\
+		\hline
+		Precondiciones & \begin {itemize}
+							\item Instanciación en la FPGA del SoC.
+							\item Ejecución de una terminal serie en la PC
+							\item Ejecución de una aplicación snifer en la PC
+							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\item Herramientas de compilación cruzada funcionando correctamente
+							\item Programas de prueba compilados correctamente
+							\end {itemize} \\
+		\hline
+		Secuencia de Ejecución &  Ejecutación de la aplicación de prueba ethmac-ping.or32\\
+		\hline
+		Postcondiciones &  El programa de prueba ejecutándose sobre la RAM de la plataforma, lo que se manifiesta en la impresión de pantalla de la terminar serie en la PC y en los paquetes captados por la aplicación wireshark \\
+		\hline
+ 		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+		\hline
+		Resultados Esperados & Poder observar por la terminal serial una cadena de string indicando el inicio del envío de paquetes ICMP y verificar la llegada de los mismos por medio de una aplicación ICMP \\
+		\hline	
+		Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la cadena mostrada en la Referencia ~\ref{lst:reseth}\\
+		\hline
+		\end{tabular}
+		\end{table}
+
+
+\begin{lstlisting}[frame=single,caption={Salida de la terminal serie durante la ejecución del programa ethmac-ping.or32},label={lst:reseth}]
+eth ping program
+board IP "192.168.1.2
+\end{lstlisting}
+
+
+\newpage
+
+
+\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{5cm} p{10cm}  }
+		\hline 
+	    \rowcolor[gray]{0.8}  Caso de Prueba&Interactuar correctamente con la memoria RAM. \\
+		\hline 
+		Código de Requerimiento & RQX-PB 4 \\ 
+		\hline 
+		Requerimiento  &  Se debe garantizar el acceso a las memorias RAM DDR2 de la plataforma S3ADSP1800A\\ 	
+
 		\hline 
 		Código de Testing & T007\\ 
 		\hline
@@ -533,21 +585,120 @@ El módulo de Debug proporciona soporte para la depuración via JTAG. Se conecta
 							\item Instanciación del SoC en la FPGA.
 							\item Ejecución de una terminal serie en la PC
 							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\item Herramientas de compilación cruzada funcionando correctamente
+							\item Programas de prueba compilados correctamente
 							\end {itemize}\\
 		\hline
-		Secuencia de Ejecución & Ejecutación de la aplicación de prueba uart.or32  \\
+		Secuencia de Ejecución & Ejecutación de la aplicación de prueba sdra-row.or32 \\
 		\hline
-		Postcondiciones & MinSoc corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminar remota en la PC\\
+		Postcondiciones & ORPSoC corriendo sobre FPGA, y la aplicación ejecutándose sobre la memoria RAM lo que se manifiesta en la impresión de pantalla de la terminar remota en la PC\\
 		\hline
  \multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial una cadena de string.\\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse la aplicación de prueba del uart se pudo observar la cadena de string esperada "HELLO WORLD" \\
+		Resultados Obtenidos & Al ejecutarse la aplicación de prueba de RAM sdra-row.o32 se pudo observar la cadena de string esperada "TEST OK!" \\
 		\hline
 		\end{tabular}
 		\end{table}
-		
+
+
+\newpage
+\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{5cm} p{10cm}  }
+		\hline 
+		\rowcolor[gray]{0.8}  Caso de Prueba& Ejecución de la aplicación compilada en modo debug para números primos\\
+		\hline 
+		Código de Requerimiento & RQX-PA 5\\ 
+		\hline 
+		Requerimiento  & El prototipo debe ser capaz de ejecutar programas con capacidad de depuración generados mediante compilación cruzada en una arquitectura x86 y/o x86-64 para arquitectura la Open-RISC\\ 
+		\hline 
+		Código de Testing & T0011\\ 
+		\hline
+		Propósito &  Compilación en modo debug y Ejecución de un programa de calculo de números primos en c.
+\\
+		\hline
+		Realizado Por & Gomez, Pablo \\
+		\hline	
+		Entorno de Ejecución & Bare Metal \\
+		\hline
+		Precondiciones &\begin {itemize}
+							\item Instanciación en la FPGA del SoC.
+							\item Ejecución de una terminal serie en la PC
+							\item Descarga e instalación del complicador cruzado 
+							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\item Herramientas de compilación cruzada funcionando correctamente
+							\item Programas de prueba compilados correctamente
+							\end {itemize}
+ \\
+		\hline
+		Secuencia de Ejecución & Ejecución de la aplicación  numprim.or32\\
+		\hline
+		Postcondiciones & Aplicación corriendo sobre el ORPSoC instanciado en la FPGA, lo que se manifiesta en la impresión de pantalla de los números primos \\
+		\hline
+ 		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+		\hline
+		Resultados Esperados & Poder observar por la terminal serial el resultado de la ejecución de la aplicación \\
+		\hline	
+		Resultados Obtenidos & Al ejecutarse el programa contador de nuemros primos pudo observarse la salida mostrada en la Referencia ~\ref{lst:rescom}\\
+		\hline
+		\end{tabular}
+		\end{table}
+
+\begin{lstlisting}[frame=single,caption={Salida de la terminal serie durante la ejecución del programanumprim.or32},label={lst:rescom}]
+tiempo de ejecución:
+cantidad de numeros primos entre 1 y 2000:
+\end{lstlisting}
+
+
+\newpage
+		\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{5cm} p{10cm}  }
+		\hline 
+	    \rowcolor[gray]{0.8}  Caso de Prueba&  Ejecución del Benchmark CoreMark\\
+		\hline 
+		Código de Requerimiento & RQX-PB 7\\ 
+		\hline 
+		Requerimiento  &  El prototipo debe ser evaluado mediante el benchmark CoreMark para el posterior análisis de las capacidades del SoC\\ 
+		\hline 
+		Código de Testing & T009\\ 
+		\hline
+		Propósito & Medir el rendimiento de la unidad central de procesamiento embebida en el SoC\\
+		 
+\hline
+		Realizado Por & Lovaisa Michelini, Valeria \\
+		\hline	
+		Entorno de Ejecución & Bare Metal \\
+		\hline
+		Precondiciones &  \begin {itemize}
+							\item Instanciación del SoC en la FPGA.
+							\item Ejecución de una terminal serie en la PC
+							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\item Herramientas de compilación cruzada funcionando correctamente
+							\item Programa coremark compilado correctamente
+							\end {itemize}\\
+		\hline
+		Secuencia de Ejecución & Ejecución de la aplicación coremark.exe \\
+		\hline
+		Postcondiciones & ORPSoC corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminar serial en la PC de los resultados del programa de prueba \\
+		\hline
+ \multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+		\hline
+		Resultados Esperados & Poder observar por la terminal serial los resultados de medición de performance.\\
+		\hline	
+		Resultados Obtenidos & Al ejecutarse la aplicación coremark.exe se pudo observar ~\ref{lst:rescrm} \\
+		\hline
+		\end{tabular}
+		\end{table}
+
+
+\begin{lstlisting}[frame=single,caption={Salida de la terminal serie de los resultados de la ejecución del benchmark},label={lst:rescrm}]
+ ACA VA EL RESULTADO DE CORE MARK
+\end{lstlisting}
+
+
 		\subsection{Conclusión}
 
 \newpage
