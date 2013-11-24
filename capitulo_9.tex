@@ -437,9 +437,9 @@ del Soc & Crítico & Ocasional\\
 		\hline
 		RQX-PB 5&Problemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
 		\hline
-		RQX-PB 6& Problemas de compactibilidad con el modulo de debug del proyecto ORPSoC  & Critico&  Ocasional\\
+		RQX-PB 6& Problemas de compactibilidad con el modulo de debug del proyecto ORPSoC  & Crítico&  Ocasional\\
 		\hline
-		RQX-PB 7 & Problemas con el compilador para la generación del binario del benchmark CoreMark  & Critico&  Ocasional\\
+		RQX-PB 7 & Problemas con el compilador para la generación del binario del benchmark CoreMark  & Crítico&  Ocasional\\
 		\hline
 		\hline
 		\end{tabular}
@@ -493,11 +493,6 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 	
 		\subsection{Implementación}
 
-		El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee
-		acceso a las memorias SDRAM on board de la placa S3ADSP1800A, un módulo SPI que interactúa con la memoria flash on board
-		de la placa antes mencionada, un módulo UART y un módulo ETHERNET. 
-
-		\subsection{Implementación}
 		La implementación se realiza normalmente en cinco pasos básicos: 
 		\begin {itemize}
 		\item Descarga del script de instalación.
@@ -508,6 +503,8 @@ SoC & Dedicación de mayor tiempo para la implementación\\
  		\end {itemize}
  
  Consulte la Guía de ORPSoC en el Anexo 2 para una comprensión más profunda de los pasos a seguir en la implementación sobre la placa de desarrollo S3ADSP1800A.
+
+El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee acceso a las memorias SDRAM on board de la placa S3ADSP1800A, un módulo SPI que interactúa con la memoria flash on board de la placa antes mencionada, un módulo UART y un módulo ETHERNET. 
 		
 			%\subsection{Selección y Desarrollo de aplicaciones de prueba}
 \newpage
@@ -603,10 +600,9 @@ del Soc & Crítico & Ocasional\\
 		\hline
 		RQX-PB 5&Problemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
 		\hline
-		RQX-PB 6& Problemas de compactibilidad con el modulo de debug del proyecto ORPSoC  & Critico&  Ocasional\\
+		RQX-PB 6& Problemas de compactibilidad con el modulo de debug del proyecto ORPSoC  & Crítico&  Ocasional\\
 		\hline
-		RQX-PB 7 & Problemas con el compilador para la generación del binario del benchmark CoreMark  & Critico&  Ocasional\\
-		\hline
+		RQX-PB 7 & Problemas con el compilador para la generación del binario del benchmark CoreMark  & Crítico&  Ocasional\\
 		\hline
 		\end{tabular}
 		\caption{Tabla de Riegos vs. Requerimientos}
@@ -640,7 +636,6 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		\caption{Planificación de riesgos}
 		%\label{tab:planificación}
 		\end{table}
-
 
 \newpage
 		
