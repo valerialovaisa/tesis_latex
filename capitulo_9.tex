@@ -738,10 +738,9 @@ cantidad de numeros primos entre 1 y 2000:
 		\hline
 		RQX-PC 1& Fallas en la generación de la imagen del SO para ser montada en el SoC & Crítica       & Probable \\
 		\hline				
-				& Falta de documentación de apoyo para la implentación
-del SO bajo licencias de Software Libre & Crítico & Ocasional\\	
+				& Falta de documentación de apoyo para la implentación del SO bajo licencias de Software Libre & Crítico & Ocasional\\	
 		\hline				
-				& Limitaciones para la ejecución de SO de tiempo real & Crítico & Ocasional\\	
+				 & Limitaciones para la ejecución de SO de tiempo real & Crítico & Ocasional\\	
  		
  		\hline	
 		RQX-PC 2 	& Librerías necesarias inexistentes o con fallos& Crítico & Ocasional\\	
@@ -749,7 +748,7 @@ del SO bajo licencias de Software Libre & Crítico & Ocasional\\
 		\hline				
  					 & Drivers necesarios inexistentes o con fallos  & Severo  &  Ocasional\\ 
 		\hline	
- 		RQX-PC 3&Problemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
+ 		RQX-PC 3	&Problemas en la compilación e instalación de las herramientas de desarrollo de software& Severo  &  Ocasional\\ 
 		\hline
 		RQX-PB 4 & Problemas con el compilador para la generación del binario del programa de prueba  & Crítico&  Ocasional\\
 		\hline
@@ -766,20 +765,24 @@ del SO bajo licencias de Software Libre & Crítico & Ocasional\\
 		\hline 
 		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
 		\hline
-		Fallas en la generación de la imagen del SO para ser montada en el SoC &Retraso en los tiempos de implementación.& Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\		 
+		Fallas en la generación de la imagen del SO para ser montada en el SoC &Retraso en los tiempos de implementación.& Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores\\		 
 		\hline
-		Falta de documentación de apoyo para la implentación
-del Soc& Perdida de tiempo en realizar la implementación
-del SoC & Revisión previa de la documentación existente para la elección del
-SoC & Dedicación de mayor tiempo para la implementación\\ 
+		Falta de documentación de apoyo para la implentación del SO bajo licencias de Software Libre& Perdida de tiempo en realizar la implementación del SO & Revisión previa de la documentación existente para la elección del
+SO & Dedicación de mayor tiempo para la implementación\\ 
 		\hline
-		 Imposibilidad de acceso a SDRAM DDR2 de lo kit & Falta de capacidad para la ejecución de aplicaciones & Analisis previa de guia de resolución de problemas y documentación del core RAM & Depuración del codigo RTL del proyecto\\
+		 Limitaciones para la ejecución de SO de tiempo real & Inviabilidad para la ejecución
+de aplicaciones en tiempo real & Análisis de los RTOS &Modificación del SO para el cumplimiento de las capacidades de ejecución en tiempo real\\
 		\hline
-		Problemas en la compilación e instalación de las herramientas de desarrollo de software & Imposibilidad de desarrollo de aplicaciones que se ejecuten en el proyecto ORPSoC & Verificar la posibilidad de ejecución de las herramientas en diferentes SO & Utilización de las herramientas en alguno de los SO compatibles\\			
+		Librerías necesarias inexistentes o con fallos& Imposibilidad de desarrollo de aplicaciones para ejecutar sobre el SO de tiempo real& Análisis previo de las librerías disponibles y revisión de posibles bugs informados SO & Desarrollo de las librerías necesarias o corrección de errores\\			
 		\hline
-		Problemas de compatibilidad con el modulo de debug del proyecto OrpSoC con el programador JTAG-USB & Imposibilidad depuración de aplicaciones &Análisis de la documentación del proyecto& Utilización de otros  dispositivos compatibles.\\		
+		Drivers necesarios inexistentes o con fallos & Imposibilidad de utilización
+de los dispositivos necesarios&Análisis previo de los driver de los dispositivos a utilizar& Análisis previo de los
+driver de los dispositivos a utilizar\\		
 		\hline
-		Problemas con el compilador para la generación del binario del benchmark CoreMark & Imposibilidad de medir el rendimiento de la unidade centrales de procesamiento (CPU) & Verificar la posibilidad de ejecución de las herramientas en diferentes SO & Utilización de métodos alternativos para medir el redimiento en sistemas embebidos.\\
+		 Problemas en la compilación e instalación de las herramientas de desarrollo de software & Imposibilidad de desarrollo de aplicaciones que se ejecuten sobre el SO& Verificar la posibilidad de ejecución de las herramientas
+en diferentes SO & Utilización de las herramientas en alguno de los SO compatibles\\
+		\hline
+		 Problemas con el compilador para la generación del binario del programa de prueba& Imposibilidad de medir las limitaciones en la ejecución de hilos & Consulta previa a la documentación del SO y guías de preguntas frecuentes & Depuración de código de prueba\\
 		\hline
 		\end{tabular}
 		\caption{Planificación de riesgos}
