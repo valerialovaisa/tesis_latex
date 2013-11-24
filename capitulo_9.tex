@@ -61,14 +61,20 @@ En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se a
 		\end{table}
 
 \newpage
-	%%%%%%%%%%%%%%%%%%RIESGO	
-\begin{table}[!h]
+	
+
+%%%%%%%%%%%%%%%%%% ANALISIS DE RIESGO	
+
+\newpage
+\subsection{Matriz de Riesgo para el Prototipo Uno}
+
+\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados& Riegos Asociados & Severidad  & Ocurrencia \\
 		\hline
-		RQX-PA 1& EL código RTL disponible en la web tenga  fallas reconocidas durante el proceso de síntesis & Crítica       & Probable \\
+		RQX-PA 1& EL código RTL disponible en la web tenga fallas reconocidas durante el proceso de síntesis & Crítica       & Probable \\
 		\hline
 				& Vencimiento de licencias de las herramientas privativas para el proceso de síntesis  & Menor  & Ocasional\\	 
 		\hline
@@ -83,51 +89,39 @@ de bugs & Crítica  & Ocasional\\
 		\hline
 		RQX-PA 4& Compilación cruzada realizada con compiladores obsoletos & Severo  &  Ocasional\\ 
 		\hline
-		&Prblemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
+		&Problemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
 		\hline
-		RQX-PA 5&Problemas con el driver provisto por el fabricante del  dispositivo programador JTAG -USB  & Severo&  Ocasional\\
-		\hline
+		RQX-PA 5& Problemas con el driver provisto por el fabricante del  dispositivo programador JTAG -USB & Severo&  Ocasional\\
 		\hline
 		\end{tabular}
 		\caption{Tabla de Riegos vs. Requerimientos}
 		%\label{tab:riegos}
-		\end{table}\subsection{Matriz de Riesgo para el prototipo}
-
-
- \begin{table}[!h]
-		\centering
-		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
-		\hline 
-		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
-		\hline
-		Código RTL con fallas reconocidas durante el proceso de síntesis& Retraso en los tiempos de implementación & Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\
-		
-		Limitaciones de memoria RAM en las placas de desarrollo disponibles& Imposibilidad de ejecución de las aplicaciones requeridas & Verificación previa de los recursos utilizados por las aplicaciones a ejecutar & Adición de un nuevo módulo al código RTL  \\	 
-		\hline
-		Limitaciones de memoria FLASH en las placas de desarrollo disponibles& Incapacidad de disponer en memoria no volátil de una aplicación de arranque (bootloader) & Verificación previa del espacio necesario para la aplicación de arranque & Búsqueda de un modo alternativo de arranque\\ 
-		
-		\hline
-		\end{tabular}
 		\end{table}
-		\newpage
-		\begin{table}[!h]
+
+
+
+ \begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
 		\hline
-		Inexistencia de herramientas de desarrollo de software con licencias Open Source & Imposibilidad de compilación y depuración de aplicaciones &Comprobación de la existencia de herramientas libres & Desarrollo de las herramientas necesarias\\
-		
-		
+		EL código RTL disponible en la web tiene fallas reconocidas durante el proceso de síntesis.&Retraso en los tiempos de implementación.& Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\
 		\hline
-		 Drivers necesarios inexistentes o con fallos & Imposibilidad de utilización de los dispositivos necesarios&Análisis previo de los driver de los dispositivos a utilizar &  Desarrollo de los drivers necesarios\\
+		Vencimiento de licencias de las herramientas privativas para el proceso de síntesis & Imposibilidad de ejecución de las herramientas requeridas & Verificación previa de los vencimientos de las licencias & Renovación de licencia \\	 
 		\hline
-		Librerías necesarias inexistentes o con fallos& Imposibilidad de ejecución de aplicaciones sobre el sistema operativo embebido elegido & Análisis previo de las librerías disponibles y revisión de posibles bugs informados &  Desarrollo de las librerías necesarias o corrección de errores\\
-				
+		Falta de documentación de apoyo para la implentación
+del Soc& Perdida de tiempo en realizar la implementación
+del SoC & Revisión previa de la documentación existente para la elección del
+SoC & Dedicación de mayor tiempo para la implementación\\ 
+		\hline
+		 Imposibilidad de acceso a alguno de los periféricos de la placa de desarrollo & Imposibilitad de acceso a los periféricos del kit &Verificación previa de los recursos utilizados por el SoC a implementar & Depuración del codigo RTL del proyecto\\		
+		\hline
+		Problemas con el driver provisto por el fabricante del  dispositivo programador JTAG -USB  & Imposibilidad de configuración de la FPGA y depuración de aplicaciones &Análisis previo de los driver de los dispositivos a utilizar &  Utilización de dispositivos alternativos.\\		
 		\hline
 		\end{tabular}
 		\caption{Planificación de riesgos}
-		\label{tab:planificación}
+		%\label{tab:planificación}
 		\end{table}
 
 
@@ -142,7 +136,7 @@ de bugs & Crítica  & Ocasional\\
 		\begin{figure}[!h]
  		\begin{center}
   		\includegraphics[width=1\textwidth,keepaspectratio=true]{./images/proto1}
-  		\caption{Diagrama de despliegue Prototipo Uno }
+  		\caption{Diagrama de despliegue Prototipo Uno}
   		\label{fig:minsoc}
  		\end{center}
 		\end{figure}
@@ -165,21 +159,14 @@ La implementación se realiza normalmente en cinco pasos básicos:
 \item Programación de la FPGA Spartan 3a.
  \end {itemize}
  Consulte la Guía de MinSoc en el Anexo 1 para la realización pasos a seguir en la implementación sobre la placa de desarrollo  S3ADSP1800A.
-
-
 		
 		%%%%%%%\subsection{Diagrama de Secuencia}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%testing%%%%%%%%%%%%%%%%%%		
-		\subsection{Selección y Desarrollo de aplicaciones de prueba}
-
-
-
+		%\subsection{Selección y Desarrollo de aplicaciones de prueba}
+\newpage
 		\subsection{Testing}
 
 % Escribir sobre el testing del proto uno
 
-\newpage
 \begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -226,7 +213,7 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline 
 		Código de Requerimiento & RQX-PA 3\\ 
 		\hline 
-		Requerimiento  &  El prototipo debe interactuar correctamente con las interfaces hardware soportadas de la placa de desarrollo S3ADSP1800A\\ 
+		Requerimiento  &  El prototipo debe Interactuar correctamente con las interfaces hardware soportadas de la placa de desarrollo S3ADSP1800A\\ 
 		\hline 
 		Código de Testing & T002\\ 
 		\hline
@@ -251,7 +238,7 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial una cadena de string indicando el inicio del envío de paquetes Ethernet y verificar la llegada de los mismos por medio de una aplicación sniffer \\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse un programa de prueba pudo observarse la cadena de strig "HELLO WORLD" y observar la cadena 0xFF02B4050" \\
+		Resultados Obtenidos & Al ejecutarse un programa de prueba pudo observarse la cadena de string "HELLO WORLD " y observar la cadena 0xFF02B4050" \\
 		\hline
 		\end{tabular}
 		\end{table}
@@ -395,7 +382,7 @@ Fin del programa
 
 
 		\subsection{Conclusión}
-Este prototipo fue de vital importancia permitiendo mostrar que es posible instanciar sobre el kit de desarrollo disponible un system on de chip básico open source en una FPGA saprtam 3a.
+Este prototipo fue de vital importancia permitiendo mostrar que es posible instanciar sobre el kit de desarrollo disponible un system on de chip básico open source en una FPGA Spartan 3A.
 La mayor cantidad de tiempo fue para la  determinación de las herramientas de desarrollo necesarias para el hardware disponible, ya que la documentación sobre el tema era insuficiente o nula. Sin embargo una vez que se pudo logrado encontrar las herramientas adecuadas y  la corrección de error en el código RTL fue mucho más sencillo la implementación del prototipo.
 		
 \newpage
@@ -422,7 +409,7 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 		\hline
 		RQX-PB 4 & Se debe garantizar el acceso a las memorias RAM DDR2 de la plataforma S3ADSP1800A\\
 		\hline
-		RQX-PB 5 & El prototipo debe se capaz de ejecutar programas con capacidad de depuración generados mediante compilación
+		RQX-PB 5 & El prototipo debe ser capaz de ejecutar programas con capacidad de depuración generados mediante compilación
 		cruzada en una arquitectura x86 y/o x86\_64 para arquitectura la OpenRISC\\
 		\hline
 		RQX-PB 6 & Se debe lograr depurar paso a paso y mediante break points las aplicaciones desarrolladas\\
@@ -432,6 +419,64 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 		\end{tabular}
 		\end{table}
 
+\newpage
+\subsection{Matriz de Riesgo para el Prototipo Dos} 
+
+\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados& Riegos Asociados & Severidad  & Ocurrencia \\
+		\hline
+		RQX-PB 1& EL código RTL disponible en la web tenga fallas reconocidas durante el proceso de síntesis & Crítica       & Probable \\
+		\hline				
+				& Falta de documentación de apoyo para la implentación
+del Soc & Crítico & Ocasional\\	 
+		\hline
+		RQX-PB 2,RQX-PB 3,RQX-PA 4 & Imposibilidad de acceso a SDRAM DDR2 de lo kit& Catastrófico & Probable\\
+		\hline
+		RQX-PB 5&Problemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
+		\hline
+		RQX-PB 6& Problemas de compactibilidad con el modulo de debug del proyecto ORPSoC  & Critico&  Ocasional\\
+		\hline
+		RQX-PB 7 & Problemas con el compilador para la generación del binario del benchmark CoreMark  & Critico&  Ocasional\\
+		\hline
+		\hline
+		\end{tabular}
+		\caption{Tabla de Riegos vs. Requerimientos}
+		%\label{tab:riegos}
+		\end{table}
+
+\newpage
+
+ \begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
+		\hline
+		EL código RTL disponible en la web tiene fallas reconocidas durante el proceso de síntesis.&Retraso en los tiempos de implementación.& Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\		 
+		\hline
+		Falta de documentación de apoyo para la implentación
+del Soc& Perdida de tiempo en realizar la implementación
+del SoC & Revisión previa de la documentación existente para la elección del
+SoC & Dedicación de mayor tiempo para la implementación\\ 
+		\hline
+		 Imposibilidad de acceso a SDRAM DDR2 de lo kit & Falta de capacidad para la ejecución de aplicaciones & Analisis previa de guia de resolución de problemas y documentación del core RAM & Depuración del codigo RTL del proyecto\\
+		\hline
+		Problemas en la compilación e instalación de las herramientas de desarrollo de software & Imposibilidad de desarrollo de aplicaciones que se ejecuten en el proyecto ORPSoC & Verificar la posibilidad de ejecución de las herramientas en diferentes SO & Utilización de las herramientas en alguno de los SO compatibles\\			
+		\hline
+		Problemas de compatibilidad con el modulo de debug del proyecto OrpSoC con el programador JTAG-USB & Imposibilidad depuración de aplicaciones &Análisis de la documentación del proyecto& Utilización de otros  dispositivos compatibles.\\		
+		\hline
+		Problemas con el compilador para la generación del binario del benchmark CoreMark & Imposibilidad de medir el rendimiento de la unidade centrales de procesamiento (CPU) & Verificar la posibilidad de ejecución de las herramientas en diferentes SO & Utilización de métodos alternativos para medir el redimiento en sistemas embebidos.\\
+		\hline
+		\end{tabular}
+		\caption{Planificación de riesgos}
+		%\label{tab:planificación}
+		\end{table}
+
+
+\newpage
 		\subsection{Descripción de la Estructura del Prototipo Dos}
 		La Figura ~\ref{fig:orpsoc} muestra un esquema de la arquitectura planteada en el prototipo. Al igual que en el prototipo uno se utiliza un estación
 		de trabajo corriendo las herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada. Se requiere de un servidor
@@ -462,20 +507,13 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 		\item Programación de la FPGA Spartan 3a.
  		\end {itemize}
  
- Consulte la Guía de ORPSoC en el Anexo 2 para una comprensión más profunda de los pasos a seguir en la implementación sobre la placa de desarrollo
- S3ADSP1800A.
+ Consulte la Guía de ORPSoC en el Anexo 2 para una comprensión más profunda de los pasos a seguir en la implementación sobre la placa de desarrollo S3ADSP1800A.
 		
-		
-		\subsection{Selección y Desarrollo de aplicaciones de prueba}
-
-
-
+			%\subsection{Selección y Desarrollo de aplicaciones de prueba}
+\newpage
 		\subsection{Testing}
-
 		%% Hacer TCase T006 para comprobación de RQX-PB 2 y RQX-PB 3
 
-			
-		\newpage
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -513,7 +551,6 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 		\end{tabular}
 		\end{table}
 		
-	
 		\subsection{Conclusión}
 
 \newpage
@@ -548,6 +585,64 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 		\end{tabular}
 		\end{table}
 		
+
+\subsection{Matriz de Riesgo para el Prototipo Tres} 
+
+\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados& Riegos Asociados & Severidad  & Ocurrencia \\
+		\hline
+		RQX-PB 1& EL código RTL disponible en la web tenga fallas reconocidas durante el proceso de síntesis & Crítica       & Probable \\
+		\hline				
+				& Falta de documentación de apoyo para la implentación
+del Soc & Crítico & Ocasional\\	 
+		\hline
+		RQX-PB 2,RQX-PB 3,RQX-PA 4 & Imposibilidad de acceso a SDRAM DDR2 de lo kit& Catastrófico & Probable\\
+		\hline
+		RQX-PB 5&Problemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
+		\hline
+		RQX-PB 6& Problemas de compactibilidad con el modulo de debug del proyecto ORPSoC  & Critico&  Ocasional\\
+		\hline
+		RQX-PB 7 & Problemas con el compilador para la generación del binario del benchmark CoreMark  & Critico&  Ocasional\\
+		\hline
+		\hline
+		\end{tabular}
+		\caption{Tabla de Riegos vs. Requerimientos}
+		%\label{tab:riegos}
+		\end{table}
+
+\newpage
+
+ \begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
+		\hline
+		EL código RTL disponible en la web tiene fallas reconocidas durante el proceso de síntesis.&Retraso en los tiempos de implementación.& Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\		 
+		\hline
+		Falta de documentación de apoyo para la implentación
+del Soc& Perdida de tiempo en realizar la implementación
+del SoC & Revisión previa de la documentación existente para la elección del
+SoC & Dedicación de mayor tiempo para la implementación\\ 
+		\hline
+		 Imposibilidad de acceso a SDRAM DDR2 de lo kit & Falta de capacidad para la ejecución de aplicaciones & Analisis previa de guia de resolución de problemas y documentación del core RAM & Depuración del codigo RTL del proyecto\\
+		\hline
+		Problemas en la compilación e instalación de las herramientas de desarrollo de software & Imposibilidad de desarrollo de aplicaciones que se ejecuten en el proyecto ORPSoC & Verificar la posibilidad de ejecución de las herramientas en diferentes SO & Utilización de las herramientas en alguno de los SO compatibles\\			
+		\hline
+		Problemas de compatibilidad con el modulo de debug del proyecto OrpSoC con el programador JTAG-USB & Imposibilidad depuración de aplicaciones &Análisis de la documentación del proyecto& Utilización de otros  dispositivos compatibles.\\		
+		\hline
+		Problemas con el compilador para la generación del binario del benchmark CoreMark & Imposibilidad de medir el rendimiento de la unidade centrales de procesamiento (CPU) & Verificar la posibilidad de ejecución de las herramientas en diferentes SO & Utilización de métodos alternativos para medir el redimiento en sistemas embebidos.\\
+		\hline
+		\end{tabular}
+		\caption{Planificación de riesgos}
+		%\label{tab:planificación}
+		\end{table}
+
+
+\newpage
 		
 		\subsection{Implementación}
 		

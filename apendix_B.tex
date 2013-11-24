@@ -1,0 +1,162 @@
+
+\chapter{GUÍA BÁSICA  DE IMPLEMENTACIÓN PARA ORPSoC}
+
+ \section{Introdución}
+Este proyecto implementa una plataforma para el desarrollo OpenRISC. Proporciona un SoC de referencia, para la prueba y el desarrollo de procesadores OpenRISC.
+
+
+ \section{Descarga del ORPSoC}
+La el código fuente RTL, el software de prueba y scripts de instalación pueden ser descargados del repositorio svn del proyecto OpenRISC. Los archivos pueden descargados con el siguiente comandos.
+
+\begin{verbatim}
+ usuario@usuario-desktop:~/$  svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/orpsocv2
+\end{verbatim}
+
+Después de descomprimir el archivo descargado para la instalación ORPSoC se parece a esto ~\ref{fig:esquema} 
+
+\begin{figure}[h!]
+ \begin{center}
+  %\includegraphics[width=1\textwidth,keepaspectratio=true]{./images/proyectoorpsoc}
+  \caption{Esquema del Proyecto ORPSoC }
+  \label{fig:esquema}
+ \end{center}
+\end{figure}
+
+ \section{Instalación de herramientas}
+ \subsection{Instalación de herramientas GNU}
+
+Los programas deben ser instalados en el directorio / opt. Utilice los siguientes comandos para descomprimir y descomprimir el archivo descargado: 
+
+
+ \section{Instalación de herramientas Xilinx}
+
+Antes de realizar esto necesitamos tener instaladas correctamente las herramientas de Xilinix. Luego de la instalación debemos agregar al PATH de Linux las rutas a los binarios necesarios para realizar el proceso. 
+
+\begin{verbatim}
+ usuario@usuario-desktop:~/$ source (ruta a Xilinx ISE)/settings32.sh  
+\end{verbatim}
+
+ \section{Syntesis}
+La construcción del proyecto está configurada para el uso de Makefiles. Los pasos a realizar son los siguientes:
+
+\begin{itemize}
+\item Los archivos necesarios para realizar la síntesis se encuentran en 
+\begin{verbatim}
+(orpsoc_dir)/boards/xilinx/(board)/syn/
+\end{verbatim}
+
+\item Limpiamos cualquier síntesis anteriormente realizada 
+
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/syn/xst/run$ make clean
+\end{verbatim}
+
+\item Verificamos que solo existe el makefile
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/syn/xst/run$ ls
+
+Makefile
+\end{verbatim}
+
+\item Realizamos una nueva síntesis
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/syn/xst/run$ make all
+\end{verbatim}
+\end{itemize} 
+
+  % #### Generating Xilinx PRJ file ####
+% #### Generating XST file ####
+% #### Generating Xilinx XCF file ####
+% #### Running XST ####
+ \section{Place and Route}
+%///////////// Place and Route ////////////////////////
+Luego de la síntesis para realizar el procedimiento Place and Route (PAR) debemos ir a la carpeta
+\begin{verbatim}
+(orpsoc_dir)/boards/xilinx/(board)/backend/par/
+\end{verbatim}
+Limpiamos cualquier PAR anteriormente realizado
+
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ make clean
+\end{verbatim}
+
+Verificamos que solo existe el makefile
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ ls
+Makefile
+\end{verbatim}
+
+Realizamos el proceso PAR 
+
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ make orpsoc.ncd
+\end{verbatim}
+El reporte del PAR se encuentra en 
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ cat orpsoc.par
+\end{verbatim}
+
+Para listar los valores de configuración con las que se esta realizando el proceso
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ make print-config
+\end{verbatim}
+
+Para realizar un informe de "timing post place" 
+
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ make timingreport
+\end{verbatim}
+
+El informe se encuentra en:
+
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ cat orpsoc.twr | less
+\end{verbatim}
+
+
+ \section{Generación del .Bit}
+
+Finalmente generamos el bitfile que contiene la configuración que debemos cargar en la FPGA.
+
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ make orpsoc.bit
+\end{verbatim}
+
+ \section{Configuración de la FPGA}
+
+%//////////// XC3SPROG INSTALLATION   //////////////
+Para descargar el bitfile de configuración utilizamos xc3sprog y un programador basado en FTDI2232. Este hardware requiere de la herramienta 
+
+Descargamos el código del programa
+\begin{verbatim}
+usuario@usuario-desktop:~/$ svn checkout svn://svn.code.sf.net/p/xc3sprog/code/trunk xc3sprog-code
+usuario@usuario-desktop:~/$ cd xc3sprog-code
+usuario@usuario-desktop:~/$   
+\end{verbatim}
+%........   TERMINAR PROCESO DE COMPILACIÓN ..... 
+
+
+%//////////// DOWNLOAD THE BITSTREAM ON FPGA   //////////////
+
+Luego de conectar el programador en el conector J4. Chequeamos el funcionamiento escaneando la cadena JTAG
+\begin{verbatim}
+usuario@usuario-desktop:~$ sudo (ruta a xc3sprog)/xc3sprog  -c ftdi -j
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ sudo (ruta a xc3sprog)/xc3sprog  -c ftdi  orpsoc.bit 
+\end{verbatim}
+
+ \section{Descarga del BITSTREAM a la SPI }
+
+%//////////// DOWNLOAD THE BITSTREAM ON SPI   //////////////
+Inicialmente descargamos el bitfile provisto en la carperta
+\begin{verbatim}
+xc3sprog/bscan_files
+\end{verbatim} 
+ que configura la fpga para actuar como intermediario ante la FLASH SPI y así lograr grabar en la misma.
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ sudo (ruta a xc3sprog)/xc3sprog  -c ftdi (ruta a xc3sprog)/bscan_spi/xc3sd1800-fg676.bit 
+\end{verbatim} 
+
+Ahora podemos descargar el bitstream a la FLASH SPI mediante 
+\begin{verbatim}
+usuario@usuario-desktop:(orpsoc_dir)/boards/xilinx/s3adsp1800/backend/par/run$ sudo (ruta a xc3sprog)/xc3sprog  -c ftdi  -I orpsoc.bit 
+\end{verbatim}
