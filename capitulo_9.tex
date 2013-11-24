@@ -922,6 +922,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\hline  							RQX-PD 2 & Se requiere la instalación de un gestor de arraque que posibilite el inicio del sistema operativo\\ 
 		\hline 								RQX-PD 3 & Se debe poder grabar como aplicación firmware el gestor de arranque en la memoria flash SPI de la placa de desarrollo\\
 		\hline 								RQX-PD 4 & El prototipo debe tener capacidad de ejecución y depuración de aplicaciones sobre el sistema operativo Linux\\
+		\hline 
 		\end{tabular}
 		\end{table}
 		
@@ -953,18 +954,22 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
 		\hline 
 		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
-		\hline Fallas en la generación de la imagen del SO para ser montada en el SoC & 
+		\hline Errores en la configuración de compilación del kernel para el SoC utilizado & 
+		       Retraso en los tiempos de implementación & 
+		       Análisis previo de archivos de configuración del SoC seleccionado o similares & 
+		       Revisión y correción de archivos de configuración\\
+		\hline Fallas en la generación de la imagen del SO y/o el gestor arranque para ser montada en el SoC & 
 		       Retraso en los tiempos de implementación & 
 		       Análisis previo de guías de resolución de problemas y preguntas frecuentes & 
 		       Revisión de código y consulta a los desarrolladores\\
-		\hline Falta de documentación de apoyo para la implentación del SO para la arquitectura OpenRISC & 
+		\hline Falta de documentación de apoyo para la implentación del SO y/o gestor de arranque para la arquitectura OpenRISC & 
 		       Demoras en la implementación del SO & 
 		       Revisión previa de la documentación existente y guías de resolución de problemas & 
 		       Mayor inversión de tiempo para la implementación\\
-		\hline Limitaciones para la ejecución de SO  & 
-			   Imposibilidad de ejecutar apliaciones desarrolladas para Linux & 
+		\hline Falta de soporte del SO Linux y/o el gestor de arranque para su implementación en el hardware disponible & 
+			   Fallos en la ejecución del sistema operativo & 
 		       Análisis previo de limitaciones en la documentación de los desarrolladores y guías de resolución de problemas & 
-		       Revisión y desarrollo de código del SO necesario su funcionamiento\\
+		       Revisión y desarrollo de código del SO necesario para proveer soporte al hardware\\
 		\hline Librerías necesarias inexistentes o con fallos & 
 			   Imposibilidad de desarrollo de aplicaciones para ejecutar sobre el SO &
 			   Análisis previo de las librerías disponibles y revisión de posibles bugs informados SO & 
@@ -1002,5 +1007,71 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\subsection{Implementación}	
 		
 		\subsection{Testing}
+		
+		\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{5cm} p{10cm}  }
+		\hline 
+		\rowcolor[gray]{0.8} 	 Caso de Prueba & Carga de programa mediante el gestor de arranque UBoot\\
+		\hline  		Código de Requerimiento & RQX-PD 2\\ 
+		\hline  				  Requerimiento & Se requiere la instalación de un gestor de arraque que posibilite el inicio del sistema operativo\\
+		\hline 				  Código de Testing & T015\\ 
+		\hline 						  Propósito & Comprobación del correcto funcionamiento del gestor de arranque\\
+		\hline					  Realizado Por & Lovaisa, Valeria \\
+		\hline	 		   Entorno de Ejecución & Bare Metal\\
+		\hline		   		   	 Precondiciones & \begin {itemize}
+												  \item Instanciación en la FPGA del SoC ORPSoC
+												  \item Ejecución de una terminal serie en la PC 
+ 												  \item Comunicación establecida entre la placa de desarrollo y la PC mediante Serial y eth
+ 												  \item Servidor TFTP funcionando correctamente sobre el SO host
+												  \item Herramientas de compilación cruzada funcionando correctamente
+												  \item Gestor de arranque y aplicación de prueba compilados correctamente
+												  \item Imagen de arranque sin errores
+												  \end {itemize} \\
+		\hline			 Secuencia de Ejecución &  Ejecutación de la aplicación de prueba numprim.or32 a través de Uboot\\
+		\hline					Postcondiciones &  El gestor de arranque inicia correctamente el programa de prueba, lo que se manifiesta en la impresión de la salida
+		del gestor de arranque y el programa prueba en la terminal serie de la PC\\
+		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+		\hline			   Resultados Esperados & Poder observar por la terminal serial las salida de los programas \\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la Referencia ~\ref{lst:salidauboot}\\
+		\hline	
+		\end{tabular}
+		\end{table}
+		
+\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba cargado por uboot},label={lst:salidauboot}]
+ ACA VA EL RESULTADO DE CORRER UN PROGRAMA MEDIANTE UBOOT
+\end{lstlisting}
+		
+		\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{5cm} p{10cm}  }
+		\hline 
+		\rowcolor[gray]{0.8} 	 Caso de Prueba & Grabar el gestor arranque en memoria FLASH SPI\\
+		\hline  		Código de Requerimiento & RQX-PD 3\\ 
+		\hline  				  Requerimiento & Se debe poder grabar como aplicación firmware el gestor de arranque en la memoria flash SPI de la placa de desarrollo\\
+		\hline 				  Código de Testing & T016\\ 
+		\hline 						  Propósito & Comprobación del correcto funcionamiento del gestor de arranque\\
+		\hline					  Realizado Por & Lovaisa, Valeria \\
+		\hline	 		   Entorno de Ejecución & Bare Metal\\
+		\hline		   		   	 Precondiciones & \begin {itemize}
+												  \item Instanciación en la FPGA del SoC ORPSoC
+												  \item Ejecución de una terminal serie en la PC 
+ 												  \item Comunicación establecida entre la placa de desarrollo y la PC mediante Serial y eth
+ 												  \item Servidor TFTP funcionando correctamente sobre el SO host
+												  \item Herramientas de compilación cruzada funcionando correctamente
+												  \item Gestor de arranque y aplicación de prueba compilados correctamente
+												  \item Imagen de arranque sin errores
+												  \end {itemize} \\
+		\hline			 Secuencia de Ejecución &  Ejecutación de la aplicación de prueba numprim.or32 a través de Uboot\\
+		\hline					Postcondiciones &  El gestor de arranque inicia correctamente el programa de prueba, lo que se manifiesta en la impresión de la salida
+		del gestor de arranque y el programa prueba en la terminal serie de la PC\\
+		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+		\hline			   Resultados Esperados & Poder observar por la terminal serial las salida de los programas \\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la Referencia ~\ref{lst:salidauboot}\\
+		\hline	
+		\end{tabular}
+		\end{table}
+		
+		
 		
 		\subsection{Conclusión}
