@@ -29,7 +29,7 @@
 \definecolor{orange}{RGB}{0,0,255}
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
-%\title{\textcolor{orange}{Guia Practica Instalación de MinSoc}}
+%\title{Guia Practica Instalación de MinSoc}}
 %\author{Gomez,Roberto Pablo - Lovaisa Michelini, Valeria  \\ Universidad Tecnológica Nacional \\ CUDAR }
 
 \begin{document}
@@ -46,16 +46,16 @@
 
 \newpage
 
-\section{\textcolor{orange}{Introducción}}
-\subsection{\textcolor{orange}{Descripción General}}
+\section{Introducción}}
+\subsection{Descripción General}}
 Descripción por arriba del trabajo. por ejemplo la industria dispone de herramientas que nosotros usamos para un fin determinado.
 
-\subsection{\textcolor{orange}{Objetivos}}
-\subsubsection{\textcolor{orange}{Objetivo General}}
+\subsection{Objetivos}}
+\subsubsection{Objetivo General}}
 
 Implementar un system on chip OpenSource con un microprocesador embebido Soft-core que soporte un sistema operativo libre , con la finalidad de entregar un sitema integral FPGA-SoC-Sistema Operativo completamente funcional y bajo licencia GPL v2.
 
-\subsubsection{\textcolor{orange}{Objetivo Específico}}
+\subsubsection{Objetivo Específico}}
 \begin{itemize}
 \item Seleccionar, analizar y determinar un microprocesador Sof-Core.
 \item Establecer un system on chip Open Source donde poder implementar un Soft-Core.
@@ -70,7 +70,7 @@ Implementar un system on chip OpenSource con un microprocesador embebido Soft-co
 %tradicionales de diseño
 \end{itemize}
 
-\subsection{\textcolor{orange}{Motivación}}
+\subsection{Motivación}}
 
 Existe un grupo de cores Sof-Core de código abierto que no están limitados por la tecnología. Los cores destacados de microprocesadores de 32 bits, son los procesadores SPARC LEON OpenRISC 1200 , y el core de LatticeMico32. Usar cores de  codigo abierto,  va unido a una serie de conceptos como:
  \begin {itemize}
@@ -87,7 +87,7 @@ Estos tres de los más grandes proveedores de FPGA , Xilinx , Altera y Lattice ,
  
 Una de principales ventajas de usar plataformas con FPGA, es que son flexibles asi que pueden adaptarse a diferentes funciones. Los componentes de hardware ofrecen mucho mayor rendimiento que el software equivalente. Los cuellos de botella de procesamiento del sistema pueden identificarse y sustituirse por hardware, de manera que se evita la costosa optimizan del software.
 
-\subsection{\textcolor{orange}{Importancia del Problema}}
+\subsection{Importancia del Problema}}
 
 En el diseño del sistema embebido se usan diferentes procesos depende del tipo de sistema, el hardware disponible y la organización que desarrolle el sistema. Una de las actividades principales en un proceso de diseño de software es la elección del hardware y del sistema operativo que se efectúa antes del comienzo del software. Ante tal situación , se debe diseñar el software par considerar las restricciones impuestas por las capacidades del hardware.
 Los efectos que influyen dichas elecciones comprenden restricciones de de temporización sobre el sistema, limitación en la energía disponible, experiencia del equipo de desarrollo y limites en el costos del sistema entregable.
@@ -96,7 +96,7 @@ Se está explorando una linea donde se busca dar al diseñador del sistema embeb
  
 Una vez que se ha elegido la plataforma de ejecucion para el sistema, se ha diseñado una arquitectura de proceso y se a determinado una políticas de planeación, es necesario comprobar que el sistema cumplirá sus con sus requerimientos.
 
-\subsection{\textcolor{orange}{Alcance del Estudio}}
+\subsection{Alcance del Estudio}}
 
 Debido al plazo estipulado para el desarrollo del proyecto, el mismo involucra tres etapas: 
 
@@ -109,7 +109,7 @@ Debido al plazo estipulado para el desarrollo del proyecto, el mismo involucra t
 
 %de donde hasta donde vamos a ir
 %primero elegimos un micro después lo embebemos en un soc y después le metimos un sistema operativo
-\subsection{\textcolor{orange}{Modelo de Desarrollo}}
+\subsection{Modelo de Desarrollo}}
 
 
 El modelo de desarrollo a utilizar es el Modelo en Espiral tipificado por Ian Sommerville [2] . El modelo en espiral de ingeniería de software, mostrado en la Ilustración 1, fue originalmente propuesto por Boehm en año 1988, en su artículo A Spiral Model of Software Development and Enhancement. Propuso un marco del proceso de software dirigido por el riesgo. Aquí, el proceso de software se representa como una es espiral, cada ciclo en la espiral representa una fase del proceso de software. Por ende el, ciclo más interno puede relacionarse con la factibilidad del sistema, el siguiente ciclo con la definición de requerimientos, el siguiente ciclo al diseño del sistema, y así sucesivamente.
@@ -125,21 +125,21 @@ Cada ciclo del espiral se divide en 4 sectores:
 Como característica principal de esta metodología es que posee una consideración explícita del riesgo. Informalmente, el riesgo significa sencillamente que algo puede ir mal. Los riegos originan problemas en el proyecto, como los de confección de agendas y excesos en los costos; por lo tanto, la disminución de riegos es una actividad sumamente importante en la gestión del proyecto.
 Un ciclo en la espiral comienza con la elaboración de objetivos, como el rendimiento y la funcionalidad. Entonces se enumeran formas alternativas de alcanzar estos objetivos y las restricciones impuestas en cada una de ellas. Cada alternativa se evalúa contra cada objetivo y se identifican las fuentes de riegos del proyecto. El siguiente paso es resolver estos riesgos mediante actividades de recopilación de información como la de detallar más el análisis, la construcción de prototipos y la simulación. Una vez que se han evaluado los riesgos se llevará a cabo cierto desarrollo, seguido de una actividad de planificación para la siguiente fase del proceso.
 
-\subsection{\textcolor{orange}{Metodología}}
+\subsection{Metodología}}
 
 Considerando que el objetivo planteado es un desarrollo que se realiza por primera vez, se aplicará un desarrollo experimental y de simulación. La falta de documentación al respecto y al ser un desarrollo de vanguardia son factores que acentúan en esta decisión. Sumado a lo anteriormente dicho, en el laboratorio donde se desarrolla este proyecto no existen antecedentes de trabajos similares.
  
 Se utilizó como metodología en este desarrollo el modelo de componentes, donde se define estándares para la implementación, documentación y el despliegue de componentes. 
 
 
-%\section{\textcolor{orange}{Perspectiva Historica}}
-%	\subsection{\textcolor{orange}{El Comienzo de los Microprocesadores}}
-%	\subsection{\textcolor{orange}{FPGAs y Microsprocesadores Soft-Core}}
-%	\subsection{\textcolor{orange}{Software OpenSource y Libre}}
+%\section{Perspectiva Historica}}
+%	\subsection{El Comienzo de los Microprocesadores}}
+%	\subsection{FPGAs y Microsprocesadores Soft-Core}}
+%	\subsection{Software OpenSource y Libre}}
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%CAPITULO 2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{\textcolor{orange}{FPGA y microprocesadores Soft-Core}}%julius
-	\subsection{\textcolor{orange}{FPGAs}}
+\section{FPGA y microprocesadores Soft-Core}}%julius
+	\subsection{FPGAs}}
 
 La fabricación de dispositivos semiconductores es un proceso complicado de plazos largos y costoso. Esto lleva a que los diseños destinados para la  implementacion en chip de silicio tengan poco oportunidad de ser prototipados antes de que comience la producción en grandes volúmenes. Esto supone una gran importancia  en las faces de prueba y verificación de un diseño antes de ser fabricado.
 
@@ -151,7 +151,7 @@ Actualmente las FPGA cuentan con una gran cantidad de recursos disponibles (Comp
 
 Una desventaja de las FPGA  es debido a la naturaleza inherente de las arquitecturas de FPGA, los diseños implementados en FPGA comparados con una ASICs en general tienen mas area, menos porformance y consumen mas energía.
 
-		\subsubsection{\textcolor{orange}{Arquitectura}}	
+		\subsubsection{Arquitectura}}	
 
 Los componentes de una \textit{FPGA} se pueden dividir en cinco grupos:
 
@@ -170,7 +170,7 @@ Los componentes de una \textit{FPGA} se pueden dividir en cinco grupos:
  \end{center}
 \end{figure}
 
-		\subsubsection{\textcolor{orange}{Bloques Lógicos Configurables y Lookup Tables}}
+		\subsubsection{Bloques Lógicos Configurables y Lookup Tables}}
 Todas las \textit{FPGA} se basan en arrays de pequeños elementos de lógica digital. Los problemas de lógica digital se descomponen en circuitos lógicos que puedan ser mapeados a uno o más de estas “celdas lógicas” a través de un proceso llamado “technology mapping".
 
 Cada bloque de logica configurable varia de acuerdo a su fabricante, en el caso de Xilinx tienen el nombre Logic cell (LC) contiene una 4 input LUT, un multiplexor y un registro. Se puede configurar la polaridad del clock, el clock enable y la señal de reset.
@@ -186,29 +186,29 @@ Cada bloque de logica configurable varia de acuerdo a su fabricante, en el caso 
 
 También se encuentran las Lookup Tables, que son elementos lógicos que están compuestos de al menos un registro programable (flip\-flop) y alguna lógica de entrada, que usualmente está implementada como una lookup table de n entradas, donde n es 5 o menos. Estas LUTs son capaces de implementar cualquier función combinacional de sus entradas.
 
-		\subsubsection{\textcolor{orange}{Bloques de Entrada y Salida de propósito general }}
+		\subsubsection{Bloques de Entrada y Salida de propósito general }}
 
 Las FPGAs poseen pines TTL, CMOS, PCI, LVDS y muchos otros que les permiten hacer de interface y convertir muchas tecnologías diferentes. Las FPGAs tienen bloques de I/O dedicados para clocks y resets globales. También incluyen PLL y esquemas para el manejo de clocks permitiendo múltiples dominios del mismo.
 
 Las FPGAs actuales tienen impedancias de I/O configurables,  permiten el uso de resistencias internas terminales cuyos valores pueden ser configurados por el usuario. 
 
 
-		\subsubsection{\textcolor{orange}{Bloques de Memoria}}
+		\subsubsection{Bloques de Memoria}}
 
 Las FPGAs actuales incorporan memorias on-chip, tales como las SRAM. Estas memorias pueden ser accedidas en forma jerárquica, desde la memoria local de cada celda a la memoria global de los bloques compartidos de memoria. Si bien esto no hace a la esencia de la FPGA, todas hoy en día poseen estos bloques para dar solución al impacto que conlleva utilizar una memoria externa al chip, mayormente soluciona los problemas de latencia.
 
-		\subsubsection{\textcolor{orange}{Multiplicadores}}
+		\subsubsection{Multiplicadores}}
 Algunas funciones como los multiplicadores son muy lentos si se implementan mediante la conexión de un gran numero de bloques lógicos. Por eso muchas FPGAs incorporan bloques multiplicadores hardware. Estos bloques se encuentran muy cerca de los bloques de RAM embebidos. 
-\subsubsection{\textcolor{orange}{Manejadores de Clock Digitales}}
+\subsubsection{Manejadores de Clock Digitales}}
  Se llama clock tree porque la señal de clock principal es ramificada para que alcance a todos los flip-flops.Esta estructura es así para asegurarse que todos los flip flop estén lo mas cerca posible del clock y evitar el problema del skew.El clock tree es implementado usando canales separados de los de propósito general para interconectar los bloques.
 
-		\subsection{\textcolor{orange}{Microprocesadores Soft-Core }}
+		\subsection{Microprocesadores Soft-Core }}
 
 El avance en la en la tecnología de fabricación de VLSI (Very Large Scale Integratio) a medida que se agregaron más y más transistores,y en consecuencia más y más funciones fueron integradas en un mismo chip, por lo tanto también las capacidades en FPGAs. Grandes diseños de sistemas digitales que fueron sólo para ser implementado como ASICs, luego tuvieron la opción de ser ejecutados en FPGA.
 
 El microprocesador, ya sea como un componente discreto o  como parte de otra lógica en el mismo chip, es una candidato  para ser  implementado en FPGA. Esto introdujo un mayor potencial para la exploración del espacio de diseño haciendo que la logica de computo especifica sea implemetada junto con un microprocesador estándar %\cita{estiqueta20}
 		
-	\subsubsection{\textcolor{orange}{ IP-Core}}
+	\subsubsection{ IP-Core}}
 
 El diseños de circuitos digitales se dividen normalmente en bloques funcionales, que se refiere como módulos, o \textit{cores}. Un \textit{core} estara formado por sub-bloques que ayudan a poner en práctica su funcionalidad. Los \textit{cores} pueden variar en tamaño hasta el tamaño total de un microprocesador. Un \textit{core} puede ocupar una FPGA entera al ser implementado, mientras que sólo se crea una instancia entre otros en una FPGA más grande o en un ASIC. Los \textit{núcleos} se describen generalmente utilizando un lenguaje de descripción de hardware (HDL) en un nivel de abstracción conocida como registro nivel de transferencia (RTL).
 
@@ -218,7 +218,7 @@ El resultado de la síntesis, conocida como una \textit{netlist}, está en un ni
 
 Los cores pueden ser diseñados por una persona o entidad, los desarrolladores de \textit{cores} y licenciatarios varían en tamaño desde particulares a empresas de miles de millones de dólares. El producto, en este caso se conoce como un \textit{IP core  Intellectual Property Core} el diseño es la propiedad intelectual de los desarrolladores de terceros y la derecho a usarla recibe la licencia del cliente. La \textit{Intellectual Property IP} varia  de  acuerdo a las licencia.
 
-			\paragraph{\textcolor{orange}{ Tipos de IP-Core}}
+			\paragraph{ Tipos de IP-Core}}
 hard soft y intermedios
 %El producto , en este caso se conoce como un núcleo IP (propiedad intelectual a menudocore) en el sentido de que el diseño es la propiedad intelectual de los desarrolladores de terceros y le da derecho a usarlo  recibe la licencia del cliente. Se utilizan los términos IP y el núcleo indistintamente y en combinación para significar la misma cosa .IP puede ser en una variedad de formas cuando licencia . Cuando está en la forma de sintetizable RTL entonces el IP se conoce como un núcleo blando . Si se trata de una forma menos abstraído forma , tal como un formato de un mensaje - diseño listo lista de conexiones o para la fabricación, que se conoce como IP núcleo duro .
 
@@ -248,27 +248,27 @@ Para el desarrollo de una aplicación reconfigurable existe los micro cores de 3
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CAPITULO 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{\textcolor{orange}{Benchmark}}
+\section{Benchmark}}
 Este capitulo lo puse para darle una intro a el estudio de los test que voy a poner en el estudio de los micor soft-core
-	\subsection{\textcolor{orange}{Introducción}}
+	\subsection{Introducción}}
 explico un poco para q los uso y en que se usan
 
 En informática , un punto de referencia es el acto de ejecutar un programa de ordenador, un conjunto de programas , u otras operaciones , a fin de evaluar el rendimiento relativo de un objeto , normalmente mediante la ejecución de una serie de pruebas estándar y los ensayos en contra de ella . El término ' benchmark ' también se utiliza sobre todo para los fines de los propios programas de benchmarking elaboradamente diseñados.
 
 Benchmarking se asocia generalmente con la evaluación de las características de rendimiento de hardware , por ejemplo , el rendimiento de punto flotante de funcionamiento de una CPU , pero hay circunstancias en que la técnica también es aplicable al software . Puntos de referencia de software están , por ejemplo, van en contra de los compiladores o sistemas de gestión de bases de datos .
 
-	\subsection{\textcolor{orange}{CPU core benchmarking}}
+	\subsection{CPU core benchmarking}}
  
 A pesar de que no se corresponde con la forma en que utilizaría un procesador en una aplicación real , a veces es importante aislar el núcleo de la CPU de los otros elementos del procesador y centrarse en un elemento clave. Por ejemplo , es posible que desee tener la capacidad de hacer caso omiso de la memoria y los efectos de E / S y se centran principalmente en la operación de el pipeline. Este es el dominio de CoreMark . CoreMark es capaz de probar la estructura de pipeline básica de un procesador , así como la capacidad de prueba de lectura / escritura de operaciones básicas , operaciones de enteros y operaciones de control
 
-	\subsection{\textcolor{orange}{CoreMark}}
+	\subsection{CoreMark}}
 
 CoreMark es un punto de referencia que tiene como objetivo medir el rendimiento de las unidades centrales de procesamiento ( CPU) utilizados en sistemas embebidos. Fue desarrollado en 2009 por Shay Gal -On en EEMBC y está destinado a convertirse en un estándar de la industria , en sustitución de la referencia Dhrystone anticuada . El código está escrito en código C y contiene las implementaciones de los algoritmos siguientes : procesamiento de lista ( encontrar y ordenar ) , Matrix (matemáticas) manipulación ( operaciones con matrices comunes ) , máquina de estados ( determinar si un flujo de entrada contiene números válidos ) y CRC
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%CAPITULO 4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{\textcolor{orange}{Software OpenSource y Libre}}%julius
-		\subsection{\textcolor{orange}{Deferencias}}%http://www.slideshare.net/wilberth1594/tesis-alex-8795926,julius
+\section{Software OpenSource y Libre}}%julius
+		\subsection{Deferencias}}%http://www.slideshare.net/wilberth1594/tesis-alex-8795926,julius
 Una interpretación sencilla de lo que se entiende por el término \textit {open source} o \textit{código abierto}, cuando se utiliza en el contexto de la descripción de un programa de software o diseño de hardware , es que el codigo fuente  de alguna manera está disponibles a la vista. A pesar de que es un amplio y potencial término ambiguo, un común acuerdo sobre la definición está en un documento llamado  Open Source Definition (OSD), publicado por la Open Source Initiative (OSI).
 
  La definición no es una licencia de software libre en sí, si no algo que se utiliza para medir condiciones frente a la distribución, si se determina que cumplen con las condiciones, entonces se puede decir que es \textit{open source}. Lo que no es claro es lo que podría o debería ser hecho con una copia del código fuente.Cuando el software \textit{libre} o \textit{free} se utiliza para describir el software de código abierto, se refiere a los derechos y no al costo del usuario. La Fundación para el Software Libre (FSF) ofrece una definición para mostrar claramente qué se tiene que cumplir sobre el software para que pueda ser considerado libre (35). El termino Free Software Foundation (FOSS) es usado para referirse al software que se adhiere al OSD y FSF. El software \textit{libre} y de \textit{código abierto} es una sociedad inclusiva término que abarca tanto el software libre y software de código abierto que a pesar de describir modelos de desarrollo similares, tienen diferentes culturas y filosofías.
@@ -352,7 +352,7 @@ Un sitio web, con sus comienzos en el año 2000, llamado OpenCores que proporcio
 
 
 		
-		\subsection{\textcolor{orange}{Motivación para la adopción del OpenSource}}
+		\subsection{Motivación para la adopción del OpenSource}}
 
 Dentro del software de código abierto se tiene alternativas como software multimedia avanzada, de productividad de oficina,  herramientas de gráficos, sistemas operativos y software de comunicaciones, por lo general libres para descargar y utilizar. Los gobiernos y las grandes empresas están aprovechando cada vez más el software de código abierto que existe y se están convirtiendo en importantes contribuyentes a los proyectos del software que adoptan. Las tendencias recientes han hecho mucho para disipar la imagen de la legión de solitarios desarrolladores de código abierto que son los únicos contribuyentes de trabajo. 
 Como las entidades comerciales están aumentan la adopción y utilización de los proyectos de software libre,  se están convirtiendo en los contribuyentes más frecuentes. El kernel de Linux tiene ahora la mayor parte de sus contribuciones de código de las entidades comerciales, ya sea por que están trabajando con el núcleo Linux en sus productos, o que deseen asegurar el apoyo a su hardware en el kernel, tales como Intel ,AMD e IBM. Lo mismo es cierto para proyectos como Apache y MySQL.
@@ -366,7 +366,7 @@ produciendo el aumento del software existente evitando la tarea de empezar a des
 
  Estas son algunas de las motivaciones para la adopción y contribución de código abierto podrían ser muchas más y variadas eso dependerá de la funcionalidad del proyecto de codigo fuente. A pesar de su éxito en el software en el diseño de hardware de código abierto  no tuvo el mismo éxitos los motivos se estudiar más adelante.
 
-		\subsection{\textcolor{orange}{Desventajas de la adopción del OpenSource}}
+		\subsection{Desventajas de la adopción del OpenSource}}
 
 A pesar del gran aumento en popularidad y uso del software de código abierto, han sido muchos los detractores del desarrollo de código abierto en la actualidad. 
 El codigo que no es opensource puede ser desplazado del mercado por alguna alternativa que si lo sea sin embargo, comúnmente estas alternativas no son tan buenas, al ser opensource no ofrecen demasiadas cosas para innovar lo suficiente.
@@ -429,7 +429,7 @@ existing application for largely academic purposes, and another to wish to inves
 large amounts of time and money to develop a new concept wishing to see a return
 based on the innovation, rather than the accessibility, of the design.
 
-		\subsection{\textcolor{orange}{Mas motivación para la adopción para el desarrollo OpenSource}}
+		\subsection{Mas motivación para la adopción para el desarrollo OpenSource}}
 
 Una de las motivaciones para el desarrollo de código abierto desde el punto de vista comercial,  proviene de la capacidad de proporcionar y cobrar por algún tipo de servicio extra del proyecto de código abierto.A pesar que el IP este disponible públicamente, implementar o personalizar el proyecto normalmente requiere experiencia en el correspondiente disciplina y con el proyecto en particular. Las empresas que adoptan y mantien una solución de código abierto por lo general tienen sólo el costo de los conocimientos necesarios para hacerlo, sin tener que pagar regalías o licencias adicionales.  
 
@@ -473,19 +473,19 @@ La diversidad de distribuciones, métodos de empaquetamiento, licencias de uso, 
 
 
 
-	%	\subsection{\textcolor{orange}{Deferencias}}%http://www.slideshare.net/wilberth1594/tesis-alex-8795926,julius
+	%	\subsection{Deferencias}}%http://www.slideshare.net/wilberth1594/tesis-alex-8795926,julius
 %Aca vamos a poner las libertades que permiten uno y otro
-%		\subsection{\textcolor{orange}{GPL}}
-	%	\subsection{\textcolor{orange}{LGPL}}
+%		\subsection{GPL}}
+	%	\subsection{LGPL}}
 %Revisemos este título -- PABLO JULIUS :P
-	%	\subsection{\textcolor{orange}{OpenSource}}
+	%	\subsection{OpenSource}}
 		
 
-		\subsection{\textcolor{orange}{ OpenSource}}
+		\subsection{ OpenSource}}
 
 La apertura del código de la propiedad intelectual desarrollada para el proyecto OpenRISC, y otros en OpenCores, ha sido a la vez un obstáculo y una ayuda, ya que pone al desnudo el estado del desarrollo, pero es útil, ya que permite que cualquiera pueda participar en el continuo desarrollo de núcleos. Esta subsección discutirá los pros y los contras de la fuente abierta enfoque.
 
-		\subsubsection{\textcolor{orange}{No verificado y No populares}} 
+		\subsubsection{No verificado y No populares}} 
 
 A pesar del uso y la aceptación del software desarrollado bajo licencia de código abierto, los proyectos RTL de código abierto no han recibido el mismo tipo de interés o la participación de las empresas más grandes de IP. 
 
@@ -509,7 +509,7 @@ Comparando esto con adoptar una programa opensource, que consiste en la descarga
 A medida que mas proyectos opnesource son desarrollados y los sistemas de desarrollo sean mas ágiles, se puede esperar que estas barreras para los desarrolladores de diseño de hardware opensource puedan ser superadas. En los principios del del desarrollo de software opensource parecían igual de complicados. Se espera que con el tiempo y el aumento de participantes el hardware de código abierto alcance el mismo exito.En ese momento, los diseños serán tan grandes que no cabrán en los dispositivos programables actuales. La reconfigurabilidad será un elemento imprescindible. Las fronteras entre el hardware y el software se harán cada vez más difusas. El deseo, casi utópico, es lograr correr un kernel Linux hardware basándose en las posibilidades que nos ofrece la reconfigurabilidad. 
 	
 
-		\subsection{\textcolor{orange}{Licencias}}
+		\subsection{Licencias}}
 
 Una cuestión que queda por resolver es el de la concesión de licencias para el diseño de hardware de código abierto. El proyecto OpenRISC utiliza licencias públicas del proyecto GNU. Estos refieren específicamente a software, y no se sabe lo bien que se aplican a hardware.
 El sitio web del proyecto GNU contiene una sección con preguntas frecuentes (FAQ) que se ocupa de esta consulta. Afirma lo siguiente.
@@ -603,14 +603,14 @@ nada, innovador en la especificación arquitectónica OR1K. Esto no quiere decir
 los resultados no tienen ningún valor. Tampoco necesariamente excluye cualquier OpenRISC futuro
 o implementaciones de arquitecturas con el objetivo de innovar.
 
-		\subsection{\textcolor{orange}{conclución}}
+		\subsection{conclución}}
 
 A día de hoy los diseños hardware de código abierto son una realidad palpable. Cualquiera puede descargarlos de la red y utilizarlos en sus diseños. Los componentes típicos de un sistema tales como un controlador USB, un microprocesador, un controlador de red, etc., tienen su alternativa en código abierto y son ya utilizados por empresas en productos comerciales, lo cual da una idea de su calidad
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%CAPITULO 5%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-	\section{\textcolor{orange}{Microprocesadores Soft-Core}}
+	\section{Microprocesadores Soft-Core}}
 \chapter{Análisis del microprocesador OpenRISC}
 	\section{Soft-Core Processors}
 	
@@ -744,96 +744,96 @@ A continuación se presentan más detalladamente las características de estos S
 		\subsection{Sistema Operativo}
 
 
-	\subsection{\textcolor{orange}{LEON3}}
-		\subsubsection{\textcolor{orange}{Características}}
-		\subsubsection{\textcolor{orange}{Benchmarking}}
-	\subsection{\textcolor{orange}{OpenRISC}}
-		\subsubsection{\textcolor{orange}{Características}}
-		\subsubsection{\textcolor{orange}{Benchmarking}}
-	\subsection{\textcolor{orange}{Nios II}}
-		\subsubsection{\textcolor{orange}{Características}}
-		\subsubsection{\textcolor{orange}{Benchmarking}}
-	\subsection{\textcolor{orange}{MicroBlaze}}
-		\subsubsection{\textcolor{orange}{Características}}
-		\subsubsection{\textcolor{orange}{Benchmarking}}
+	\subsection{LEON3}}
+		\subsubsection{Características}}
+		\subsubsection{Benchmarking}}
+	\subsection{OpenRISC}}
+		\subsubsection{Características}}
+		\subsubsection{Benchmarking}}
+	\subsection{Nios II}}
+		\subsubsection{Características}}
+		\subsubsection{Benchmarking}}
+	\subsection{MicroBlaze}}
+		\subsubsection{Características}}
+		\subsubsection{Benchmarking}}
 
-\section{\textcolor{orange}{Análisis de el OpenRISC }}
-		\subsection{\textcolor{orange}{Arquitectura}}
-		\subsection{\textcolor{orange}{Implementación}}
-			\subsubsection{\textcolor{orange}{ORPSoC}}
-			\subsubsection{\textcolor{orange}{MinSoc}}
-		\subsection{\textcolor{orange}{Toolchain}}
-		\subsection{\textcolor{orange}{Software}}
-			\subsubsection{\textcolor{orange}{Librerías}}
-			\subsubsection{\textcolor{orange}{Sistema Operativo}}
+\section{Análisis de el OpenRISC }}
+		\subsection{Arquitectura}}
+		\subsection{Implementación}}
+			\subsubsection{ORPSoC}}
+			\subsubsection{MinSoc}}
+		\subsection{Toolchain}}
+		\subsection{Software}}
+			\subsubsection{Librerías}}
+			\subsubsection{Sistema Operativo}}
 			
 %%%%%%%%%%%ESTUDIO DEL PROBLEMA%%%%%%%%%%%%%%%%
 	
-\section{\textcolor{orange}{Estudio del Problema}}
-	\subsection{\textcolor{orange}{Introducción}}
-	\subsection{\textcolor{orange}{Requerimientos del Usuario}}
-			\subsubsection{\textcolor{orange}{En cuanto al Hardware}}
-			\subsubsection{\textcolor{orange}{En cuanto al las licencias}} 
-			\subsubsection{\textcolor{orange}{En cuanto Sistema Operativo}} 	 
-				 		\subsection{\textcolor{orange}{Estudio de componentes y de la viabilidad para el proyecto}}	
-		\subsubsection{\textcolor{orange}{Objetivo}} 	 
-		\subsubsection{\textcolor{orange}{Comparación de los Soft-Core}} 
-	 	\subsection{\textcolor{orange}{Conclusiones de la elección del micro Soft-Core}}
- 		\subsubsection{\textcolor{orange}{Placas de Desarrollo}}
-			\paragraph{\textcolor{orange}{Xilinx}}
-			\paragraph{\textcolor{orange}{Digilent}} 	 
-			\paragraph{\textcolor{orange}{Altera}}
- 		\subsubsection{\textcolor{orange}{CONCLUSIONES DE LA ELECCIÓN DE LA PLACA DE DESARROLLO}}
- 		\subsubsection{\textcolor{orange}{SELECCIÓN DE LAS HERRAMIENTAS DE DESARROLLO}} 	 
- 		\subsubsection{\textcolor{orange}{Elección de Sistema Operativo}}
-%\paragraph{\textcolor{orange}{}}
+\section{Estudio del Problema}}
+	\subsection{Introducción}}
+	\subsection{Requerimientos del Usuario}}
+			\subsubsection{En cuanto al Hardware}}
+			\subsubsection{En cuanto al las licencias}} 
+			\subsubsection{En cuanto Sistema Operativo}} 	 
+				 		\subsection{Estudio de componentes y de la viabilidad para el proyecto}}	
+		\subsubsection{Objetivo}} 	 
+		\subsubsection{Comparación de los Soft-Core}} 
+	 	\subsection{Conclusiones de la elección del micro Soft-Core}}
+ 		\subsubsection{Placas de Desarrollo}}
+			\paragraph{Xilinx}}
+			\paragraph{Digilent}} 	 
+			\paragraph{Altera}}
+ 		\subsubsection{CONCLUSIONES DE LA ELECCIÓN DE LA PLACA DE DESARROLLO}}
+ 		\subsubsection{SELECCIÓN DE LAS HERRAMIENTAS DE DESARROLLO}} 	 
+ 		\subsubsection{Elección de Sistema Operativo}}
+%\paragraph{}}
 			
-\section{\textcolor{orange}{Requerimientos y Riesgos Del Sistema}}
+\section{Requerimientos y Riesgos Del Sistema}}
 
-\section{\textcolor{orange}{Implementación}}
-	\subsection{\textcolor{orange}{Introducción}}
-	\subsection{\textcolor{orange}{Arquitectura}}
+\section{Implementación}}
+	\subsection{Introducción}}
+	\subsection{Arquitectura}}
 %Criterios para la realización de testing  (o algo asi) -- PABLO JULIUS :P
-	\subsection{\textcolor{orange}{Criterio para la realización de testing}}
-	\subsection{\textcolor{orange}{Entorno de ejecución}}
-		\subsubsection{\textcolor{orange}{Entorno de ejecución Standalone}}
-		\subsubsection{\textcolor{orange}{Entorno de ejecución linux}}
-	\subsection{\textcolor{orange}{PROTOTIPO UNO: Implementación del SoC MinSoc en FPGA}}
-		\subsubsection{\textcolor{orange}{Introducción}}
-		\subsubsection{\textcolor{orange}{Requerimientos del prototipo}}
-		\subsubsection{\textcolor{orange}{Implementación}}
-			\subsubsection{\textcolor{orange}{Diagrama de Secuencia}}
-			\subsubsection{\textcolor{orange}{Testing}}
-		\subsection{\textcolor{orange}{Conclusión}}
-	\subsection{\textcolor{orange}{PROTOTIPO DOS: Implementación del SoC OrpSoc en FPGA}}
-		\subsubsection{\textcolor{orange}{Introducción}}
-		\subsubsection{\textcolor{orange}{Requerimientos del prototipo}}
-		\subsubsection{\textcolor{orange}{Implementación}}
-			\subsubsection{\textcolor{orange}{Diagrama de Secuencia}}
-			\subsubsection{\textcolor{orange}{Testing}}
-		\subsection{\textcolor{orange}{Conclusión}}
-	\subsection{\textcolor{orange}{PROTOTIPO TRES: Implementación del SoC OrpSoc en FPGA con Sistema Operativo eCos}}
-		\subsubsection{\textcolor{orange}{Introducción}}
-		\subsubsection{\textcolor{orange}{Requerimientos del prototipo}}
-		\subsubsection{\textcolor{orange}{Implementación}}
-			\subsubsection{\textcolor{orange}{Diagrama de Secuencia}}
-			\subsubsection{\textcolor{orange}{Testing}}
-		\subsection{\textcolor{orange}{Conclusión}}
-	\subsection{\textcolor{orange}{PROTOTIPO tres: Implementación OrpSoc en FPGA con Linux}}
-		\subsubsection{\textcolor{orange}{Introducción}}
-		\subsubsection{\textcolor{orange}{Requerimientos del prototipo}}
-		\subsubsection{\textcolor{orange}{Implementación}}
-			\subsubsection{\textcolor{orange}{Diagrama de Secuencia}}
-			\subsubsection{\textcolor{orange}{Testing}}
-		\subsection{\textcolor{orange}{Conclusión}}
+	\subsection{Criterio para la realización de testing}}
+	\subsection{Entorno de ejecución}}
+		\subsubsection{Entorno de ejecución Standalone}}
+		\subsubsection{Entorno de ejecución linux}}
+	\subsection{PROTOTIPO UNO: Implementación del SoC MinSoc en FPGA}}
+		\subsubsection{Introducción}}
+		\subsubsection{Requerimientos del prototipo}}
+		\subsubsection{Implementación}}
+			\subsubsection{Diagrama de Secuencia}}
+			\subsubsection{Testing}}
+		\subsection{Conclusión}}
+	\subsection{PROTOTIPO DOS: Implementación del SoC OrpSoc en FPGA}}
+		\subsubsection{Introducción}}
+		\subsubsection{Requerimientos del prototipo}}
+		\subsubsection{Implementación}}
+			\subsubsection{Diagrama de Secuencia}}
+			\subsubsection{Testing}}
+		\subsection{Conclusión}}
+	\subsection{PROTOTIPO TRES: Implementación del SoC OrpSoc en FPGA con Sistema Operativo eCos}}
+		\subsubsection{Introducción}}
+		\subsubsection{Requerimientos del prototipo}}
+		\subsubsection{Implementación}}
+			\subsubsection{Diagrama de Secuencia}}
+			\subsubsection{Testing}}
+		\subsection{Conclusión}}
+	\subsection{PROTOTIPO tres: Implementación OrpSoc en FPGA con Linux}}
+		\subsubsection{Introducción}}
+		\subsubsection{Requerimientos del prototipo}}
+		\subsubsection{Implementación}}
+			\subsubsection{Diagrama de Secuencia}}
+			\subsubsection{Testing}}
+		\subsection{Conclusión}}
 
 
 
 	
 
 
-\section{\textcolor{orange}{Bibliografía}}
-\subsection{\textcolor{orange}{Documentos}}
-\subsection{\textcolor{orange}{sitios web}}
+\section{Bibliografía}}
+\subsection{Documentos}}
+\subsection{sitios web}}
 
 \end{document}

@@ -312,3 +312,228 @@ for (i=0;i<100;i++){
 }
 \end{lstlisting}
 
+ \section{Programa de Prueba de SDRAM}
+ \begin{lstlisting}[language=C,frame=single]
+ #include "cpu-utils.h"
+#include "board.h"
+#include "sdram.h"
+#include "uart.h"
+#include "printf.h"
+
+#ifndef _SDRAM_H_
+#define _SDRAM_H_
+
+#ifdef  MT48LC32M16A2 // 64MB SDRAM part
+#define SDRAM_SIZE 0x04000000
+#define SDRAM_ROW_SIZE 2048 // in bytes (10 bits col addr, 2 bytes per)
+#define SDRAM_NUM_ROWS_PER_BANK (8192) // 13-bit row address
+#define SDRAM_NUM_BANKS 4
+#endif
+
+#ifdef  MT48LC16M16A2 // 32MB SDRAM part
+#define SDRAM_SIZE 0x02000000
+#define SDRAM_ROW_SIZE 1024 // in bytes (9 bits col addr, 2 bytes per)
+#define SDRAM_NUM_ROWS_PER_BANK (8192) // 13-bit row address
+#define SDRAM_NUM_BANKS 4
+#endif
+
+#ifdef MT48LC4M16A2 // 8MB SDRAM part
+#define SDRAM_SIZE 0x800000
+#define SDRAM_ROW_SIZE 512 // in bytes (8 bits col addr, 2 bytes per)
+#define SDRAM_NUM_ROWS_PER_BANK (4096) // 12-bit row address
+#define SDRAM_NUM_BANKS 4
+#endif
+
+
+#endif
+
+
+#define SDRAM_NUM_ROWS (SDRAM_NUM_ROWS_PER_BANK * SDRAM_NUM_BANKS)
+
+#define START_ROW 128
+
+int main()
+{
+
+  uart_init(DEFAULT_UART);
+
+
+  printf("\n\tSDRAM rows test\n");
+
+  printf("\n\tWriting\n");
+  
+  int i; // Skip first 64KB, code/stack resides there - TODO determine this from
+  // stack linker variable!
+  for(i=START_ROW;i<(SDRAM_NUM_ROWS);i++)
+    {
+      REG32((i*(SDRAM_ROW_SIZE))) = i;
+      printf("\r\t0x%x", i);
+    }
+
+  printf("\n\tReading\n");
+
+  int read_result = 0;
+
+  for(i=START_ROW;i<(SDRAM_NUM_ROWS);i++)
+    {
+      printf("\r\t0x%x", i);
+      read_result = REG32((i*(SDRAM_ROW_SIZE)));
+      if (read_result != i)
+	{
+	  printf("\n\Error at 0x%x, read 0x%x, expected 0x%x\n",
+		 (i*SDRAM_ROW_SIZE), read_result, i);
+	  report(0xbaaaaaad);
+	  report(i);
+	  report(read_result);
+	  exit(0xbaaaaaad);
+	}
+    }
+  printf("\n\tTest OK.\n");
+  exit(0x8000000d);  
+}
+ 
+ \end{lstlisting}
+
+ \section{Programa de Prueba Ethernet del Proyecto ORPSoC}
+ \begin{lstlisting}[language=C,frame=single]
+ 
+int main ()
+{
+  
+	print_packet_contents = 0; // Default to not printing packet contents.
+	packet_inspect_debug = 0;
+	print_ethmac_debug_reg = 0;
+
+	/* Initialise vector handler */
+	int_init();
+
+	/* Install ethernet interrupt handler, it is enabled here too */
+	int_add(ETH0_IRQ, oeth_interrupt, 0);
+
+	/* Enable interrupts */
+	cpu_enable_user_interrupts();
+    
+	last_char=0; /* Variable init for spin_cursor() */
+	next_tx_buf_num = 4; /* init for tx buffer counter */
+
+	uart_init(DEFAULT_UART); // init the UART before we can printf
+	printf("\n\teth ping program\n\n");
+	printf("\n\tboard IP: %d.%d.%d.%d\n",our_ip[0]&0xff,our_ip[1]&0xff,
+	       our_ip[2]&0xff,our_ip[3]&0xff);
+  
+	ethmac_setup(); /* Configure MAC, TX/RX BDs and enable RX and TX in 
+			   MODER */
+  
+	//scan_ethphys(); /* Scan MIIM bus for PHYs */
+	//ethphy_init(); /* Attempt reset and configuration of PHY via MIIM */
+	//ethmac_scanstatus(); /* Enable scanning of status register via MIIM */
+
+	/* Loop, monitoring user input from TTY */
+	while(1)  
+	{
+		char c;
+      
+		while(!uart_check_for_char(DEFAULT_UART))
+		{
+			
+			spin_cursor();
+			
+			if (print_ethmac_debug_reg)
+				oeth_print_wbdebug();
+		}
+      
+		c = uart_getc(DEFAULT_UART);
+
+		if (c == 's')
+			tx_packet((void*) ping_packet, 98);
+		else if (c == 'S')
+			tx_packet((void*)big_ping_packet, 1514);
+		else if (c == 'h')
+			scan_ethphys();
+		else if (c == 'i')
+			ethphy_init();
+		else if (c == 'c')
+			oeth_ctrlmode_switch();
+		else if (c == 'P')
+		{
+			print_packet_contents = print_packet_contents ? 0 : 1;
+			if (print_packet_contents)
+				printf("Enabling packet dumping\n");
+			else
+				printf("Packet dumping disabled\n");
+		}
+		else if (c == 'p')
+			oeth_printregs();
+		else if (c == 'a')
+			ethphy_print_status(ethphy_found);
+		else if (c >= '0' && c <= '9')
+			scan_ethphy(c - 0x30);
+		else if (c == 'r')
+		{
+			ethphy_reset(ethphy_found);
+			printf("PHY reset\n");
+		}
+		else if (c == 'R')
+		{
+			//oeth_reset_tx_bd_pointer();
+			ethmac_setup();
+			printf("MAC reset\n");
+		}
+		else if (c == 'n')
+			ethphy_reneg(ethphy_found);
+		else if (c == 'N')
+			ethphy_toggle_autoneg(ethphy_found);
+		else if (c == 'm')
+			ethmac_togglehugen();
+		else if (c == 't')
+			ethphy_set_10mbit(ethphy_found);
+		else if (c == 'H')
+			ethphy_set_100mbit(ethphy_found);
+		else if ( c == 'b' )
+		{
+			printf("\n\t---\n");
+			oeth_dump_bds();
+			printf("\t---\n");
+		}
+      
+		else if ( c == 'B' )
+		{
+			tx_packet((void*) broadcast_ping_packet, 298);
+		}
+		else if (c == 'u' )
+			oeth_transmit_pause();
+		else if (c == 'd' )
+		{
+			oeth_print_wbdebug();
+			print_ethmac_debug_reg = !print_ethmac_debug_reg;
+		}
+		else if (c == 'D')
+		{
+			marvell_phy_toggle_delay();
+		}
+		else if (c == 'v' )
+		{
+			if (packet_inspect_debug)
+				printf("Disabling ");
+			else 
+				printf("Enabling ");
+			
+			printf("packet type announcments\n");
+			
+			packet_inspect_debug = !packet_inspect_debug;
+		}
+		else if ( c == 'o' )
+			oeth_toggle_promiscuous();
+		else if (c == 'L')
+			ethphy_toggle_loopback();
+		else if (c == 'g')
+			ethphy_toggle_gigadvertise();
+
+	}
+	 \end{lstlisting}
+	 
+	  \section{Programa de Prueba de Compilador y Depurador para ORPSoC - Números Primos}
+ \begin{lstlisting}[language=C,frame=single]
+Código de prueba de numeros primos 
+	 \end{lstlisting}
+	

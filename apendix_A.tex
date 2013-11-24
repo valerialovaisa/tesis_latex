@@ -1,9 +1,6 @@
 
 \chapter{Guía de Implementación para MINSOC}
-
- %\section{GUÍA DE IMPLEMENTACION DE MINSOC}
-
-	\section{\textcolor{orange}{Introducción}}
+	\section{Introducción}
 
 Para utilizar el procesador OR1200 OpenRISC se usan una serie de periféricos básicos los cuales se comunican a través de un bus wishbone, creando un system-on-chip (SoC). 
 
@@ -29,11 +26,11 @@ En la segunda parte se presenta la compilación cruzada con las herramientas de 
 	%En la tercera parte se explica, además, lo problemas y soluciones para la implementación en el kit XILINX XtremeDSP Starter Platform Spartan 3A DSP 1800.
 
 \newpage
-\section{\textcolor{orange}{Objetivos del Proyecto MinSoc}}
+\section{Objetivos del Proyecto MinSoc}
 
 La idea del proyecto es ofrecer un SoC sintetizable que sea  compatible con cualquier placa con una FPGA sin necesidad de modificaciones en su código RTL. El proyecto posee un depurador del sistema Debug Advanced,  el que permiten depurar el sistema con los mismos cables utilizados para la configuración de la FPGA. 
 
-\section{\textcolor{orange}{Convenciones tipográficas}}
+\section{Convenciones tipográficas}
 
 A largo de esta guía se utiliza la siguiente convención tipográfica: 
 
@@ -51,7 +48,7 @@ Por ejemplo, la siguiente línea muestra que se ejecuta el comando ls en el dire
 user@dist:<directorio_ejemplo>/rootfs$ ls
 \end{lstlisting}
 
-\section{\textcolor{orange}{Requerimientos previos}}
+\section{Requerimientos previos}
 
  Para poder llevar a cabo la instalación de las herramientas de diseño de Hardware,sintetizar, implementar y efectuar debuging  del proyecto MinSoc en el kit de desarrollo, se necesita:
 
@@ -68,7 +65,7 @@ user@dist:<directorio_ejemplo>/rootfs$ ls
 
 \newpage
 
-\section{\textcolor{orange}{Dependencias}}
+\section{Dependencias}
 
 La instalación de las herramientas involucran la configuración previa de ciertas aplicaciones (como el tar) y la instalación de algunos paquetes.
 Las siguientes son las dependencias necesarias para poder ejecutar el script de instalación del proyecto MinSoc
@@ -101,21 +98,21 @@ libz\-dev
 
 
  
-\section{\textcolor{orange}{Instalación }}
+\section{Instalación }
 
 El script de instalación funciona bajo cualquier Linux. Otros sistemas no son compatibles.
 
 El script de instalación instala la cadena de herramientas GNU para OpenRISC, el adv\_ jtag\_ bridge para el software de carga y depuración y Icarus Verilog para la simulación del sistema. También descarga MinSoC y lo configura.
  
 
-\subsection{\textcolor{orange}{Descarga de el script de instalación:}}
+\subsection{Descarga de el script de instalación:}
 
 \begin{lstlisting}[breaklines]
  user@dist:~/$svn export http://opencores.org/ocsvn/minsoc/minsoc/tags/release-1.0/utils/
 setup setup
 \end{lstlisting}
 
-\subsection{\textcolor{orange}{Ejecute el script de instalación}}
+\subsection{Ejecute el script de instalación}
 
 \begin{lstlisting}[breaklines]
 user@dist:<directorio_de descarga_release-1.0>/minsoc/utils/setup$ minsoc-install.sh
@@ -147,9 +144,9 @@ Antes de utilizar el sistema, se tiene que reiniciar el shell o cargar las nueva
 user@dist:<directorio_de descarga_release-1.0>/minsoc/utils/setup$ sourece /home/user/.bashrc
 \end{lstlisting}
 
-\section{\textcolor{orange}{Síntesis}}
+\section{Síntesis}
 
-\subsection{\textcolor{orange}{Configuración de la placa especifica para la síntesis}}
+\subsection{Configuración de la placa especifica para la síntesis}
 Dentro del subdirectorio minsoc/backend/ se busca la placa en la que queremos implementar el proyecto MinSoc. Nos dirigimos al directorio correspondiente y ejecutamos el script de configuración.
 
 \begin{lstlisting}[breaklines]
@@ -159,7 +156,7 @@ user@dist:<directorio_de_instalación>/minsoc/backend/spartan3a_dsp_kit $./confi
 
 El sistema está configurado ahora, se puede proceder a la síntesis.
 
-\subsection{\textcolor{orange}{Generación del .Bit}}
+\subsection{Generación del .Bit}
 
 MinSoC utiliza un archivo Makefile para sintetizar su diseño. El sistema para sintetizar se encuentra en el subdirectorio minsoc/syn/xilinx. Una vez realizada la síntesis se creara el archivo .bit necesario para configurar la FPGA.
 
@@ -169,7 +166,7 @@ user@dist:~<directorio_de_instalación>/minsoc/syn/xilinxt$make all
 
 Después de que se ha generado el archivo de .bit, se cargar el archivo a la FPGA utilizando la herramienta del proveedor para este propósito como es en este caso iMPACT o mediante un herramienta Open Source llamada xc3sprog. 
 
-\section{\textcolor{orange}{Complilacion de un Software para OpenRisc}}
+\section{Complilacion de un Software para OpenRisc}
 
 Para compilar cualquier aplicación que vaya a ser ejecutada en el SoC con un micro OpenRisc, se necesita utilizar un compilador cruzado en este caso es el or32-elf-gcc que se encuentra incluido en el PATH por medio de el script de instalación minsoc-install.sh.
 
@@ -183,7 +180,7 @@ El comando make construye todas las librerías y archivos binarios, en este caso
 Si tiene dudas sobre alguno de los comando/herramientas utilizados en esta sección se aconseja consultar al manual correspondiente a su terminal.
 
 
-\section{\textcolor{orange}{Carga y Debugging de Software}}
+\section{Carga y Debugging de Software}
 
 
 Para conectar con éxito el TAP del SoC que contiene el micro OpenRISC , se debe copiar los archivos BSDL de todos los dispositivos conectados a la cadena de JTAG a un directorio conocido (por ejemplo /home/user/bsdl).Luego debe colocarse, el directorio como argumento al llamar adv\_jtag\_bridge, adv\_jtag\_bridge-b /home/user/bsdl.
@@ -228,43 +225,35 @@ c
 \end{enumerate}
 
 %\newpage
-%\section{\textcolor{orange}{Problemas y soluciones}}
+%\section{Problemas y soluciones}}
 
 \newpage
 
-\section{\textcolor{orange}{Acrónimos y abreviaturas}}
+\section{Acrónimos y abreviaturas}
 
 \begin{table}[!h]
 \begin{center}
-\begin{tabular}{|c|c|}
+\begin{tabular}{ c c }
 \hline
-\rowcolor[RGB]{255,127,0} Abreviatura & Significado en ingles \\
+\rowcolor[gray]{0.8} Abreviatura & Significado en ingles \\
 \hline
 FPGA & Field Programmable Gate Array  \\
 \hline
 TAP & Test Access Port  \\
 \hline
-\hline
 BSDL & Boundary Scan Description Language  \\
-\hline
 \hline
 JTAG & Joint Test Action Group  \\
 \hline
-\hline
 SoC & System on Chip\\
-\hline
 \hline
 RAM & Andom Access Memory \\
 \hline
-\hline
 USB & Universal Serial Bus  \\
-\hline
 \hline
 DSP& Digital Signal Processing \\
 \hline
-\hline
 RTL & Register transfer level \\
-\hline
 \hline
 GNU & GNU is not Unix\\
 \hline
@@ -274,13 +263,13 @@ GNU & GNU is not Unix\\
 
 \newpage
 
-\section{\textcolor{orange}{Bibliografía}}
-\subsection{\textcolor{orange}{Documentos}}
+\section{Bibliografía}
+\subsection{Documentos}
 \begin{itemize}
 \item Spartan\-3A DSP Starter Platform User Guide\url{http://www.xilinx.com/support/documentation/boards_and_kits/ug454_sp3a_dsp_start_ug.pdf}.
 \item Matthew Hicks. University of Illinois at Urbana\-Champaign. "guideTop".  
 \end{itemize} 
-\subsection{\textcolor{orange}{sitios web}}
+\subsection{Sitios Web}
 \begin{itemize}
 \item \url{http://www.minsoc.com/}
 \item \url{http://opencores.org/or1k/OR1200_OpenRISC_Processor}
