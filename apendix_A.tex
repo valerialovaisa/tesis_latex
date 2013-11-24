@@ -47,9 +47,9 @@ A largo de esta guía se utiliza la siguiente convención tipográfica:
 Por ejemplo, la siguiente línea muestra que se ejecuta el comando ls en el directorio rootfs (que a  su vez se encuentra dentro del directorio\_ejemplo), en un host cuyo usuario es user y utiliza una distribuciòn dist de Linnux:
 
 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
 user@dist:<directorio_ejemplo>/rootfs$ ls
-\end{verbatim}
+\end{lstlisting}
 
 \section{\textcolor{orange}{Requerimientos previos}}
 
@@ -110,30 +110,30 @@ El script de instalación instala la cadena de herramientas GNU para OpenRISC, e
 
 \subsection{\textcolor{orange}{Descarga de el script de instalación:}}
 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
  user@dist:~/$svn export http://opencores.org/ocsvn/minsoc/minsoc/tags/release-1.0/utils/
 setup setup
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{\textcolor{orange}{Ejecute el script de instalación}}
 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
 user@dist:<directorio_de descarga_release-1.0>/minsoc/utils/setup$ minsoc-install.sh
-\end{verbatim}
+\end{lstlisting}
 
 La ejecución de este script requiere del usuario la ruta en la que se va a instalar el sistema.Por ejemplo:
 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
 /home/user/Escritorio/minsoc
-\end{verbatim}
+\end{lstlisting}
 
 El sistema tiene la siguiente estructura de directorio después de ser ejecutado: 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
 install_path/
 	download/
 	 tools/
  	 minsoc/
-\end{verbatim}
+\end{lstlisting}
 
 Todas las herramientas necesarias están instaladas en le directorio tools. Los paquetes descargados se encuentran en download y son compilados allí. El Advanced JTAG Bridge se agrega automáticamente a la ruta minsoc/rtl/verilog/adv\_debug\_sys/Software/adv\_jtag\_bridge  y también es compilado allí. 
 
@@ -143,19 +143,19 @@ Después de la correcta ejecución de el script, se pueden eliminar el directori
 
 Antes de utilizar el sistema, se tiene que reiniciar el shell o cargar las nuevas variables de entorno ejecutando la linea de comando:
 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
 user@dist:<directorio_de descarga_release-1.0>/minsoc/utils/setup$ sourece /home/user/.bashrc
-\end{verbatim}
+\end{lstlisting}
 
 \section{\textcolor{orange}{Síntesis}}
 
 \subsection{\textcolor{orange}{Configuración de la placa especifica para la síntesis}}
 Dentro del subdirectorio minsoc/backend/ se busca la placa en la que queremos implementar el proyecto MinSoc. Nos dirigimos al directorio correspondiente y ejecutamos el script de configuración.
 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
 user@dist:<directorio_de_instalación>$cd minsoc/backend/spartan3a_dsp_kit 
 user@dist:<directorio_de_instalación>/minsoc/backend/spartan3a_dsp_kit $./configure 
-\end{verbatim}
+\end{lstlisting}
 
 El sistema está configurado ahora, se puede proceder a la síntesis.
 
@@ -163,9 +163,9 @@ El sistema está configurado ahora, se puede proceder a la síntesis.
 
 MinSoC utiliza un archivo Makefile para sintetizar su diseño. El sistema para sintetizar se encuentra en el subdirectorio minsoc/syn/xilinx. Una vez realizada la síntesis se creara el archivo .bit necesario para configurar la FPGA.
 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
 user@dist:~<directorio_de_instalación>/minsoc/syn/xilinxt$make all
-\end{verbatim}
+\end{lstlisting}
 
 Después de que se ha generado el archivo de .bit, se cargar el archivo a la FPGA utilizando la herramienta del proveedor para este propósito como es en este caso iMPACT o mediante un herramienta Open Source llamada xc3sprog. 
 
@@ -173,9 +173,9 @@ Después de que se ha generado el archivo de .bit, se cargar el archivo a la FPG
 
 Para compilar cualquier aplicación que vaya a ser ejecutada en el SoC con un micro OpenRisc, se necesita utilizar un compilador cruzado en este caso es el or32-elf-gcc que se encuentra incluido en el PATH por medio de el script de instalación minsoc-install.sh.
 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
 user@dist:~<directorio_de_instalación>/minsoc/sw/uart$ make all
-\end{verbatim}
+\end{lstlisting}
  
 El comando make construye todas las librerías y archivos binarios, en este caso se creará el binario uart.or32 que sera cargado y debuging en el SoC.
  
@@ -188,46 +188,44 @@ Si tiene dudas sobre alguno de los comando/herramientas utilizados en esta secci
 
 Para conectar con éxito el TAP del SoC que contiene el micro OpenRISC , se debe copiar los archivos BSDL de todos los dispositivos conectados a la cadena de JTAG a un directorio conocido (por ejemplo /home/user/bsdl).Luego debe colocarse, el directorio como argumento al llamar adv\_jtag\_bridge, adv\_jtag\_bridge-b /home/user/bsdl.
 
-
 \begin{enumerate}
 
 \item Conecte el cable JTAG al TAP.
 \item Inicio adv\_jtag\_bridge
 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
 user@dist:~/$sudo adv_jtag_bridge -b<directorio_bsdl> xpc_usb 
-\end{verbatim}
+\end{lstlisting}
 
 Por ejemplo:
 
-\begin{verbatim}
+\begin{lstlisting}[breaklines]
 user@dist:~/$sudo adv_jtag_bridge -b /home/user/bsdl xpc_usb 
-\end{verbatim}
+\end{lstlisting}
+
 El parametro -b <directorio\_bsdl> de adv\_jtag\_bridge para indicar el directorio donde obtener los archivos BSDL.
 
 Al ser ejecutado en linux y utilizar cables xpc\_usb tiene que ejecutarse como superusuario.
 
 
 \item Una vez que el programa se encuentre en funcionamiento se debe abrir otro terminal (por ejemplo gtkterm).
-\begin{enumerate}
-
-
 \item Configuramos el puerto a un puerto serie conectado a la placa.
 \item Configuramos el bitrete a 115200.
-\end{enumerate}
 
 \item Se inicia gdb y se carga el firmware de ejemplo compilado previamente para OpenRisc.
 
-\begin{verbatim}
+\item 
+\begin{lstlisting}[breaklines]
 user@dist:~/<directorio_de_instalación>minsoc/sw/uart$ or32-elf-gdb uart.or32
 target remote :9999
 load
 set $pc=0x100
 c
-\end{verbatim}
+\end{lstlisting}
+
 \item Dentro de gtkterm debería haber aparecido "Hello World". 
 
- \end{enumerate} 
+\end{enumerate}
 
 %\newpage
 %\section{\textcolor{orange}{Problemas y soluciones}}

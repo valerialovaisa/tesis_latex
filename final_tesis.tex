@@ -3,14 +3,28 @@
 \usepackage[spanish]{babel} \usepackage[T1]{fontenc}
 \usepackage{times} \usepackage[utf8]{inputenc}
 
-\usepackage{verbatim} \usepackage{amsmath}
+\usepackage{verbatim} 
+\usepackage{amsmath}
+\usepackage{spverbatim}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{colortbl}
 \usepackage{color}
 \usepackage{listings}
 \lstset{ %
   backgroundcolor=\color[gray]{.95},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
-  basicstyle=\footnotesize
+  basicstyle=\footnotesize,
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\'e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ò}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ò}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1
 }  
 \setcounter{secnumdepth}{6}
 \setcounter{tocdepth}{6}
@@ -103,6 +117,7 @@ Michelini Valeria \bigskip \bigskip \bigskip \\
 \input{conclusiones}
 \newpage
 \end{part}
+\appendix
 \begin{part}{ANEXOS}
 \newpage
 \input{apendix}
@@ -208,7 +223,6 @@ Michelini Valeria \bigskip \bigskip \bigskip \\
 \url{http://www.sparc.org/standards/V8.pdf}.
 
 \bibitem{Etiqueta34} Opencores. WISHBONE, Revision B.3 Specification.  \url{http://www.opencores.org/projects.cgi/web/wishbone/wbspec_b3.pdf}.
-
 
 %%%%%%%%%%%%%%%
 
