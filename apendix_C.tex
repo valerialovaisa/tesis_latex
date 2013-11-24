@@ -1,14 +1,14 @@
 
-\chapter{CÓDIGOS DE PRUEBAS}
+\chapter{Códigos de Prueba}
 
- \section{Introducció}
+ \section{Introducción}
 
 En el presente anexo se  publicaran los corresppndientes códigos que se realizaron con el fin de probar el correcto funcionamiento de los requerimientos e los diferentes prototipos
 
 
  \section{Programa de Prueba para el UART}
 
-\begin{verbatim}
+\begin{lstlisting}[language=C,frame=single]
 #include <board.h>
 #include <support.h>
 #include <or1200.h>
@@ -19,7 +19,6 @@ En el presente anexo se  publicaran los corresppndientes códigos que se realiza
 int main()
 {
 	uart_init();
-
 	int_init();
 	int_add(UART_IRQ, &uart_interrupt, NULL);
 	
@@ -31,11 +30,11 @@ int main()
 	or32_exit(0);
 }
 
-\end{verbatim}
+\end{lstlisting}
 
  \section{Programa de Prueba para Ethernet}
 
-\begin{verbatim}
+\begin{lstlisting}[language=C,frame=single]
 #include <board.h>
 #include <support.h>
 #include <or1200.h>
@@ -96,12 +95,12 @@ int main()
 	report(0xdeaddead);
 	or32_exit(0);
 }
-\end{verbatim}
+\end{lstlisting}
 
 
  \section{Programa de Prueba para Capacidad de Procesamiento}
 
-\begin{verbatim}
+\begin{lstlisting}[language=C,frame=single]
 #include <board.h>
 #include <support.h>
 #include <or1200.h>
@@ -260,10 +259,10 @@ int main()
 
     return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 
  \subsection{Generador de secuencia binaria seuda aleatoria}
-\begin{verbatim}
+\begin{lstlisting}[language=C,frame=single]
 #include "stdio.h"
 #include "time.h"
 #define con_i 10
@@ -311,5 +310,5 @@ for (i=0;i<100;i++){
 
  return 0;
 }
-\end{verbatim}
+\end{lstlisting}
 
