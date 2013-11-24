@@ -1,0 +1,315 @@
+
+\chapter{CÓDIGOS DE PRUEBAS}
+
+ \section{Introducció}
+
+En el presente anexo se  publicaran los corresppndientes códigos que se realizaron con el fin de probar el correcto funcionamiento de los requerimientos e los diferentes prototipos
+
+
+ \section{Programa de Prueba para el UART}
+
+\begin{verbatim}
+#include <board.h>
+#include <support.h>
+#include <or1200.h>
+#include <int.h>
+
+#include <uart.h>
+
+int main()
+{
+	uart_init();
+
+	int_init();
+	int_add(UART_IRQ, &uart_interrupt, NULL);
+	
+	/* We can't use printf because in this simple example
+	   we don't link C library. */
+	uart_print_str("Hello World.\n");
+	
+	report(0xdeaddead);
+	or32_exit(0);
+}
+
+\end{verbatim}
+
+ \section{Programa de Prueba para Ethernet}
+
+\begin{verbatim}
+#include <board.h>
+#include <support.h>
+#include <or1200.h>
+#include <int.h>
+
+#include <uart.h>
+#include <eth.h>
+
+
+extern int eth_rx_len;
+extern int eth_rx_done, eth_tx_done;
+extern unsigned char * eth_rx_data;
+extern unsigned char * eth_tx_data;
+
+void eth_receive()
+{
+	int i;
+	uart_print_str("Length: \n");
+	uart_print_long(eth_rx_len);
+	uart_print_str("\n");
+	uart_print_str("Data: \n");
+	for ( i = 0; i < eth_rx_len; i++ )
+	{
+		uart_print_short(eth_rx_data[i]);
+		uart_print_str("\n");
+	}
+	eth_recv_ack();
+}
+
+int main()
+{
+	uart_init();
+
+	int_init();
+	eth_init();
+	int_add(UART_IRQ, &uart_interrupt, NULL);
+	int_add(ETH_IRQ, &eth_interrupt, NULL);
+
+	/* We can't use printf because in this simple example
+	   we don't link C library. */
+	uart_print_str("Hello World.\n");
+
+	eth_tx_data[0] = 0xFF;
+	eth_tx_data[1] = 0x2B;
+	eth_tx_data[2] = 0x40;
+	eth_tx_data[3] = 0x50;
+
+	eth_send(4);
+
+	while(1)
+	{
+		if (eth_rx_done)
+		{
+			eth_receive();
+		}
+	}
+
+	report(0xdeaddead);
+	or32_exit(0);
+}
+\end{verbatim}
+
+
+ \section{Programa de Prueba para Capacidad de Procesamiento}
+
+\begin{verbatim}
+#include <board.h>
+#include <support.h>
+#include <or1200.h>
+#include <int.h>
+#include <uart.h>
+
+#define con 15
+#define N 16
+
+void genmatriz(unsigned seed1,unsigned *matriz,int indice){
+/*
+    uart_print_str("seed ="); 
+    uart_print_long(seed1);
+    uart_print_str("\n");
+*/    
+    unsigned sr1[N] ;
+    unsigned i , j ,q  ;
+    unsigned tmp;    
+    
+    for(i=0; i<N; i++){
+  	sr1[i] =  (seed1&1);
+  	seed1/=2;
+    }
+
+    for (q=0;q<(indice*indice);q++){
+		tmp = sr1[15]^sr1[14]^sr1[13]^sr1[11];
+		
+		for(j=N;j>0;j--) sr1[j]=sr1[j-1];
+		sr1[0] = tmp;
+
+		matriz[q] = tmp;
+		
+                //uart_print_long(tmp);
+		//if (((q+1)%con_i)==0) uart_print_str("\n");
+    }   
+
+}
+
+
+int main()
+{
+ 
+    // Declaraciones
+    int i , j , k ; 
+    int indice;
+    unsigned matriz  [con*con];
+    unsigned matrizA [con*con];
+    unsigned matrizB [con*con];
+    
+    int producto ; 
+    int acumulador ;
+    unsigned tiempo;
+    int useg;
+
+	
+
+////// Setup Inicial
+    //tick_init();
+    asm("l.mtspr\t\t%0,%1,0": : "r" (SPR_TTMR), "r" (SPR_TTMR_CR));
+    asm("l.mtspr\t\t%0,%1,0": : "r" (SPR_TTCR), "r" (0x0));
+    //mtspr(SPR_TTCR, SPR_TTMR_CR);
+    //mtspr(SPR_TTCR, 0x0);
+        
+    //tick_start();
+    asm("l.mtspr\t\t%0,%1,0": : "r" (SPR_TTCR), "r" (0x0));
+    //mtspr(SPR_TTCR, 0x0);
+    
+    tiempo = mfspr(SPR_TTCR);
+    useg = (int) tiempo * 50 ;
+    uart_print_str("Tick de ejecucion setup tick :");
+    uart_print_long((long)tiempo);
+    uart_print_str(" En us = ");
+    uart_print_long(useg);
+    uart_print_str("\n");   
+   
+    for (indice=1; indice<=con; indice++){
+    //tick_start();
+    //asm("l.mtspr\t\t%0,%1,0": : "r" (SPR_TTCR), "r" (0x0));
+    //uart_print_str("Matrices de  :");
+    uart_print_long(indice);
+    uart_print_str(",");
+    //uart_print_str("\n");
+
+ 
+    mtspr(SPR_TTCR, 0x0);
+    
+    i= 0;
+    j= 0;
+    k= 0;
+    producto = 0;
+    acumulador = 0;
+/*
+    for (i=0;i<indice;i++){
+		for (j=0;j<indice;j++){
+			matriz  [i][j] = 0;
+			matrizA [i][j] = 1;
+			matrizB [i][j] = 1;
+		}
+	}
+*/
+      tiempo = mfspr(SPR_TTCR);
+      genmatriz (tiempo,matriz,indice);
+      tiempo = mfspr(SPR_TTCR);
+      genmatriz (tiempo,matrizA,indice);
+      tiempo = mfspr(SPR_TTCR);
+      genmatriz (tiempo,matrizB,indice);
+    
+
+//    tiempo = mfspr(SPR_TTCR);
+//    useg = (int) tiempo * 50 ; 
+//    uart_print_str("Tick de ejecucion seteo de variables :");
+//    uart_print_long((long)tiempo);
+//    uart_print_str(" En us = ");
+//    uart_print_long(useg);
+// 	uart_print_str("\n");
+ 	 
+ 
+	mtspr(SPR_TTCR, 0x0);
+    
+	for (i=0;i<indice;i++){
+		for (j=0;j<indice;j++){
+			for (k=0;k<indice;k++){
+				producto = matrizA[i*con+k] * matrizB[k*con+j];
+				acumulador = acumulador + producto;
+			}
+			matriz [i*con+j] = acumulador;
+			acumulador = 0;
+		}	
+	}
+    
+    tiempo = mfspr(SPR_TTCR);
+//    useg = (int) tiempo * 50 ;
+//    uart_print_str("Tick de ejecucion de la multiplicacion :");
+    uart_print_long((long)tiempo);
+//    uart_print_str(" En us = ");
+//    uart_print_long(useg);
+    uart_print_str("\n");   
+    
+
+/*
+    uart_print_str("Matriz Resultado");   
+    uart_print_str("\n");   
+    
+    for (i=0;i<indice;i++){
+		for (j=0;j<indice;j++){
+			uart_print_long(matriz [i*con+j]);
+			uart_print_str(" ");
+		}
+		uart_print_str("\n");
+	}
+  
+ */  
+    } 
+  
+    uart_print_str("Fin del programa\n");
+
+    return 0;
+}
+\end{verbatim}
+
+ \subsection{Generador de secuencia binaria seuda aleatoria}
+\begin{verbatim}
+#include "stdio.h"
+#include "time.h"
+#define con_i 10
+
+#define N 16
+
+void genmatriz(unsigned seed1,unsigned *matriz){
+    printf ("seed1 ="); 
+    printf("%x",seed1);
+    printf("\n");   
+    
+    //unsigned  seed1 ; 
+    unsigned sr1[N] ;
+    unsigned i , j ,q  ;
+    unsigned tmp;    
+    
+    for(i=0; i<N; i++){
+  	sr1[i] =  (seed1&1);
+  	seed1/=2;
+    }
+
+    for (q=0;q<(con_i*con_i);q++){
+		tmp = sr1[15]^sr1[14]^sr1[13]^sr1[11];
+		
+		for(j=N;j>0;j--) sr1[j]=sr1[j-1];
+		sr1[0] = tmp;
+
+		matriz[q] = tmp;
+		
+                //printf ("%i ",tmp);
+		//if (((q+1)%con_i)==0) printf ("\n");
+    }   
+	printf ("\n\n");
+}
+
+int main(void ) {
+
+unsigned matriz[100] ;
+unsigned i,j ;
+genmatriz (time(NULL),matriz);
+for (i=0;i<100;i++){
+	printf ("%i ",matriz[i]);
+	if (((i+1)%10)==0) printf ("\n");
+}
+
+ return 0;
+}
+\end{verbatim}
+
