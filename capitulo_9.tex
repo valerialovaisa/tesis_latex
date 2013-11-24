@@ -501,7 +501,8 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		\item Programación de la FPGA Spartan 3a.
  		\end {itemize}
  
- Consulte la Guía de ORPSoC en el Anexo 2 para una comprensión más profunda de los pasos a seguir en la implementación sobre la placa de desarrollo S3ADSP1800A.
+ Consulte la Guía de ORPSoC en el Anexo ~\ref{app:apendice2} para una comprensión más profunda de los pasos a seguir en la implementación sobre la
+ placa de desarrollo S3ADSP1800A.
 
 El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee acceso a las memorias SDRAM on board de la placa S3ADSP1800A, un módulo SPI que interactúa con la memoria flash on board de la placa antes mencionada, un módulo UART y un módulo ETHERNET. 
 		
@@ -804,73 +805,104 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{figure}
 	
 		\subsection{Implementación}	
-	    
-<<<<<<< HEAD
-	    
-=======
 		
-	
->>>>>>> 0bbaf0e883b8539931f187ff76c6b156b9b81998
+		\newpage
 		
-\newpage
 		\subsection{Testing}
 
-\begin{table}[h!]
+		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
-	\rowcolor[gray]{0.8}  Caso de Prueba&  Interactuar correctamente con las interfaces hardware de Ethernet\\
+		\rowcolor[gray]{0.8}  Caso de Prueba &  Interactuar correctamente con la interfaz UART\\
 		\hline 
-		Código de Requerimiento & RQX-PB 2 , RQX-PB 3\\ 
+		Código de Requerimiento & RQX-PC 2\\ 
 		\hline 
-		Requerimiento  &El prototipo debe garantizar el correcto funcionamiento de todos los periféricos conectados al SoC mediante el bus Wishbone\\ 
-						&  El prototipo debe Interactuar correctamente con las interfaces hardware soportadas de la placa de desarrollo S3ADSP1800A\\
+		Requerimiento & Se debe garantizar el correcto funcionamiento de todos los periféricos utilizando los driver y librerías provistas por el SO \\ 
 		\hline 
-		Código de Testing & T008\\ 
+		Código de Testing & T012\\ 
 		\hline
-		Propósito &  El envío de paquetes echo del protocolo ICMP desde el SoC  \\
+		Propósito &  Comprobación del correcto funcionamiento del componente UART\\
 		\hline
 		Realizado Por & Gomez, Pablo \\
 		\hline	
-		Entorno de Ejecución & Bare Metal \\
+		Entorno de Ejecución & SO - ecOS\\
 		\hline
 		Precondiciones & \begin {itemize}
-							\item Instanciación en la FPGA del SoC.
-							\item Ejecución de una terminal serie en la PC
-							\item Ejecución de una aplicación snifer en la PC
-							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\item Instanciación en la FPGA del SoC
+							\item Ejecución de una terminal serie en la PC 
+ 							\item Comunicación establecida entre la placa de desarrollo y la PC
 							\item Herramientas de compilación cruzada funcionando correctamente
+							\item Sistema operativo correctamenta instalado
 							\item Programas de prueba compilados correctamente
 							\end {itemize} \\
 		\hline
-		Secuencia de Ejecución &  Ejecutación de la aplicación de prueba ethmac-ping.or32\\
+		Secuencia de Ejecución &  Ejecutación de la aplicación de prueba hello.elf\\
 		\hline
-		Postcondiciones &  El programa de prueba ejecutándose sobre la RAM de la plataforma, lo que se manifiesta en la impresión de pantalla de la terminar serie en la PC y en los paquetes captados por la aplicación wireshark \\
+		Postcondiciones &  El programa de prueba ejecutándose sobre el sistema operativo ecOS, lo que se manifiesta en la impresión de pantalla en la
+		terminal serie de la PC\\
 		\hline
  		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
-		Resultados Esperados & Poder observar por la terminal serial una cadena de string indicando el inicio del envío de paquetes ICMP y verificar la llegada de los mismos por medio de una aplicación ICMP \\
+		Resultados Esperados & Poder observar por la terminal serial una cadena de string \\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la cadena mostrada en la Referencia ~\ref{lst:reseth}\\
+		Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la cadena string esperada "Hello, ecOS World"\\
 		\hline
 		\end{tabular}
 		\end{table}
 
+		\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{5cm} p{10cm}  }
+		\hline 
+		\rowcolor[gray]{0.8}  Caso de Prueba& Ejecución de hilos\\
+		\hline 
+		Código de Requerimiento & RQX-PC 3 , RQX-PC 4\\ 
+		\hline 
+		Requerimiento  	&  Se debe poder ejecutar programas que requiere la ejecución de múltiples hilos\\
+		\hline 
+						&  Problemas con el compilador para la generación del binario del programa de prueba\\
+		\hline 
+		Código de Testing & T014\\ 
+		\hline
+		Propósito &  Compilación y ejecución de un programa de prueba que ejecute hilos\\
+		\hline
+		Realizado Por & Lovaisa, Valeria \\
+		\hline	
+		Entorno de Ejecución & SO - ecOS \\
+		\hline
+		Precondiciones &    \begin {itemize}
+							\item Instanciación en la FPGA del SoC.
+							\item Ejecución de una terminal serie en la PC
+							\item Comunicación establecida entre la placa de desarrollo y la PC
+							\item Herramientas de compilación cruzada funcionando correctamente
+							\item Sistema operativo correctamenta instalado
+							\item Programas de prueba compilados correctamente
+							\end {itemize}
+		\\
+		\hline
+		Secuencia de Ejecución & Ejecución de la aplicación de prueba twothreads.elf \\
+		\hline
+		Postcondiciones & Aplicación ejecutándose sobre el sistema operativo \\
+		\hline
+ 		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+		\hline
+		Resultados Esperados & Poder observar por la terminal serie el resultado de la ejecución de la aplicación\\
+		\hline	
+		Resultados Obtenidos & Al ejecutarse el programa de prueba de hilos pudo observarse la salida mostrada en la Referencia ~\ref{lst:salhilos} \\
+		\hline
+		\end{tabular}
+		\end{table}
 
-\begin{lstlisting}[frame=single,caption={Salida de la terminal serie durante la ejecución del programa ethmac-ping.or32},label={lst:reseth}]
-eth ping program
-board IP "192.168.1.2
+\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba twothreads},label={lst:salhilos}]
+ ACA VA EL RESULTADO DE LA EJECUCIÓN DE HILOS
 \end{lstlisting}
-
-
-
-
 
 		\subsection{Conclusión}
 
 
-\newpage
-				
+	
+	\newpage			
 	\section{PROTOTIPO CUATRO: Implementación del SoC ORPSoC en FPGA con Sistema Operativos Linux}
 		\subsection{Introducción}
 		El núcleo Linux, combinado con un conjunto de algunas otras utilidades de software libre, puede ajustarse dentro del limitado espacio de hardware 
@@ -879,7 +911,7 @@ board IP "192.168.1.2
 		
 		\subsection{Requerimientos del prototipo}
 		
-		\begin{table}[h]
+		\begin{table}[h!]
 		\centering	
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
