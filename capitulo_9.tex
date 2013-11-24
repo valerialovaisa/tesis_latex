@@ -777,8 +777,7 @@ de aplicaciones en tiempo real & Análisis de los RTOS &Modificación del SO par
 		Librerías necesarias inexistentes o con fallos& Imposibilidad de desarrollo de aplicaciones para ejecutar sobre el SO de tiempo real& Análisis previo de las librerías disponibles y revisión de posibles bugs informados SO & Desarrollo de las librerías necesarias o corrección de errores\\			
 		\hline
 		Drivers necesarios inexistentes o con fallos & Imposibilidad de utilización
-de los dispositivos necesarios&Análisis previo de los driver de los dispositivos a utilizar& Análisis previo de los
-driver de los dispositivos a utilizar\\		
+de los dispositivos necesarios&Análisis previo de los driver de los dispositivos a utilizar& Desarrollo de los drivers necesarios\\		
 		\hline
 		 Problemas en la compilación e instalación de las herramientas de desarrollo de software & Imposibilidad de desarrollo de aplicaciones que se ejecuten sobre el SO& Verificar la posibilidad de ejecución de las herramientas
 en diferentes SO & Utilización de las herramientas en alguno de los SO compatibles\\
@@ -851,6 +850,9 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{tabular}
 		\end{table}
 
+	\newpage			
+
+
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -905,7 +907,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 	\newpage			
 	\section{PROTOTIPO CUATRO: Implementación del SoC ORPSoC en FPGA con Sistema Operativos Linux}
 		\subsection{Introducción}
-		El núcleo Linux, combinado con un conjunto de algunas otras utilidades de software libre, puede ajustarse dentro del limitado espacio de hardware 
+		El núcleo Linux, combinado con un conjunto utilidades de software libre, puede ajustarse al espacio limitado de hardware 
 	    de los sistemas embedidos. Una instalación típica de un Linux embebido ocupa en promedio 2 MB. En el prototipo cuatro se utilizó una versión
 	    reducida del núcleo de Linux y herramientas provistas por el paquete BusyBox. 
 		
@@ -915,24 +917,73 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\centering	
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
 		\hline 
-		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
-		\hline 
-		RQX-PC 1 & El prototipo debe implementar el sistema operativos eCos\\ 
-		\hline 
-		RQX-PC 2 & Se deben garantizar el correcto funcionamiento de todos los periféricos utilizando las librerias provistas por el SO\\ 
-		\hline 
-		RQX-PC 3 & Se requiere la ejecución de múltiples hilos y la ejecución de programas de prueba para determinar los límites de esta capacidad \\ 
-		\hline
-		RQX-PC 4 & \\
-		\hline
-		RQX-PC 5 & \\
-		\hline
-		RQX-PC 6 & \\
-		\hline
-		RQX-PC 7 & \\
-		\hline		
+		\rowcolor[gray]{0.8} N\textordmasculine Req  & Descripción\\
+		\hline                             	RQX-PD 1 & El prototipo debe implementar el sistema operativos Linux\\ 
+		\hline  							RQX-PD 2 & Se requiere la instalación de un gestor de arraque que posibilite el inicio del sistema operativo\\ 
+		\hline 								RQX-PD 3 & Se debe poder grabar como aplicación firmware el gestor de arranque en la memoria flash SPI de la placa de desarrollo\\
+		\hline 								RQX-PD 4 & El prototipo debe tener capacidad de ejecución y depuración de aplicaciones sobre el sistema operativo Linux\\
 		\end{tabular}
 		\end{table}
+		
+		
+\subsection{Matriz de Riesgo para el Prototipo Cuatro} 
+
+		\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados  & Riegos Asociados & Severidad  & Ocurrencia \\
+		\hline RQX-PC 1 & Fallas en la generación de la imagen del SO para ser montada en el SoC & Crítica       & Probable \\
+		\hline			& Falta de documentación de apoyo para la implentación del SO bajo licencias de Software Libre & Crítico & Ocasional\\	
+		\hline			& Limitaciones para la ejecución de SO de tiempo real & Crítico & Ocasional\\	
+ 		\hline RQX-PC 2 & Librerías necesarias inexistentes o con fallos& Crítico & Ocasional\\	
+		\hline			& Drivers necesarios inexistentes o con fallos  & Severo  &  Ocasional\\ 
+		\hline RQX-PC 3	& Problemas en la compilación e instalación de las herramientas de desarrollo de software& Severo  &  Ocasional\\ 
+		\hline RQX-PB 4 & Problemas con el compilador para la generación del binario del programa de prueba  & Crítico&  Ocasional\\
+		\hline
+		\end{tabular}
+		\caption{Tabla de Riegos vs. Requerimientos}
+		%\label{tab:riegos}
+		\end{table}
+
+		\newpage
+
+ 		\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
+		\hline 
+		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
+		\hline Fallas en la generación de la imagen del SO para ser montada en el SoC & 
+		       Retraso en los tiempos de implementación & 
+		       Análisis previo de guías de resolución de problemas y preguntas frecuentes & 
+		       Revisión de código y consulta a los desarrolladores\\
+		\hline Falta de documentación de apoyo para la implentación del SO para la arquitectura OpenRISC & 
+		       Demoras en la implementación del SO & 
+		       Revisión previa de la documentación existente y guías de resolución de problemas & 
+		       Mayor inversión de tiempo para la implementación\\
+		\hline Limitaciones para la ejecución de SO  & 
+			   Imposibilidad de ejecutar apliaciones desarrolladas para Linux & 
+		       Análisis previo de limitaciones en la documentación de los desarrolladores y guías de resolución de problemas & 
+		       Revisión y desarrollo de código del SO necesario su funcionamiento\\
+		\hline Librerías necesarias inexistentes o con fallos & 
+			   Imposibilidad de desarrollo de aplicaciones para ejecutar sobre el SO &
+			   Análisis previo de las librerías disponibles y revisión de posibles bugs informados SO & 
+			   Desarrollo de las librerías necesarias o corrección de errores\\
+		\hline Drivers necesarios inexistentes o con fallos & 
+			   Imposibilidad de utilización de los dispositivos necesarios & 
+			   Análisis previo de los driver de los dispositivos a utilizar & 
+			   Desarrollo de los drivers necesarios\\		
+		\hline Problemas en la compilación e instalación de las herramientas de desarrollo de software & 
+			   Imposibilidad de desarrollo de aplicaciones que se ejecuten sobre Linux Embebido & 
+			   Verificación previa de la documentación de los desarrolladores y guías de resolución de problemas & 
+			   Revisión de codigo y corrección de errores\\
+		\hline
+		\end{tabular}
+		\caption{Planificación de riesgos}
+		%\label{tab:planificación}
+		\end{table}
+
+		\newpage
 		
 		\subsection{Descripción de la Estructura del Prototipo Cuatro}
 		Se muestra a continuación (Figura ~\ref{fig:proto4}) el diagrama de despliegue del prototipo cuatro. Se utiliza como base nuevamente el prototipo
