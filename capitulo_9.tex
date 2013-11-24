@@ -698,15 +698,13 @@ cantidad de numeros primos entre 1 y 2000:
  ACA VA EL RESULTADO DE CORE MARK
 \end{lstlisting}
 
-
 		\subsection{Conclusión}
 
 \newpage
 
 	\section{PROTOTIPO TRES: Implementación del SoC ORPSoC en FPGA con Sistema Operativo eCos}
 		\subsection{Introducción}
-		Para tercer prototipo se añadió al prototipo dos la funcionalidad aportada por el Sistema Operativo eCos(embedded configurable operating system) que
-		adiciona la capacidad de ejecución un proceso con múltiples hilos. 
+		Para el tercer prototipo se añadió al prototipo dos la funcionalidad aportada por el Sistema Operativo de tiempo real eCos(embedded configurable operating system) que adiciona la capacidad de la ejecución de múltiples hilos. 
 
 		\subsection{Requerimientos del prototipo}
 
@@ -716,19 +714,13 @@ cantidad de numeros primos entre 1 y 2000:
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
 		\hline 
-		RQX-PC 1 & El prototipo debe implementar el sistema operativos eCos\\ 
+		RQX-PC 1 & El prototipo debe implementar un sistema operativos de tiempo real\\ 
 		\hline 
-		RQX-PC 2 & Se deben garantizar el correcto funcionamiento de todos los periféricos utilizando las librerias provistas por el SO\\ 
+		RQX-PC 2 & Se debe garantizar el correcto funcionamiento de todos los periféricos utilizando los driver y librerías provistas por el SO \\ 
 		\hline 
-		RQX-PC 3 & Se requiere la ejecución de múltiples hilos y la ejecución de programas de prueba para determinar los límites de esta capacidad \\ 
+		RQX-PC 3 & Se debe poder ejecutar programas que requiere la ejecución de múltiples hilos  \\ 
 		\hline
-		RQX-PC 4 & \\
-		\hline
-		RQX-PC 5 & \\
-		\hline
-		RQX-PC 6 & \\
-		\hline
-		RQX-PC 7 & \\
+		RQX-PC 4 & Se requiere la ejecución de programas de prueba para determinar las limitaciones en la ejecución de hilos \\ 
 		\hline		
 		\end{tabular}
 		\end{table}
@@ -742,18 +734,22 @@ cantidad de numeros primos entre 1 y 2000:
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados& Riegos Asociados & Severidad  & Ocurrencia \\
 		\hline
-		RQX-PB 1& EL código RTL disponible en la web tenga fallas reconocidas durante el proceso de síntesis & Crítica       & Probable \\
+		RQX-PC 1& Fallas en la generación de la imagen del SO para ser montada en el SoC & Crítica       & Probable \\
 		\hline				
 				& Falta de documentación de apoyo para la implentación
-del Soc & Crítico & Ocasional\\	 
+del SO bajo licencias de Software Libre & Crítico & Ocasional\\	
+		\hline				
+				& Limitaciones para la ejecución de SO de tiempo real & Crítico & Ocasional\\	
+ 		
+ 		\hline	
+		RQX-PC 2 	& Librerías necesarias inexistentes o con fallos& Crítico & Ocasional\\	
+		
+		\hline				
+ 					 & Drivers necesarios inexistentes o con fallos  & Severo  &  Ocasional\\ 
+		\hline	
+ 		RQX-PC 3&Problemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
 		\hline
-		RQX-PB 2,RQX-PB 3,RQX-PA 4 & Imposibilidad de acceso a SDRAM DDR2 de lo kit& Catastrófico & Probable\\
-		\hline
-		RQX-PB 5&Problemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
-		\hline
-		RQX-PB 6& Problemas de compactibilidad con el modulo de debug del proyecto ORPSoC  & Crítico&  Ocasional\\
-		\hline
-		RQX-PB 7 & Problemas con el compilador para la generación del binario del benchmark CoreMark  & Crítico&  Ocasional\\
+		RQX-PB 4 & Problemas con el compilador para la generación del binario del programa de prueba  & Crítico&  Ocasional\\
 		\hline
 		\end{tabular}
 		\caption{Tabla de Riegos vs. Requerimientos}
@@ -768,7 +764,7 @@ del Soc & Crítico & Ocasional\\
 		\hline 
 		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
 		\hline
-		EL código RTL disponible en la web tiene fallas reconocidas durante el proceso de síntesis.&Retraso en los tiempos de implementación.& Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\		 
+		Fallas en la generación de la imagen del SO para ser montada en el SoC &Retraso en los tiempos de implementación.& Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\		 
 		\hline
 		Falta de documentación de apoyo para la implentación
 del Soc& Perdida de tiempo en realizar la implementación
