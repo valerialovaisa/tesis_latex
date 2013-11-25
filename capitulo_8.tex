@@ -6,9 +6,14 @@
 			más importantes para evaluar su capacidad de procesamiento.
 
 \section{Selección del Microprocesador Soft-Core}
+<<<<<<< HEAD
 
 En la elección de los microprocesadores Soft-Core presentados en el capitulo anterior nos basamos principalmente en el requerimiento de usuario sobre el Hardware el cual nos requería implementar un Microprocesador Soft-core el que prestara un rendimiento igual o superior a sus competidores comerciales. Tras la evaluación de las ventajas y desventajas de la elección de un micro con estas características se determinó el uso del microprocesador OpenRISC 1200. 	
 
+=======
+		    
+			
+>>>>>>> 5dabbe020e694ef8923d4315beaaa3e7977c334f
 
 \section{Presentación de los SoC basados en OpenRISC}
 				
@@ -66,8 +71,11 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 
 				\subsection{Proyecto ORPSoC}
 
-Este proyecto implementa una plataforma para el desarrollo OpenRISC. Está destinado a ser un entorno de desarrollo y verificación de IP cores y diseños de SoC. Se trata de un proyecto desarrollado con la colaboración de una de las comunidades mas importantes de hardware de código abierto \url{opencores.org}.
+				Este proyecto implementa una plataforma para el desarrollo OpenRISC. Está destinado a ser un entorno de desarrollo y verificación de IP cores y
+				diseños de SoC. Se trata de un proyecto desarrollado con la colaboración de una de las comunidades mas importantes de hardware de código abierto
+				\url{opencores.org}.
 
+<<<<<<< HEAD
 El proyecto permite tanto a usuarios nuevos como experimentados realizar diseños con un desarrollo rápido OpenRISC.Está destinado a ser un entorno de desarrollo y verificación de núcleos de propiedad intelectual y diseños SoC.Es un proyecto de desarrollo colaborativo. Como plataforma de desarrollo proporciona un entorno modular y facil de usar, para el desarrollo de código RTL y su posterior simulación y síntesis. Provee un entorno de herramientas para desarrollo de aplicaciones OpenRISC para su simulación y prueba en la placa de desarrollo.
 
 Una visión general sobre el SoC completa y sus conexiones externas es en la  (Figura ~\ref{fig:esquemaorpspc})
@@ -111,10 +119,28 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				%  \item Altera, Stratix II						
 				\end{itemize}
 \end{itemize}
+=======
+				El proyecto tiene que ser lo suficientemente fácil para los usuarios, tanto nuevos como experimentados, para empezar con diseños OpenRISC y
+				desarrollar de forma rápida para colaborar fácilmente.
+
+				Está destinado a ser un entorno de desarrollo y verificación de núcleos de propiedad intelectual y los diseños SoC. Se trata de un proyecto de
+				colaboración desarrollado.
+                Como plataforma de desarrollo debe proporcionar un fácil de usar entorno modular, para llevar a cabo el desarrollo de RTL con la simulación de botón
+                y fluye síntesis. Un entorno de base de compilación de software también está presente para apoyar el desarrollo OpenRISC en la simulación y en el blanco.
+                El proyecto debe ser lo suficientemente fácil para los usuarios, tanto nuevos como experimentados, para empezar con diseños OpenRISC y desarrollar de forma rápida y
+                colaborar fácilmente.
+				
+				
+				. It is intended to be a development and verification environment for IP cores and SoC designs. It is a collaboratively developed project.
+                As a development platform it should provide a modular, easy to use environment to perform RTL development with push-button simulation
+                and synthesis flows. A basic software build environment is also present to support OpenRISC development in simulation and on target.
+                The project should be easy enough for users, both new and experienced, to get started with OpenRISC designs and develop quickly and
+                collaborate easily.
+>>>>>>> 5dabbe020e694ef8923d4315beaaa3e7977c334f
 
 \section{Presentación de Placas de Desarrollo}
  
- Los proyectos MinSoC y OrpSoc cuentan actualmente con soporte para diversas placas de desarrollo. 
+				Los proyectos MinSoC y OrpSoc cuentan actualmente con soporte para diversas placas de desarrollo. 
 
 				\subsection{Xilinx}
 				La empresa Xilinx provee kits de desarrollo de diversas características y prestaciones. A continuación se detallan algunas de las alternativas que
@@ -310,11 +336,75 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
  		\subsection{Conclusiones de la elección de la Placa de Desarrollo}
  				Se seleccionó entre los items analizados y teniendo en cuenta la disponibilidad de recursos al momento de realizar este trabajo utilizar las
  				placas S3ADSP1800A de Xilinx para soportar los SoC a implementar.
- 			
- 		\section{Presentación de las herramientas de desarrollo} 	 
  		
+ 		\newpage	
+ 		\section{Presentación de las herramientas de desarrollo} 	 
+ 				\subsection {Herramientas de Desarrollo de Hardware}
+ 				Durante el proceso de desarrollo e implementación de hardware mediante lógica programable son necesarias un serie de herramientas que
+ 				proporcionan diferentes salidas en cada etapa del proceso. En la Figura ~\ref{fig:designflow} se observan las etapas del flujo de diseño y sus
+ 				respectivas salidas.
+ 				
+ 		\begin{figure}[h!]
+ 		\begin{center}
+  		\includegraphics[width=0.7\textwidth,keepaspectratio=true]{./images/designflow}
+  		\caption{Flujo de diseño e implementación de hardware con lógica programable}
+  		\label{fig:designflow}
+ 		\end{center}
+		\end{figure}
+		
+				Se analizaron las aplicaciones alternativas para cada etapa, enfatizando la selección de aplicaciones que cumplan con el requerimiento RQX-LC 2
+				planteado en la Tabla ~\ref{tab:requsr2}.   
+				
+				\subsubsection {Codificación RTL - Editores de Texto}
+				Existen diversas herramientas de Edición de Texto que poseen características compatibles con el desarrollo de código de descripción de hardware.
+				Entre las características más comunes encontramos numeración de líneas, resaltado de código, y predictores. 
+				Xilinx provee en su Suite de Desarrollo la posibilidad de confeccionar código directamente desde ISE Project Mananger. Sin embargo,
+				existen alternativas Open Source de capacidades comparables tales como emacs o gedit. 
+				
+				\subsubsection {Síntesis, Implementación del Diseño y Generación del Bit File}
+				En estas etapas del proceso de diseño no existen herramientas alternativas con licencias OpenSource que permitan obtener el archivo de
+				configuración de la FPGA. Esta restricción obliga a los desarrolladores a utilizar solo las herramientas del fabricante al implentar sus diseños
+				en FPGA.
+				Para realizar la síntesis, Xilinx, utiliza la aplicación XST que realiza la traducción de la descripción RTL escrita en algún lenguaje de
+				descripción de Hardware como Verliog o VHDL en una lista de elementos lógicos y sus conexiones. La siguiente etapa consiste en la implementación 
+				del diseño y consta de tres grandes etapas: Translate, Map, Place and Route. Finalizada esta etapa se obtiene el diseño adecuado al modelo de
+				fpga seleccionado, sus clocks y sus conexiones de entrada/salida. 
+				
+				\subsubsection {Programación y Configuración de la FPGA}
+				La acción que culmina el proceso de implementación es la descarga del código binario de configuración en la FPGA. El protocolo utilizado para
+				realizar esta acción se denomina JTAG (Joint Test Action Group) se encuentra implementado en diversos dispositivos de programación de FPGA y
+				microprocesadores. La mayoría de estos dispositivos proveen soporte SPI (Serial Peripheral Interface) que permite el acceso a dispositivos de
+				almacenamiento como lo son, por ejemplo, las memorias Flash SPI.
+				
+				Xilinx provee la aplicación iMPACT con su Suite de Desarrollo ISE. Esta herramienta es compatible con todos los dispositivos fabricados por
+				Xilinx y algunos dispositivos incluídos en sus placas de prueba. Durante el desarrollo de este trabajo los autores debieron lidiar con
+				problemas de acceso a dispositivos de terceros que conforman la placa de desarrollo S3ADSP1800A que produjeron retrasos significativos en
+				realización del proyecto.
+ 				
+ 				Alternativamente, existen herramientas Open Source tales como XC3SPROG y UrJTAG , ambos licenciados bajo GPLv2 . La herramienta XC3SPROG
+ 				posee capacidades comparables al iMPACT y proporciona acceso de diversos disposivitos entre los que se encuentran:
+ 				\begin{itemize}
+ 				  \item Dispositivos Xilinx
+				  \item Dispositivos Atmel 
+				  \item Memorias SPI flash: AT45, AMIC, AMIC-QUAD, M25P, N25Q, S33, W25
+ 				\end{itemize}
+ 				 
+ 				\subsection {Herramientas de Desarrollo de Software}
+ 			
+				Se analizaron las aplicaciones alternativas para cada etapa, enfatizando la selección de aplicaciones que cumplan con el requerimiento RQX-LC 3
+				planteado en la Tabla ~\ref{tab:requsr2}.   
+				 			
+ 				\subsubsection {Toolchain para OpenRISC}
+ 				La comunidad OpenCores realizó una adapatación del Toolchain GNU para generar aplicaciones en C y C++ que se ejecuten en una arquitectura
+ 				OpenRISC. Así mismo fueron adaptadas las librerias newlib y uClibc conformando una solución completa al diseño y desarrollo de aplicaciones
+ 				OpenRISC. Existe un entorno de desarrollo gráfico llamado OpenIDEA desarrollado por Dynalith basado en este toolchain. 
+				
+				El proyecto OpenRISC cuenta con un simulador del repertorio de instrucciones llamado or1ksim que permite la simulación de aplicaciones compiladas
+				mediante el toolchain sin necesidad de tener disponible el hardware de prueba durante la etapa de desarrollo de software.
+ 				
  		
  		\section{Selección del Sistema Operativo}
+ 		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 			

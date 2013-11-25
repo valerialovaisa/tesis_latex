@@ -1,0 +1,138 @@
+\chapter{Guía Básica de Implementación del RTOS ecOS} \label{app:apendice4}
+
+\section{Descarga del código fuente del proyecto}
+
+Inicialmente se deben descargar los fuentes de la sistema operativo desde el repositorio SVN mediante:
+
+\begin{lstlisting}[breaklines]
+ usuario@usuario-desktop:~/$ svn co http://opencores.org/ocsvn/openrisc/openrisc/trunk/rtos/ecos-3.0
+\end{lstlisting}
+
+\section{Descarga de la aplicación de configuración de ecOS}
+
+La implementación de ecOS requiere de una aplicación de configuración que permite realizar la configuración básica del sistema. El código fuente de
+esta herramienta se encuentra disponible para su descarga directa mediante el comando:
+
+\begin{lstlisting}[breaklines]
+ usuario@usuario-desktop:~/$ wget http://www.ecoscentric.com/snapshots/configtool-100305.bz2
+\end{lstlisting}
+
+Para descomprimir el paquete descargado se utiliza:
+
+\begin{lstlisting}[breaklines]
+usuario@usuario-desktop:~/$ bunzip2 configtool-100305.bz2
+usuario@usuario-desktop:~/$ chmod 755 configtool-100305
+usuario@usuario-desktop:~/$ sudo cp configtool-100305 /usr/local/bin/.
+usuario@usuario-desktop:~/$ sudo ln -s /usr/local/bin/configtool-100305 /usr/local/bin/configtool
+\end{lstlisting}
+
+\section{Instalación de dependencias de compilación}
+
+Para la compilación son necesarias algunas dependencias que deben instalarse mediante la siguiente secuencia de comandos:
+
+\begin{lstlisting}[breaklines]
+ usuario@usuario-desktop:~/$ sudo apt-get install tcl8.4-dev
+ usuario@usuario-desktop:~/$ sudo apt-get install tk8.4-dev
+\end{lstlisting}
+
+A continuación deben copiarse los scripts de configuración a la ruta /usr/local/lib
+
+\begin{lstlisting}[breaklines]
+usuario@usuario-desktop:~/$ sudo cp /usr/lib64/tcl8.4/tclConfig.sh /usr/local/lib/.
+usuario@usuario-desktop:~/$ sudo cp /usr/lib64/tk8.4/tkConfig.sh /usr/local/lib/.
+\end{lstlisting}
+
+
+\section{Compilación de la herramienta de configuración}
+
+Una vez realiza instaladas las depencias se debe compilar la herramienta de configuración de ecOS como se detalla a continuación: 
+
+\begin{lstlisting}[breaklines]
+ usuario@usuario-desktop:~/<aplicacion de configuración>/$ make
+ usuario@usuario-desktop:~/<aplicacion de configuración>/$ sudo make install
+\end{lstlisting}
+
+Debe agregarse la siguiente línea al archivo .bashrc.
+
+\begin{lstlisting}[breaklines]
+export ECOS_REPOSITORY=/opt/home/svan/OpenRISC/ecos/ecos-3.0/packages
+\end{lstlisting}
+
+Es necesario que se reconfiguren las variables mediante:
+\begin{lstlisting}[breaklines]
+ usuario@usuario-desktop:~/$ source ~/.bashrc
+\end{lstlisting}
+
+\section{Configuración del sistema}
+
+\begin{lstlisting}[breaklines]
+ usuario@usuario-desktop:~/<directorio de ecos>/$ ecosconfig new orpsoc 
+\end{lstlisting}
+
+\begin{lstlisting}[breaklines]
+usuario@usuario-desktop:~/<directorio de ecos>/$ configtool ecos.ecc
+\end{lstlisting}
+
+\begin{lstlisting}[breaklines]
+usuario@usuario-desktop:~/<directorio de ecos>/$ ecosconfig check
+\end{lstlisting}
+
+
+\section{Contrucción del sistema }
+
+
+\begin{lstlisting}[breaklines]
+usuario@usuario-desktop:~/<directorio de ecos>/$ ecosconfig tree
+usuario@usuario-desktop:~/<directorio de ecos>/$ make
+usuario@usuario-desktop:~/<directorio de ecos>/$ make tests
+\end{lstlisting}
+
+\section{Escribir un programa de prueba}
+
+\begin{lstlisting}[language=C,frame=single]
+#include <stdio.h>
+int main(void) {
+ printf("Hello, eCos world!\n");
+return 0;
+ }
+\end{lstlisting}
+
+\section{Compilación de programas de prueba}
+
+\begin{lstlisting}[breaklines]
+ usuario@usuario-desktop:~/$ or32-elf-gcc -g -O2 -nostdlib -install/include -Linstall/lib -Tinstall/lib/target.ld examples/hello.c -o hello.elf  
+\end{lstlisting}
+
+
+
+\section{Ejecución de aplicaciones bajo ecOS}
+
+Para conectar con éxito el TAP del SoC que contiene el micro OpenRISC , se debe copiar los archivos BSDL de todos los dispositivos conectados a la cadena de JTAG a un directorio conocido (por ejemplo /home/user/bsdl).Luego debe colocarse, el directorio como argumento al llamar adv\_jtag\_bridge, adv\_jtag\_bridge-b /home/user/bsdl.
+
+\begin{enumerate}
+
+\item Conectar el cable JTAG al TAP
+\item Iniciar or\_debug\_proxy
+
+\begin{lstlisting}[breaklines]
+usuario@usuario-desktop:~/$ sudo or_debug_proxy -c ftdi -r 50000 
+\end{lstlisting}
+
+\item Una vez que el programa se encuentre en funcionamiento se debe abrir otro terminal (por ejemplo gtkterm).
+\item Configuramos el puerto a un puerto serie conectado a la placa.
+\item Configuramos el bitrate a 115200.
+
+\item Se inicia gdb y se carga el firmware de ejemplo compilado previamente para OpenRisc.
+
+\item 
+\begin{lstlisting}[breaklines]
+usuario@usuario-desktop:~/$ or32-elf-gdb hello.elf
+target remote :50000
+load
+set $pc=0x100
+c
+\end{lstlisting}
+
+\item Dentro de gtkterm debería haber aparecido "Hello, eCos World!" 
+
+\end{enumerate}

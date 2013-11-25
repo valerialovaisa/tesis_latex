@@ -34,6 +34,7 @@ En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se a
 		componente para determinar si el producto cumple con lo que se ha diseñado, es decir, si cada fase de desarrollo dada cumple con los requisitos
 		impuestos al inicio de dicha fase.
 
+\newpage
 \chapter{Prototipo Uno : Implementación del SoC MinSoC en FPGA}
 
 	\section{Introducción}
@@ -382,6 +383,7 @@ Fin del programa
 Este prototipo fue de vital importancia permitiendo mostrar que es posible instanciar sobre el kit de desarrollo disponible un system on de chip básico open source en una FPGA Spartan 3A.
 La mayor cantidad de tiempo fue para la  determinación de las herramientas de desarrollo necesarias para el hardware disponible, ya que la documentación sobre el tema era insuficiente o nula. Sin embargo una vez que se pudo logrado encontrar las herramientas adecuadas y  la corrección de error en el código RTL fue mucho más sencillo la implementación del prototipo.
 		
+\newpage		
 \chapter{Prototipo Dos : Implementación del SoC ORPSoC en FPGA}
 		\section{Introducción}
 		Para el prototipo dos se planteó la implementación de un sistema ORPSoC que dispone de mayor cantidad de periféricos que el MinSoC entre ellos un
@@ -496,8 +498,8 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		\item Programación de la FPGA Spartan 3a.
  		\end {itemize}
  
- Consulte la Guía de ORPSoC en el Anexo ~\ref{app:apendice2} para una comprensión más profunda de los pasos a seguir en la implementación sobre la
- placa de desarrollo S3ADSP1800A.
+ Puede consultarse la Guía de ORPSoC en el Anexo ~\ref{app:apendice2} para una comprensión más profunda de los pasos a seguir en la implementación
+ sobre la placa de desarrollo S3ADSP1800A.
 
 El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee acceso a las memorias SDRAM on board de la placa S3ADSP1800A, un módulo SPI que interactúa con la memoria flash on board de la placa antes mencionada, un módulo UART y un módulo ETHERNET. 
 		
@@ -695,6 +697,7 @@ cantidad de numeros primos entre 1 y 2000:
 
 		\section{Conclusión}
 
+\newpage
 \chapter{Prototipo Tres : Implementación del SoC ORPSoC en FPGA con Sistema Operativo eCos}
 		\section{Introducción}
 
@@ -797,7 +800,22 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 	
 		\section{Implementación}	
 		
-		\newpage
+		La implementación de sistema operativo de tiempo real ecOS ser realiza en una serie de etapas detalladas a continuación. 
+		\begin {itemize}
+		\item Descarga del código fuente del proyecto
+		\item Descarga de la aplicación de configuración de ecOS
+		\item Instalación de dependencias de compilación
+		\item Compilación de la herramienta de configuración
+		\item Configuración del sistema
+		\item Contrucción del sistema 
+		\item Compilación de programas de prueba
+		\item Ejecución de aplicaciones bajo ecOS
+ 		\end {itemize}
+ 
+		Consulte la Guía de ecOS en el Anexo ~\ref{app:apendice4} para una comprensión más profunda de los pasos a seguir en la implementación sobre la
+ 		placa de desarrollo S3ADSP1800A.
+		
+\newpage
 		
 		\section{Testing}
 
@@ -842,7 +860,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{tabular}
 		\end{table}
 
-	\newpage			
+\newpage			
 
 
 		\begin{table}[h!]
@@ -888,12 +906,18 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{tabular}
 		\end{table}
 
+\newpage
+
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba twothreads},label={lst:salhilos}]
  ACA VA EL RESULTADO DE LA EJECUCIÓN DE HILOS
 \end{lstlisting}
 
+
+
 		\section{Conclusión}
 
+
+\newpage
 \chapter{Prototipo Cuatro : Implementación del SoC ORPSoC en FPGA con Sistema Operativos Linux}
 		\section{Introducción}
 		El núcleo Linux, combinado con un conjunto utilidades de software libre, puede ajustarse al espacio limitado de hardware 
