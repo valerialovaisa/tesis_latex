@@ -1,20 +1,39 @@
 \chapter{Presentación de Resultados}
 	\section{Introducción} 
+	
 	Este capítulo presenta los resultados obtenidos durante la implementación de cada uno de los prototipos planteados en el Capítulo
 	~\ref{chap:disenoeimpl} y durante la ejección de los casos de prueba correspondientes. 
 	
-	Para el desarrollo de todas las pruebas se utilizó la placa de prueba S3ADSP1800A del fabricante Xilinx que cumple con los requerimientos detallados
-	en la Tabla ~\ref{tab:requsr1}. 
+	Para la ejecución de todas las pruebas se utilizó la placa desarrollo S3ADSP1800A del fabricante Xilinx que cumple con los requerimientos detallados
+	en la Tabla ~\ref{tab:requsr1} y se encontraba dentro de las alternativas disponibles al momento del desarrollo de este trabajo. Aún cumpliendo con
+	los requerimientos especificados, la placa de desarrollo no cuenta con un completo soporte de periféricos on board ni con amplia documentación de
+	apoyo respecto de la materia. Se presentaron grandes dificultades en el acceso a la memoria SPI FLASH S33 de Intel la cual se encuentra soportada por
+	herramientas \textit{oficiales} que únicamente corren bajo Windows. Alternativamente existe una versión de la placa de desarrollo S3ADSP1800A,
+	disponible también en el laboratorio del CUDAR, que se encuentra equipada con una memoria FLASH SPI Numonyx M25P64 que puede ser accedida mediante
+	herramientas de programación como XC3SPROG y UrJTAG alojando finalmente los programas necesarios para el arranque del sistema.
+	
+	Las pruebas realizadas con el sistema operativo de tiempo real ecOS proveyeron información útil para el desarrollo de sistemas embebidos de tiempo
+	real. Se analizaron inicialmente las capacidades y limitaciones en la ejecución de hilos. Aunque estas pruebas tan solo verifican la utilización de
+	una parte las capacidades, el sistema operativo ecOS posee mayor funcionalidad que no fue probada en este trabajo y presenta capacidades comparables
+	a implementaciones como lo son FreeRTOS y su implentación comercial eCosPro.
+	
+	La capacidad, por defecto, del Kernel de Linux de ser compilado para arquitecturas OpenRISC posibilitó tener un entorno de ejecución de amplia
+	funcionalidad y gran utilización en el ámbito de desarrollo de Sistemas Embebidos.  
 	
 	\section{Estudio de capacidades del proyecto MinSoC}
-	El proyecto 
+	El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA
+	de diversos desarrolladores. La facilidad de adaptación del proyecto para ser portado a otras arquitecturas reconfigurables le confiere gran
+	versatilidad ampliando notablemente su gama de aplicación.
+	Durante el desarrollo de las pruebas se prentendió esteblecer los límites de aplicación del proyecto que establezcan referencias sólidas para una
+	futura elección del proyecto en aplicaciones reales.
 
 		\subsection{Resultados de la ejecución del multiplicador de matrices binarias}
-	
+		
 
 	
 
 	\section{Estudio de capacidades del proyecto ORPSoC}
+
 
 		\subsection{Resultados de la ejecución del Benchmark Drystone}
 
