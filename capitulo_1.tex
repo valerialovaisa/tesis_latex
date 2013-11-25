@@ -32,6 +32,46 @@ Embebidos de propósito específico(Por ej.: Sistemas de tiempo real).
 
 \section{Motivación} 
 
+Los sistemas embebidos son aquellos sistemas que implementan una función específica para la cual se  tienen que cumplir una serie de restricciones. Las  restricciones principales son el bajo coste y consumo, así  como un tamaño y peso lo mas reducido posible.
+ 
+Además, muy recientemente, se ha incrementado  significativamente la demanda de sistemas embebidos con diferentes funcionalidades y con mayor complejidad  en las mismas. Por último, debido a la gran competencia  que hay en este campo, se ha convertido en una restricción fundamental el ser capaz de reducir significativamente los tiempos de desarrollo de estos sistemas.
+
+Todos estos problemas han dado lugar a una evolución en la metodología de diseño que se aplica. Así, el principal cambio metodológico ha sido transformar en 
+aspecto principal del diseño de sistemas embebidos no tanto el diseño del hardware específico sino, más bien, el desarrollo del software que implementa las diferentes 
+aplicaciones. Esto ha sido posible gracias al avance microelectrónico que hoy en día permite el diseño completo de un sistema en un chip (System On Chip – SoC) lo que ha permitido partir en el diseño de plataformas hardware base bien desarrolladas. 
+
+Efectivamente, la arquitectura hardware de un sistema embebido en tecnología SoC consiste en uno o varios microprocesadores del sistema sobre los que se 
+organizan diferentes periféricos necesarios para llevar a cabo la función deseada. Para completar el sistema embebido, la aplicación concreta se implementa a través del software que se ejecuta en el microprocesador.
+
+Para lograr las restricciones de reducción de costes y tiempo de desarrollo, las metodologías de diseño de sistemas embebidos parten de una plataforma hardware 
+base sobre la que se pueden construir un amplio número de aplicaciones. Esta variedad en las aplicaciones se logra gracias a que las plataformas disponen de  múltiples puertos que son capaces de manejar múltiples  señales de diferentes tipos. Las plataformas mas 
+comunes hoy en día siguen siendo los  microcontroladores (MCUs) y los procesadores digital  de señal (DSPs). Con plataformas hardware basadas en  estos tipos de componentes, el diseño de la aplicación consiste, primordialmente, en el desarrollo del software. 
+Para reducir los tiempos de desarrollo así como para poder emplear esos componentes en funciones de alta complejidad, los fabricantes de los mismos han echo un 
+gran esfuerzo en los entornos de desarrollo software [4].
+Así, hoy en día, las nuevas series de MCUs se caracterizan porque soportan sistemas operativos que facilitan significativamente el desarrollo de las varias 
+aplicaciones que va a soportar el sistema final.
+El mayor inconveniente que tiene los MCUs es que son plataformas hardware cerradas. 
+
+Como alternativa a las plataformas de hardware cerrado esta la posibilidad de emplear FPGAs [2,3,5,6,7]. La alta capacidad de integración, el bajo coste para tiradas bajas 
+y medias, y el alto rendimiento, en términos de frecuencia de operación y consumo de potencia, hacen posible implementar un SoC en este tipo de dispositivo 
+programable. Los SoC que se pueden implementar sobre las FPGAs tienen una serie de ventajas sobre las plataformas cerradas, como la adaptación a cualquier 
+necesidad específicva o la reconfiguración dinámica. 
+Sin embargo, el uso de FPGAs implica necesariamente un esfuerzo para diseñar la arquitectura hardware que, evidentemente, incrementa el tiempo de desarrollo total 
+del sistema.
+
+Para hacer realmente útil el diseño de SoC sobre FPGAs en los sistemas embebidos es necesario facilitar la construcción de la arquitectura hardware a través de 
+buenas metodologías de diseño, así como de un conjunto de herramientas CAD adecuado. De hecho, hoy en día, el principal esfuerzo que están haciendo los fabricantes 
+va en la línea de mejorar las herramientas de diseño de SoC sobre FPGAs. Además, existe un alto nivel de competitividad por encontrar la mejor solución que combine la facilidad de diseño de la arquitectura hardware junto con el mejor rendimiento del sistema 
+final. Ejemplos de estas herramientas son Xilinx EDK[8], Altera ESD [9], etc..
+No solo es necesario facilitar el diseño hardware sino también el desarrollo software. Este es un punto donde, sin duda, hay una gran diferencia de madurez entre los 
+MCUs y el diseño de SoC sobre FPGAs. Como mencionamos anteriormente, los MCUs soportan sistemas operativos, lo que dota a estas plataformas de 
+una alta versatilidad en cuanto a la funcionalidad y su complejidad, que puede alcanzar un sistema. 
+
+En contraste, los SoC sobre FPGAs, solo muy recientemente, empiezan a tener soporte para sistemas operativos  tales como petalinux MicroBlaze, o proyectos de portar Linux a Nios o a Lattice Mico32. 
+Un alternativa muy interesante de explorar en el diseño de SoC sobre FPGAs es emplear sistemas abiertos tanto a nivel de hardware como de software. Los sistemas 
+abiertos se caracterizan porque son tecnológicamente independientes y pueden ser implementables tanto a nivel de FPGAs de bajo coste como, incluso, a nivel de 
+ASIC. 
+
 Existe un grupo de cores Softcore de código abierto que no están limitados por la tecnología. Los cores destacados de microprocesadores de 32 bits,
 son los procesadores SPARC LEON OpenRISC 1200 , y el core de LatticeMico32. Usar cores de código abierto va unido a una serie de conceptos como:
 \begin {itemize}
@@ -61,6 +101,7 @@ sustituirse por hardware, de manera que se evita la costosa optimización del so
 
 \section{Importancia del Problema}
 
+
 En el diseño del sistema embebido se usan diferentes procesos dependiendo del tipo de sistema, el hardware disponible y la organización que
 desarrolle el sistema. Una de las actividades principales en un proceso de diseño de software es la elección del hardware y del sistema operativo que
 se efectúa antes del desarrollo del software. Ante tal situación, se debe diseñar el software considerando las restricciones impuestas por las
@@ -71,9 +112,15 @@ experiencia del equipo de desarrollo y límites en el costos del sistema entrega
 Se está explorando una línea donde se busca dar al diseñador del sistema embebido una solución flexible en la primera etapa de la elección de
 plataforma. Donde a través del análisis de diferentes plataformas de desarrollo OpenSource y privativas se pueda elegir la mejor opción para el tipo
 de sistema a desarrollar y los requerimientos de procesamiento.
+
+El principal problema que  presentan el desarrollo de hardware de código abierto para no ser adoptado  es la dificultad que implican tanto a nivel de diseño hardware como de 
+desarrollo software.
  
 Una vez que se ha elegido la plataforma de ejecución para el sistema, se ha diseñado una arquitectura de proceso y se ha determinado una política de
 planeación, es necesario comprobar que el sistema cumplirá sus con sus requerimientos.
+
+El principal problema que  presentan el desarrollo de hardware de código abierto para no ser adoptado  es la dificultad que implican tanto a nivel de diseño hardware como de 
+desarrollo software.
 
 \section{Modelo de Desarrollo}
 
