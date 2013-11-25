@@ -6,42 +6,111 @@
 			más importantes para evaluar su capacidad de procesamiento.
 
 \section{Selección del Microprocesador Soft-Core}
-		
-			
+
+En la elección de los microprocesadores Soft-Core presentados en el capitulo anterior nos basamos principalmente en el requerimiento de usuario sobre el Hardware el cual nos requería implementar un Microprocesador Soft-core el que prestara un rendimiento igual o superior a sus competidores comerciales. Tras la evaluación de las ventajas y desventajas de la elección de un micro con estas características se determinó el uso del microprocesador OpenRISC 1200. 	
+
 
 \section{Presentación de los SoC basados en OpenRISC}
 				
 				\subsection{Proyecto MinSoC}
-				La implementación llamada Minimal OpenRISC System on Chip utiliza IP cores estándar disponibles en OpenCores. Agrupa los cores necesarios para un
-				SoC utilizando el procesador softcore OpenRISC OR1200. Este SoC puede ser sintetizado para cualquier FPGA y placa de desarrollo sin necesidad de
-				realizar cambios en su descripción RTL. Para cumplir con esta premisa el proyecto se basa en una implementación básica de memoria y posee una
-				unidad de debug llamada Advanced Debug System, que permite depurar el sistema y cargar los programas a ejecutar con la misma interfase utilizada
-				para la configuración de la FPGA.
-				
-				El proyecto brinda soporte nativo a diversas placas y FPGAs mediante definiciones en el código RTL y archivos de constantes (constraint files)
+				La implementación llamada Minimal OpenRISC System on Chip utiliza IP cores estándar disponibles en OpenCores. Agrupa los cores necesarios para un SoC utilizando el procesador softcore OpenRISC OR1200. Este SoC puede ser sintetizado para cualquier FPGA y placa de desarrollo sin necesidad de realizar cambios en su descripción RTL. Para cumplir con esta premisa el proyecto se basa en una implementación básica de memoria y posee una unidad de debug llamada Advanced Debug System, que permite depurar el sistema y cargar los programas a ejecutar con la misma interfase utilizada para la configuración de la FPGA.				El proyecto brinda soporte nativo a diversas placas y FPGAs mediante definiciones en el código RTL y archivos de constantes (constraint files)
 				pero puede adaptarse a otras siguiendo una mínima serie de pasos. Se cuenta además con una serie testbenchs y firmwares que permiten realizar
-				pruebas funcionales del sistema y son sirven de guía en los primeros desarrollos. Los testbenchs de MinSoC pueden ser ejecutados mediante la
+				pruebas funcionales del sistema y sirven de guía en los primeros desarrollos. Los testbenchs de MinSoC pueden ser ejecutados mediante la
 				aplicación Icarus Verilog v.9.1. disponible en los repositorios estándar de la mayoría de las distribuciones Linux. 
 				
 				Existe una instancia de memoria on-chip de tamaño adaptable necesaria para soportar el firmware del CPU que conjuntamente con los cores que
 				soportan los periféricos básicos son adaptados de acuerdo a las capacidades de la FPGA destino. 
-				
+
+Una visión general sobre el SoC completa y sus conexiones externas es en la  (Figura ~\ref{fig:esquemaminsoc})
+
+\begin{figure}[h!]
+ \begin{center}
+  \includegraphics[width=1\textwidth,keepaspectratio=true]{./images/minsoc}
+  \caption{Arquitectura MinSoc}
+  \label{fig:esquemaminsoc}
+ \end{center}
+\end{figure}
+
+\begin{itemize}
+\item Características:
+				\begin{itemize}
+				  \item Microprocesador embebido OR1200 OpenRISC 
+				  \item memoria redimensionalble
+				  \item selección de frecuencia del sistema
+				  \item JTAG debug con capacidad para distintos cables
+				  \item Posibilitad de arranque automático de un firmware desde una memoria externa SPI
+				  \item Modulos de UART y Ethernet 
+				  \item Código genérico y especifico de memoria para las FPGA de Xilinx y Altera, adaptación de clock (PLLs y MCMs) y JTAG TAP
+				  \item Configuración del sistema en un simple archivo de definición 
+				  \item Ejemplos de firmware utilizando UART y Ethernet  
+				  \item Incluye testbench para la simulacón de la configuración del sistema. 						
+				\end{itemize}
+
+\item Tecnologías probadas que le brindan soporte al proyecot MinSoC:
+
+
+\begin{itemize}
+				  \item Xilinx, Spartan 3E (Spartan3E Starter Kit)
+				  \item Xilinx, Spartan 3A (Spartan3A 1800 DSP Kit)
+				  \item Xilinx, Virtex 4 (ML405 board)
+				  \item Xilinx, Virtex 5 (ML505 board)
+				  \item Altera, Cyclone II
+				  \item Altera, Cyclone II
+				  \item (DE2-70 board)
+				  \item Altera, Cyclone III
+				  \item Altera, Cyclone IV (Bemicro SDK board) 
+				  \item Altera, Stratix II						
+				\end{itemize}
+\end{itemize}
+
+
 				\subsection{Proyecto ORPSoC}
 
 Este proyecto implementa una plataforma para el desarrollo OpenRISC. Está destinado a ser un entorno de desarrollo y verificación de IP cores y diseños de SoC. Se trata de un proyecto desarrollado con la colaboración de una de las comunidades mas importantes de hardware de código abierto \url{opencores.org}.
 
-El proyecto tiene que ser lo suficientemente fácil para los usuarios, tanto nuevos como experimentados, para empezar con diseños OpenRISC y desarrollar de forma rápida para colaborar fácilmente.
+El proyecto permite tanto a usuarios nuevos como experimentados realizar diseños con un desarrollo rápido OpenRISC.Está destinado a ser un entorno de desarrollo y verificación de núcleos de propiedad intelectual y diseños SoC.Es un proyecto de desarrollo colaborativo. Como plataforma de desarrollo proporciona un entorno modular y facil de usar, para el desarrollo de código RTL y su posterior simulación y síntesis. Provee un entorno de herramientas para desarrollo de aplicaciones OpenRISC para su simulación y prueba en la placa de desarrollo.
 
-Está destinado a ser un entorno de desarrollo y verificación de núcleos de propiedad intelectual y los diseños SoC. Se trata de un proyecto de colaboración desarrollado.
-                 Como plataforma de desarrollo debe proporcionar un fácil de usar entorno modular, para llevar a cabo el desarrollo de RTL con la simulación de botón
-                 y fluye síntesis. Un entorno de base de compilación de software también está presente para apoyar el desarrollo OpenRISC en la simulación y en el blanco.
-                 El proyecto debe ser lo suficientemente fácil para los usuarios, tanto nuevos como experimentados, para empezar con diseños OpenRISC y desarrollar de forma rápida y
-                 colaborar fácilmente.
-				. It is intended to be a development and verification environment for IP cores and SoC designs. It is a collaboratively developed project.
-                As a development platform it should provide a modular, easy to use environment to perform RTL development with push-button simulation
-                and synthesis flows. A basic software build environment is also present to support OpenRISC development in simulation and on target.
-                The project should be easy enough for users, both new and experienced, to get started with OpenRISC designs and develop quickly and
-                collaborate easily.
+Una visión general sobre el SoC completa y sus conexiones externas es en la  (Figura ~\ref{fig:esquemaorpspc})
+
+\begin{figure}[h!]
+ \begin{center}
+  \includegraphics[width=1\textwidth,keepaspectratio=true]{./images/orpsoc}
+  \caption{Arquitectura ORPsoc}
+  \label{fig:esquemaorpsoc}
+ \end{center}
+\end{figure}
+
+\begin{itemize}
+\item Características:
+				\begin{itemize}
+				  \item Microprocesador embebido OR1200 OpenRISC 
+				  \item memoria redimensionalble
+				  \item selección de frecuencia del sistema
+				  \item JTAG debug con capacidad para distintos cables
+				  \item Posibilitad de arranque automático de un firmware desde una memoria externa SPI
+				  \item Modulos de UART y Ethernet 
+				  \item Código genérico y especifico de memoria para las FPGA de Xilinx y Altera, adaptación de clock (PLLs y MCMs) y JTAG TAP
+				  \item Configuración del sistema en un simple archivo de definición 
+				  \item Ejemplos de firmware utilizando UART y Ethernet  
+				  \item Incluye testbench para la simulacón de la configuración del sistema. 						
+				\end{itemize}
+
+\item Tecnologías probadas que le brindan soporte al proyecot MinSoC:
+
+
+\begin{itemize}
+				%  \item Xilinx, Spartan 3E (Spartan3E Starter Kit)
+				  \item Xilinx, Spartan 3A (Spartan3A 1800 DSP Kit)
+				  %\item Xilinx, Spartan 6 LX45 (ML405 board)
+				  \item Xilinx, Virtex 5 (ML501 board
+					% \item Altera, Cyclone II
+				  %\item Altera, Cyclone II
+				  %\item (DE2-70 board)
+				%  \item Altera, Cyclone III
+				  \item Altera, Cyclone IV (Terasic DE0 Nano) 
+				%  \item Altera, Stratix II						
+				\end{itemize}
+\end{itemize}
 
 \section{Presentación de Placas de Desarrollo}
  
@@ -145,8 +214,7 @@ Está destinado a ser un entorno de desarrollo y verificación de núcleos de pr
 				
 				\subsection{Digilent}
 				\subsubsection{Atlys}
-				La placa de desarrollo Atlys es una plataforma que permite el desarrollo de circuitos digitales y esta soportada por una FPGA Xilinx Spartan 6
-				LX45. Posee periféricos entre los que se destacan Gbit Ethernet, Video HDMI, Audio, puertos USB y Memoria Ram 128 MB DDR2 que permiten el
+				La placa de desarrollo Atlys es una plataforma que permite el desarrollo de circuitos digitales y esta soportada por una FPGA Xilinx Spartan 6 LX45. Posee periféricos entre los que se destacan Gbit Ethernet, Video HDMI, Audio, puertos USB y Memoria Ram 128 MB DDR2 que permiten el
 				desarrollo de Sistemas Digitales sobre procesadores embebidos como  MicroBlaze de Xilinx. Atlys es compatible con todas las herramientas CAD de
 				Xilinx como ChipScope, EDK y WebPack (gratuito) lo que permite completar diseños sin mayor costo. Como alternativa puede utilizarse un entorno de
 				desarrollo para Linux llamado PetaLinux Software Development Kit (SDK) provisto por el fabricante de la FPGA.
