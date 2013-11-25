@@ -498,8 +498,8 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		\item Programación de la FPGA Spartan 3a.
  		\end {itemize}
  
- Consulte la Guía de ORPSoC en el Anexo ~\ref{app:apendice2} para una comprensión más profunda de los pasos a seguir en la implementación sobre la
- placa de desarrollo S3ADSP1800A.
+ Puede consultarse la Guía de ORPSoC en el Anexo ~\ref{app:apendice2} para una comprensión más profunda de los pasos a seguir en la implementación
+ sobre la placa de desarrollo S3ADSP1800A.
 
 El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee acceso a las memorias SDRAM on board de la placa S3ADSP1800A, un módulo SPI que interactúa con la memoria flash on board de la placa antes mencionada, un módulo UART y un módulo ETHERNET. 
 		
@@ -800,7 +800,22 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 	
 		\section{Implementación}	
 		
-		\newpage
+		La implementación de sistema operativo de tiempo real ecOS ser realiza en una serie de etapas detalladas a continuación. 
+		\begin {itemize}
+		\item Descarga del código fuente del proyecto
+		\item Descarga de la aplicación de configuración de ecOS
+		\item Instalación de dependencias de compilación
+		\item Compilación de la herramienta de configuración
+		\item Configuración del sistema
+		\item Contrucción del sistema 
+		\item Compilación de programas de prueba
+		\item Ejecución de aplicaciones bajo ecOS
+ 		\end {itemize}
+ 
+		Consulte la Guía de ecOS en el Anexo ~\ref{app:apendice4} para una comprensión más profunda de los pasos a seguir en la implementación sobre la
+ 		placa de desarrollo S3ADSP1800A.
+		
+\newpage
 		
 		\section{Testing}
 
@@ -845,7 +860,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{tabular}
 		\end{table}
 
-	\newpage			
+\newpage			
 
 
 		\begin{table}[h!]
@@ -891,9 +906,13 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{tabular}
 		\end{table}
 
+\newpage
+
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba twothreads},label={lst:salhilos}]
  ACA VA EL RESULTADO DE LA EJECUCIÓN DE HILOS
 \end{lstlisting}
+
+
 
 		\section{Conclusión}
 
