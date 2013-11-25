@@ -15,10 +15,20 @@ Actualmente las \textit{FPGA} cuentan con una gran cantidad de recursos disponib
 
 Una desventaja de las \textit{FPGA}  es debido a la naturaleza inherente de las arquitecturas de \textit{FPGA}, los diseños implementados en \textit{FPGA} comparados con una ASICs en general tienen mas area, menos porformance y consumen mas energía.
 		
-A medida que fue pasando el tiempo las FPGAs fueron disminuyendo su costo y mejoraron la eficiencia en el consumo de energía llevandolas a ser consideradas como solución a la implementacion de ciertas aplicaciones en lugar de una ASIC. Si los criterios tales como el tiempo de comercialización y capacidad de actualización son críticos, con el máximo rendimiento y un consumo reducido de energía, una implementación en  FPGA puede ser adecuada.
+A medida que fue pasando el tiempo las FPGAs fueron disminuyendo su costo y mejoraron la eficiencia en el consumo de energía llevandolas a ser consideradas como solución a la implementación de ciertas aplicaciones en lugar de una ASIC. Si los criterios tales como el tiempo de comercialización y capacidad de actualización son críticos, con el máximo rendimiento y un consumo reducido de energía, una implementación en  FPGA puede ser adecuada.
+
+Las FPGAs del presente siglo poco tienen que ver con las primeras aparecidas en los 80, y ofrecen densidades de millones de puertas lógicas además de microprocesadores empotrados, interfaces de entrada/salida de alta velocidad, bancos de memoria, multiplicadores hardware, DSPs (Digital Signal Processor), etc. El resultado final es que las FPGAs de hoy en día permiten implementar una gran variedad de sistemas electrónicos: dispositivos de comunicaciones, complejos algoritmos de procesamiento de señal, microprocesadores, etc.
+
 
 	\subsection{Arquitecura}
-Los componentes de una \textit{FPGA} se pueden dividir en cinco grupos:
+
+Las FPGAs son circuitos integrados digitales que contienen bloques de lógica
+configurable (CLBs) e interconexiones también configurables entre dichos bloques,
+que permiten al desarrollador programarlas para realizar tareas muy diversas.
+
+
+Xilinx tiene una estructura básica de matriz simétrica que a sido mantenida por Xilinx en sus modernas familias de FPGA, aumentando con cada nueva familia la capacidad de las CLBs e interconexiones. 
+Los componentes de una \textit{FPGA} de Xilinx son:
 
 \begin {itemize}
 \item  Bloques lógicos configurables y \textit{Lookup Tables}.
@@ -26,6 +36,7 @@ Los componentes de una \textit{FPGA} se pueden dividir en cinco grupos:
 \item  Bloques multiplicadores
 \item  Bloques Manejadores de Clock Digitales.
  \end {itemize}
+
 
 \begin{figure}[h!]
  \begin{center}
@@ -35,6 +46,7 @@ Los componentes de una \textit{FPGA} se pueden dividir en cinco grupos:
  \end{center}
 \end{figure}
 
+Otros fabricantes han optado por otro tipo de estructuras internas para sus FPGAs, cada una con sus propias ventajas e inconvenientes. No es objeto de este trabajo evaluar las estructuras internas de las FPGAs.
 		\subsubsection{Bloques Lógicos Configurables y Lookup Tables}
 
 Todas las\textit{FPGAs} se basan en arrays de pequeños elementos de lógica digital. Los problemas de lógica digital se descomponen en circuitos lógicos que puedan ser mapeados a uno o más de estas “celdas lógicas” a través de un proceso llamado \textit{“technology mapping"}.
@@ -58,7 +70,7 @@ Las \textit{FPGAs} poseen pines TTL, CMOS, PCI, LVDS y muchos otros que les perm
 
 También incluyen PLL y esquemas para el manejo de clocks permitiendo múltiples dominios del mismo.Las \textit{FPGAs} actuales tienen impedancias de I/O configurables,  permiten el uso de resistencias internas terminales cuyos valores pueden ser configurados por el usuario.
 
-\subsubsection{Multiplicadores}
+	\subsubsection{Multiplicadores}
 
 Algunas funciones como los multiplicadores son muy lentos si se implementan mediante la conexión de un gran numero de bloques lógicos. Por eso muchas \textit{FPGAs} incorporan bloques \textit{multiplicadores} hardware. Estos bloques se encuentran muy cerca de los bloques de RAM embebidos. 
 
@@ -70,7 +82,7 @@ Algunas funciones como los multiplicadores son muy lentos si se implementan medi
  \end{center}
 \end{figure}
 
-\subsubsection{Manejadores de Clock Digitales}
+	\subsubsection{Manejadores de Clock Digitales}
 
 El \textit{clock manager} se usa para generar un número determinado de “daughter clocks". Es utilizado para remover el \textit{jitter}, como \textit{sintetizador de frecuencia} donde a partir de una frecuencia de referencia permite obtener un conjunto discreto de frecuencias, tratando de mantener en todos los casos las características de estabilidad de la frecuencia de referencia \cite{Etiqueta03}, también\textit{Phase shifting} algunos diseños requieren clocks que estén corridos en fase unos con respecto a otros.
 
@@ -94,6 +106,19 @@ EL \textit{clock tree} es implementado usando canales separados de los de propó
  \end{center}
 \end{figure}
 
+		\subsection{Tipo de Tecnología} 
+
+Teniendo en cuenta al tipo de tecnología que utilizan las FPGAs para almacenar sus datos de configuración, estas se pueden clasificar en tres tipos principales:
+
+\begin {itemize}
+\item  
+\textit {Basadas en memoria RAM estática (SRAM)}:las FPGAs guardan su configuración en una memoria interna de tipo SRAM. Cada vez que se enciende el sistema es necesario reprogramar la FPGA con su configuración, por lo tanto es necesario almacenar esta configuración en un dispositivo ROM externo o descargarla desde un PC conectado a la FPGA. Este tipo de FPGA es la más flexible y permite utilizar técnicas de reconfiguración dinámica.
+\item  
+\textit{Basadas en memoria ROM}:las FPGAs almacenan su configuración en una memoria interna de tipo ROM, normalmente FLASH o EEPROM, siendo la tecnología FLASH la dominante en estos momentos. La ventaja es que al apagar la FPGA la configuración no se pierde, por lo que no son necesarios componentes externos para almacenarla. Por contra es menos flexible ya que la configuración es más lenta y no permiten utilizar técnicas de reconfiguración dinámica.
+\item  
+\textit{Basadas en fusibles}:La configuración se almacena “quemando” fusibles durante el proceso de programación. Actualmente la tecnología más utilizada en estas FPGAs es la basada en anti-fusibles (30). La configuración queda grabada en la FPGA de forma que no es posible reprogramarla, lo que elimina cualquier tipo de flexibilidad.
+ \end {itemize}
+
 
 \section{Microprocesadores Soft-Core reconfigurables}
 
@@ -114,9 +139,9 @@ Las verdaderas ventajas de\textit{Soft-Core open source}, tienen que ver con la 
 La portabilidad y la reutilización de producto final como su vigencia producto del acceso al diseño escrito en lenguaje de descripción de hardware tambien es una de las grandes ventajas de \textit{Soft-Core open source}.
 
 		
-		\subsubsection{ IP-Core}
+\subsection{ IP-Core}
 
-El diseños de circuitos digitales se dividen normalmente en bloques funcionales, que se refiere como módulos, o \textit{cores}. Un \textit{core} estara formado por sub-bloques que ayudan a poner en práctica su funcionalidad. Los \textit{cores} pueden variar en tamaño hasta el tamaño total de un microprocesador. Un \textit{core} puede ocupar una FPGA entera al ser implementado, mientras que sólo se crea una instancia entre otros en una FPGA más grande o en un ASIC. Los \textit{núcleos} se describen generalmente utilizando un lenguaje de descripción de hardware (HDL) en un nivel de abstracción conocida como registro nivel de transferencia (RTL).
+El diseños de circuitos digitales se dividen normalmente en bloques funcionales, que se refiere como módulos, o \textit{cores}. Un \textit{core} estará formado por sub-bloques que ayudan a poner en práctica su funcionalidad. Los \textit{cores} pueden variar en tamaño hasta el tamaño total de un microprocesador. Un \textit{core} puede ocupar una FPGA entera al ser implementado, mientras que sólo se crea una instancia entre otros en una FPGA más grande o en un ASIC. Los \textit{núcleos} se describen generalmente utilizando un lenguaje de descripción de hardware (HDL) en un nivel de abstracción conocida como registro nivel de transferencia (RTL).
 
 El proceso de tomar la descripción RTL de un diseño y convertirlo en un lista de primitivas o puertas lógicas y las conexiones entre ellos, dejando luego que la  implementación se realice en una tecnología de destino, se conoce como\textit{síntesis}. Analogamente a la compilación de software - que se tiene un programa en un lenguaje de alto nivel, como C, y  es convertido a codigo maquina. 
 
@@ -124,20 +149,20 @@ El resultado de la síntesis, conocida como una \textit{netlist}, está en un ni
 
 Los cores pueden ser diseñados por una persona o entidad, los desarrolladores de \textit{cores} y licenciatarios varían en tamaño desde particulares a empresas de miles de millones de dólares. El producto, en este caso se conoce como un \textit{IP core  Intellectual Property Core} el diseño es la propiedad intelectual de los desarrolladores de terceros y la derecho a usarla recibe la licencia del cliente. La \textit{Intellectual Property IP} varia  de  acuerdo a las licencia.
 
-		\paragraph{Tipos de IP-Cores}
+		\subsubsection{Tipos de IP-Cores}
 
 \textit{IP} puede ser en una variedad de formas de acuerdo a la licencia. Las categorías con las que se clasifican los IP-Cores son:Hard-Cores, Firmes-core y soft-Cores.
 		
-			\subparagraph{Soft-Core}
+			\paragraph{Soft-Core}
 
 Son los más flexibles y se presentan para \textit{IP} en forma netlist (lista de compuertas e interconexiones) o en forma de sintetizable RTL, lo que los hace tecnológicamente independientes.Los \textit{cores} sintetizable se entregan en un lenguaje de descripción de hardware como Verilog o VHDL. 
  Óptimos para diferentes aplicaciones, a costas de menor predictibilidad en la implementación y suelen tener un mayor costo y menor desempeño de procesamiento.
 
-			\subparagraph{Firm-Core}
+			\paragraph{Firm-Core}
 
 Los cores firmes están optimizados para ser implementados en una FPGA, arquitectura o dispositivo en particular. Esta optimización puede ser realizada por el fabricante o por un tercero. Utilizar este tipo de IP-Cores requiere disponer de cierto nivel de conocimiento de la arquitectura, ya que es posible rutear señales físicas y especificar la colocación de los elementos de diseño. Un ejemplo de cores firmes es el procesador MicroBlaze de Xilinx.\cite{Etiqueta04}
 
-			\subparagraph{Hard-Core}
+			\paragraph{Hard-Core}
 
 Están optimizados para una tecnología específica y no pueden ser modificados por el diseñador que los utiliza. Son manifestaciones físicas del diseño del core ya que tienen un layout predefinido incluido en la arquitectura. Son los mejores para aplicaciones plug\&play. Si bien son poco flexibles, portables y configurables, son muy predictibles (el timing es fijo) y fiables una vez implementados.
 Si se trata de una forma menos abstraído forma , tal como un formato de un mensaje - diseño listo lista de conexiones o para la fabricación, que se conoce como
@@ -146,13 +171,28 @@ IP núcleo duro. \cite{Etiqueta04}
 	
 	%\subsection{Características de los micro Soft-Core}
 
-\section{System on Chip}
+	\subsubsection{Clasificación de acuerdo con la integración}
 
- La capacidad de los ingenieros de diseño digital para hacer uso de transistores adicionales no ha seguido el ritmo de este incremento en la capacidad de fabricación \cite{Etiqueta05}. El tiempo para las necesidades del mercado de estos diseños cada vez más complejos permaneció fijo. 
-Esto llevó a la aparición de la industria de IP core compuesta por empresas especializadas en el desarrollo de IP y concesión de licencias.
+El aumento de recursos de las FPGAs junto con la amplia disponibilidad de bloques IP ha hecho posible la integración de sistemas completos en la propia FPGA y la aparición de una nueva terminología para clasificarlos. Algunos de los términos que se usan para designar este tipo de sistemas son:
 
-Esto permitio a los equipos de diseño montar un sistema formado por componentes básicos desarrollados por terceros para implementar el soporte para los protocolos de comunicación estándar, como Ethernet, IIC o SPI, mientras concentra sus esfuerzos de diseño en  lo que hace que su diseño único y particularmente valioso. Este es el caso de \textit{System on chip}.
-En la mayoría de los casos un microprocesador es la parte mas complicada y esencial de un SoC, haciendo que el uso de IP pre-desarrollado una buena opción.
+ 
+\begin {itemize}
+\item 
+\textit{System on Chip (SoC)}:
+ Circuito integrado formado por diversos módulos VLSI con distinta funcionalidad que interconectados entre sí ofrecen una funcionalidad específica para una aplicación. 
+\item 
+\textit{System-on-Programable-Chip (SoPC)}: Se aplica este término específicamente cuando el dispositivo utilizado para realizar el SoC es reconfigurable.
+\item 
+\textit{Configurable-System-on-Chip (CSoC)}:Mediante este término se definen los sistemas SoC en los que se hace uso de la capacidad de reconfiguración de los mismos para aplicaciones de computación reconfigurable. Pueden incluirse bajo la denominación CSoC tanto los sistemas que admiten diferentes configuraciones estáticas según ciertos condicionantes, como los que utilizan la reconfiguración parcial dinámica para modificar en tiempo de ejecución una sección hardware.
+\item 
+\textit{Multiprocessor-Configurable-System-on-Chip (MCSoC)}: Se aplica esta definición a los sistemas CSoC que incluyen varias unidades procesador funcionando de forma simultánea.
+ \end {itemize}
+
+
+%La capacidad de los ingenieros de diseño digital para hacer uso de transistores adicionales no ha seguido el ritmo de este incremento en la capacidad de fabricación \cite{Etiqueta05}. El tiempo para las necesidades del mercado de estos diseños cada vez más complejos permaneció fijo. 
+%Esto llevó a la aparición de la industria de IP core compuesta por empresas especializadas en el desarrollo de IP y concesión de licencias.
+%Esto permitio a los equipos de diseño montar un sistema formado por componentes básicos desarrollados por terceros para implementar el soporte para los protocolos de comunicación estándar, como Ethernet, IIC o SPI, mientras concentra sus esfuerzos de diseño en  lo que hace que su diseño único y particularmente valioso. Este es el caso de \textit{System on chip}.
+%En la mayoría de los casos un microprocesador es la parte mas complicada y esencial de un SoC, haciendo que el uso de IP pre-desarrollado una buena opción.
 
 %Los métodos de la energía consciente de diseño y arquitecturas multi-core se han convertido , y es probable que siga siendo , una práctica estándar para los diseñadores SoC .
 
