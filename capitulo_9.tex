@@ -921,7 +921,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\hline                             	RQX-PD 1 & El prototipo debe implementar el sistema operativos Linux\\ 
 		\hline  							RQX-PD 2 & Se requiere la instalación de un gestor de arraque que posibilite el inicio del sistema operativo\\ 
 		\hline 								RQX-PD 3 & Se debe poder grabar como aplicación firmware el gestor de arranque en la memoria flash SPI de la placa de desarrollo\\
-		\hline 								RQX-PD 4 & El prototipo debe tener capacidad de ejecución y depuración de aplicaciones sobre el sistema operativo Linux\\
+		\hline 								RQX-PD 4 & El prototipo debe tener capacidad de ejecución de aplicaciones sobre el sistema operativo Linux\\
 		\hline 
 		\end{tabular}
 		\end{table}
@@ -1046,32 +1046,103 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
-		\rowcolor[gray]{0.8} 	 Caso de Prueba & Grabar el gestor arranque en memoria FLASH SPI\\
+		\rowcolor[gray]{0.8} 	 Caso de Prueba & Inicio del gestor de arranque desde la memoria Flash SPI\\
 		\hline  		Código de Requerimiento & RQX-PD 3\\ 
 		\hline  				  Requerimiento & Se debe poder grabar como aplicación firmware el gestor de arranque en la memoria flash SPI de la placa de desarrollo\\
 		\hline 				  Código de Testing & T016\\ 
-		\hline 						  Propósito & Comprobación del correcto funcionamiento del gestor de arranque\\
+		\hline 						  Propósito & Verificación del inicio del gestor de arranque almacenado en la Flash SPI \\
 		\hline					  Realizado Por & Lovaisa, Valeria \\
 		\hline	 		   Entorno de Ejecución & Bare Metal\\
 		\hline		   		   	 Precondiciones & \begin {itemize}
 												  \item Instanciación en la FPGA del SoC ORPSoC
 												  \item Ejecución de una terminal serie en la PC 
- 												  \item Comunicación establecida entre la placa de desarrollo y la PC mediante Serial y eth
- 												  \item Servidor TFTP funcionando correctamente sobre el SO host
-												  \item Herramientas de compilación cruzada funcionando correctamente
-												  \item Gestor de arranque y aplicación de prueba compilados correctamente
-												  \item Imagen de arranque sin errores
+ 												  \item Comunicación establecida entre la placa de desarrollo y la PC mediante Serial
+ 												  \item Herramientas de compilación cruzada funcionando correctamente
+												  \item Gestor de arranque compilado correctamente
+												  \item Imagen del gestor de arranque almacenada en la memoria Flash SPI de la placa de desarrollo
 												  \end {itemize} \\
-		\hline			 Secuencia de Ejecución &  Ejecutación de la aplicación de prueba numprim.or32 a través de Uboot\\
-		\hline					Postcondiciones &  El gestor de arranque inicia correctamente el programa de prueba, lo que se manifiesta en la impresión de la salida
-		del gestor de arranque y el programa prueba en la terminal serie de la PC\\
+		\hline			 Secuencia de Ejecución &  Arranque inicial o reset del hardware\\
+		\hline					Postcondiciones &  El gestor de arranque inicia correctamente , lo que se manifiesta en la impresión de la salida
+		del gestor de arranque en la terminal serie de la PC\\
 		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
-		\hline			   Resultados Esperados & Poder observar por la terminal serial las salida de los programas \\
-		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la Referencia ~\ref{lst:salidauboot}\\
+		\hline			   Resultados Esperados & Poder observar por la terminal serial las salida del Uboot \\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la Referencia ~\ref{lst:salidaspi}\\
 		\hline	
 		\end{tabular}
 		\end{table}
 		
+\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba cargado por uboot},label={lst:salidauboot}]
+ ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
+\end{lstlisting}		
 		
+		
+		\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{5cm} p{10cm}  }
+		\hline 
+		\rowcolor[gray]{0.8} 	 Caso de Prueba & Implementación del SO Linux Embebido\\
+		\hline  		Código de Requerimiento & RQX-PD 1\\ 
+		\hline  				  Requerimiento & El prototipo debe implementar el sistema operativos Linux\\
+		\hline 				  Código de Testing & T017\\ 
+		\hline 						  Propósito & Implementar correctamente un Sistema Operativo Linux Embebido sobre un SoC ORPSoC\\
+		\hline					  Realizado Por & Lovaisa, Valeria \\
+		\hline	 		   Entorno de Ejecución & Bare Metal\\
+		\hline		   		   	 Precondiciones & \begin {itemize}
+												  \item Instanciación en la FPGA del SoC ORPSoC
+												  \item Ejecución de una terminal serie en la PC 
+ 												  \item Comunicación establecida entre la placa de desarrollo y la PC
+ 												  \item Herramientas de compilación cruzada funcionando correctamente
+ 												  \item Configuración del kernel adaptada al SoC
+												  \item Imágen del Sistema Operativo Linux compilada correctamente 
+												  \end {itemize}\\
+		\hline			 Secuencia de Ejecución & Inicio del Sistema Operativo
+		\hline					Postcondiciones & Se inicia correctamente el Sistema Operativo, lo que se manifiesta en la impresión de la salida
+		de la secuencia de arranque de linux en la terminal serie de la PC\\
+		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+		\hline			   Resultados Esperados & Lograr observar por la terminal serial la secuencia de arranque del Sistema Operativo\\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la Referencia ~\ref{lst:sallinux}\\
+		\hline	
+		\end{tabular}
+		\end{table}
+		
+\begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux}]
+ ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
+\end{lstlisting}		
+		
+		\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{5cm} p{10cm}  }
+		\hline 
+		\rowcolor[gray]{0.8} 	 Caso de Prueba & Ejecución de aplicaciones de prueba sobre Linux\\
+		\hline  		Código de Requerimiento & RQX-PD 4\\ 
+		\hline  				  Requerimiento & El prototipo debe tener capacidad de ejecución y depuración de aplicaciones sobre el sistema operativo Linux\\
+		\hline 				  Código de Testing & T018\\ 
+		\hline 						  Propósito & Ejecución de aplicaciones de prueba sobre entorno Linux\\
+		\hline					  Realizado Por & Lovaisa, Valeria \\
+		\hline	 		   Entorno de Ejecución & Linux\\
+		\hline		   		   	 Precondiciones & \begin {itemize}
+												  \item Instanciación en la FPGA del SoC ORPSoC
+												  \item Ejecución de una terminal serie en la PC 
+ 												  \item Comunicación establecida entre la placa de desarrollo y la PC
+ 												  \item Herramientas de compilación cruzada para su ejecución sobre Linux funcionando correctamente
+												  \item SO Linux ejecutándose correctamente sobre el SoC ORPSoC 
+												  \end {itemize} \\
+		\hline			 Secuencia de Ejecución & \begin {itemize}
+						 					 	  \item Inicio del gestor de arranque
+												  \item Inicio del Sistema Operativo
+												  \item Ejecución de la aplicación de prueba
+						 						  \end {itemize} \\
+		\hline					Postcondiciones &  Se ejecuta correctamente el programa de prueba, lo que se manifiesta en la impresión de la salida
+		del bash de linux en la terminal serie de la PC\\
+		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+		\hline			   Resultados Esperados & Poder observar por la terminal serial las salida de ejecución del programa de prueba \\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la Referencia ~\ref{lst:salidalinux}\\
+		\hline	
+		\end{tabular}
+		\end{table}
+
+\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba ejecutado en Linux Embebido},label={lst:salidalinux}]
+ ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
+\end{lstlisting}		
 		
 		\subsection{Conclusión}
