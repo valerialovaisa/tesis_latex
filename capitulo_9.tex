@@ -1,4 +1,5 @@
-\chapter{Implementación y Diseño}
+\chapter{Diseño e Implementación}
+
 	\section{Introducción}
 	Debido a que se adoptó un modelo de desarrollo en espiral se plantearon una serie de prototipos que incluyen mayor funcionalidad en cada iteración
 	del modelo. Inicialmente se planteó un prototipo básico para determinar factibilidad de puesta en funcionamiento de un SoC con microprocesador
@@ -33,13 +34,13 @@ En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se a
 		componente para determinar si el producto cumple con lo que se ha diseñado, es decir, si cada fase de desarrollo dada cumple con los requisitos
 		impuestos al inicio de dicha fase.
 
-	\newpage
-	\section{PROTOTIPO UNO: Implementación del SoC MinSoC en FPGA}
-		\subsection{Introducción}
+\chapter{Prototipo Uno : Implementación del SoC MinSoC en FPGA}
+
+	\section{Introducción}
 		
 	En este primer prototipo se implementó el proyecto MinSoC en la placa de desarrollo S3ADSP1800A con el fin de verificar el funcionamiento del procesador y sus periféricos. Para lograr este objetivo se requiere de la instalación y puesta en funcionamiento de las herramientas de síntensis, place \& route(PAR) y programación de la FPGA Spartan 3A. 
 
-		\subsection{Requerimientos del prototipo}
+	\section{Requerimientos del prototipo}
 		\begin{table}[h]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
@@ -62,13 +63,9 @@ En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se a
 
 \newpage
 	
+	\section{Matriz de Riesgo para el Prototipo Uno}
 
-%%%%%%%%%%%%%%%%%% ANALISIS DE RIESGO	
-
-\newpage
-\subsection{Matriz de Riesgo para el Prototipo Uno}
-
-\begin{table}[h!]
+		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
 		\hline 
@@ -100,7 +97,7 @@ de bugs & Crítica  & Ocasional\\
 
 
 
- \begin{table}[h!]
+		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
 		\hline 
@@ -126,8 +123,8 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 
 
 
-\newpage
-		\subsection{Descripción de la Estructura del Prototipo Uno}
+		\newpage
+		\section{Descripción de la Estructura del Prototipo Uno}
 			
 
 		La Figura ~\ref{fig:minsoc} muestra un diagrama de despliegue del prototipo planteado. Se utiliza un estación de trabajo corriendo las herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada para arquitecturas destino OpenRISC. Se requiere de un
@@ -148,7 +145,7 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 
 \newpage
 			
-		\subsection{Implementación}
+		\section{Implementación}
 
 La implementación se realiza normalmente en cinco pasos básicos: 
 \begin {itemize}
@@ -163,7 +160,7 @@ La implementación se realiza normalmente en cinco pasos básicos:
 		%%%%%%%\subsection{Diagrama de Secuencia}
 		%\subsection{Selección y Desarrollo de aplicaciones de prueba}
 \newpage
-		\subsection{Testing}
+		\section{Testing}
 
 % Escribir sobre el testing del proto uno
 
@@ -381,20 +378,18 @@ Fin del programa
 		\end{table}
 
 
-		\subsection{Conclusión}
+		\section{Conclusión}
 Este prototipo fue de vital importancia permitiendo mostrar que es posible instanciar sobre el kit de desarrollo disponible un system on de chip básico open source en una FPGA Spartan 3A.
 La mayor cantidad de tiempo fue para la  determinación de las herramientas de desarrollo necesarias para el hardware disponible, ya que la documentación sobre el tema era insuficiente o nula. Sin embargo una vez que se pudo logrado encontrar las herramientas adecuadas y  la corrección de error en el código RTL fue mucho más sencillo la implementación del prototipo.
 		
-\newpage
-		
-	\section{PROTOTIPO DOS: Implementación del SoC ORPSoC en FPGA}
-		\subsection{Introducción}
+\chapter{Prototipo Dos : Implementación del SoC ORPSoC en FPGA}
+		\section{Introducción}
 		Para el prototipo dos se planteó la implementación de un sistema ORPSoC que dispone de mayor cantidad de periféricos que el MinSoC entre ellos un
 		módulo que permite manejar las memorias RAM DDR2 incluídas en la placa de desarrollo S3ADSP1800A. Se verificó inicialmente si la herramientas
 		utilizadas en el prototipo uno proporcionaban los mismos resultados en este prototipo y luego se ejecutaron las pruebas de funcionamiento del
 		procesador, los periféricos y las herramientas de desarrollo y depuración. 
 		
-		\subsection{Requerimientos del prototipo}
+		\section{Requerimientos del prototipo}
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
@@ -420,9 +415,9 @@ La mayor cantidad de tiempo fue para la  determinación de las herramientas de d
 		\end{table}
 
 \newpage
-\subsection{Matriz de Riesgo para el Prototipo Dos} 
+		\section{Matriz de Riesgo para el Prototipo Dos} 
 
-\begin{table}[h!]
+		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
 		\hline 
@@ -448,7 +443,7 @@ del Soc & Crítico & Ocasional\\
 
 \newpage
 
- \begin{table}[h!]
+ 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
 		\hline 
@@ -476,7 +471,7 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 
 
 \newpage
-		\subsection{Descripción de la Estructura del Prototipo Dos}
+		\section{Descripción de la Estructura del Prototipo Dos}
 		La Figura ~\ref{fig:orpsoc} muestra un esquema de la arquitectura planteada en el prototipo. Al igual que en el prototipo uno se utiliza un estación
 		de trabajo corriendo las herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada. Se requiere de un servidor
 		que proporcione un puerto para la depuración con GDB y a diferencia del prototipo uno este servicio lo proporciona la aplicación OpenRISC Debug
@@ -490,7 +485,7 @@ SoC & Dedicación de mayor tiempo para la implementación\\
  		\end{center}
 		\end{figure}
 	
-		\subsection{Implementación}
+		\section{Implementación}
 
 		La implementación se realiza normalmente en cinco pasos básicos: 
 		\begin {itemize}
@@ -510,13 +505,13 @@ El módulo de Debug proporciona soporte para la depuración via JTAG. Se conecta
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%TESTING DOS
 \newpage
-		\subsection{Testing}
+		\section{Testing}
 
-\begin{table}[h!]
+		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
-	\rowcolor[gray]{0.8}  Caso de Prueba&  Interactuar correctamente con las interfaces hardware de Ethernet\\
+		\rowcolor[gray]{0.8}  Caso de Prueba&  Interactuar correctamente con las interfaces hardware de Ethernet\\
 		\hline 
 		Código de Requerimiento & RQX-PB 2 , RQX-PB 3\\ 
 		\hline 
@@ -563,7 +558,7 @@ board IP "192.168.1.2
 \newpage
 
 
-\begin{table}[h!]
+		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
@@ -594,7 +589,7 @@ board IP "192.168.1.2
 		\hline
 		Postcondiciones & ORPSoC corriendo sobre FPGA, y la aplicación ejecutándose sobre la memoria RAM lo que se manifiesta en la impresión de pantalla de la terminar remota en la PC\\
 		\hline
- \multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+ 		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial una cadena de string.\\
 		\hline	
@@ -605,7 +600,7 @@ board IP "192.168.1.2
 
 
 \newpage
-\begin{table}[h!]
+		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
@@ -666,9 +661,8 @@ cantidad de numeros primos entre 1 y 2000:
 		\hline 
 		Código de Testing & T009\\ 
 		\hline
-		Propósito & Medir el rendimiento de la unidad central de procesamiento embebida en el SoC\\
-		 
-\hline
+		Propósito & Medir el rendimiento de la unidad central de procesamiento embebida en el SoC\\ 
+		\hline
 		Realizado Por & Lovaisa Michelini, Valeria \\
 		\hline	
 		Entorno de Ejecución & Bare Metal \\
@@ -685,7 +679,7 @@ cantidad de numeros primos entre 1 y 2000:
 		\hline
 		Postcondiciones & ORPSoC corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminar serial en la PC de los resultados del programa de prueba \\
 		\hline
- \multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+ 		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial los resultados de medición de performance.\\
 		\hline	
@@ -699,17 +693,15 @@ cantidad de numeros primos entre 1 y 2000:
  ACA VA EL RESULTADO DE CORE MARK
 \end{lstlisting}
 
-		\subsection{Conclusión}
+		\section{Conclusión}
 
-\newpage
-
-	\section{PROTOTIPO TRES: Implementación del SoC ORPSoC en FPGA con Sistema Operativo eCos}
-		\subsection{Introducción}
+\chapter{Prototipo Tres : Implementación del SoC ORPSoC en FPGA con Sistema Operativo eCos}
+		\section{Introducción}
 
 		Para el tercer prototipo se añadió al prototipo dos la funcionalidad aportada por el Sistema Operativo de tiempo real eCos(embedded configurable operating system) que adiciona la capacidad de la ejecución de múltiples hilos. 
 
 
-		\subsection{Requerimientos del prototipo}
+		\section{Requerimientos del prototipo}
 
 		\begin{table}[h!]
 		\centering		
@@ -729,9 +721,9 @@ cantidad de numeros primos entre 1 y 2000:
 		\end{table}
 		
 
-\subsection{Matriz de Riesgo para el Prototipo Tres} 
+		\section{Matriz de Riesgo para el Prototipo Tres} 
 
-\begin{table}[h!]
+		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
 		\hline 
@@ -760,7 +752,7 @@ cantidad de numeros primos entre 1 y 2000:
 
 \newpage
 
- \begin{table}[h!]
+ 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
 		\hline 
@@ -791,7 +783,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 
 \newpage
 		
-		\subsection{Descripción de la Estructura del Prototipo Tres}
+		\section{Descripción de la Estructura del Prototipo Tres}
 		La Figura ~\ref{fig:ecos} muestra el diagrama de despliegue del prototipo tres. Este prototipo utiliza como base al prototipo dos pero se ejecutan 
 		aplicaciones compiladas bajo ecOS.
 		
@@ -803,11 +795,11 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
  		\end{center}
 		\end{figure}
 	
-		\subsection{Implementación}	
+		\section{Implementación}	
 		
 		\newpage
 		
-		\subsection{Testing}
+		\section{Testing}
 
 		\begin{table}[h!]
 		\centering
@@ -900,18 +892,15 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
  ACA VA EL RESULTADO DE LA EJECUCIÓN DE HILOS
 \end{lstlisting}
 
-		\subsection{Conclusión}
+		\section{Conclusión}
 
-
-	
-	\newpage			
-	\section{PROTOTIPO CUATRO: Implementación del SoC ORPSoC en FPGA con Sistema Operativos Linux}
-		\subsection{Introducción}
+\chapter{Prototipo Cuatro : Implementación del SoC ORPSoC en FPGA con Sistema Operativos Linux}
+		\section{Introducción}
 		El núcleo Linux, combinado con un conjunto utilidades de software libre, puede ajustarse al espacio limitado de hardware 
 	    de los sistemas embedidos. Una instalación típica de un Linux embebido ocupa en promedio 2 MB. En el prototipo cuatro se utilizó una versión
 	    reducida del núcleo de Linux y herramientas provistas por el paquete BusyBox. 
 		
-		\subsection{Requerimientos del prototipo}
+		\section{Requerimientos del prototipo}
 		
 		\begin{table}[h!]
 		\centering	
@@ -927,7 +916,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{table}
 		
 		
-\subsection{Matriz de Riesgo para el Prototipo Cuatro} 
+		\section{Matriz de Riesgo para el Prototipo Cuatro} 
 
 		\begin{table}[h!]
 		\centering
@@ -990,7 +979,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 
 		\newpage
 		
-		\subsection{Descripción de la Estructura del Prototipo Cuatro}
+		\section{Descripción de la Estructura del Prototipo Cuatro}
 		Se muestra a continuación (Figura ~\ref{fig:proto4}) el diagrama de despliegue del prototipo cuatro. Se utiliza como base nuevamente el prototipo
 		dos con un sistema operativo linux ejecutándose en él.
 
@@ -1004,9 +993,9 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 	
 		\newpage
 
-		\subsection{Implementación}	
+		\section{Implementación}	
 		
-		\subsection{Testing}
+		\section{Testing}
 		
 		\begin{table}[h!]
 		\centering
@@ -1075,7 +1064,6 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
  ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
 \end{lstlisting}		
 		
-		
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -1095,8 +1083,12 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
  												  \item Configuración del kernel adaptada al SoC
 												  \item Imágen del Sistema Operativo Linux compilada correctamente 
 												  \end {itemize}\\
-		\hline			 Secuencia de Ejecución & Inicio del Sistema Operativo
-		\hline					Postcondiciones & Se inicia correctamente el Sistema Operativo, lo que se manifiesta en la impresión de la salida
+
+
+	\hline			 Secuencia de Ejecución & Inicio del Sistema Operativo\\
+
+		
+	\hline					Postcondiciones & Se inicia correctamente el Sistema Operativo, lo que se manifiesta en la impresión de la salida
 		de la secuencia de arranque de linux en la terminal serie de la PC\\
 		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline			   Resultados Esperados & Lograr observar por la terminal serial la secuencia de arranque del Sistema Operativo\\
@@ -1145,4 +1137,4 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
  ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
 \end{lstlisting}		
 		
-		\subsection{Conclusión}
+		\section{Conclusión}

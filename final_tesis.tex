@@ -34,13 +34,34 @@
 \usepackage{graphicx} 
 \usepackage{subfigure}
 \usepackage[utf8]{inputenc}
-\usepackage[Conny]{fncychap}
+%\usepackage[Conny]{fncychap}
 %\usepackage[Rejne]{fncychap}
 %\usepackage[Bjarne]{fncychap}
-\ChTitleVar{\vspace{1.5cm}\centering\Huge\rm\bfseries}
-\ChNameVar{\vspace{1.5cm}\centering\Huge\rm\bfseries}
+%\ChTitleVar{\vspace{1.5cm}\centering\Huge\rm\bfseries}
+%\ChNameVar{\vspace{1.5cm}\centering\Huge\rm\bfseries}
 
 \hyphenation{sis-te-má-ti-co pa-leo-lí-ti-co con-ti-nua-men-te pe-ri-fé-ri-co }
+
+\usepackage{titlesec}
+\titleclass{\part}{top} % make part like a chapter
+\titleformat{\part}
+[display]
+{\centering\normalfont\Huge\bfseries}
+{\titlerule[5pt]\vspace{3pt}\titlerule[2pt]\vspace{3pt}\MakeUppercase{\partname} \thepart}
+{0pt}
+{\titlerule[2pt]\vspace{1pc}\huge\MakeUppercase}
+%
+\titlespacing*{\part}{0pt}{0pt}{20pt}
+%
+\titleclass{\chapter}{straight} % make chapter like a section (no newpage)
+\titleformat{\chapter}
+[display]
+{\centering\normalfont\Huge\bfseries}
+{\titlerule[5pt]\vspace{3pt}\titlerule[2pt]\vspace{3pt}\MakeUppercase{\chaptertitlename} \thechapter}
+{0pt}
+{\titlerule[2pt]\vspace{6pt}\huge\MakeUppercase}
+
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
 
 %\usepackage{makeidx}
 \definecolor{DarkBlue}{rgb}{0.1,0.1,.1}
