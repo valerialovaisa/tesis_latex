@@ -1,18 +1,17 @@
 
 \chapter{Descripción microprocesadores disponibles en el mercado}
 	\section{Soft-Core Processors}
-	
-Un soft-core processor o abreviado SCP, también llamado soft microprocessor o soft 
-processor, es un microprocesador que puede ser implementado utilizando síntesis lógica en  diferentes dispositivos lógicos programables como CPLDs o FPGAs, o incluso puede ser incluido en un diseño para ASIC.
- Suelen ser distribuidos en forma de código fuente en algún lenguaje de descripción de hardware, principalmente VHDL o Verilog, aunque  algunos SCPs comerciales se distribuyen en formatos propietarios. 
-Los principales fabricantes de dispositivos lógicos programables como se dijo en capitulos anteriores tienen su propio  SCP comercial especialmente diseñado y optimizado para funcionar en sus propias 
-FPGAs. Así Xilinx tiene el PicoBlaze\cite{Etiqueta15}
-y el MicroBlaze\cite{Etiqueta16}, Altera proporciona el Nios 
-II\cite{Etiqueta17}, y Lattice distribuye su LatticeMico32\cite{Etiqueta18}. 
-También existen una gran variedad de SCPs distribuidos en forma de código 
-abierto, como el OpenRISC 1200\cite{Etiqueta19} mantenido por la comunidad Opencores\cite{Etiqueta20}, o los  SCPs LEON2 y LEON3 \cite{Etiqueta21} \cite{Etiqueta22}que proporciona la compañía Gaisler Research \cite{Etiqueta23}.
+	Un soft-core processor o abreviado SCP, también llamado soft microprocessor o soft  processor, es un microprocesador que puede ser implementado
+	utilizando síntesis lógica en  diferentes dispositivos lógicos programables como CPLDs o FPGAs, o incluso puede ser incluido en un diseño para ASIC.
+ 	Suelen ser distribuidos en forma de código fuente en algún lenguaje de descripción de hardware, principalmente VHDL o Verilog, aunque  algunos SCPs
+ 	comerciales se distribuyen en formatos propietarios.
+	Los principales fabricantes de dispositivos lógicos programables como se dijo en capitulos anteriores tienen su propio  SCP comercial especialmente
+	diseñado y optimizado para funcionar en sus propias FPGAs. Así Xilinx tiene el PicoBlaze \cite{Etiqueta15} y el MicroBlaze \cite{Etiqueta16}, Altera
+	proporciona el Nios II \cite{Etiqueta17}, y Lattice distribuye su LatticeMico32 \cite{Etiqueta18}. También existen una gran variedad de SCPs
+	distribuidos en forma de código abierto, como el OpenRISC 1200 \cite{Etiqueta19} mantenido por la comunidad Opencores \cite{Etiqueta20}, o los  SCPs
+	LEON2 y LEON3 \cite{Etiqueta21} \cite{Etiqueta22} que proporciona la compañía Gaisler Research \cite{Etiqueta23}.
 		
-A continuación se presentan más detalladamente las características de estos SCPs, y un resumen comparativo de sus características
+	A continuación se presentan más detalladamente las características de estos SCPs, y un resumen comparativo de sus características
 	\subsection{PicoBlaze}
 	
 	PicoBlaze es un microcontrolador RISC de 8 bits desarrollado por Xilinx y optimizado para sus FPGAs. Esta optimizado para ocupar muy poco área, tan sólo 96 slices, y en cuanto a velocidad puede llegar a ejecutar entre 44 y 100 millones de instrucciones por segundo, dependiendo del speedgrade y la familia de FPGA sobre la que se implemente. Las principales características del PicoBlaze son:
