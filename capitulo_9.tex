@@ -553,7 +553,7 @@ El módulo de Debug proporciona soporte para la depuración via JTAG. Se conecta
 
 \begin{lstlisting}[frame=single,caption={Salida de la terminal serie durante la ejecución del programa ethmac-ping.or32},label={lst:reseth}]
 eth ping program
-board IP "192.168.1.2
+board IP : 192.168.1.2
 \end{lstlisting}
 
 
@@ -631,7 +631,7 @@ board IP "192.168.1.2
 							\end {itemize}
  \\
 		\hline
-		Secuencia de Ejecución & Ejecución de la aplicación  numprim.or32\\
+		Secuencia de Ejecución & Ejecución de la aplicación  numprim.elf\\
 		\hline
 		Postcondiciones & Aplicación corriendo sobre el ORPSoC instanciado en la FPGA, lo que se manifiesta en la impresión de pantalla de los números primos \\
 		\hline
@@ -644,9 +644,8 @@ board IP "192.168.1.2
 		\end{tabular}
 		\end{table}
 
-\begin{lstlisting}[frame=single,caption={Salida de la terminal serie durante la ejecución del programanumprim.or32},label={lst:rescom}]
-tiempo de ejecución:
-cantidad de numeros primos entre 1 y 2000:
+\begin{lstlisting}[frame=single,caption={Salida de la terminal serie durante la ejecución del programanumprim.elf},label={lst:rescom}]
+Cantidad de numero primos entre 1 y 2000 : 303
 \end{lstlisting}
 
 
@@ -690,9 +689,24 @@ cantidad de numeros primos entre 1 y 2000:
 		\end{tabular}
 		\end{table}
 
-
-\begin{lstlisting}[frame=single,caption={Salida de la terminal serie de los resultados de la ejecución del benchmark},label={lst:rescrm}]
- ACA VA EL RESULTADO DE CORE MARK
+\newpage
+\begin{lstlisting}[frame=single,caption={Salida de la terminal serie de los resultados de la ejecución del benchmark},label={lst:rescrm},breaklines]
+2K performance run parameters for coremark.
+CoreMark Size    : 666
+Total ticks      : 1500
+Total time (secs): 15.000000
+Iterations/Sec   : 40.000000
+Iterations       : 600
+Compiler version : GCC4.5.1-or32-1.0rc4
+Compiler flags   : -O2  -mboard=s3adsp1800a -DPERFORMANCE_RUN=1  
+Memory location  : STACK
+seedcrc          : 0xe9f5
+[0]crclist       : 0xe714
+[0]crcmatrix     : 0x1fd7
+[0]crcstate      : 0x8e3a
+[0]crcfinal      : 0xbd59
+Correct operation validated. See readme.txt for run and reporting rules.
+CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFORMANCE_RUN=1   / STACK
 \end{lstlisting}
 
 		\section{Conclusión}
@@ -1041,7 +1055,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 												  \item Gestor de arranque y aplicación de prueba compilados correctamente
 												  \item Imagen de arranque sin errores
 												  \end {itemize} \\
-		\hline			 Secuencia de Ejecución &  Ejecutación de la aplicación de prueba numprim.or32 a través de Uboot\\
+		\hline			 Secuencia de Ejecución &  Ejecutación de la aplicación de prueba numprim.elf a través de Uboot\\
 		\hline					Postcondiciones &  El gestor de arranque inicia correctamente el programa de prueba, lo que se manifiesta en la impresión de la salida
 		del gestor de arranque y el programa prueba en la terminal serie de la PC\\
 		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
@@ -1052,7 +1066,31 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{table}
 		
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba cargado por uboot},label={lst:salidauboot}]
- ACA VA EL RESULTADO DE CORRER UN PROGRAMA MEDIANTE UBOOT
+U-Boot 2013.04-g9181a73-dirty (Oct 30 2013 - 19:58:28)
+
+CPU:   OpenRISC-1200 (rev 8) @ 50 MHz
+       D-Cache: 4096 bytes, 16 bytes/line, 1 way(s)
+       I-Cache: 512 bytes, 16 bytes/line, 1 way(s)
+       DMMU: 64 sets, 1 way(s)
+       IMMU: 64 sets, 1 way(s)
+       MAC unit: yes
+       Debug unit: yes
+       Performance counters: no
+       Power management: no
+       Interrupt controller: yes
+       Timer: yes
+       Custom unit(s): no
+       Supported instructions:
+           ORBIS32: yes
+           ORBIS64: no
+           ORFPX32: no
+           ORFPX64: no
+           Hardware multiplier: yes
+           Hardware divider: yes
+BOARD: s3adsp1800a
+SF: Detected M25P64 with page size 64 KiB, total 8 MiB
+NET:   ETHOC-0
+==> 
 \end{lstlisting}
 		
 		\begin{table}[h!]
