@@ -386,15 +386,7 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				El proyecto OpenRISC cuenta con un simulador del repertorio de instrucciones llamado or1ksim que permite la simulación de aplicaciones compiladas
 				mediante el toolchain sin necesidad de tener disponible el hardware de prueba durante la etapa de desarrollo de software.
  				
- 	\section{Herramienta de software }	
  	
-			\subsection{BusyBox}	
-			 
-BusyBox combina pequeñas versiones de muchas utilidades comunes de UNIX en un sólo ejecutable. Proporciona reemplazos para la mayor parte de las utilidades que se suelen encontrar en fileutils GNU, shellutils, etc Las utilidades en BusyBox generalmente tienen menos opciones que sus primos de todas las funciones de GNU, sin embargo, las opciones que se incluyen proporcionan la funcionalidad esperada y se comportan mucho al igual que sus homólogos de GNU. BusyBox proporciona un entorno bastante completo para cualquier sistema pequeño o incrustado.
-
-BusyBox se ha escrito con el tamaño de optimización y limitación de los recursos disponibles en la mente. También es muy modular, lo que puede fácilmente incluir o excluir a los comandos (o características) en tiempo de compilación. Esto hace que sea fácil de personalizar sus sistemas embebidos. Para crear un sistema de trabajo, sólo tiene que añadir algunos nodos de dispositivos en / dev, algunos archivos de configuración en / etc, y un núcleo de Linux.
-
-BusyBox es mantenida por Denys Vlasenko , y licenciado bajo la GNU GENERAL PUBLIC LICENSE versión 2.
 
 		\section{Presentación de los Sistema Operativo}
  		
@@ -556,6 +548,16 @@ Sistemas de archivos compatibles:
 				
 			\end{itemize}
 
+
+\sebsection{Herramienta de software }	
+ 	
+			\subsection{BusyBox}	
+			 
+BusyBox combina pequeñas versiones de muchas utilidades comunes de UNIX en un sólo ejecutable. Proporciona reemplazos para la mayor parte de las utilidades que se suelen encontrar en fileutils GNU, shellutils, etc Las utilidades en BusyBox generalmente tienen menos opciones que sus primos de todas las funciones de GNU, sin embargo, las opciones que se incluyen proporcionan la funcionalidad esperada y se comportan mucho al igual que sus homólogos de GNU. BusyBox proporciona un entorno bastante completo para cualquier sistema pequeño o incrustado.
+
+BusyBox se ha escrito con el tamaño de optimización y limitación de los recursos disponibles en la mente. También es muy modular, lo que puede fácilmente incluir o excluir a los comandos (o características) en tiempo de compilación. Esto hace que sea fácil de personalizar sus sistemas embebidos. Para crear un sistema de trabajo, sólo tiene que añadir algunos nodos de dispositivos en / dev, algunos archivos de configuración en / etc, y un núcleo de Linux.
+
+BusyBox es mantenida por Denys Vlasenko , y licenciado bajo la GNU GENERAL PUBLIC LICENSE versión 2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
