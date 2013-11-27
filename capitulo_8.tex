@@ -386,10 +386,19 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				El proyecto OpenRISC cuenta con un simulador del repertorio de instrucciones llamado or1ksim que permite la simulación de aplicaciones compiladas
 				mediante el toolchain sin necesidad de tener disponible el hardware de prueba durante la etapa de desarrollo de software.
  				
+ 	\section{Herramienta de software }	
+ 	
+			\subsection{BusyBox}	
+			 
+BusyBox combina pequeñas versiones de muchas utilidades comunes de UNIX en un sólo ejecutable. Proporciona reemplazos para la mayor parte de las utilidades que se suelen encontrar en fileutils GNU, shellutils, etc Las utilidades en BusyBox generalmente tienen menos opciones que sus primos de todas las funciones de GNU, sin embargo, las opciones que se incluyen proporcionan la funcionalidad esperada y se comportan mucho al igual que sus homólogos de GNU. BusyBox proporciona un entorno bastante completo para cualquier sistema pequeño o incrustado.
+
+BusyBox se ha escrito con el tamaño de optimización y limitación de los recursos disponibles en la mente. También es muy modular, lo que puede fácilmente incluir o excluir a los comandos (o características) en tiempo de compilación. Esto hace que sea fácil de personalizar sus sistemas embebidos. Para crear un sistema de trabajo, sólo tiene que añadir algunos nodos de dispositivos en / dev, algunos archivos de configuración en / etc, y un núcleo de Linux.
+
+BusyBox es mantenida por Denys Vlasenko , y licenciado bajo la GNU GENERAL PUBLIC LICENSE versión 2.
+
+		\section{Presentación de los Sistema Operativo}
  		
- 		\section{Presentación de los Sistema Operativo}
- 		
-			 \subsection{eCos}
+			 	\subsection{eCos}
 
 eCos \cite{Etiqueta35} es un sistema operativo de tiempo real y de código abierto para aplicaciones embebidas, y es desarrollado por eCosCentric, una división de RedHat. Según el autor eCos es el RTOS más popular en la actualidad y ha sido utilizado en varios productos como 
 por ejemplo receptores de radio satelital Sirius, módulos Wi-Fi de la consola Sony PlayStation 3 
@@ -416,8 +425,138 @@ Características generales:
 					\item Incluye un bootloader con opciones de debugging
 				\end{itemize}			
 
+Arquitecturas compatibles:
+
+				\begin{itemize}
+				\item x86 / i386 / IA-32
+				\item x86 Multiprocesamiento simétrico
+				\item x86-64
+				\item PowerPC Multiprocesamiento simétrico
+				\item Alpha
+				\item ARM
+				\item Intel XScale
+				\item M68k
+				\item PA-RISC
+				\item OpenRISC
+				\item CalmRISC
+				\item Nios II
+			\end{itemize}			
+
+	
+
 			 \subsection{Linux}
-  
+
+El sistema operativo Linux es una implementación de libre distribución UNIX para computadoras personales (PC), servidores, y estaciones de trabajo.Como sistema operativo, Linux es muy eficiente y tiene un excelente diseño.
+
+ 
+Características generales:
+
+	\begin{itemize}
+	\item Licencia de Software: GPL/LGPL
+	\item Tipo de núcleo: núcleo monolítico con módulo
+	\item Lenguaje de programación del núcleo: c
+	\item Soporte de Hilo de ejecución del núcleo: 1:1
+	\item Familia de SO: Tipo UNIX
+	\item Forks: microCLinux	
+	\end{itemize}			
+
+Arquitecturas compatibles:
+
+				\begin{itemize}
+				\item x86 / i386 / IA-32
+				\item x86 Multiprocesamiento simétrico
+				\item Xen
+				\item IA-64 	
+				\item SPARC32
+				\item x86-64
+				\item PowerPC
+				\item PowerPC Multiprocesamiento simétrico
+				\item Alpha
+				\item MIPS
+				\item ARM
+				\item Intel XScale
+				\item M68k
+				\item PA-RISC
+				\item OpenRISC
+			\end{itemize}			
+
+Hardware compatible:
+
+			\begin{itemize}
+				\item ATA
+				\item SATA
+				\item SCSI
+				\item USB 2.0 	
+				\item USB 1.1
+				\item FireWire
+				\item PCMCIA/PC card
+				\item AGP
+				\item Nvidia official driver IA32
+				\item Nvidia official driver IA64
+				\item Nvidia official driver AMD64
+				\item ATI official driver x86
+				\item ATI official driver x86-64
+				\item Ati r200 free software driver
+				\item Ati r300 free software driver
+				\item Nvidia free software driver
+				\item Audio
+			\end{itemize}
+Interconexión:
+
+			\begin{itemize}
+				\item Networking supported	
+				\item NE2000/RTL8029
+				\item RTL8139
+				\item Gigabit Ethernet 	
+				\item 10 Gigabit Ethernet
+				\item WLAN
+				\item Bluetooth
+				\item IrDA
+			\end{itemize}
+
+Tecnologías de red:
+
+			\begin{itemize}
+				\item Firewall: netfilter/iptables
+				\item TCP/IP	
+				\item IPv6
+				\item IPX 	
+				\item PPP			
+				\item PPPoE
+				\item DHCP
+				\item bridge
+				\item TUN/TAP
+				\item ssh
+				\item OpenVPN
+			\end{itemize}
+
+Sistemas de archivos compatibles:
+
+
+			\begin{itemize}
+				\item FAT16 dosfs, FAT32/vfat	
+				\item NTFS	
+				\item Ext2	
+				\item Ext3	
+				\item XFS	
+				\item ReiserFS	
+				\item UFS	
+				\item UFS2	
+				\item HFS
+				\item HFS+	
+				\item Minixfs	
+				\item BFS	
+				\item ISO 9660	 
+				\item UDF	
+				\item NFS	
+				\item SMBFS	
+				\item Disco RAM/tmpfs	
+				\item procfs	
+				\item Memoria virtual/Swap	
+				
+			\end{itemize}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 			
