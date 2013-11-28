@@ -1,12 +1,13 @@
 \chapter{Diseño e Implementación}\label{chap:disenoeimpl}
 
 	\section{Introducción}
+
 	Debido a que se adoptó un modelo de desarrollo en espiral se plantearon una serie de prototipos que incluyen mayor funcionalidad en cada iteración
 	del modelo. Inicialmente se planteó un prototipo básico para determinar factibilidad de puesta en funcionamiento de un SoC con microprocesador
 	OpenRISC y el desarrollo de aplicaciones que se ejecuten en él. Debido a su funcionalidad reducida y menor consumo de recursos  para su síntesis se
 	seleccionó el proyecto MinSoC para el desarrollo del primer prototipo con el cual se evaluaron y documentaron las capacidades del mismo, permitiendo
 	valorar este proyecto para aplicaciones donde no se requieren grandes cantidades de memoria y juegan un papel primordial las entradas/salidas junto
-	a la capacidad de procesamiento.  
+	a la capacidad de procesamiento.  \\
 		 
 		\subsection{Entorno de ejecución}
 		Actualmente OpenRISC es soportado por un conjunto de herramientas de desarrollo(toolchain) de 32 bits ofreciendo soporte para los lenguajes C y C++
@@ -880,18 +881,6 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%TESTING TRES
 		\section{Testing}
 
-
-
-
-
-
-
-
-
-
-
-
-
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -1119,17 +1108,7 @@ EXIT:<done>
 		
 		
 		
-		\section{Testing}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		\section{Testing}	
 		
 		\begin{table}[h!]
 		\centering
@@ -1164,7 +1143,52 @@ EXIT:<done>
 
 \newpage		
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba cargado por uboot},label={lst:salidauboot}]
-ACA va programa de prueba cargado por uboot
+U-Boot 2013.04-g9181a73-dirty (Oct 30 2013 - 19:58:28)
+
+CPU:   OpenRISC-1200 (rev 8) @ 50 MHz
+       D-Cache: 4096 bytes, 16 bytes/line, 1 way(s)
+       I-Cache: 512 bytes, 16 bytes/line, 1 way(s)
+       DMMU: 64 sets, 1 way(s)
+       IMMU: 64 sets, 1 way(s)
+       MAC unit: yes
+       Debug unit: yes
+       Performance counters: no
+       Power management: no
+       Interrupt controller: yes
+       Timer: yes
+       Custom unit(s): no
+       Supported instructions:
+           ORBIS32: yes
+           ORBIS64: no
+           ORFPX32: no
+           ORFPX64: no
+           Hardware multiplier: yes
+           Hardware divider: yes
+BOARD: s3adsp1800a
+SF: Detected M25P64 with page size 64 KiB, total 8 MiB
+NET:   ETHOC-0
+===> ftd tftp u hello- .ub
+
+ethoc
+Using ETHOC-0 device
+TFTP from server 192.168.1.98; our IP address is 192.168.1.32
+Filename 'hello.ub'.
+Load address: 0x100000
+
+Loading: \*\#\#\#\#
+	1.4 MiB/s
+done 
+Bytes transtferred = 7908(136f8 hex)
+==> set boot 0x100000
+## Booting kernel from Legacy Image at 00100000 ...
+   Image Name:   hello
+   Image Type:   OpenRISC 1000 Linux Standalone Program (uncompressed)
+   Data Size:    79544 Bytes = 77.7 KiB
+   Load Address: 00000000
+   Entry Point:  00000100
+   Verifying Checksum ... OK
+   Loading Standalone Program ... OK
+Cantidad de numero primos entre 1 y 2000 : 303
 
 \end{lstlisting}
 		
@@ -1270,7 +1294,7 @@ aca va
 		\end{table}
 
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba ejecutado en Linux Embebido},label={lst:salidalinux}]
- ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
+\# @ ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
 \end{lstlisting}		
 		
 		\section{Conclusión}
