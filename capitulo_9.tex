@@ -830,7 +830,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
  		placa de desarrollo S3ADSP1800A.
 		
 \newpage
-		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%TESTING TRES
 		\section{Testing}
 
 		\begin{table}[h!]
@@ -925,13 +925,13 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba twothreads},label={lst:salhilos}]
 PASS:<Thread 0 OK>
 EXIT:<done>
-PASS:<Kernel C API Thread 0 OK>
-EXIT:<done>
-PASS:<Kernel C API Mutex 0 OK>
-EXIT:<done>
-PASS:<Mutex 0 OK>
-EXIT:<done>
+\end{lstlisting}
 
+
+
+\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba threads0},label={lst:salhilos}]
+PASS:<Thread 0 OK>
+EXIT:<done>
 \end{lstlisting}
 
 
@@ -954,9 +954,9 @@ EXIT:<done>
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req  & Descripción\\
 		\hline                             	RQX-PD 1 & El prototipo debe implementar el sistema operativos Linux\\ 
-		\hline  							RQX-PD 2 & Se requiere la instalación de un gestor de arraque que posibilite el inicio del sistema operativo\\ 
-		\hline 								RQX-PD 3 & Se debe poder grabar como aplicación firmware el gestor de arranque en la memoria flash SPI de la placa de desarrollo\\
-		\hline 								RQX-PD 4 & El prototipo debe tener capacidad de ejecución de aplicaciones sobre el sistema operativo Linux\\
+		\hline  						RQX-PD 2 & Se requiere la instalación de un gestor de arraque que posibilite el inicio del sistema operativo\\ 
+		\hline 						RQX-PD 3 & Se debe poder grabar como aplicación firmware el gestor de arranque en la memoria flash SPI de la placa de desarrollo\\
+		\hline 						RQX-PD 4 & El prototipo debe tener capacidad de ejecución de aplicaciones sobre el sistema operativo Linux\\
 		\hline 
 		\end{tabular}
 		\end{table}
@@ -1048,8 +1048,8 @@ EXIT:<done>
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
 		\rowcolor[gray]{0.8} 	 Caso de Prueba & Carga de programa mediante el gestor de arranque UBoot\\
-		\hline  		Código de Requerimiento & RQX-PD 2\\ 
-		\hline  				  Requerimiento & Se requiere la instalación de un gestor de arraque que posibilite el inicio del sistema operativo\\
+		\hline  		Código de Requerimiento 	& RQX-PD 2\\ 
+		\hline  				  Requerimiento 	& Se requiere la instalación de un gestor de arraque que posibilite el inicio del sistema operativo\\
 		\hline 				  Código de Testing & T015\\ 
 		\hline 						  Propósito & Comprobación del correcto funcionamiento del gestor de arranque\\
 		\hline					  Realizado Por & Lovaisa, Valeria \\
@@ -1072,33 +1072,11 @@ EXIT:<done>
 		\hline	
 		\end{tabular}
 		\end{table}
-		
-\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba cargado por uboot},label={lst:salidauboot}]
-U-Boot 2013.04-g9181a73-dirty (Oct 30 2013 - 19:58:28)
 
-CPU:   OpenRISC-1200 (rev 8) @ 50 MHz
-       D-Cache: 4096 bytes, 16 bytes/line, 1 way(s)
-       I-Cache: 512 bytes, 16 bytes/line, 1 way(s)
-       DMMU: 64 sets, 1 way(s)
-       IMMU: 64 sets, 1 way(s)
-       MAC unit: yes
-       Debug unit: yes
-       Performance counters: no
-       Power management: no
-       Interrupt controller: yes
-       Timer: yes
-       Custom unit(s): no
-       Supported instructions:
-           ORBIS32: yes
-           ORBIS64: no
-           ORFPX32: no
-           ORFPX64: no
-           Hardware multiplier: yes
-           Hardware divider: yes
-BOARD: s3adsp1800a
-SF: Detected M25P64 with page size 64 KiB, total 8 MiB
-NET:   ETHOC-0
-==> 
+\newpage		
+\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba cargado por uboot},label={lst:salidauboot}]
+ACA va programa de prueba cargado por uboot
+
 \end{lstlisting}
 		
 		\begin{table}[h!]
@@ -1129,11 +1107,11 @@ NET:   ETHOC-0
 		\hline	
 		\end{tabular}
 		\end{table}
-		
+
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba cargado por uboot},label={lst:salidauboot}]
- ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
+aca va  
 \end{lstlisting}		
-		
+
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }

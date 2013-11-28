@@ -21,6 +21,41 @@
 	funcionalidad y gran utilización en el ámbito de desarrollo de Sistemas Embebidos.  
 	
 	\section{Estudio de capacidades del proyecto MinSoC}
+
+		\subsection{Pace and route}	
+\begin{lstlisting}[frame=single,caption={Resultado de PAR},label={lst:salidas},breaklines]
+
+Design Summary Report:
+
+ Number of External IOBs                          29 out of 519     5%
+
+   Number of External Input IOBs                 15
+
+      Number of External Input IBUFs             15
+        Number of LOCed External Input IBUFs     14 out of 15     93%
+
+
+   Number of External Output IOBs                13
+
+      Number of External Output IOBs             13
+        Number of LOCed External Output IOBs      9 out of 13     69%
+
+
+   Number of External Bidir IOBs                  1
+
+      Number of External Bidir IOBs               1
+        Number of LOCed External Bidir IOBs       1 out of 1     100%
+
+
+   Number of BSCANs                          1 out of 1     100%
+   Number of BUFGMUXs                        5 out of 24     20%
+   Number of DCMs                            1 out of 8      12%
+   Number of DSP48As                         4 out of 84      4%
+   Number of RAMB16BWERs                    70 out of 84     83%
+   Number of Slices                       8475 out of 16640  50%
+      Number of SLICEMs                    167 out of 8320    2%
+\end{lstlisting}
+
 	El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA
 	de diversos desarrolladores. La facilidad de adaptación del proyecto para ser portado a otras arquitecturas reconfigurables le confiere gran
 	versatilidad ampliando notablemente su gama de aplicación.
@@ -40,8 +75,72 @@
 \newpage
 	\section{Estudio de capacidades del proyecto ORPSoC}
 
-		
-			\subsection{Condiciones del entorno de ejecución}
+		\subsection{Pace and route}	
+Los resultados de la herramienta de lugar y ruta se pueden encontrar en el archivo de registro <orpsoc.par>
+
+\begin{lstlisting}[frame=single,caption={Resultado de PAR},label={lst:salidas},breaklines]
+
+Design Summary Report:
+
+ Number of External IOBs                         128 out of 519    24%
+
+   Number of External Input IOBs                 21
+
+      Number of External Input IBUFs             21
+
+   Number of External Output IOBs                44
+
+      Number of External Output DIFFMLRs          2
+      Number of External Output DIFFSLRs          2
+      Number of External Output IOBs             14
+      Number of External Output IOBLRs           26
+
+   Number of External Bidir IOBs                 63
+
+      Number of External Bidir DIFFMLRs           4
+      Number of External Bidir DIFFSLRs           4
+      Number of External Bidir IOBs              22
+      Number of External Bidir IOBLRs            33
+
+   Number of BUFGMUXs                        7 out of 24     29%
+   Number of DCMs                            2 out of 8      25%
+   Number of DSP48As                         4 out of 84      4%
+   Number of RAMB16BWERs                    16 out of 84     19%
+   Number of Slices                       7772 out of 16640  46%
+    Number of SLICEMs                    612 out of 8320    7%
+
+\end{lstlisting}
+
+		\subsection{Reporte de TIMING}	
+
+\begin{lstlisting}[frame=single,caption={Reporte timing},label={lst:salidas},breaklines]
+Timing summary:
+---------------
+
+Timing errors: 498  Score: 729028  (Setup/Max: 311057, Hold: 417971)
+
+Constraints cover 395663179 paths, 94 nets, and 53193 connections
+
+Design statistics:
+  Minimum period:  45.166ns   (Maximum frequency:  22.141MHz)
+  Maximum path delay from/to any node:  11.696ns
+  Maximum net delay:   2.594ns
+  Minimum input required time before clock:  26.237ns
+  Maximum output delay after clock:  13.126ns
+
+
+Analysis completed Sat Nov  2 11:19:56 2013 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 299 MB
+\end{lstlisting}
+
+
+			\subsection{Condiciones de entorno de ejecución para benchmark}
 		En la siguente tabla ~\ref{tab:conbench} se muestran las condiciones durante los benchmarks
 
 \begin{table}[!h]
@@ -293,25 +392,24 @@ seedcrc          : 0x18f2
 \hline
 \rowcolor[gray]{0.8} Opciones del compilador&-O2&-O3 \\
 \hline
-Sin extras 				&41288895			&39.292731\\
+Sin extras 					&1.65 			&1.54\\
 \hline
--mhard-div -mhard-mu &39.267016		&36.275695 \\
+-mhard-div -mhard-mu 	& 1.57			&1.45 \\
 \hline
--funroll-loops			 & 39.292731		& 36.253776 \\
+-funroll-loops			 	& 1.57			& 1.45 \\
 \hline
--fgcse-sm				& 39.292731		& 36.253776 \\
+-fgcse-sm					& 1.57			& 1.45 \\
 \hline
--msoft-float 			& 39.267016		&36.253776  \\
+-msoft-float 				& 1.57			&1.45  \\
 \hline
--funroll-all-loops	 	& 39.267016		& 36.275695 \\
+-funroll-all-loops	 		& 1.57			& 1.45 \\
 \hline
-Todos	 				& 39.267016		& 36.253776 \\
+Todos	 					& 1.57			& 1.45 \\
 \hline
 \end{tabular}
 \end{center}
 \caption{comparación de compilación con distintos niveles de optimización}
 \end{table}
-
 \newpage
 		\subsection{Resultados de la ejecución del Benchmark Drystone}
 
@@ -368,19 +466,19 @@ Dhrystones per Second:                      18518
 \hline
 \rowcolor[gray]{0.8} Opciones del compilador&-O2&-O3 \\
 \hline
-Sin extras 				&41288895			&39.292731\\
+Sin extras 					&1.65 			&1.54\\
 \hline
--mhard-div -mhard-mu &39.267016		&36.275695 \\
+-mhard-div -mhard-mu 	& 1.57			&1.45 \\
 \hline
--funroll-loops			 & 39.292731		& 36.253776 \\
+-funroll-loops			 	& 1.57			& 1.45 \\
 \hline
--fgcse-sm				& 39.292731		& 36.253776 \\
+-fgcse-sm					& 1.57			& 1.45 \\
 \hline
--msoft-float 			& 39.267016		&36.253776  \\
+-msoft-float 				& 1.57			&1.45  \\
 \hline
--funroll-all-loops	 	& 39.267016		& 36.275695 \\
+-funroll-all-loops	 		& 1.57			& 1.45 \\
 \hline
-Todos	 				& 39.267016		& 36.253776 \\
+Todos	 					& 1.57			& 1.45 \\
 \hline
 \end{tabular}
 \end{center}
