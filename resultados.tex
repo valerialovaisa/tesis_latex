@@ -78,9 +78,8 @@ Design Summary Report:
 
 		Teniendo en cuenta que la aplicación fue ejecutada en una versión sintentizada básica del proyecto minSoC, este no posee unidades de multiplicación
 		por hardware que efectuen cálculos con mayor eficiencia reduciendo el tiempo de ejecución. Pueden considerarse también las optimizaciones del
-		compilador 
-
-
+		compilador pero este aspecto fue analizado en el Prototipo Tres en mayor detalle. 
+		
 \newpage
 	\section{Estudio de capacidades del proyecto ORPSoC}
 
@@ -399,7 +398,7 @@ seedcrc          : 0x18f2
 \hline
 Sin extras 					&1.65 			&1.54\\
 \hline
--mhard-div -mhard-mu 	& 1.57			&1.45 \\
+-mhard-div -mhard-mu 		& 1.57			&1.45\\
 \hline
 -funroll-loops			 	& 1.57			& 1.45 \\
 \hline
@@ -416,6 +415,7 @@ Todos	 					& 1.57			& 1.45 \\
 \caption{Comparación de compilación con distintos niveles de optimización}
 \end{table}
 \newpage
+
 		\subsection{Resultados de la ejecución del Benchmark Drystone}
 
 Esto le da un valor deDrystone 41288895/25MHz = 1.65/MHz. Se trato de de mejorar este valor mediante la adición de algunas opciones del compilador.
@@ -465,6 +465,7 @@ Dhrystones per Second:                      18518
 
 
 	\subsection {Presentación de los resultados de optimización} 
+
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{ |l |l| l|}
