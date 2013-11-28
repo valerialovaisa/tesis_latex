@@ -20,40 +20,43 @@
 	La capacidad, por defecto, del Kernel de Linux de ser compilado para arquitecturas OpenRISC posibilitó tener un entorno de ejecución de amplia
 	funcionalidad y gran utilización en el ámbito de desarrollo de Sistemas Embebidos.  
 	
-	\section{Estudio de capacidades del proyecto MinSoC}
+	\newpage
+	\section{Resultados de utilización de FPGA en la implementación del proyecto MinSoC}
 
-		\subsection{Place and route}	
-\begin{lstlisting}[frame=single,caption={Resultado de PAR},label={lst:salidas},breaklines]
+	A continuación se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.  Los resultados de la herramienta PAR
+	se muestran en la referencia ~\ref{lst:resultparminsoc}
 
-Design Summary Report:
+\begin{lstlisting}[frame=single,caption={Resumen de utilización - MinSoC},label={lst:resultparminsoc},breaklines]
 
- Number of External IOBs                          29 out of 519     5%
+Logic Utilization:
+ Number of Slice Flip Flops:         5,040 out of  33,280   15%
+ Number of 4 input LUTs:            13,901 out of  33,280   41%
 
-   Number of External Input IOBs                 15
+Logic Distribution:
+ Number of occupied Slices:          8,475 out of  16,640   50%
+   Number of Slices containing only related logic:   8,475 out of   8,475 100%
+   Number of Slices containing unrelated logic:          0 out of   8,475   0%
+     *See NOTES below for an explanation of the effects of unrelated logic.
+ Total Number of 4 input LUTs:      14,231 out of  33,280   42%
+   Number used as logic:            13,866
+   Number used as a route-thru:        330
+   Number used for Dual Port RAMs:      32
+     (Two LUTs used per Dual Port RAM)
+   Number used as Shift registers:       3
 
-      Number of External Input IBUFs             15
-        Number of LOCed External Input IBUFs     14 out of 15     93%
+ The Slice Logic Distribution report is not meaningful if the design is
+ over-mapped for a non-slice resource or if Placement fails.
 
+ Number of bonded IOBs:                 29 out of     519    5%
+ Number of BUFGMUXs:                     5 out of      24   20%
+ Number of DCMs:                         1 out of       8   12%
+ Number of BSCANs:                       1 out of       1  100%
+ Number of DSP48As:                      4 out of      84    4%
+ Number of RAMB16BWERs:                 70 out of      84   83%
+ Number of BSCAN_SPARTAN3As:             1 out of       1  100%
 
-   Number of External Output IOBs                13
+Average Fanout of Non-Clock Nets:                3.74
 
-      Number of External Output IOBs             13
-        Number of LOCed External Output IOBs      9 out of 13     69%
-
-
-   Number of External Bidir IOBs                  1
-
-      Number of External Bidir IOBs               1
-        Number of LOCed External Bidir IOBs       1 out of 1     100%
-
-
-   Number of BSCANs                          1 out of 1     100%
-   Number of BUFGMUXs                        5 out of 24     20%
-   Number of DCMs                            1 out of 8      12%
-   Number of DSP48As                         4 out of 84      4%
-   Number of RAMB16BWERs                    70 out of 84     83%
-   Number of Slices                       8475 out of 16640  50%
-      Number of SLICEMs                    167 out of 8320    2%
 \end{lstlisting}
 
 	El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA
@@ -77,34 +80,55 @@ Design Summary Report:
 	\end{figure}
 
 		Teniendo en cuenta que la aplicación fue ejecutada en una versión sintentizada básica del proyecto minSoC, este no posee unidades de multiplicación
-		por hardware que efectuen cálculos con mayor eficiencia reduciendo el tiempo de ejecución. Pueden considerarse también las optimizaciones del
-		compilador pero este aspecto fue analizado en el Prototipo Tres en mayor detalle. 
+		por hardware que efectuen cálculos con mayor eficiencia, reduciendo el tiempo de ejecución. Pueden considerarse también, las optimizaciones del
+		compilador pero este aspecto fue analizado en el Prototipo Tres con mayor detalle. 
 		
 \newpage
-	\section{Estudio de capacidades del proyecto ORPSoC}
+	\section{Resultados de utilización de FPGA en la implementación del proyecto ORPSoC}
+		
+\begin{lstlisting}[frame=single,caption={Resumen de utilización - OResultado de PARRPSoC},label={lst:salidas},breaklines]
 
+Device utilization summary:
+tc
+Selected Device : 3sd1800afg676-4 
+
+Number of Slices:                     6696  out of  16640    40%  
+Number of Slice Flip Flops:           4872  out of  33280    14%  
+Number of 4 input LUTs:              12093  out of  33280    36%  
+   Number used as logic:             11009
+   Number used as Shift registers:     124
+   Number used as RAMs:                960
+Number of IOs:                         128
+Number of bonded IOBs:                 128  out of    519    24%  
+   IOB Flip Flops:                       7
+Number of BRAMs:                        14  out of     84    16%  
+Number of GCLKs:                         8  out of     24    33%  
+Number of DCMs:                          2  out of      8    25%  
+Number of DSP48s:                        4  out of     84     4%  
+
+Partition Resource Summary:
+
+No Partitions were found in this design.
+\end{lstlisting}	
+		
 		\subsection{Place and route}	
-Los resultados de la herramienta de lugar y ruta se pueden encontrar en el archivo de registro <orpsoc.par>
-
+		
+		Los resultados de la herramienta de place and route se pueden encontrar en el archivo de registros <orpsoc.par>. Este archivo contiene información
+		respecto de la cantidad de bloques de entrada y salida internos, externos 
+		
 \begin{lstlisting}[frame=single,caption={Resultado de PAR},label={lst:salidas},breaklines]
-
 Design Summary Report:
-
  Number of External IOBs                         128 out of 519    24%
-
    Number of External Input IOBs                 21
-
       Number of External Input IBUFs             21
 
    Number of External Output IOBs                44
-
       Number of External Output DIFFMLRs          2
       Number of External Output DIFFSLRs          2
       Number of External Output IOBs             14
       Number of External Output IOBLRs           26
 
    Number of External Bidir IOBs                 63
-
       Number of External Bidir DIFFMLRs           4
       Number of External Bidir DIFFSLRs           4
       Number of External Bidir IOBs              22
@@ -115,18 +139,19 @@ Design Summary Report:
    Number of DSP48As                         4 out of 84      4%
    Number of RAMB16BWERs                    16 out of 84     19%
    Number of Slices                       7772 out of 16640  46%
-    Number of SLICEMs                    612 out of 8320    7%
-
+    Number of SLICEMs                      612 out of 8320    7%
 \end{lstlisting}
 
-		\subsection{Reporte de TIMING}	
+		\subsection{Reporte de timing}	
+
+El reporte de timing presenta los resultados del análisis de distribución de los clocks del proyecto. Entre los resultados se obtiene el mínimo
+periodo (Máx Frecuencia) necesarios para el correcto funcionamiento del sistema. Es importante destacar que los tiempos expuestos en el reporte son
+teóricos y se presentan cambios importante durante las pruebas sobre el hardware.
 
 \begin{lstlisting}[frame=single,caption={Reporte timing},label={lst:salidas},breaklines]
 Timing summary:
----------------
 
 Timing errors: 498  Score: 729028  (Setup/Max: 311057, Hold: 417971)
-
 Constraints cover 395663179 paths, 94 nets, and 53193 connections
 
 Design statistics:
@@ -135,17 +160,14 @@ Design statistics:
   Maximum net delay:   2.594ns
   Minimum input required time before clock:  26.237ns
   Maximum output delay after clock:  13.126ns
-
-Analysis completed Sat Nov  2 11:19:56 2013 
-
-Trace Settings:
-
-Peak Memory Usage: 299 MB
 \end{lstlisting}
 
+		
+\section {Estudio de capacidades del proyecto ORPSoC}
 
 		\subsection{Condiciones de entorno de ejecución para benchmark}
-		En la siguente tabla ~\ref{tab:conbench} se muestran las condiciones del entorno de prueba durante los benchmarks.
+		
+		En la siguente tabla ~\ref{tab:conbench} se muestran las condiciones del entorno de prueba durante los benchmarks.  
 
 \begin{table}[h!]
 \begin{tabular}{ |p{5cm} |p{10cm}| }    
