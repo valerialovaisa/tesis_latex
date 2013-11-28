@@ -22,7 +22,7 @@
 	
 	\section{Estudio de capacidades del proyecto MinSoC}
 
-		\subsection{Pace and route}	
+		\subsection{Place and route}	
 \begin{lstlisting}[frame=single,caption={Resultado de PAR},label={lst:salidas},breaklines]
 
 Design Summary Report:
@@ -62,20 +62,29 @@ Design Summary Report:
 	Durante el desarrollo de las pruebas se prentendió esteblecer los límites de aplicación del proyecto que establezcan referencias sólidas para una
 	futura elección del proyecto en aplicaciones reales.
 
+\newpage
 		\subsection{Resultados de la ejecución del multiplicador de matrices binarias}
+		Se presentan a continuación los resultados de ejecución del programa multiplicador de matrices binarias. Se utilizó un gráfico que muestra el orden
+		de las matrices multiplicadas vs. la cantidad de ticks de ejecución. El gráfico ~\ref{fig:mulmat} muestra con claridad que el tiempo de ejecución
+		aumenta exponencialmente a medida que aumenta el orden de las matrices multiplicadas.  
 		
 \begin{figure}[h!]
  	\begin{center}
   	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{./images/matrices}
   	\caption{Multiplicación de Matrices Binarias}
-  	%\label{fig:mulmat}
+  	\label{fig:mulmat}
  	\end{center}
 	\end{figure}
+
+		Teniendo en cuenta que la aplicación fue ejecutada en una versión sintentizada básica del proyecto minSoC, este no posee unidades de multiplicación
+		por hardware que efectuen cálculos con mayor eficiencia reduciendo el tiempo de ejecución. Pueden considerarse también las optimizaciones del
+		compilador 
+
 
 \newpage
 	\section{Estudio de capacidades del proyecto ORPSoC}
 
-		\subsection{Pace and route}	
+		\subsection{Place and route}	
 Los resultados de la herramienta de lugar y ruta se pueden encontrar en el archivo de registro <orpsoc.par>
 
 \begin{lstlisting}[frame=single,caption={Resultado de PAR},label={lst:salidas},breaklines]
@@ -128,22 +137,18 @@ Design statistics:
   Minimum input required time before clock:  26.237ns
   Maximum output delay after clock:  13.126ns
 
-
 Analysis completed Sat Nov  2 11:19:56 2013 
---------------------------------------------------------------------------------
 
 Trace Settings:
--------------------------
-Trace Settings 
 
 Peak Memory Usage: 299 MB
 \end{lstlisting}
 
 
-			\subsection{Condiciones de entorno de ejecución para benchmark}
-		En la siguente tabla ~\ref{tab:conbench} se muestran las condiciones durante los benchmarks
+		\subsection{Condiciones de entorno de ejecución para benchmark}
+		En la siguente tabla ~\ref{tab:conbench} se muestran las condiciones del entorno de prueba durante los benchmarks.
 
-\begin{table}[!h]
+\begin{table}[h!]
 \begin{tabular}{ |p{5cm} |p{10cm}| }    
 \hline
 \multicolumn{2}{|>{\columncolor[gray]{.8}}c}{Condiciónes de entorno de prueba|}\\
@@ -166,7 +171,7 @@ Peak Memory Usage: 299 MB
 		\hline	
 \end{tabular}
 %\end{center}
-%\caption{Listado de requerimientos de usuario - Licencias}
+\caption{Condiciones del entorno de prueba}
 \label{tab:conbench}
 \end{table}
 
@@ -386,7 +391,7 @@ seedcrc          : 0x18f2
 \end{lstlisting}
 
 	\subsection {Presentación de los resultados de optimización} 
-\begin{table}[!h]
+\begin{table}[h!]
 \begin{center}
 \begin{tabular}{ |l |l| l|}
 \hline
@@ -408,7 +413,7 @@ Todos	 					& 1.57			& 1.45 \\
 \hline
 \end{tabular}
 \end{center}
-\caption{comparación de compilación con distintos niveles de optimización}
+\caption{Comparación de compilación con distintos niveles de optimización}
 \end{table}
 \newpage
 		\subsection{Resultados de la ejecución del Benchmark Drystone}
@@ -460,7 +465,7 @@ Dhrystones per Second:                      18518
 
 
 	\subsection {Presentación de los resultados de optimización} 
-\begin{table}[!h]
+\begin{table}[h!]
 \begin{center}
 \begin{tabular}{ |l |l| l|}
 \hline
@@ -468,7 +473,7 @@ Dhrystones per Second:                      18518
 \hline
 Sin extras 					&1.65 			&1.54\\
 \hline
--mhard-div -mhard-mu 	& 1.57			&1.45 \\
+-mhard-div -mhard-mu 		& 1.57			&1.45 \\
 \hline
 -funroll-loops			 	& 1.57			& 1.45 \\
 \hline
@@ -482,19 +487,19 @@ Todos	 					& 1.57			& 1.45 \\
 \hline
 \end{tabular}
 \end{center}
-\caption{comparación de compilación con distintos niveles de optimización}
+\caption{Comparación de compilación con distintos niveles de optimización}
 \end{table}
 
-
-
 	\section{Estudio de factibilidad para la implentación de RTOS Embebidos}
-	
+	Durante las pruebas realizadas en el prototipo ~\ref{chap:proto4}	
 
+	
 		\subsection{Resultados del programa de prueba de hilos}
 		
 			
 		
-		\section{Estudio de factibilidad para la implentación Linux}
+	
+	\section{Estudio de factibilidad para la implentación Linux}
 	
 	
 	 
