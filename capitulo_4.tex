@@ -149,7 +149,7 @@
 	principal objetivo es diseñar y publicar diseños de núcleos bajo una licencia de hardware de código abierto siguiendo el modelo de Licencia LGPL usada para el software.
 	Se comprometen con el ideal de libre disposición, uso y reutilización de hardware de código abierto.\cite{Etiqueta10}
 
-	\subsection{Código Abierto adoptado para la Industria}
+	\subsection{Código Abierto para la Industria}
 
 	Dentro del software de código abierto se tienen alternativas como: software multimedia, productividad de oficina, herramientas de
 	gráficos, sistemas operativos y de comunicaciones, por lo general libres para descargar y utilizarlos. Los gobiernos y las grandes empresas están aprovechando cada 			vez más el software de código abierto que existe y se están convirtiendo en importantes contribuyentes a los proyectos del software que adoptan. Las tendencias recientes han hecho mucho para disipar la imagen de solitarios desarrolladores de código abierto como los únicos contribuyentes de trabajos. Al estar las entidades comerciales aumentando la adopción y utilización de los proyectos de software libre,  se están convirtiendo en los contribuyentes más frecuentes. Actualmente el kernel de Linux tiene la mayor parte de sus contribuciones de código de entidades comerciales, ya sea porque están trabajando con el núcleo Linux en sus productos o porque desean asegurar el apoyo a su hardware en el kernel tales como Intel,  IBM y AMD. Lo mismo pasa para proyectos como Apache y MySQL.
@@ -172,7 +172,7 @@ Esta breve mirada a la situación actual de código abierto ha indicado que el c
 
 %%%%%% HASTA ACÁ    %%%%%	
 %%%%%%%%%%
-\subsubsection{Desventajas de la adopción del OpenSource}
+\subsubsection{Desventajas de la adopción del código abierto en software}
 
 Son muchos los que no están de acuerdo con el desarrollo de código abierto en la actualidad a pesar del gran aumento en su popularidad y uso. El software o hardware privativo puede ser desplazado del mercado por una alternativa no privativa, sin costo. Los que obviamente van a estar en desacuerdo son las entidades que se encuentren amenazadas por una alternativa lo suficientemente innovadora que provoque una disminución en sus ganancias. Una alternativa para los menos favorecidos es usar el código abierto existente que generalmente no es suficientemente innovador y mejorarlo. Permitiendoles competir con cualquier producto del mercado. De este modo los desarrolladores adquieren conocimientos ademas de ahorrar tiempo y desarrollaron un negocio, proporcionando un servicio de apoyo para la suma de un proyecto mejorado.
 
@@ -180,132 +180,84 @@ Son muchos los que no están de acuerdo con el desarrollo de código abierto en 
 El inconveniente de mostrar el código del proyecto mejorado es que los desarrolladores exponen sus técnicas innovadoras y obtiene una ganancia como se acostumbra en los productos de software propietario. Sin embargo, esto es compensado por la reducción de la inversión en el desarrollo de su producto (una gran proporción de
 la infraestructura de apoyo adoptada de implementación de código abierto) y su mejora sobre el proyecto de código abierto recientemente mejorada atrae a otros contribuyentes que deciden trabajar con el proyecto.
 
-Las implementaciónes de código abierto varían en calidad y funcionalidad dependiendo de la colaboración de los desarrolladores. No hay dudas de que hay software de código abierto de gran utilidad escrito. Sin embargo, no debe ser visto solo como un producto innovador en lugar de un paso en el camino hacia el avance tecnológico.
+Las implementaciones de código abierto varían en calidad y funcionalidad dependiendo de la colaboración de los desarrolladores. No hay dudas de que hay software de código abierto de gran utilidad escrito. Sin embargo, no debe ser visto solo como un producto innovador en lugar de un paso en el camino hacia el avance tecnológico.
 
 \section {Código abierto hardware}
 
-El OpenRisc y otros IP  publicados en OpenCore muestran el estado del proyecto pero permite los desarrolladores pueder continuar con el continuo desarrollo de los núcleos.La aceptacón de los proyectos de código abierto RTL por parte de las entidades comerciales de IP no es la misma que para el desarrollo de software de código abierto.
+El OpenRisc y otros IP  publicados en OpenCore muestran el estado del proyecto pero permite los desarrolladores poder continuar con el continuo desarrollo de los núcleos.La aceptacón de los proyectos de código abierto RTL por parte de las entidades comerciales de IP no es la misma que para el desarrollo de software de código abierto.
 
 El problema de la implementación de los proyectos de código abierto por la falta de herramientas de Entorno de desarrollo integrado (EDA)  es inaceptable para ASIC dado el elevado costo de corregir errores, para brindar una solución se tendría que incluir con el core. Las herramientas  que se encuentran disponibles en la industria tienen un elevado precio y pueden variar de acuerdo a el proveedor, esto pone un gran obstáculo en la entrada al mercado para los desarrolladores de IP.
 
-La falta de alternativas libres en EDA de código abierto limita a el desarrollo de núcleos de código abierto. Para minimizar el riesgo para las ASIC las implementaciones se realizan en dispositivos como FPGA donde generalmente se pueden hacer cambios del código RTL con menor costo. 
- 
-
-%\subsection{No verificado y No populares}
-%A pesar del uso y la aceptación del software desarrollado bajo licencia de código abierto, los proyectos RTL de código abierto no han recibido el mismo tipo de interés o la participación de las empresas más grandes de IP. 
-
-%Un problema es para las personas que desarrollan IP destinados para su implementación en ASIC, es la falta de un conjunto de herramientas de verificación para los IP de codigo abierto, y por lo tanto la incapacidad para verificar rápidamente la funcionalidad de un core, esto es inaceptable dado el elevado costo de la corrección de errores. Se podria sugerir la inclusión obligatoria de una herramienta de verificacióne con el core, sin embargo, las herramientas estándares de verificación que se encuentran disponibles en la industria son de entidades propietarias y tienen un elevado costo y pueden variar de un proveedor a otro. 
-
-%Es sorprendente que no existen herramientas de verificación de código abierto en la industria todavía, esto pone un serio obstáculo para la entrada al mercado de desarrolladores IP por el importante costo del conjunto de herramientas de Entorno de desarrllo integrado (EDA) capaces de realizar la verificación.A falta de las opciones de EDA de código abierto continuarán limitando las aplicaciones de estos núcleos opensource, y para minimizar el riesgo las implementaciones se realizaran en dispositivos como las FPGAs donde generalmente se pueden hacer cambios  del RTL con un bajo costo 
- 
+La falta de alternativas libres en EDA de código abierto limita a el desarrollo de núcleos de código abierto. Para minimizar el riesgo para las ASIC las implementaciones se realizan en dispositivos como FPGA donde generalmente se pueden hacer cambios del código RTL con menor costo. La tecnología de los dispositivos FPGA y ASIC se considera secreto industrial
+lo que limita el desarrollo de herramientas libres.
 %%%%%%%%%%hasta aca
-	\subsection{¿Cual es su objetivo? }
+	\subsection{Problema para implementar y desarrollar hardware de código abierto }
 
+Los requerimientos de una plataforma donde implementar el diseño de hardware y la falta de herramientas de desarrollo libres son un obstáculo que no enfrenta el software de código abierto. Estas plataformas son comercializadas por empresas de hardware ofreciendo herramientas de  compilación, simulación, síntesis y descarga para sus FPGA.La complejidad de las herramientas de diseño y el la pronunciada curva de aprendizaje de desarrollo de hardware perjudica a los principiantes. 
 
-Una barrera para el desarrollo de hardware de código abierto que no la tiene el desarrollo de software, es el requerimiento de la plataforma donde implementar el diseño del prototipo,así como herramientas  de progrmacion y depuración gratuitas . Estas plataformas, típicamente placas que contienen múltiples periféricos ICs basadas en una FPGA, así como la depuración de hardware y programación no son independientes de un proveedor. A esto se suman la complejidad de las herramientas de programación de los proveedores para la FPGA, así como el desarrollo de hardware con una curva de aprendizaje relativamente empinada que perjudica a los principiantes.
-También  la utilidad de cualquier diseño de hardware que se podría implementar en una FPGA está limitada por el hecho de que se realiza a un nivel muy bajo de abstracción, y para lograr un resultado positivo "útil" para los experimentador o aficionado, por lo general requiere un gran trabajo a través de muchos niveles de abstracción para lograr algo que sea fácilmente utilizable a partir de una interfaz de una PC. 
+Otro inconveniente es la dificultad para utilizar un diseño implementado sobre una FPGA, esta limitado por el hecho de que se realiza a un nivel muy bajo de abstracción y para lograr un resultado "útil" por lo general requiere un gran trabajo a través de varios niveles de abstracción para lograr que se cómodamente usado por una interfaz en una pc.
 
-Un ejemplo podría ser el desarrollo de un core para que realice transacciones de I/O de un sensor, para proporcionar información a una aplicación por ejemplo que controle la temperatura en un espacio determinado. Esto requeriría el desarrollo y prueba del modelo de hardware y la implementación en FPGA . Asumiendo que es un microprocesador el que se encuentra corriendo sobre la FPGA, dando servicios de red a través de un sistema operativo de tiempo real (RTOS), este módulo personalizado debería requerir el desarrollo de una capa de software, lo que significa la necesidad de un driver para que permita al sistema operativo en tiempo real interaccionar con el periférico, haciendo una abstracción del hardware y proporcionando una interfaz para usarlo. El sistema operativo en tiempo real se conecta con la aplicación que se ejecuta en el microprocesador de la FPGA para proporcionan lo datos a través del enlace de red, solo entonces los datos de este sensor se encontraran disponibles para la aplicación de nivel superior. This is just one example where, quite probably the designer might have chosen a solution that uses a standard bus, however there’s often cases for custom controller or interface cores in FPGAs to provide
+Un ejemplo podría ser el desarrollo de un core para que realice transacciones de I/O de un sensor, para proporcionar información a una aplicación por ejemplo que controle la temperatura en un espacio determinado. Esto requeriría el desarrollo y prueba del modelo de hardware y la implementación en FPGA . Asumiendo que es un microprocesador el que se encuentra corriendo sobre la FPGA, dando servicios de red a través de un sistema operativo de tiempo real (RTOS), este módulo personalizado debería requerir el desarrollo de una capa de software, lo que significa la necesidad de un driver para que permita al sistema operativo en tiempo real interactuar con el periférico, haciendo una abstracción del hardware y proporcionando una interfaz para usarlo. El sistema operativo en tiempo real se conecta con la aplicación que se ejecuta en el microprocesador de la FPGA para proporcionan lo datos a través del enlace de red, así los datos de este sensor se encontraran disponibles para la aplicación de nivel superior. This is just one example where, quite probably the designer might have chosen a solution that uses a standard bus, however there’s often cases for custom controller or interface cores in FPGAs to provide
 access to legacy, or very-new or esoteric bus standards, and highlights the extra work required beyond writing RTL to provide the physical interface.
 Viendo la cantidad de desarrollo y pruebas requeridas para poner en práctica estas soluciones, es fácil sentirse abrumado por la cantidad de trabajo necesario para completar una tarea tan aparentemente trivial.
 
-Comparando esto con adoptar una programa opensource, que consiste en la descargar de una código fuente, compilarlo y ejecutalo en su computadora. Donde La aplicación puede ser ejecutada en el  host para comprobar la funcionalidad y la mayor parde del ciclo de desarrollo termina allí. Las diferencias son el acceso inherentes a la plataforma de desarrollo (el host), las herramientas de desarrollo mucho mas simples (gcc, make en el sistema host) el ciclo de desarrollo, pruebas más cortas y más fácil (que se ejecuta en el equipo host a través de un shell.)
+Comparando esto con la implementación de software de código abierto donde se toma un programa de código abierto, que consiste en descargar un código fuente, compilarlo, ejecútalo y probarlo en la misma plataforma, la diferencia en el acceso inherentes a la plataforma de desarrollo (el host), las herramientas de desarrollo mucho mas simples (gcc, make en el sistema host) , pruebas más cortas y más fácil (que se ejecuta en el equipo host a través de un shell) son una gran ventaja ante la complejidad del el ciclo de desarrollo de harware de código abierto.
 
-A medida que mas proyectos opnesource son desarrollados y los sistemas de desarrollo sean mas ágiles, se puede esperar que estas barreras para los desarrolladores de diseño de hardware opensource puedan ser superadas. En los principios del del desarrollo de software opensource parecían igual de complicados. Se espera que con el tiempo y el aumento de participantes el hardware de código abierto alcance el mismo exito.En ese momento, los diseños serán tan grandes que no cabrán en los dispositivos programables actuales. La reconfigurabilidad será un elemento imprescindible. Las fronteras entre el hardware y el software se harán cada vez más difusas. El deseo, casi utópico, es lograr correr un kernel Linux hardware basándose en las posibilidades que nos ofrece la reconfigurabilidad. 
+
+A medida que se incrementan la cantidad de proyectos de código abierto y disminuya la complejidad de las herramientas de desarrollo se puede esperar que  los desarrolladores de hardware de código abierto puedan superar los obstáculos mencionados anteriormente. Las barreras en el inicio del software de código abierto parecían igual de complicadas de superar. Se espera que con el tiempo y el aumento de participantes, el hardware de código abierto alcance el mismo exito. En ese momento, los diseños serán tan grandes que no cabrán en los dispositivos programables actuales. La reconfiguración será un elemento imprescindible. Las fronteras entre el hardware y el software se harán cada vez más difusas.
+
+
+%  También la utilidad de cualquier diseño de hardware que se podría implementar en una FPGA está limitada por el hecho de que se realiza a un nivel muy bajo de abstracción, y para lograr un resultado positivo "útil" para los experimentador o aficionado, por lo general requiere un gran trabajo a través de muchos niveles de abstracción para lograr algo que sea fácilmente utilizable a partir de una interfaz en una PC. 
+%%%%%
+%Un ejemplo podría ser el desarrollo de un core para que realice transacciones de I/O de un sensor, para proporcionar información a una aplicación por ejemplo que controle la temperatura en un espacio determinado. Esto requeriría el desarrollo y prueba del modelo de hardware y la implementación en FPGA . Asumiendo que es un microprocesador el que se encuentra corriendo sobre la FPGA, dando servicios de red a través de un sistema operativo de tiempo real (RTOS), este módulo personalizado debería requerir el desarrollo de una capa de software, lo que significa la necesidad de un driver para que permita al sistema operativo en tiempo real interactuar con el periférico, haciendo una abstracción del hardware y proporcionando una interfaz para usarlo. El sistema operativo en tiempo real se conecta con la aplicación que se ejecuta en el microprocesador de la FPGA para proporcionan lo datos a través del enlace de red, así los datos de este sensor se encontraran disponibles para la aplicación de nivel superior. This is just one example where, quite probably the designer might have chosen a solution that uses a standard bus, however there’s often cases for custom controller or interface cores in FPGAs to provide
+%access to legacy, or very-new or esoteric bus standards, and highlights the extra work required beyond writing RTL to provide the physical interface.
+%Viendo la cantidad de desarrollo y pruebas requeridas para poner en práctica estas soluciones, es fácil sentirse abrumado por la cantidad de trabajo necesario para completar una tarea tan aparentemente trivial.
+
+%Comparando esto con adoptar un programa de código abierto, que consiste en descargar un código fuente, compilarlo y ejecútalo en su computadora, donde la aplicación puede ser ejecutada en el host para comprobar la funcionalidad y allí finalice la mayor parte del ciclo de desarrollo, . Las diferencias son el acceso inherentes a la plataforma de desarrollo (el host), las herramientas de desarrollo mucho mas simples (gcc, make en el sistema host) el ciclo de desarrollo, pruebas más cortas y más fácil (que se ejecuta en el equipo host a través de un shell.)
+
+%A medida que mas proyectos opnesource son desarrollados y los sistemas de desarrollo sean mas ágiles, se puede esperar que estas barreras para los desarrolladores de diseño de hardware opensource puedan ser superadas. En los principios del del desarrollo de software opensource parecían igual de complicados. Se espera que con el tiempo y el aumento de participantes el hardware de código abierto alcance el mismo exito.En ese momento, los diseños serán tan grandes que no cabrán en los dispositivos programables actuales. La reconfigurabilidad será un elemento imprescindible. Las fronteras entre el hardware y el software se harán cada vez más difusas. El deseo, casi utópico, es lograr correr un kernel Linux hardware basándose en las posibilidades que nos ofrece la reconfigurabilidad. 
 	
 
-\section{Licencias}
+\section{Licencias de Hardware}
 
-Una cuestión que queda por resolver es el de la concesión de licencias para el diseño de hardware de código abierto. El proyecto OpenRISC utiliza licencias públicas del proyecto GNU. Estos refieren específicamente a software, y no se sabe lo bien que se aplican a hardware.
-El sitio web del proyecto GNU contiene una sección con preguntas frecuentes (FAQ) que se ocupa de esta consulta. Afirma lo siguiente.
+Una cuestión que queda por resolver es el de la concesión de licencias para el diseño de hardware de código abierto. El proyecto OpenRISC utiliza licencias públicas del proyecto GNU. Estos refieren específicamente a software, y no se sabe bien que se aplica al hardware.
+El sitio web del proyecto GNU contiene una sección con preguntas frecuentes (FAQ)  que afirma lo siguiente.
 
-\textit{Cualquier material que puede ser licenciado con derechos de autor puede ser licenciado bajo la GPL.
-GPLv3 también se puede utilizar para materiales de licencia cubiertos por otras leyes copyrightlike, como máscaras de semiconductores. Así, por ejemplo, puede liberar un dibujo de un diseño de hardware bajo la GPL. Sin embargo, si
-alguien utilizó esa información para crear hardware físico, que lo harían
-no tienen obligaciones de la licencia al distribuir o vender el dispositivo: se
-queda fuera del ámbito del derecho de autor y por lo tanto la propia GPL.}
+\textit{Cualquier material que puede ser licenciado con derechos de autor puede ser licenciado bajo la GPL.}
+%GPLv3 también se puede utilizar para materiales de licencia cubiertos por otras leyes copyrightlike, como máscaras de semiconductores. Así, por ejemplo, puede liberar un dibujo de un diseño de hardware bajo la GPL. Sin embargo, si alguien utilizó esa información para crear hardware físico, que lo harían no tienen obligaciones de la licencia al distribuir o vender el dispositivo: se queda fuera del ámbito del derecho de autor y por lo tanto la propia GPL.}
 
-Esto no es claro para los diseños específicos para FPGA o código, incluso RTL, ya que puede terminar como un conjunto de máscaras, o puede terminar como un flujo de bits binario para configuración de una FPGA.
-Una indicación de la naciente idea de desarrollo de hardware de código abierto proviene de la publicación reciente (febrero de 2011) de un conjunto de principios para los participantes de la comunidad de hardware de código abierto. El siguiente es el código abierto Hardware (OSHW) Declaración de Principios 1.0 de FreedomDefined.org.
+%Esto no es claro para los diseños específicos para FPGA o código, incluso RTL, ya que puede terminar como un conjunto de máscaras, o puede terminar como un flujo de bits binario para configuración de una FPGA.
+Una indicación de la naciente idea del desarrollo de hardware de código abierto proviene de la publicación reciente (febrero de 2011) de un conjunto de principios para los participantes de la comunidad de hardware de código abierto. El siguiente es el código abierto Hardware (OSHW) Declaración de Principios 1.0 de FreedomDefined.org. Estas publicaciones proporcionan un punto de referencia para saber si el diseño puede estar bajo licencia de" hardware de código abierto".
+%\textit{El Hardware de código abierto cuyo diseño está a disposición del público
+%por lo que cualquier persona puede estudiar, modificar, distribuir, poner, y vender el
+%diseño o hardware basado en ese diseño. La fuente de hardware, el diseño
+%del que está hecho, está disponible en el formato preferido para realizar
+%modificaciones a el mismo. Idealmente, el hardware de código abierto utiliza fácilmente los componentes y materiales disponible, procesos estándares, una infraestructura abierta, sin restricciones
+%contenida, herramientas de diseño y de código abierto para maximizar la capacidad
+%de las personas para hacer y usar el hardware} \cite{Etiqueta11}
 
-\textit{El Hardware de código abierto cuyo diseño está a disposición del público
-por lo que cualquier persona puede estudiar, modificar, distribuir, poner, y vender el
-diseño o hardware basado en ese diseño. La fuente de hardware, el diseño
-del que está hecho, está disponible en el formato preferido para realizar
-modificaciones a el mismo. Idealmente, el hardware de código abierto utiliza fácilmente los componetes y materiales disponible, procesos estándares, una infraestructura abierta, sin restricciones
-contenida, herramientas de diseño y de código abierto para maximizar la capacidad
-de las personas para hacer y usar el hardware} \cite{Etiqueta11}
+%El FreedomDefined.org  específica fuente y documentación, trabajos derivados y las limitaciones de la licencias.Se espera de acuerdo con estos principios,  todo el material este disponible como código abierto y la documentación para el diseño. Cualquier trabajos derivados o modificado deba estar disponible. 
 
-Estas publicaciones proporcionan un punto de referencia para saber si el diseño puede estar bajo licencia "open source hardware".
-El FreedomDefined.org es una lista con principios que específicade  fuente y  documentación, trabajos derivados y las limitaciones de la licencias. Se espera de acuerdo con estos principios, que todo el material este disponible como código fuente y la documentación para el diseño. Cualquier trabajos derivados o modificado deba estar disponible. 
-Cualquier licencia de hardware de código abierto se puede utilizar para restringir (o en este caso, de forma deliberada sin restringir)los planes de un diseño, pero no el uso del dispositivo fabricado. Estos son conceptos que se encuentran a menudo en las licencias de software de código abierto, pero de nuevo, no es tan claro como se aplica en el casos del diseño del hardware de código abierto como es para el software. 
+Cualquier licencia de hardware de código abierto se puede utilizar para restringir (o en este caso, de forma deliberada sin restringir)los planes de un diseño, pero no el uso del dispositivo fabricado. Estos son conceptos que se encuentran a menudo en las licencias de software de código abierto, pero de nuevo, no es tan claro como se aplica en el casos para el diseño del hardware de código abierto.
 
-Por ahora, la primera licencia de hardware de código abierto es la  Amateur Packet Radio Licencia Open Hardware Tucson ( TAPR OHL). Los autores OHL TAPR identifican el problema con las licencias de software existentes, si bien los derechos de autor protegen la documentación de copias, modificaciones y distribuciones, que tiene poco que ver con el derecho de hacer , distribuir o usar un producto basado en la documentación \cite{Etiqueta12}.
-Su licencia identifica patentes como un problema, pero afirma que quienes se beneficien de la OHL no podran
-presentar una demanda alegando que el diseño infringen sus patentes u otra propiedad intelectual.
-How open source hardware licenses and patent law will be compatible with regards to handling infringement is yet to be seen
-En consecuencia, la TAPR OHL ha sido adoptada por un puñado de aficionados y para los intereses de empresas comerciales. Ha recibido críticas
-del Instituto de Código Abierto (OSI) en la adopción de un significado diferente de la  palabra " distribución " que se suele utilizar en sus licencias, y por lo tanto no tiene un amplio apoyo entre los promovedores de código abierto\cite{Etiqueta13}. 
+Por ahora, la primera licencia de hardware de código abierto es la  Amateur Packet Radio Licencia Open Hardware Tucson (TAPR OHL). Los autores TAPR OHL  identifican el problema con las licencias de software existentes, si bien los derechos de autor protegen la documentación de copias, modificaciones y distribuciones, que tiene poco que ver con el derecho de hacer , distribuir o usar un producto basado en la documentación \cite{Etiqueta12}.
+%Su licencia identifica patentes como un problema, pero afirma que quienes se beneficien de la OHL no podran presentar una demanda alegando que el diseño infringen sus patentes u otra propiedad intelectual.
+%How open source hardware licenses and patent law will be compatible with regards to handling infringement is yet to be seen
+En consecuencia, la TAPR OHL ha sido adoptada por unos cuantos aficionados y empresas comerciales.
+
+Ha recibido críticas del OSI en la adopción de un significado diferente de la  palabra " distribución " que se suele utilizar en sus licencias, y por lo tanto no tiene un amplio apoyo entre los promovedores de código abierto\cite{Etiqueta13}. 
 Sin embargo, es posibles que licencias alternativas de hardware de código abierto surjan para adaptarse a necesidades.
-Para el proyecto OpenRISC hay un equilibrio para afrontar la adopción entre una licencia que es demasiado liberal, y por lo tanto menos probable que resulte en la contribución a la comunidad de desarrollo, y una licencia que fomenta mas el desarrollo de código abierto, pero se considera entonces demasiado restrictiva con respecto a la utilización de codigo abierto IP con una IP patentada.
 
-Por un lado, hay un deseo de aumentar la participación en el desarrollo de hardware de código abierto en general, y específicamente en el proyecto OpenRISC MinSoc y OrpSoc,para aumentar el conjunto de trabajos disponibles, esto se puede lograr utilizando un licencia viral como lo es la GNU GPL (considerando la síntesis del codigo RTL como un proceso de compilación estatica). 
+%Para el proyecto OpenRISC hay un equilibrio para afrontar la adopción entre una licencia que es demasiado liberal, y por lo tanto menos probable que resulte en la contribución a la comunidad de desarrollo, y una licencia que fomenta mas el desarrollo de código abierto, pero se considera entonces demasiado restrictiva con respecto a la utilización de codigo abierto IP con una IP patentada.
 
-
-
-For the OpenRISC project there is a balance to strike between adopting a license
-that is either too liberal, and thus less likely to result in contribution back to
-the development community, and a license that encourages more open source development
-but is then deemed too restrictive with regard to the use of open source
-IP with proprietary IP. On the one hand, there is a desire to increase the participation
-in open source hardware development in general, and in the OpenRISC
-project specifically, and to increase the body of available work, which a viral license
-along the lines of the GNU GPL (where synthesis is considered equivalent to static
-linking) can achieve. On the other hand the use of the work in largely-proprietary
-designs by ASIC houses is desirable as it helps prove the IP’s worth, and so a license
-permitting the use of open source IP along side proprietary IP is desirable.
-For the OpenRISC’s RTL implementation, the OR1200, the non-viral GNU Lesser
-(L)GPL license has been used and, although the instantiation of an RTL IP block
-in a “hardware” design is not dealt with specifically in the (L)GPL, it is the latter
-(more liberal) licensing approach that has been taken for the OpenRISC project
-thus far.
-However, perhaps this factor has, too, contributed to the relatively low level
-of community participation thus far in the OpenRISC project. Comparatively,
-the early stages of the open source software movement saw a lot of code released
-under the GPL, which ensured all other code used with it came under a similarly
-“restrictive”, viral license, and ensured a large body of code was released into the
-public domain. However, not all open source software was released under these viral
-licenses, with the BSD and MIT licenses being less restrictive with enforcing the
-freedom of the user.
-
-\section{OpenRisc}
-
-Como se dijo anteriormente en el debate sobre la tecnología de código abierto por lo general los modelos de desarrollo de código abierto no son imnovadores.
- La mayor parte de los proyectos de software libre tienen como objetivo utilizar recursos ya existentes y bien conocidos de manera que permitan la apertura y eliminación de restricciones que se encuentran en otra implementaciones propietarias. Esta es la duda en el caso de la OpenRISC proyecto. Es en gran medida tomando ideas que ya son bien conocidos y comoditizados
-y la creación de una versión con más libertad para el usuario final. Había muy poco, si
-nada, innovador en la especificación arquitectónica OR1K. Esto no quiere decir
-los resultados no tienen ningún valor. Tampoco necesariamente excluye cualquier OpenRISC futuro
-o implementaciones de arquitecturas con el objetivo de innovar.
-
-\section{Conclusión}
-
-A día de hoy los diseños hardware de código abierto son una realidad palpable. Cualquiera puede descargarlos de la red y utilizarlos en sus diseños. Los componentes típicos de un sistema tales como un controlador USB, un microprocesador, un controlador de red, etc., tienen su alternativa en código abierto y son ya utilizados por empresas en productos comerciales, lo cual da una idea de su calidad
- A medida que la cantidad de código abierto disponible aumenta, cada vez mas demostrara que es un enfoque valioso para el desarrollo de la tecnología .
+%Por un lado, hay un deseo de aumentar la participación en el desarrollo de hardware de código abierto en general, y específicamente en el proyecto OpenRISC MinSoc y OrpSoc,para aumentar el conjunto de trabajos disponibles, esto se puede lograr utilizando un licencia viral como lo es la GNU GPL (considerando la síntesis del codigo RTL como un proceso de compilación estatica). 
 
 
-%\cite{Etiqueta02},
-%\textit{FPGAs}) .
-%\begin {itemize}
-%\item  Bloques lógicos configurables y \textit{Lookup Tables}.
-% \end {itemize}
 
-\begin{figure}[h!]
- \begin{center}
-  % \includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/fpga1a}
- % \caption{Componentes de una FPGA}
-  \label{fig:esquema}
- \end{center}
-\end{figure}
+%\section{OpenRisc}
+
+%Como se dijo anteriormente en el debate sobre la tecnología de código abierto por lo general los modelos de desarrollo de código abierto no son imnovadores.
+ %La mayor parte de los proyectos de software libre tienen como objetivo utilizar recursos ya existentes y bien conocidos de manera que permitan la apertura y eliminación de restricciones que se encuentran en otra implementaciones propietarias. Esta es la duda en el caso de la OpenRISC proyecto. Es en gran medida tomando ideas que ya son bien conocidos y comoditizados y la creación de una versión con más libertad para el usuario final. Había muy poco, si nada, innovador en la especificación arquitectónica OR1K. Esto no quiere decir los resultados no tienen ningún valor. Tampoco necesariamente excluye cualquier OpenRISC futuro5o implementaciones de arquitecturas con el objetivo de innovar.
 
 
 %Conclusión!!Trabajar con un sistema final bajo licencias de hardware siguiendo el modelo de la Licencia LGPL para el software. Estamos comprometidos con el ideal de libre disposición, de libre uso y hardware de código abierto reutilizable.
