@@ -20,6 +20,9 @@
 		
 
 	\section{Trabajos futuros}
+
+La principal carencia de los sistemas que se han desarrollado es la imposibilidad de utilizar la caché de datos de los procesadores debido a la ausencia de un mecanismo que garantice la coherencia de las cachés de los distintos procesadores. Actualmente se está trabajando en una solución a este problema, que permitiría utilizar cachés de datos en el sistema aumentando considerablemente el rendimiento de éste. Una vez se puedan usar cachés de datos se hará necesario también desarrollar nuevos controladores de memoria que soporten más canales XCL, ya que con los controladores actuales sólo se podrían desarrollar sistemas con dos procesadores. Otra de las limitaciones de los sistemas que se han presentado es la gestión de las interrupciones, que actualmente no están completamente soportadas. Se está trabajando en el desarrollo de un controlador de interrupciones que permita manejarlas de forma más eficiente, interrumpiendo solamente a un procesador cada vez en lugar de a todos simultáneamente.
+
 		\subsection{Desarrollo de nuevos módulos de hardware para su utilización en SoC}
 		
 		\subsection{Desarrollo de drivers para nuevos módulos}
