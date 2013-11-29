@@ -442,7 +442,6 @@ Fin del programa
 		\caption{Tabla de requerimientos del Prototipo Dos}
 		\end{table}
 
-\newpage
 		\section{Matriz de Riesgo para el Prototipo Dos} 
 
 		\begin{table}[h!]
@@ -545,6 +544,7 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		cantidad de números primos existente en un intervalo seleccionado. Ante la necesidad de evaluar las capacidades del sistema embebido se realizó un
 		caso de prueba basado en el Benchmark Coremark.
 
+\newpage
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -635,7 +635,6 @@ board IP : 192.168.1.2
 		\end{table}
 
 \newpage
-
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -726,6 +725,8 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		\end{table}
 
 
+\newpage
+
 \begin{lstlisting}[frame=single,caption={Salida de la terminal serie de los resultados de la ejecución del benchmark},label={lst:rescrm},breaklines]
 2K performance run parameters for coremark.
 CoreMark Size    : 666
@@ -745,7 +746,6 @@ Correct operation validated. See readme.txt for run and reporting rules.
 CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFORMANCE_RUN=1   / STACK
 \end{lstlisting}
 
-\newpage
 		\section{Conclusión}
 		El Prototipo Dos permitió evaluar la factibilidad de implementación de un SoC Softcore con capacidades que le confieren la posibilidad de ejecutar
 		sin problemas un Sistema Operativo Embebido. Al poseer mayores prestaciones de memoria que las del proyecto MinSoC permite ejecutar aplicaciones
@@ -760,7 +760,6 @@ CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFO
 		\section{Introducción}
 
 		Para el tercer prototipo se añadió al prototipo dos la funcionalidad aportada por el Sistema Operativo de tiempo real eCos(embedded configurable operating system) que adiciona la capacidad de la ejecución de múltiples hilos. 
-
 
 		\section{Requerimientos del prototipo}
 		
@@ -781,7 +780,7 @@ CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFO
 		\end{tabular}
 		\caption{Tabla de Requerimientos del Prototipo Tres}
 		\end{table}
-		
+\newpage		
 
 		\section{Matriz de Riesgo para el Prototipo Tres} 
 
@@ -921,8 +920,6 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{table}
 
 \newpage			
-
-
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -968,7 +965,6 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{table}
 
 \newpage
-
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba twothreads},label={lst:salhilos}]
 Entering twothreads' cyg_user_start () function
 Beginning execution; thread data is 0
@@ -985,25 +981,14 @@ Thead 1: and now a delay of 207 clock ticks
 Thead 0: and now a delay of 244 clock ticks
 \end{lstlisting}
 
-
-
-\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba threads0},label={lst:salhilos}]
-PASS:<Thread 0 OK>
-EXIT:<done>
-\end{lstlisting}
-
-
-
 		\section{Conclusión}
 		
+		Con el prototipo tres se verficó el correcto funcionamiento y soporte para sistemas de tiempo real sobre el microprocesador OpenRISC 1200. Mediante
+		la ejecución de los casos de prueba se probó, en primera instancia, que los periféricos funcionaran correctamente indicando a su vez que el sistema
+		operativo se encuentra corriendo en el núcleo como se esperaba. Se comprobó además, la capacidad del kernel de ecOS para ejecutar hilos a nivel de software. 
+		Todo lo anteriormente dicho permitió corroborar que mediante la implementación de un microprocesador Softcore OpenRISC en conjunto con un sistema
+		operativo, puede conformase una solución integral, efectiva para aplicaciones de tiempo real de código abierto.
 		
-		
-		
-		
-		
-		
-
-
 \newpage
 \chapter{Prototipo Cuatro : Implementación del SoC ORPSoC en FPGA con Sistema Operativos Linux} \label{chap:proto4}
 		\section{Introducción}
@@ -1027,7 +1012,7 @@ EXIT:<done>
 		\caption{Tabla de Requerimientos del Prototipo Cuatro}
 		\end{table}
 		
-		
+		\newpage
 		\section{Matriz de Riesgo para el Prototipo Cuatro} 
 
 		\begin{table}[h!]
@@ -1049,7 +1034,6 @@ EXIT:<done>
 		\end{table}
 
 		\newpage
-
  		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
@@ -1103,8 +1087,6 @@ EXIT:<done>
  		\end{center}
 		\end{figure}
 	
-		\newpage
-
 		\section{Implementación}	
 		
 La implementación de sistema operativo de Linux ser realiza en una serie de etapas detalladas a continuación. 
@@ -1118,17 +1100,18 @@ La implementación de sistema operativo de Linux ser realiza en una serie de eta
  
 		Consulte la Guía de Linux en el Anexo ~\ref{app:apendice5} para una comprensión más profunda de los pasos a seguir en la implementación sobre la
  		placa de desarrollo S3ADSP1800A.
-		
+		\newpage
 				
 		\section{Testing}	
+		
 		
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
 		\rowcolor[gray]{0.8} 	 Caso de Prueba & Carga de programa mediante el gestor de arranque UBoot\\
-		\hline  		Código de Requerimiento 	& RQX-PD 2\\ 
-		\hline  				  Requerimiento 	& Se requiere la instalación de un gestor de arraque que posibilite el inicio del sistema operativo\\
+		\hline  		Código de Requerimiento & RQX-PD 2\\ 
+		\hline  				  Requerimiento & Se requiere la instalación de un gestor de arraque que posibilite el inicio del sistema operativo\\
 		\hline 				  Código de Testing & T011\\ 
 		\hline 						  Propósito & Comprobación del correcto funcionamiento del gestor de arranque\\
 		\hline					  Realizado Por & Lovaisa, Valeria \\
@@ -1204,6 +1187,8 @@ Cantidad de numero primos entre 1 y 2000 : 303
 
 \end{lstlisting}
 		
+		
+		\newpage
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -1228,15 +1213,57 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		del gestor de arranque en la terminal serie de la PC\\
 		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline			   Resultados Esperados & Poder observar por la terminal serial las salida del Uboot \\
-		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la Referencia ~\ref{lst:salidaspi}\\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba no pudo observarse la salida salida esperada\\
 		\hline	
 		\end{tabular}
 		\caption{Caso de prueba T012}
+		\end{table}	
+\newpage
+
+		\begin{table}[h!]
+		\centering
+		\begin{tabular}{ p{5cm} p{10cm}  }
+		\hline 
+		\rowcolor[gray]{0.8} 	 Caso de Prueba & Simulación del SO Linux Embebido en or1ksim\\
+		\hline  		Código de Requerimiento & RQX-PD 1\\ 
+		\hline  				  Requerimiento & El prototipo debe implementar el sistema operativos Linux\\
+		\hline 				  Código de Testing & T013\\ 
+		\hline 						  Propósito & Ejecutar correctamente un Sistema Operativo Linux Embebido en simulador de la arquitectura\\
+		\hline					  Realizado Por & Lovaisa, Valeria \\
+		\hline	 		   Entorno de Ejecución & Bare Metal\\
+		\hline		   		   	 Precondiciones & \begin {itemize}
+												  \item Herramienta de simulación or1ksim correctamente instalada
+												  \item Ejecución de una terminal serie en la PC 
+ 												  \item Comunicación establecida entre el simulador y la PC
+ 												  \item Herramientas de compilación cruzada funcionando correctamente
+ 												  \item Configuración del kernel adaptada al SoC para simulación
+												  \item Imágen del Sistema Operativo Linux compilada correctamente 
+												  \end {itemize}\\
+		\hline			 Secuencia de Ejecución & Inicio del Sistema Operativo \\
+		\hline					Postcondiciones & Se inicia correctamente el Sistema Operativo, lo que se manifiesta en la impresión de la salida
+		de la secuencia de arranque de linux en la terminal serie de la PC\\
+		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+		\hline			   Resultados Esperados & Lograr observar por la terminal serial la secuencia de arranque del Sistema Operativo\\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el Kernel del SO pudo observarse la salida esperada, mostrada en la Referencia
+		~\ref{lst:sallinux}\\
+		\hline	
+		\end{tabular}
+		\caption{Caso de prueba T013}
 		\end{table}
 
-\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba cargado por uboot},label={lst:salidauboot}]
-aca va  
+\begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux}]
+...
+Freeing unused Kernel memory: 1416k freed
+
+init started: BusuyBox v1.19.0.giy (2013 - 10 - 25 08:10:12 CET)
+Configuring loopbak device
+
+Please press Enter to activate this console.
+#ls
+bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 \end{lstlisting}		
+
+\newpage 
 
 		\begin{table}[h!]
 		\centering
@@ -1262,46 +1289,67 @@ aca va
 		de la secuencia de arranque de linux en la terminal serie de la PC\\
 		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline			   Resultados Esperados & Lograr observar por la terminal serial la secuencia de arranque del Sistema Operativo\\
-		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la Referencia ~\ref{lst:sallinux}\\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el Kernel del SO pudo observarse la salida mostrada en la Referencia ~\ref{lst:sallinux1}\\
 		\hline	
 		\end{tabular}
-		\caption{Caso de prueba T013}
+		\caption{Caso de prueba T014}
 		\end{table}
+	
+\newpage 
 		
-\begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux}]
-==> set boot 0x100000
-## Booting kernel from Legacy Image at 00100000 ...
-   Image Name:   Linux for OpenRISC
-   Image Type:   OpenRISC 1000 Linux Kernel Image (uncompressed)
-   Data Size:    3892356 Bytes = 3.7 MiB
-   Load Address: 00000000
-   Entry Point:  00000100
-   Verifying Checksum ... OK
-   Loading Standalone Kernel Image ... OK
+\begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux1}]
+[ 0.000000] Compiled-in FDT at c02a8820 
+[ 0.000000] Linux version 3.9.0-dirty 
+			(cudar73@cudar73-desktop) (gcc version 4.5.1-or323 
+[ 0.000000] CPU: OpenRISC-12 (revision 8) @25 MHz 
+[ 0.000000] -- dcache: 4096 bytes total, 16 bytes/line, 1 way(s) 
+[ 0.000000] -- icache: 512 bytes total, 16 bytes/line, 1 way(s) 
+[ 0.000000] -- dmmu: 64 entries, 1 way(s) 
+[ 0.000000] -- immu: 64 entries, 1 way(s) 
+[ 0.000000] -- additional features: 
+[ 0.000000] -- debug unit 
+[ 0.000000] -- PIC 
+[ 0.000000] -- timer 
+[ 0.000000] setup_memory: Memory: 0x0-0x8000000 
+[ 0.000000] Reserved - 0x07ffda90-0x00002570 
+[ 0.000000] Setting up paging and PTEs. 
+[ 0.000000] map_ram: Memory: 0x0-0x8000000 
+[ 0.000000] itlb_miss_handler c0002198 
+[ 0.000000] dtlb_miss_handler c0002000 
+[ 0.000000] OpenRISC Linux -- http://openrisc.net 
+[ 0.000000] Built 1 zonelists in Zone order, 
+			mobility grouping on. Total pages: 16312 
+[ 0.000000] Kernel command line: console=uart,mmio,0x90000000,115200 
+[ 0.000000] Early serial console at MMIO 0x90000000 (options '115200') 
+[ 0.000000] bootconsole [uart0] enabled 
+[ 0.000000] PID hash table entries: 512 (order: -2, 2048 bytes) 
+[ 0.000000] Dentry cache hash table entries: 16384 (order: 3, 65536 bytes) 
+[ 0.000000] Inode-cache hash table entries: 8192 (order: 2, 32768 bytes) 
+[ 0.000000] Memory: 126088k/131072k available 
+			(2270k kernel code, 4984k reserved, 345k ) 
+[ 0.000000] mem_init_done ........................................... 
+[ 0.000000] NR_IRQS:32 nr_irqs:32 0 
+[ 0.000000] 50.00 BogoMIPS (lpj=250000) 
+[ 0.000000] pid_max: default: 32768 minimum: 301 
+[ 0.020000] Mount-cache hash table entries: 1024 
+[ 0.390000] devtmpfs: initialized 
+[ 0.460000] NET: Registered protocol family 16 
+[ 0.810000] Switching to clocksource openrisc_timer 
+[ 0.960000] NET: Registered protocol family 2 
+[ 1.040000] TCP established hash table entries: 1024 (order: 0, 8192 bytes) 
+[ 1.050000] TCP bind hash table entries: 1024 (order: -1, 4096 bytes) 
+[ 1.060000] TCP: Hash tables configured (established 1024 bind 1024) 
+[ 1.110000] TCP: reno registered 
+[ 1.110000] UDP hash table entries: 512 (order: 0, 8192 bytes) 
+[ 1.130000] UDP-Lite hash table entries: 512 (order: 0, 8192 bytes) 
+[ 1.160000] NET: Registered protocol family 1 
+[ 1.240000] RPC: Registered named UNIX socket transport module. 
+[ 1.250000] RPC: Registered udp transport module. 
+[ 1.250000] RPC: Registered tcp transport module. 
+[ 1.260000] RPC: Registered tcp NFSv4.1 backchannel transport module. 
+[ 1.300000] Unable to handle kernel NULL pointer 
+			dereference at virtual address 0x000002 
 \end{lstlisting}	
-
-
-\begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux}]
-Freeing unused Kernel memory: 1416k freed
-
-init started: BusuyBox v1.19.0.giy (2013 - 10 - 25 08:10:12 CET)
-Configuring loopbak device
-
-Please press Enter to activate this console.
-#ls
-bin		dev		etc		init		mnt		proc	root	sbin	sys		usr		var
-\end{lstlisting}		
-
-\begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux}]
-Freeing unused Kernel memory: 1416k freed
-
-init started: BusuyBox v1.19.0.giy (2013 - 10 - 25 08:10:12 CET)
-Configuring loopbak device
-
-Please press Enter to activate this console.
-#ls
-bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
-\end{lstlisting}		
 		
 %		\begin{table}[h!]
 %		\centering
@@ -1339,14 +1387,33 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 %\# @ ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
 %\end{lstlisting}		
 		
+		\newpage
 		\section{Conclusión}
+		El prototipo cuatro ayudó a verificar la posibilidad de implementación del sistema operativo de código abierto más importante en Sistemas Embebidos.
+		La posibilidad de obtener documentación de apoyo para la implementación de distintas soluciones que se ejecuten bajo este Kernel, facilita en gran
+		medida el desarrollo de aplicaciones de mayor complejidad que las desarrolladas para sistemas operativos de tiempo real como lo es ecOS.   
 		
+		Se verficó el correcto funcionamiento del gestor de arranque uboot, uno de los más conocidos y verificados. Este hecho posibilitó ejecutar desde el
+		arranque del sistema la imagen de un programa de prueba con éxito. Asímismo, no se obtuvieron los resultados esperados al intentar cargar el gestor
+		de arranque directamente desde la memoria FLASH SPI de la placa de desarrollo. Cabe destacar que inicialmente se utilizaron las herramientas
+		provistas por el fabricante (Xilinx) para acceder a las memorias S33 y M25P64, que forman parte de los kits de desarrollo S3ADSP1800A, sin
+		resultados favorables. Como resultado de la investigación ante este problema, se encontraron herramientas alternativas de código abierto que
+		posibilitaron el acceso a las memorias mencionadas. Sin embargo, los intentos de cargar firmware directamente desde la memoria FLASH SPI no tuvieron
+		resultados satisfactorios. Si se pretende obtener solición a este problema será necesario realizar un análisis exhaustivo al módulo IP SPI
+		implementado en el proyecto ORPSoC.
 		
-		
-		
-		
-		
-		
-		
+		El kernel de Linux pudo compilarse éxitosamente, con herramientas de compilación cruzada, sin mayores inconvenientes durante la construcción su
+		imágen y sus herramientas (Busybox). Luego, se ejecutó el kernel sobre el simulador de la arquitectura OpenRISC conocido como or1ksim. Pudo comprobarse
+		así, el correcto funcionamiento de la imágen construida y su correcta implementación para una arquitectura OpenRISC. Sin embargo, al intentar
+		ejecutar el Kernel sobre el kit de desarrollo S3ADSP1800A, surgieron inconvenientes respecto del acceso a memoria durante la secuencia de inicio del
+		Sistema Operativo. En el análisis efectuado ante este problema se presentaron diversos impedimientos. El primero de ellos fue la escasa
+		documentación que brinda el proveedor de la placa de desarrollo, que en ocaciones no funciona correctamente. En este trabajo se recurrió a distintas
+		notas de aplicación proporcionadas por Xilinx sin lograr resultados satisfactorios. Como alternativa que permita resolver este problema se recurrió
+		a la documentación, foros y mail lists de las comunidades Opensource. Es importante destacar que los tiempos de respuesta en este tipo de
+		canales no se corresponden con los tiempos de ejecución de este trabajo y mucho menos con los tiempos de la industria. Finalmente, debe realizarse
+		un profundo estudio sobre código del kernel que permita solucionar los problemas asociados a la adapatación del SO a la placa de desarrollo. Si lo
+		mencionado anteriormente no logra resolver el problema, deberá realizar un estudio de depuración a nivel de hardware. Existen resultados
+		satisfactorias que demuestan el correcto funcionamiento del SO en esta arquitectura sobre otras placas de desarrollo, tales como Atlys de Xilinx y
+		DE-Nano de Terasic ~\cite{rte.se} ~\cite{denano}.
 		
 		
