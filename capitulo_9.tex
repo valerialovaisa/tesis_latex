@@ -587,16 +587,12 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		\caption{Caso de prueba T005}
 		\end{table}
 
-
 \begin{lstlisting}[frame=single,caption={Salida de la terminal serie durante la ejecución del programa ethmac-ping.or32},label={lst:reseth}]
 eth ping program
 board IP : 192.168.1.2
 \end{lstlisting}
 
-
 \newpage
-
-
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -638,8 +634,8 @@ board IP : 192.168.1.2
 		\caption{Caso de prueba T006}
 		\end{table}
 
-
 \newpage
+
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -729,7 +725,7 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		\caption{Caso de prueba T008}
 		\end{table}
 
-\newpage
+
 \begin{lstlisting}[frame=single,caption={Salida de la terminal serie de los resultados de la ejecución del benchmark},label={lst:rescrm},breaklines]
 2K performance run parameters for coremark.
 CoreMark Size    : 666
@@ -749,6 +745,7 @@ Correct operation validated. See readme.txt for run and reporting rules.
 CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFORMANCE_RUN=1   / STACK
 \end{lstlisting}
 
+\newpage
 		\section{Conclusión}
 		El Prototipo Dos permitió evaluar la factibilidad de implementación de un SoC Softcore con capacidades que le confieren la posibilidad de ejecutar
 		sin problemas un Sistema Operativo Embebido. Al poseer mayores prestaciones de memoria que las del proyecto MinSoC permite ejecutar aplicaciones
@@ -973,8 +970,19 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 \newpage
 
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba twothreads},label={lst:salhilos}]
-PASS:<Thread 0 OK>
-EXIT:<done>
+Entering twothreads' cyg_user_start () function
+Beginning execution; thread data is 0
+Beginning execution; thread data is 1
+Thead 0: and now a delay of 239 clock ticks
+Thead 1: and now a delay of 230 clock ticks
+Thead 1: and now a delay of 221 clock ticks
+Thead 0: and now a delay of 214 clock ticks
+Thead 1: and now a delay of 224 clock ticks
+Thead 0: and now a delay of 243 clock ticks
+Thead 1: and now a delay of 210 clock ticks
+Thead 0: and now a delay of 224 clock ticks
+Thead 1: and now a delay of 207 clock ticks
+Thead 0: and now a delay of 244 clock ticks
 \end{lstlisting}
 
 
@@ -1099,15 +1107,19 @@ EXIT:<done>
 
 		\section{Implementación}	
 		
+La implementación de sistema operativo de Linux ser realiza en una serie de etapas detalladas a continuación. 
+		\begin {itemize}
+		\item Descarga del código fuente del proyecto
+		\item Configuración de las variables de entorno
+		\item Configuración del sistema
+		\item Confuguracion del kernel en el simulador or1ksim
+		\item Instalación sobre la placa 
+		\end {itemize}
+ 
+		Consulte la Guía de Linux en el Anexo ~\ref{app:apendice5} para una comprensión más profunda de los pasos a seguir en la implementación sobre la
+ 		placa de desarrollo S3ADSP1800A.
 		
-		
-		
-		
-		
-		
-		
-		
-		
+				
 		\section{Testing}	
 		
 		\begin{table}[h!]
@@ -1145,7 +1157,7 @@ EXIT:<done>
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba cargado por uboot},label={lst:salidauboot}]
 U-Boot 2013.04-g9181a73-dirty (Oct 30 2013 - 19:58:28)
 
-CPU:   OpenRISC-1200 (rev 8) @ 50 MHz
+CPU:   OpenRISC-1200 (rev 8) @ 25 MHz
        D-Cache: 4096 bytes, 16 bytes/line, 1 way(s)
        I-Cache: 512 bytes, 16 bytes/line, 1 way(s)
        DMMU: 64 sets, 1 way(s)
@@ -1175,7 +1187,7 @@ TFTP from server 192.168.1.98; our IP address is 192.168.1.32
 Filename 'hello.ub'.
 Load address: 0x100000
 
-Loading: \*\#\#\#\#
+Loading: *####
 	1.4 MiB/s
 done 
 Bytes transtferred = 7908(136f8 hex)
@@ -1257,45 +1269,75 @@ aca va
 		\end{table}
 		
 \begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux}]
- ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
+==> set boot 0x100000
+## Booting kernel from Legacy Image at 00100000 ...
+   Image Name:   Linux for OpenRISC
+   Image Type:   OpenRISC 1000 Linux Kernel Image (uncompressed)
+   Data Size:    3892356 Bytes = 3.7 MiB
+   Load Address: 00000000
+   Entry Point:  00000100
+   Verifying Checksum ... OK
+   Loading Standalone Kernel Image ... OK
+\end{lstlisting}	
+
+
+\begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux}]
+Freeing unused Kernel memory: 1416k freed
+
+init started: BusuyBox v1.19.0.giy (2013 - 10 - 25 08:10:12 CET)
+Configuring loopbak device
+
+Please press Enter to activate this console.
+#ls
+bin		dev		etc		init		mnt		proc	root	sbin	sys		usr		var
+\end{lstlisting}		
+
+\begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux}]
+Freeing unused Kernel memory: 1416k freed
+
+init started: BusuyBox v1.19.0.giy (2013 - 10 - 25 08:10:12 CET)
+Configuring loopbak device
+
+Please press Enter to activate this console.
+#ls
+bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 \end{lstlisting}		
 		
-		\begin{table}[h!]
-		\centering
-		\begin{tabular}{ p{5cm} p{10cm}  }
-		\hline 
-		\rowcolor[gray]{0.8} 	 Caso de Prueba & Ejecución de aplicaciones de prueba sobre Linux\\
-		\hline  		Código de Requerimiento & RQX-PD 4\\ 
-		\hline  				  Requerimiento & El prototipo debe tener capacidad de ejecución y depuración de aplicaciones sobre el sistema operativo Linux\\
-		\hline 				  Código de Testing & T014\\ 
-		\hline 						  Propósito & Ejecución de aplicaciones de prueba sobre entorno Linux\\
-		\hline					  Realizado Por & Gomez , Pablo \\
-		\hline	 		   Entorno de Ejecución & Linux\\
-		\hline		   		   	 Precondiciones & \begin {itemize}
-												  \item Instanciación en la FPGA del SoC ORPSoC
-												  \item Ejecución de una terminal serie en la PC 
- 												  \item Comunicación establecida entre la placa de desarrollo y la PC
- 												  \item Herramientas de compilación cruzada para su ejecución sobre Linux funcionando correctamente
-												  \item SO Linux ejecutándose correctamente sobre el SoC ORPSoC 
-												  \end {itemize} \\
-		\hline			 Secuencia de Ejecución & \begin {itemize}
-						 					 	  \item Inicio del gestor de arranque
-												  \item Inicio del Sistema Operativo
-												  \item Ejecución de la aplicación de prueba
-						 						  \end {itemize} \\
-		\hline					Postcondiciones &  Se ejecuta correctamente el programa de prueba, lo que se manifiesta en la impresión de la salida
-		del bash de linux en la terminal serie de la PC\\
-		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
-		\hline			   Resultados Esperados & Poder observar por la terminal serial las salida de ejecución del programa de prueba \\
-		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la Referencia ~\ref{lst:salidalinux}\\
-		\hline	
-		\end{tabular}
-		\caption{Caso de prueba T014}
-		\end{table}
+%		\begin{table}[h!]
+%		\centering
+%		\begin{tabular}{ p{5cm} p{10cm}  }
+%		\hline 
+%		\rowcolor[gray]{0.8} 	 Caso de Prueba & Ejecución de aplicaciones de prueba sobre Linux\\
+%		\hline  		Código de Requerimiento & RQX-PD 4\\ 
+%		\hline  				  Requerimiento & El prototipo debe tener capacidad de ejecución y depuración de aplicaciones sobre el sistema operativo Linux\\
+%		\hline 				  Código de Testing & T014\\ 
+%		\hline 						  Propósito & Ejecución de aplicaciones de prueba sobre entorno Linux\\
+%		\hline					  Realizado Por & Gomez , Pablo \\
+%		\hline	 		   Entorno de Ejecución & Linux\\
+%		\hline		   		   	 Precondiciones & \begin {itemize}
+%												  \item Instanciación en la FPGA del SoC ORPSoC
+%												  \item Ejecución de una terminal serie en la PC 
+ %												  \item Comunicación establecida entre la placa de desarrollo y la PC
+ %												  \item Herramientas de compilación cruzada para su ejecución sobre Linux funcionando correctamente
+%												  \item SO Linux ejecutándose correctamente sobre el SoC ORPSoC 
+%												  \end {itemize} \\
+%		\hline			 Secuencia de Ejecución & \begin {itemize}
+%						 					 	  \item Inicio del gestor de arranque
+%												  \item Inicio del Sistema Operativo
+%												  \item Ejecución de la aplicación de prueba
+%						 						  \end {itemize} \\
+%		\hline					Postcondiciones &  Se ejecuta correctamente el programa de prueba, lo que se manifiesta en la impresión de la salida
+%		del bash de linux en la terminal serie de la PC\\
+%		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
+%		\hline			   Resultados Esperados & Poder observar por la terminal serial las salida de ejecución del programa de prueba \\
+%		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba no pudo observarse la salida esperada%mostrada en la Referencia ~\ref{lst:salidalinux}\\
+%		\hline	
+%%		\caption{Caso de prueba T014}
+%		\end{table}
 
-\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba ejecutado en Linux Embebido},label={lst:salidalinux}]
-\# @ ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
-\end{lstlisting}		
+%\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba ejecutado en Linux Embebido},label={lst:salidalinux}]
+%\# @ ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
+%\end{lstlisting}		
 		
 		\section{Conclusión}
 		

@@ -1,5 +1,5 @@
 
-\chapter{Códigos de Prueba}
+\chapter{Códigos de Prueba} %%%%%%agrego archivo para configurar kernel de linux
 
  \section{Introducción}
 
@@ -533,7 +533,43 @@ int main ()
 	 \end{lstlisting}
 	 
 	  \section{Programa de Prueba de Compilador y Depurador para ORPSoC - Números Primos}
+
+\begin{lstlisting}[language=C,frame=single]
+#include "stdio.h"
+#define RANGE 2000
+
+int main(int argc, char *argv[])
+{
+int i;
+int count=0;
+int num=1;
+
+while(num<=RANGE){
+
+i=2;
+	while(i<=RANGE){
+	i=2;
+	if(i<=num){
+	break;
+	i++;}
+	
+	if(i==num){
+	printf("%d is un numero primo\n",i);
+	count ++;}
+num ++;
+}
+printf("\nCantidad de numero primos entre 1 y %d : %d\n", RANGE,count);
+return 0;
+}
+ \end{lstlisting}
+
+
  \begin{lstlisting}[language=C,frame=single]
-Código de prueba de numeros primos 
+Código de prueba de Hilos 
 	 \end{lstlisting}
 	
+	  
+
+
+
+
