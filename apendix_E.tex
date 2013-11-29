@@ -81,7 +81,7 @@ Linux representa al hardware como device tree en un archivo .dts ~\ref{lst:dts}
 			};
 	
 	memory@0 {
-		device\_type = "memory";
+		device_type = "memory";
 		reg = <0x00000000 0x08000000>
 				};
 	cpus{
@@ -94,12 +94,12 @@ Linux representa al hardware como device tree en un archivo .dts ~\ref{lst:dts}
 		};
 	};
 	pic: pic{
-			compatible = "pencores, or1k-pic";
+			compatible = "opencores, or1k-pic";
 			#interrupt-cells =<1>;
 			interrupt-controller;
 			}
 	serial0: serial@90000000 {
-			compatible = "opencores, uart16550-rtlsvn105", "ns16550a";
+			compatible = "opencores, uart16550-rtlsvn105","ns16550a";
 			#interrupt-cells =<2>;
 			clock - frequency = <25000000>;
 			};
