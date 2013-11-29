@@ -442,7 +442,6 @@ Fin del programa
 		\caption{Tabla de requerimientos del Prototipo Dos}
 		\end{table}
 
-\newpage
 		\section{Matriz de Riesgo para el Prototipo Dos} 
 
 		\begin{table}[h!]
@@ -545,6 +544,7 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		cantidad de números primos existente en un intervalo seleccionado. Ante la necesidad de evaluar las capacidades del sistema embebido se realizó un
 		caso de prueba basado en el Benchmark Coremark.
 
+\newpage
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -635,7 +635,6 @@ board IP : 192.168.1.2
 		\end{table}
 
 \newpage
-
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -726,6 +725,8 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		\end{table}
 
 
+\newpage
+
 \begin{lstlisting}[frame=single,caption={Salida de la terminal serie de los resultados de la ejecución del benchmark},label={lst:rescrm},breaklines]
 2K performance run parameters for coremark.
 CoreMark Size    : 666
@@ -745,7 +746,6 @@ Correct operation validated. See readme.txt for run and reporting rules.
 CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFORMANCE_RUN=1   / STACK
 \end{lstlisting}
 
-\newpage
 		\section{Conclusión}
 		El Prototipo Dos permitió evaluar la factibilidad de implementación de un SoC Softcore con capacidades que le confieren la posibilidad de ejecutar
 		sin problemas un Sistema Operativo Embebido. Al poseer mayores prestaciones de memoria que las del proyecto MinSoC permite ejecutar aplicaciones
@@ -760,7 +760,6 @@ CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFO
 		\section{Introducción}
 
 		Para el tercer prototipo se añadió al prototipo dos la funcionalidad aportada por el Sistema Operativo de tiempo real eCos(embedded configurable operating system) que adiciona la capacidad de la ejecución de múltiples hilos. 
-
 
 		\section{Requerimientos del prototipo}
 		
@@ -781,7 +780,7 @@ CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFO
 		\end{tabular}
 		\caption{Tabla de Requerimientos del Prototipo Tres}
 		\end{table}
-		
+\newpage		
 
 		\section{Matriz de Riesgo para el Prototipo Tres} 
 
@@ -921,8 +920,6 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{table}
 
 \newpage			
-
-
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -968,7 +965,6 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\end{table}
 
 \newpage
-
 \begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba twothreads},label={lst:salhilos}]
 Entering twothreads' cyg_user_start () function
 Beginning execution; thread data is 0
@@ -984,15 +980,6 @@ Thead 0: and now a delay of 224 clock ticks
 Thead 1: and now a delay of 207 clock ticks
 Thead 0: and now a delay of 244 clock ticks
 \end{lstlisting}
-
-
-
-\begin{lstlisting}[frame=single,caption={Salida de la ejecución del programa de prueba threads0},label={lst:salhilos}]
-PASS:<Thread 0 OK>
-EXIT:<done>
-\end{lstlisting}
-
-
 
 		\section{Conclusión}
 		
@@ -1025,7 +1012,7 @@ EXIT:<done>
 		\caption{Tabla de Requerimientos del Prototipo Cuatro}
 		\end{table}
 		
-		
+		\newpage
 		\section{Matriz de Riesgo para el Prototipo Cuatro} 
 
 		\begin{table}[h!]
@@ -1047,7 +1034,6 @@ EXIT:<done>
 		\end{table}
 
 		\newpage
-
  		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
@@ -1101,8 +1087,6 @@ EXIT:<done>
  		\end{center}
 		\end{figure}
 	
-		\newpage
-
 		\section{Implementación}	
 		
 La implementación de sistema operativo de Linux ser realiza en una serie de etapas detalladas a continuación. 
@@ -1116,9 +1100,10 @@ La implementación de sistema operativo de Linux ser realiza en una serie de eta
  
 		Consulte la Guía de Linux en el Anexo ~\ref{app:apendice5} para una comprensión más profunda de los pasos a seguir en la implementación sobre la
  		placa de desarrollo S3ADSP1800A.
-		
+		\newpage
 				
 		\section{Testing}	
+		
 		
 		\begin{table}[h!]
 		\centering
@@ -1202,6 +1187,8 @@ Cantidad de numero primos entre 1 y 2000 : 303
 
 \end{lstlisting}
 		
+		
+		\newpage
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -1231,6 +1218,7 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		\end{tabular}
 		\caption{Caso de prueba T012}
 		\end{table}	
+\newpage
 
 		\begin{table}[h!]
 		\centering
@@ -1263,7 +1251,6 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		\caption{Caso de prueba T013}
 		\end{table}
 
-
 \begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux}]
 ...
 Freeing unused Kernel memory: 1416k freed
@@ -1276,7 +1263,7 @@ Please press Enter to activate this console.
 bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 \end{lstlisting}		
 
-
+\newpage 
 
 		\begin{table}[h!]
 		\centering
@@ -1307,10 +1294,13 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 		\end{tabular}
 		\caption{Caso de prueba T014}
 		\end{table}
+	
+\newpage 
 		
 \begin{lstlisting}[frame=single,caption={Salida de la secuencia de incio de Linux Embebido},label={lst:sallinux1}]
 [ 0.000000] Compiled-in FDT at c02a8820 
-[ 0.000000] Linux version 3.9.0-dirty (cudar73@cudar73-desktop) (gcc version 4.5.1-or323 
+[ 0.000000] Linux version 3.9.0-dirty 
+			(cudar73@cudar73-desktop) (gcc version 4.5.1-or323 
 [ 0.000000] CPU: OpenRISC-12 (revision 8) @25 MHz 
 [ 0.000000] -- dcache: 4096 bytes total, 16 bytes/line, 1 way(s) 
 [ 0.000000] -- icache: 512 bytes total, 16 bytes/line, 1 way(s) 
@@ -1327,14 +1317,16 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 [ 0.000000] itlb_miss_handler c0002198 
 [ 0.000000] dtlb_miss_handler c0002000 
 [ 0.000000] OpenRISC Linux -- http://openrisc.net 
-[ 0.000000] Built 1 zonelists in Zone order, mobility grouping on. Total pages: 16312 
+[ 0.000000] Built 1 zonelists in Zone order, 
+			mobility grouping on. Total pages: 16312 
 [ 0.000000] Kernel command line: console=uart,mmio,0x90000000,115200 
 [ 0.000000] Early serial console at MMIO 0x90000000 (options '115200') 
 [ 0.000000] bootconsole [uart0] enabled 
 [ 0.000000] PID hash table entries: 512 (order: -2, 2048 bytes) 
 [ 0.000000] Dentry cache hash table entries: 16384 (order: 3, 65536 bytes) 
 [ 0.000000] Inode-cache hash table entries: 8192 (order: 2, 32768 bytes) 
-[ 0.000000] Memory: 126088k/131072k available (2270k kernel code, 4984k reserved, 345k ) 
+[ 0.000000] Memory: 126088k/131072k available 
+			(2270k kernel code, 4984k reserved, 345k ) 
 [ 0.000000] mem_init_done ........................................... 
 [ 0.000000] NR_IRQS:32 nr_irqs:32 0 
 [ 0.000000] 50.00 BogoMIPS (lpj=250000) 
@@ -1355,7 +1347,8 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 [ 1.250000] RPC: Registered udp transport module. 
 [ 1.250000] RPC: Registered tcp transport module. 
 [ 1.260000] RPC: Registered tcp NFSv4.1 backchannel transport module. 
-[ 1.300000] Unable to handle kernel NULL pointer dereference at virtual address 0x000002 
+[ 1.300000] Unable to handle kernel NULL pointer 
+			dereference at virtual address 0x000002 
 \end{lstlisting}	
 		
 %		\begin{table}[h!]
@@ -1394,7 +1387,7 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 %\# @ ACA VA EL RESULTADO DE CORRER UBOOT DESDE LA SPI
 %\end{lstlisting}		
 		
-		
+		\newpage
 		\section{Conclusión}
 		El prototipo cuatro ayudó a verificar la posibilidad de implementación del sistema operativo de código abierto más importante en Sistemas Embebidos.
 		La posibilidad de obtener documentación de apoyo para la implementación de distintas soluciones que se ejecuten bajo este Kernel, facilita en gran
