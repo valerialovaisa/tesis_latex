@@ -10,15 +10,13 @@
 
 En la elección de los microprocesadores Soft-Core presentados en el capitulo anterior nos basamos principalmente en el requerimiento de usuario sobre el Hardware el cual nos requería implementar un Microprocesador Soft-core el que prestara un rendimiento igual o superior a sus competidores comerciales. Tras la evaluación de las ventajas y desventajas de la elección de un micro con estas características se determinó el uso del microprocesador OpenRISC 1200. 	
 
-
-		    
-			
-
-
-\section{Presentación de los SoC basados en OpenRISC}
+		    			
+\section{Presentación de SoCs basados en OpenRISC}
 				
 				\subsection{Proyecto MinSoC}
-				La implementación llamada Minimal OpenRISC System on Chip utiliza IP cores estándar disponibles en OpenCores. Agrupa los cores necesarios para un SoC utilizando el procesador softcore OpenRISC OR1200. Este SoC puede ser sintetizado para cualquier FPGA y placa de desarrollo sin necesidad de realizar cambios en su descripción RTL. Para cumplir con esta premisa el proyecto se basa en una implementación básica de memoria y posee una unidad de debug llamada Advanced Debug System, que permite depurar el sistema y cargar los programas a ejecutar con la misma interfase utilizada para la configuración de la FPGA.				El proyecto brinda soporte nativo a diversas placas y FPGAs mediante definiciones en el código RTL y archivos de constantes (constraint files)
+				La implementación llamada Minimal OpenRISC System on Chip utiliza IP cores estándar disponibles en OpenCores. Agrupa los cores necesarios para un SoC utilizando el procesador softcore OpenRISC OR1200. Este SoC puede ser sintetizado para cualquier FPGA y placa de desarrollo sin necesidad de realizar cambios en su descripción RTL. Para cumplir con esta premisa el proyecto se basa en una implementación básica de memoria y posee una unidad de debug llamada Advanced Debug System, que permite depurar el sistema y cargar los programas a ejecutar con la misma interfase utilizada para la configuración de la FPGA.		
+
+El proyecto brinda soporte nativo a diversas placas y FPGAs mediante definiciones en el código RTL y archivos de constantes (constraint files)
 				pero puede adaptarse a otras siguiendo una mínima serie de pasos. Se cuenta además con una serie testbenchs y firmwares que permiten realizar
 				pruebas funcionales del sistema y sirven de guía en los primeros desarrollos. Los testbenchs de MinSoC pueden ser ejecutados mediante la
 				aplicación Icarus Verilog v.9.1. disponible en los repositorios estándar de la mayoría de las distribuciones Linux. 
@@ -31,7 +29,7 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 \begin{figure}[h!]
  \begin{center}
   \includegraphics[width=1\textwidth,keepaspectratio=true]{./images/minsoc}
-  \caption{Arquitectura MinSoc}
+  \caption{Arquitectura MinSoC}
   \label{fig:esquemaminsoc}
  \end{center}
 \end{figure}
@@ -76,7 +74,7 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				\url{opencores.org}.
 
 
-El proyecto permite tanto a usuarios nuevos como experimentados realizar diseños con un desarrollo rápido OpenRISC.Está destinado a ser un entorno de desarrollo y verificación de núcleos de propiedad intelectual y diseños SoC.Es un proyecto de desarrollo colaborativo. Como plataforma de desarrollo proporciona un entorno modular y facil de usar, para el desarrollo de código RTL y su posterior simulación y síntesis. Provee un entorno de herramientas para desarrollo de aplicaciones OpenRISC para su simulación y prueba en la placa de desarrollo.
+El proyecto permite tanto a usuarios nuevos como experimentados realizar diseños con un desarrollo rápido OpenRISC. Está destinado a ser un entorno de desarrollo y verificación de núcleos de propiedad intelectual y diseños SoC. Es un proyecto de desarrollo colaborativo. Como plataforma de desarrollo proporciona un entorno modular y fácil de usar, para el desarrollo de código RTL y su posterior simulación y síntesis. Provee un entorno de herramientas para desarrollo de aplicaciones OpenRISC para su simulación y prueba en la placa de desarrollo.
 
 Una visión general sobre el SoC completa y sus conexiones externas es en la  (Figura ~\ref{fig:esquemaorpspc})
 
@@ -317,13 +315,13 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 					\item I2C
 				\end{itemize}				
 				
- 		\subsection{Conclusiones de la elección de la Placa de Desarrollo}
+ 		\subsection{Conclusiones de la elección de la placa de desarrollo}
  				Se seleccionó entre los items analizados y teniendo en cuenta la disponibilidad de recursos al momento de realizar este trabajo utilizar las
  				placas S3ADSP1800A de Xilinx para soportar los SoC a implementar.
  		
  		\newpage	
- 		\section{Presentación de las herramientas de desarrollo} 	 
- 				\subsection {Herramientas de Desarrollo de Hardware}
+ 		\section{Presentación de las Herramientas de Desarrollo} 	 
+ 				\subsection {Herramientas de desarrollo de hardware}
  				Durante el proceso de desarrollo e implementación de hardware mediante lógica programable son necesarias un serie de herramientas que
  				proporcionan diferentes salidas en cada etapa del proceso. En la Figura ~\ref{fig:designflow} se observan las etapas del flujo de diseño y sus
  				respectivas salidas.
@@ -339,13 +337,13 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				Se analizaron las aplicaciones alternativas para cada etapa, enfatizando la selección de aplicaciones que cumplan con el requerimiento RQX-LC 2
 				planteado en la Tabla ~\ref{tab:requsr2}.   
 				
-				\subsubsection {Codificación RTL - Editores de Texto}
+				\subsubsection {Codificación RTL - editores de texto}
 				Existen diversas herramientas de Edición de Texto que poseen características compatibles con el desarrollo de código de descripción de hardware.
 				Entre las características más comunes encontramos numeración de líneas, resaltado de código, y predictores. 
 				Xilinx provee en su Suite de Desarrollo la posibilidad de confeccionar código directamente desde ISE Project Mananger. Sin embargo,
 				existen alternativas Open Source de capacidades comparables tales como emacs o gedit. 
 				
-				\subsubsection {Síntesis, Implementación del Diseño y Generación del Bit File}
+				\subsubsection {Síntesis, implementación del diseño y generación del Bit File}
 				En estas etapas del proceso de diseño no existen herramientas alternativas con licencias OpenSource que permitan obtener el archivo de
 				configuración de la FPGA. Esta restricción obliga a los desarrolladores a utilizar solo las herramientas del fabricante al implentar sus diseños
 				en FPGA.
@@ -354,7 +352,7 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				del diseño y consta de tres grandes etapas: Translate, Map, Place and Route. Finalizada esta etapa se obtiene el diseño adecuado al modelo de
 				fpga seleccionado, sus clocks y sus conexiones de entrada/salida. 
 				
-				\subsubsection {Programación y Configuración de la FPGA}
+				\subsubsection {Programación y configuración de la FPGA}
 				La acción que culmina el proceso de implementación es la descarga del código binario de configuración en la FPGA. El protocolo utilizado para
 				realizar esta acción se denomina JTAG (Joint Test Action Group) se encuentra implementado en diversos dispositivos de programación de FPGA y
 				microprocesadores. La mayoría de estos dispositivos proveen soporte SPI (Serial Peripheral Interface) que permite el acceso a dispositivos de
@@ -373,7 +371,7 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				  \item Memorias SPI flash: AT45, AMIC, AMIC-QUAD, M25P, N25Q, S33, W25
  				\end{itemize}
  				 
- 				\subsection {Herramientas de Desarrollo de Software}
+ 				\subsection {Herramientas de desarrollo de software}
  			
 				Se analizaron las aplicaciones alternativas para cada etapa, enfatizando la selección de aplicaciones que cumplan con el requerimiento RQX-LC 3
 				planteado en la Tabla ~\ref{tab:requsr2}.   
@@ -555,7 +553,7 @@ Arquitecturas compatibles:
 %			\end{itemize}
 
 
-		\subsection{ BusyBox}	
+		\subsection{BusyBox}	
  	
 				
 			 

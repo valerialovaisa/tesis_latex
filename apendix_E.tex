@@ -9,7 +9,7 @@ Inicialmente se deben descargar los fuentes de la sistema operativo desde el rep
 \end{lstlisting}
 
 
-\section{Configuración de variables de entorno}
+\section{Configuración de Variables de Entorno}
 
 Debe establecer la variable entorno CROSS\_COMPILE en el shell antes de iniciar la construcción del kernel Linux. Debe agregarse la siguiente línea al archivo .bashrc.
 
@@ -22,7 +22,7 @@ Es necesario que se reconfiguren las variables mediante:
  usuario@usuario-desktop:~/$ source ~/.bashrc
 \end{lstlisting}
 
-\section{Construcción del sistema configuración básica}
+\section{Construcción del Sistema Configuración Básica}
 
 Tenga en cuenta que hay un binario pre-configurado de BusyBox. Ejecute los siguientes comandos para construir el kernel:
 
@@ -34,7 +34,7 @@ usuario@usuario-desktop:~/<directorio de linux>/$ make
 
 El archivo vmlinux ELF se convierte y se copia en el archivo vmlinux.bin al finalizar el make
 
-\section{Ejecución del kernel en el simulador}
+\section{Ejecución del Kernel en el Simulador}
 
 Utilice el siguiente comando para ejecutar el kernel de Linux en el simulador de la arquitectura OpenRISC (or1ksim): 
 
@@ -61,7 +61,7 @@ end
 \end{lstlisting}
 
 \newpage
-\section{Instalación sobre la placa}
+\section{Instalación sobre la Placa}
 La siguente guía se utiliza para la placa de desarrollo S3ADSP1800A para la configuración, compilación y descarga del Kernel.
 
 	\subsection{Archivo de configuración para el kernel de linux}
@@ -116,7 +116,7 @@ El archivo creado para la placa de desarrollo lo colocamos en:
 usuario@usuario-desktop:~/<directorio de linux>/$arch/openrisc/boot/dts/
 \end{lstlisting}
 
-\subsection{Configuración del Kernel}
+\subsection{Configuración del kernel}
 
 Vamos a utilizar la herramienta menuconfig para configurar el kernel para la placa. 
 
@@ -143,7 +143,7 @@ Seleccionar el tipo de procesador, características y pulsa RETURN.
   
 Luego de cambiar el simulador or1ksim a Xilinx, se guarda y se ejecuta nuevamente make.
 
-\subsection{Generación de la imagen para ser levantada por U-boot}
+\subsection{Generación de la imagen para ser levantada por u-boot}
 \begin{lstlisting}[breaklines]
 usuario@usuario-desktop:~/<directorio de linux>/$/orpsocv2/u-boot /tools/mkimage -n 'Linux for OpenRISC' -A or1k -O linux -T kernel -C none -a 0 -e 0x100 -d /opt/home/svan/OpenRISC/linux/vmlinux.bin /tftpboot/uImage
 \end{lstlisting}

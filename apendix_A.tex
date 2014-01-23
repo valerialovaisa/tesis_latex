@@ -11,7 +11,7 @@ El SoC permite cargar un pequeños programas en la memoria interna usando el Cab
 \begin{figure}[h!]
  \begin{center}
   \includegraphics[width=1\textwidth,keepaspectratio=true]{./images/minsoc}
-  \caption{Arquitectura MinSoc}
+  \caption{Arquitectura MinSoC}
   \label{fig:esquema}
  \end{center}
 \end{figure}
@@ -155,7 +155,7 @@ user@dist:<directorio_de_instalación>/minsoc/backend/spartan3a_dsp_kit $./confi
 
 El sistema está configurado ahora, se puede proceder a la síntesis.
 
-\subsection{Generación del .Bit}
+\subsection{Generación del archivo bitstream}
 
 MinSoC utiliza un archivo Makefile para sintetizar su diseño. El sistema para sintetizar se encuentra en el subdirectorio minsoc/syn/xilinx. Una vez realizada la síntesis se creara el archivo .bit necesario para configurar la FPGA.
 
@@ -165,7 +165,7 @@ user@dist:~<directorio_de_instalación>/minsoc/syn/xilinxt$make all
 
 Después de que se ha generado el archivo de .bit, se cargar el archivo a la FPGA utilizando la herramienta del proveedor para este propósito como es en este caso iMPACT o mediante un herramienta Open Source llamada xc3sprog. 
 
-\section{Complilacion de un Software para OpenRisc}
+\section{Compilación de un Software para OpenRisc}
 
 Para compilar cualquier aplicación que vaya a ser ejecutada en el SoC con un micro OpenRisc, se necesita utilizar un compilador cruzado en este caso es el or32-elf-gcc que se encuentra incluido en el PATH por medio de el script de instalación minsoc-install.sh.
 

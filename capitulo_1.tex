@@ -1,38 +1,35 @@
 \chapter{Introducción}
 
 \section{Descripción General}
-Este trabajo se fundamenta en dos aspectos: Un aspecto técnico con la implementación de un sistema embebido en chip con microprocesador diseñado
-en lenguaje de descripción de hardware y el análisis de ésta implementación como base para el desarrollo de sistemas de código abierto.
-Para implementar el sistema se ha empleado una plataforma basada en sistemas abiertos tanto a nivel de hardware como a nivel del sistema operativo
-implantado sobre dicho hardware.
+%Este trabajo se fundamenta en dos aspectos: Un aspecto técnico con la implementación de un sistema embebido en chip con microprocesador diseñado en lenguaje de descripción de hardware y el análisis de ésta implementación como base para el desarrollo de sistemas de código abierto. Para implementar el sistema se ha empleado una plataforma basada en sistemas abiertos tanto a nivel de hardware como a nivel del sistema operativo implantado sobre dicho hardware.
+
+La implementación de un sistema embebido en chip con microprocesador diseñado en lenguaje de descripción de hardware y el análisis de ésta implementación como base para el desarrollo de sistemas de código abierto. Para implementar el sistema se ha empleado una plataforma basada en sistemas abiertos tanto a nivel de hardware como a nivel del sistema operativo implantado sobre dicho hardware.
 
 La implementación del sistema se ha llevado a cabo sobre una placa de desarrollo específica, basada en hardware reconfigurable disponible en el
 Centro Universitario de Automatización y Robótica (CUDAR) de la Universidad Tecnológica Nacional (UTN) de Córdoba. Aunque la implementación del
 sistema de hardware en sí es independiente de la tecnología de implementación.
 
-Inicialmente se analizarán las diferentes alternativas que ofrece el mercado y las comunidades de hardware de código abierto para la
+Inicialmente se analizo diferentes alternativas disponibles en el mercado y comunidades de hardware de código abierto para la
 implementación de microprocesadores diseñados en lenguaje de descripción de hardware. Este trabajo ofrece una guía a los diseñadores de
-sistemas embebidos para la elección inicial de la arquitectura del sistema, que incluye por lo general como principal componte al microprocesador.
+sistemas embebidos para la elección inicial de la arquitectura del sistema, que incluye por lo general como principal componte al microprocesador. Posteriormente se realizo un estudio de componentes que se ajusten a los requerimientos tanto a nivel de hardware como de sistema operativo.
 
-Luego para llevar a cabo la implementación, se realizó un estudio de componentes que se ajusten a los requerimientos tanto a nivel de hardware como
-de sistema operativo.
+Con este Trabajo Final se pretende mostrar, que la tecnología de sistemas sobre chip basada en dispositivos reconfigurables, como los diseños abiertos en hardware y software, son adecuados para la implementación de sistemas de aplicación industrial.
 
-Con este ejemplo de sistema completo de código abierto se pretende mostrar, tanto que la tecnología de sistemas sobre chip basada en dispositivos
-reconfigurables así como los diseños abiertos en hardware y software, son adecuados para la implementación de sistemas reales.
+%Con este Trabajo Final de un sistema completo de código abierto se pretende mostrar, que la tecnología de sistemas sobre chip basada en dispositivos reconfigurables, como los diseños abiertos en hardware y software, son adecuados para la implementación de sistemas de aplicación industrial.
 
 \section{Objetivos}
-\subsection{Objetivo General}
+\subsection{Objetivo general}
 Implementar un System on Chip (SoC) Open Source con microprocesador softcore embebido que soporte un sistema operativo libre, con la finalidad de
 entregar un sistema integral FPGA-SoC-Sistema Operativo completamente funcional de código abierto, tanto a nivel de hardware como de software.
 
-\subsection{Objetivo Específico}
+\subsection{Objetivo específico}
 \begin{itemize}
-\item Seleccionar, analizar y determinar la factibilidad de implementación de un microprocesador softcore en FPGA.
+\item  Analizar los microprecesadores soft core disponibles y su factibilidad de implementación en tales placas. determinar la factibilidad de implementación de microprocesador, seleccionando el mas adecuado para tal FPGA en particular %%corregir agregar plcas disponibles en cudar
 \item Seleccionar un SoC Open Source de acuerdo al microprocesador softcore seleccionado.
 \item Presentar los Sistemas Operativos Linux y ecOS que poseen las prestaciones funcionales adecuadas para su utilización en Sistemas
 Embebidos.
 \end{itemize}
-
+%% agregar el trabajo de adaptación a la placa de desarrollo 
 \section{Motivación} 
 Los sistemas embebidos son aquellos sistemas que implementan una función específica para la cual se tienen que cumplir una serie de restricciones.
 Las restricciones principales son el bajo coste y consumo, así como un tamaño y peso lo mas reducído posible.
@@ -44,7 +41,7 @@ capaz de reducir significativamente los tiempos de desarrollo de estos sistemas.
 Todos estos problemas han dado lugar a una evolución en la metodología de diseño que se aplica. Así, el principal cambio metodológico ha sido
 transformar en aspecto principal del diseño de sistemas embebidos no tanto el diseño del hardware específico sino, más bien, el desarrollo del
 software que implementa las diferentes aplicaciones. Esto ha sido posible gracias al avance microelectrónico que hoy en día permite el diseño
-completo de un sistema en un chip (System On Chip – SoC) lo que ha permitido partir en el diseño de plataformas hardware base bien desarrolladas.
+completo de un sistema en un chip SoC lo que ha permitido partir en el diseño de plataformas hardware base bien desarrolladas.
 
 Efectivamente, la arquitectura hardware de un sistema embebido en tecnología SoC consiste en uno o varios microprocesadores del sistema sobre los que
 se organizan diferentes periféricos necesarios para llevar a cabo la función deseada. Para completar el sistema embebido, la aplicación concreta se
@@ -84,12 +81,12 @@ microprocesadores de 32 bits, son los procesadores \textit{SPARC LEON OpenRISC 1
 
 Usar cores de código abierto va unido a una serie de conceptos como:
 \begin {itemize}
-	\item \textit{Flexibilidad}  Si el código fuente está disponible, los desarrolladores pueden modificar el código de acuerdo a sus necesidades.
+	\item \textit{Flexibilidad}: Si el código fuente está disponible, los desarrolladores pueden modificar el código de acuerdo a sus necesidades.
 	Además, se produce un flujo constante de ideas que mejoran la calidad del código.
-	\item \textit{Fiabilidad y seguridad}  Con muchos programadores a la vez escrutando el mismo trabajo, los errores se detectan y corrigen antes, por lo que
+	\item \textit{Fiabilidad y seguridad}: Con muchos programadores a la vez escrutando el mismo trabajo, los errores se detectan y corrigen antes, por lo que
 	el producto resultante es mas fiable y eficaz que el comercial.
-	\item \textit{Rapidez de desarrollo} Las actualizaciones y ajustes se realizan a través de una comunicación constante vía Internet.
-	\item \textit{Relación con el usuario} El programador se acerca mucho más a las necesidades reales de su cliente, y puede crear un producto
+	\item \textit{Rapidez de desarrollo}: Las actualizaciones y ajustes se realizan a través de una comunicación constante vía Internet.
+	\item \textit{Relación con el usuario}: El programador se acerca mucho más a las necesidades reales de su cliente, y puede crear un producto
 	específico para él.
  \end {itemize}
 
@@ -113,8 +110,8 @@ planeamiento, es necesario comprobar que el sistema cumplirá sus con sus requer
 hardware de código abierto para no ser adoptado es la dificultad que implican tanto a nivel de diseño hardware como de desarrollo software.
 
 \section{Modelo de Desarrollo}
-El modelo de desarrollo a utilizar es el Modelo en Espiral (Figura : ~\ref{fig:esquema}) tipificado por Ian Sommerville\cite{Etiqueta00}, fue
-originalmente propuesto por Boehm en año 1988, en su artículo " A Spiral Model of Software Development and Enhancement ". Propuso un marco del
+El modelo de desarrollo a utilizar es el \textit{Modelo en Espiral}~\ref{fig:esquema} tipificado por Ian Sommerville~\cite{Etiqueta00}, fue
+originalmente propuesto por Boehm en año 1988, en su artículo " A Spiral Model of Software Development and Enhancement " . Propuso un marco del
 proceso de software dirigido por el riesgo.Aquí, el proceso de desarrollo se representa como una espiral, cada ciclo en la espiral representa una
 fase del proceso de desarrollo. Por ende, el ciclo más interno puede relacionarse con la factibilidad del sistema, el siguiente ciclo con la
 definición de requerimientos, el siguiente ciclo al diseño del sistema, y así sucesivamente. 
@@ -130,16 +127,16 @@ definición de requerimientos, el siguiente ciclo al diseño del sistema, y así
 Cada ciclo del espiral se divide en 4 sectores:
 \begin {itemize}
 \item 
-\textit{Establecimiento de objetivo} Se definen objetivos específicos para dicha fase del proyecto. Se identifican restricciones en el proceso y el
+\textit{Establecimiento de objetivo}: Se definen objetivos específicos para dicha fase del proyecto. Se identifican restricciones en el proceso y el
 producto y se traza un plan detallado de gestión. Se identifican los riesgos del proyecto. Dependiendo de estos riesgos, se planean estrategias
 alternativas que permitan utilizar otros caminos hacia la solución ante sobre la aparición de problemas asociados a estos riesgos.
 \item 
-\textit{Validación y reducción del riesgo} En cada uno de los riesgos identificados del proyecto, se realiza un análisis minucioso proponiendo
+\textit{Validación y reducción del riesgo}: En cada uno de los riesgos identificados del proyecto, se realiza un análisis minucioso proponiendo
 acciones para reducir dichos riesgos.
 \item 
-\textit{Desarrollo y validación} Después de una evaluación de riesgos, se elige un modelo de desarrollo para el sistema.
+\textit{Desarrollo y validación}: Después de una evaluación de riesgos, se elige un modelo de desarrollo para el sistema.
 \item 
-\textit{Planeamiento}  El proyecto se revisa y se toma una decisión sobre si hay que continuar con otro ciclo de la espiral. Si se opta por continuar,
+\textit{Planeamiento}: El proyecto se revisa y se toma una decisión sobre si hay que continuar con otro ciclo de la espiral. Si se opta por continuar,
 se trazan los planes para la siguiente fase del proyecto.
 \end {itemize}
 
@@ -156,9 +153,9 @@ siguiente fase del proceso.
 Debido al plazo estipulado para el desarrollo del proyecto, el mismo involucra las siguientes etapas: 
 
 \begin {itemize}
-	\item Especificación y Análisis de requerimientos.
+	\item Especificación y análisis de requerimientos.
 	\item Análisis de riegos.
-	\item Evaluación de Componentes.
+	\item Evaluación de componentes.
 	\item Implementación.
 	\item Testing.
 \end {itemize}

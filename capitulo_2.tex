@@ -1,4 +1,4 @@
-\chapter{FPGA, microprocesadores Soft-Core y IP-Core}
+\chapter{FPGA, Microprocesadores Soft-Core y IP-Core}
 \section{FPGAs}
 	\subsection{Introducción}
 	La fabricación de dispositivos semiconductores es un proceso complicado de plazos largos y costosos. Esto lleva a que los diseños destinados para la 
@@ -7,8 +7,8 @@
 	
 	Basándose en la predicción de la ley de Moore donde expresa que aproximadamente cada dos años se duplica el número de transistores en un circuito
 	integrado\cite{Etiqueta02}, Ross Freeman postuló que los transistores serian menos costoso cada año, haciendo asequible la fabricación de chips
-	programables personalizables \cite{Etiqueta03}. La compañía Xilinx, ofreció su primer chip en 1984, que contiene arrays celdas lógicas (LCAs),
-	programables por el usuario en casi cualquier configuración que requieran. Estos se conocen como Field Programmable Gate Array (\textit{FPGAs}) .
+	programables personalizables \cite{Etiqueta03}. La compañía Xilinx, ofreció su primer chip en 1984, que contiene arreglo  celdas lógicas (LCAs),
+	programables por el usuario en casi cualquier configuración que requieran. Estos se conocen como (\textit{FPGAs}) .
 	
 	Las \textit{FPGAs} desempeñan un papel dual, uno como objetivo final de ejecución en un diseño y otro papel como prototipo para la implementación
 	definitiva de un diseño. Su capacidad de reconfigurar el diseño parcial o totalmente para su actualización o corrección de errores tiene un costo
@@ -53,7 +53,7 @@
 	Otros fabricantes han optado por otro tipo de estructuras internas para sus \textit{FPGAs}, cada una con sus propias ventajas e inconvenientes. No es objeto
 	de este trabajo evaluar las estructuras internas de las \textit{FPGAs}.
 	
-		\subsubsection{Bloques Lógicos Configurables y Lookup Tables}
+		\subsubsection{Bloques lógicos configurables y lookup tables}
 		Todas las\textit{FPGAs} se basan en arrays de pequeños elementos de lógica digital. Los problemas de lógica digital se descomponen en circuitos
 		lógicos que puedan ser mapeados a una o más de estas “celdas lógicas” a través de un proceso llamado \textit{“technology mapping"}.
 	
@@ -73,7 +73,7 @@
 		alguna lógica de entrada, que usualmente está implementada como una \textit{lookup table} de n entradas, donde n es 5 o menos. Estas \textit{LUTs}
 		son capaces de implementar cualquier función combinacional de sus entradas.
 
-		\subsubsection{Bloques de Entrada y Salida de Propósito General}
+		\subsubsection{Bloques de entrada y salida de propósito general}
 		Las \textit{FPGAs} poseen pines TTL, CMOS, PCI, LVDS y muchos otros que les permiten hacer de interface y convertir tecnologías diferentes.
 		Las \textit{FPGAs} tienen bloques de I/O dedicados para clocks y resets globales.
 	
@@ -93,7 +93,7 @@
  		\end{center}
 		\end{figure}
 
-		\subsubsection{Manejadores de Clock Digitales}
+		\subsubsection{Manejadores de clock digitales}
 		El \textit{clock manager} se utiliza para generar un número determinado de “daughter clocks" (Figura ~\ref{fig:dclocks}) . Es utilizado para
 		remover el \textit{jitter} como \textit{sintetizador de frecuencia}, donde a partir de una frecuencia de referencia permite obtener un conjunto
 		discreto de frecuencias, tratando de mantener en todos los casos las características de estabilidad de la frecuencia de referencia
@@ -102,7 +102,7 @@
 		\begin{figure}[h!]
  		\begin{center}
  		\includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/dougther}
-  		\caption{Clock Manager}
+  		\caption{Clock manager}
   		\label{fig:dclocks}
  		\end{center}
 		\end{figure}
@@ -115,12 +115,12 @@
 		\begin{figure}[h!]
  		\begin{center}
  		\includegraphics[width=0.5\textwidth,keepaspectratio=true]{./images/clocktree}
-  		\caption{Clock Tree}
+  		\caption{Clock tree}
   		\label{fig:ctree}
  		\end{center}
 		\end{figure}
 
-	\subsection{Tipo de Tecnología} 
+	\subsection{Tipo de tecnología} 
 	Teniendo en cuenta al tipo de tecnología que utilizan las \textit{FPGAs} para almacenar sus datos de configuración, estas se pueden clasificar en
 	tres tipos:
 
@@ -207,7 +207,7 @@
 			diseño del core ya que tienen un layout predefinido incluido en la arquitectura. Son los mejores para aplicaciones plug\&play. Si bien son poco
 			flexibles, portables y configurables, son muy predictibles (el timing es fijo) y fiables una vez implementados.
 
-		\subsubsection{Clasificación de acuerdo con la Integración}
+		\subsubsection{Clasificación de acuerdo con la integración}
 		El aumento de recursos de las FPGAs junto con la amplia disponibilidad de bloques IP ha hecho posible la integración de sistemas completos en la
 		propia FPGA y la aparición de una nueva terminología para clasificarlos. Algunos de los términos que se usan para designar este tipo de sistemas
 		son:
