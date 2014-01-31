@@ -1,223 +1,452 @@
-\chapter{Software OpenSource y Libre}
-\section{Introdución} 
-	El software \textit{Open Source} (Código Abierto) , es particularmente software que ofrece al
-	usuario la posibilidad de conocer el código fuente para su estudio o modificación. No sólo hace referencia al libre acceso al código fuente, las
-	condiciones de distribución de un programa \textit{Open Source} deben cumplir una serie de criterios, que a continuación se exponen. El propósito de
-	establecer una definición oficial de \textit{Open Source} es establecer que esos criterios contengan la esencia de lo que los programadores quieren que
-	signifique: que aseguren que los programas distribuidos con " Licencia Open Source " estarán disponibles para su continua revisión y mejora para que
-	alcancen niveles de fiabilidad que no pueda conseguir ningún programa comercial cerrado sin discriminar a personas ni a grupos de personas que
-	quiera utilizarlo. Es un término ambiguo, el acuerdo sobre la definición está en el documento llamado Open Source Definition (OSD), publicado por la
-	Open Source Initiative (OSI). La OSD da grandes libertades a la hora de relicenciar software, lo que no sucede con otras licencias de código
-	abierto. En particular la OSD permite " mezclar " software privativo con software \textit{Open Source}.
-	
-	La Fundación para el Software Libre (FSF) determina claramente, qué se tiene que cumplir sobre el software para que pueda ser considerado
-	\textit{libre} \cite{Etiqueta07}. El software \textit{libre} se refiere a la libertad de los usuarios para ejecutar, copiar, distribuir, estudiar,
-	cambiar y mejorar el software. El vocablo \textit{free} en inglés significa: gratis y/o libre. Por ello el término ha ocasionado confusiones dándose
-	a entender, equivocadamente, que el software libre es gratuito o regalado. No es una cuestión de presencia o ausencia de costo, puesto que el
-	software libre no significa que no pueda ser comercial.
-	
-	Richard Stallman fundó la FSF en 1985 para promover la libertad del usuario y defender los derechos de todo el software libre \cite{Etiqueta14}. La
-	FSF patrocina el proyecto GNU. El software libre permite al usuario el ejercicio de cuatro libertades básicas:
-	\begin {itemize}
-	\item
- 	\textit{Libertad 0} El software \textit{libre} permite estudiar cómo funciona y adaptarlo a las necesidades de quién lo use. Tener acceso a
- 	su código fuente posibilita, entre otras cosas, descubrir funciones ocúltas, averiguar como se realiza determinada tarea, descubrir qué
- 	posibilidades tiene, etc. Al adaptar el programa a las necesidades del usuario pueden suprimirse partes que no le interesen, agregar otras partes
- 	que considere importantes copiar una parte que realiza una tarea y/o adicinarla a otro programa, etc.
-	\item
-	\textit{Libertad 1} El software, sus copias y las modificaciones se pueden distribuir libremente, lo que significa poseer la libertad de redistribuir
-	el programa, gratis o con algún costo, ya sea por mail, FTP, o en CD, redistibuyéndolo a una persona o a varias, a una persona que vive en otro país,
-	etc.
-	\item 
-	\textit{Libertad 2} Es posible mejorarlo y hacer pública esas mejoras. La libretad de hacer un programa mejor, implica que se puede hacer menores los
-	requerimientos de hardware para funcionar, que tenga mayores prestaciones, que sus requerimientos no sean tan altos, que tenga menos errores, etc. El
-	poder liberar las mejoras al público quiere decir que si se realiza una mejora que permita un requerimiento menor de hardware, o que haga que ocupe
-	menos espacio, se puede redistribuir ese programa mejorado o simplemente proponer la mejora en lugar público (un foro de noticias, una lista de
-	correo, un sitio web, un FTP, un canal de chat).
-	\item 
-	\textit{Libertad 3} El usuario al poseer el código fuente tiene poder de decisión, ya que podrá elegir quién puede modificar los programas que ha
-	adquirido para mejorarlos (o bien mejorarlos el mismo). Es decir, esto permite que no exista un monopolio, porque en el caso de que un software sea
-	discontinuado el usuario podrá nuevamente (al poseer el código) elegir a un desarrollador para continuar utilizando el software que fue
-	discontinuado. Además el usuario no estará completamente a merced de tener que renovar su hardware y software constantemente según ocurre a menudo
-	con las políticas de las empresas que producen software privativo y también será libre de vender o redistribuir software libre.
- 	\end {itemize}
- 	
- 	El termino Free and Open Source Software (FOSS) se utiliza para referirse al software que se adhiere al OSD y FSF. El software libre y de código
-	abierto es una sociedad inclusiva, el término abarca tanto el software libre y software de código abierto a pesar de describir modelos de desarrollo
-	similares, tienen diferentes culturas y filosofías.
-	
-	Mediante la \textit{licencia} un autor permite el uso de su creación a otras personas, de la manera que él cree aceptable. En ese sentido
-	la \textit{licencia} es el instrumento que regula las maneras en que el usuario puede utilizar el software. Una \textit{licencia} de software es un
-	contrato que determina en qué condiciones el usuario puede utilizar el programa informático y qué obligaciones adquiere para su uso. Cuando se
-	instala un programa informático, o a veces, incluso, por el simple hecho de abrir el sobre que lo contiene, se esta aceptando las condiciones de su
-	\textit{licencia} de software.
-	
-	Cuando IBM comenzó la venta de computadoras a gran escala en la década de 1960, el software venía incluido con su código fuente. Una década más
-	tarde, sin embargo, comenzaron a " desagregar "  el código fuente, convirtiéndose en algo habitual para los fabricantes, este hecho limitó el uso del
-	código fuente a sus competidores, sin embargo, también eliminó la capacidad de modificar libremente el código y compartirlo. \cite{Etiqueta08}.
-	
-	La \textit{licencia} División de Software de Berkeley (BSD) y la GNU General Public License (GNU GPL) son dos de las primeras licencias de código
-	\textit{libre}. Ambas proporcionan la libertad de usar software de código abierto para cualquier propósito y permitir la modificación y la
-	distribución de su código fuente sin tener que pagar regalías. Un punto significativo de diferencia entre las \textit{licencia} BSD y GPL es que la
-	primera permite el uso del código fuente en software no libre.
-	
-	La GNU GPL se conoce como una \textit{licencia viral}, donde cualquier desarrollo que se haga bajo el uso de código licenciado bajo la GNU GPL debe
-	ser entonces licenciado bajo la GNU GPL o cualquier \textit{licencia} autorizada por la FSF. En pocas palabras, una condición de uso del código
-	licenciado bajo GPL es que su diseño se debe tener bajo la licencia  GPL o una licencia compatible. Las licencias que se consideran compatibles con
-	la GPL por la FSF son generalmente similares en las libertades que garantiza el software \textit{libre}.
-	
-	La licencia BSD modificada es básicamente la misma que la original sin la clausula de publicidad. De acuerdo con dicha cláusula, todo el material de
-	publicidad en el cual se menciona características o la utilización de este software tenia que mostrar el siguiente asentimiento: " Este producto
-	incluye software desarrollado por la Universidad de California, Berkeley y sus contribuyentes ". Esta cláusula de publicidad no permitía que fuera
-	compatible con la licencia GPL pero a partir de su versión 2.0 fue eliminada y la licencia pasó a ser compatible con la GPL.
-	
-	En la GNU se estipula que el código modificado debe estar disponible, y que cualquier desarrollo que utilice código bajo esta licencia tiene también
-	que estar bajo la GNU GPL. Aunque, esto no es diferente a cualquier licencia comercial, donde el código fuente creado o modificado por los empleados
-	de una empresa queda bajo la licencia exclusiva de la empresa. En el caso de la licencia de GNU, sin embargo, los usuarios están obligados a mantener
-	sus diseños abiertos y libres, de la misma manera que los empleados estan obligados a mantener su código propietario en secreto para cualquiera que
-	no sea de la empresa.
-	
-	Otro punto de controversia es el uso combinado del código fuente donde cada uno esta bajo una licencia diferente, dando lugar al concepto de
-	\textit{compatibilidad de la licencia}. En el caso de que un desarrollo utilizara una librería bajo licencia GPL, la GNU GPL especifica que se puede
-	utilizar tal librería si el diseño que la requiere este también bajo la licencia GPL. El uso de librerías precompiladas es muy común en aplicaciones.
-	En el caso de que la librería se encuentra bajo licencia GPL, cualquier programa que haga uso de ella (también conocido como la creación de un
-	\textit{link} a la librería) debe también estar bajo la GPL. Sin embargo, la inclusión en una aplicación compilada de un binario GPL (conocido como
-	\textit{vinculación estática}) no es realmente un problema, esto es equivalente a incluir el código fuente completo y generar mediante la
-	compilación de todo el código un binario ejecutable. El debate es sobre la \textit{vinculación dinámica}. Esto implica el uso de una librería de
-	software precompilada que reside en memoria (no dentro de una aplicación compilada) cuando se ejecuta una aplicación. El hecho que un programa que 
-	vincula dinámicamente a una librería es considerado un trabajo derivado es un tema de debate. El proyecto GNU considera esas aplicaciones como
-	derivadas y les obliga a cumplir con los requisitos de la licencia GNU GPL.
-	
-	Una solución para aquellos que deseen escribir bibliotecas sin ajustarse a la interpretación estricta de trabajo derivado, fue
- 	propuesta por GNU en su Licencia de Uso General Menor (LGPL). Se trata de un trade-off, lo que permite desmostrar que la tecnología licenciada bajo
- 	el Proyecto GNU es de alta calidad, fomentando así la participación de las personas en el proyecto, al tiempo que conserva algo de sus requisitos
- 	de la libertad. El proyecto GNU, sin embargo, prefiere que los desarrolladores liberen bibliotecas bajo la GPL, lo que obliga a quienes las
- 	utilizan a contribuir con su trabajo a una parte del proyecto de GNU.
-	
-	Una solución para aquellos que deseen escribir librería y no tienen la interpretación más estricta de los trabajos derivados se aplica la propuesta
- 	del Proyecto GNU la Licencia Pública General Reducida de GNU, o más conocida por su nombre en inglés GNU Lesser General Public License (GNU LGPL). Está
- 	licencia permisiva se aplica a cualquier programa o trabajo que contenga una nota puesta por el propietario de los derechos del trabajo,
- 	estableciendo que su trabajo puede ser distribuido bajo los términos de la licencia LGPL. El " software " utilizado en lo subsecuente, se refiere a cualquier programa o trabajo original y el " trabajo basado en el software " significa también el programa o cualquier trabajo derivado del mismo bajo la ley de derechos de autor. Es decir, un trabajo que contenga el Programa o alguna porción de él, ya sea íntegra o con modificaciones o traducciones a otros idiomas.Otras actividades que no sean copia, distribución o modificación no están cubiertas en esta licencia y están fuera de su alcance. El acto de ejecutar el programa no está restringido, y la salida de información del programa está cubierta sólo si su contenido constituye un trabajo basado en el Programa (es independiente de si fue resultado de ejecutar el programa). Si esto es cierto o no, depende de la función del programa.\cite{Etiqueta03} 
+\chapter{Software Código Abierto y Libre}
+\section{Introducción}
 
-	Estas diferencias de opinión con respecto a lo que constituye un trabajo derivado, y la ambigüedad en torno a otros
-	aspectos de la concesión de licencias de código abierto podría tener consecuencias para campos como el diseño de hardware, lo que se discutirá en una
-	sección posterior.
+El \textit{software libre} o en ingles \textit{software free} ofrece
+al usuario la libertad para ejecutarlo, copiarlo, modificarlo y
+distribuirlo. La Fundación para el Software Libre (FSF) determina qué
+se tiene que cumplir para que el software pueda ser considerado
+\textit{libre}~\cite{Etiqueta07}. La FSF fue fundada por Richard
+Stallman en 1985 para promover la libertad del usuario y defender los
+derechos de todo software libre~\cite{Etiqueta14}. En particular, el
+proyecto GNU es patronizado por la FSF. El software libre permite al
+usuario el ejercicio de cuatro libertades básicas a saber:
 
-	La principal diferencia de opinión, sin embargo, se deriva del hecho de que la FSF desea hacer imposible que el software
-	propietario  pueda utilizar software liberado bajo la GNU GPL. La FSF argumenta que los que no están dispuesto a permitir que otras personas vean o
-	modifiquen libremente su código aprovechen de los que sí lo permiten. Otras licencias de código abierto, sin embargo ,son más permisivas en la
-	utilización de sus diseños como por ejemplo en el código fuente de las librerías, en aplicaciones propietarias.El objetivo del Proyecto GNU de implementar 
-	un sistema operativo completamente libre y gratuito, avanzo a buen ritmo en la década del 90, pero le faltaba la llave de componentes del nivel más bajo.
+\begin{itemize}
+\item \textit{Libertad 0}: El software \textit{libre} puede ser
+  estudiado y adaptado a las necesidades de quién lo use. Esta
+  libertad requiere acceso al código fuente y tiene la ventaja de por
+  ejemplo permitir descubrir funciones ocultas o saber como se realiza
+  determinada tarea. Además, al poder adaptar el programa a las
+  necesidades del usuario se pueden suprimir partes que no sean de
+  interesen, agregar otras partes que considere importantes, copiar
+  una parte que realiza una tarea y/o asignarla a otro programa.
+\item \textit{Libertad 1}: El software, sus copias y las
+  modificaciones se pueden distribuir libremente. Esto significa que
+  se posee la libertad de redistribuir el programa ya sea gratis o con
+  algún costo.
+\item \textit{Libertad 2}: Es posible mejorarlo y hacer pública esas
+  mejoras. La libertad de hacer un programa mejor, implica que se
+  puede hacer menores los requerimientos de hardware para funcionar,
+  que tenga mayores prestaciones, que sus requerimientos no sean tan
+  altos, que tenga menos errores. El poder liberar las mejoras al
+  público quiere decir que si se realiza una mejora que permita un
+  requerimiento menor de hardware, o que haga que ocupe menos espacio,
+  se puede redistribuir ese programa mejorado o simplemente proponer
+  la mejora en lugar público (un foro de noticias, una lista de
+  correo, un sitio web, un FTP, un canal de chat).
+\item \textit{Libertad 3}: El usuario al poseer el código fuente tiene
+  poder de decisión, ya que podrá elegir quién puede modificar los
+  programas que ha adquirido para mejorarlos (o bien mejorarlos el
+  mismo). Es decir, esto permite que no exista un monopolio, porque en
+  el caso de que un software sea discontinuado el usuario podrá,
+  elegir a un desarrollador para continuar utilizando el software que
+  fue discontinuado. Además el usuario no estará completamente a
+  merced de tener que renovar su hardware y software constantemente
+  según ocurre a menudo con las políticas de las empresas que producen
+  software privativo y también será libre de vender o redistribuir
+  software libre.
+\end{itemize}
 
-	El núcleo o kernel de Linux iniciado por Linus Torvalds, fue liberado para poder ser modificado libremente en 1991. La licencia inicial, no fue
-	exactamente una licencia de software \textit{libre}, sin embargo la version 0.12 lanzada en febrero de 1992, fue licenciada nuevamente por Torvalds
-	bajo los términos de la licencia GPL GNU. Así como Unix en su tiempo, el núcleo de Torvalds atrajo la atención de programadores voluntarios. Hasta
-	este punto, la falta de núcleo del proyecto GNU significaba la no existencia de un sistema operativo libre completo. El desarrollo del núcleo de
-	Linux Torvalds lleno este último hueco. La combinación del casi terminado sistema operativo GNU y el núcleo Linux resultó en el primer sistema
-	operativo completo de software \textit{libre}. El GNU/Linux (o simplemente Linux) continúa siendo software libre desarrollado por programadores
-	voluntarios, pero también muchas compañías ofrecen productos personalizados basados en el núcleo Linux, así como distribuciones con soporte
-	comercial.
+Cabe destacar que las libertades 1 y 3 tienen como prerrequisito que
+se tenga acceso al código fuente. La libertad 2 hace referencia a la
+libertad de modificar y redistribuir el software libremente licenciado
+bajo algún tipo de licencia de software \textit{libre} que beneficie a
+la comunidad.
 
-	Otros ejemplos de proyecto de código abierto exitosos y ampliamente adoptados son, el servidor web Apache, el paquete \url{OpenOffice.org} y el
-	proyecto Mozilla. A pesar de que estos dos últimos no eran originariamente de código abierto, el lanzamiento de su código fuente bajo licencias de
-	código abierto fue significativa y continúan en la actualidad.
-	
-	Tras la adopción creciente de software de código abierto en la década del 90, la organización OSI fue iniciada por desarrolladores de software que
-	propusieron que el software\textit{libre} (como lo fue comúnmente conocido en ese entonces) tenía un lugar en la industria comercial. El éxito
-	del modelo sorprendió a mucha personas y demostró que era un modelo de desarrollo viable. A medida que la popularidad y la utilidad de Internet fue
-	creciendo, también lo hicieron las comunidades de código abierto por diferentes causas; la atracción y la comunicación que produce internet en
-	personas interesadas en el desarrollo de código abierto, proporciono el inicio para las grandes comunidades de código abierto, lo que ha dado como
-	resultado un sinnúmero de comunidades y grupos que contribuyen al desarrollo de código abierto.
+El termino \textit{Código Abierto} (en Ingles ``Open Source'') se
+utilizó por primera vez en 1998 en las comunidades de software libre
+como reemplazo al ambiguo nombre ``software \textit{libre}''. Esto
+estuvo motivado la ambigüedad el término \textit{Free} en Inglés el
+cual significa dos cosas distintas dependiendo del contexto: gratuidad
+y libertad. Lo cual implica, para el caso que nos ocupa: ``software
+que podemos usar, leer, modificar y redistribuir gratuitamente"
+software gratuito y, además, software libre, según la acepción
+española de libertad. La expresión, para algunos, no resultó apropiado
+como reemplazo para el ya tradicional software \textit{libre}, pues
+eliminaba la idea de libertad, confundida con la simple gratuidad. No
+obstante, continúa siendo ambivalente, puesto que se usa en la
+actualidad por parte de programadores que no ofrecen software libre
+pero, en cambio, sí ofrecen el código fuente de los programas para su
+revisión o modificación previamente autorizada por parte de sus pares
+académicos. Dada la ausencia de tal ambigüedad en la lengua española,
+el término software libre es adecuado para referirse a programas que
+se ofrecen con total libertad de modificación, uso y distribución bajo
+la regla implícita de no modificar dichas libertades hacia el futuro.
 
-	El sitio web\textit{OpenCores}con sus comienzos en el año 2000, proporciona un sitio para la comunidad de hardware de código abierto.
- 	Fue una de las primeras comunidades de desarrollo de hardware y actualmente la mas grande, con más de cien mil usuarios y cerca de mil proyectos.
- 	Donde su principal objetivo es diseñar y publicar diseños de núcleos bajo una licencia de hardware de código abierto siguiendo el modelo de
- 	Licencia LGPL usada para el software. Se comprometen con el ideal de libre disposición, uso y reutilización de hardware de código
- 	abierto.\cite{Etiqueta10}
+El software de \textit{código abierto} ofrece al usuario la
+posibilidad de conocer el código fuente para su estudio, modificación
+y redistribuir. Desde el punto de vista de una `` traducción
+estrictamente literal ", el significado textual de ``código abierto"
+es que ``se puede examinar el código fuente", por lo que puede ser
+interpretado como un término más débil y flexible que el del software
+libre.  Sin embargo, ambos movimientos reconocen el mismo conjunto de
+licencias y mantienen principios equivalentes.
 
-	\subsection{Código abierto para la industria}
+La definición oficial de \textit{código abierto} se encuentra en el
+documento Open Source Definition (OSD) el cual es publicado por Open
+Source Initiative (OSI). El OSI es un movimiento diferente al
+movimiento del software libre que, aunque es incompatible con este
+último desde el punto de vista filosófico, es completamente
+equivalente desde el punto de vista práctico. El propósito de
+establecer una definición oficial de software de \textit{código
+  abierto} es asegurar que los programas distribuidos con ``Licencia
+de código abierto'' estarán disponibles para su continua revisión y
+mejora. Brindando además a los usuarios la posibilidad de adaptarlo a
+sus necesidades y corregir errores rápidamente.
 
-	Dentro del software de código abierto se tienen alternativas como: software multimedia, productividad de oficina, herramientas de
-	gráficos, sistemas operativos y de comunicaciones, por lo general libres para descargar y utilizarlos. Los gobiernos y las grandes empresas están
-	aprovechando cada vez más el software de código abierto que existe y se están convirtiendo en importantes contribuyentes a los proyectos del
-	software que adoptan. Las tendencias recientes han hecho mucho para disipar la imagen de solitarios desarrolladores de código abierto como los
-	únicos contribuyentes de trabajos. Al estar las entidades comerciales aumentando la adopción y utilización de los proyectos de software libre,  se
-	están convirtiendo en los contribuyentes más frecuentes. Actualmente el kernel de Linux tiene la mayor parte de sus contribuciones de código de
-	entidades comerciales, ya sea porque están trabajando con el núcleo Linux en sus productos o porque desean asegurar el apoyo a su hardware en el
-	kernel tales como Intel,  IBM y AMD. Lo mismo pasa para proyectos como Apache y MySQL.
+La principal diferencia entre los términos \textit{código abierto} y
+\textit{libre} es que éste último tiene en cuenta los aspectos éticos
+y filosóficos de la libertad mientras que el \textit{código abierto}
+se basa únicamente en los aspectos técnicos. En un intento por unir
+los mencionados términos que se refieren a conceptos semejantes, se
+está extendiendo el uso del termino Free and Open Source Software
+(FOSS) el cual se utiliza para referirse al software que se adhiere al
+OSD y FSF.
 
-	La gran cantidad de software de código abierto disponible ofrece la adopción de licencias FOSS con la posibilidad de elegir entre: la publicación del
-	trabajo derivado, el desarrollo de una solución interna o la compra de una solución propietaria manteniendo el código en privado.
+% Es un término ambiguo, el acuerdo sobre la definición está
+%en el documento llamado Open Source Definition (OSD), publicado por la
+%Open Source Initiative (OSI). La OSD da grandes libertades a la hora
+%de relicenciar software, lo que no sucede con otras licencias de
+%código abierto. En particular la OSD permite ``mezclar'' software
+%privativo con software \textit{Open Source}.
+%El termino Free and Open Source Software (FOSS) se utiliza para
+%referirse al software que se adhiere al OSD y FSF. El software \textit{libre} y
+%de \textit{código abierto} es una sociedad inclusiva, el término abarca tanto
+%el software \textit{libre} y software de {código abierto} a pesar de describir
+%modelos de desarrollo similares, tienen diferentes culturas y
+%filosofías.
 
- 	Las entidades comerciales interesadas en mantener sus plataformas en buenas condiciones son en gran parte las que ofrecen mayor soporte y desarrollo
- 	a herramientas de programación como el compilador GCC y binutils del proyecto GNU. El desarrollo de las herramientas de software de código abierto
- 	es impulsado por GNU brindando soporte a diferentes plataformas con el fin de fomentar el uso de un compilador-optimizador de clase global, que
- 	atraiga a desarrolladores entregando herramientas que funcionen en diferentes arquitecturas.
+\section{Licencias de Software de Código Abierto}
 
-	El inminente aumento comercial del software de código abierto trae como consecuencia que las empresas aporten recursos a estos proyectos en lugar del
-	desarrollo y mantenimiento de su propio conjunto de compiladores y herramientas, por ejemplo en el caso del GCC. Uno de los objetivos del código
-	abierto es proporcionar una base de software donde los desarrolladores se encuentren cómodos para adoptarlo y como consecuencia el aumento del
-	software existente producto de la publicación de sus trabajos derivados, evitando la tarea de empezar a desarrollar desde cero o comprar una solución
-	propietaria. Estas son algunas de las motivaciones para la adopción y contribución de código abierto, podrían ser muchas más y variadas eso dependerá
-	de la funcionalidad del proyecto. A pesar de su éxito con el software en el hardware no tuvo el mismo éxito los motivos se desarrollan más adelante.
+Mediante la \textit{licencia} un autor permite el uso de su creación a
+otras personas. Es decir que es el instrumento que regula la forma en
+que el usuario puede utilizar el software. Pueden existir tantas
+licencias como acuerdos concretos se den entre el autor y el
+licenciatario. Desde el punto de vista del software \textit{libre},
+existen distintas variantes del concepto o grupos de licencias:
 
-	Para las entidades comerciales la motivación de desarrollar código abierto proviene de cobrar por servicios extras al proyecto. Normalmente se
-	requiere de conocimientos técnicos y experiencia para implementar y/o personalizar un proyecto en particular. Las empresas que adoptan y mantienen
-	desarrollos de código abierto no tiene el costo de regalías o licencias, solo el de conocimiento necesarios para hacerlo.
+\begin {itemize}
+\item \textit{General Public License (GNU GPL)}: Es la licencia más
+  usada, garantiza a los usuarios finales (personas, organizaciones,
+  compañías) la libertad de usar, estudiar, compartir (copiar) y
+  modificar el software. Su propósito es declarar que el software
+  cubierto por esta licencia es software libre y protegerlo de
+  intentos de apropiación que restrinjan esas libertades a los
+  usuarios. Esta licencia fue creada originalmente por Richard
+  Stallman para el proyecto GNU (GNU project). La licencia GPL puede
+  ser usada por cualquiera, su finalidad es proteger los derechos de
+  los usuarios finales (usar, compartir, estudiar, modificar). Esta es
+  la primera licencia copyleft para uso general. Copyleft significa
+  que los trabajos derivados sólo pueden ser distribuidos bajo los
+  términos de la misma licencia. Bajo esta filosofía, la licencia GPL
+  garantiza a los destinatarios de un programa los derechos-libertades
+  reunidos en definición de software libre y usa copyleft para
+  asegurar que el software está protegido cada vez que el trabajo es
+  distribuido, modificado o ampliado.
 
-	A pesar de que el software de código abierto no es tradicionalmente un generador continuo de productos innovadores no se opone a se la estrategia de
-	desarrollo elegida para una tecnología innovadora. Cualquier diseño innovador de código abierto suele tener retornos valiosos para la inversión
-	necesaria y poder llevarlo a cabo. Es una opción interesante para los desarrolladores empezar con una base ahorrando tiempo  permitiendoles competir
-	frente a  implementaciones propietarias, con capacitad de proporcionar soporte técnico a largo plazo para una aplicación.
+  El software bajo licencia GPL puede ser aplicado bajo todos los
+  propósitos. Esto incluye los propósitos comerciales e incluso el uso
+  como herramienta de creación de software propietario. En uso
+  puramente privativo o interno, sin venta ni distribución, no es
+  necesario hacer publico el código fuente para los usuarios. Sólo si
+  un programa utiliza fragmentos de código GPL y el programa es
+  distribuido, el código fuente en su totalidad debe estar disponible
+  bajo la misma licencia. Lo mencionado es independiente de la
+  plataforma utilizada.
 
-	Cuando el ciclo de vida de un producto llega a su fin liberar el código fuente permite a otros desarrolladores aportar conocimiento brindando
-	soluciones a problemas derivados de las actualizaciones inevitable de las plataformas.
+  Los usuarios o compañías que distribuyen sus trabajos bajo licencias
+  GPL pueden hacerlo gratuitamente o cobrar por ellos. En particular,
+  la GPL establece explícitamente que las obras GPL se puede vender a
+  cualquier precio. Esto se deriva de la FSF la cual argumenta que no
+  se debe restringir la distribución comercial del software incluyendo
+  la redistribución. La FSF permite al público crear nuevas licencias
+  basadas en la GPL siempre y cuando las licencias derivadas no
+  utilicen GPL sin permiso. Esto último no se recomienda ya que tal
+  licencia puede ser incompatible con la GPL.
 
-	Esta breve mirada a la situación actual de código abierto ha indicado que el código abierto se ha convertido en una fuerza a tener en cuenta en el
-	mundo del software, pero este no es el caso en la actualidad para el desarrollo de hardware de código abierto.
+%Una de las más utilizadas es la Licencia Pública General de GNU (GNU GPL). El autor conserva los derechos de autor (copyright), y permite la redistribución y modificación bajo términos diseñados para asegurarse de que todas las versiones modificadas del software permanecen bajo los términos más restrictivos de la propia GNU GPL. Esto hace que sea imposible crear un producto con partes no licenciadas GPL: el conjunto tiene que ser GPL.
+%Es decir, la licencia GNU GPL posibilita la modificación y redistribución del software, pero únicamente bajo esa misma licencia. Y añade que si se reutiliza en un mismo programa código "A" licenciado bajo licencia GNU GPL y código "B" licenciado bajo otro tipo de licencia libre, el código final "C", independientemente de la cantidad y calidad de cada uno de los códigos "A" y "B", debe estar bajo la licencia GNU GPL.
+%En la práctica esto hace que las licencias de software libre se dividan en dos grandes grupos, aquellas que pueden ser mezcladas con código licenciado bajo GNU GPL (y que inevitablemente desaparecerán en el proceso, al ser el código resultante licenciado bajo GNU GPL) y las que no lo permiten al incluir mayores u otros requisitos que no contemplan ni admiten la GNU GPL y que por lo tanto no pueden ser enlazadas ni mezcladas con código gobernado por la licencia GNU GPL.
+%En el sitio web oficial de GNU hay una lista de licencias que cumplen las condiciones impuestas por la GNU GPL y otras que no.5
+%Aproximadamente el 60% del software licenciado como software libre emplea una licencia GPL o de manejo.
+%
+%Aquellos que no aceptan los términos de la GPL y sus condiciones no tienen permiso, en virtud del derecho de autor, a copiar o distribuir software con licencia GPL o trabajos derivados. Sin embargo, si no redistribuyen el programa, pueden utilizar el software en su organización a su gusto, y estas obras (incluidos los programas) construidas bajo este uso no requieren estár bajo esta licencia.
+%
+%La FSF permite al público crear nuevas licencias basadas en la GPL, siempre y cuando las licencias derivadas no utilicen GPL sin permiso. Esto no se recomienda, ya que tal licencia puede ser incompatible con la GPL. Otras licencias creadas por el proyecto GNU incluyen la GNU Lesser General Public License
 
+\item \textit{Lesser General Public License (GNU LGPL)}: La licencia
+  LGPL de software fue creada por la FSF para tener derechos menos
+  restrictivos que GPL. Garantiza la libertad de compartir y modificar
+  el software cubierto por ella y asegura que el software es libre
+  para todos sus usuarios. Esta licencia permisiva se aplica a
+  cualquier programa o trabajo que contenga una nota puesta por el
+  propietario de los derechos del trabajo en la cual se establece que
+  su trabajo puede ser distribuido bajo los términos de está. El
+  termino ``programa", utilizado en lo subsecuente, se refiere a
+  cualquier programa o trabajo original. Por otro lado, el ``trabajo
+  basado en el programa" se refiere al programa o cualquier trabajo
+  derivado del mismo bajo la ley de derechos de autor. Esto es, un
+  trabajo que contenga el programa o alguna porción de él, ya sea
+  íntegra o con modificaciones o traducciones a otros idiomas. Otras
+  actividades que no sean copia, distribución o modificación no están
+  cubiertas en esta licencia y están fuera de su alcance. El acto de
+  ejecutar el programa no está restringido y la salida de información
+  del programa está cubierta sólo si su contenido constituye un
+  trabajo basado en el programa, es independiente de si fue resultado
+  de ejecutar el programa. Si esto es cierto o no depende de la
+  función del programa. En resumen, si se tiene un programa que
+  utiliza fragmentos de código LGPL no es necesario liberar el código
+  de dicho programa.
 
-%%%%%% HASTA ACÁ    %%%%%	
-%%%%%%%%%%
+\item \textit{Berkeley Software Distribution (BSD)}: La licencia BSD
+  es denominada de esta forma porque se utiliza en gran cantidad del
+  software distribuido junto a los sistemas operativos BSD. Es una
+  licencia de software libre permisiva que tiene menos restricciones
+  en comparación con otras como la GPL. La licencia BSD al contrario
+  que la GPL permite el uso del código fuente en software no libre. El
+  autor, bajo tal licencia, mantiene la protección de copyright
+  únicamente para la renuncia de garantía y para requerir la adecuada
+  atribución de la autoría en trabajos derivados. Sin embargo, permite
+  la libre redistribución y modificación, incluso si dichos trabajos
+  tienen propietario. Esta licencia asegura verdadero software libre,
+  en el sentido que el usuario tiene libertad ilimitada con respecto
+  al software.
+\end {itemize}
+
+\section{Desarrollos de Código Abierto}
+
+Tras la adopción creciente de software de código abierto en la década
+del 90, la organización OSI propuso que el software\textit{libre} como
+fue conocido en ese entonces tenía un lugar en la industria
+comercial. El éxito del modelo sorprendió a mucha personas y demostró
+que era un modelo de desarrollo viable. A medida que la popularidad y
+la utilidad de Internet fue creciendo proporciono el inicio para las
+grandes comunidades de código abierto.
+
+Con el éxito del software \textit{libre} como GNU/Linux, Servidor HTTP
+Apache, Mozilla Firefox y OpenOffice.org, muchas empresas han
+comenzado a interactuar con la comunidad del software \textit{libre},
+teniendo dificultades en la elección de licencias de software libre y
+la selección de qué software se liberará.  Un ejemplo de una
+relativamente exitosa entrada a la comunidad del software libre es Sun
+Microsystems, liberación de StarOffice como OpenOffice.org bajo la GNU
+LGPL. Esto fue muy bien recibido por la comunidad software
+\textit{libre} que no tenía una suite ofimática madura en ese
+momento. Un ejemplo de una entrada más difícil para la comunidad del
+software libre es el de Real Networks, éste escribió su propia
+licencia, y puso en libertad sólo una parte de su suite de
+software. En particular, el códec de los programas informáticos
+necesarios para ver archivos Real Video, no fue puesto en libertad.
+
+El sitio web \textit{OpenCores} con sus comienzos en el año 2000,
+proporciona un sitio para la comunidad de hardware de código abierto.
+Fue una de las primeras comunidades de desarrollo de hardware y
+actualmente la mas grande, con más de cien mil usuarios y cerca de mil
+proyectos. Donde su principal objetivo es diseñar y publicar diseños
+de núcleos bajo una licencia de hardware de código abierto siguiendo
+el modelo de Licencia LGPL usada para el software.
+
+\subsection{Código abierto para la industria}
+
+Actualmente excite un gran número de aplicaciones de código
+abierto. Por ejemplo se dispone de software multimedia, productividad
+de oficina, herramientas de gráficos, sistemas operativos y de
+comunicaciones. Los gobiernos y las grandes empresas están
+aprovechando cada vez más el software de código abierto que existe y
+se están convirtiendo en importantes contribuyentes a los proyectos
+del software que adoptan. Las tendencias recientes han hecho mucho
+para disipar la imagen de solitarios desarrolladores de código abierto
+como los únicos contribuyentes de trabajos. Al estar las entidades
+comerciales aumentando la adopción y utilización de los proyectos de
+software libre, se están convirtiendo en los contribuyentes más
+frecuentes. Actualmente el kernel de Linux tiene la mayor parte de sus
+contribuciones de código de entidades comerciales, ya sea porque están
+trabajando con el núcleo Linux en sus productos o porque desean
+asegurar el apoyo a su hardware en el kernel tales como Intel, IBM y
+AMD. Lo mismo pasa para proyectos como Apache y MySQL.
+
+La gran cantidad de software de código abierto disponible ofrece la
+adopción de licencias FOSS con la posibilidad de elegir entre: la
+publicación del trabajo derivado, el desarrollo de una solución
+interna o la compra de una solución propietaria manteniendo el código
+en privado.
+
+Las entidades comerciales interesadas en mantener sus plataformas en
+buenas condiciones son en gran parte las que ofrecen mayor soporte y
+desarrollo a herramientas de programación como el compilador GCC y
+binutils del proyecto GNU. El desarrollo de las herramientas de
+software de código abierto es impulsado por GNU brindando soporte a
+diferentes plataformas con el fin de fomentar el uso de un
+compilador-optimizador de clase global, que atraiga a desarrolladores
+entregando herramientas que funcionen en diferentes arquitecturas.
+
+El inminente aumento comercial del software de código abierto trae
+como consecuencia que las empresas aporten recursos a estos proyectos
+en lugar del desarrollo y mantenimiento de su propio conjunto de
+compiladores y herramientas, por ejemplo en el caso del GCC. Uno de
+los objetivos del código abierto es proporcionar una base de software
+donde los desarrolladores se encuentren cómodos para adoptarlo y como
+consecuencia el aumento del software existente producto de la
+publicación de sus trabajos derivados, evitando la tarea de empezar a
+desarrollar desde cero o comprar una solución propietaria. Estas son
+algunas de las motivaciones para la adopción y contribución de código
+abierto, podrían ser muchas más y variadas dependiendo de la
+funcionalidad del proyecto. 
+
+A pesar de su éxito con el software, en el hardware no tuvo el mismo
+éxito los motivos se desarrollan más adelante.
+
+Para las entidades comerciales la motivación de desarrollar código
+abierto proviene de cobrar por servicios extras al
+proyecto. Normalmente se requiere de conocimientos técnicos y
+experiencia para implementar y/o personalizar un proyecto en
+particular. Las empresas que adoptan y mantienen desarrollos de código
+abierto no tiene el costo de regalías o licencias, solo el de
+conocimiento necesarios para hacerlo.
+
+A pesar de que el software de código abierto no es tradicionalmente un
+generador continuo de productos innovadores no se opone a la
+estrategia de desarrollo elegida para una tecnología
+innovadora. Cualquier diseño innovador de código abierto suele tener
+retornos valiosos para la inversión necesaria y poder llevarlo a
+cabo. Es una opción interesante para los desarrolladores empezar con
+una base ahorrando tiempo permitiéndoles competir frente a
+implementaciones propietarias, con capacitad de proporcionar soporte
+técnico a largo plazo para una aplicación.
+
+Cuando el ciclo de vida de un producto llega a su fin, liberar el
+código fuente permite a otros desarrolladores aportar conocimiento
+brindando soluciones a problemas derivados de las actualizaciones
+inevitable de las plataformas.
+
+Esta breve mirada a la situación actual de código abierto ha indicado
+que el mismo se ha convertido en una fuerza a tener en cuenta en el
+mundo del software. Sin embargo, este no es el caso en la actualidad
+para el desarrollo de hardware de código abierto.
+
 \subsubsection{Desventajas de la adopción del código abierto en software}
-	Son muchos los que no están de acuerdo con el desarrollo de código abierto en la actualidad a pesar del gran aumento en su popularidad y uso. El
-	software o hardware privativo puede ser desplazado del mercado por una alternativa no privativa, sin costo. Los que obviamente van a estar en
-	desacuerdo son las entidades que se encuentren amenazadas por una alternativa lo suficientemente innovadora que provoque una disminución en sus
-	ganancias. Una alternativa para los menos favorecidos es usar el código abierto existente que generalmente no es suficientemente innovador y
-	mejorarlo. Permitiendoles competir con cualquier producto del mercado. De este modo los desarrolladores adquieren conocimientos ademas de ahorrar
-	tiempo y desarrollaron un negocio, proporcionando un servicio de apoyo para la suma de un proyecto mejorado.
 
-	El inconveniente de mostrar el código del proyecto mejorado es que los desarrolladores exponen sus técnicas innovadoras y obtiene una ganancia como
-	se acostumbra en los productos de software propietario. Sin embargo, esto es compensado por la reducción de la inversión en el desarrollo de su
-	producto (una gran proporción de la infraestructura de apoyo adoptada de implementación de código abierto) y su mejora sobre el proyecto de código
-	abierto recientemente mejorada atrae a otros contribuyentes que deciden trabajar con el proyecto.
+Son muchos los que no están de acuerdo con el desarrollo de código
+abierto en la actualidad a pesar del gran aumento en su popularidad y
+uso. El software o hardware privativo puede ser desplazado del mercado
+por una alternativa no privativa, sin costo. Los que obviamente van a
+estar en desacuerdo son las entidades que se encuentren amenazadas por
+una alternativa lo suficientemente innovadora que provoque una
+disminución en sus ganancias. Una alternativa para los menos
+favorecidos es usar el código abierto existente que generalmente no es
+suficientemente innovador y mejorarlo. Permitiéndoles competir con
+cualquier producto del mercado. De este modo los desarrolladores
+adquieren conocimientos además de ahorrar tiempo y desarrollaron un
+negocio, proporcionando un servicio de apoyo para la suma de un
+proyecto mejorado.
 
-	Las implementaciones de código abierto varían en calidad y funcionalidad dependiendo de la colaboración de los desarrolladores. No hay dudas de que
-	hay software de código abierto de gran utilidad escrito. Sin embargo, no debe ser visto solo como un producto innovador en lugar de un paso en el
-	camino hacia el avance tecnológico.
+El inconveniente de mostrar el código del proyecto mejorado es que los
+desarrolladores exponen sus técnicas innovadoras. Sin embargo, esto es
+compensado por la reducción de la inversión en el desarrollo de su
+producto (una gran proporción de la infraestructura de apoyo adoptada
+de implementación de código abierto). Por otro lado, la mejora
+introducida en el proyecto de código abierto atrae a otros
+contribuyentes a trabajar en el mismo.
 
-\section {Código Abierto Hardware}
-El OpenRisc y otros IP  publicados en OpenCore muestran el estado del proyecto pero permite los desarrolladores poder continuar con el continuo desarrollo de los núcleos. La aceptacón de los proyectos de código abierto RTL por parte de las entidades comerciales de IP no es la misma que para el desarrollo de software de código abierto.
+Las implementaciones de código abierto varían en calidad y
+funcionalidad dependiendo de la colaboración de los
+desarrolladores. No hay dudas de que hay software de código abierto de
+gran utilidad. Sin embargo, no debe ser visto solo como un producto
+innovador en lugar de un paso en el camino hacia el avance
+tecnológico.
 
-El problema de la implementación de los proyectos de código abierto por la falta de herramientas de Entorno de desarrollo integrado (EDA)  es inaceptable para ASIC dado el elevado costo de corregir errores, para brindar una solución se tendría que incluir con el core. Las herramientas  que se encuentran disponibles en la industria tienen un elevado precio y pueden variar de acuerdo a el proveedor, esto pone un gran obstáculo en la entrada al mercado para los desarrolladores de IP.
+\section{Código Abierto Hardware}
 
-La falta de alternativas libres en EDA de código abierto limita a el desarrollo de núcleos de código abierto. Para minimizar el riesgo para las ASIC las implementaciones se realizan en dispositivos como FPGA donde generalmente se pueden hacer cambios del código RTL con menor costo. La tecnología de los dispositivos FPGA y ASIC se considera secreto industrial
-lo que limita el desarrollo de herramientas libres.
-%%%%%%%%%%hasta aca
-	\subsection{Problema para implementar y desarrollar hardware de código abierto }
-Los requerimientos de una plataforma donde implementar el diseño de hardware y la falta de herramientas de desarrollo libres son un obstáculo que no enfrenta el software de código abierto. Estas plataformas son comercializadas por empresas de hardware ofreciendo herramientas de  compilación, simulación, síntesis y descarga para sus FPGA. La complejidad de las herramientas de diseño y el la pronunciada curva de aprendizaje de desarrollo de hardware perjudica a los principiantes. 
+El OpenRisc y otros IP publicados en OpenCore muestran el estado del
+proyecto pero permite los desarrolladores poder continuar con el
+continuo desarrollo de los núcleos. La aceptación de los proyectos de
+código abierto RTL por parte de las entidades comerciales de IP no es
+la misma que para el desarrollo de software de código abierto.
 
-Otro inconveniente es la dificultad para utilizar un diseño implementado sobre una FPGA, esta limitado por el hecho de que se realiza a un nivel muy bajo de abstracción y para lograr un resultado " útil " por lo general requiere un gran trabajo a través de varios niveles de abstracción para lograr que se cómodamente usado por una interfaz en una pc.
+El problema de la implementación de los proyectos de código abierto
+por la falta de herramientas de Entorno de desarrollo integrado (EDA)
+es inaceptable para ASIC dado el elevado costo de corregir errores,
+para brindar una solución se tendría que incluir con el core. Las
+herramientas que se encuentran disponibles en la industria tienen un
+elevado precio y pueden variar de acuerdo a el proveedor, esto pone un
+gran obstáculo en la entrada al mercado para los desarrolladores de
+IP.
 
-Un ejemplo podría ser el desarrollo de un core para que realice transacciones de I/O de un sensor, para proporcionar información a una aplicación por ejemplo que controle la temperatura en un espacio determinado. Esto requeriría el desarrollo y prueba del modelo de hardware y la implementación en FPGA . Asumiendo que es un microprocesador el que se encuentra corriendo sobre la FPGA, dando servicios de red a través de un sistema operativo de tiempo real (RTOS), este módulo personalizado debería requerir el desarrollo de una capa de software, lo que significa la necesidad de un driver para que permita al sistema operativo en tiempo real interactuar con el periférico, haciendo una abstracción del hardware y proporcionando una interfaz para usarlo. El sistema operativo en tiempo real se conecta con la aplicación que se ejecuta en el microprocesador de la FPGA para proporcionan lo datos a través del enlace de red, así los datos de este sensor se encontraran disponibles para la aplicación de nivel superior. Este es solo un ejemplo donde, posiblemente el diseñador haya seleccionado una solución que utilice un bus estándar, sin embargo, existen algunos casos donde el diseñador desarrolla nuevos cores de interfaces o controladores en FPGA para proveer acceso a sistemas heredados (legacy) o nuevos buses estándar, donde vale destacar el trabajo extra requerido al escribir código RTL que provea la interfaz física.
-Viendo la cantidad de desarrollo y pruebas requeridas para poner en práctica estas soluciones, es fácil sentirse abrumado por la cantidad de trabajo necesario para completar una tarea tan aparentemente trivial.
+La falta de alternativas libres en EDA de código abierto limita a el
+desarrollo de núcleos de código abierto. Para minimizar el riesgo para
+las ASIC las implementaciones se realizan en dispositivos como FPGA
+donde generalmente se pueden hacer cambios del código RTL con menor
+costo. La tecnología de los dispositivos FPGA y ASIC se considera
+secreto industrial lo que limita el desarrollo de herramientas libres.
 
-Comparando esto con la implementación de software de código abierto donde se toma un programa de código abierto, que consiste en descargar un código fuente, compilarlo, ejecútalo y probarlo en la misma plataforma, la diferencia en el acceso inherentes a la plataforma de desarrollo (el host), las herramientas de desarrollo mucho mas simples (gcc, make en el sistema host), pruebas más cortas y más fácil (que se ejecuta en el equipo host a través de un shell) son una gran ventaja ante la complejidad del el ciclo de desarrollo de harware de código abierto.
+\subsection{Problema para implementar y desarrollar hardware de código abierto}
+
+Los requerimientos de una plataforma donde implementar el diseño de
+hardware y la falta de herramientas de desarrollo libres son un
+obstáculo que no enfrenta el software de código abierto. Estas
+plataformas son comercializadas por empresas de hardware ofreciendo
+herramientas de compilación, simulación, síntesis y descarga para sus
+FPGA. La complejidad de las herramientas de diseño y el la pronunciada
+curva de aprendizaje de desarrollo de hardware perjudica a los
+principiantes.
+
+Otro inconveniente es la dificultad para utilizar un diseño
+implementado sobre una FPGA, esta limitado por el hecho de que se
+realiza a un nivel muy bajo de abstracción y para lograr un resultado
+``útil'' por lo general requiere un gran trabajo a través de varios
+niveles de abstracción para lograr que se cómodamente usado por una
+interfaz en una pc.
+
+Un ejemplo podría ser el desarrollo de un core para que realice
+transacciones de I/O de un sensor, para proporcionar información a una
+aplicación por ejemplo que controle la temperatura en un espacio
+determinado. Esto requeriría el desarrollo y prueba del modelo de
+hardware y la implementación en FPGA . Asumiendo que es un
+microprocesador el que se encuentra corriendo sobre la FPGA, dando
+servicios de red a través de un sistema operativo de tiempo real
+(RTOS), este módulo personalizado debería requerir el desarrollo de
+una capa de software, lo que significa la necesidad de un driver para
+que permita al sistema operativo en tiempo real interactuar con el
+periférico, haciendo una abstracción del hardware y proporcionando una
+interfaz para usarlo. El sistema operativo en tiempo real se conecta
+con la aplicación que se ejecuta en el microprocesador de la FPGA para
+proporcionan lo datos a través del enlace de red, así los datos de
+este sensor se encontraran disponibles para la aplicación de nivel
+superior. Este es solo un ejemplo donde, posiblemente el diseñador
+haya seleccionado una solución que utilice un bus estándar, sin
+embargo, existen algunos casos donde el diseñador desarrolla nuevos
+cores de interfaces o controladores en FPGA para proveer acceso a
+sistemas heredados (legacy) o nuevos buses estándar, donde vale
+destacar el trabajo extra requerido al escribir código RTL que provea
+la interfaz física. Viendo la cantidad de desarrollo y pruebas
+requeridas para poner en práctica estas soluciones, es fácil sentirse
+abrumado por la cantidad de trabajo necesario para completar una tarea
+tan aparentemente trivial.
+
+Comparando esto con la implementación de software de código abierto
+donde se toma un programa de código abierto, que consiste en descargar
+un código fuente, compilarlo, ejecutarlo y probarlo en la misma
+plataforma, la diferencia en el acceso inherentes a la plataforma de
+desarrollo (el host), las herramientas de desarrollo mucho mas simples
+(gcc, make en el sistema host), pruebas más cortas y más fácil (que se
+ejecuta en el equipo host a través de un shell) son una gran ventaja
+ante la complejidad del el ciclo de desarrollo de hardware de código
+abierto.
 
 
-A medida que se incrementan la cantidad de proyectos de código abierto y disminuya la complejidad de las herramientas de desarrollo se puede esperar que  los desarrolladores de hardware de código abierto puedan superar los obstáculos mencionados anteriormente. Las barreras en el inicio del software de código abierto parecían igual de complicadas de superar. Se espera que con el tiempo y el aumento de participantes, el hardware de código abierto alcance el mismo éxito. En ese momento, los diseños serán tan grandes que no cabrán en los dispositivos programables actuales. La reconfiguración será un elemento imprescindible. Las fronteras entre el hardware y el software se harán cada vez más difusas.
+A medida que se incrementan la cantidad de proyectos de código abierto
+y disminuya la complejidad de las herramientas de desarrollo se puede
+esperar que los desarrolladores de hardware de código abierto puedan
+superar los obstáculos mencionados anteriormente. Las barreras en el
+inicio del software de código abierto parecían igual de complicadas de
+superar. Se espera que con el tiempo y el aumento de participantes, el
+hardware de código abierto alcance el mismo éxito. En ese momento, los
+diseños serán tan grandes que no cabrán en los dispositivos
+programables actuales. La reconfiguración será un elemento
+imprescindible. Las fronteras entre el hardware y el software se harán
+cada vez más difusas.
 
-%  También la utilidad de cualquier diseño de hardware que se podría implementar en una FPGA está limitada por el hecho de que se realiza a un nivel muy bajo de abstracción, y para lograr un resultado positivo "útil" para los experimentador o aficionado, por lo general requiere un gran trabajo a través de muchos niveles de abstracción para lograr algo que sea fácilmente utilizable a partir de una interfaz en una PC. 
+% También la utilidad de cualquier diseño de hardware que se podría implementar en una FPGA está limitada por el hecho de que se realiza a un nivel muy bajo de abstracción, y para lograr un resultado positivo "útil" para los experimentador o aficionado, por lo general requiere un gran trabajo a través de muchos niveles de abstracción para lograr algo que sea fácilmente utilizable a partir de una interfaz en una PC.
 %%%%%
 %Un ejemplo podría ser el desarrollo de un core para que realice transacciones de I/O de un sensor, para proporcionar información a una aplicación por ejemplo que controle la temperatura en un espacio determinado. Esto requeriría el desarrollo y prueba del modelo de hardware y la implementación en FPGA . Asumiendo que es un microprocesador el que se encuentra corriendo sobre la FPGA, dando servicios de red a través de un sistema operativo de tiempo real (RTOS), este módulo personalizado debería requerir el desarrollo de una capa de software, lo que significa la necesidad de un driver para que permita al sistema operativo en tiempo real interactuar con el periférico, haciendo una abstracción del hardware y proporcionando una interfaz para usarlo. El sistema operativo en tiempo real se conecta con la aplicación que se ejecuta en el microprocesador de la FPGA para proporcionan lo datos a través del enlace de red, así los datos de este sensor se encontraran disponibles para la aplicación de nivel superior. This is just one example where, quite probably the designer might have chosen a solution that uses a standard bus, however there’s often cases for custom controller or interface cores in FPGAs to provide
 %access to legacy, or very-new or esoteric bus standards, and highlights the extra work required beyond writing RTL to provide the physical interface.
@@ -225,18 +454,32 @@ A medida que se incrementan la cantidad de proyectos de código abierto y dismin
 
 %Comparando esto con adoptar un programa de código abierto, que consiste en descargar un código fuente, compilarlo y ejecútalo en su computadora, donde la aplicación puede ser ejecutada en el host para comprobar la funcionalidad y allí finalice la mayor parte del ciclo de desarrollo, . Las diferencias son el acceso inherentes a la plataforma de desarrollo (el host), las herramientas de desarrollo mucho mas simples (gcc, make en el sistema host) el ciclo de desarrollo, pruebas más cortas y más fácil (que se ejecuta en el equipo host a través de un shell.)
 
-%A medida que mas proyectos opnesource son desarrollados y los sistemas de desarrollo sean mas ágiles, se puede esperar que estas barreras para los desarrolladores de diseño de hardware opensource puedan ser superadas. En los principios del del desarrollo de software opensource parecían igual de complicados. Se espera que con el tiempo y el aumento de participantes el hardware de código abierto alcance el mismo exito.En ese momento, los diseños serán tan grandes que no cabrán en los dispositivos programables actuales. La reconfigurabilidad será un elemento imprescindible. Las fronteras entre el hardware y el software se harán cada vez más difusas. El deseo, casi utópico, es lograr correr un kernel Linux hardware basándose en las posibilidades que nos ofrece la reconfigurabilidad. 
-	
+%A medida que mas proyectos opnesource son desarrollados y los sistemas de desarrollo sean mas ágiles, se puede esperar que estas barreras para los desarrolladores de diseño de hardware opensource puedan ser superadas. En los principios del del desarrollo de software opensource parecían igual de complicados. Se espera que con el tiempo y el aumento de participantes el hardware de código abierto alcance el mismo exito.En ese momento, los diseños serán tan grandes que no cabrán en los dispositivos programables actuales. La reconfigurabilidad será un elemento imprescindible. Las fronteras entre el hardware y el software se harán cada vez más difusas. El deseo, casi utópico, es lograr correr un kernel Linux hardware basándose en las posibilidades que nos ofrece la reconfigurabilidad.
 
 \section{Licencias de Hardware}
 
-Una cuestión que queda por resolver es el de la concesión de licencias para el diseño de hardware de código abierto. El proyecto OpenRISC utiliza licencias públicas del proyecto GNU. Estos refieren específicamente a software, y no se sabe bien que se aplica al hardware. El sitio web del proyecto GNU contiene una sección con preguntas frecuentes (FAQ) que afirma lo siguiente.
+Una cuestión que queda por resolver es el de la concesión de licencias
+para el diseño de hardware de código abierto. El proyecto OpenRISC
+utiliza licencias públicas del proyecto GNU. Estos refieren
+específicamente a software, y no se sabe bien que se aplica al
+hardware. El sitio web del proyecto GNU contiene una sección con
+preguntas frecuentes (FAQ) que afirma lo siguiente.
 
-\textit{Cualquier material que puede ser licenciado con derechos de autor puede ser licenciado bajo la GPL}
+\textit{Cualquier material que puede ser licenciado con derechos de
+autor puede ser licenciado bajo la GPL}
+
 %GPLv3 también se puede utilizar para materiales de licencia cubiertos por otras leyes copyrightlike, como máscaras de semiconductores. Así, por ejemplo, puede liberar un dibujo de un diseño de hardware bajo la GPL. Sin embargo, si alguien utilizó esa información para crear hardware físico, que lo harían no tienen obligaciones de la licencia al distribuir o vender el dispositivo: se queda fuera del ámbito del derecho de autor y por lo tanto la propia GPL.}
 
 %Esto no es claro para los diseños específicos para FPGA o código, incluso RTL, ya que puede terminar como un conjunto de máscaras, o puede terminar como un flujo de bits binario para configuración de una FPGA.
-Una indicación de la naciente idea del desarrollo de hardware de código abierto proviene de la publicación reciente (febrero de 2011) de un conjunto de principios para los participantes de la comunidad de hardware de código abierto. El siguiente es el código abierto Hardware (OSHW) Declaración de Principios 1.0 de FreedomDefined.org. Estas publicaciones proporcionan un punto de referencia para saber si el diseño puede estar bajo licencia de " hardware de código abierto".
+
+Una indicación de la naciente idea del desarrollo de hardware de
+código abierto proviene de la publicación reciente (febrero de 2011)
+de un conjunto de principios para los participantes de la comunidad de
+hardware de código abierto. El siguiente es el código abierto Hardware
+(OSHW) Declaración de Principios 1.0 de FreedomDefined.org. Estas
+publicaciones proporcionan un punto de referencia para saber si el
+diseño puede estar bajo licencia de " hardware de código abierto".
+
 %\textit{El Hardware de código abierto cuyo diseño está a disposición del público
 %por lo que cualquier persona puede estudiar, modificar, distribuir, poner, y vender el
 %diseño o hardware basado en ese diseño. La fuente de hardware, el diseño
@@ -245,31 +488,50 @@ Una indicación de la naciente idea del desarrollo de hardware de código abiert
 %contenida, herramientas de diseño y de código abierto para maximizar la capacidad
 %de las personas para hacer y usar el hardware} \cite{Etiqueta11}
 
-%El FreedomDefined.org  específica fuente y documentación, trabajos derivados y las limitaciones de la licencias.Se espera de acuerdo con estos principios,  todo el material este disponible como código abierto y la documentación para el diseño. Cualquier trabajos derivados o modificado deba estar disponible. 
+%El FreedomDefined.org específica fuente y documentación, trabajos derivados y las limitaciones de la licencias.Se espera de acuerdo con estos principios, todo el material este disponible como código abierto y la documentación para el diseño. Cualquier trabajos derivados o modificado deba estar disponible.
 
-Cualquier licencia de hardware de código abierto se puede utilizar para restringir (o en este caso, de forma deliberada sin restringir) los planes de un diseño, pero no el uso del dispositivo fabricado. Estos son conceptos que se encuentran a menudo en las licencias de software de código abierto, pero de nuevo, no es tan claro como se aplica en el casos para el diseño del hardware de código abierto.
+Cualquier licencia de hardware de código abierto se puede utilizar
+para restringir (o en este caso, de forma deliberada sin restringir)
+los planes de un diseño, pero no el uso del dispositivo
+fabricado. Estos son conceptos que se encuentran a menudo en las
+licencias de software de código abierto, pero de nuevo, no es tan
+claro como se aplica en el casos para el diseño del hardware de código
+abierto.
 
-Por ahora, la primera licencia de hardware de código abierto es la  Amateur Packet Radio Licencia Open Hardware Tucson (TAPR OHL). Los autores TAPR OHL  identifican el problema con las licencias de software existentes, si bien los derechos de autor protegen la documentación de copias, modificaciones y distribuciones, que tiene poco que ver con el derecho de hacer, distribuir o usar un producto basado en la documentación \cite{Etiqueta12}. En consecuencia, la TAPR OHL ha sido adoptada por unos cuantos aficionados y empresas comerciales.
+Por ahora, la primera licencia de hardware de código abierto es la
+Amateur Packet Radio Licencia Open Hardware Tucson (TAPR OHL). Los
+autores TAPR OHL identifican el problema con las licencias de software
+existentes, si bien los derechos de autor protegen la documentación de
+copias, modificaciones y distribuciones, que tiene poco que ver con el
+derecho de hacer, distribuir o usar un producto basado en la
+documentación \cite{Etiqueta12}. En consecuencia, la TAPR OHL ha sido
+adoptada por unos cuantos aficionados y empresas comerciales.
 
 
 %Su licencia identifica patentes como un problema, pero afirma que quienes se beneficien de la OHL no podran presentar una demanda alegando que el diseño infringen sus patentes u otra propiedad intelectual.
 %How open source hardware licenses and patent law will be compatible with regards to handling infringement is yet to be seen
 
-Ha recibido críticas del OSI en la adopción de un significado diferente de la  palabra " distribución " que se suele utilizar en sus licencias, y por lo tanto no tiene un amplio apoyo entre los promovedores de código abierto\cite{Etiqueta13}. 
-Sin embargo, es posibles que licencias alternativas de hardware de código abierto surjan para adaptarse a necesidades.
+Ha recibido críticas del OSI en la adopción de un significado
+diferente de la palabra ``distribución'' que se suele utilizar en sus
+licencias, y por lo tanto no tiene un amplio apoyo entre los
+promovedores de código abierto\cite{Etiqueta13}. Sin embargo, es
+posibles que licencias alternativas de hardware de código abierto
+surjan para adaptarse a necesidades.
 
 %Para el proyecto OpenRISC hay un equilibrio para afrontar la adopción entre una licencia que es demasiado liberal, y por lo tanto menos probable que resulte en la contribución a la comunidad de desarrollo, y una licencia que fomenta mas el desarrollo de código abierto, pero se considera entonces demasiado restrictiva con respecto a la utilización de codigo abierto IP con una IP patentada.
 
-%Por un lado, hay un deseo de aumentar la participación en el desarrollo de hardware de código abierto en general, y específicamente en el proyecto OpenRISC MinSoc y OrpSoc,para aumentar el conjunto de trabajos disponibles, esto se puede lograr utilizando un licencia viral como lo es la GNU GPL (considerando la síntesis del codigo RTL como un proceso de compilación estatica). 
+%Por un lado, hay un deseo de aumentar la participación en el desarrollo de hardware de código abierto en general, y específicamente en el proyecto OpenRISC MinSoc y OrpSoc,para aumentar el conjunto de trabajos disponibles, esto se puede lograr utilizando un licencia viral como lo es la GNU GPL (considerando la síntesis del codigo RTL como un proceso de compilación estatica).
 
 
 
 %\section{OpenRisc}
 
 %Como se dijo anteriormente en el debate sobre la tecnología de código abierto por lo general los modelos de desarrollo de código abierto no son imnovadores.
- %La mayor parte de los proyectos de software libre tienen como objetivo utilizar recursos ya existentes y bien conocidos de manera que permitan la apertura y eliminación de restricciones que se encuentran en otra implementaciones propietarias. Esta es la duda en el caso de la OpenRISC proyecto. Es en gran medida tomando ideas que ya son bien conocidos y comoditizados y la creación de una versión con más libertad para el usuario final. Había muy poco, si nada, innovador en la especificación arquitectónica OR1K. Esto no quiere decir los resultados no tienen ningún valor. Tampoco necesariamente excluye cualquier OpenRISC futuro5o implementaciones de arquitecturas con el objetivo de innovar.
+%La mayor parte de los proyectos de software libre tienen como objetivo utilizar recursos ya existentes y bien conocidos de manera que permitan la apertura y eliminación de restricciones que se encuentran en otra implementaciones propietarias. Esta es la duda en el caso de la OpenRISC proyecto. Es en gran medida tomando ideas que ya son bien conocidos y comoditizados y la creación de una versión con más libertad para el usuario final. Había muy poco, si nada, innovador en la especificación arquitectónica OR1K. Esto no quiere decir los resultados no tienen ningún valor. Tampoco necesariamente excluye cualquier OpenRISC futuro5o implementaciones de arquitecturas con el objetivo de innovar.
 
 
 %Conclusión!!Trabajar con un sistema final bajo licencias de hardware siguiendo el modelo de la Licencia LGPL para el software. Estamos comprometidos con el ideal de libre disposición, de libre uso y hardware de código abierto reutilizable.
+
+
 
 
