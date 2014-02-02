@@ -20,8 +20,8 @@ El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos
 	\newpage
 	\section{Resultados de Utilización de FPGA en la Implementación del Proyecto MinSoC}
 
-	A continuación se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.  Los resultados de la herramienta PAR
-	se muestran en la referencia ~\ref{lst:resultparminsoc}
+	A continuación se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.  Los resultados de la herramienta
+	MAP se muestran en la referencia ~\ref{lst:resultparminsoc}
 
 \begin{lstlisting}[frame=single,caption={Resumen de utilización - MinSoC},label={lst:resultparminsoc},breaklines]
 
@@ -55,8 +55,6 @@ Logic Distribution:
 Average Fanout of Non-Clock Nets:                3.74
 
 Peak Memory Usage:  415 MB
-Total REAL time to MAP completion:  11 mins 46 secs 
-Total CPU time to MAP completion:   11 mins 44 secs 
 
 \end{lstlisting}
 
@@ -64,71 +62,63 @@ Total CPU time to MAP completion:   11 mins 44 secs
 	la FPGA. Respecto de la distribución lógica se tiene un 50\% de ocupación de Slices y un 42\% de LUTs de 4 entradas de las cuales el 1\% se utiliza
 	como LUTs de paso o en inglés route-thru. El 41\% restante están utilizadas como lógica combinacional , puertos Dual RAM y registros de
 	desplazamiento. Se utilizó el 5\% de los bloques de entrada/salida, el 20\% de los BUFGMUXs ó buffers de clock global, el 12\% de los DCMs, el 4\% de
-	los bloques DSP y el 83\% de los bloques de RAM. El proceso Technology Mapping utilizó un pico 415 MB de memoria y se completó en 11 min 46 seg. 
-	
+	los bloques DSP y el 83\% de los bloques de RAM. El proceso Technology Mapping utilizó un pico 415 MB de memoria.
+
+\subsection{Reporte de timing}	
+
+timming del minsoc
 
 		
 \newpage
 	\section{Resultados de Utilización de FPGA en la Implementación del Proyecto ORPSoC}
 	
-	A continuación se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.  Los resultados de la herramienta PAR
+	A continuación se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.  Los resultados de la herramienta MAP
 	se muestran en la referencia ~\ref{lst:resultorpsoc}
 		
 \begin{lstlisting}[frame=single,caption={Resumen de utilización - ORPSoC},label={lst:resultorpsoc},breaklines]
+Logic Utilization:
+  Number of Slice Flip Flops:         4,769 out of  33,280   14%
+  Number of 4 input LUTs:            11,887 out of  33,280   35%
+Logic Distribution:
+  Number of occupied Slices:          7,772 out of  16,640   46%
+    Number of Slices containing only related logic:   7,772 out of   7,772 100%
+    Number of Slices containing unrelated logic:          0 out of   7,772   0%
+      *See NOTES below for an explanation of the effects of unrelated logic.
+  Total Number of 4 input LUTs:      12,227 out of  33,280   36%
+    Number used as logic:            10,803
+    Number used as a route-thru:        340
+    Number used for Dual Port RAMs:     960
+      (Two LUTs used per Dual Port RAM)
+    Number used as Shift registers:     124
 
-Device utilization summary:
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
 
-Selected Device : 3sd1800afg676-4 
+  Number of bonded IOBs:                128 out of     519   24%
+    IOB Flip Flops:                      31
+    IOB Master Pads:                      6
+    IOB Slave Pads:                       6
+  Number of ODDR2s used:                 48
+    Number of DDR_ALIGNMENT = NONE       48
+    Number of DDR_ALIGNMENT = C0          0
+    Number of DDR_ALIGNMENT = C1          0
+  Number of BUFGMUXs:                     7 out of      24   29%
+  Number of DCMs:                         2 out of       8   25%
+  Number of DSP48As:                      4 out of      84    4%
+  Number of RAMB16BWERs:                 16 out of      84   19%
 
-Number of Slices:                     6696  out of  16640    40%  
-Number of Slice Flip Flops:           4872  out of  33280    14%  
-Number of 4 input LUTs:              12093  out of  33280    36%  
-   Number used as logic:             11009
-   Number used as Shift registers:     124
-   Number used as RAMs:                960
-Number of IOs:                         128
-Number of bonded IOBs:                 128  out of    519    24%  
-   IOB Flip Flops:                       7
-Number of BRAMs:                        14  out of     84    16%  
-Number of GCLKs:                         8  out of     24    33%  
-Number of DCMs:                          2  out of      8    25%  
-Number of DSP48s:                        4  out of     84     4%  
+  Number of RPM macros:            1
+Average Fanout of Non-Clock Nets:                3.85
 
-Partition Resource Summary:
+Peak Memory Usage:  410 MB
 
-No Partitions were found in this design.
 \end{lstlisting}	
 		
-		\subsection{Place and route}	
-		
-		Los resultados de la herramienta de place and route se pueden encontrar en el archivo de registros <orpsoc.par>. Este archivo contiene información
-		respecto de la cantidad de bloques de entrada y salida internos, externos y la cantidad de otros componentes lógicos utilizados. 
-		
-\begin{lstlisting}[frame=single,caption={Resultado de PAR - ORPSoC},label={lst:salidas},breaklines]
-Design Summary Report:
- Number of External IOBs                         128 out of 519    24%
-   Number of External Input IOBs                 21
-      Number of External Input IBUFs             21
-
-   Number of External Output IOBs                44
-      Number of External Output DIFFMLRs          2
-      Number of External Output DIFFSLRs          2
-      Number of External Output IOBs             14
-      Number of External Output IOBLRs           26
-
-   Number of External Bidir IOBs                 63
-      Number of External Bidir DIFFMLRs           4
-      Number of External Bidir DIFFSLRs           4
-      Number of External Bidir IOBs              22
-      Number of External Bidir IOBLRs            33
-
-   Number of BUFGMUXs                        7 out of 24     29%
-   Number of DCMs                            2 out of 8      25%
-   Number of DSP48As                         4 out of 84      4%
-   Number of RAMB16BWERs                    16 out of 84     19%
-   Number of Slices                       7772 out of 16640  46%
-    Number of SLICEMs                      612 out of 8320    7%
-\end{lstlisting}
+	Como se puede observar que desde el punto de vista de utilización lógica se utilizó el 14\% de Slice Flip Flops y el 35\% de LUTs disponibles en
+	la FPGA. Respecto de la distribución lógica se tiene un 46\% de ocupación de Slices y un 36\% de LUTs de 4 entradas de las cuales el 1\% se utiliza
+	como LUTs de paso o en inglés route-thru. El 35\% restante están utilizadas como lógica combinacional , puertos Dual RAM y registros de
+	desplazamiento. Se utilizó el 24\% de los bloques de entrada/salida, el 29\% de los BUFGMUXs ó buffers de clock global, el 25\% de los DCMs, el 4\%
+	de los bloques DSP y el 19\% de los bloques de RAM. El proceso Technology Mapping utilizó un pico 410 MB de memoria.  
 
 		\subsection{Reporte de timing}	
 
@@ -522,9 +512,8 @@ Pentium          &133    &239   &38.3\\
 \end{table}
 
 \section{Conclusión}
- Aún cumpliendo con
-	los requerimientos especificados, la placa de desarrollo no cuenta con un completo soporte de periféricos on board ni con amplia documentación de
-	apoyo respecto de la materia. Se presentaron grandes dificultades en el acceso a la memoria SPI FLASH S33 de Intel la cual se encuentra soportada por
+ Aún cumpliendo con los requerimientos especificados, la placa de desarrollo no cuenta con un completo soporte de periféricos on board ni con amplia
+ documentación de apoyo respecto de la materia. Se presentaron grandes dificultades en el acceso a la memoria SPI FLASH S33 de Intel la cual se encuentra soportada por
 	herramientas \textit{oficiales} que únicamente corren bajo Windows. Alternativamente existe una versión de la placa de desarrollo S3ADSP1800A,
 	disponible también en el laboratorio del CUDAR, que se encuentra equipada con una memoria FLASH SPI Numonyx M25P64 que puede ser accedida mediante
 	herramientas de programación como XC3SPROG y UrJTAG alojando finalmente los programas necesarios para el arranque del sistema.
