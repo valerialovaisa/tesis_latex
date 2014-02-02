@@ -66,7 +66,8 @@ Total CPU time to MAP completion:   11 mins 44 secs
 	Como se puede observar que desde el punto de vista de utilización lógica se utilizó el 15\% de Slice Flip Flops y el 41\% de LUTs disponibles en
 	la FPGA. Respecto de la distribución lógica se tiene un 50\% de ocupación de Slices y un 42\% de LUTs de 4 entradas de las cuales el 1\% se utiliza
 	como LUTs de paso o en inglés route-thru. El 41\% restante están utilizadas como lógica combinacional , puertos Dual RAM y registros de
-	desplazamiento.
+	desplazamiento. Se utilizó el 5\% de los bloques de entrada/salida, el 20\% de los BUFGMUXs ó buffers de clock global, el 12\% de los DCMs, el 4\% de
+	los bloques DSP y el 83\% de los bloques de RAM. El proceso Technology Mapping utilizó un pico 415 MB de memoria y se completó en 11 min 46 seg. 
 	
 	El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA
 	de diversos desarrolladores. La facilidad de adaptación del proyecto para ser portado a otras arquitecturas reconfigurables le confiere gran
