@@ -3,23 +3,20 @@
 	
 	Este capítulo presenta los resultados obtenidos durante la implementación de cada uno de los prototipos planteados en el Capítulo
 	~\ref{chap:disenoeimpl} y durante la ejección de los casos de prueba correspondientes. 
-	
+	\begin{itemize}
+				  	\item Se analizaron y compararon el proceso de síntesis de los proyectos MinSoC y OrpSoc. 
+					\item matrices
+					\item Comparativa de benchmark coremark y dhrystone entre los CPU mas conocidos					
+				\end{itemize}				
+				
 	Para la ejecución de todas las pruebas se utilizó la placa desarrollo S3ADSP1800A del fabricante Xilinx que cumple con los requerimientos detallados
-	en la Tabla ~\ref{tab:requsr1} y se encontraba dentro de las alternativas disponibles al momento del desarrollo de este trabajo. Aún cumpliendo con
-	los requerimientos especificados, la placa de desarrollo no cuenta con un completo soporte de periféricos on board ni con amplia documentación de
-	apoyo respecto de la materia. Se presentaron grandes dificultades en el acceso a la memoria SPI FLASH S33 de Intel la cual se encuentra soportada por
-	herramientas \textit{oficiales} que únicamente corren bajo Windows. Alternativamente existe una versión de la placa de desarrollo S3ADSP1800A,
-	disponible también en el laboratorio del CUDAR, que se encuentra equipada con una memoria FLASH SPI Numonyx M25P64 que puede ser accedida mediante
-	herramientas de programación como XC3SPROG y UrJTAG alojando finalmente los programas necesarios para el arranque del sistema.
-	
-	Las pruebas realizadas con el sistema operativo de tiempo real ecOS proveyeron información útil para el desarrollo de sistemas embebidos de tiempo
-	real. Se analizaron inicialmente las capacidades y limitaciones en la ejecución de hilos. Aunque estas pruebas tan solo verifican la utilización de
-	una parte las capacidades, el sistema operativo ecOS posee mayor funcionalidad que no fue probada en este trabajo y presenta capacidades comparables
-	a implementaciones como lo son FreeRTOS y su implentación comercial eCosPro.
-	
-	La capacidad, por defecto, del Kernel de Linux de ser compilado para arquitecturas OpenRISC posibilitó tener un entorno de ejecución de amplia
-	funcionalidad y gran utilización en el ámbito de desarrollo de Sistemas Embebidos.  
-	
+	en la Tabla ~\ref{tab:requsr1} y se encontraba dentro de las alternativas disponibles al momento del desarrollo de este trabajo.
+El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA
+	de diversos desarrolladores. La facilidad de adaptación del proyecto para ser portado a otras arquitecturas reconfigurables le confiere gran
+	versatilidad ampliando notablemente su gama de aplicación.
+	Durante el desarrollo de las pruebas se prentendió esteblecer los límites de aplicación del proyecto que establezcan referencias sólidas para una
+	futura elección del proyecto en aplicaciones reales.
+
 	\newpage
 	\section{Resultados de Utilización de FPGA en la Implementación del Proyecto MinSoC}
 
@@ -68,30 +65,7 @@ Total CPU time to MAP completion:   11 mins 44 secs
 	como LUTs de paso o en inglés route-thru. El 41\% restante están utilizadas como lógica combinacional , puertos Dual RAM y registros de
 	desplazamiento.
 	
-	El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA
-	de diversos desarrolladores. La facilidad de adaptación del proyecto para ser portado a otras arquitecturas reconfigurables le confiere gran
-	versatilidad ampliando notablemente su gama de aplicación.
-	Durante el desarrollo de las pruebas se prentendió esteblecer los límites de aplicación del proyecto que establezcan referencias sólidas para una
-	futura elección del proyecto en aplicaciones reales.
 
-\newpage
-\section {Estudio de Capacidades del Proyecto MinSoC}
-		\subsection{Resultados de la ejecución del multiplicador de matrices binarias}
-		Se presentan a continuación los resultados de ejecución del programa multiplicador de matrices binarias. Se utilizó un gráfico que muestra el orden
-		de las matrices multiplicadas vs. la cantidad de ticks de ejecución. El gráfico ~\ref{fig:mulmat} muestra con claridad que el tiempo de ejecución
-		aumenta exponencialmente a medida que aumenta el orden de las matrices multiplicadas.  
-		
-\begin{figure}[h!]
- 	\begin{center}
-  	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{./images/matrices}
-  	\caption{Multiplicación de matrices binarias}
-  	\label{fig:mulmat}
- 	\end{center}
-	\end{figure}
-
-		Teniendo en cuenta que la aplicación fue ejecutada en una versión sintentizada básica del proyecto minSoC, este no posee unidades de multiplicación
-		por hardware que efectuen cálculos con mayor eficiencia, reduciendo el tiempo de ejecución. Pueden considerarse también, las optimizaciones del
-		compilador pero este aspecto fue analizado en el Prototipo Tres con mayor detalle. 
 		
 \newpage
 	\section{Resultados de Utilización de FPGA en la Implementación del Proyecto ORPSoC}
@@ -208,7 +182,26 @@ Design statistics:
 \label{tab:conbench}
 \end{table}
 
-				\subsection{Resultados de la ejecución del benchmark CoreMark}
+\newpage
+\section {Estudio de Capacidades del Proyecto MinSoC}
+		\subsection{Resultados de la ejecución del multiplicador de matrices binarias}
+		Se presentan a continuación los resultados de ejecución del programa multiplicador de matrices binarias. Se utilizó un gráfico que muestra el orden
+		de las matrices multiplicadas vs. la cantidad de ticks de ejecución. El gráfico ~\ref{fig:mulmat} muestra con claridad que el tiempo de ejecución
+		aumenta exponencialmente a medida que aumenta el orden de las matrices multiplicadas.  
+		
+\begin{figure}[h!]
+ 	\begin{center}
+  	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{./images/matrices}
+  	\caption{Multiplicación de matrices binarias}
+  	\label{fig:mulmat}
+ 	\end{center}
+	\end{figure}
+
+		Teniendo en cuenta que la aplicación fue ejecutada en una versión sintentizada básica del proyecto minSoC, este no posee unidades de multiplicación
+		por hardware que efectuen cálculos con mayor eficiencia, reduciendo el tiempo de ejecución. Pueden considerarse también, las optimizaciones del
+		compilador pero este aspecto fue analizado en el Prototipo Tres con mayor detalle. 	
+
+		\subsection{Resultados de la ejecución del benchmark CoreMark}
 		
 Inicialmente se prensentan los valores obtenidos durante la ejecución del Benchmark compilado con optimizaciones de nivel 2 (-O2) del
 compilador cruzado. El Benchmark CoreMark arroja un valor de  41.288895/25MHz = 1.65/MHz como resultado de la prueba. Las condiciones de ensayo se
@@ -527,7 +520,23 @@ Pentium          &133    &239   &38.3\\
 \caption{Comparativa de resultados Dhrystone}
 \end{table}
 
-	%\section{Estudio de factibilidad para la implentación de RTOS Embebidos}
+\section{Conclusión}
+ Aún cumpliendo con
+	los requerimientos especificados, la placa de desarrollo no cuenta con un completo soporte de periféricos on board ni con amplia documentación de
+	apoyo respecto de la materia. Se presentaron grandes dificultades en el acceso a la memoria SPI FLASH S33 de Intel la cual se encuentra soportada por
+	herramientas \textit{oficiales} que únicamente corren bajo Windows. Alternativamente existe una versión de la placa de desarrollo S3ADSP1800A,
+	disponible también en el laboratorio del CUDAR, que se encuentra equipada con una memoria FLASH SPI Numonyx M25P64 que puede ser accedida mediante
+	herramientas de programación como XC3SPROG y UrJTAG alojando finalmente los programas necesarios para el arranque del sistema.
+	
+	Las pruebas realizadas con el sistema operativo de tiempo real ecOS proveyeron información útil para el desarrollo de sistemas embebidos de tiempo
+	real. Se analizaron inicialmente las capacidades y limitaciones en la ejecución de hilos. Aunque estas pruebas tan solo verifican la utilización de
+	una parte las capacidades, el sistema operativo ecOS posee mayor funcionalidad que no fue probada en este trabajo y presenta capacidades comparables
+	a implementaciones como lo son FreeRTOS y su implentación comercial eCosPro.
+	
+	La capacidad, por defecto, del Kernel de Linux de ser compilado para arquitecturas OpenRISC posibilitó tener un entorno de ejecución de amplia
+	funcionalidad y gran utilización en el ámbito de desarrollo de Sistemas Embebidos.  
+	
+
 	%Durante las pruebas realizadas en el prototipo ~\ref{chap:proto4} 
 	
 	%\subsection{Resultados del programa de prueba de hilos}
