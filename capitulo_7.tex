@@ -5,13 +5,11 @@
 	Como primera acción se analizó la factibilidad de implementación de un SoC con licencia OpenSource en FPGA, razón que condujo a la investigación del
 	tópico en búsqueda de información necesaria que determine si existe tal posibilidad. Las características relevadas durante la investigación
 	aportaron información respecto al hardware, las herramientas de desarrollo y el sistema operativo necesario para llevar a cabo la implementación. 
-	\vspace{0.5cm}
 	\par
 	Para la selección del SoC se debió definir el microprocesador y los periféricos a utilizar, como así también las herramientas necesarias para la
 	compilación y depuración de aplicaciones que corran sobre él. Esta situación derivó en una valoración de los diferentes entornos de desarrollo y
 	sistemas operativos asociados que cumplan con el paradigma del software libre. Fue necesario además discernir entre las diversas alternativas de
 	hardware que se tenían disponibles al momento del desarrollo de este trabajo compatibles con el SoC seleccionado. 
-	\vspace{0.5cm}
 	\par
 	Fue necesario evaluar la posibilidad de implementar un Sistema Operativo que provea acceso mediante drivers a todos los periféricos conectados a
 	la plataforma hardware elegida. La síntesis e implementación sobre FPGA requiere de aplicaciones específicas que debieron ponderarse para alcanzar el
@@ -115,33 +113,28 @@
         Para lograr producir aquello que se requiere, en el plazo solicitado y ajustados al presupuesto asignado, se necesita desarrollar
         un proceso que incluya desde la etapa más temprana la gestión de los riesgos asociados a los requerimientos, de forma que se contribuya al
         mejoramiento gradual del proceso de desarrollo y la gestión de un proyecto.
-		\vspace{0.5cm}
 		\par
         La gestión de riesgos procura formalizar conocimiento orientado a la minimización de riesgos en proyectos, mediante la
         generación de principios y buenas prácticas de aplicación realista \cite{etiqueta_riegos1}. Hasta el momento se ha propuesto
         y utilizado diferentes enfoques de gestión del riesgo desde que Boehm \cite{etiqueta_riegos2} atrajo a la comunidad de ingeniería del
         software hacia la gestión del riesgo. Sin embargo, es evidente que pocas organizaciones utilizan todavía de una forma explícita y sistemática
         métodos específicos para gestionar los riesgos en sus proyectos.
-		\vspace{0.5cm}
 		\par
         En \cite{etiqueta_riegos3} se presenta la definición de riesgo que plantea que el riesgo afecta a los futuros acontecimientos, implica
         cambios, e implica elección conjunto a la incertidumbre asociada a la misma. Es indiscutible que están presentes permanentemente las características de
         incertidumbre (acontecimiento que caracteriza al riesgo y que puede o no ocurrir) y de pérdida (si el riesgo se convierte en una realidad
         ocurrirán consecuencias no deseables o pérdidas).
-		\vspace{0.5cm}
 		\par
 		Están definidas las categorías de riesgos: los riesgos del proyecto, que amenazan el plan; los riesgos técnicos, que amenazan la calidad y la
 		planificación temporal; y los riesgos del negocio, que amenazan la viabilidad del proyecto o del producto. Otra categorización a considerar a
 		partir del conocimiento que se tenga de ellos: los riesgos conocidos (los que se descubren en las evaluaciones); los riesgos predecibles (se
 		extrapolan de la experiencia) y los riesgos impredecibles (pueden ocurrir, pero es muy difícil identificarlos de antemano).
-		\vspace{0.5cm}
 		\par
      	También son claras las estrategias frente al riesgo. Por un lado están las reactivas, cuyo método es evaluar las consecuencias del riesgo cuando
  		este ya se ha producido (ya no es un riesgo) y actuar en consecuencia. Este tipo de estrategias acarrea consecuencias negativas, al poner el
  		proyecto en peligro. Y por el otro las proactivas, que aplican el método de evaluación previa y sistemática de los riesgos y sus posibles
  		consecuencias, a la par que conforman planes de contingencias para de evitar y minimizar las consecuencias. Consecuentemente, este tipo de
  		estrategias permite lograr un menor tiempo de reacción ante la aparición de riesgos impredecibles.
-		\vspace{0.5cm}
 		\par
 		De acuerdo con \cite{etiqueta_riegos3}, la administración o gestión de riesgos es un proceso iterativo que se aplica durante todo el proyecto y se
 		desarrolla en cuatro etapas detalladas en la Figura ~\ref{fig:riesgos}. Se utilizó este modelo como guía para el análisis de los riegos del
@@ -180,62 +173,78 @@
 		\end{itemize}
 		
 		En la Tabla ~\ref {tab:riegos} se listan los riesgos asociados, su severidad y probabilidad de ocurrencia para cada uno de los
-		requerimientos de usuario.
+		requerimientos de usuario. Se aplica el concepto de órden de riesgo como valor combinado de severidad y ocurrencia con el cual se logra establecer
+		una ponderación entre los riegos detectados.
 		
 		\newpage
 		
 		\begin{table}[!h]
 		\centering
-		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\begin{tabular}{ p{2.5cm} p{7.5cm} p{2cm} p{2cm} p{1.5cm} }
 		\hline 
-		\rowcolor[gray]{0.8} N\textordmasculine Req & Riegos Asociados & Severidad  & Ocurrencia \\
+		\rowcolor[gray]{0.8} N\textordmasculine Req & Riegos Asociados & Severidad  & Ocurrencia & Orden de riesgo \\
 		\hline
-		RQX-HW 1& Código RTL con fallas reconocidas durante el proceso de síntesis & Crítica       & Probable \\
+		RQX-HW 1& Código RTL con fallas reconocidas durante el proceso de síntesis & Crítica       & Probable	& 1 \\
 		\hline
-				& Capacidad insuficiente para implementar la lógica del proyecto   & Catastrófico  & Ocasional\\	 
+				& Capacidad insuficiente para implementar la lógica del proyecto   & Catastrófico  & Ocasional  & 2\\	 
 		\hline
-		RQX-HW 2& Imposibilidad de acceso a alguno de los periféricos de la placa de desarrollo &  Crítica  & Probable\\
+		RQX-HW 2& Imposibilidad de acceso a alguno de los periféricos de la placa de desarrollo &  Crítica  & Probable 	& 1\\
 		\hline
-		RQX-HW 3& Limitaciones de memoria RAM en las placas de desarrollo disponibles 	& Crítico  &  Improbable\\	 
+		RQX-HW 3& Limitaciones de memoria RAM en las placas de desarrollo disponibles 	& Crítico  &  Improbable 	& 6\\	 
 		\hline
-		RQX-HW 4& Limitaciones de memoria FLASH en las placas de desarrollo disponibles & Severo  &  Improbable\\ 
+		RQX-HW 4& Limitaciones de memoria FLASH en las placas de desarrollo disponibles & Severo  &  Improbable		& 7\\ 
 		\hline
-		RQX-LC 1& Inexistencia de los Cores Open Source necesarios  	& Catastrófico  &  Ocasional\\
+		RQX-LC 1& Inexistencia de los Cores Open Source necesarios  	& Catastrófico  &  Ocasional	& 2\\
 		\hline
-				& Falta de documentación de apoyo para la implentación de los Cores  & Severo  &  Muy Probable\\ 
+				& Falta de documentación de apoyo para la implentación de los Cores  & Severo  &  Muy Probable	& 2\\ 
 		\hline
-		 		& Código RTL con fallas reconocidas durante el proceso de síntesis   & Critica & Probable\\ 
+		 		& Código RTL con fallas reconocidas durante el proceso de síntesis   & Critica & Probable	& 1\\ 
 		\hline
-		RQX-LC 2& Inexistencia de herramientas de desarrollo de hardware con licencias Open Source & Severo  &  Probable\\
+		RQX-LC 2& Inexistencia de herramientas de desarrollo de hardware con licencias Open Source & Severo  &  Probable & 3\\
 		\hline
-		RQX-LC 3& Inexistencia de herramientas de desarrollo de software con licencias Open Source & Severo  &  Improbable\\
+		RQX-LC 3& Inexistencia de herramientas de desarrollo de software con licencias Open Source & Severo  &  Improbable & 7\\
 		\hline
-		RQX-LC 4& Inexistencia de un sistema operativo embebido con licencia Open Source  & Critico  &  Improbable\\
+		RQX-LC 4& Inexistencia de un sistema operativo embebido con licencia Open Source  & Critico  &  Improbable & 6\\
 		
 		\hline
-		RQX-HD 1& Falta de herramientas de desarrollo portables a diversos sistemas operativos & Severo  &  Ocasional\\
+		RQX-HD 1& Falta de herramientas de desarrollo portables a diversos sistemas operativos & Severo  &  Ocasional & 5\\
 		\hline		
-		RQX-HD 2& Compilación cruzada incompatible con la arquitectura destino  & Critico &  Ocasional\\
+		RQX-HD 2& Compilación cruzada incompatible con la arquitectura destino  & Critico &  Ocasional & 3\\
 		\hline
-				& Falta de mecanismos de optimización de código del compilador  & Severo  &  Probable\\
+				& Falta de mecanismos de optimización de código del compilador  & Severo  &  Probable & 3\\
 		\hline
-				& Imposibilidad de depuración de programas en la arquitectura destino& Crítico  &  Probable\\
+				& Imposibilidad de depuración de programas en la arquitectura destino& Crítico  &  Probable & 1\\
 		\hline
-		RQX-HD 3& Soporte de acceso a periféricos inexistente o con presencia de bugs & Critico &  Probable\\
+		RQX-HD 3& Soporte de acceso a periféricos inexistente o con presencia de bugs & Critico &  Probable & 1\\
 		\hline
-		RQX-SO 1& Drivers necesarios inexistentes o con fallos & Critico &  Probable\\
+		RQX-SO 1& Drivers necesarios inexistentes o con fallos & Critico &  Probable & 1\\
 		\hline
-				& Librerías necesarias inexistentes o con fallos & Severo &  Probable\\
+				& Librerías necesarias inexistentes o con fallos & Severo &  Probable & 3\\
 		\hline
-		RQX-SO 2& Incapacidad de ejecución de hilos en los SO compatibles con el microprocesador elegido & Catastróficos & Improbable\\
+		RQX-SO 2& Incapacidad de ejecución de hilos en los SO compatibles con el microprocesador elegido & Catastróficos & Improbable & 4\\
 		\hline
-		RQX-SO 3& Limitaciones para la ejecución de SO de tiempo real & Critico & Probable\\
+		RQX-SO 3& Limitaciones para la ejecución de SO de tiempo real & Critico & Probable & 1\\
 		\hline
 		\end{tabular}
 		\caption{Tabla de riegos vs. Requerimientos}
 		\label{tab:riegos}
 		\end{table}
 	
+		En base a la tabla se pueden establecer los requerimientos que involucran mayor riego de implementación listados a continuación:
+		
+		\begin{itemize}
+		    \item RQX-HW 1 A - Código RTL con fallas reconocidas durante el proceso de síntesis
+		    \item RQX-HW 2   - Imposibilidad de acceso a alguno de los periféricos de la placa de desarrollo
+			\item RQX-LC 1 C - Código RTL con fallas reconocidas durante el proceso de síntesis
+			\item RQX-HD 2 C - Imposibilidad de depuración de programas en la arquitectura destino
+			\item RQX-HD 3   - Soporte de acceso a periféricos inexistente o con presencia de bugs
+			\item RQX-SO 1 A - Drivers necesarios inexistentes o con fallos
+			\item RQX-SO 3   - Limitaciones para la ejecución de SO de tiempo real
+	    \end{itemize}
+	    
+	    Esta ponderación se utiliza en la Parte ~\ref{part:partimple} de este trabajo para el diseño de los prototipos desarrollados durante la
+	    implementación.
+	    
 		\newpage
 		\subsection{Planificación de los riesgos}	
 
