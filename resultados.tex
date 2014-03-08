@@ -175,10 +175,86 @@ Design statistics:
 
 \newpage
 \section {Estudio de Capacidades del Proyecto MinSoC}
+		
+		\subsection{Estudio de la complejidad del algoritmo de prueba}
+		
+		El tiempo de ejecución de un algoritmo va a depender de diversos factores como son: los datos de entrada que le suministremos, la calidad del
+		código generado por el compilador para crear el programa objeto, la naturaleza y rapidez  de las instrucciones máquina del procesador concreto que
+		ejecute el programa, y la complejidad intrínseca del algoritmo. Hay dos estudios posibles sobre el tiempo: 
+ 
+		\begin{itemize}
+		  \item Uno que proporciona una medida teórica (a priori), que consiste en obtener una  función que acote (por arriba o por abajo) el tiempo de
+		  ejecución del algoritmo para unos valores de entrada dados.
+		\item Y otro que ofrece una medida real (a posteriori), consistente en medir el tiempo  de ejecución del algoritmo para unos valores de entrada
+		dados y en un ordenador concreto. 
+		\end{itemize} 
+		
+		Entendemos por tamaño de la entrada el número de componentes sobre los que  se va a ejecutar el algoritmo. Por ejemplo, la dimensión del vector a
+		ordenar o el tamaño de las matrices a multiplicar. La unidad de tiempo a la que debe hacer referencia estas medidas de eficiencia  no puede ser
+		expresada en segundos o en otra unidad de tiempo concreta, pues no existe un ordenador estándar al que puedan hacer referencia todas las medidas. 
+        Denotaremos por T(n) el tiempo de ejecución de un algoritmo para una entrada de tamaño n. 
+        
+        También es importante hacer notar que el comportamiento de un algoritmo puede cambiar notablemente para diferentes entradas (por ejemplo, lo
+        ordenados que se encuentren ya los datos a ordenar). De hecho, para muchos programas el tiempo de ejecución es en realidad una función de la
+        entrada específica, y no sólo del tamaño de ésta. Así suelen estudiarse tres casos para un mismo algoritmo: caso peor, caso mejor y caso
+        medio. El caso mejor corresponde a la traza (secuencia de sentencias) del algoritmo que realiza menos instrucciones. Análogamente, el caso
+        peor corresponde a la traza del algoritmo que realiza más instrucciones.
+ 		
+ 		A la hora de medir el tiempo, siempre lo haremos en función del número de operaciones elementales que realiza dicho algoritmo, entendiendo por
+ 		operaciones elementales (en adelante OE) aquellas que el ordenador realiza en tiempo acotado por una constante. Así, consideraremos OE las
+ 		operaciones aritméticas básicas,  asignaciones a variables de tipo predefinido por el compilador, los saltos (llamadas a funciones y
+ 		procedimientos, retorno desde ellos, etc.), las comparaciones lógicas y el acceso a estructuras indexadas básicas, como son los vectores y
+ 		matrices. Cada una de ellas contabilizará como 1 OE. Resumiendo, el tiempo de ejecución de un algoritmo va a ser una función que mide el número de
+ 		operaciones elementales que realiza el algoritmo para un tamaño de entrada dado.
+		
+		Se define a continuación la complejidad de cálculo para el multiplicador de matrices binarias implementado en la sección ~\ref {testing:proto1} que
+		cuenta con tres bucles anidados y operaciones de multiplicación y acumulación.
+	
+	\newpage
+			
+	\begin{lstlisting}[language=C,frame=single]
+for (i=0;i<indice;i++){						(*1*)
+  for (j=0;j<indice;j++){					(*2*)
+    for (k=0;k<indice;k++){					(*3*)
+	  producto = matrizA[i*con+k] * matrizB[k*con+j];	(*4*)
+	  acumulador = acumulador + producto;			(*5*) 
+    }								(*6*)
+  matriz [i*con+j] = acumulador;				(*7*)
+  acumulador = 0;						(*8*)
+  }								(*9*)
+}								(*10*)
+	\end{lstlisting}
+		
+	    Para determinar el tiempo de ejecución, calcularemos primero el número de operaciones elementales (OE) que se realizan: 
+ 		\begin{itemize}
+ 		  \item En la línea (1) En la primera iteración del bucle si tiene una asignación. Luego se efectúa la condición del bucle que depende de ``i'' con
+ 		  una comparación y un post incremento de i. (2 OE)
+ 		  \item En la línea (2) En la primera iteración del bucle si tiene una asignación. Se efectúa la condición del bucle que depende de ``j'' con una
+ 		  comparación y un post incremento de j. (2 OE)
+ 		  \item En la línea (3) En la primera iteración del bucle si tiene una asignación. Se efectúa la condición del bucle que depende de ``k'' con una
+ 		  comparación y un post incremento de k. (2 OE)
+ 		  \item La línea (4) está compuesta por una asignación, dos accesos a vectores, dos incrementos y tres productos. (8 OE) 
+ 		  \item La línea (5) está compuesta por una asignación y una suma (2 OE)
+ 		  \item En la línea (6) se tiene fin del bucle que depende de ``k'' (1 OE)
+ 		  \item En la línea (7) se tiene una asignación , un incremento, un producto y un acceso a vector (4 OE)
+ 		  \item En la línea (8) se tiene una asignación (1 OE)
+ 		  \item En la línea (9) se tiene fin del bucle que depende de ``j'' (1 OE)
+ 		  \item En la línea (10) se tiene fin del bucle que depende de ``i'' (1 OE)
+ 		\end{itemize}
+		
+		Se establece que indice = n (todas matrices cuadradas nxn). Se tiene entonces 
+		
+		\begin{equation*}
+		T(n) = 1 + \sum_{i=0}^{n-1} \left (2 + \sum_{j=0}^{n-1} \left (2 + \sum_{k=0}^{n-1} 1 + (8+2)\right ) + (4 + 1) \right )      
+		\end{equation*}
+		
+		 
+		
 		\subsection{Resultados de la ejecución del multiplicador de matrices binarias}
+			
 		Se presentan a continuación los resultados de ejecución del programa multiplicador de matrices binarias. Se utilizó un gráfico que muestra el orden
 		de las matrices multiplicadas vs. la cantidad de ticks de ejecución. El gráfico ~\ref{fig:mulmat} muestra con claridad que el tiempo de ejecución
-		aumenta exponencialmente a medida que aumenta el orden de las matrices multiplicadas.  
+		aumenta exponencialmente a medida que aumenta el orden de las matrices multiplicadas.
 		
 \begin{figure}[h!]
  	\begin{center}
