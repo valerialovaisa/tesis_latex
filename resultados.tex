@@ -20,43 +20,47 @@ El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos
 	\newpage
 	\section{Resultados de Utilización de FPGA en la Implementación del Proyecto MinSoC}
 
-	A continuación se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.  Los resultados de la herramienta
-	MAP se muestran en la referencia ~\ref{lst:resultparminsoc}
-
-\begin{lstlisting}[frame=single,caption={Resumen de utilización - MinSoC},label={lst:resultparminsoc},breaklines]
-
-Logic Utilization:
- Number of Slice Flip Flops:         5,040 out of  33,280   15%
- Number of 4 input LUTs:            13,901 out of  33,280   41%
-
-Logic Distribution:
- Number of occupied Slices:          8,475 out of  16,640   50%
-   Number of Slices containing only related logic:   8,475 out of   8,475 100%
-   Number of Slices containing unrelated logic:          0 out of   8,475   0%
-     *See NOTES below for an explanation of the effects of unrelated logic.
- Total Number of 4 input LUTs:      14,231 out of  33,280   42%
-   Number used as logic:            13,866
-   Number used as a route-thru:        330
-   Number used for Dual Port RAMs:      32
-     (Two LUTs used per Dual Port RAM)
-   Number used as Shift registers:       3
-
- The Slice Logic Distribution report is not meaningful if the design is
- over-mapped for a non-slice resource or if Placement fails.
-
- Number of bonded IOBs:                 29 out of     519    5%
- Number of BUFGMUXs:                     5 out of      24   20%
- Number of DCMs:                         1 out of       8   12%
- Number of BSCANs:                       1 out of       1  100%
- Number of DSP48As:                      4 out of      84    4%
- Number of RAMB16BWERs:                 70 out of      84   83%
- Number of BSCAN_SPARTAN3As:             1 out of       1  100%
-
-Average Fanout of Non-Clock Nets:                3.74
-
-Peak Memory Usage:  415 MB
-
-\end{lstlisting}
+	A continuación en la tabla ~\ref{tab:conbench} se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.
+\begin{table}[h!]
+		\begin{tabular}{ |p{6cm} |p{3cm} |p{3cm}| p{3cm}| }    
+		\hline
+		\multicolumn{4}{|>{\columncolor[gray]{.8}}c}{Resumen de utilización MinSoC}\\
+		\hline
+		\multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Logica utilizada} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Usado} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Disponible} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Utilizado} \\
+		\hline 
+		Slice Flip Flop & 5040 & 33280 & 15\%  \\ 
+		\hline 
+		LUTs de 4 entradas & 13901 & 33280 & 41\%  \\ 
+		\hline 
+\multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Logica de distribución} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Usado} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Disponible} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Utilizado} \\
+		\hline 
+		Slice & 8475 & 16640 & 50\%  \\ 
+		\hline 
+		Luts de 4 entradas para lógica combinacional& 13866 & 33280 & 40\%  \\ 
+		\hline 
+		Luts de 4 entradas route-thru & 330 & 33280 & 1\%  \\ 		
+		\hline 
+		Luts de 4 entradas para puertos Dual RAM & 32 & 33280 & 0,9\%  \\ 		
+		\hline 
+		Luts de 4 entradas para Shift registers & 3 & 33280 & 0,1\%  \\ 
+		\hline
+		IOBs& 29 & 519 & 5\%  \\ 
+		\hline 
+		BUFGMUXs & 5 & 24 & 20\%  \\ 
+		\hline 
+		DCMs & 1 & 8 & 12\%  \\ 
+		\hline
+		DSP48As & 4 & 84 & 4\%  \\ 
+		\hline 
+		RAMB16BWERs & 70 & 84 & 83\%  \\ 
+		\hline 
+		BSCAN\_SPARTAN3As& 1 & 1 & 100\%  \\ 
+		\hline 
+\end{tabular}
+%\end{center}
+%\caption{Condiciones del entorno de prueba}
+\label{tab:conbench}
+\end{table}
 
 	Como se puede observar que desde el punto de vista de utilización lógica se utilizó el 15\% de Slice Flip Flops y el 41\% de LUTs disponibles en
 	la FPGA. Respecto de la distribución lógica se tiene un 50\% de ocupación de Slices y un 42\% de LUTs de 4 entradas de las cuales el 1\% se utiliza
@@ -64,81 +68,78 @@ Peak Memory Usage:  415 MB
 	desplazamiento. Se utilizó el 5\% de los bloques de entrada/salida, el 20\% de los BUFGMUXs ó buffers de clock global, el 12\% de los DCMs, el 4\% de
 	los bloques DSP y el 83\% de los bloques de RAM. El proceso Technology Mapping utilizó un pico 415 MB de memoria.
 
-\subsection{Reporte de timing}	
 
-timming del minsoc
-
-		
 \newpage
 	\section{Resultados de Utilización de FPGA en la Implementación del Proyecto ORPSoC}
 	
-	A continuación se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.  Los resultados de la herramienta MAP
-	se muestran en la referencia ~\ref{lst:resultorpsoc}
+	A continuación en la tabla ~\ref{tab:conbench1} se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.
 		
-\begin{lstlisting}[frame=single,caption={Resumen de utilización - ORPSoC},label={lst:resultorpsoc},breaklines]
-Logic Utilization:
-  Number of Slice Flip Flops:         4,769 out of  33,280   14%
-  Number of 4 input LUTs:            11,887 out of  33,280   35%
-Logic Distribution:
-  Number of occupied Slices:          7,772 out of  16,640   46%
-    Number of Slices containing only related logic:   7,772 out of   7,772 100%
-    Number of Slices containing unrelated logic:          0 out of   7,772   0%
-      *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:      12,227 out of  33,280   36%
-    Number used as logic:            10,803
-    Number used as a route-thru:        340
-    Number used for Dual Port RAMs:     960
-      (Two LUTs used per Dual Port RAM)
-    Number used as Shift registers:     124
-
-  The Slice Logic Distribution report is not meaningful if the design is
-  over-mapped for a non-slice resource or if Placement fails.
-
-  Number of bonded IOBs:                128 out of     519   24%
-    IOB Flip Flops:                      31
-    IOB Master Pads:                      6
-    IOB Slave Pads:                       6
-  Number of ODDR2s used:                 48
-    Number of DDR_ALIGNMENT = NONE       48
-    Number of DDR_ALIGNMENT = C0          0
-    Number of DDR_ALIGNMENT = C1          0
-  Number of BUFGMUXs:                     7 out of      24   29%
-  Number of DCMs:                         2 out of       8   25%
-  Number of DSP48As:                      4 out of      84    4%
-  Number of RAMB16BWERs:                 16 out of      84   19%
-
-  Number of RPM macros:            1
-Average Fanout of Non-Clock Nets:                3.85
-
-Peak Memory Usage:  410 MB
-
-\end{lstlisting}	
+\begin{table}[h!]
+		\begin{tabular}{ |p{6cm} |p{3cm} |p{3cm}| p{3cm}| }    
+		\hline
+		\multicolumn{4}{|>{\columncolor[gray]{.8}}c}{Resumen de utilización ORPSoC}\\
+		\hline
+		\multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Logica utilizada} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Usado} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Disponible} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Utilizado} \\
+		\hline 
+		Slice Flip Flop & 4872 & 33280 & 14\%  \\ 
+		\hline 
+		LUTs de 4 entradas & 12093 & 33280 & 36\%  \\ 
+		\hline 
+\multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Logica de distribución} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Usado} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Disponible} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Utilizado} \\
+		\hline 
+		Slice &7772 & 16640 & 46\%  \\ 
+		\hline 
+		Luts de 4 entradas para lógica combinacional& 11009 & 33280 & 33\%  \\ 
+		\hline 
+		Luts de 4 entradas route-thru & 250 & 33280 & 0,7\%  \\ 		
+		\hline 
+		Luts de 4 entradas para puertos Dual RAM & 960 & 33280 & 3\%  \\ 		
+		\hline 
+		Luts de 4 entradas para Shift registers & 124 & 33280 & 0,3\%  \\ 
+		\hline 		
+		IOBs& 128 & 519 & 24\%  \\ 
+		\hline  
+		BUFGMUXs & 7 & 24 & 29\%  \\ 
+		\hline 
+		DCMs & 2 & 8 & 25\%  \\ 
+		\hline
+		DSP48As & 4 & 84 & 4\%  \\ 
+		\hline 
+		RAMB16BWERs & 16 & 84 & 19\%  \\ 
+		\hline 
+		BSCAN\_SPARTAN3As& 1 & 1 & 100\%  \\ 
+		\hline 
+\end{tabular}
+%\end{center}
+%\caption{Condiciones del entorno de prueba}
+\label{tab:conbench1}
+\end{table}	
 		
-	Como se puede observar que desde el punto de vista de utilización lógica se utilizó el 14\% de Slice Flip Flops y el 35\% de LUTs disponibles en
-	la FPGA. Respecto de la distribución lógica se tiene un 46\% de ocupación de Slices y un 36\% de LUTs de 4 entradas de las cuales el 1\% se utiliza
-	como LUTs de paso o en inglés route-thru. El 35\% restante están utilizadas como lógica combinacional , puertos Dual RAM y registros de
+	Como se puede observar que desde el punto de vista de utilización lógica se utilizó el 14\% de Slice Flip Flops y el 36\% de LUTs disponibles en
+	la FPGA. Respecto de la distribución lógica se tiene un 46\% de ocupación de Slices y un 37\% de LUTs de 4 entradas de las cuales el 0,7\% se utiliza
+	como LUTs de paso o en inglés route-thru. El 36\% restante están utilizadas como lógica combinacional , puertos Dual RAM y registros de
 	desplazamiento. Se utilizó el 24\% de los bloques de entrada/salida, el 29\% de los BUFGMUXs ó buffers de clock global, el 25\% de los DCMs, el 4\%
 	de los bloques DSP y el 19\% de los bloques de RAM. El proceso Technology Mapping utilizó un pico 410 MB de memoria.  
 
-		\subsection{Reporte de timing}	
-
-El reporte de timing presenta los resultados del análisis de distribución de los clocks del proyecto. Entre los resultados se obtiene el mínimo
-periodo (Máx Frecuencia) necesarios para el correcto funcionamiento del sistema. Es importante destacar que los tiempos expuestos en el reporte son
-teóricos y se presentan cambios importante durante las pruebas sobre el hardware. 
-
-\begin{lstlisting}[frame=single,caption={Reporte timing - ORPSoC},label={lst:salidas},breaklines]
-Timing summary:
-
-Timing errors: 498  Score: 729028  (Setup/Max: 311057, Hold: 417971)
-Constraints cover 395663179 paths, 94 nets, and 53193 connections
-
-Design statistics:
-  Minimum period:  45.166ns   (Maximum frequency:  22.141MHz)
-  Maximum path delay from/to any node:  11.696ns
-  Maximum net delay:   2.594ns
-  Minimum input required time before clock:  26.237ns
-  Maximum output delay after clock:  13.126ns
-\end{lstlisting}
+%		\subsection{Reporte de timing}	
+%
+%El reporte de timing presenta los resultados del análisis de distribución de los clocks del proyecto. Entre los resultados se obtiene el mínimo
+%periodo (Máx Frecuencia) necesarios para el correcto funcionamiento del sistema. Es importante destacar que los tiempos expuestos en el reporte son
+%teóricos y se presentan cambios importante durante las pruebas sobre el hardware. 
+%
+%\begin{lstlisting}[frame=single,caption={Reporte timing - ORPSoC},label={lst:salidas},breaklines]
+%Timing summary:
+%
+%Timing errors: 498  Score: 729028  (Setup/Max: 311057, Hold: 417971)
+%Constraints cover 395663179 paths, 94 nets, and 53193 connections
+%
+%Design statistics:
+%  Minimum period:  45.166ns   (Maximum frequency:  22.141MHz)
+%  Maximum path delay from/to any node:  11.696ns
+%  Maximum net delay:   2.594ns
+%  Minimum input required time before clock:  26.237ns
+%  Maximum output delay after clock:  13.126ns
+%\end{lstlisting}
 
 		
 \section {Estudio de Capacidades del Proyecto ORPSoC}	
