@@ -1,0 +1,199 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CAPITULO 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Benchmarking}
+
+\section{Introducción}
+
+En informática, \textit{benchmark} es la acción de ejecutar un
+programa de computadora o un conjunto de programas con el fin de
+evaluar el rendimiento. Dicho rendimiento se refiere generalmente al
+hardware, por ejemplo, el rendimiento de operaciones de punto flotante
+de la CPU. Sin embargo, hay circunstancias en que la técnica también
+es aplicable al software. Por ejemplo, existen benchmarks de software
+que son ejecutados para evaluar el rendimiento de compiladores o
+sistemas de gestión de bases de datos.
+
+El uso de \textit{benchmark} está motivado por la creciente
+complejidad en los sistemas informáticos, tanto a nivel de hardware
+como de software, lo cual dificulta enormemente su comparación. En
+particular, las especificaciones técnicas del sistema por sí solas no
+permiten predecir el rendimiento del mismo para resolver un problema
+en particular. Es necesario utilizar tests que permitan su
+comparación. Por ejemplo, los procesadores Pentium 4 de Intel
+generalmente operaban a mayor frecuencia que los Athlon XP de AMD, lo
+que no necesariamente implica una mayor capacidad de procesamiento. En
+particular, las CPUs que poseen mas unidades de ejecución usualmente
+completan tareas reales y de benchmark en menos tiempo que los
+supuestos más rápidos, procesadores de mayores frecuencias de clock.
+
+Entre la amplia variedad de \textit{benchmarks} existentes podemos
+diferenciar dos grupos principales. El primer grupo lo conforman los
+\textit{benchmarks} de aplicaciones los cuales se encargan de analizar
+el rendimiento cuando se ejecutan programas de uso cotidiano para el
+usuario. El segundo grupo lo conforman los \textit{benchmarks}
+sintéticos los cuales están diseñados para imitar una clase particular
+de carga de trabajo en un componente del sistema. Estos últimos son
+más efectivos para probar componentes individuales como discos rígidos
+o dispositivos de red.
+	
+Los \textit{benchmarks} tienen gran importancia en el diseño de
+CPUs. Proveen a los diseñadores la habilidad de medir y realizar
+comparativas durante las etapas de diseño permitiendo tomar mejores
+decisiones a la hora de optimizar la micro-arquitectura. Por ejemplo,
+una de las baterías de tests utilizados a tal fin es la provista por
+la Standard Performance Evaluation Corporation (SPEC). Tales tests se
+convirtieron en un patrón de referencia entre los diferentes
+fabricantes de computadoras. Por tal motivo, ocurrió que varios de
+ellos modificaron sus sistemas con el único fin de mejorar los
+resultados frente a dichos tests sin que tales modificaciones
+impliquen una mejora del desempeño en aplicaciones reales. Por
+ejemplo, durante los 80', algunos compiladores detectaban una
+operación matemática específica utilizada en los \textit{benchmarks}
+de punto flotante mas conocidos y reemplazaban la misma con una
+operación matemática equivalente de ejecución más rápida. Sin embargo,
+esta transformación rara vez era útil en la ejecución de programas
+fuera del \textit{benchmark}. Luego, a mediados de los 90', con la
+introducción de las arquitecturas Reduced Instruction Set Computing
+(RISC) y Very Long Instruction Word (VLIW) se enfatizó la importancia
+de los compiladores en lo relativo a desempeño. Actualmente, los
+\textit{benchmarks} son utilizados también por los desarrolladores de
+compiladores para incrementar no sólo sus indicadores de
+\textit{benchmark} sino también su desempeño en aplicaciones
+reales. 
+
+
+
+\section{Tipos de Benchmarks}
+
+Además del la diferenciación general entre \textit{benchmarks} de
+hardware y software, existe una especificación más clasificación que se
+describe brevemente en la siguiente tabla:
+
+\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
+\hline 
+\rowcolor[gray]{0.8} Tipo & Descripción & Ejemplo \\
+\hline
+De programas reales & Diseñados para evaluar el
+rendimiento de el procesador en aplicaciones de uso
+cotidiano. Por ejemplo para procesadores de texto como \LaTeX, software
+de diseño asistido por computadora (CAD) y
+aplicaciones generales de usuario & SPECint y SPECfp\\
+\hline
+Microbenchmark & Diseñados para medir la performance
+de una pequeña y específica porción de código \\
+\hline
+Kernel & Se basan en el análisis y conocimiento de
+que en la mayoría de los casos solo el 10 \% del
+código ejecutado utiliza el 80\% de los recursos de
+CPU utilizando estas porciones de código clave para
+realizar el benchmark & linpack y
+livermore loops\\
+\hline
+Benchmark de componentes & Programas diseñados para
+medir la performance de componentes básicos. Detectan
+automáticamente parámetros de hardware como el numero
+de registros, tamaño de cache, latencia de
+memoria,etc. & SPEC CPU2006\\
+\hline
+Benchmarks Sintéticos & Diseñados para medir la
+performance de una pequeña y específica porción de
+código & Whetstone y Dhrystone\\
+\hline
+Benchmarks I/O & Utilizados para medir la performace
+de los dispositivos de entrada y salida & \\
+\hline
+Benchmark de Base de Datos & Pretenden medir el
+throughtput y los tiempos de respuesta de los sistemas
+de gestión de base de datos & Transaction Processing
+Performance Council (TPC)\\
+\hline
+Benchmarks Paralelos & Diseñados para ser utilizados
+en procesadores multicore o sistemas distribuidos &
+NAS Parallel Benchmarks (NPB)\\
+\hline
+\end{tabular}
+	
+\section{Benchmarking de Sistemas Embebidos}
+
+La utilización de benchmarking se extiende a los Sistemas Embebidos
+proporcionando datos que permiten la comparación de los mismos. Por
+ejemplo, el Embedded Microprocessor Benchmark Consortium (EEMBC)
+desarrolla una serie de aplicaciones benchmark que facilitan a los
+diseñadores de sistemas la selección de los procesadores óptimos para
+sus desarrollos. EEMBC organiza su conjunto de benchmarks apuntando a
+diferentes ramas de aplicación tales como Automotriz, Sistemas
+Digitales, Java, Procesadores Multicore, Redes, Procesamiento de
+señales, Smartphones/tablets y Browsers.
+	
+En benchmarking de sistema embebidos es común realizar tests que se
+focalicen en el núcleo de la CPU aislándolo de los otros elementos del
+procesador. Es posible, por ejemplo, que desee tener la capacidad de
+hacer caso omiso de la memoria y los efectos de E/S con el fin de
+focalizar el análisis principalmente en la operación de un pipeline.
+
+A continuación se describen dos de los principales benchmarks que
+fueron utilizados para evaluar el sistema desarrollado en la presente
+tesis (véase el capítulo de resultados).
+
+\subsection{CoreMark}	
+
+CoreMark es un Benchmark que pretende medir el desempeño de las CPU
+utilizadas en Sistemas Embebidos. Fue desarrollado en 2009 por Shay
+Gal-On en el EEMBC y se ha convertido un estándar de facto de la
+industria llegando a reemplazar al antiguo benchmark
+Dhrystone. CoreMark esta desarrollado en C y contiene implementaciones
+de los siguientes algoritmos:
+	
+\begin{itemize}
+\item Procesamiento de listas (Find and sort)
+\item Manipulación de matrices (Operaciones comunes de matrices)
+\item Máquina de estados 
+\item Códigos de redundancia cíclica (CRC)  
+\end{itemize}	 
+	
+Las actuales plataformas con procesadores embebidos no solo están
+compuestas por un CPU y un subsistema de memoria. De hecho, los SoC
+pueden estar compuestos por más de un núcleo de CPU, aceleradores de
+hardware, periféricos complejos y grandes cantidades de
+memoria. CoreMark es el punto de partida para la evaluación de éstos
+complejos dispositivos. El benchmark es capaz de probar la estructura
+de pipeline básica de un procesador, así como la capacidad de prueba
+de lectura/escritura de operaciones básicas, operaciones de enteros y
+operaciones de control. Respecto de los periféricos y mecanismos de
+interrupción, el EEMBC desarrolla una colección de tests basados en
+escenarios y conducidos por hardware que evalúan dichos periféricos
+y la capacidad del CPU de prestar servicio a los mismos y a otras
+interrupciones a nivel sistema.
+	
+Los resultados del CoreMark pueden ser encontrados en la página principal   
+del proyecto \url{http://www.eembc.org/coremark/} y se presentan en el siguiente formato:
+	
+CoreMark 1.0 : N / C [/ P] [/ M]
+	
+Donde:
+\begin{itemize}
+\item N: Numero de iteraciones por segundo 
+\item C: Versión del compilador y flags
+\item P: Parámetros específicos de memoria y datos
+\item M: Tipo de ejecución de algoritmo paralelo y el numero de contextos.
+\end{itemize}	 
+	
+Por ejemplo: CoreMark 1.0 : 128 / GCC 4.1.2 -O2 -fprofile-use / Heap
+in TCRAM / FORK:2
+	
+\subsection{Dhrystone}
+
+ 		Es un benchmark sintético y comercial. Intenta medir la velocidad del sistema en cuanto a rendimiento no numérico, expresando los
+		resultados en DPS (instrucciones Dhrystones Por Segundo). El rendimiento de Dhyrstone se calcula a partir de la siguiente fórmula: Iteraciones
+		Dhrystone por segundo = reloj del procesador * número de pasadas / tiempo de ejecución. Para que el resultado sea válido el código Dhrystone debe
+		ser ejecutado al menos por dos segundos. Es un pequeño benchmark sintético que pretende ser representativo de programación entera de
+		sistemas. 
+		
+		Contiene muchas instrucciones simples, llamadas a procedimiento y condicionales, y pocas de coma flotante y bucles. Usa pocas variables globales y
+		ejecuta operaciones con punteros. Está compuesto por 12 procedimientos incluidos en un bucle de medida con 94 sentencias. No se puede variar su
+		tamaño. Está compuesto por un 53\% de instrucciones de asignación, 32\% de instrucciones de control y un 15\% de llamadas a procedimiento.
+		Dhrystone es compacto (no más de 1,5 KB), ampliamente disponible en el dominio público, y sencillo de ejecutar. Por ser tan pequeño el Dhrystone
+		entra completamente en la caché interna, de esta manera no mide el resto del sistema pero presenta la ventaja de que mide solamente la capacidad
+		del procesador para trabajar con enteros.
+		
+%{\color{red}\textbf{agregar breve descripción acá.}}
+
