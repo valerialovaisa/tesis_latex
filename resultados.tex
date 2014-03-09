@@ -211,7 +211,6 @@ El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos
 		Se define a continuación la complejidad de cálculo para el multiplicador de matrices binarias implementado en la sección ~\ref {testing:proto1} que
 		cuenta con tres bucles anidados y operaciones de multiplicación y acumulación.
 	
-	\newpage
 			
 	\begin{lstlisting}[language=C,frame=single]
 for (i=0;i<indice;i++){						(*1*)
@@ -243,12 +242,17 @@ for (i=0;i<indice;i++){						(*1*)
  		  \item En la línea (10) se tiene fin del bucle que depende de ``i'' (1 OE)
  		\end{itemize}
 		
-		Se establece que indice = n (todas matrices cuadradas nxn). Se tiene entonces 
+		Se establece que indice = n (todas matrices cuadradas nxn). Se tiene entonces: 
 		
 		\begin{equation*}
 		T(n) = 1 + \sum_{i=0}^{n-1} \left (2 + \sum_{j=0}^{n-1} \left (2 + \sum_{k=0}^{n-1} 1 + (8+2)\right ) + (4 + 1) \right )      
 		\end{equation*}
 		
+		Obteniendo de esta manera:
+		
+		\begin{equation*}
+		T(n) = 11 n^3 + 9 n^2 + 1       
+		\end{equation*}
 		 
 		
 		\subsection{Resultados de la ejecución del multiplicador de matrices binarias}
@@ -268,6 +272,115 @@ for (i=0;i<indice;i++){						(*1*)
 		Teniendo en cuenta que la aplicación fue ejecutada en una versión sintentizada básica del proyecto minSoC, este no posee unidades de multiplicación
 		por hardware que efectuen cálculos con mayor eficiencia, reduciendo el tiempo de ejecución. Pueden considerarse también, las optimizaciones del
 		compilador pero este aspecto fue analizado en el Prototipo Tres con mayor detalle. 	
+
+        \subsection{Estudio de los niveles y banderas de optimización del compilador cruzado}
+		\subsubsection{Optimización de código}
+		
+El objetivo de la optimización de código por parte del compilador es obtener código que se ejecuta más eficientemente según los criterios:
+\begin{itemize}
+  \item Tiempo de ejecución (optimización temporal)
+  \item Espacio de memoria utilizado (optimización espacial) 
+\end{itemize}
+ 
+El funcionamiento básico de este mecanismo consiste en que el compilador revisa el código generado a varios niveles de abstracción y realiza las
+optimizaciones aplicables al nivel de abstracción.
+\begin{itemize}
+  	\item Árbol sintáctico abstracto: optimizar subexpresiones redundantes, reducción de frecuencia, etc.
+	\item Tuplas o cuadruplas: optimizar en uso de los registros o de las variables temporales.
+	\item Ensamblador/Código máquina: convertir saltos a saltos cortos, reordenar instrucciones
+\end{itemize}
+
+Se define un bloque básico como un fragmento de código que tiene una única entrada y salida, y cuyas instrucciones se ejecutan secuencialmente. Si se
+ejecuta una instrucción del bloque se ejecutan todas en un orden conocido en tiempo de compilación. La idea del bloque básico es encontrar partes del programa
+cuyo análisis necesario para la optimización sea lo más simple posible.
+
+Una técnica bien conocida para la optimización de bucles es la llamada desenrrolado de bucles (Loop Unrolling). La expansión de bucles solo se puede
+aplicar a los bucles cuyo número de iteraciones se conoce en tiempo de compilación. La expansión de un bucle puede ser muy costosa en espacio. Hay
+que poner un criterio heurístico para decidir si se aplica la expansión. Se puede aplicar una expansión parcial en la que sigue existiendo el bucle,
+pero cada iteración del nuevo bucle corresponde a varias iteraciones del bucle original. En un bucle expandido se ha de sustituir el índice del bucle 
+por el valor constante correspondiente.
+
+El compilador cruzado utilizado en este trabajo or32-elf-gcc Versión 4.5.1 permite realizar optimizaciones de código mediante una serie de flags que
+identifican cada uno de los mecanismos de optimización que el compilador implementa. Los flags fueron utilizados durante la ejecución de pruebas en
+este trabajo son:
+
+\begin{itemize}
+  	\item -O2 : Este nivel de optimización activa una serie de flags que pueden consultarse en \cite{etiqueta_OptGcc}
+	\item -O3 : Este nivel de procura una mayor optimización de código y activa una serie de flags conjunto con los del nivel -O2 que pueden consultarse
+	en \cite{etiqueta_OptGcc}
+	\item -funroll-loops : Desenrrolla los bucles cuyo numero de iteraciones puede ser determinado en tiempo de compilación. 
+	\item -funroll-all-loops : Desentrolla todos los bucles aún cuando el numero de iteraciones no pueda ser determinado en tiempo de compilación. 
+	\item -fgcse-sm : Cuando este flag se encuentra activado, el compilador procura mover fuera de los bucles las operaciones store.
+\end{itemize}
+
+		\subsubsection{Resultados de la compilación de un bucle simple}
+
+A modo de prueba se planteó un programa que incluye un arreglo de elementos enteros y dos bucles ``for'' , uno para la inicialización del arreglo y
+otro para su actualización.
+
+	\begin{lstlisting}[language=C,frame=single]
+#define ITERACIONES 1000
+#define CTE 3
+
+int x [ITERACIONES];
+int i ;
+
+void set (){
+	for (i=0;i<ITERACIONES;i++)
+		x[i] = 4;
+}
+
+void calc () {
+	for (i=0;i<ITERACIONES;i++)
+		x[i] = x[i] + CTE;
+}
+
+void main () {
+	set ();
+	calc ();
+}
+	\end{lstlisting}
+		
+En una primera instancia se realizó el desensamblado del binario generado para las funciones set (inicialización) y calc (actualización) con un
+numero de 1000 iteraciones y para cada uno de los flags de optimización. Los códigos generados pueden observarse en detalle en el Apéndice
+~\ref{chap:CodPrueba} 
+
+A continuación se presenta una tabla que resume los resultados obtenidos para 1000 iteraciones y diversos flags de optimización:
+
+\begin{table}[h!]
+		\centering
+		\begin{tabular}{ | p{4cm} | p{5cm} | p{2.5cm} | p{2cm} | }
+		\hline 
+		\rowcolor[gray]{0.8} Función & Flags & Cantidad de Instrucciones  & Registros Utilizados \\    
+		\hline 
+		set (inicialización) 	& -O2 						& 19 &  4 \\ 
+		\hline 
+							 	& -O2 -funroll-loops 		& 25 &  7 \\ 
+		\hline 
+							 	& -O2 -funroll-all-loops 	& 25 &  7 \\ 
+		\hline 
+							 	& -O3 						& 19 &  4 \\ 
+		\hline 
+							 	& -O3 -funroll-loops 		& 25 &  7 \\ 
+		\hline 
+							 	& -O3 -funroll-all-loops 	& 25 &  7 \\ 
+		\hline 
+		calc (actualización) 	& -O2						& 19 &  4 \\ 
+		\hline 
+							 	& -O2 -funroll-loops 		& 47 &  20 \\ 
+		\hline 
+							 	& -O2 -funroll-all-loops 	& 47 &  20 \\ 		
+		\hline					 	
+							 	& -O3 						& 19 &  4 \\ 
+		\hline 
+							 	& -O3 -funroll-loops 		& 47 &  20 \\ 
+		\hline 
+							 	& -O3 -funroll-all-loops 	& 47 &  20 \\ 		
+		\hline 
+		\end{tabular}
+\caption{Resultados de la compilación del programa de prueba con diversos flags de optimización}
+%\label{tab:conbench1}
+\end{table}	
 
 		\subsection{Resultados de la ejecución del benchmark CoreMark}
 		
@@ -574,6 +687,8 @@ Pentium          &133    &239   &38.3\\
 \end{center}
 \caption{Comparativa de resultados Dhrystone}
 \end{table}
+
+
 
 \section{Conclusión}
  Aún cumpliendo con los requerimientos especificados, la placa de desarrollo no cuenta con un completo soporte de periféricos on board ni con amplia

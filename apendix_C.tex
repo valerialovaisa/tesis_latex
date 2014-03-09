@@ -1,5 +1,5 @@
 
-\chapter{Códigos de Prueba} %%%%%%agrego archivo para configurar kernel de linux
+\chapter{Códigos de Prueba} \label{chap:CodPrueba} %%%%%%agrego archivo para configurar kernel de linux
 
  \section{Introducción}
 
@@ -569,7 +569,452 @@ Código de prueba de Hilos
 	 \end{lstlisting}
 	
 	  
+\section{Programa de Prueba de Compilador - Optimización de Bucles}
 
+	\begin{lstlisting}[language=C,frame=single]
+#define ITERACIONES 1000
+#define CTE 3
 
+int x [ITERACIONES];
+int i ;
 
+void set (){
+	for (i=0;i<ITERACIONES;i++)
+		x[i] = 4;
+}
+
+void calc () {
+	for (i=0;i<ITERACIONES;i++)
+		x[i] = x[i] + CTE;
+}
+
+void main () {
+	set ();
+	calc ();
+}
+	\end{lstlisting}
+		
+\subsection{Resultados del Desensamblado del Binario del Programa de Prueba Compilado}
+
+	\begin{lstlisting}[frame=single]
+// set 1000 iteraciones -O2
+
+00002250 <set>:
+    2250:	18 60 00 00 	l.movhi r3,0x0
+    2254:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    2258:	a8 63 6c d4 	l.ori r3,r3,0x6cd4
+    225c:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    2260:	9c 80 00 04 	l.addi r4,r0,0x4
+    2264:	18 40 00 00 	l.movhi r2,0x0
+    2268:	d4 03 20 00 	l.sw 0x0(r3),r4
+    226c:	a8 42 7c 74 	l.ori r2,r2,0x7c74
+    2270:	9c 63 00 04 	l.addi r3,r3,0x4
+    2274:	e4 23 10 00 	l.sfne r3,r2
+    2278:	13 ff ff fb 	l.bf 2264 <set+0x14>
+    227c:	15 00 00 00 	l.nop 0x0
+    2280:	18 60 00 00 	l.movhi r3,0x0
+    2284:	9c 80 03 e8 	l.addi r4,r0,0x3e8
+    2288:	a8 63 7c 74 	l.ori r3,r3,0x7c74
+    228c:	d4 03 20 00 	l.sw 0x0(r3),r4
+    2290:	9c 21 00 04 	l.addi r1,r1,0x4
+    2294:	44 00 48 00 	l.jr r9
+    2298:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+
+// set 1000 iteraciones -O2 -funroll-loops
+
+00002250 <set>:
+    2250:	18 60 00 00 	l.movhi r3,0x0
+    2254:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    2258:	a8 63 6d 78 	l.ori r3,r3,0x6d78
+    225c:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    2260:	9c 80 00 04 	l.addi r4,r0,0x4
+    2264:	18 a0 00 00 	l.movhi r5,0x0
+    2268:	d4 03 20 00 	l.sw 0x0(r3),r4
+    226c:	d4 03 20 04 	l.sw 0x4(r3),r4
+    2270:	d4 03 20 08 	l.sw 0x8(r3),r4
+    2274:	d4 03 20 0c 	l.sw 0xc(r3),r4
+    2278:	d4 03 20 10 	l.sw 0x10(r3),r4
+    227c:	d4 03 20 14 	l.sw 0x14(r3),r4
+    2280:	d4 03 20 18 	l.sw 0x18(r3),r4
+    2284:	d4 03 20 1c 	l.sw 0x1c(r3),r4
+    2288:	a8 45 7d 18 	l.ori r2,r5,0x7d18
+    228c:	9c 63 00 20 	l.addi r3,r3,0x20
+    2290:	e4 23 10 00 	l.sfne r3,r2
+    2294:	13 ff ff f5 	l.bf 2268 <set+0x18>
+    2298:	18 e0 00 00 	l.movhi r7,0x0
+    229c:	9c 80 03 e8 	l.addi r4,r0,0x3e8
+    22a0:	a8 c7 7d 18 	l.ori r6,r7,0x7d18
+    22a4:	d4 06 20 00 	l.sw 0x0(r6),r4
+    22a8:	9c 21 00 04 	l.addi r1,r1,0x4
+    22ac:	44 00 48 00 	l.jr r9
+    22b0:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+
+// set 1000 iteraciones -O2 -funroll-all-loops
+
+00002250 <set>:
+    2250:	18 60 00 00 	l.movhi r3,0x0
+    2254:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    2258:	a8 63 6d 78 	l.ori r3,r3,0x6d78
+    225c:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    2260:	9c 80 00 04 	l.addi r4,r0,0x4
+    2264:	18 a0 00 00 	l.movhi r5,0x0
+    2268:	d4 03 20 00 	l.sw 0x0(r3),r4
+    226c:	d4 03 20 04 	l.sw 0x4(r3),r4
+    2270:	d4 03 20 08 	l.sw 0x8(r3),r4
+    2274:	d4 03 20 0c 	l.sw 0xc(r3),r4
+    2278:	d4 03 20 10 	l.sw 0x10(r3),r4
+    227c:	d4 03 20 14 	l.sw 0x14(r3),r4
+    2280:	d4 03 20 18 	l.sw 0x18(r3),r4
+    2284:	d4 03 20 1c 	l.sw 0x1c(r3),r4
+    2288:	a8 45 7d 18 	l.ori r2,r5,0x7d18
+    228c:	9c 63 00 20 	l.addi r3,r3,0x20
+    2290:	e4 23 10 00 	l.sfne r3,r2
+    2294:	13 ff ff f5 	l.bf 2268 <set+0x18>
+    2298:	18 e0 00 00 	l.movhi r7,0x0
+    229c:	9c 80 03 e8 	l.addi r4,r0,0x3e8
+    22a0:	a8 c7 7d 18 	l.ori r6,r7,0x7d18
+    22a4:	d4 06 20 00 	l.sw 0x0(r6),r4
+    22a8:	9c 21 00 04 	l.addi r1,r1,0x4
+    22ac:	44 00 48 00 	l.jr r9
+    22b0:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+    
+	\end{lstlisting}
+
+	\begin{lstlisting}[frame=single]
+// calc 1000 iteraciones -O2
+
+0000229c <calc>:
+    229c:	18 60 00 00 	l.movhi r3,0x0
+    22a0:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    22a4:	a8 63 6c d4 	l.ori r3,r3,0x6cd4
+    22a8:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    22ac:	84 83 00 00 	l.lwz r4,0x0(r3)
+    22b0:	18 40 00 00 	l.movhi r2,0x0
+    22b4:	9c 84 00 03 	l.addi r4,r4,0x3
+    22b8:	a8 42 7c 74 	l.ori r2,r2,0x7c74
+    22bc:	d4 03 20 00 	l.sw 0x0(r3),r4
+    22c0:	9c 63 00 04 	l.addi r3,r3,0x4
+    22c4:	e4 23 10 00 	l.sfne r3,r2
+    22c8:	13 ff ff f9 	l.bf 22ac <calc+0x10>
+    22cc:	9c 80 03 e8 	l.addi r4,r0,0x3e8
+    22d0:	18 60 00 00 	l.movhi r3,0x0
+    22d4:	a8 63 7c 74 	l.ori r3,r3,0x7c74
+    22d8:	d4 03 20 00 	l.sw 0x0(r3),r4
+    22dc:	9c 21 00 04 	l.addi r1,r1,0x4
+    22e0:	44 00 48 00 	l.jr r9
+    22e4:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+
+// calc 1000 iteraciones -O2 -funroll-loops
+
+000022b4 <calc>:
+    22b4:	18 60 00 00 	l.movhi r3,0x0
+    22b8:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    22bc:	a8 63 6d 78 	l.ori r3,r3,0x6d78
+    22c0:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    22c4:	85 e3 00 00 	l.lwz r15,0x0(r3)
+    22c8:	9c 83 00 04 	l.addi r4,r3,0x4
+    22cc:	9c ef 00 03 	l.addi r7,r15,0x3
+    22d0:	9f e3 00 08 	l.addi r31,r3,0x8
+    22d4:	d4 03 38 00 	l.sw 0x0(r3),r7
+    22d8:	9e a3 00 0c 	l.addi r21,r3,0xc
+    22dc:	84 c4 00 00 	l.lwz r6,0x0(r4)
+    22e0:	9e 23 00 10 	l.addi r17,r3,0x10
+    22e4:	9d a6 00 03 	l.addi r13,r6,0x3
+    22e8:	9d e3 00 14 	l.addi r15,r3,0x14
+    22ec:	d4 04 68 00 	l.sw 0x0(r4),r13
+    22f0:	9d a3 00 18 	l.addi r13,r3,0x18
+    22f4:	84 5f 00 00 	l.lwz r2,0x0(r31)
+    22f8:	9c 83 00 1c 	l.addi r4,r3,0x1c
+    22fc:	9c a2 00 03 	l.addi r5,r2,0x3
+    2300:	1b a0 00 00 	l.movhi r29,0x0
+    2304:	d4 1f 28 00 	l.sw 0x0(r31),r5
+    2308:	9c 63 00 20 	l.addi r3,r3,0x20
+    230c:	87 35 00 00 	l.lwz r25,0x0(r21)
+    2310:	ab 7d 7d 18 	l.ori r27,r29,0x7d18
+    2314:	9e f9 00 03 	l.addi r23,r25,0x3
+    2318:	e4 23 d8 00 	l.sfne r3,r27
+    231c:	d4 15 b8 00 	l.sw 0x0(r21),r23
+    2320:	86 71 00 00 	l.lwz r19,0x0(r17)
+    2324:	9d 93 00 03 	l.addi r12,r19,0x3
+    2328:	d4 11 60 00 	l.sw 0x0(r17),r12
+    232c:	85 6f 00 00 	l.lwz r11,0x0(r15)
+    2330:	9d 0b 00 03 	l.addi r8,r11,0x3
+    2334:	d4 0f 40 00 	l.sw 0x0(r15),r8
+    2338:	84 ed 00 00 	l.lwz r7,0x0(r13)
+    233c:	9c c7 00 03 	l.addi r6,r7,0x3
+    2340:	d4 0d 30 00 	l.sw 0x0(r13),r6
+    2344:	84 44 00 00 	l.lwz r2,0x0(r4)
+    2348:	9c a2 00 03 	l.addi r5,r2,0x3
+    234c:	13 ff ff de 	l.bf 22c4 <calc+0x10>
+    2350:	d4 04 28 00 	l.sw 0x0(r4),r5
+    2354:	19 60 00 00 	l.movhi r11,0x0
+    2358:	9d 00 03 e8 	l.addi r8,r0,0x3e8
+    235c:	a8 6b 7d 18 	l.ori r3,r11,0x7d18
+    2360:	d4 03 40 00 	l.sw 0x0(r3),r8
+    2364:	9c 21 00 04 	l.addi r1,r1,0x4
+    2368:	44 00 48 00 	l.jr r9
+    236c:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+
+// calc 1000 iteraciones -O2 -funroll-all-loops
+
+000022b4 <calc>:
+    22b4:	18 60 00 00 	l.movhi r3,0x0
+    22b8:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    22bc:	a8 63 6d 78 	l.ori r3,r3,0x6d78
+    22c0:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    22c4:	85 e3 00 00 	l.lwz r15,0x0(r3)
+    22c8:	9c 83 00 04 	l.addi r4,r3,0x4
+    22cc:	9c ef 00 03 	l.addi r7,r15,0x3
+    22d0:	9f e3 00 08 	l.addi r31,r3,0x8
+    22d4:	d4 03 38 00 	l.sw 0x0(r3),r7
+    22d8:	9e a3 00 0c 	l.addi r21,r3,0xc
+    22dc:	84 c4 00 00 	l.lwz r6,0x0(r4)
+    22e0:	9e 23 00 10 	l.addi r17,r3,0x10
+    22e4:	9d a6 00 03 	l.addi r13,r6,0x3
+    22e8:	9d e3 00 14 	l.addi r15,r3,0x14
+    22ec:	d4 04 68 00 	l.sw 0x0(r4),r13
+    22f0:	9d a3 00 18 	l.addi r13,r3,0x18
+    22f4:	84 5f 00 00 	l.lwz r2,0x0(r31)
+    22f8:	9c 83 00 1c 	l.addi r4,r3,0x1c
+    22fc:	9c a2 00 03 	l.addi r5,r2,0x3
+    2300:	1b a0 00 00 	l.movhi r29,0x0
+    2304:	d4 1f 28 00 	l.sw 0x0(r31),r5
+    2308:	9c 63 00 20 	l.addi r3,r3,0x20
+    230c:	87 35 00 00 	l.lwz r25,0x0(r21)
+    2310:	ab 7d 7d 18 	l.ori r27,r29,0x7d18
+    2314:	9e f9 00 03 	l.addi r23,r25,0x3
+    2318:	e4 23 d8 00 	l.sfne r3,r27
+    231c:	d4 15 b8 00 	l.sw 0x0(r21),r23
+    2320:	86 71 00 00 	l.lwz r19,0x0(r17)
+    2324:	9d 93 00 03 	l.addi r12,r19,0x3
+    2328:	d4 11 60 00 	l.sw 0x0(r17),r12
+    232c:	85 6f 00 00 	l.lwz r11,0x0(r15)
+    2330:	9d 0b 00 03 	l.addi r8,r11,0x3
+    2334:	d4 0f 40 00 	l.sw 0x0(r15),r8
+    2338:	84 ed 00 00 	l.lwz r7,0x0(r13)
+    233c:	9c c7 00 03 	l.addi r6,r7,0x3
+    2340:	d4 0d 30 00 	l.sw 0x0(r13),r6
+    2344:	84 44 00 00 	l.lwz r2,0x0(r4)
+    2348:	9c a2 00 03 	l.addi r5,r2,0x3
+    234c:	13 ff ff de 	l.bf 22c4 <calc+0x10>
+    2350:	d4 04 28 00 	l.sw 0x0(r4),r5
+    2354:	19 60 00 00 	l.movhi r11,0x0
+    2358:	9d 00 03 e8 	l.addi r8,r0,0x3e8
+    235c:	a8 6b 7d 18 	l.ori r3,r11,0x7d18
+    2360:	d4 03 40 00 	l.sw 0x0(r3),r8
+    2364:	9c 21 00 04 	l.addi r1,r1,0x4
+    2368:	44 00 48 00 	l.jr r9
+    236c:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+	\end{lstlisting}
+
+	\begin{lstlisting}[frame=single]
+// 1000 iteraciones Flags de Optimización : -O3
+
+00002250 <set>:
+    2250:	18 60 00 00 	l.movhi r3,0x0
+    2254:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    2258:	a8 63 6c f0 	l.ori r3,r3,0x6cf0
+    225c:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    2260:	9c 80 00 04 	l.addi r4,r0,0x4
+    2264:	18 40 00 00 	l.movhi r2,0x0
+    2268:	d4 03 20 00 	l.sw 0x0(r3),r4
+    226c:	a8 42 7c 90 	l.ori r2,r2,0x7c90
+    2270:	9c 63 00 04 	l.addi r3,r3,0x4
+    2274:	e4 23 10 00 	l.sfne r3,r2
+    2278:	13 ff ff fb 	l.bf 2264 <set+0x14>
+    227c:	15 00 00 00 	l.nop 0x0
+    2280:	18 60 00 00 	l.movhi r3,0x0
+    2284:	9c 80 03 e8 	l.addi r4,r0,0x3e8
+    2288:	a8 63 7c 90 	l.ori r3,r3,0x7c90
+    228c:	d4 03 20 00 	l.sw 0x0(r3),r4
+    2290:	9c 21 00 04 	l.addi r1,r1,0x4
+    2294:	44 00 48 00 	l.jr r9
+    2298:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+
+// 1000 iteraciones Flags de Optimización : -O3 -funroll-loops
+
+00002250 <set>:
+    2250:	18 60 00 00 	l.movhi r3,0x0
+    2254:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    2258:	a8 63 6e 8c 	l.ori r3,r3,0x6e8c
+    225c:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    2260:	9c 80 00 04 	l.addi r4,r0,0x4
+    2264:	18 a0 00 00 	l.movhi r5,0x0
+    2268:	d4 03 20 00 	l.sw 0x0(r3),r4
+    226c:	d4 03 20 04 	l.sw 0x4(r3),r4
+    2270:	d4 03 20 08 	l.sw 0x8(r3),r4
+    2274:	d4 03 20 0c 	l.sw 0xc(r3),r4
+    2278:	d4 03 20 10 	l.sw 0x10(r3),r4
+    227c:	d4 03 20 14 	l.sw 0x14(r3),r4
+    2280:	d4 03 20 18 	l.sw 0x18(r3),r4
+    2284:	d4 03 20 1c 	l.sw 0x1c(r3),r4
+    2288:	a8 45 7e 2c 	l.ori r2,r5,0x7e2c
+    228c:	9c 63 00 20 	l.addi r3,r3,0x20
+    2290:	e4 23 10 00 	l.sfne r3,r2
+    2294:	13 ff ff f5 	l.bf 2268 <set+0x18>
+    2298:	18 e0 00 00 	l.movhi r7,0x0
+    229c:	9c 80 03 e8 	l.addi r4,r0,0x3e8
+    22a0:	a8 c7 7e 2c 	l.ori r6,r7,0x7e2c
+    22a4:	d4 06 20 00 	l.sw 0x0(r6),r4
+    22a8:	9c 21 00 04 	l.addi r1,r1,0x4
+    22ac:	44 00 48 00 	l.jr r9
+    22b0:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+
+// 1000 iteraciones Flags de Optimización : -O3 -funroll-all-loops
+
+00002250 <set>:
+    2250:	18 60 00 00 	l.movhi r3,0x0
+    2254:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    2258:	a8 63 6e 8c 	l.ori r3,r3,0x6e8c
+    225c:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    2260:	9c 80 00 04 	l.addi r4,r0,0x4
+    2264:	18 a0 00 00 	l.movhi r5,0x0
+    2268:	d4 03 20 00 	l.sw 0x0(r3),r4
+    226c:	d4 03 20 04 	l.sw 0x4(r3),r4
+    2270:	d4 03 20 08 	l.sw 0x8(r3),r4
+    2274:	d4 03 20 0c 	l.sw 0xc(r3),r4
+    2278:	d4 03 20 10 	l.sw 0x10(r3),r4
+    227c:	d4 03 20 14 	l.sw 0x14(r3),r4
+    2280:	d4 03 20 18 	l.sw 0x18(r3),r4
+    2284:	d4 03 20 1c 	l.sw 0x1c(r3),r4
+    2288:	a8 45 7e 2c 	l.ori r2,r5,0x7e2c
+    228c:	9c 63 00 20 	l.addi r3,r3,0x20
+    2290:	e4 23 10 00 	l.sfne r3,r2
+    2294:	13 ff ff f5 	l.bf 2268 <set+0x18>
+    2298:	18 e0 00 00 	l.movhi r7,0x0
+    229c:	9c 80 03 e8 	l.addi r4,r0,0x3e8
+    22a0:	a8 c7 7e 2c 	l.ori r6,r7,0x7e2c
+    22a4:	d4 06 20 00 	l.sw 0x0(r6),r4
+    22a8:	9c 21 00 04 	l.addi r1,r1,0x4
+    22ac:	44 00 48 00 	l.jr r9
+    22b0:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+	\end{lstlisting}		
+
+	\begin{lstlisting}[frame=single]
+	
+// 1000 iteraciones Flags de Optimización : -O3 
+
+0000229c <calc>:
+    229c:	18 60 00 00 	l.movhi r3,0x0
+    22a0:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    22a4:	a8 63 6c f0 	l.ori r3,r3,0x6cf0
+    22a8:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    22ac:	84 83 00 00 	l.lwz r4,0x0(r3)
+    22b0:	18 40 00 00 	l.movhi r2,0x0
+    22b4:	9c 84 00 03 	l.addi r4,r4,0x3
+    22b8:	a8 42 7c 90 	l.ori r2,r2,0x7c90
+    22bc:	d4 03 20 00 	l.sw 0x0(r3),r4
+    22c0:	9c 63 00 04 	l.addi r3,r3,0x4
+    22c4:	e4 23 10 00 	l.sfne r3,r2
+    22c8:	13 ff ff f9 	l.bf 22ac <calc+0x10>
+    22cc:	9c 80 03 e8 	l.addi r4,r0,0x3e8
+    22d0:	18 60 00 00 	l.movhi r3,0x0
+    22d4:	a8 63 7c 90 	l.ori r3,r3,0x7c90
+    22d8:	d4 03 20 00 	l.sw 0x0(r3),r4
+    22dc:	9c 21 00 04 	l.addi r1,r1,0x4
+    22e0:	44 00 48 00 	l.jr r9
+    22e4:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+
+// 1000 iteraciones Flags de Optimización :  -O3 -funroll-loops
+
+000022b4 <calc>:
+    22b4:	18 60 00 00 	l.movhi r3,0x0
+    22b8:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    22bc:	a8 63 6e 8c 	l.ori r3,r3,0x6e8c
+    22c0:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    22c4:	85 e3 00 00 	l.lwz r15,0x0(r3)
+    22c8:	9c 83 00 04 	l.addi r4,r3,0x4
+    22cc:	9c ef 00 03 	l.addi r7,r15,0x3
+    22d0:	9f e3 00 08 	l.addi r31,r3,0x8
+    22d4:	d4 03 38 00 	l.sw 0x0(r3),r7
+    22d8:	9e a3 00 0c 	l.addi r21,r3,0xc
+    22dc:	84 c4 00 00 	l.lwz r6,0x0(r4)
+    22e0:	9e 23 00 10 	l.addi r17,r3,0x10
+    22e4:	9d a6 00 03 	l.addi r13,r6,0x3
+    22e8:	9d e3 00 14 	l.addi r15,r3,0x14
+    22ec:	d4 04 68 00 	l.sw 0x0(r4),r13
+    22f0:	9d a3 00 18 	l.addi r13,r3,0x18
+    22f4:	84 5f 00 00 	l.lwz r2,0x0(r31)
+    22f8:	9c 83 00 1c 	l.addi r4,r3,0x1c
+    22fc:	9c a2 00 03 	l.addi r5,r2,0x3
+    2300:	1b a0 00 00 	l.movhi r29,0x0
+    2304:	d4 1f 28 00 	l.sw 0x0(r31),r5
+    2308:	9c 63 00 20 	l.addi r3,r3,0x20
+    230c:	87 35 00 00 	l.lwz r25,0x0(r21)
+    2310:	ab 7d 7e 2c 	l.ori r27,r29,0x7e2c
+    2314:	9e f9 00 03 	l.addi r23,r25,0x3
+    2318:	e4 23 d8 00 	l.sfne r3,r27
+    231c:	d4 15 b8 00 	l.sw 0x0(r21),r23
+    2320:	86 71 00 00 	l.lwz r19,0x0(r17)
+    2324:	9d 93 00 03 	l.addi r12,r19,0x3
+    2328:	d4 11 60 00 	l.sw 0x0(r17),r12
+    232c:	85 6f 00 00 	l.lwz r11,0x0(r15)
+    2330:	9d 0b 00 03 	l.addi r8,r11,0x3
+    2334:	d4 0f 40 00 	l.sw 0x0(r15),r8
+    2338:	84 ed 00 00 	l.lwz r7,0x0(r13)
+    233c:	9c c7 00 03 	l.addi r6,r7,0x3
+    2340:	d4 0d 30 00 	l.sw 0x0(r13),r6
+    2344:	84 44 00 00 	l.lwz r2,0x0(r4)
+    2348:	9c a2 00 03 	l.addi r5,r2,0x3
+    234c:	13 ff ff de 	l.bf 22c4 <calc+0x10>
+    2350:	d4 04 28 00 	l.sw 0x0(r4),r5
+    2354:	19 60 00 00 	l.movhi r11,0x0
+    2358:	9d 00 03 e8 	l.addi r8,r0,0x3e8
+    235c:	a8 6b 7e 2c 	l.ori r3,r11,0x7e2c
+    2360:	d4 03 40 00 	l.sw 0x0(r3),r8
+    2364:	9c 21 00 04 	l.addi r1,r1,0x4
+    2368:	44 00 48 00 	l.jr r9
+    236c:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+
+// 1000 iteraciones Flags de Optimización :  -O3 -funroll-all-loops
+
+000022b4 <calc>:
+    22b4:	18 60 00 00 	l.movhi r3,0x0
+    22b8:	d7 e1 17 fc 	l.sw 0xfffffffc(r1),r2
+    22bc:	a8 63 6e 8c 	l.ori r3,r3,0x6e8c
+    22c0:	9c 21 ff fc 	l.addi r1,r1,0xfffffffc
+    22c4:	85 e3 00 00 	l.lwz r15,0x0(r3)
+    22c8:	9c 83 00 04 	l.addi r4,r3,0x4
+    22cc:	9c ef 00 03 	l.addi r7,r15,0x3
+    22d0:	9f e3 00 08 	l.addi r31,r3,0x8
+    22d4:	d4 03 38 00 	l.sw 0x0(r3),r7
+    22d8:	9e a3 00 0c 	l.addi r21,r3,0xc
+    22dc:	84 c4 00 00 	l.lwz r6,0x0(r4)
+    22e0:	9e 23 00 10 	l.addi r17,r3,0x10
+    22e4:	9d a6 00 03 	l.addi r13,r6,0x3
+    22e8:	9d e3 00 14 	l.addi r15,r3,0x14
+    22ec:	d4 04 68 00 	l.sw 0x0(r4),r13
+    22f0:	9d a3 00 18 	l.addi r13,r3,0x18
+    22f4:	84 5f 00 00 	l.lwz r2,0x0(r31)
+    22f8:	9c 83 00 1c 	l.addi r4,r3,0x1c
+    22fc:	9c a2 00 03 	l.addi r5,r2,0x3
+    2300:	1b a0 00 00 	l.movhi r29,0x0
+    2304:	d4 1f 28 00 	l.sw 0x0(r31),r5
+    2308:	9c 63 00 20 	l.addi r3,r3,0x20
+    230c:	87 35 00 00 	l.lwz r25,0x0(r21)
+    2310:	ab 7d 7e 2c 	l.ori r27,r29,0x7e2c
+    2314:	9e f9 00 03 	l.addi r23,r25,0x3
+    2318:	e4 23 d8 00 	l.sfne r3,r27
+    231c:	d4 15 b8 00 	l.sw 0x0(r21),r23
+    2320:	86 71 00 00 	l.lwz r19,0x0(r17)
+    2324:	9d 93 00 03 	l.addi r12,r19,0x3
+    2328:	d4 11 60 00 	l.sw 0x0(r17),r12
+    232c:	85 6f 00 00 	l.lwz r11,0x0(r15)
+    2330:	9d 0b 00 03 	l.addi r8,r11,0x3
+    2334:	d4 0f 40 00 	l.sw 0x0(r15),r8
+    2338:	84 ed 00 00 	l.lwz r7,0x0(r13)
+    233c:	9c c7 00 03 	l.addi r6,r7,0x3
+    2340:	d4 0d 30 00 	l.sw 0x0(r13),r6
+    2344:	84 44 00 00 	l.lwz r2,0x0(r4)
+    2348:	9c a2 00 03 	l.addi r5,r2,0x3
+    234c:	13 ff ff de 	l.bf 22c4 <calc+0x10>
+    2350:	d4 04 28 00 	l.sw 0x0(r4),r5
+    2354:	19 60 00 00 	l.movhi r11,0x0
+    2358:	9d 00 03 e8 	l.addi r8,r0,0x3e8
+    235c:	a8 6b 7e 2c 	l.ori r3,r11,0x7e2c
+    2360:	d4 03 40 00 	l.sw 0x0(r3),r8
+    2364:	9c 21 00 04 	l.addi r1,r1,0x4
+    2368:	44 00 48 00 	l.jr r9
+    236c:	84 41 ff fc 	l.lwz r2,0xfffffffc(r1)
+	\end{lstlisting}		
 
