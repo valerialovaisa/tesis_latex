@@ -141,7 +141,7 @@ El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos
 %  Maximum output delay after clock:  13.126ns
 %\end{lstlisting}
 
-		
+\newpage		
 \section {Estudio de Capacidades del Proyecto ORPSoC}	
 		\subsection{Condiciones de entorno de ejecución para benchmark}
 		
@@ -168,6 +168,8 @@ El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos
 		\hline	
 		División hardware & Sí \\		
 		\hline	
+		Punto Flotante & Precisión simple \\		
+		\hline
 \end{tabular}
 %\end{center}
 \caption{Condiciones del entorno de prueba}
@@ -394,6 +396,31 @@ detallaron en la tabla~\ref{tab:conbench} y la ejecución se realizó con 600 it
 Aquí están los resultados obtenidos mediante la utilización de optimización en la fase de compilación. Al ser compilado con el nivel de optimización
 -O2 y diferentes flags de optimización se observaron los resultados mostrados en el bloque ~\ref{lst:salidasO2}
 
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ |l |c |c |c |c|}
+\hline
+\rowcolor[gray]{0.8} Opciones del compilador&-O2& Optimización &-O3& Optimización \\
+\hline
+Sin extras 					&1.41 	& 			&1.45 &  \\
+\hline
+-mhard-div -mhard-mu 	& 1.41	& 0\%		&1.45& 0\% \\
+\hline
+-funroll-loops			 	& 1.53	& 8\%		& 1.50& 4\%\\
+\hline
+-fgcse-sm					& 1.42	& 0,7\%		& 1.46& 0,6\%\\
+\hline
+-msoft-float 				& 1.41	& 0\%		&1.45 & 0\%\\
+\hline
+-funroll-all-loops	 		& 1.55	& 10\%		& 1.52 & 5\%\\
+\hline
+Todos	 					& 1.55	& 10\%		& 1.52 & 5\%\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Compilación con distintos niveles y flags de optimización}
+\end{table}
+
 \begin{lstlisting}[frame=single,caption={Optimización nivel -O2 - Flags activos : -FUNROLL-LOOPS },label={lst:salidasO2},breaklines]
 2K validation run parameters for coremark.
 CoreMark Size    : 666
@@ -517,30 +544,8 @@ Compiler flags   : -O3  -mboard=s3adsp1800a -FUNROLL-LOOPS -MSOFT-FLOAT -FUNROLL
 \end{lstlisting}
 
 
-\begin{table}[h!]
-\begin{center}
-\begin{tabular}{ |l |l| l|}
-\hline
-\rowcolor[gray]{0.8} Opciones del compilador&-O2&-O3 \\
-\hline
-Sin extras 					&1.65 			&1.54\\
-\hline
--mhard-div -mhard-mu 		& 1.57			&1.45\\
-\hline
--funroll-loops			 	& 1.57			& 1.45 \\
-\hline
--fgcse-sm					& 1.57			& 1.45\\
-\hline
--msoft-float 				& 1.57			&1.45 \\
-\hline
--funroll-all-loops	 		& 1.57			& 1.45 \\
-\hline
-Todos	 					& 1.57			& 1.45 \\
-\hline
-\end{tabular}
-\end{center}
-\caption{Compilación con distintos niveles y flags de optimización}
-\end{table}
+
+
 
 En la siguiente tabla ~\ref{tab:compcoremark} se presenta una comparativa con resultados Coremark de varios microprocesadores entre los que se
 encuentran los microprocesadores softcore privativos de los principales Fabricantes.
