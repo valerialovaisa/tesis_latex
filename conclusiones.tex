@@ -1,37 +1,61 @@
  \chapter{Conclusiones}
-
-	\section{En cuanto a al hardware opensource}
 	 
-% Al día de hoy los diseños hardware de código abierto son una realidad palpable. Cualquiera puede descargarlos de la red y utilizarlos en sus
-% diseños. Los componentes típicos de un sistema tales como un controlador USB, un microprocesador, un controlador de red, etc., tienen su alternativa
-% en código abierto y son ya utilizados por empresas en productos comerciales, lo cual da una idea de su calidad. A medida que la cantidad de código
-% abierto disponible aumenta, cada vez mas demostrará que es un enfoque valioso para el desarrollo de la tecnología . En el caso del hardware
-% reconfigurable, se ha conseguido cerrar el ciclo completo de diseño en una máquina GNU/Linux, realizándose la compilación, simulación, síntesis y
-% descarga en una FPGA. Para la compilación y simulación hemos empleado el Icarus Verilog junto con el GTKWAVE, ambos programas libres y para la
-% síntesis el entorno ISE de Xilinx, ejecutado en una plataforma Linux. Se podrían realizar sintetizadores libres que generen un netlist en formato
-% EDIF, pero actualmente no sería posible disponer de un entorno completamente libre puesto que los fabricantes no publican la información,
-% considerada como secreto industrial. El primer paso para lograrlo sería la existencia de una OpenFPGA
+	\section{En cuanto al hardware opensource} 
 
-	\section{En cuanto a al hardware opensource} 
-A día de hoy los diseños hardware de código abierto son una realidad palpable. Cualquiera puede descargarlos de la red y utilizarlos en sus diseños. Los componentes típicos de un sistema tales como un controlador USB, un microprocesador, un controlador de red, etc., tienen su alternativa en código abierto y son ya utilizados por empresas en productos comerciales, lo cual da una idea de su calidad
-A medida que la cantidad de código abierto disponible aumenta, cada vez mas demostrara que es un enfoque valioso para el desarrollo de la tecnología .
+Del trabajo realizado sobre hardware sintetizable opensource durante el desarrollo de este trabajo se puedo analizar desde diversos enfoques sus
+ventajas , desventajas y particularidades. Si bien hoy en día los diseños hardware de código abierto se encuentra creciendo en gran medida y son una
+realidad palpable, cualquiera puede descargarlos de internet y utilizarlos en sus diseños. Los componentes típicos de un sistema tales como un
+controlador USB, un microprocesador, un controlador de red, etc., tienen su alternativa en código abierto (como es el caso del microprocesador
+OpenRISC) y son ya utilizados por empresas en productos comerciales, lo cual hace presuponer que la calidad de este tipo de diseños cumple al menos
+con los estándares requeridos en productos que actualmente se encuentran en el mercado.
 
-En el caso del hardware recongurable, se ha conseguido cerrar el ciclo completo de diseño en una máquina GNU/Linux, realizándose la compilación, simulación, síntesis y descarga en una FPGA. Para la compilación y simulación hemos empleado el GHDL junto con el GTKWAVE, ambos programas libres y para la síntesis el entorno ISE de Xilinx, ejecutado a través de Wine
-
-Se podrían realizar sintetizadores libres que generen un netlist en formato EDIF, pero actualmente no sería posible disponer de un entorno completamente libre puesto que los fabricantes no publican la información, considerada como secreto industrial. El primer paso para lograrlo sería la existencia de una Open FPGA
+A medida que la cantidad de código abierto disponible aumenta, cada vez más demostrará que es un enfoque valioso para el desarrollo de la tecnología.
+En el caso del hardware recongurable, se ha conseguido cerrar el ciclo completo de diseño en una máquina GNU/Linux, realizándose la compilación,
+simulación, síntesis y descarga en una FPGA. Para la compilación y simulación de este trabajo hemos empleado el Icarus Verilog junto con el GTKWAVE,
+ambos programas libres y para la síntesis el entorno ISE de Xilinx, ejecutado sobre una plataforma Linux. Se podrían realizar sintetizadores libres
+que generen un netlist en formato EDIF, pero actualmente no sería posible disponer de un entorno completamente libre puesto que los fabricantes no
+publican la información, considerada como secreto industrial. El primer paso para lograrlo sería la existencia de una ``OpenFPGA'' con un descripción
+opensource que posibilite evitar la utilización de las herramientas de síntesis privativas de los fabricantes de FPGAs.
 
 	\section{En cuanto a los procesadores Soft Core} 
 	
-	
-	
+Respecto de los microprocesadores softcore se analizaron, durante el desarrollo de este trabajo, diversas alternativas de implentención de las cuales
+la mayoría son desarrollos de los principales fabricantes de FPGA. Si bien la utilización de estas implementaciones favorece al desarrollo con
+herramientas confiables con soporte provisto por el fabricante, es sin dudas un limitante en cuanto a la madurez de las herramientas opensource.
+
+Desde el punto de vista de las capacidades de los microprocesadores softcore evaluados en este trabajo puede concluirse que en general poseen
+capacidades similares con mayor o menor nivel de configuración y posibilidades de expansión con el desarrollo de nuevos módulos. El analisis de
+rendimiento del micro OpenRISC realizado en este trabajo cuyos resultados fueron expuestos en el Capitulo ~\ref {chap:resultados} permite posicionar
+este microprocesador entre otros similares capacidades.
+
+Puede decirse en base a lo expuesto anteriormente que las implementaciones de microprocesadores softcore son una solución viable para problemas
+industriales (control, comunicaciones, DSP, PLCs). %% inclusive con fines didácticos relacionados con la enseñanza de arquitectura de procesadores
+ 
 	\section{En cuanto a la implementación de SoC sobre FPGA} 
-		
+
+Fueron analizados para este trabajo dos implementaciones de sistemas en chip con núcleo OpenRISC. El proyecto minSoC mostró capacidades acotadas a
+aplicaciones \textit{bare-metal} de pequeña escala como puede ser un control PID simple o algún dispositivo que no requiera de gran capacidad de
+cálculo. Los módulos UART y Ethernet le brindan la posibilidad de comunicarse en sistemas de mayor envergadura mediante diversos protocolos como puede
+ser Modbus o algún otro protocolo opensource. La capacidad de expansión del proyecto se ve limitada por la necesidad de desarrollar programas
+especiales para cada uno de los nuevos módulos que se utilicen ya que no se cuenta con un sistema operativo con drivers para tal fin.
+
+Para aplicaciones con mayores exigencias de procesamiento y posibilidad de ejecución de un sistema operativo se analizó en este trabajo el sistema en
+chip ORPSoC de Opencores. De mayores prestaciones que el proyecto MinSoC y soportado por gran cantidad de plataformas reconfigurables, este proyecto
+permitió la instaciación de un sistema operativo de tiempo real para aplicaciones industriales con este requisito.
 		
 	\section{En cuanto a la implementación de sistemas operativos RT en arquitecturas sintetizables} 
 		
+
+%% Me parece que esto queda bien descrito en el titulo anterior.
 	
 	\section{En cuanto a la implementación Linux en arquitecturas sintetizables} 
 		
+		
+		
+
+	\section{En cuanto a la implementación de sistemas industriales en arquitecturas reconfigurables} 
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
 	\section{Trabajos futuros}
