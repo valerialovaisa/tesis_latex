@@ -384,6 +384,8 @@ A continuación se presenta una tabla que resume los resultados obtenidos para 1
 %\label{tab:conbench1}
 \end{table}	
 
+
+
 		\subsection{Resultados de la ejecución del benchmark CoreMark}
 		
 Inicialmente se prensentan los valores obtenidos durante la ejecución del Benchmark compilado con optimizaciones de nivel 2 (-O2) del
@@ -402,15 +404,15 @@ Aquí están los resultados obtenidos mediante la utilización de optimización 
 \hline
 \rowcolor[gray]{0.8} Opciones del compilador&-O2& Optimización &-O3& Optimización \\
 \hline
-Sin extras 					&1.41 	& 			&1.45 &  \\
+Sin extras 					& 1.41 	& 			& 1.45 &  \\
 \hline
--mhard-div -mhard-mu 	& 1.41	& 0\%		&1.45& 0\% \\
+-mhard-div -mhard-mu 		& 1.41	& 0\%		& 1.45 & 0\% \\
 \hline
--funroll-loops			 	& 1.53	& 8\%		& 1.50& 4\%\\
+-funroll-loops			 	& 1.53	& 8\%		& 1.50 & 4\%\\
 \hline
--fgcse-sm					& 1.42	& 0,7\%		& 1.46& 0,6\%\\
+-fgcse-sm					& 1.42	& 0,7\%		& 1.46 & 0,6\%\\
 \hline
--msoft-float 				& 1.41	& 0\%		&1.45 & 0\%\\
+-msoft-float 				& 1.41	& 0\%		& 1.45 & 0\%\\
 \hline
 -funroll-all-loops	 		& 1.55	& 10\%		& 1.52 & 5\%\\
 \hline
@@ -543,10 +545,6 @@ Compiler version : GCC4.5.1-or32-1.0rc4
 Compiler flags   : -O3  -mboard=s3adsp1800a -FUNROLL-LOOPS -MSOFT-FLOAT -FUNROLL-ALL-LOOPS -FGCSE-SM -DVALIDATION_RUN=1  
 \end{lstlisting}
 
-
-
-
-
 En la siguiente tabla ~\ref{tab:compcoremark} se presenta una comparativa con resultados Coremark de varios microprocesadores entre los que se
 encuentran los microprocesadores softcore privativos de los principales Fabricantes.
 
@@ -646,7 +644,7 @@ En base a los resultados de ejecución se calcularon los siguientes
 \begin{center}
 \begin{tabular}{ |l |l |l |l |}
 \hline
-\rowcolor[gray]{0.8} Opciones del compilador& Sin Optimizaciones & -O2 &-O3 \\
+\rowcolor[gray]{0.8} Opciones del compilador & Sin Optimizaciones & -O2 &-O3 \\
 \hline
 DMIPS 					& 7.79 			&   7.90  &  10.53  \\
 \hline
@@ -697,18 +695,18 @@ Pentium          &133    &239   &38.3\\
 
 \section{Conclusión}
  Aún cumpliendo con los requerimientos especificados, la placa de desarrollo no cuenta con un completo soporte de periféricos on board ni con amplia
- documentación de apoyo respecto de la materia. Se presentaron grandes dificultades en el acceso a la memoria SPI FLASH S33 de Intel la cual se encuentra soportada por
-	herramientas \textit{oficiales} que únicamente corren bajo Windows. Alternativamente existe una versión de la placa de desarrollo S3ADSP1800A,
-	disponible también en el laboratorio del CUDAR, que se encuentra equipada con una memoria FLASH SPI Numonyx M25P64 que puede ser accedida mediante
-	herramientas de programación como XC3SPROG y UrJTAG alojando finalmente los programas necesarios para el arranque del sistema.
+ documentación de apoyo respecto de la materia. Se presentaron grandes dificultades en el acceso a la memoria SPI FLASH S33 de Intel la cual se
+ encuentra soportada por herramientas \textit{oficiales} que únicamente corren bajo Windows. Alternativamente existe una versión de la placa de
+ desarrollo S3ADSP1800A, disponible también en el laboratorio del CUDAR, que se encuentra equipada con una memoria FLASH SPI Numonyx M25P64 que puede
+ ser accedida mediante herramientas de programación como XC3SPROG y UrJTAG alojando finalmente los programas necesarios para el arranque del sistema.
 	
-	Las pruebas realizadas con el sistema operativo de tiempo real ecOS proveyeron información útil para el desarrollo de sistemas embebidos de tiempo
-	real. Se analizaron inicialmente las capacidades y limitaciones en la ejecución de hilos. Aunque estas pruebas tan solo verifican la utilización de
-	una parte las capacidades, el sistema operativo ecOS posee mayor funcionalidad que no fue probada en este trabajo y presenta capacidades comparables
-	a implementaciones como lo son FreeRTOS y su implentación comercial eCosPro.
+Las pruebas realizadas con el sistema operativo de tiempo real ecOS proveyeron información útil para el desarrollo de sistemas embebidos de tiempo
+real. Se analizaron inicialmente las capacidades y limitaciones en la ejecución de hilos. Aunque estas pruebas tan solo verifican la utilización de
+una parte las capacidades, el sistema operativo ecOS posee mayor funcionalidad que no fue probada en este trabajo y presenta capacidades comparables
+a implementaciones como lo son FreeRTOS y su implentación comercial eCosPro.
 	
-	La capacidad, por defecto, del Kernel de Linux de ser compilado para arquitecturas OpenRISC posibilitó tener un entorno de ejecución de amplia
-	funcionalidad y gran utilización en el ámbito de desarrollo de Sistemas Embebidos.  
+La capacidad, por defecto, del Kernel de Linux de ser compilado para arquitecturas OpenRISC posibilitó tener un entorno de ejecución de amplia
+funcionalidad y gran utilización en el ámbito de desarrollo de Sistemas Embebidos.
 	
 
 	%Durante las pruebas realizadas en el prototipo ~\ref{chap:proto4} 
