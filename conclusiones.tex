@@ -1,10 +1,10 @@
  \chapter{Conclusiones}
 
-El objetivo general y los objetivos específicos planteados en la propuesta del presente proyecto integrador se cumplieron completamente y de forma exitosa logrando mostrar el desarrollo del trabajo a través de la metodología propuesta, la cual se baso en el modelo de desarrollo en espiral con el fin de identificar los riesgos y plantear soluciones mediante la simulación y construcción de prototipos en cada ciclo de la espiral.
-
-A partir de las arquitecturas planteadas para el presente proyecto integrador se logró demostrar que el diseño desarrollado es viable para su implementación y puede servir como modelo de referencia en experiencias futuras que requieran licencias flexibles plin plin....
+El objetivo general y los objetivos específicos planteados en la propuesta del presente proyecto integrador se cumplieron completamente y de forma
+exitosa logrando mostrar el desarrollo del trabajo a través de la metodología propuesta, la cual se baso en el modelo de desarrollo en espiral con el
+fin de identificar los riesgos y plantear soluciones en base a los mismos mediante la simulación, diseño de programas de prueba y construcción de
+prototipos en cada ciclo de la espiral.
 	 
-
 	\section{En cuanto al hardware opensource} 
 
 Del trabajo realizado sobre hardware sintetizable opensource durante el desarrollo de este trabajo se puedo analizar desde diversos enfoques sus
@@ -22,7 +22,7 @@ que generen un netlist en formato EDIF, pero actualmente no sería posible dispo
 publican la información, considerada como secreto industrial. El primer paso para lograrlo sería la existencia de una ``OpenFPGA'' con un descripción
 opensource que posibilite evitar la utilización de las herramientas de síntesis privativas de los fabricantes de FPGAs.
 
-	\section{En cuanto a los procesadores Soft Core} 
+	\section{En cuanto a los procesadores softcore} 
 	
 Respecto de los microprocesadores softcore se analizaron, durante el desarrollo de este trabajo, diversas alternativas de implentención de las cuales
 la mayoría son desarrollos de los principales fabricantes de FPGA. Si bien la utilización de estas implementaciones favorece al desarrollo con
@@ -34,51 +34,46 @@ rendimiento del micro OpenRISC realizado en este trabajo cuyos resultados fueron
 este microprocesador entre otros similares capacidades.
 
 Puede decirse en base a lo expuesto anteriormente que las implementaciones de microprocesadores softcore son una solución viable para problemas
-industriales (control, comunicaciones, DSP, PLCs). %% inclusive con fines didácticos relacionados con la enseñanza de arquitectura de procesadores
- 
+industriales (control, comunicaciones, DSP, PLCs) e inclusive puede utilizarse con fines academicos para el estudio de sistemas embebidos,
+microprocesadores, diseño e implementación de hardware reconfigurable, entre otros.
+
 	\section{En cuanto a la implementación de SoC sobre FPGA} 
 
-Fueron analizados para este trabajo dos implementaciones de sistemas en chip con núcleo OpenRISC. El proyecto minSoC mostró capacidades acotadas a
+Fueron analizados para este trabajo dos implementaciones de sistemas en chip con núcleo OpenRISC. El proyecto MinSoC mostró capacidades acotadas en
 aplicaciones \textit{bare-metal} de pequeña escala como puede ser un control PID simple o algún dispositivo que no requiera de gran capacidad de
-cálculo. Los módulos UART y Ethernet le brindan la posibilidad de comunicarse en sistemas de mayor envergadura mediante diversos protocolos como puede
-ser Modbus o algún otro protocolo opensource. La capacidad de expansión del proyecto se ve limitada por la necesidad de desarrollar programas
+cálculo. Los módulos UART y Ethernet le brindan la posibilidad de comunicarse en sistemas de mayor envergadura mediante diversos protocolos como
+puede ser Modbus o algún otro protocolo opensource. La capacidad de expansión del proyecto se ve limitada por la necesidad de desarrollar programas
 especiales para cada uno de los nuevos módulos que se utilicen ya que no se cuenta con un sistema operativo con drivers para tal fin.
 
 Para aplicaciones con mayores exigencias de procesamiento y posibilidad de ejecución de un sistema operativo se analizó en este trabajo el sistema en
 chip ORPSoC de Opencores. De mayores prestaciones que el proyecto MinSoC y soportado por gran cantidad de plataformas reconfigurables, este proyecto
-permitió la instaciación de un sistema operativo de tiempo real para aplicaciones industriales con este requisito.
-		
-	\section{En cuanto a la implementación de sistemas operativos RT en arquitecturas sintetizables} 
-		
-
-%% Me parece que esto queda bien descrito en el titulo anterior.
-	
+permitió la instanciación de un sistema operativo de tiempo real para aplicaciones que requieran esta característica.
+			
 	\section{En cuanto a la implementación Linux en arquitecturas sintetizables} 
-		
-		
-		
 
-	\section{En cuanto a la implementación de sistemas industriales en arquitecturas reconfigurables} 
+Debido a la necesidad de ejecutar aplicaciones con mayores exigencias en la gestión de los recursos de hardware disponibles en el SoC y la
+prestación servicios como gestion de interrupciones, excepciones y memoria, se evaluó en este trabajo la posibilidad de ejecutar el kernel de Linux y
+sus herramientas de sistema provistas por BusyBox. 
 
+Se compiló exitosamente el kernel de Linux con las herramientas de compilación cruzada disponibles para la arquitectura. Consecuentemente se ejecutó
+con éxito el kernel sobre el simulador de la arquitectura OpenRISC. Sin embargo, el núcleo de Linux no pudo ejecutarse con éxito sobre la plataforma
+de prueba debido a inconvenientes surgidos durante el acceso a memoria en la secuencia de inicio del Sistema Operativo. Sin embargo,puede señalarse
+que mediante la depuración de los problemas surgidos se lograría obtener una imagen funcional del Kernel que permita realizar aplicaciones de prueba
+sobre la plataforma real. Existen resultados satisfactorias que demuestan el correcto funcionamiento del SO en esta arquitectura sobre otras
+placas de desarrollo.
+				
+\section{Trabajos futuros}
 
+Este trabajo extiende las posibilidades de futuros trabajos en este tipo de plataformas debido a uno de sus principales objetivos:
+el desarrollo de hardware y software de código abierto. Esto brinda la posibilidad de estudiar, modificar y mejorar el diseño mediante la
+disponibilidad de su código fuente.    
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
-	\section{Trabajos futuros}
-
-La principal carencia de los sistemas que se han desarrollado es la imposibilidad de utilizar la caché de datos de los procesadores debido a la
-ausencia de un mecanismo que garantice la coherencia de las cachés de los distintos procesadores. Actualmente se está trabajando en una solución a
-este problema, que permitiría utilizar cachés de datos en el sistema aumentando considerablemente el rendimiento de éste. Una vez se puedan usar
-cachés de datos se hará necesario también desarrollar nuevos controladores de memoria que soporten más canales XCL, ya que con los controladores
-actuales sólo se podrían desarrollar sistemas con dos procesadores. Otra de las limitaciones de los sistemas que se han presentado es la gestión de
-las interrupciones, que actualmente no están completamente soportadas. Se está trabajando en el desarrollo de un controlador de interrupciones que
-permita manejarlas de forma más eficiente, interrumpiendo solamente a un procesador cada vez en lugar de a todos simultáneamente.
-
-		\subsection{Desarrollo de nuevos módulos de hardware para su utilización en SoC}
-		
-		\subsection{Desarrollo de drivers para nuevos módulos}
-		
-		\subsection{Desarrollo de aplicaciones reales sobre sistemas embebidos basados en SoC sintetizables}
-		
-		
+		\begin {itemize}
+		  \item Depuración del kernel de Linux para su correcto funcionamiento sobre la placa de desarrollo S3ADSP1800A.
+		  \item Desarrollo de nuevos módulos de hardware para su utilización en SoC.
+		  \item Desarrollo de drivers para nuevos módulos.
+		  \item Desarrollo de aplicaciones reales sobre sistemas embebidos basados en SoC sintetizables.
+		\end{itemize}
+								
 	
 	 

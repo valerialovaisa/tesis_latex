@@ -1403,17 +1403,18 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 		implementado en el proyecto ORPSoC.
 		
 		El kernel de Linux pudo compilarse éxitosamente, con herramientas de compilación cruzada, sin mayores inconvenientes durante la construcción su
-		imágen y sus herramientas (Busybox). Luego, se ejecutó el kernel sobre el simulador de la arquitectura OpenRISC conocido como or1ksim. Pudo comprobarse
-		así, el correcto funcionamiento de la imágen construida y su correcta implementación para una arquitectura OpenRISC. Sin embargo, al intentar
-		ejecutar el Kernel sobre el kit de desarrollo S3ADSP1800A, surgieron inconvenientes respecto del acceso a memoria durante la secuencia de inicio del
-		Sistema Operativo. En el análisis efectuado ante este problema se presentaron diversos impedimientos. El primero de ellos fue la escasa
-		documentación que brinda el proveedor de la placa de desarrollo, que en ocaciones no funciona correctamente. En este trabajo se recurrió a distintas
-		notas de aplicación proporcionadas por Xilinx sin lograr resultados satisfactorios. Como alternativa que permita resolver este problema se recurrió
-		a la documentación, foros y mail lists de las comunidades Opensource. Es importante destacar que los tiempos de respuesta en este tipo de
-		canales no se corresponden con los tiempos de ejecución de este trabajo y mucho menos con los tiempos de la industria. Finalmente, debe realizarse
-		un profundo estudio sobre código del kernel que permita solucionar los problemas asociados a la adapatación del SO a la placa de desarrollo. Si lo
-		mencionado anteriormente no logra resolver el problema, deberá realizar un estudio de depuración a nivel de hardware. Existen resultados
-		satisfactorias que demuestan el correcto funcionamiento del SO en esta arquitectura sobre otras placas de desarrollo, tales como Atlys de Xilinx y
-		DE-Nano de Terasic ~\cite{rte.se} ~\cite{denano}.
+		imágen y sus herramientas (Busybox). Luego, se ejecutó el kernel sobre el simulador de la arquitectura OpenRISC conocido como or1ksim. Pudo
+		comprobarse así, el correcto funcionamiento de la imágen construida y su correcta implementación para una arquitectura OpenRISC. Sin embargo, al
+		intentar ejecutar el Kernel sobre el kit de desarrollo S3ADSP1800A, surgieron inconvenientes respecto del acceso a memoria durante la secuencia de
+		inicio del Sistema Operativo. En el análisis efectuado ante este problema se presentaron diversos impedimientos. El primero de ellos fue la escasa
+		documentación que brinda el proveedor de la placa de desarrollo, que en ocaciones no funciona correctamente. En este trabajo se recurrió a
+		distintas notas de aplicación proporcionadas por Xilinx sin lograr resultados satisfactorios. 
+		
+		Como alternativa que permita resolver este problema se recurrió a la documentación, foros y mail lists de las comunidades Opensource. Es importante
+		destacar que los tiempos de respuesta en este tipo de canales no se corresponden con los tiempos de ejecución de este trabajo y mucho menos con los
+		tiempos de la industria. Finalmente, debe realizarse un profundo estudio sobre código del kernel que permita solucionar los problemas asociados a
+		la adapatación del SO a la placa de desarrollo. Si lo mencionado anteriormente no logra resolver el problema, deberá realizar un estudio de
+		depuración a nivel de hardware. Existen resultados satisfactorias que demuestan el correcto funcionamiento del SO en esta arquitectura sobre otras
+		placas de desarrollo, tales como Atlys de Xilinx y DE-Nano de Terasic ~\cite{rte.se} ~\cite{denano}.
 		
 		
