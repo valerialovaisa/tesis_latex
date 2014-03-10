@@ -4,18 +4,23 @@
 	Este capítulo presenta los resultados obtenidos durante la implementación de cada uno de los prototipos planteados en el Capítulo
 	~\ref{chap:disenoeimpl} y durante la ejección de los casos de prueba correspondientes. 
 \begin{itemize}
-\item Se analizaron y compararon los proyectos MinSoC y OrpSoc. 
-\item matrices
-\item Comparativa de benchmark coremark y dhrystone entre los CPU mas conocidos.		
+\item Se instanciaron, analizaron y compararon los proyectos MinSoC y ORPSoC, ambos con núcleo OpenRISC. 
+\item Se evaluó el funcionamiento del microprocesador OpenRISC con programa de prueba de multiplicación de matrices binarias cuadradas.
+\item Se evaluaron las capacidades del compilador cruzado or32-elf-gcc en lo referido a su capacidad de optimización de código. 
+\item Se ejecutaron los benchmarks de sistemas embebidos coremark y dhrystone para posicionar el microprocesador OpenRISC entre CPUs de similares
+características.
+\item Se realizó la implementación de dos sistemas operativos, uno de tiempo real (ecOS) y uno de mayores capacidades considerado un estándar
+\texit{de facto} en sistemas opensource (Linux). 
 \end{itemize}				
 				
 	Para la ejecución de todas las pruebas se utilizó la placa desarrollo S3ADSP1800A del fabricante Xilinx que cumple con los requerimientos detallados
-	en la Tabla ~\ref{tab:requsr1} y se encontraba dentro de las alternativas disponibles al momento del desarrollo de este trabajo.
-El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA
-	de diversos desarrolladores. La facilidad de adaptación del proyecto para ser portado a otras arquitecturas reconfigurables le confiere gran
-	versatilidad ampliando notablemente su gama de aplicación.
-	Durante el desarrollo de las pruebas se prentendió esteblecer los límites de aplicación del proyecto que establezcan referencias sólidas para una
-	futura elección del proyecto en aplicaciones reales.
+	en la Tabla ~\ref{tab:requsr1} y se encontraba dentro de las alternativas disponibles al momento del desarrollo de este trabajo. El proyecto MinSoC
+	se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA de diversos
+	desarrolladores. La facilidad de adaptación del proyecto para ser portado a otras arquitecturas reconfigurables le confiere gran versatilidad
+	ampliando notablemente su gama de aplicación. Durante el desarrollo de las pruebas se prentendió esteblecer los límites de aplicación del proyecto
+	que establezcan referencias sólidas para una futura elección del proyecto en aplicaciones reales.
+
+
 
 	\newpage
 	\section{Resultados de Utilización de FPGA en la Implementación del Proyecto MinSoC}
@@ -42,7 +47,7 @@ El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos
 		\hline 
 		Luts de 4 entradas para puertos Dual RAM & 32 & 33280 & 0,9\%  \\ 		
 		\hline 
-		Luts de 4 entradas para Shift registers & 3 & 33280 & 0,1\%  \\ 
+		Luts de 4 entradas para shift registers & 3 & 33280 & 0,1\%  \\ 
 		\hline
 		IOBs& 29 & 519 & 5\%  \\ 
 		\hline 
@@ -552,10 +557,6 @@ Compiler version : GCC4.5.1-or32-1.0rc4
 Compiler flags   : -O3  -mboard=s3adsp1800a -FUNROLL-LOOPS -MSOFT-FLOAT -FUNROLL-ALL-LOOPS -FGCSE-SM -DVALIDATION_RUN=1  
 \end{lstlisting}
 
-<<<<<<< HEAD
-=======
-
->>>>>>> ae8324ab8dfa1b6e880f74533c7b652f2065ab73
 En la siguiente tabla ~\ref{tab:compcoremark} se presenta una comparativa con resultados Coremark de varios microprocesadores entre los que se
 encuentran los microprocesadores softcore privativos de los principales Fabricantes.
 
@@ -702,14 +703,27 @@ Pentium          &133    &239   &38.3\\
 \caption{Comparativa de resultados Dhrystone}
 \end{table}
 
-
-
 \section{Conclusión}
  Aún cumpliendo con los requerimientos especificados, la placa de desarrollo no cuenta con un completo soporte de periféricos on board ni con amplia
  documentación de apoyo respecto de la materia. Se presentaron grandes dificultades en el acceso a la memoria SPI FLASH S33 de Intel la cual se
  encuentra soportada por herramientas \textit{oficiales} que únicamente corren bajo Windows. Alternativamente existe una versión de la placa de
  desarrollo S3ADSP1800A, disponible también en el laboratorio del CUDAR, que se encuentra equipada con una memoria FLASH SPI Numonyx M25P64 que puede
  ser accedida mediante herramientas de programación como XC3SPROG y UrJTAG alojando finalmente los programas necesarios para el arranque del sistema.
+
+Las pruebas realizadas con el multiplicador de matrices binarias cuadradas mostraron buen rendimiento en cuanto a la capacidad de cálculo del
+microprocesador instanciado en el proyecto MinSoC y permitieron, en cierta manera, aproximar los límites de ejecución a los que se enfrenta el
+programador al trabajar sobre este \textit{SoC}. Igualmente, pudo comprobarse el correcto funcionamiento del microprocesador ya que cumplió con lo
+esperado en cuanto a la complejidad del algoritmo ejecutado.
+
+Respecto al análisis de las capacidades de optimización del compilador cruzado or32-elf-gcc, se evaluaron las diferentes alternativas de
+optimización de bucles verificando el correcto funcionamiento del compilador medianto la técnica de desenrrollado de bucles utilizando mayor cantidad
+de registros y reduciendo la cantidad de saltos.
+	
+En cuanto a los resultados obtenidos durante la ejecución de los benchmarks CoreMark y Dhrystone ejecutados sobre la plataforma ORPSoC se puede
+señalar que el microprocesador OpenRISC presenta capacidades comparables con otros desarrollados por los fabricantes mas importantes de
+FPGAs (Xilinx , Altera) y microprocesadores (ARM). Las métricas obtenidas al ejecutar el benchmark CoreMark compilado con diferentes flags de
+optimización ponen en evidencia la baja influencia de estas optimizaciones del compilador cruzado en el resultado final del test. Los resultados del
+benchmark Drystone permitieron posicionar al OpenRISC respecto de otros procesadores comerciales clásicos de fabricantes conocidos.
 	
 Las pruebas realizadas con el sistema operativo de tiempo real ecOS proveyeron información útil para el desarrollo de sistemas embebidos de tiempo
 real. Se analizaron inicialmente las capacidades y limitaciones en la ejecución de hilos. Aunque estas pruebas tan solo verifican la utilización de
@@ -719,11 +733,3 @@ a implementaciones como lo son FreeRTOS y su implentación comercial eCosPro.
 La capacidad, por defecto, del Kernel de Linux de ser compilado para arquitecturas OpenRISC posibilitó tener un entorno de ejecución de amplia
 funcionalidad y gran utilización en el ámbito de desarrollo de Sistemas Embebidos.
 	
-
-	%Durante las pruebas realizadas en el prototipo ~\ref{chap:proto4} 
-	
-	%\subsection{Resultados del programa de prueba de hilos}
-	%\section{Estudio de factibilidad para la implentación Linux}
-	
-	
-	 
