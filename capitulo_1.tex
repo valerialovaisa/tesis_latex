@@ -104,23 +104,61 @@ La conjunción de dichos conceptos produce un sistema integrales de
 código abierto en donde se tiene código HDL, Assembler y C disponible
 para adaptarse de acuerdo a los requerimientos del proyecto.
 
-\section{Objetivo}
 
-El presente proyecto tiene como objetivo la implementación de un
-sistema embebido basado en hardware y software de código
-abierto. Entendiéndose por hardware de código abierto al código RTL
-del System on Chip (SoC) que será montado sobre una placa de desarrollo.
-Dicho SoC deberá además soportar un sistema operativo
+\section{Objetivos}
+\subsection{Objetivo general}
+El presente proyecto tiene como objetivo la implementación de un sistema embebido basado en hardware \footnote{Entendiéndose por hardware de código abierto al código RTL}y software de código abierto.
+Dicho hardware sera un System on Chip (SoC) montado sobre una placa de desarrollo que deberá además soportar un sistema operativo
 libre con la finalidad de proveer un sistema integral FPGA-SoC-Sistema
-Operativo completamente funcional de código abierto. A tal efecto,
-además de la implementación en si misma se deberá analizar la licencia
-de cada bloque utilizado con el fin de determinar las restricciones
-resultantes sobre el sistema final.
+Operativo completamente funcional de código abierto.
 
 Este trabajo pretende mostrar que la tecnología de sistemas sobre chip
 basada en dispositivos reconfigurables, como los diseños abiertos en
-hardware y software, son adecuados para la implementación de sistemas
-de aplicación industrial.
+hardware y software, son adecuados para aplicaciones de pequeña envergadura.
+
+\subsection{Objetivo específico}
+  \begin{itemize}
+ \item Analizar los microprecesadores soft core disponibles.
+ \item Analizar las placas de desarrollo con FPGA disponibles para la implemantación de los microprecesadores analizados.
+  \item Seleccionar el microprocesador mas adecuado a nuestros requerimientos y en base a esto seleccionar la placa adecuada.
+
+y su factibilidad de implementación en tales placas. determinar la factibilidad de implementación de microprocesador, seleccionando el mas adecuado para tal FPGA en particular %%corregir agregar plcas disponibles en cudar
+
+ \end{itemize}
+\subsection{Objetivo específico}
+  \begin{itemize}
+ -\item Seleccionar, analizar y determinar la factibilidad de implementación de un microprocesador softcore en FPGA.
+ +\item  Analizar los microprecesadores soft core disponibles y su factibilidad de implementación en tales placas. determinar la factibilidad de implementación de microprocesador, seleccionando el mas adecuado para tal FPGA en particular %%corregir agregar plcas disponibles en cudar
+  \item Seleccionar un SoC Open Source de acuerdo al microprocesador softcore seleccionado.
+  \item Presentar los Sistemas Operativos Linux y ecOS que poseen las prestaciones funcionales adecuadas para su utilización en Sistemas
+  Embebidos.
+  \end{itemize}
+
+
+\begin{itemize}
+\item Seleccionar, analizar y determinar la factibilidad de implementación de un microprocesador softcore en FPGA adaptarlo a la placa de desarrollo, sintetizarlo y hacer la puesta en funcionamiento en tal placa disponible.
+\item Analizar los microprecesadores soft core disponibles y su factibilidad de implementación en tales placas. determinar la factibilidad de implementación de microprocesador, seleccionando el mas adecuado para tal FPGA en particular %%corregir agregar plcas disponibles en cudar
+\item Seleccionar un SoC Open Source de acuerdo al microprocesador softcore seleccionado.
+\item Presentar los Sistemas Operativos Linux y ecOS que poseen las prestaciones funcionales adecuadas para su utilización en Sistemas
+Embebidos.
+\end{itemize}
+
+%\section{Objetivo}
+%El presente proyecto tiene como objetivo la implementación de un
+%sistema embebido basado en hardware y software de código
+%abierto. Entendiéndose por hardware de código abierto al código RTL
+%del System on Chip (SoC) que será montado sobre una placa de desarrollo.
+%Dicho SoC deberá además soportar un sistema operativo
+%libre con la finalidad de proveer un sistema integral FPGA-SoC-Sistema
+%Operativo completamente funcional de código abierto. A tal efecto,
+%además de la implementación en si misma se deberá analizar la licencia
+%de cada bloque utilizado con el fin de determinar las restricciones
+%resultantes sobre el sistema final.
+%
+%Este trabajo pretende mostrar que la tecnología de sistemas sobre chip
+%basada en dispositivos reconfigurables, como los diseños abiertos en
+%hardware y software, son adecuados para la implementación de sistemas
+%de aplicación industrial.
 
 \subsection{Alcance de estudio}
 
