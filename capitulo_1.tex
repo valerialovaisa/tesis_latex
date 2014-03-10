@@ -107,7 +107,7 @@ para adaptarse de acuerdo a los requerimientos del proyecto.
 
 \section{Objetivos}
 \subsection{Objetivo general}
-El presente proyecto tiene como objetivo la implementación de un sistema embebido basado en hardware \footnote{Entendiéndose por hardware de código abierto al código RTL}y software de código abierto.
+El presente proyecto tiene como objetivo la implementación de un sistema embebido basado en hardware\footnote{Entendiéndose por hardware de código abierto al código RTL} y software de código abierto.
 Dicho hardware sera un System on Chip (SoC) montado sobre una placa de desarrollo que deberá además soportar un sistema operativo
 libre con la finalidad de proveer un sistema integral FPGA-SoC-Sistema
 Operativo completamente funcional de código abierto.
@@ -121,20 +121,23 @@ hardware y software, son adecuados para aplicaciones de pequeña envergadura.
  \item Analizar los microprecesadores soft core disponibles y seleccionar el microprocesador que se adapta mejor a nuestros requerimientos.
  \item Analizar las placas de desarrollo con FPGA disponibles para la implemantación de los microprecesadores analizados.
   \item Seleccionar los SoCs de acuerdo al microprocesador soft core seleccionado y determinar la placa de desarrollo para su implementación.
-\item Adaptar e implementar el flujo de diseño de hardware para cada SoC seleccionado. 
-\item 
+\item Implementar el flujo de diseño de hardware para cada SoC seleccionado y realizar las correcciones necesarias sobre el código RTL para su correcta implementación. 
+\item Desarrollar  aplicaciones en lenguaje C generadas mediante compilación cruzada para las pruebas del funcionamiento de el microprocesador, los SoCs, sus modulos y las herramientas de entorno de software para la arquitectura seleccionada.
+\item Investigar los mecanismos para la medición del rendimiento de sistemas embebidos,  seleccionar y ejecutar. 
+\item Estudiar los Sistemas Operativos existentes soportados por las plataformas elegidas.
 \item Presentar los Sistemas Operativos Linux y ecOS que poseen las prestaciones funcionales adecuadas para su utilización en Sistemas Embebidos.
+\item Poner en funcionamiento y configurar los sistemas operativos Linux y ecOS para los SoCs elegidos.
  \end{itemize}
 
 
 
-\begin{itemize}
-\item Seleccionar, analizar y determinar la factibilidad de implementación de un microprocesador softcore en FPGA adaptarlo a la placa de desarrollo, sintetizarlo y hacer la puesta en funcionamiento en tal placa disponible.
-\item Analizar los microprecesadores soft core disponibles y su factibilidad de implementación en tales placas. determinar la factibilidad de implementación de microprocesador, seleccionando el mas adecuado para tal FPGA en particular %%corregir agregar plcas disponibles en cudar
-\item Seleccionar un SoC Open Source de acuerdo al microprocesador softcore seleccionado.
-\item Presentar los Sistemas Operativos Linux y ecOS que poseen las prestaciones funcionales adecuadas para su utilización en Sistemas
-Embebidos.
-\end{itemize}
+%\begin{itemize}
+%\item Seleccionar, analizar y determinar la factibilidad de implementación de un microprocesador softcore en FPGA adaptarlo a la placa de desarrollo, sintetizarlo y hacer la puesta en funcionamiento en tal placa disponible.
+%\item Analizar los microprecesadores soft core disponibles y su factibilidad de implementación en tales placas. determinar la factibilidad de implementación de microprocesador, seleccionando el mas adecuado para tal FPGA en particular %%corregir agregar plcas disponibles en cudar
+%\item Seleccionar un SoC Open Source de acuerdo al microprocesador softcore seleccionado.
+%\item Presentar los Sistemas Operativos Linux y ecOS que poseen las prestaciones funcionales adecuadas para su utilización en Sistemas
+%Embebidos.
+%\end{itemize}
 
 %\section{Objetivo}
 %El presente proyecto tiene como objetivo la implementación de un
