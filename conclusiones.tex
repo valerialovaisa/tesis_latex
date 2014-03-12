@@ -24,13 +24,13 @@ El proyecto MinSoC mostró capacidades acotadas en aplicaciones \textit{bare-met
 
 Para aplicaciones con mayores exigencias de procesamiento y que requieran la posibilidad de ejecución de un sistema operativo se analizó el sistema en chip ORPSoC de Opencores. Este sistema posee mayores prestaciones que el proyecto MinSoC y es soportado por gran cantidad de plataformas reconfigurables. Con el mismo fue posible llevar a cabo la instanciación de un sistema operativo de tiempo real.
 
-\section{Implementación de Linux en arquitecturas sintetizables}
+\section{Implementación de Linux en Arquitecturas Sintetizables}
 
 Se evaluó la posibilidad de ejecutar el kernel de Linux y las herramientas de sistema provistas por BusyBox. Esto permite cubrir las necesidades en aplicaciones con mayores exigencias en la gestión de los recursos de hardware disponibles en el SoC. Además, permite la prestación servicios tales como gestión de interrupciones, excepciones y memoria.
 
 Como resultados se compiló exitosamente el kernel de Linux con las herramientas de compilación cruzada disponibles para la arquitectura. Consecuentemente se ejecutó con éxito el kernel sobre el simulador de la arquitectura OpenRISC. Sin embargo, el núcleo de Linux no pudo ejecutarse con éxito sobre la plataforma de prueba debido a inconvenientes surgidos durante el acceso a memoria en la secuencia de inicio del Sistema Operativo. Sin embargo, puede señalarse que mediante la depuración de los problemas surgidos se lograría obtener una imagen funcional del Kernel que permita realizar aplicaciones de prueba sobre la plataforma real. Existen resultados satisfactorias que demuestran el correcto funcionamiento del SO en esta arquitectura sobre otras placas de desarrollo.
 
-\section{Trabajos futuros}
+\section{Trabajos Futuros}
 
 El presente trabajo brinda las bases para futuros desarrollos en hardware y software de código abierto. Además del análisis llevado a cabo, la disponibilidad del código fuente desarrollado facilita el estudio de los sistemas analizados y permite su adaptación y/o mejora para futuras aplicaciones. Entre las lineas de trabajo que se desprenden de este proyecto se pueden mencionar las siguientes:
 
