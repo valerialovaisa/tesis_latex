@@ -110,20 +110,19 @@ para adaptarse de acuerdo a los requerimientos del proyecto.
 El presente proyecto tiene como objetivo la implementación de un sistema embebido basado en hardware\footnote{Entendiéndose por hardware de código abierto al código RTL} y software de código abierto.
 Dicho hardware sera un System on Chip (SoC) montado sobre una placa de desarrollo que deberá además soportar un sistema operativo
 libre con la finalidad de proveer un sistema integral FPGA-SoC-Sistema
-Operativo completamente funcional de código abierto.
-
-Este trabajo pretende mostrar que la tecnología de sistemas sobre chip
-basada en dispositivos reconfigurables, como los diseños abiertos en
-hardware y software, son adecuados para aplicaciones de pequeña envergadura.
+Operativo completamente funcional de código abierto para aplicaciones de pequeña envergadura.
 
 \subsection{Objetivos específicos}
   \begin{itemize}
  \item Analizar los microprecesadores softcore disponibles y seleccionar el microprocesador que se adapta mejor a nuestros requerimientos.
- \item Analizar las placas de desarrollo con FPGA disponibles para la implemantación de los microprecesadores analizados.
-  \item Seleccionar los SoCs de acuerdo al microprocesador softcore seleccionado y determinar la placa de desarrollo para su implementación.
+
+% \item Seleccionar la placa de desarrollo con FPGA  y determinar la factibilidad de implementación del microprocesador softcore elegido.
+  
+\item Seleccionar los SoCs de acuerdo al microprocesador softcore elegido y determinar la placa de desarrollo para su implementación.
+
 \item Implementar el flujo de diseño de hardware para cada SoC seleccionado y realizar las correcciones necesarias sobre el código RTL para su correcta implementación. 
 \item Desarrollar  aplicaciones en lenguaje C generadas mediante compilación cruzada para las pruebas del funcionamiento de el microprocesador, los SoCs, sus modulos y las herramientas de entorno de software para la arquitectura seleccionada.
-\item Investigar los mecanismos para la medición del rendimiento de sistemas embebidos,  seleccionar y ejecutar. 
+\item Estudiar y aplicar los mecanismos para la medición del rendimiento de sistemas embebidos. 
 \item Estudiar los Sistemas Operativos existentes soportados por las plataformas elegidas.
 \item Presentar los Sistemas Operativos Linux y ecOS que poseen las prestaciones funcionales adecuadas para su utilización en Sistemas Embebidos.
 \item Poner en funcionamiento y configurar los sistemas operativos Linux y ecOS para los SoCs elegidos.
