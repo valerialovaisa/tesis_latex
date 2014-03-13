@@ -18,13 +18,13 @@ En la elección de los microprocesadores Soft-Core presentados en el capitulo an
 
 El proyecto brinda soporte nativo a diversas placas y FPGAs mediante definiciones en el código RTL y archivos de constantes (constraint files)
 				pero puede adaptarse a otras siguiendo una mínima serie de pasos. Se cuenta además con una serie testbenchs y firmwares que permiten realizar
-				pruebas funcionales del sistema y sirven de guía en los primeros desarrollos. Los testbenchs de MinSoC pueden ser ejecutados mediante la
-				aplicación Icarus Verilog v.9.1. disponible en los repositorios estándar de la mayoría de las distribuciones Linux. 
+				pruebas funcionales del sistema y sirven de guía en los primeros desarrollos. Esta serie de testbenchs pueden ser ejecutados mediante la
+				aplicación Icarus Verilog v.9.1 disponible en los repositorios estándar de la mayoría de las distribuciones Linux. 
 				
 				Existe una instancia de memoria on-chip de tamaño adaptable necesaria para soportar el firmware del CPU que conjuntamente con los cores que
 				soportan los periféricos básicos son adaptados de acuerdo a las capacidades de la FPGA destino. 
 
-Una visión general sobre el SoC completa y sus conexiones externas es en la  (Figura ~\ref{fig:esquemaminsoc})
+Una visión general sobre el SoC completa y sus conexiones externas se observa en la Figura~\ref{fig:esquemaminsoc})
 
 \begin{figure}[h!]
  \begin{center}
@@ -46,7 +46,7 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				  \item Código genérico y especifico de memoria para las FPGA de Xilinx y Altera, adaptación de clock (PLLs y MCMs) y JTAG TAP
 				  \item Configuración del sistema en un simple archivo de definición 
 				  \item Ejemplos de firmware utilizando UART y Ethernet  
-				  \item Incluye testbench para la simulacón de la configuración del sistema. 						
+				  \item Incluye testbench para la simulacón de la configuración del sistema						
 				\end{itemize}
 
 \item Tecnologías probadas que le brindan soporte al proyecot MinSoC:
@@ -132,7 +132,7 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				aplicaciones tales como Prototipado General, Sistemas Embebidos, Video Digital, DSP, Procesamiento de Imagenes, Comunicaciones digitales y
 				Coprocesamiento. Esta plataforma provee acceso a las capacidades de la familia de FPGA Spartan®-3A y cuenta con periféricos,conectores e
 				interfaces estándar de la industria. Fue diseñada para para ser utilizada con Xilinx System Generator para aplicaciones DSP y las herramientas de
-				diseño ISE® o el entorno desarrollado en Linux llamado PetaLinux Software Development Kit (SDK) ambas herramientas provistas por el fabricante. 
+				diseño ISE® o el entorno desarrollado en Linux llamado Peta Linux Software Development Kit (SDK) ambas herramientas provistas por el fabricante. 
 				
 				%Traducir esto ???
 				Las características generales del kit son:
@@ -316,8 +316,8 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				\end{itemize}				
 				
  		\subsection{Conclusiones de la elección de la placa de desarrollo}
- 				Se seleccionó entre los items analizados y teniendo en cuenta la disponibilidad de recursos al momento de realizar este trabajo utilizar las
- 				placas S3ADSP1800A de Xilinx para soportar los SoC a implementar.
+ 				Se seleccionó entre los items analizados y teniendo en cuenta la disponibilidad de recursos al momento de realizar este trabajo utilizar la
+ 				placa S3ADSP1800A de Xilinx para soportar los SoC a implementar.
  		
  		\newpage	
  		\section{Presentación de las Herramientas de Desarrollo} 	 
