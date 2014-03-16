@@ -62,7 +62,7 @@ características.
 		\hline 
 \end{tabular}
 %\end{center}
-%\caption{Condiciones del entorno de prueba}
+\caption{Resultados de la implementación del proyecto MinSoC}
 \label{tab:conbench}
 \end{table}
 
@@ -115,7 +115,7 @@ características.
 		\hline 
 \end{tabular}
 %\end{center}
-%\caption{Condiciones del entorno de prueba}
+\caption{Resultados de la implementación del proyecto ORPSoC}
 \label{tab:conbench1}
 \end{table}	
 		
@@ -218,7 +218,7 @@ características.
 		cuenta con tres bucles anidados y operaciones de multiplicación y acumulación.
 	
 \newpage			
-	\begin{lstlisting}[language=C,frame=single]
+	\begin{lstlisting}[language=C,frame=single , caption={Código del programa de prueba multiplicador de matrices binarias}]
 for (i=0;i<indice;i++){						(*1*)
   for (j=0;j<indice;j++){					(*2*)
     for (k=0;k<indice;k++){					(*3*)
@@ -324,7 +324,7 @@ este trabajo son:
 A modo de prueba se planteó un programa que incluye un arreglo de elementos enteros y dos bucles ``for'' , uno para la inicialización del arreglo y
 otro para su actualización.
 
-	\begin{lstlisting}[language=C,frame=single]
+	\begin{lstlisting}[language=C,frame=single , caption={Código del programa de prueba de opciones de optimización del compilador (bucle simple) }]
 #define ITERACIONES 1000
 #define CTE 3
 
@@ -353,7 +353,7 @@ numero de 1000 iteraciones y para cada uno de los flags de optimización. Los c�
 
 A continuación se presenta una tabla que resume los resultados obtenidos para 1000 iteraciones y diversos flags de optimización:
 
-\begin{table}[h!]
+\begin{table}[!h]
 		\centering
 		\begin{tabular}{ | p{4cm} | p{5cm} | p{2.5cm} | p{2cm} | }
 		\hline 
@@ -401,7 +401,7 @@ detallaron en la tabla~\ref{tab:conbench} y la ejecución se realizó con 600 it
 
 En la siguiente tabla ~\ref{tab:conbench2} se presentan los resultados de ejecutar el CoreMark en la placa de desarrollo de Xilinx, obtenidos mediante la utilización de optimización en la fase de compilación. Sin ningún tipo de optimización el valor del CoreMark fue 0,49/MHz
 
-\begin{table}[h!]
+\begin{table}[!h]
 \begin{center}
 \begin{tabular}{ |l |c |c |c |c|}
 \hline
@@ -427,134 +427,133 @@ Todos	 					& 1.55	& 10\%		& 1.52 & 5\%\\
 \label{tab:conbench2}
 \end{table}
 
-
 Se puede observar que se mejoro el valor del CoreMark para un nivel de optimizacion -O2 en un 65\% y para un nivel de optimización -O3 en un 66\% con respecto al valor sin ningún tipo de optimización. Luego agregando flags a cada nivel de compilación se pudo obtener para un nivel de optimización -O2 una mejora del 10\% y para un nivel de optimización -O3 una mejora del 5\%  con respecto el valor obtenido sin ningún flag habilitado en cada nivel de optimización. 
 
 
- A continuación se muestran en el bloque ~\ref{lst:salidasO2} algunas de las salidas que resultan de ejecutar el CoreMark compilado con el nivel de optimización -O2, -O3 y diferentes flags de optimización se observaron los resultados mostrados en el bloque ~\ref{lst:salidasO2}
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O2 - Flags activos : -FUNROLL-LOOPS },label={lst:salidasO2},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1527
-Total time (secs): 15.270000
-Iterations/Sec   : 39.292731
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O2  -mboard=s3adsp1800a -FUNROLL-LOOPS -DVALIDATION_RUN=1  
-\end{lstlisting}
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O2 - Flags activos : -MSOFT-FLOAT},label={lst:salidas},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1528
-Total time (secs): 15.280000
-Iterations/Sec   : 39.267016
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O2  -mboard=s3adsp1800a -MSOFT-FLOAT -DVALIDATION_RUN=1  
-\end{lstlisting}
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O2 - Flags activos : -FUNROLL-ALL-LOOPS},label={lst:salidas},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1528
-Total time (secs): 15.280000
-Iterations/Sec   : 39.267016
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O2  -mboard=s3adsp1800a -FUNROLL-ALL-LOOPS -DVALIDATION_RUN=1  
-\end{lstlisting}
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O2 - Flags activos : -FGCSE-SM},label={lst:salidas},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1527
-Total time (secs): 15.270000
-Iterations/Sec   : 39.292731
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O2  -mboard=s3adsp1800a -FGCSE-SM -DVALIDATION_RUN=1  
-\end{lstlisting}
-
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Sin Flags activos},label={lst:salidasO2},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1654
-Total time (secs): 16.540000
-Iterations/Sec   : 36.275695
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O3  -mboard=s3adsp1800a -DVALIDATION_RUN=1  
-\end{lstlisting}
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -MHARD-DIV -MHARD-MULT},label={lst:salidasO2},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1654
-Total time (secs): 16.540000
-Iterations/Sec   : 36.275695
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O3  -mboard=s3adsp1800a -MHARD-DIV -MHARD-MULT -DVALIDATION_RUN=1  
-\end{lstlisting}
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -FUNROLL-LOOPS},label={lst:salidasO2},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1655
-Total time (secs): 16.550000
-Iterations/Sec   : 36.253776
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O3  -mboard=s3adsp1800a -FUNROLL-LOOPS -DVALIDATION_RUN=1  
-\end{lstlisting}
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -FGCSE-SM},label={lst:salidasO2},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1654
-Total time (secs): 16.540000
-Iterations/Sec   : 36.275695
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O3  -mboard=s3adsp1800a -FGCSE-SM -DVALIDATION_RUN=1  
-\end{lstlisting}
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -MSOFT-FLOAT},label={lst:salidasO2},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1655
-Total time (secs): 16.550000
-Iterations/Sec   : 36.253776
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O3  -mboard=s3adsp1800a -MSOFT-FLOAT -DVALIDATION_RUN=1  
-\end{lstlisting}
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -FUNROLL-ALL-LOOPS},label={lst:salidasO2},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1654
-Total time (secs): 16.540000
-Iterations/Sec   : 36.275695
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O3  -mboard=s3adsp1800a -FUNROLL-ALL-LOOPS -DVALIDATION_RUN=1  
-\end{lstlisting}
-
-\begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -FUNROLL-LOOPS -MSOFT-FLOAT
--FUNROLL-ALL-LOOPS -FGCSE-SM},label={lst:salidasO2},breaklines]
-2K validation run parameters for coremark.
-CoreMark Size    : 666
-Total ticks      : 1654
-Total time (secs): 16.540000
-Iterations/Sec   : 36.275695
-Iterations       : 600
-Compiler version : GCC4.5.1-or32-1.0rc4
-Compiler flags   : -O3  -mboard=s3adsp1800a -FUNROLL-LOOPS -MSOFT-FLOAT -FUNROLL-ALL-LOOPS -FGCSE-SM -DVALIDATION_RUN=1  
-\end{lstlisting}
+%  A continuación se muestran en el bloque ~\ref{lst:salidasO2} algunas de las salidas que resultan de ejecutar el CoreMark compilado con el nivel de optimización -O2, -O3 y diferentes flags de optimización se observaron los resultados mostrados en el bloque ~\ref{lst:salidasO2}
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O2 - Flags activos : -FUNROLL-LOOPS },label={lst:salidasO2},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1527
+% Total time (secs): 15.270000
+% Iterations/Sec   : 39.292731
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O2  -mboard=s3adsp1800a -FUNROLL-LOOPS -DVALIDATION_RUN=1  
+% \end{lstlisting}
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O2 - Flags activos : -MSOFT-FLOAT},label={lst:salidas},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1528
+% Total time (secs): 15.280000
+% Iterations/Sec   : 39.267016
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O2  -mboard=s3adsp1800a -MSOFT-FLOAT -DVALIDATION_RUN=1  
+% \end{lstlisting}
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O2 - Flags activos : -FUNROLL-ALL-LOOPS},label={lst:salidas},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1528
+% Total time (secs): 15.280000
+% Iterations/Sec   : 39.267016
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O2  -mboard=s3adsp1800a -FUNROLL-ALL-LOOPS -DVALIDATION_RUN=1  
+% \end{lstlisting}
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O2 - Flags activos : -FGCSE-SM},label={lst:salidas},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1527
+% Total time (secs): 15.270000
+% Iterations/Sec   : 39.292731
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O2  -mboard=s3adsp1800a -FGCSE-SM -DVALIDATION_RUN=1  
+% \end{lstlisting}
+% 
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Sin Flags activos},label={lst:salidasO2},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1654
+% Total time (secs): 16.540000
+% Iterations/Sec   : 36.275695
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O3  -mboard=s3adsp1800a -DVALIDATION_RUN=1  
+% \end{lstlisting}
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -MHARD-DIV -MHARD-MULT},label={lst:salidasO2},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1654
+% Total time (secs): 16.540000
+% Iterations/Sec   : 36.275695
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O3  -mboard=s3adsp1800a -MHARD-DIV -MHARD-MULT -DVALIDATION_RUN=1  
+% \end{lstlisting}
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -FUNROLL-LOOPS},label={lst:salidasO2},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1655
+% Total time (secs): 16.550000
+% Iterations/Sec   : 36.253776
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O3  -mboard=s3adsp1800a -FUNROLL-LOOPS -DVALIDATION_RUN=1  
+% \end{lstlisting}
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -FGCSE-SM},label={lst:salidasO2},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1654
+% Total time (secs): 16.540000
+% Iterations/Sec   : 36.275695
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O3  -mboard=s3adsp1800a -FGCSE-SM -DVALIDATION_RUN=1  
+% \end{lstlisting}
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -MSOFT-FLOAT},label={lst:salidasO2},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1655
+% Total time (secs): 16.550000
+% Iterations/Sec   : 36.253776
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O3  -mboard=s3adsp1800a -MSOFT-FLOAT -DVALIDATION_RUN=1  
+% \end{lstlisting}
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -FUNROLL-ALL-LOOPS},label={lst:salidasO2},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1654
+% Total time (secs): 16.540000
+% Iterations/Sec   : 36.275695
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O3  -mboard=s3adsp1800a -FUNROLL-ALL-LOOPS -DVALIDATION_RUN=1  
+% \end{lstlisting}
+% 
+% \begin{lstlisting}[frame=single,caption={Optimización nivel -O3 - Flags activos -FUNROLL-LOOPS -MSOFT-FLOAT
+% -FUNROLL-ALL-LOOPS -FGCSE-SM},label={lst:salidasO2},breaklines]
+% 2K validation run parameters for coremark.
+% CoreMark Size    : 666
+% Total ticks      : 1654
+% Total time (secs): 16.540000
+% Iterations/Sec   : 36.275695
+% Iterations       : 600
+% Compiler version : GCC4.5.1-or32-1.0rc4
+% Compiler flags   : -O3  -mboard=s3adsp1800a -FUNROLL-LOOPS -MSOFT-FLOAT -FUNROLL-ALL-LOOPS -FGCSE-SM -DVALIDATION_RUN=1  
+% \end{lstlisting}
 
 En la siguiente tabla ~\ref{tab:compcoremark} se presenta una comparativa con resultados Coremark de varios microprocesadores entre los que se
 encuentran los microprocesadores softcore privativos de los principales Fabricantes.
