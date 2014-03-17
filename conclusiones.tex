@@ -1,124 +1,98 @@
 
 \chapter{Conclusiones}
-Los sistemas desarrollados en el presente proyecto permitieron alcanzar el objetivo de proveer un sistema integral FPGA-SoC-SO de código abierto capaz de ser utilizado en aplicaciones de pequeña envergadura. 
+ 
+
+Con el desarrollo realizado en el presente trabajo se alcanzó el objetivo de proveer un sistema integral FPGA-SoC-SO de código abierto
+capaz de ser utilizado en aplicaciones de pequeña envergadura.
 
 \section{Hardware Open-Source}
 
-El trabajo realizado en este proyecto sobre hardware sintetizable open-source representa una evidencia clara de que la tecnología de código abierto se encuentra en un estado de maduración suficiente para permitir su utilización a nivel industrial. Los componentes típicos de un sistema, tales como controladores USB, micropocesadores, controladores de red, etc ya tienen una alternativa en código abierto disponible a travez de internet. Un ejemplo de esto lo constituyen los micropocesadores OpenRISC.
+El trabajo realizado en este proyecto sobre hardware sintetizable open-source representa una evidencia clara de que la tecnología de
+código abierto en esta área fue suficiente para cumplir a los objetivos planteados en este proyecto. El proyecto a mostrado que los componentes
+más usuales de un sistema desarrollados en codigo abierto, tales como controladores USB, micropocesadores, controladores de red, etc; se integraron
+y funcionaron correctamente en el sistema completo. Un ejemplo de esto lo constituyen los micropocesadores OpenRISC y muchos otros IP-Core
+opensource.
 
-En el presente trabajo se ha conseguido cerrar el ciclo completo de diseño en una máquina GNU/Linux. Tanto la compilación como la simulación, la síntesis y la descarga en FPGA fueron enteramente realizadas en dicha plataforma. Para la compilación y simulación se empleó exitosamente la herramienta \textit{Icarus Verilog} junto con \textit{GTKWave}; ambos programas libres. Para la síntesis se utilizó el entorno ISE de Xilinx, el cual también fue ejecutado sobre una plataforma Linux. Alternativamente, se podría realizar un sintetizador libre que genere un netlist en formato EDIF. Sin embargo, esto último no es suficiente porque no se encuentra disponible información sobre los detalles internos de las FPGAs, al ser esta última considerada como secreto industrial. El primer paso para lograr la independencia sobre el uso de herramientas de síntesis privadas sería la creación de una ``OpenFPGA'' con un descripción opensource.
+En el presente trabajo se ha conseguido cerrar el ciclo completo de diseño con herramientas de desarrollo libres corriendo en una máquina GNU/Linux.
+Tanto la compilación, simulación, síntesis y descarga en FPGA fueron enteramente realizadas en dicha plataforma. Para la compilación y
+simulación se empleó exitosamente la herramienta \textit{Icarus Verilog} junto con \textit{GTKWave}; ambos programas libres. Para la síntesis se
+utilizó el entorno ISE de Xilinx, el cual también fue ejecutado sobre una plataforma Linux. Las herramientas de código abierto y privativas
+utilizadas durante este proyecto se complementaron correctamente permitiendo cerrar el ciclo completo de desarrollo del sistema integral de código
+abierto. Si bien se podría desarrollar una herramienta de síntesis opensource, las FPGAs continúan siendo el principal limitante para realizar esto ya
+que la información de sus detalles internos es una propiedad industrial de los principales fabricantes. 
 
 \section{Procesadores Softcore}
 
-Se analizaron diversas alternativas de implementación para los micropocesadores softcore. La mayoría de dichas alternativas son desarrollos llevados a cabo por los principales fabricantes de FPGAs. Esto último permite la utilización de las herramientas provistas por dichos fabricantes pero constituye un limitante desde el punto de vista de las herramientas opensource.
+Se analizaron diversas alternativas de implementación para los micropocesadores softcore. La mayoría de dichas alternativas son desarrollos llevados
+a cabo por los principales fabricantes de FPGAs. Esto último permite la utilización de las herramientas provistas por dichos fabricantes pero
+constituye un limitante desde el punto de vista de las herramientas opensource.
 
-De la evaluación de los microprocesadores softcore realizadas en este trabajo se concluye que en general estos poseen capacidades similares a sus contrapartidas privativas. Incluso, muchos de ellos llegan a poseer un nivel de configuración y posibilidades de expansión superior a estos últimos. En particular, el análisis de rendimiento del microprocesador OpenRISC1200 que se llevó a cabo en el presente trabajo y cuyos resultados fueron expuestos en el Capitulo~\ref {chap:resultados}, permitió posicionar a este microprocesador en el mismo nivel de capacidades que sus contrapartidas privativas.
+De la evaluación de los microprocesadores softcore realizadas en este trabajo se concluye que en general estos poseen capacidades similares a sus
+contrapartidas privativas. Incluso, muchos de ellos llegan a poseer un nivel de configuración y posibilidades de expansión mejor a estos últimos.
+En particular, el análisis de rendimiento del microprocesador OpenRISC1200 que se llevó a cabo en el presente trabajo y cuyos resultados fueron
+expuestos en el Capitulo~\ref {chap:resultados}, permitió posicionar a este microprocesador en el mismo nivel de capacidades que sus contrapartidas
+privativas.
 
-En base a lo expuesto anteriormente se puede concluir que la implementación de microprocesadores softcore representa una solución viable para problemas industriales tales como: control, comunicaciones, DSP, PLCs. Además, los mismos pueden utilizarse con fines académicos para el estudio de sistemas embebidos, microprocesadores, diseño e implementación de hardware reconfigurable, entre otros.
+En base a lo expuesto anteriormente se puede concluir que la implementación de microprocesadores softcore representa una solución viable para
+problemas industriales tales como: control, comunicaciones, DSP, PLCs. Además, los mismos pueden utilizarse con fines académicos para el estudio de
+sistemas embebidos, microprocesadores, diseño e implementación de hardware reconfigurable, entre otros.
 
 \section{Implementación de SoC sobre FPGA}
 
 En el presente trabajo se analizaron dos implementaciones de sistemas en chip con núcleo OpenRISC a saber: MinSoC y ORPSoC.
 
-El proyecto MinSoC mostró capacidades acotadas en aplicaciones \textit{bare-metal} de pequeña escala como puede ser un control PID simple o algún dispositivo que no requiera de gran capacidad de cálculo. Los módulos UART y Ethernet le brindan al mismo la posibilidad de comunicarse con sistemas de mayor envergadura mediante el protocolo Modbus o algún otro protocolo opensource. Sin embargo, la capacidad de expansión de este se ve limitada por la necesidad de desarrollar programas especiales para cada uno de los nuevos módulos que se utilicen. Esto último se debe a que no se cuenta con un sistema operativo que incluya los drivers para tal fin.
+El proyecto MinSoC mostró capacidades acotadas en aplicaciones \textit{bare-metal} de pequeña escala como puede ser un control PID simple o algún
+dispositivo que no requiera de gran capacidad de cálculo. Los módulos UART y Ethernet le brindan al mismo la posibilidad de comunicarse con sistemas
+de mayor envergadura mediante el protocolo Modbus o algún otro protocolo opensource. Debido a que no se cuenta con un sistema operativo que incluya
+los drivers para la utilización de nuevos IP-Cores la capacidad de expansión de este se ve limitada por la necesidad de desarrollar programas
+especiales para cada uno de los nuevos módulos que se utilicen.
 
-Para aplicaciones con mayores exigencias de procesamiento y que requieran la posibilidad de ejecución de un sistema operativo se analizó el sistema en chip ORPSoC de Opencores. Este sistema posee mayores prestaciones que el proyecto MinSoC y es soportado por gran cantidad de plataformas reconfigurables. Con el mismo fue posible llevar a cabo la instanciación de un sistema operativo de tiempo real.
+Para aplicaciones con mayores exigencias de procesamiento y que requieran la posibilidad de ejecución de un sistema operativo se analizó el sistema
+en chip ORPSoC de Opencores. Este sistema posee mayores prestaciones que el proyecto MinSoC y es soportado por gran cantidad de plataformas
+reconfigurables. Con el mismo fue posible llevar a cabo la instanciación de un sistema operativo de tiempo real.
+ 
+\section{Implementación de los Sistemas Operativos ecOS y Linux en Arquitecturas Sintetizables}
 
-\section{Implementación de Linux en Arquitecturas Sintetizables}
+El sistema operativo de ecOS se montó con éxito en el SoC ORPSoC permitiendo la realización de las pruebas funcionales del
+sistema y algunos de sus principales IP-Cores, mostrando el correcto funcionamiento de algunas de las capacidades del SO, como lo es el manejo de
+hilos. Sin bien se ejecutaron correctamente algunos programas de prueba, el desarrollo de aplicaciones reales que corran bajo esta plataforma no forma
+parte de los alcances de este proyecto.
 
-Se evaluó la posibilidad de ejecutar el kernel de Linux y las herramientas de sistema provistas por BusyBox. Esto permite cubrir las necesidades en aplicaciones con mayores exigencias en la gestión de los recursos de hardware disponibles en el SoC. Además, permite la prestación servicios tales como gestión de interrupciones, excepciones y memoria.
-
-Como resultados se compiló exitosamente el kernel de Linux con las herramientas de compilación cruzada disponibles para la arquitectura. Consecuentemente se ejecutó con éxito el kernel sobre el simulador de la arquitectura OpenRISC. Sin embargo, el núcleo de Linux no pudo ejecutarse con éxito sobre la plataforma de prueba debido a inconvenientes surgidos durante el acceso a memoria en la secuencia de inicio del Sistema Operativo. Sin embargo, puede señalarse que mediante la depuración de los problemas surgidos se lograría obtener una imagen funcional del Kernel que permita realizar aplicaciones de prueba sobre la plataforma real. Existen resultados satisfactorias que demuestran el correcto funcionamiento del SO en esta arquitectura sobre otras placas de desarrollo.
+Se evaluó la posibilidad de ejecutar el kernel de Linux y las herramientas de sistema provistas por BusyBox. Esto permite cubrir las necesidades en
+aplicaciones con mayores exigencias en la gestión de los recursos de hardware disponibles en el SoC. Además, permite la prestación servicios tales
+como gestión de interrupciones, excepciones y memoria.
+ 
+Como resultado se compiló exitosamente el kernel de Linux con las herramientas de compilación cruzada disponibles para la arquitectura.
+Consecuentemente se ejecutó con éxito el kernel sobre el simulador de la arquitectura OpenRISC. Sin embargo, el núcleo de Linux no pudo ejecutarse
+con éxito sobre la plataforma de prueba debido a inconvenientes surgidos durante el acceso a memoria en la secuencia de inicio del Sistema Operativo.
+Se investigó y consultó sobre este problema en las comunidades y documentos oficiales del proyecto sin lograr una repuesta favorable que proporcione
+una solución a este conflicto. Sin embargo, puede señalarse que mediante la depuración de los problemas surgidos se lograría obtener una imagen
+funcional del Kernel que permita realizar aplicaciones de prueba sobre la plataforma real. Existen resultados satisfactorios que demuestran el correcto
+funcionamiento del SO en esta arquitectura sobre otras placas de desarrollo, pero la verificación de estos resultados escapa a los alcances de este
+trabajo.
 
 \section{Trabajos Futuros}
 
-El presente trabajo brinda las bases para futuros desarrollos en hardware y software de código abierto. Además del análisis llevado a cabo, la disponibilidad del código fuente desarrollado facilita el estudio de los sistemas analizados y permite su adaptación y/o mejora para futuras aplicaciones. Entre las lineas de trabajo que se desprenden de este proyecto se pueden mencionar las siguientes:
+%%Alternativamente, se podría realizar un motor de síntesis libre que genere un netlist en formato EDIF. Sin embargo, esto último no es suficiente
+% porque no se encuentra disponible información sobre los detalles internos de las
+%%FPGAs, al ser esta última considerada como secreto industrial. El primer paso para lograr la independencia sobre el uso de herramientas de síntesis
+%%privadas sería la creación de una ``OpenFPGA'' con un descripción opensource.
+
+El presente trabajo brinda las bases para futuros desarrollos en hardware y software de código abierto. Además del análisis llevado a cabo, la
+disponibilidad del código fuente desarrollado facilita el estudio de los sistemas analizados y permite su adaptación y/o mejora para futuras
+aplicaciones. Entre las lineas de trabajo que se desprenden de este proyecto se pueden mencionar las siguientes:
 
 \begin {itemize}
 \item Depuración del kernel de Linux para su correcto funcionamiento sobre la placa de desarrollo S3ADSP1800A.
+\item Evaluación de la utilización de otras placas de desarrollo como soporte del sistema integral desarrollado en este proyecto.
 \item Desarrollo de nuevos módulos de hardware para su utilización en SoC.
-\item Desarrollo de drivers para nuevos módulos.
-\item Desarrollo de aplicaciones reales sobre sistemas embebidos basados en SoC sintetizables.
+\item Desarrollo de drivers para nuevos IP-Cores.
+\item Desarrollo de aplicaciones reales sobre sistemas embebidos basados en SoC sintetizables. 
+\item Integración de unidad de procesamiento neuronal sobre microprocesador OpenRISC embebido para procesamiento de imágenes. (Proyecto del CUDAR
+UTN-FRC).
 \end{itemize}
 
-Finalmente, otro campo de exploración se encontraría en la dirección de un desarrollo OpenFPGA que posibilite el uso de herramientas opensource para sintesis. 
+Finalmente, otro campo de exploración se encontraría en la dirección de un desarrollo OpenFPGA que posibilite el uso de herramientas opensource para
+sintesis.
 
 
-
-%\chapter{Conclusiones}
-%
-%Los sistemas desarrollados en el presente proyecto permitieron alcanzar el objetivo de proveer un sistema integral FPGA-SoC-SO de código abierto capaz de ser utilizado en aplicaciones de pequeña envergadura. 
-%
-%	 
-%	\section{En cuanto al hardware opensource} 
-%
-%Del trabajo realizado sobre hardware sintetizable opensource durante el desarrollo de este trabajo se puedo analizar desde diversos enfoques sus
-%ventajas , desventajas y particularidades. Si bien hoy en día los diseños hardware de código abierto se encuentra creciendo en gran medida y son una
-%realidad palpable, cualquiera puede descargarlos de internet y utilizarlos en sus diseños. Los componentes típicos de un sistema tales como un
-%controlador USB, un microprocesador, un controlador de red, etc., tienen su alternativa en código abierto (como es el caso del microprocesador
-%OpenRISC) y son ya utilizados por empresas en productos comerciales, lo cual hace presuponer que la calidad de este tipo de diseños cumple al menos
-%con los estándares requeridos en productos que actualmente se encuentran en el mercado.
-%
-%A medida que la cantidad de código abierto disponible aumenta, cada vez más demostrará que es un enfoque valioso para el desarrollo de la tecnología.
-%En el caso del hardware recongurable, se ha conseguido cerrar el ciclo completo de diseño en una máquina GNU/Linux, realizándose la compilación,
-%simulación, síntesis y descarga en una FPGA. Para la compilación y simulación de este trabajo hemos empleado el Icarus Verilog junto con el GTKWAVE,
-%ambos programas libres y para la síntesis el entorno ISE de Xilinx, ejecutado sobre una plataforma Linux. Se podrían realizar sintetizadores libres
-%que generen un netlist en formato EDIF, pero actualmente no sería posible disponer de un entorno completamente libre puesto que los fabricantes no
-%publican la información, considerada como secreto industrial. El primer paso para lograrlo sería la existencia de una ``OpenFPGA'' con un descripción
-%opensource que posibilite evitar la utilización de las herramientas de síntesis privativas de los fabricantes de FPGAs.
-%
-%	\section{En cuanto a los procesadores softcore} 
-%	
-%Respecto de los microprocesadores softcore se analizaron, durante el desarrollo de este trabajo, diversas alternativas de implentención de las cuales
-%la mayoría son desarrollos de los principales fabricantes de FPGA. Si bien la utilización de estas implementaciones favorece al desarrollo con
-%herramientas confiables con soporte provisto por el fabricante, es sin dudas un limitante en cuanto a la madurez de las herramientas opensource.
-%
-%Desde el punto de vista de las capacidades de los microprocesadores softcore evaluados en este trabajo puede concluirse que en general poseen
-%capacidades similares con mayor o menor nivel de configuración y posibilidades de expansión con el desarrollo de nuevos módulos. El analisis de
-%rendimiento del micro OpenRISC realizado en este trabajo cuyos resultados fueron expuestos en el Capitulo ~\ref {chap:resultados} permite posicionar
-%este microprocesador entre otros similares capacidades.
-%
-%Puede decirse en base a lo expuesto anteriormente que las implementaciones de microprocesadores softcore son una solución viable para problemas
-%industriales (control, comunicaciones, DSP, PLCs) e inclusive puede utilizarse con fines academicos para el estudio de sistemas embebidos,
-%microprocesadores, diseño e implementación de hardware reconfigurable, entre otros.
-%
-%	\section{En cuanto a la implementación de SoC sobre FPGA} 
-%
-%Fueron analizados para este trabajo dos implementaciones de sistemas en chip con núcleo OpenRISC. El proyecto MinSoC mostró capacidades acotadas en
-%aplicaciones \textit{bare-metal} de pequeña escala como puede ser un control PID simple o algún dispositivo que no requiera de gran capacidad de
-%cálculo. Los módulos UART y Ethernet le brindan la posibilidad de comunicarse en sistemas de mayor envergadura mediante diversos protocolos como
-%puede ser Modbus o algún otro protocolo opensource. La capacidad de expansión del proyecto se ve limitada por la necesidad de desarrollar programas
-%especiales para cada uno de los nuevos módulos que se utilicen ya que no se cuenta con un sistema operativo con drivers para tal fin.
-%
-%Para aplicaciones con mayores exigencias de procesamiento y posibilidad de ejecución de un sistema operativo se analizó en este trabajo el sistema en
-%chip ORPSoC de Opencores. De mayores prestaciones que el proyecto MinSoC y soportado por gran cantidad de plataformas reconfigurables, este proyecto
-%permitió la instanciación de un sistema operativo de tiempo real para aplicaciones que requieran esta característica.
-%			
-%	\section{En cuanto a la implementación Linux en arquitecturas sintetizables} 
-%
-%Debido a la necesidad de ejecutar aplicaciones con mayores exigencias en la gestión de los recursos de hardware disponibles en el SoC y la
-%prestación servicios como gestion de interrupciones, excepciones y memoria, se evaluó en este trabajo la posibilidad de ejecutar el kernel de Linux y
-%sus herramientas de sistema provistas por BusyBox. 
-%
-%Se compiló exitosamente el kernel de Linux con las herramientas de compilación cruzada disponibles para la arquitectura. Consecuentemente se ejecutó
-%con éxito el kernel sobre el simulador de la arquitectura OpenRISC. Sin embargo, el núcleo de Linux no pudo ejecutarse con éxito sobre la plataforma
-%de prueba debido a inconvenientes surgidos durante el acceso a memoria en la secuencia de inicio del Sistema Operativo. Sin embargo,puede señalarse
-%que mediante la depuración de los problemas surgidos se lograría obtener una imagen funcional del Kernel que permita realizar aplicaciones de prueba
-%sobre la plataforma real. Existen resultados satisfactorias que demuestan el correcto funcionamiento del SO en esta arquitectura sobre otras
-%placas de desarrollo.
-%				
-%\section{Trabajos futuros}
-%
-%Este trabajo extiende las posibilidades de futuros trabajos en este tipo de plataformas debido a uno de sus principales objetivos:
-%el desarrollo de hardware y software de código abierto. Esto brinda la posibilidad de estudiar, modificar y mejorar el diseño mediante la
-%disponibilidad de su código fuente.    
-%
-%		\begin {itemize}
-%		  \item Depuración del kernel de Linux para su correcto funcionamiento sobre la placa de desarrollo S3ADSP1800A.
-%		  \item Desarrollo de nuevos módulos de hardware para su utilización en SoC.
-%		  \item Desarrollo de drivers para nuevos módulos.
-%		  \item Desarrollo de aplicaciones reales sobre sistemas embebidos basados en SoC sintetizables.
-%		\end{itemize}
-%								
-%	
-%	 
