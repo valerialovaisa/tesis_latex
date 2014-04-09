@@ -4,7 +4,7 @@
 	Este capítulo presenta los resultados obtenidos durante la implementación de cada uno de los prototipos planteados en el Capítulo
 	~\ref{chap:disenoeimpl} y durante la ejección de los casos de prueba correspondientes. 
 \begin{itemize}
-\item Se instanciaron, analizaron y compararon los proyectos MinSoC y ORPSoC, ambos con núcleo OpenRISC. 
+\item Se instanciaron los proyectos MinSoC y ORPSoC, ambos con núcleo OpenRISC. 
 \item Se evaluó el funcionamiento del microprocesador OpenRISC con programa de prueba de multiplicación de matrices binarias cuadradas.
 \item Se evaluaron las capacidades del compilador cruzado or32-elf-gcc en lo referido a su capacidad de optimización de código. 
 \item Se ejecutaron los benchmarks de sistemas embebidos coremark y dhrystone para posicionar el microprocesador OpenRISC entre CPUs de similares
@@ -17,7 +17,7 @@ características.
 	en la Tabla ~\ref{tab:requsr1} y se encontraba dentro de las alternativas disponibles al momento del desarrollo de este trabajo. El proyecto MinSoC
 	se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA de diversos
 	desarrolladores. La facilidad de adaptación del proyecto para ser portado a otras arquitecturas reconfigurables le confiere gran versatilidad
-	ampliando notablemente su gama de aplicación. Durante el desarrollo de las pruebas se prentendió esteblecer los límites de aplicación del proyecto
+	ampliando notablemente su gama de aplicación. Durante el desarrollo de las pruebas se pretendió establecer los límites de aplicación del proyecto
 	que establezcan referencias sólidas para una futura elección del proyecto en aplicaciones reales.
 
 
@@ -350,7 +350,7 @@ void main () {
 En una primera instancia se realizó el desensamblado del binario generado para las funciones set (inicialización) y calc (actualización) con un
 numero de 1000 iteraciones y para cada uno de los flags de optimización. Los códigos generados pueden observarse en detalle en el Apéndice
 ~\ref{chap:CodPrueba} 
-
+\newpage		
 A continuación se presenta una tabla que resume los resultados obtenidos para 1000 iteraciones y diversos flags de optimización:
 
 \begin{table}[!h]

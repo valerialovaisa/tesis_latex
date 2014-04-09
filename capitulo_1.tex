@@ -1,10 +1,10 @@
 \chapter{Introducción}
 
-Los sistemas embebidos son aquellos sistemas de hardware y software, optimizados para
+Los sistemas embebidos son aquellos sistemas de hardware y software optimizados para
 implementar una función específica. Los criterios de optimización
 suelen enfocarse en reducir el costo, el consumo y el tamaño. Los
 problemas que pueden resolverse mediante tales sistemas van desde un
-simple control de temperatura para un aire acondicionado hasta el
+simple control de temperatura para un acondicionador de aire hasta el
 sistema de control y el procesamiento de señales en un satélite de
 telecomunicaciones. La gran eficiencia que han demostrado los sistemas
 embebidos en la solución de problemas específicos ha producido un
@@ -22,25 +22,24 @@ obsoleta.
 Para reducir los costos y el tiempo de desarrollo, el diseño de
 sistemas embebidos utiliza como base una plataforma hardware sobre la
 que se pueden construir un amplio número de aplicaciones. Esta
-flexibilidad en las aplicaciones que son soportadas es posible debido
+flexibilidad en las aplicaciones soportadas es posible debido
 a que tales plataformas disponen de múltiples puertos capaces de
-manejar señales de diferentes tipos. Las plataformas mas comunes
+manejar señales de diferentes tipos. Las plataformas más comunes
 actualmente son los microcontroladores (MCUs) y los procesadores
-digital de señal (DSPs). Con dichas plataformas, el diseño de la
+digitales de señal (DSPs). Con dichas plataformas, el diseño de la
 aplicación consiste, primordialmente, en el desarrollo del software
 asociado a la misma. Por tal motivo, los fabricantes de dichas
-plataformas, habiendo ``solucionado'' el problema del hardware, han
-comenzado a proveer soluciones para el software asociado. En particular, las nuevas series de MCUs soportan sistemas
-operativos lo que facilita significativamente el desarrollo de las
+plataformas, habiendo ``solucionado'' el problema del hardware, comenzaron a proveer soluciones para el software asociado. En particular, las nuevas series de MCUs soportan sistemas
+operativos, lo que facilita significativamente el desarrollo de las
 aplicaciones que va a soportar el sistema final. Sin embargo, a pesar
-del las grandes ventajas de disponer de soluciones listas tanto para
+de las grandes ventajas de disponer de soluciones listas tanto para
 el hardware como para el software, existe una contrapartida que radica
 en el hecho de que son plataformas estáticas. Esto último hace casi
 imposible realizar un diseño que esté realmente optimizado para la
 aplicación que nos interesa.
 
 Una alternativa a las plataformas de hardware estáticas se basa en la
-utilización de FPGAs. La alta capacidad de integración, el bajo coste
+utilización de en inglés Field Programmable Gate Array (FPGAs). La alta capacidad de integración, el bajo coste
 para la fabricación de pequeños lotes y el alto rendimiento, en
 términos de frecuencia de operación y consumo de potencia, hacen
 posible implementar un SoC en este tipo de dispositivo
@@ -51,19 +50,19 @@ dinámica. Sin embargo, el uso de FPGAs implica necesariamente un
 esfuerzo para diseñar la arquitectura hardware que, evidentemente,
 incrementa el tiempo de desarrollo total del sistema.
 
-Para que el diseño de sistema embebidos basados en FPGAs sea
+Para que el diseño de sistemas embebidos basados en FPGAs sea
 competitivo frente a los sistemas basados en MCU o DSP, es necesario
 facilitar la construcción de la arquitectura hardware. En particular,
 se debe disponer de metodologías de diseño eficientes basadas en
 herramientas CAD adecuadas a tal fin. Por tal motivo, el principal
 esfuerzo que están haciendo los fabricantes de FPGA está dirigido a
-mejorar las herramientas de diseño %de SoC 
+mejorar las herramientas de diseño 
 de hardware sobre FPGAs. En este sentido
 existe un alto nivel de competitividad para encontrar la solución que
 provea simultáneamente una gran simplicidad en el diseño de la
 arquitectura hardware y un alto rendimiento del sistema
 final. Ejemplos de estas herramientas son Xilinx EDK y Altera ESD. Sin
-embargo, lo anterior no es suficiente para logran la competitividad de
+embargo, lo anterior no es suficiente para lograr la competitividad de
 los sistema embebidos basados en FPGAs. Es necesario también
 simplificar el desarrollo del software asociado a los mismos, en
 particular teniendo en cuenta que los MCU ya soportan sistemas
@@ -76,13 +75,13 @@ privativas.
 Lo anterior llega nuevamente a la necesidad de explorar el diseño de
 SoC sobre FPGAs utilizando sistemas abiertos tanto a nivel de hardware
 como de software. Tales sistemas abiertos se caracterizan porque son
-tecnológicamente independientes y pueden ser implementables tanto a
-nivel de FPGAs de bajo coste como a nivel de ASIC. Existen softcores
+tecnológicamente independientes y pueden implementarse tanto a
+nivel de FPGAs de bajo coste como a nivel de Circuito Integrado para Aplicaciones Específicas (ASIC). Existen softcores
 de código abierto que no están limitados por la tecnología. Entre
 dichos núcleos, se destacan los microprocesadores de 32 bits
 \textit{SPARC LEON, OpenRISC 1200} y \textit{LatticeMico32}.
 
-Usar cores de código abierto va unido a una serie de conceptos como:
+Las premisas que propone la Free Software Foundation (FSF) al usar cores de código abierto va unido a una serie de conceptos como:
 \begin{itemize}
 \item \textit{Flexibilidad}: Si el código fuente está disponible, los
   desarrolladores pueden modificar dicho código de acuerdo a sus
@@ -99,28 +98,26 @@ Usar cores de código abierto va unido a una serie de conceptos como:
   producto específico para él.
 \end{itemize}
 
-La conjunción de dichos conceptos produce un sistema integrales de
+La conjunción de dichos conceptos produce un sistema integrale de
 código abierto en donde se tiene código HDL, Assembler y C disponible
 para adaptarse de acuerdo a los requerimientos del proyecto.
 
 
 \section{Objetivos}
 \subsection{Objetivo general}
-El presente proyecto tiene como objetivo la implementación de un sistema embebido basado en hardware\footnote{Entendiéndose por hardware de código abierto al código RTL} y software de código abierto.
-Dicho hardware sera un System on Chip (SoC) montado sobre una placa de desarrollo que deberá además soportar un sistema operativo
+El presente proyecto tiene como objetivo la implementación de un sistema embebido basado en hardware\footnote{Entendiéndose por hardware de código abierto al código Register Transfer Level (RTL)} y software de código abierto.
+Dicho hardware será un System on Chip (SoC) montado sobre una placa de desarrollo que deberá además soportar un sistema operativo
 libre con la finalidad de proveer un sistema integral FPGA-SoC-Sistema
 Operativo completamente funcional de código abierto para aplicaciones de pequeña envergadura.
 
 \subsection{Objetivos específicos}
   \begin{itemize}
- \item Analizar los microprecesadores softcore disponibles y seleccionar el microprocesador que se adapta mejor a nuestros requerimientos.
+ \item Analizar los microprocesadores softcore disponibles y seleccionar el microprocesador que se adapta mejor a nuestros requerimientos.
 
-% \item Seleccionar la placa de desarrollo con FPGA  y determinar la factibilidad de implementación del microprocesador softcore elegido.
-  
 \item Seleccionar los SoCs de acuerdo al microprocesador softcore elegido y determinar la placa de desarrollo para su implementación.
 
 \item Implementar el flujo de diseño de hardware para cada SoC seleccionado y realizar las correcciones necesarias sobre el código RTL para su correcta implementación. 
-\item Desarrollar  aplicaciones en lenguaje C generadas mediante compilación cruzada para las pruebas del funcionamiento de el microprocesador, los SoCs, sus modulos y las herramientas de entorno de software para la arquitectura seleccionada.
+\item Desarrollar  aplicaciones en lenguaje C generadas mediante compilación cruzada para las pruebas del funcionamiento del microprocesador, los SoCs, sus modulos y las herramientas de entorno de software para la arquitectura seleccionada.
 \item Estudiar y aplicar los mecanismos para la medición del rendimiento de sistemas embebidos. 
 \item Estudiar los Sistemas Operativos existentes soportados por las plataformas elegidas.
 \item Presentar los Sistemas Operativos Linux y ecOS que poseen las prestaciones funcionales adecuadas para su utilización en Sistemas Embebidos.
@@ -128,39 +125,13 @@ Operativo completamente funcional de código abierto para aplicaciones de peque�
  \end{itemize}
 
 
-
-%\begin{itemize}
-%\item Seleccionar, analizar y determinar la factibilidad de implementación de un microprocesador softcore en FPGA adaptarlo a la placa de desarrollo, sintetizarlo y hacer la puesta en funcionamiento en tal placa disponible.
-%\item Analizar los microprecesadores soft core disponibles y su factibilidad de implementación en tales placas. determinar la factibilidad de implementación de microprocesador, seleccionando el mas adecuado para tal FPGA en particular %%corregir agregar plcas disponibles en cudar
-%\item Seleccionar un SoC Open Source de acuerdo al microprocesador softcore seleccionado.
-%\item Presentar los Sistemas Operativos Linux y ecOS que poseen las prestaciones funcionales adecuadas para su utilización en Sistemas
-%Embebidos.
-%\end{itemize}
-
-%\section{Objetivo}
-%El presente proyecto tiene como objetivo la implementación de un
-%sistema embebido basado en hardware y software de código
-%abierto. Entendiéndose por hardware de código abierto al código RTL
-%del System on Chip (SoC) que será montado sobre una placa de desarrollo.
-%Dicho SoC deberá además soportar un sistema operativo
-%libre con la finalidad de proveer un sistema integral FPGA-SoC-Sistema
-%Operativo completamente funcional de código abierto. A tal efecto,
-%además de la implementación en si misma se deberá analizar la licencia
-%de cada bloque utilizado con el fin de determinar las restricciones
-%resultantes sobre el sistema final.
-%
-%Este trabajo pretende mostrar que la tecnología de sistemas sobre chip
-%basada en dispositivos reconfigurables, como los diseños abiertos en
-%hardware y software, son adecuados para la implementación de sistemas
-%de aplicación industrial.
-
 \subsection{Alcance de estudio}
 
 El plazo estipulado para el desarrollo del proyecto involucra las siguientes etapas:
 
 \begin{itemize}
 \item Especificación y análisis de requerimientos.
-\item Análisis de riegos.
+\item Análisis de riesgos.
 \item Evaluación de componentes.
 \item Implementación.
 \item Testing.
@@ -168,18 +139,16 @@ El plazo estipulado para el desarrollo del proyecto involucra las siguientes eta
 
 \section{Recursos Utilizados}
 
-La implementación del sistema se llevó a cabo sobre una placa de
-desarrollo S3ADSP1800A, basada en hardware reconfigurable disponible en
+La implementación del sistema se llevó a cabo sobre la placa de
+desarrollo de Xilinx S3ADSP1800A, basada en hardware reconfigurable disponible en
 el Centro Universitario de Automatización y Robótica (CUDAR) de la
 Universidad Tecnológica Nacional (UTN) de Córdoba. Sin embargo, cabe
 destacar que el sistema propuesto puede ser implementado cualquier
 otra FPGA que disponga de los recursos mínimos necesarios.
 
-
-
 \section{Modelo de Desarrollo}
 El modelo de desarrollo a utilizar es el \textit{Modelo en
-  Espiral}~\ref{fig:esquema}. Dicho modelo fue tipificado por Ian
+  Espiral} figura~\ref{fig:pepe}. Dicho modelo fue tipificado por Ian
 Sommerville~\cite{Etiqueta00} y originalmente propuesto por Boehm en
 año 1988 en el artículo ``A Spiral Model of Software Development and
 Enhancement''. En el mismo se propone un marco del proceso de software
@@ -194,7 +163,7 @@ sistema, y así sucesivamente.
  \begin{center}
   \includegraphics[width=1\textwidth,keepaspectratio=true]{./images/espiral.pdf}
   \caption{Etapas del modelo de desarrollo en espiral}
-  \label{fig:esquema}
+  \label{fig:pepe}
  \end{center}
 \end{figure}
 
@@ -220,15 +189,15 @@ Cada ciclo del espiral se divide en 4 sectores:
 
 Como característica principal de esta metodología es que posee una
 consideración explícita del riesgo. Informalmente, el riesgo significa
-sencillamente que algo puede salir mal. Los riegos originan problemas
+sencillamente que algo puede salir mal. Los riesgos originan problemas
 en el proyecto, como los de confección de agendas y excesos en los
-costos. Por lo tanto, la disminución de riegos es una actividad
+costos. Por lo tanto, la disminución de riesgos es una actividad
 sumamente importante en la gestión del proyecto. Un ciclo en la
 espiral comienza con la elaboración de objetivos, como el rendimiento
 y la funcionalidad. Entonces se enumeran formas alternativas de
 alcanzar estos objetivos y las restricciones impuestas en cada una de
 ellas. Cada alternativa se evalúa contra cada objetivo y se
-identifican las fuentes de riegos del proyecto. El siguiente paso es
+identifican las fuentes de riesgos del proyecto. El siguiente paso es
 resolver estos riesgos mediante actividades de recopilación de
 información como la de detallar más el análisis, la construcción de
 prototipos y la simulación. Una vez que se han evaluado los riesgos se
@@ -237,18 +206,18 @@ planificación para la siguiente fase del proceso.
 
 \section{Metodología de Trabajo}
 
-Siendo la primera ves que se plantea un proyecto como el aquí
+Siendo la primera vez que se plantea un proyecto como el aquí
 descripto en el ámbito de la Universidad Nacional de Córdoba, no se
 dispone de antecedentes de trabajos similares que involucren
-Microprocesadores softcore. Por tal motivo, todo el desarrollo será
-realizado desde cero. Como primer paso se analizará las diferentes
+Microprocesadores softcore. Por tal motivo, todo el desarrollo se
+realizara desde cero. Como primer paso se analizarán las diferentes
 alternativas disponibles en el mercado y en comunidades de hardware de
 código abierto para la implementación de microprocesadores diseñados
 en lenguaje de descripción de hardware. Como segundo paso 
-se analizaron y seleccionaron los componentes \footnote{Entiéndase como``componente'' a 
-microprocesadore softcore, SoC, placa de desarrollo, sistema operativo} 
-por medio de un análisis comparativo que permitió evidenciar las características relevantes de
-cada uno de ellos. Como ultimo paso debido a que se adoptó un modelo de desarrollo en espiral 
-se plantearon una serie de prototipos que incluyen mayor funcionalidad en cada iteración del modelo.
+se analizarán y seleccionarán los componentes \footnote{Entiéndase como ``componente'' a 
+microprocesadores softcore, SoC, placa de desarrollo, sistema operativo.} 
+por medio de un análisis comparativo que permitirá evidenciar las características relevantes de
+cada uno de ellos. Como último paso debido a que se adoptara un modelo de desarrollo en espiral 
+se plantearán una serie de prototipos que incluirán mayor funcionalidad en cada iteración del modelo.
 
 
