@@ -34,7 +34,7 @@
 		RQX-HW 2 &  El SoC seleccionado debe poseer la menor cantidad de restricciones respecto de su implementación en placas de desarrollo de diversos
 		fabricantes. & Portabilidad a nivel Hardware\\
 		\hline
-		RQX-HW 3 & La placa de desarrollo elegida debe poseer al menos 32 MB de memoria RAM disponible que permita al ejecución del kernel de linux. &
+		RQX-HW 3 & La placa de desarrollo elegida debe poseer al menos 32 MB de memoria RAM disponible que permita la ejecución del kernel de Linux. &
 		Memoria Disponible\\
 		\hline
 		RQX-HW 4 & La placa de desarrollo elegida debe poseer al menos 8 MB de memoria flash disponible que permita guardar la configuración de la FPGA y un
@@ -56,7 +56,7 @@
 		\hline 
 		RQX-LC 2 &  Las herramientas de desarrollo utilizadas para el diseño de hardware  deben poseer licencias LGPL o GPL en su defecto & Licencias de Software\\
 		\hline 
-		RQX-LC 3 &  Las herramientas de desarrollo de saoftware utilizadas para deben poseer licencias LGPL o GPL en su defecto & Licencias de Software\\
+		RQX-LC 3 &  Las herramientas de desarrollo de software utilizadas para deben poseer licencias LGPL o GPL en su defecto & Licencias de Software\\
 		\hline
 		RQX-LC 4 & El sistema operativo elegido debe poseer licencia LGPL o GPL & Licencias de Software\\
 		\hline
@@ -94,8 +94,8 @@
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción  & Tipo\\
 		\hline 
-		RQX-SO 1 &  El sistema operativo elegido debe disponer de drivers y librerías que permitan el acceso a todos los dispositivos incluídos en el SoC &
-		Driver y Librerías\\
+		RQX-SO 1 &  El sistema operativo elegido debe disponer de drivers y bibliotecas que permitan el acceso a todos los dispositivos incluídos en el SoC &
+		Driver y bibliotecas\\
 		\hline 
 		RQX-SO 2 &  El sistema operativo elegido debe tener la capacidad de ejecución multitarea e hilos & capacidad de ejecución del SO\\ 
 		\hline
@@ -131,13 +131,13 @@
 		extrapolan de la experiencia) y los riesgos impredecibles (pueden ocurrir, pero es muy difícil identificarlos de antemano).
 		\par
      	También son claras las estrategias frente al riesgo. Por un lado están las reactivas, cuyo método es evaluar las consecuencias del riesgo cuando
- 		este ya se ha producido (ya no es un riesgo) y actuar en consecuencia. Este tipo de estrategias acarrea consecuencias negativas, al poner el
+ 		éste ya se ha producido (ya no es un riesgo) y actuar en consecuencia. Este tipo de estrategias acarrea consecuencias negativas, al poner el
  		proyecto en peligro. Y por el otro las proactivas, que aplican el método de evaluación previa y sistemática de los riesgos y sus posibles
- 		consecuencias, a la par que conforman planes de contingencias para de evitar y minimizar las consecuencias. Consecuentemente, este tipo de
+ 		consecuencias, a la par que conforman planes de contingencias para evitar y minimizar las consecuencias. Consecuentemente, este tipo de
  		estrategias permite lograr un menor tiempo de reacción ante la aparición de riesgos impredecibles.
 		\par
 		De acuerdo con \cite{etiqueta_riegos3}, la administración o gestión de riesgos es un proceso iterativo que se aplica durante todo el proyecto y se
-		desarrolla en cuatro etapas detalladas en la Figura ~\ref{fig:riesgos}. Se utilizó este modelo como guía para el análisis de los riegos del
+		desarrolla en cuatro etapas detalladas en la Figura ~\ref{fig:riesgos}. Se utilizó este modelo como guía para el análisis de los riesgos del
 		proyecto.
 		
 		\begin{figure}[!h]
@@ -150,8 +150,8 @@
 		
 		\subsection{Identificación y análisis de riesgos}
 		\par
-		Se realizó un relevamiento inicial de riegos respecto de cada requerimiento de usuario planteado. Fue efectuado un análisis de severidad y
-		probabilidad de ocurrencia para cada riesgo asociado. La severidad	del	impacto	de un riesgo concretado	se medió de la siguiente
+		Se realizó un relevamiento inicial de riesgos respecto de cada requerimiento de usuario planteado. Se efectuó un análisis de severidad y
+		probabilidad de ocurrencia para cada riesgo asociado. La severidad del	impacto	de un riesgo concretado	se midió de la siguiente
 		manera:
 		
 		\begin{itemize}
@@ -174,7 +174,7 @@
 		
 		En la Tabla ~\ref {tab:riegos} se listan los riesgos asociados, su severidad y probabilidad de ocurrencia para cada uno de los
 		requerimientos de usuario. Se aplica el concepto de órden de riesgo como valor combinado de severidad y ocurrencia con el cual se logra establecer
-		una ponderación entre los riegos detectados.
+		una ponderación entre los riesgos detectados.
 		
 		\newpage
 		
@@ -182,7 +182,7 @@
 		\centering
 		\begin{tabular}{ p{2.5cm} p{7.5cm} p{2cm} p{2cm} p{1.5cm} }
 		\hline 
-		\rowcolor[gray]{0.8} N\textordmasculine Req & Riegos Asociados & Severidad  & Ocurrencia & Orden de riesgo \\
+		\rowcolor[gray]{0.8} N\textordmasculine Req & Riesgos Asociados & Severidad  & Ocurrencia & Orden de riesgo \\
 		\hline
 		RQX-HW 1& Código RTL con fallas reconocidas durante el proceso de síntesis & Crítica       & Probable	& 1 \\
 		\hline
@@ -219,18 +219,18 @@
 		\hline
 		RQX-SO 1& Drivers necesarios inexistentes o con fallos & Critico &  Probable & 1\\
 		\hline
-				& Librerías necesarias inexistentes o con fallos & Severo &  Probable & 3\\
+				& Bibliotecas necesarias inexistentes o con fallos & Severo &  Probable & 3\\
 		\hline
-		RQX-SO 2& Incapacidad de ejecución de hilos en los SO compatibles con el microprocesador elegido & Catastróficos & Improbable & 4\\
+		RQX-SO 2& Incapacidad de ejecución de hilos en los SO compatibles con el microprocesador elegido & Catastrófico & Improbable & 4\\
 		\hline
 		RQX-SO 3& Limitaciones para la ejecución de SO de tiempo real & Critico & Probable & 1\\
 		\hline
 		\end{tabular}
-		\caption{Tabla de riegos vs. Requerimientos}
+		\caption{Tabla de riesgos vs. Requerimientos}
 		\label{tab:riegos}
 		\end{table}
 	
-		En base a la tabla se pueden establecer los requerimientos que involucran mayor riego de implementación listados a continuación:
+		En base a la tabla se pueden establecer los requerimientos que involucran mayor riesgo de implementación listados a continuación:
 		
 		\begin{itemize}
 		    \item RQX-HW 1 A - Código RTL con fallas reconocidas durante el proceso de síntesis
@@ -266,9 +266,9 @@ Se presentan a continuación en la Tabla ~\ref {tab:planificación} las estrateg
 		\hline
 		Limitaciones de memoria FLASH en las placas de desarrollo disponibles& Incapacidad de disponer en memoria no volátil de una aplicación de arranque (bootloader) & Verificación previa del espacio necesario para la aplicación de arranque & Búsqueda de un modo alternativo de arranque\\ 
 		\hline
-		Inexistencia de los Cores Open Source necesarios& Perdida de tiempo y dinero en la búsqueda de nuevo hardaware& Analisis previo de los cores Open Source existentes & Adquisición de IP cores\\
+		Inexistencia de los Cores Open Source necesarios& Pérdida de tiempo y dinero en la búsqueda de nuevo hardaware& Analisis previo de los cores Open Source existentes & Adquisición de IP cores\\
 		\hline
-		Falta de documentación de apoyo para la implentación de los Cores & Perdida de tiempo en realizar la implementación de los componentes & Revisión previa de la documentación existente para la elección de los  componentes & Dedicación de mayor tiempo para la implementación\\ 
+		Falta de documentación de apoyo para la implentación de los Cores & Pérdida de tiempo en realizar la implementación de los componentes & Revisión previa de la documentación existente para la elección de los  componentes & Dedicación de mayor tiempo para la implementación\\ 
 		\hline
 		 Inexistencia de herramientas de desarrollo de hardware con licencias Open Source & Imposibilidad de diseñar e implementar el Hardware & Verificar previamente la existencia de herramientas libres & Utilización de herramientas privativas con costos\\
 		\hline
@@ -283,7 +283,7 @@ Se presentan a continuación en la Tabla ~\ref {tab:planificación} las estrateg
 		\hline
 		Inexistencia de herramientas de desarrollo de software con licencias Open Source & Imposibilidad de compilación y depuración de aplicaciones &Comprobación de la existencia de herramientas libres & Desarrollo de las herramientas necesarias\\
 		\hline
-		Inexistencia de un sistema operativo embebido con licencia Open Source  & Ejecución única de aplicaciones bare metal  & Análisis previo de los sistemas operativos embebidos disponibles & Desarrollo de las aplicaciones necesarias que fueran provistas por el SO\\
+		Inexistencia de un sistema operativo embebible con licencia Open Source  & Ejecución única de aplicaciones baremetal  & Análisis previo de los sistemas operativos embebidos disponibles & Desarrollo de las aplicaciones necesarias que fueran provistas por el SO\\
 		\hline		
 		 Falta de herramientas de desarrollo portables a diversos sistemas operativos & Imposibilidad de desarrollo de aplicaciones& Verificar la posibilidad de ejecución de las herramientas en diferentes SO& Utilización de las herramientas en alguno de los SO compatibles\\
 		\hline		
@@ -297,7 +297,7 @@ Se presentan a continuación en la Tabla ~\ref {tab:planificación} las estrateg
 		\hline
 		 Drivers necesarios inexistentes o con fallos & Imposibilidad de utilización de los dispositivos necesarios&Análisis previo de los driver de los dispositivos a utilizar &  Desarrollo de los drivers necesarios\\
 		\hline
-		Librerías necesarias inexistentes o con fallos& Imposibilidad de ejecución de aplicaciones sobre el sistema operativo embebido elegido & Análisis previo de las librerías disponibles y revisión de posibles bugs informados &  Desarrollo de las librerías necesarias o corrección de errores\\
+		Bibliotecas necesarias inexistentes o con fallos& Imposibilidad de ejecución de aplicaciones sobre el sistema operativo embebido elegido & Análisis previo de las bibliotecas disponibles y revisión de posibles bugs informados &  Desarrollo de las bibliotecas necesarias o corrección de errores\\
 		\hline
 		\end{tabular}
 		\end{table}

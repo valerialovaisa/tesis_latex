@@ -1,19 +1,19 @@
 
 \chapter{Descripción Microprocesadores Disponibles en el Mercado}
 	\section{Microprocesadores Soft-Core}
-	Un microprocesadores soft-core o abreviado SCP, es un microprocesador que puede ser implementado utilizando síntesis lógica en diferentes dispositivos lógicos programables como CPLDs o FPGAs, o incluso puede ser incluido en un diseño para ASIC.
- 	Suelen ser distribuidos en forma de código fuente en algún lenguaje de descripción de hardware, principalmente VHDL o Verilog, aunque  algunos SCPs
+	Un microprocesador soft-core o abreviado SCP, es un microprocesador que puede implementarse utilizando síntesis lógica en diferentes dispositivos lógicos programables como CPLDs o FPGAs, o incluso puede incluirse en un diseño para ASIC.
+ 	Suelen distribuirse en forma de código fuente en algún lenguaje de descripción de hardware, principalmente VHDL o Verilog, aunque algunos SCPs
  	comerciales se distribuyen en formatos propietarios.
-	Los principales fabricantes de dispositivos lógicos programables como se dijo en capítulos anteriores tienen su propio  SCP comercial especialmente
-	diseñado y optimizado para funcionar en sus FPGAs. Así Xilinx tiene el PicoBlaze \cite{Etiqueta15} y el MicroBlaze \cite{Etiqueta16}, Altera
-	proporciona el Nios II \cite{Etiqueta17}, y Lattice distribuye su LatticeMico32 \cite{Etiqueta18}. También existen una gran variedad de SCPs
+	Los principales fabricantes de dispositivos lógicos programables, como se dijo en capítulos anteriores, tienen su propio  SCP comercial especialmente
+	diseñado y optimizado para funcionar en sus FPGAs. Así Xilinx tiene PicoBlaze \cite{Etiqueta15} y MicroBlaze \cite{Etiqueta16}, Altera
+	proporciona Nios II \cite{Etiqueta17}, y Lattice distribuye LatticeMico32 \cite{Etiqueta18}. También existe una gran variedad de SCPs
 	distribuidos en forma de código abierto, como el OpenRISC 1200 \cite{Etiqueta19} mantenido por la comunidad Opencores \cite{Etiqueta20}, o los  SCPs
 	LEON2 y LEON3 \cite{Etiqueta21} \cite{Etiqueta22} que proporciona la compañía Gaisler Research \cite{Etiqueta23}.
 		
 	A continuación se presentan más detalladamente las características de estos SCPs%, y un resumen comparativo de sus características
 	\subsection{PicoBlaze}
 	
-	PicoBlaze es un microcontrolador RISC de 8 bits desarrollado por Xilinx y optimizado para sus FPGAs. Esta optimizado para ocupar muy poco área, tan sólo 96 slices, y en cuanto a velocidad puede llegar a ejecutar entre 44 y 100 millones de instrucciones por segundo, dependiendo del speedgrade y la familia de FPGA sobre la que se implemente. Las principales características del PicoBlaze son:
+	PicoBlaze es un microcontrolador RISC de 8 bits desarrollado por Xilinx y optimizado para sus FPGAs. Esta optimizado para ocupar muy poco área, tan sólo 96 slices, y en cuanto a velocidad puede llegar a ejecutar entre 44 y 100 millones de instrucciones por segundo, dependiendo del speedgrade y la familia de FPGA sobre la que se implemente. Las principales características de PicoBlaze son:
 	
   
 	\begin{itemize}
@@ -32,11 +32,11 @@
  	\end{center}
 	\end{figure}
 
-Aunque está más orientado para ser usado en pequeñas tareas de control más que en ejecutar grandes aplicaciones, se ha usado ya en varios sistemas multiprocesador.
+Aunque está orientado para pequeñas tareas de control más que para ejecutar grandes aplicaciones, se utiliza en varios sistemas multiprocesador.
 
 	\subsection{MicroBlaze}
 
-MicroBlaze es un microprocesador RISC de 32 bits desarrollado por Xilinx para sus FPGAs de las familias Spartan y Virtex. Sigue una arquitectura Harvard con buses de memoria de datos e instrucciones separados. Una de sus principales características es que es muy configurable, pudiendo incluir o excluir una serie de elementos del microprocesador según las necesidades de la aplicación objetivo permitiendo una gran variedad de configuraciones más o menos rápidas y que ocupan más o menos área en la FPGA.
+MicroBlaze es un microprocesador RISC de 32 bits desarrollado por Xilinx para sus FPGAs de las familias Spartan y Virtex. Sigue una arquitectura Harvard con buses de memoria de datos e instrucciones separados. Una de sus principales características es su configurabilidad, pudiendo incluir o excluir una serie de elementos del microprocesador según las necesidades de la aplicación objetivo permitiendo una gran variedad de configuraciones más o menos rápidas y que ocupan más o menos área en la FPGA.
 
 Las características más destacables de este SCP son:    
 
@@ -60,7 +60,7 @@ La arquitectura general consiste en una serie de bloques presentados en la figur
 	\begin{figure}[h!]
  	\begin{center}
   	\includegraphics[width=0.8\textwidth,keepaspectratio=true]{./images/estructuramicroblazer}
-  	\caption{Estructura interna del microcontrolador MicoBlaze}
+  	\caption{Estructura interna del microcontrolador MicroBlaze}
   	\label{fig:MicoBlazer}
  	\end{center}
 	\end{figure}
@@ -79,7 +79,7 @@ el sistema como se ve en la figura~\ref{fig:Xilinx Platform Studio}
  	\end{center}
 	\end{figure}
 
-También ofrece una librería de IPs ya diseñadas y listas para integrarse en cualquier diseño como:
+También ofrece una bibliotecas de IPs ya diseñadas y listas para integrarse en cualquier diseño como:
 
 		\begin{itemize}
 		  \item  Controladores de memoria: SRAM, SDRAM, DDR y DDR2.
@@ -87,11 +87,11 @@ También ofrece una librería de IPs ya diseñadas y listas para integrarse en c
 	 	 \item Controladores Ethernet y Ethernet Lite.
 		\end{itemize}
 
-La herramienta además de ayudar y simplificar la parte de diseño hardware de un sistema basado en el procesador MicroBlaze también ofrece facilidades para el desarrollo de software para el sistema, proporcionando tanto drivers para los distintos periféricos como todo un conjunto de herramientas de desarrollo software (compilador, depurador, bootloader) un micro kernel con interfaz de hilos POSIX y diversas librerías, todo ello integrado en un entorno basado en Eclipse\cite{Etiqueta27} que facilita mucho la tarea del programador de aplicaciones.
+La herramienta además de ayudar y simplificar la parte de diseño hardware de un sistema basado en el procesador MicroBlaze también ofrece facilidades para el desarrollo de software para el sistema, proporcionando tanto drivers para los distintos periféricos como todo un conjunto de herramientas de desarrollo software (compilador, depurador, bootloader) un micro kernel con interfaz de hilos POSIX y diversas bibliotecas, todo ello integrado en un entorno basado en Eclipse\cite{Etiqueta27} que facilita mucho la tarea del programador de aplicaciones.
 
 	\subsection{Nios II}
 
-Nios II es el procesador que ofrece la compañía Altera para ser usado en sus FPGAs de las familias Stratix y Ciclone. Es un procesador RISC de 32 bits con arquitectura Harvard.
+Nios II es el procesador que ofrece la compañía Altera para utilizar en sus FPGAs de las familias Stratix y Ciclone. Es un procesador RISC de 32 bits con arquitectura Harvard.
 
 Las principales características de este SCP son:
 		\begin{itemize}
@@ -108,7 +108,7 @@ Las principales características de cada versión del procesador son:
 		\begin{itemize}
 		  \item Nios II \textit{fast}: diseñado para ser lo más rápido posible, cuenta con un pipeline de 6 etapas. Incluye operación de multiplicación por hardware en un solo ciclo, previsión dinámica de saltos y cachés separadas de instrucciones y datos.
 	 	 \item Nios II \textit{economy}: diseñado para ocupar la menor área posible, ocupa tan solo 700 Logic Elements. Sin caches.
- 		\item Nios II \textit{standard}: orientado a aplicaciones de bajo coste, con un rendimiento medio en las aplicaciones. Incluye caché de instrucciones, pipeline de 5 etapas y predicción estática de saltos. También ofrece multiplicador, divisor y desplazador hardware opcionales.
+ 		\item Nios II \textit{standard}: orientado a aplicaciones de bajo costo, con un rendimiento medio en las aplicaciones. Incluye caché de instrucciones, pipeline de 5 etapas y predicción estática de saltos. También ofrece multiplicador, divisor y desplazador hardware opcionales.
 		\end{itemize}
 
 \begin{figure}[h!]
@@ -119,8 +119,8 @@ Las principales características de cada versión del procesador son:
  	\end{center}
 	\end{figure}
 
-Al igual que Xilinx, Altera también ofrece una herramienta gráfica que permite crear de forma rápida y sencilla sistemas basados en su microprocesador: System on Programmable Chip Builder \cite{Etiqueta28}figura~\ref{fig:System on Programmable Chip Builder}. También ofrece una librería de componentes como UARTs, dispositivos Ethernet, controladores de memoria, etc, que se pueden integrar a cualquier diseño basado en Nios II.
-Además de facilitar la tarea de diseñar la parte hardware del sistema, también ofrece un entorno de desarrollo de software basado en Eclipse que facilita la tarea del desarrollador de software proporcionándole en un único IDE todas las herramientas necesarias como editor, compilador, depurador, bootloader, etc, además de dar soporte para desarrollar aplicaciones que hagan uso del sistema operativo MicroC/OS-II.
+Al igual que Xilinx, Altera también ofrece una herramienta gráfica que permite crear de forma rápida y sencilla sistemas basados en su microprocesador: System on Programmable Chip Builder \cite{Etiqueta28}figura~\ref{fig:System on Programmable Chip Builder}. También ofrece una biblioteca de componentes como UARTs, dispositivos Ethernet, controladores de memoria, etc, que se pueden integrar a cualquier diseño basado en Nios II.
+Además de facilitar la tarea de diseñar la parte hardware del sistema, también ofrece un entorno de desarrollo de software basado en Eclipse que facilita la tarea del desarrollador de software proporcionándole en un único IDE todas las herramientas necesarias como editor, compilador, depurador, bootloader, etc. Además, da soporte para desarrollar aplicaciones que hagan uso del sistema operativo MicroC/OS-II.
 
 	\begin{figure}[h!]
  	\begin{center}
@@ -132,7 +132,7 @@ Además de facilitar la tarea de diseñar la parte hardware del sistema, tambié
 \newpage
 	\subsection{LatticeMico32}
  
-La compañía Lattice ofrece el procesador LatticeMico32 para usarlo en sus FPGAs. Una de las principales características de este procesador es que aunque proviene de una compañía privada se ofrece bajo una licencia libre. Sigue una arquitectura RISC, y utiliza dos interfaces de bus WISHBONE \cite{Etiqueta34}separados para instrucciones y datos.
+La compañía Lattice ofrece el procesador LatticeMico32 para sus FPGAs. Una de las principales características de este procesador es que, aunque proviene de una compañía privada, se ofrece bajo una licencia libre. Sigue una arquitectura RISC, y utiliza dos interfaces de bus WISHBONE \cite{Etiqueta34}separados para instrucciones y datos.
 
  El procesador se ofrece en 3 posibles configuraciones con distintas relaciones de área y rendimiento:
 
@@ -149,9 +149,9 @@ La compañía Lattice ofrece el procesador LatticeMico32 para usarlo en sus FPGA
  	\end{center}
 	\end{figure}
 
-Al igual que sus competidoras Xilinx y Altera, Lattice ofrece también un entorno de desarrollo para generar sistemas basados en su microprocesador
+Lattice al igual que sus competidoras Xilinx y Altera, ofrece también un entorno de desarrollo para generar sistemas basados en su microprocesador
 llamada Mico System Builder figura~\ref{fig:msb}. Desde dicha herramienta permite de forma sencilla interconectar el procesador con los distintos periféricos y buses que
-integra la librería de IPs proporcionada por Lattice.
+integra la biblioteca de IPs proporcionada por Lattice.
 
 \begin{figure}[h!]
  	\begin{center}
@@ -163,7 +163,7 @@ integra la librería de IPs proporcionada por Lattice.
 \newpage
 	\subsection{OpenRISC 1200}
 
-Opencores \cite{Etiqueta20} es una comunidad de hardware de código abierto que ofrece una gran variedad de IPs entre los que se encuentra microprocesador OpenRISC 1200, un microprocesador RISC de 32 bits que se distribuye como código abierto.
+Opencores \cite{Etiqueta20} es una comunidad de hardware de código abierto que ofrece una gran variedad de IPs entre los que se encuentra el microprocesador OpenRISC 1200, un microprocesador RISC de 32 bits que se distribuye como código abierto.
 
 Algunas características de este SCP son:
 
@@ -212,11 +212,11 @@ LEON 2 es un procesador RISC de 32 bits basado en la arquitectura SPARC-V8\cite{
  	\end{center}
 	\end{figure}
 
-Existe una herramienta gráfica que permite configurar las partes opcionales del procesador, pero no existe ninguna herramienta que permita realizar de forma sencilla las conexiones entre buses y periféricos o añadir nuevos periféricos que ofrecen las herramientas comerciales de otros procesadores. En la parte de desarrollo software Gaisler Research proporciona el compilador basado en gcc LECCS, y RTEMS un kernel de tiempo real para ser usado con su procesador. También existen ports de otros kernels como eCos o Linux, mantenidos por terceras partes.
+Existe una herramienta gráfica que permite configurar las partes opcionales del procesador, pero no existe ninguna herramienta que permita realizar de forma sencilla las conexiones entre buses y periféricos o añadir nuevos periféricos que ofrecen las herramientas comerciales de otros procesadores. En la parte de desarrollo software, Gaisler Research proporciona el compilador LECCS basado en gcc, y un kernel RTEMS de tiempo real. También existen ports de otros kernels como eCos o Linux, mantenidos por terceras partes.
 
-En cuanto a rendimiento el LEON 2 es muy superior a todos los procesadores presentados hasta ahora, aunque también es el que ocupa más área: de los resultados que se presentan en \cite{Etiqueta32} se puede ver que en promedio ocupa entre 3 y 4 veces más que un sistema equivalente basado en MicroBlaze y entre 1 y 1,5 veces más que un sistema equivalente basado en OpenRISC 1200. 
+En cuanto a rendimiento LEON 2 es muy superior a todos los procesadores presentados hasta ahora, aunque también es el que ocupa más área: de los resultados que se presentan en \cite{Etiqueta32} se puede ver que en promedio ocupa entre 3 y 4 veces más que un sistema equivalente basado en MicroBlaze y entre 1 y 1,5 veces más que un sistema equivalente basado en OpenRISC 1200. 
 
-El LEON 2 dejó de estar soportado y dio paso al LEON 3: un procesador RISC de 32 bits, también compatible con la arquitectura SPARC V8 y que incluye muchas mejoras con respecto a su predecesor:
+LEON 2 ya no tiene soporte y dio paso a LEON 3: un procesador RISC de 32 bits, también compatible con la arquitectura SPARC V8 y que incluye muchas mejoras con respecto a su predecesor:
 
 \begin{itemize}
 		 
