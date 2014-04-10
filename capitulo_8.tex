@@ -8,23 +8,23 @@
 \section{Selección del Microprocesador Soft-Core}
 
 
-En la elección de los microprocesadores Soft-Core presentados en el capitulo anterior nos basamos principalmente en el requerimiento de usuario sobre el Hardware el cual nos requería implementar un Microprocesador Soft-core el que prestara un rendimiento igual o superior a sus competidores comerciales. Tras la evaluación de las ventajas y desventajas de la elección de un micro con estas características se determinó el uso del microprocesador OpenRISC 1200. 	
+En la elección de los microprocesadores Soft-Core presentados en el capitulo anterior nos basamos principalmente en el requerimiento de usuario sobre el Hardware que nos requería implementar un Microprocesador Soft-core que prestara un rendimiento igual o superior a sus competidores comerciales. Tras la evaluación de las ventajas y desventajas se determinó el uso del microprocesador OpenRISC 1200. 	
 
 		    			
 \section{Presentación de SoCs basados en OpenRISC}
 				
 				\subsection{Proyecto MinSoC}
-				La implementación llamada Minimal OpenRISC System on Chip utiliza IP cores estándar disponibles en OpenCores. Agrupa los cores necesarios para un SoC utilizando el procesador softcore OpenRISC OR1200. Este SoC puede ser sintetizado para cualquier FPGA y placa de desarrollo sin necesidad de realizar cambios en su descripción RTL. Para cumplir con esta premisa el proyecto se basa en una implementación básica de memoria y posee una unidad de debug llamada Advanced Debug System, que permite depurar el sistema y cargar los programas a ejecutar con la misma interfase utilizada para la configuración de la FPGA.		
+				La implementación llamada Minimal OpenRISC System on Chip utiliza IP cores estándar disponibles en OpenCores. Agrupa los cores necesarios para un SoC utilizando el procesador softcore OpenRISC OR1200. Este SoC puede sintetizarse para cualquier FPGA y placa de desarrollo sin necesidad de realizar cambios en su descripción RTL. Para cumplir con esta premisa el proyecto se basa en una implementación básica de memoria y posee una unidad de debug llamada Advanced Debug System, que permite depurar el sistema y cargar los programas a ejecutar con la misma interfase utilizada para la configuración de la FPGA.		
 
-El proyecto brinda soporte nativo a diversas placas y FPGAs mediante definiciones en el código RTL y archivos de constantes (constraint files)
+El proyecto brinda soporte nativo a diversas placas y FPGAs mediante definiciones en el código RTL y constraint files.
 				pero puede adaptarse a otras siguiendo una mínima serie de pasos. Se cuenta además con una serie testbenchs y firmwares que permiten realizar
 				pruebas funcionales del sistema y sirven de guía en los primeros desarrollos. Esta serie de testbenchs pueden ser ejecutados mediante la
 				aplicación Icarus Verilog v.9.1 disponible en los repositorios estándar de la mayoría de las distribuciones Linux. 
 				
-				Existe una instancia de memoria on-chip de tamaño adaptable necesaria para soportar el firmware del CPU que conjuntamente con los cores que
-				soportan los periféricos básicos son adaptados de acuerdo a las capacidades de la FPGA destino. 
+				Existe una instancia de memoria on-chip de tamaño adaptable necesaria para soportar el firmware del CPU, que conjuntamente con los cores que
+				soportan los periféricos básicos se adaptan de acuerdo a las capacidades de la FPGA destino. 
 
-Una visión general sobre el SoC completa y sus conexiones externas se observa en la Figura~\ref{fig:esquemaminsoc})
+Una visión general sobre el SoC completa y sus conexiones externas se observa en la figura~\ref{fig:esquemaminsoc}
 
 \begin{figure}[h!]
  \begin{center}
@@ -40,7 +40,7 @@ Una visión general sobre el SoC completa y sus conexiones externas se observa e
 				  \item Microprocesador embebido OR1200 OpenRISC 
 				  \item memoria redimensionalble
 				  \item selección de frecuencia del sistema
-				  \item JTAG debug con capacidad para distintos cables
+				  \item JTAG debug 
 				  \item Posibilitad de arranque automático de un firmware desde una memoria externa SPI
 				  \item Modulos de UART y Ethernet 
 				  \item Código genérico y especifico de memoria para las FPGA de Xilinx y Altera, adaptación de clock (PLLs y MCMs) y JTAG TAP
@@ -49,7 +49,7 @@ Una visión general sobre el SoC completa y sus conexiones externas se observa e
 				  \item Incluye testbench para la simulacón de la configuración del sistema						
 				\end{itemize}
 
-\item Tecnologías probadas que le brindan soporte al proyecot MinSoC:
+\item Tecnologías probadas que le brindan soporte al proyecto MinSoC:
 
 
 \begin{itemize}
@@ -66,7 +66,7 @@ Una visión general sobre el SoC completa y sus conexiones externas se observa e
 				\end{itemize}
 \end{itemize}
 
-\newpage
+%\newpage
 				\subsection{Proyecto ORPSoC}
 
 				Este proyecto implementa una plataforma para el desarrollo OpenRISC. Está destinado a ser un entorno de desarrollo y verificación de IP cores y
@@ -76,7 +76,7 @@ Una visión general sobre el SoC completa y sus conexiones externas se observa e
 
 El proyecto permite tanto a usuarios nuevos como experimentados realizar diseños con un desarrollo rápido OpenRISC. Está destinado a ser un entorno de desarrollo y verificación de núcleos de propiedad intelectual y diseños SoC. Es un proyecto de desarrollo colaborativo. Como plataforma de desarrollo proporciona un entorno modular y fácil de usar, para el desarrollo de código RTL y su posterior simulación y síntesis. Provee un entorno de herramientas para desarrollo de aplicaciones OpenRISC para su simulación y prueba en la placa de desarrollo.
 
-Una visión general sobre el SoC completa y sus conexiones externas es en la  (Figura ~\ref{fig:esquemaorpspc})
+Una visión general sobre el SoC completa y sus conexiones externas es en la  figura~\ref{fig:esquemaorpsoc}
 
 \begin{figure}[h!]
  \begin{center}
@@ -92,16 +92,16 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				  \item Microprocesador embebido OR1200 OpenRISC 
 				  \item memoria redimensionalble
 				  \item selección de frecuencia del sistema
-				  \item JTAG debug con capacidad para distintos cables
+				  \item JTAG debug 
 				  \item Posibilitad de arranque automático de un firmware desde una memoria externa SPI
 				  \item Modulos de UART y Ethernet 
-				  \item Código genérico y especifico de memoria para las FPGA de Xilinx y Altera, adaptación de clock (PLLs y MCMs) y JTAG TAP
+				  \item Código genérico y específico de memoria para las FPGA de Xilinx y Altera, adaptación de clock (PLLs y MCMs) y JTAG TAP
 				  \item Configuración del sistema en un simple archivo de definición 
 				  \item Ejemplos de firmware utilizando UART y Ethernet  
 				  \item Incluye testbench para la simulacón de la configuración del sistema. 						
 				\end{itemize}
 
-\item Tecnologías probadas que le brindan soporte al proyecot MinSoC:
+\item Tecnologías probadas que le brindan soporte al proyecto MinSoC:
 
 
 \begin{itemize}
@@ -125,14 +125,13 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				Los proyectos MinSoC y OrpSoc cuentan actualmente con soporte para diversas placas de desarrollo. 
 
 				\subsection{Xilinx}
-				La empresa Xilinx provee kits de desarrollo de diversas características y prestaciones. A continuación se detallan algunas de las alternativas que
-				son soportadas por los SoC elegidos.
+				La empresa Xilinx provee kits de desarrollo de diversas características y prestaciones. A continuación se detallan algunas de las alternativas soportadas por los SoC elegidos.
 				\subsubsection{S3ADSP1800A}
 				El dispositivo XtremeDSP™ Starter Platform cuenta con una FPGA de la familia Spartan®-3A que permite la evaluación diseños para diferentes
-				aplicaciones tales como Prototipado General, Sistemas Embebidos, Video Digital, DSP, Procesamiento de Imagenes, Comunicaciones digitales y
+				aplicaciones tales como Prototipado General, Sistemas Embebidos, Video Digital, DSP, Procesamiento de Imágenes, Comunicaciones digitales y
 				Coprocesamiento. Esta plataforma provee acceso a las capacidades de la familia de FPGA Spartan®-3A y cuenta con periféricos,conectores e
-				interfaces estándar de la industria. Fue diseñada para para ser utilizada con Xilinx System Generator para aplicaciones DSP y las herramientas de
-				diseño ISE® o el entorno desarrollado en Linux llamado Peta Linux Software Development Kit (SDK) ambas herramientas provistas por el fabricante. 
+				interfaces estándar de la industria. Fue diseñada para para utilizarse con Xilinx System Generator para aplicaciones DSP y las herramientas de
+				diseño ISE® o el entorno desarrollado en Linux llamado Peta Linux Software Development Kit (SDK), ambas herramientas provistas por el fabricante. 
 				
 				%Traducir esto ???
 				Las características generales del kit son:
@@ -177,7 +176,7 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				\end{itemize}
 			
 				\subsubsection{ML501}
-				La ML501 es una plataforma de desarrollo de bajo costo y gran funcionalidad que provee un acceso práctico a los recursos disponibles en el
+				ML501 es una plataforma de desarrollo de bajo costo y gran funcionalidad que provee un acceso práctico a los recursos disponibles en el
 				dispositivo FPGA Virtex®-5 LX50. Posee interfases y conectores industriales estándar y presenta gran versatilidad para su utilización en
 				múltiples aplicaciones como Video, Audio y puertos de comunicación.
 				
@@ -210,8 +209,8 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 			\end{tabular}
 			\caption {Características generales del kit de desarrollo ML501}	
 			\end{table}
-				
-				Las implementación ORPSoC fue probada con éxito en esta plataforma y provee soporte para los siguientes periféricos:
+\newpage				
+				Se probó la implementación ORPSoC en esta plataforma con éxito la plataforma y provee soporte para los siguientes periféricos:
 				
 				\begin{itemize}
 				  \item Ethernet
@@ -277,9 +276,8 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 
 				\subsection{Terasic}
 				\subsubsection{Terasic DE0 Nano}
-				La plataforma DE0-Nano posee un tamaño compacto que se ajusta al diseño de circuitos para proyectos portables. Fue diseñada para ser
-				utilizada con una implementación simple utilizando como destino una FPGA Cyclone IV de Altera con 22,320 LEs (Elementos Lógicos). Entre sus
-				características princpiales se encuentran diversas interfases que incluyen dos puertos de expanxión GPIO, dispositivos de memoria on board SDRAM y
+				La plataforma DE0-Nano posee un tamaño compacto que se ajusta al diseño de circuitos para proyectos portables. Fue diseñada como una implementación simple utilizando como destino una FPGA Cyclone IV de Altera con 22,320 LEs (Elementos Lógicos). Entre sus
+				características princpiales se encuentran diversas interfases que incluyen dos puertos de expanxión GPIO, dispositivos de memoria onboard SDRAM y
 				EEPROM. Las mayores ventajas del DE0-Nano son su reducido tamaño y peso, así como la capacidad de ser reconfigurado sin la necesidad de
 				utilización de hardware extra. Los requerimientos de energía para dispositivos portables son cruciales , la DE-0 Nano posee 3 esquemas posibles
 				de conexión : un puerto USB mini-AB, conectores de 2 pines para alimentación externa de 5V, y 2 pines de 5V.
@@ -327,7 +325,7 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				\end{itemize}				
 				
  		\subsection{Conclusiones de la elección de la placa de desarrollo}
- 				Se seleccionó entre los items analizados y teniendo en cuenta la disponibilidad de recursos al momento de realizar este trabajo utilizar la
+ 				Se seleccionó entre los items analizados y teniendo en cuenta la disponibilidad de recursos al momento de realizar este trabajo la
  				placa S3ADSP1800A de Xilinx para soportar los SoC a implementar.
  		
  		\newpage	
@@ -360,22 +358,21 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
 				en FPGA.
 				Para realizar la síntesis, Xilinx, utiliza la aplicación XST que realiza la traducción de la descripción RTL escrita en algún lenguaje de
 				descripción de Hardware como Verliog o VHDL en una lista de elementos lógicos y sus conexiones. La siguiente etapa consiste en la implementación 
-				del diseño y consta de tres grandes etapas: Translate, Map, Place and Route. Finalizada esta etapa se obtiene el diseño adecuado al modelo de
-				fpga seleccionado, sus clocks y sus conexiones de entrada/salida. 
+				del diseño y consta de tres grandes etapas: Translate, Map, Place and Route. Finalizada esta etapa, se obtiene el diseño adecuado al modelo de FPGA seleccionado, sus clocks y sus conexiones de entrada/salida. 
 				
 				\subsubsection {Programación y configuración de la FPGA}
 				La acción que culmina el proceso de implementación es la descarga del código binario de configuración en la FPGA. El protocolo utilizado para
-				realizar esta acción se denomina JTAG (Joint Test Action Group) se encuentra implementado en diversos dispositivos de programación de FPGA y
+				realizar esta acción se denomina JTAG (Joint Test Action Group) y se encuentra implementado en diversos dispositivos de programación de FPGA y
 				microprocesadores. La mayoría de estos dispositivos proveen soporte SPI (Serial Peripheral Interface) que permite el acceso a dispositivos de
-				almacenamiento como lo son, por ejemplo, las memorias Flash SPI.
+				almacenamiento como por ejemplo, las memorias Flash SPI.
 				
 				Xilinx provee la aplicación iMPACT con su Suite de Desarrollo ISE. Esta herramienta es compatible con todos los dispositivos fabricados por
 				Xilinx y algunos dispositivos incluídos en sus placas de prueba. Durante el desarrollo de este trabajo los autores debieron lidiar con
-				problemas de acceso a dispositivos de terceros que conforman la placa de desarrollo S3ADSP1800A que produjeron retrasos significativos en
+				problemas de acceso a dispositivos de terceros que conforman la placa de desarrollo S3ADSP1800A que produjeron retrasos significativos en la
 				realización del proyecto.
  				
- 				Alternativamente, existen herramientas Open Source tales como XC3SPROG y UrJTAG , ambos licenciados bajo GPLv2 . La herramienta XC3SPROG
- 				posee capacidades comparables al iMPACT y proporciona acceso de diversos disposivitos entre los que se encuentran:
+ 				Alternativamente, existen herramientas Open Source tales como XC3SPROG y UrJTAG, ambos licenciados bajo GPLv2. La herramienta XC3SPROG
+ 				posee capacidades comparables a iMPACT y proporciona acceso de diversos dispositivos entre los que se encuentran:
  				\begin{itemize}
  				  \item Dispositivos Xilinx
 				  \item Dispositivos Atmel 
@@ -385,14 +382,14 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
  				\subsection {Herramientas de desarrollo de software}
  			
 				Se analizaron las aplicaciones alternativas para cada etapa, enfatizando la selección de aplicaciones que cumplan con el requerimiento RQX-LC 3
-				planteado en la Tabla ~\ref{tab:requsr2}.   
+				planteado en la tabla ~\ref{tab:requsr2}.   
 				 			
  				\subsubsection {Toolchain para OpenRISC}
  				La comunidad OpenCores realizó una adapatación del Toolchain GNU para generar aplicaciones en C y C++ que se ejecuten en una arquitectura
- 				OpenRISC. Así mismo fueron adaptadas las librerias newlib y uClibc conformando una solución completa al diseño y desarrollo de aplicaciones
+ 				OpenRISC. Así mismo, se adaptaron las bibliotecas newlib y uClibc conformando una solución completa al diseño y desarrollo de aplicaciones
  				OpenRISC. Existe un entorno de desarrollo gráfico llamado OpenIDEA desarrollado por Dynalith basado en este toolchain. 
 				
-				El proyecto OpenRISC cuenta con un simulador del repertorio de instrucciones llamado or1ksim que permite la simulación de aplicaciones compiladas
+				El proyecto OpenRISC cuenta con un simulador del repertorio de instrucciones llamado \verb|or1ksim| que permite la simulación de aplicaciones compiladas
 				mediante el toolchain sin necesidad de tener disponible el hardware de prueba durante la etapa de desarrollo de software.
  				
  	
@@ -401,25 +398,24 @@ Una visión general sobre el SoC completa y sus conexiones externas es en la  (F
  		
 			 	\subsection{ecOS}
 
-eCos \cite{Etiqueta35} es un sistema operativo de tiempo real y de código abierto para aplicaciones embebidas, y es desarrollado por eCosCentric, una división de RedHat. Según el autor eCos es el RTOS más popular en la actualidad y ha sido utilizado en varios productos como 
+eCos \cite{Etiqueta35} es un sistema operativo de tiempo real y de código abierto para aplicaciones embebidas, desarrollado por eCosCentric, una división de RedHat. Fue utilizado en varios productos como 
 por ejemplo receptores de radio satelital Sirius, módulos Wi-Fi de la consola Sony PlayStation 3 
 y routers Netgear, entre otros. 
 
-
- eCos viene de "Embedded Configurable Operating System", y según sus creadores puede ser configurado para ejecutarse tanto en dispositivos con memoria muy limitada de tipo SoC (System on a Chip) como en sistemas más complejos que requieren mayores funcionalidades. 
+ eCos viene de ``Embedded Configurable Operating System", y según sus creadores se puede configurar para ejecutarse tanto en dispositivos con memoria muy limitada de tipo SoC (System on a Chip) como en sistemas más complejos que requieren mayores funcionalidades. 
  
-El sistema es distribuído sin costo bajo licencia GPL modificada, la cual permite el uso de código propietario en conjunto con eCos. Esto significa que la licencia no requiere que el código desarrollado sobre eCos sea necesariamente de tipo GPL. También existe una versión comercial 
+El sistema se distribuyo sin costo bajo licencia GPL modificada, la cual permite el uso de código propietario en conjunto con eCos. Esto significa que la licencia no requiere que el código desarrollado sobre eCos sea necesariamente de tipo GPL. También existe una versión comercial 
 (eCosPro).
 
 Características generales: 
 				\begin{itemize}
-				  	\item Algoritmo de itineración de tipo Round Robin
+				  	\item Algoritmo de iteración de tipo Round Robin
 					\item Kernel de tipo apropiativo o cooperativo (configurable). Pueden añadirse schedulers 
  adicionales
 					\item El Kernel no desactiva las interrupciones
 					\item Implementación de mutexes, semáforos binarios y de conteo, variables de condición, 
  casillas de correo, banderas de evento y spinlocks
-					\item Memory Allocation: Fixed Block, Variable Block and dynamic heaps. (configurable)
+					\item Memory Allocation: Fixed Block, Variable Block y dynamic heaps. (configurable)
 					\item Bibliotecas disponibles ISO C y Math, C++/STL, microITRON y POSIX. 
 					\item  Incluye un pequeño stack IP
 					\item Sistema de Archivos FAT12/16/32
@@ -443,11 +439,9 @@ Arquitecturas compatibles:
 				\item Nios II
 			\end{itemize}			
 
-	
-
 			 \subsection{Linux}
 
-El sistema operativo Linux es una implementación de libre distribución UNIX para computadoras personales (PC), servidores, y estaciones de trabajo.Como sistema operativo, Linux es muy eficiente y tiene un excelente diseño.
+El sistema operativo Linux es una implementación de libre distribución de tipo UNIX para computadoras personales (PC), servidores, y estaciones de trabajo. EL sistema operativo Linux tiene un kernel eficiente.
 
  
 Características generales:
@@ -456,7 +450,7 @@ Características generales:
 	\item Licencia de Software: GPL/LGPL
 	\item Tipo de núcleo: núcleo monolítico con módulo
 	\item Lenguaje de programación del núcleo en c
-	\item Soporte de Hilo de ejecución del núcleo: 1:1
+	\item Soporte de Hilos de ejecución del núcleo: 1:1
 	\item Familia de SO tipo UNIX
 	\item Comunicación entre procesos y sincronización
 	\item Multitarea
@@ -487,95 +481,19 @@ Arquitecturas compatibles:
 				\item OpenRISC
 			\end{itemize}			
 
-%Hardware compatible:
-
-%			\begin{itemize}
-%				\item ATA
-%				\item SATA
-%				\item SCSI
-%				\item USB 2.0 	
-%				\item USB 1.1
-%				\item FireWire
-%				\item PCMCIA/PC card
-%				\item AGP
-%				\item Nvidia official driver IA32
-%				\item Nvidia official driver IA64
-%				\item Nvidia official driver AMD64
-%				\item ATI official driver x86
-%				\item ATI official driver x86-64
-%				\item Ati r200 free software driver
-%				\item Ati r300 free software driver
-%				\item Nvidia free software driver
-%				\item Audio
-%			\end{itemize}
-%Interconexión:
-
-%			\begin{itemize}
-%				\item Networking supported	
-%				\item NE2000/RTL8029
-%				\item RTL8139
-%				\item Gigabit Ethernet 	
-%				\item 10 Gigabit Ethernet
-%				\item WLAN
-%				\item Bluetooth
-%				\item IrDA
-%			\end{itemize}
-
-%Tecnologías de red:
-
-%			\begin{itemize}
-%				\item Firewall: netfilter/iptables
-%				\item TCP/IP	
-%				\item IPv6
-%				\item IPX 	
-%				\item PPP			
-%				\item PPPoE
-%				\item DHCP
-%				\item bridge
-%				\item TUN/TAP
-%				\item ssh
-%				\item OpenVPN
-%			\end{itemize}
-
-%Sistemas de archivos compatibles:
-
-
-%			\begin{itemize}
-%				\item FAT16 dosfs, FAT32/vfat	
-%				\item NTFS	
-%				\item Ext2	
-%				\item Ext3	
-%				\item XFS	
-%				\item ReiserFS	
-%				\item UFS	
-%				\item UFS2	
-%				\item HFS
-%				\item HFS+	
-%				\item Minixfs	
-%				\item BFS	
-%				\item ISO 9660	 
-%				\item UDF	
-%				\item NFS	
-%				\item SMBFS	
-%				\item Disco RAM/tmpfs	
-%				\item procfs	
-%				\item Memoria virtual/Swap	
-				
-%			\end{itemize}
-
 
 		\subsection{BusyBox}	
  	
 				
 			 
-BusyBox \cite{Etiqueta36} combina versiones de varias utilidades comunes de UNIX en un sólo ejecutable. Remplaza las utilidades que se suelen encontrar en fileutils GNU, shellutils, etc. Las utilidades en BusyBox tiene menos funciones que GNU, sin embargo, las opciones que incluyen proporcionan la funcionalidades necesarias. BusyBox proporciona un entorno  completo para cualquier sistema pequeño o embebido.
+BusyBox \cite{Etiqueta36} combina versiones de varias utilidades comunes de UNIX en un sólo ejecutable. Remplaza las utilidades que se suelen encontrar en fileutils GNU, shellutils, etc. %Las utilidades en BusyBox tienen menos funciones que GNU, sin embargo, las opciones que incluyen proporcionan la funcionalidades necesarias.
+BusyBox proporciona un entorno  completo para cualquier sistema pequeño o embebido.
 
 Este conjunto de programas están optimizados de acuerdo a las limitaciones de los recursos disponibles de hardware. También se puede fácilmente incluir o excluir comandos (o características) en tiempo de compilación. Esto hace que sea fácil de personalizar un sistemas embebidos. 
 
 %Para crear un sistema de trabajo, sólo tiene que añadir algunos nodos de dispositivos en / dev, algunos archivos de configuración en / etc, y un núcleo de Linux.
 
-BusyBox es mantenida por Denys Vlasenko, y licenciado bajo la GNU GPL.
-
+BusyBox tiene licencia GNU GPL y lo mantiene Denys Vlasenko.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 			

@@ -4,24 +4,24 @@
 
 	Debido a que se adoptó un modelo de desarrollo en espiral se plantearon una serie de prototipos que incluyen mayor funcionalidad en cada iteración
 	del modelo. Inicialmente se planteó un prototipo básico para determinar factibilidad de puesta en funcionamiento de un SoC con microprocesador
-	OpenRISC y el desarrollo de aplicaciones que se ejecuten en él. Debido a su funcionalidad reducida y menor consumo de recursos  para su síntesis se
-	seleccionó el proyecto MinSoC para el desarrollo del primer prototipo con el cual se evaluaron y documentaron las capacidades del mismo, permitiendo
+	OpenRISC y el desarrollo de aplicaciones que se ejecuten en él. Debido a su funcionalidad reducida y menor consumo de recursos  para su síntesis, se
+	seleccionó el proyecto MinSoC para el desarrollo del primer prototipo con el cual se evaluaron y documentaron sus capacidades, permitiendo
 	valorar este proyecto para aplicaciones donde no se requieren grandes cantidades de memoria y juegan un papel primordial las entradas/salidas junto
 	a la capacidad de procesamiento.  \\
 		 
 		\subsection{Entorno de ejecución}
-		Actualmente OpenRISC es soportado por un conjunto de herramientas de desarrollo(toolchain) de 32 bits ofreciendo soporte para los lenguajes C y C++
-		con librerías estáticas. El toolchain se encuentra disponible en dos formas: una para la ejecución de aplicaciones bajo el sistema operativo Linux y
+		Actualmente OpenRISC está soportado por un conjunto de herramientas de desarrollo (toolchain) de 32 bits, ofreciendo soporte para los lenguajes C y C++
+		con bibliotecas estáticas. El toolchain se encuentra disponible en dos formas: una para la ejecución de aplicaciones bajo el sistema operativo Linux y
 		otra para la ejecución de aplicaciones standalone o bare metal que son aquellas que se ejecutan e interactúan directamente con el hardware sin la
 		necesidad de un sistema operativo que proporcione soporte para la utilización de los periféricos.
 		
 			\subsubsection{Entorno de ejecución Standalone - Bare Metal}
-	    	Para la ejecución de aplicaciones Bare Metal el toolchain se basa en la librería newlib que es una implementación estándar utilizada en
+	    	Para la ejecución de aplicaciones Bare Metal, el toolchain se basa en la biblioteca newlib que es una implementación estándar utilizada en
 	    	sistemas embebidos. 
 	    
 			\subsubsection{Entorno de ejecución Linux}
-			Por otro lado, para el uso de aplicaciones bajo el sistema operativo Linux el toolchain puede ser compilado en base a la librería uClibc que es la
-			opción para sistemas embebidos de la librería glibc utilizada en los sistemas estándar.
+			Para el uso de aplicaciones bajo el sistema operativo Linux el toolchain puede compilarse en base a la biblioteca uClibc que es la
+			opción para sistemas embebidos de la biblioteca glibc utilizada en los sistemas estándar.
 
 		\subsection{Matriz de riesgo}
 En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se amplían según la nueva visión del sistema.
@@ -40,12 +40,12 @@ En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se a
 
 	\section{Introducción}
 		
-	En este primer prototipo se implementó el proyecto MinSoC en la placa de desarrollo S3ADSP1800A con el fin de verificar el funcionamiento del procesador y sus periféricos. Para lograr este objetivo se requiere de la instalación y puesta en funcionamiento de las herramientas de síntensis, place \& route(PAR) y programación de la FPGA Spartan 3A. 
+	En este primer prototipo se implementó el proyecto MinSoC en la placa de desarrollo de Xilinx con el fin de verificar el funcionamiento del procesador y sus periféricos. Para lograr este objetivo se requiere de la instalación y puesta en funcionamiento de las herramientas de síntensis, place \& route(PAR) y programación de la FPGA Spartan 3A. 
 
 	\section{Requerimientos del prototipo}
 		\begin{table}[h]
 		\centering
-		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
+		\begin{tabular}{ p{2.5cm} p{14.5cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
 		\hline 
@@ -64,19 +64,20 @@ En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se a
 		\caption{Tabla de requerimientos del prototipo uno}
 		\end{table}
 
-\newpage
+%\newpage
 	
 	\section{Matriz de Riesgo para el Prototipo Uno}
-
+\hspace{-15mm}
+\vspace{-10mm}
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados& Riegos Asociados & Severidad  & Ocurrencia \\
 		\hline
-		RQX-PA 1& El código RTL disponible en la web tenga fallas reconocidas durante el proceso de síntesis & Crítica       & Probable \\
+		RQX-PA 1& El código RTL disponible en la web tenga fallas reconocidas durante el proceso de síntesis 	 & Crítica       & Probable \\
 		\hline
-				& Vencimiento de licencias de las herramientas privativas para el proceso de síntesis  & Menor  & Ocasional\\	 
+				& Vencimiento de licencias de las herramientas privativas para el proceso de síntesis  & Menor  & Ocasional\\
 		\hline
 				& Falta de documentación de apoyo para la implentación
 del SoC & Crítico & Ocasional\\	 
@@ -97,7 +98,6 @@ de bugs & Crítica  & Ocasional\\
 		\caption{Tabla de riegos vs. Requerimientos del prototipo uno}
 		%\label{tab:riegos}
 		\end{table}
-
 
 
 		\begin{table}[h!]
@@ -130,9 +130,8 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		\newpage
 		\section{Descripción de la Estructura del Prototipo Uno}
 			
-
-		La Figura ~\ref{fig:minsoc} muestra un diagrama de despliegue del prototipo planteado. Se utiliza un estación de trabajo corriendo las herramientas
-		de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada para arquitecturas destino OpenRISC. Se requiere de un servidor que
+		La figura~\ref{fig:minsoc} muestra un diagrama de despliegue del prototipo planteado. Se utiliza una estación de trabajo corriendo las herramientas
+		de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada para la arquitecturas destino OpenRISC. Se requiere de un servidor que
 		proporcione un puerto para la depuración con GDB, acción realizada por la aplicación Advanced JTAG Bridge que provee la interfaz de comunicación
 		entre el TAP JTAG conectado al SoC a través el cable JTAG y la estación de trabajo.
 		
@@ -145,11 +144,11 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		\end{figure}
 		
 		El módulo Advanced Debug Interface proporciona soporte para la depuración via JTAG, está conectado directamente al microprocesador y a su vez al bus
-		general Wishbone donde se conectan el resto de los periféricos. Se conectan al sistema mediante el bus antes mencionado: un modulo	de RAM
-		sintetizado, un módulo de arranque (startup), un módulo SPI que interactúa con la memoria flash on board de la placa S3ADSP1800A , un módulo UART y
+		general Wishbone donde se conectan el resto de los periféricos. Se conectan al sistema mediante el bus antes mencionado: un modulo de RAM
+		sintetizado, un módulo de arranque (startup), un módulo SPI que interactúa con la memoria flash on board de la placa S3ADSP1800A, un módulo UART y
 		un módulo ETHERNET. El sistema inyecta un pequeño código de arranque directamente al bus de instrucciones al iniciar o luego de un reset. 
 
-\newpage
+
 			
 		\section{Implementación}
 
@@ -157,11 +156,13 @@ La implementación se realiza normalmente en cinco pasos básicos:
 \begin {itemize}
 \item Descarga del script de instalación.
 \item Ejecución del script de instalación.
-\item Configuración de la placa especifica para la síntesis.
+\item Configuración de la placa específica para la síntesis.
 \item Generación del flujo de bits.
 \item Programación de la FPGA Spartan 3a.
  \end {itemize}
- Consulte la Guía de MinSoc en el Anexo ~\ref{app:apendice1} para la realización pasos a seguir en la implementación sobre la placa de desarrollo  S3ADSP1800A.
+Para mas detalle de estas cinco etapas en la implementación sobre la placa de desarrollo  de Xilinx puede ver el anexo~\ref{app:apendice1}
+
+% Consulte la Guía de MinSoc en el Anexo ~\ref{app:apendice1} para la realización pasos a seguir en la implementación sobre la placa de desarrollo  S3ADSP1800A.
 		
 		%%%%%%%\subsection{Diagrama de Secuencia}
 		%\subsection{Selección y Desarrollo de aplicaciones de prueba}
@@ -171,13 +172,12 @@ La implementación se realiza normalmente en cinco pasos básicos:
 Para llevar a cabo el testing del prototipo se planificó una serie de casos de prueba sencillos que validen cada uno de los requerimiento planteados.
 El principal requisito para el comienzo de las pruebas fueron las herramientas de compilación y depuración funcionando correctamente. En una primera
 instancia fue necesario disponer de algún medio de respuesta de parte del SoC, razón por la cual se realizó un caso de prueba que compruebe la
-comunicación SoC - PC mediante UART.  En una segunda instancia de prueba se probó la unidad Ethernet para garantizar correcto funcionamiento
-estableciendo una conexión entre el SoC y la PC de pruebas. 
+comunicación SoC - PC mediante UART.  En una segunda instancia de prueba, se probó la unidad Ethernet para garantizar correcto funcionamiento, estableciendo una conexión entre el SoC y la PC de pruebas. 
 
-Para evaluar las capacidades básicas del microprocesador se desarrolló un programa de prueba multiplicador de matrices binarias. Las matrices son
-generadas a partir de una secuencia binaria pseudo aleatoria. El programa incrementa iteración a iteración el grado de las matrices multiplicadas y
-realiza los productos correspondientes registrando el tiempo que tarda en realizar el producto completo. En un último caso de prueba el programa será
-depurado pasos a paso y mediante breakpoints para verificar su funcionamiento correcto.
+Para evaluar las capacidades básicas del microprocesador se desarrolló un programa de prueba multiplicador de matrices binarias. Las matrices se
+generan a partir de una secuencia binaria pseudoaleatoria. El programa incrementa iteración a iteración el grado de las matrices multiplicadas y
+realiza los productos correspondientes registrando el tiempo que tarda en realizar el producto completo. En un último caso de prueba, el programa se
+depura paso a paso y mediante breakpoints para verificar su correcto funcionamiento.
 
  \begin{table}[h!]
 		\centering
@@ -191,7 +191,7 @@ depurado pasos a paso y mediante breakpoints para verificar su funcionamiento co
 		\hline 
 		Código de Testing & T001\\ 
 		\hline
-		Propósito & Comprobación del correcto funcionamiento de el componente UART \\
+		Propósito & Comprobación del correcto funcionamiento del componente UART \\
 		\hline
 		Realizado Por & Lovaisa Michelini, Valeria \\
 		\hline	
@@ -203,15 +203,15 @@ depurado pasos a paso y mediante breakpoints para verificar su funcionamiento co
 							\item Comunicación establecida entre la placa de desarrollo y la PC
 							\end {itemize}\\
 		\hline
-		Secuencia de Ejecución & Ejecución de la aplicación de prueba uart.or32  \\
+		Secuencia de Ejecución & Ejecución de la aplicación de prueba \verb|uart.or32|  \\
 		\hline
-		Postcondiciones & MinSoc corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminar remota en la PC\\
+		Postcondiciones & MinSoc corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminal remota en la PC\\
 		\hline
  \multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial una cadena de string.\\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse la aplicación de prueba del uart se pudo observar la cadena de string esperada "HELLO WORLD" \\
+		Resultados Obtenidos & Al ejecutarse la aplicación de prueba del UART se pudo observar la cadena de string esperada "HELLO WORLD" \\
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T001}
@@ -239,19 +239,19 @@ depurado pasos a paso y mediante breakpoints para verificar su funcionamiento co
 		Precondiciones & \begin {itemize}
 							\item Instanciación en la FPGA del SoC.
 							\item Ejecución de una terminal serie en la PC
-							\item Ejecución de una aplicación snifer en la PC
+							\item Ejecución de una aplicación sniffer en la PC
 							\item Comunicación establecida entre la placa de desarrollo y la PC
 							\end {itemize} \\
 		\hline
-		Secuencia de Ejecución &  Ejecutación de la aplicación de prueba eth.or32\\
+		Secuencia de Ejecución &  Ejecutación de la aplicación de prueba \verb|eth.or32|\\
 		\hline
-		Postcondiciones &  MinSoc corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminar serie en la PC y en los paquetes captados por la aplicación wireshark \\
+		Postcondiciones &  MinSoc corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminal serie en la PC y en los paquetes captados por la aplicación wireshark \\
 		\hline
  		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial una cadena de string indicando el inicio del envío de paquetes Ethernet y verificar la llegada de los mismos por medio de una aplicación sniffer \\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse un programa de prueba pudo observarse la cadena de string "HELLO WORLD " y observar 0xFF02B4050 en los paquetes catados por la aplicación wireshark" \\
+		Resultados Obtenidos & Al ejecutarse un programa de prueba pudo observarse la cadena de string ``HELLO WORLD`` y observar 0xFF02B4050 en los paquetes captados por la aplicación \verb|wireshark| \\
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T002}
@@ -267,11 +267,11 @@ depurado pasos a paso y mediante breakpoints para verificar su funcionamiento co
 		\hline 
 		Código de Requerimiento & RQX-PA 4\\ 
 		\hline 
-		Requerimiento  &  El prototipo debe ser capaz de ejecutar programas con capacidad de depuración, generados mediante compilación cruzada en una arquitectura x86 y/o x86\_64 para arquitectura la OpenRISC\\ 
+		Requerimiento  &  El prototipo debe ser capaz de ejecutar programas con capacidad de depuración, generados mediante compilación cruzada en una arquitectura x86 y/o x86\_64 para la arquitecturan OpenRISC\\ 
 		\hline 
 		Código de Testing & T003\\ 
 		\hline
-		Propósito &  Compilación y Ejecución de un  programa sencillo en c.Verificación de la capacidad de procesamiento del sistema mediante la realización de los productos con matrices cuadradas incrementando su tamaño iteración a iteración.  
+		Propósito &  Compilación y Ejecución de un  programa sencillo en lenguaje C.Verificación de la capacidad de procesamiento del sistema mediante la realización de los productos con matrices cuadradas incrementando su tamaño iteración a iteración.  
 \\
 		\hline
 		Realizado Por & Gomez, Pablo \\
@@ -281,20 +281,20 @@ depurado pasos a paso y mediante breakpoints para verificar su funcionamiento co
 		Precondiciones &\begin {itemize}
 							\item Instanciación en la FPGA del SoC.
 							\item Ejecución de una terminal serie en la PC
-							\item Descarga e instalación del complicador cruzado 
+							\item Descarga e instalación del compilador cruzado 
 							\item Comunicación establecida entre la placa de desarrollo y la PC
 							\end {itemize}
  \\
 		\hline
-		Secuencia de Ejecución & Ejecución de la aplicación multiplicadora de matrices mult mat.or32 \\
+		Secuencia de Ejecución & Ejecución de la aplicación multiplicadora de matrices \verb|multmat.or32| \\
 		\hline
-		Postcondiciones & Aplicación corriendo sobre el MinSoc instanciado en la FPGA, lo que se manifiesta en la impresión de pantalla de los tiempos de resolución del conjunto de matrices cuadradas multiplicadas en la terminar serie en la PC \\
+		Postcondiciones & Aplicación corriendo sobre el MinSoc instanciado en la FPGA, lo que se manifiesta en la impresión de pantalla de los tiempos de resolución del conjunto de matrices cuadradas multiplicadas en la terminal serie en la PC \\
 		\hline
  		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
 		Resultados Esperados & Poder ver la ejecución correcta de un programa de prueba desarrollado \\
 		\hline	
-		Resultados Obtenidos & Al ser ejecutado se observaron los resultados mostrados en el Bloque ~\ref{lst:salidamult}   \\
+		Resultados Obtenidos & Al ser ejecutado se observaron los resultados mostrados en el Bloque~\ref{lst:salidamult}   \\
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T003}
@@ -359,36 +359,36 @@ Fin del programa
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
-		\rowcolor[gray]{0.8}  Caso de Prueba&  Se debe lograr depurar paso a paso y mediante break points las aplicaciones desarrolladas\\
+		\rowcolor[gray]{0.8}  Caso de Prueba&  Se debe lograr depurar paso a paso y mediante breakpoints las aplicaciones desarrolladas\\
 		\hline 
 		Código de Requerimiento & RQX-PA 5\\ 
 		\hline 
-		Requerimiento  &  Se debe lograr depurar paso a paso y mediante break points las aplicaciones desarrolladas\\ 
+		Requerimiento  &  Se debe lograr depurar paso a paso y mediante breakpoints las aplicaciones desarrolladas\\ 
 		\hline 
 		Código de Testing & T004\\ 
 		\hline
-		Propósito &   Compilación en modio debug y Ejecución de un programa  en c mediante GDB.Verificar si la cadena de debug está funcionando.  \\
+		Propósito &   Compilación en modo debug y Ejecución de un programa en lenguaje C mediante GDB. Verificar si la cadena de debug está funcionando.\\
 		\hline
 		Realizado Por & Gomez, Pablo \\
 		\hline	
 		Entorno de Ejecución & Bare Metal \\
 		\hline
 		Precondiciones & \begin {itemize}
-							\item Instanciación en la FPGA del SoC.
+							\item Instanciación en la FPGA del SoC
 							\item Ejecución de una terminal serie en la PC
-							\item Aplicación compilada con flag de depuración. 
+							\item Aplicación compilada con flag de depuración 
 							\item Comunicación establecida entre la placa de desarrollo y la PC
 							\end {itemize}
 \\
 		\hline
-		Secuencia de Ejecución &  Ejecución de la aplicación multiplicadora de matrices multmat.or32\\
+		Secuencia de Ejecución &  Ejecución de la aplicación multiplicadora de matrices \verb|multmat.or32|\\
 		
 		\hline
 		Postcondiciones & Aplicación corriendo en modo debug sobre el MinSoc instanciado en la FPGA, lo que se manifiesta en la detención de la ejecución en cada punto de parada.\\
 		\hline
  		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
-		Resultados Esperados & Poder observar paso a paso le ejecución del programa. \\
+		Resultados Esperados & Poder observar paso a paso la ejecución del programa. \\
 		\hline	
 		Resultados Obtenidos & El programa puede verse a través de la terminal serie detenido en cada punto de parada. \\
 		\hline
@@ -398,32 +398,34 @@ Fin del programa
 
 
 		\section{Conclusión}
-		Este prototipo permitió mostrar la posibilidad de instanciar sobre el kit de desarrollo S3DSP1800A un System on Chip Básico Open Source en una FPGA
-		Spartan 3A. La mayoría del tiempo invertido en la implementación de este prototipo fue utilizado para la determinación de las herramientas de
+		Este prototipo permitió mostrar la posibilidad de instanciar sobre el kit de desarrollo de Xilinx un System on Chip Básico Open Source en una FPGA
+		Spartan 3A. La mayoría del tiempo invertido en la implementación de este prototipo se utilizo en la determinación de las herramientas de
 		desarrollo necesarias, su instalación y puesta en funcionamiento. Es importante resaltar que la documentación sobre el tema era insuficiente o
 		escasa. 
 		
-		Existieron además algunos problemas durante la síntesis del SoC. Sin embargo, una vez funcionando las herramientas de diseño de hardware (Sintesis,
-		PAR , Implementación) y las de diseño de software (toolchain) se ejecutaron con facilidad las mayoría de las aplicaciones de prueba seleccionadas y
+		Además existieron algunos problemas durante la síntesis del SoC. Sin embargo, una vez funcionando, las herramientas de diseño de hardware (Sintesis,
+		PAR , Implementación) y las de diseño de software (toolchain) se ejecutaron con facilidad la mayoría de las aplicaciones de prueba seleccionadas y
 		desarrolladas.
 		
 \newpage		
 \chapter{Prototipo Dos : Implementación del SoC ORPSoC en FPGA}
 		\section{Introducción}
-		Para el prototipo dos se planteó la implementación de un sistema ORPSoC que dispone de mayor cantidad de periféricos que el MinSoC entre ellos un
+
+		Para el prototipo dos se planteó la implementación de un sistema ORPSoC que dispone de mayor cantidad de periféricos que el MinSoC, entre ellos un
 		módulo que permite manejar las memorias RAM DDR2 incluídas en la placa de desarrollo S3ADSP1800A. Se verificó inicialmente si la herramientas
 		utilizadas en el prototipo uno proporcionaban los mismos resultados en este prototipo y luego se ejecutaron las pruebas de funcionamiento del
 		procesador, los periféricos y las herramientas de desarrollo y depuración. 
 		
-\newpage				
+%\newpage
+%\clearpage				
 		\section{Requerimientos del Prototipo}
 		\begin{table}[h!]
 		\centering
-		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
+		\begin{tabular}{ p{2.5cm} p{14.5cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
 		\hline 
-		RQX-PB 1 & El prototipo debe implementar un SoC ORPSoC en la placa desarrollo S3ADSP1800A\\ 
+		RQX-PB 1 & Al prototipo debe implementar un SoC ORPSoC en la placa desarrollo S3ADSP1800A\\ 
 		\hline 
 		RQX-PB 2 & El prototipo debe garantizar el correcto funcionamiento de todos los periféricos conectados al SoC mediante el bus Wishbone\\ 
 		\hline 
@@ -432,15 +434,16 @@ Fin del programa
 		RQX-PB 4 & Se debe garantizar el acceso a las memorias RAM DDR2 de la plataforma S3ADSP1800A\\
 		\hline
 		RQX-PB 5 & El prototipo debe ser capaz de ejecutar programas con capacidad de depuración generados mediante compilación
-		cruzada en una arquitectura x86 y/o x86\_64 para arquitectura la OpenRISC\\
+		cruzada en una arquitectura x86 y/o x86\_64 para la arquitectura OpenRISC\\
 		\hline
-		RQX-PB 6 & Se debe lograr depurar paso a paso y mediante break points las aplicaciones desarrolladas\\
+		RQX-PB 6 & Se debe lograr depurar paso a paso y mediante breakpoints las aplicaciones desarrolladas\\
 		\hline
-		RQX-PB 7 & El prototipo debe ser evaluado mediante el benchmark CoreMark para el posterior análisis de las capacidades del SoC\\
+		RQX-PB 7 & El prototipo debe evaluarse mediante el benchmark CoreMark para el posterior análisis de las capacidades del SoC\\
 		\hline		
 		\end{tabular}
 		\caption{Tabla de requerimientos del prototipo dos}
 		\end{table}
+
 
 		\section{Matriz de Riesgo para el Prototipo Dos} 
 
@@ -455,7 +458,7 @@ Fin del programa
 				& Falta de documentación de apoyo para la implentación
 del Soc & Crítico & Ocasional\\	 
 		\hline
-		RQX-PB 2,RQX-PB 3,RQX-PA 4 & Imposibilidad de acceso a SDRAM DDR2 de lo kit& Catastrófico & Probable\\
+		RQX-PB 2,RQX-PB 3,RQX-PA 4 & Imposibilidad de acceso a SDRAM DDR2 de el kit& Catastrófico & Probable\\
 		\hline
 		RQX-PB 5&Problemas en la compilación e instalación de las herramientas de desarrollo de software  & Severo  &  Ocasional\\ 
 		\hline
@@ -468,7 +471,7 @@ del Soc & Crítico & Ocasional\\
 		%\label{tab:riegos}
 		\end{table}
 
-\newpage
+
 
  		\begin{table}[h!]
 		\centering
@@ -476,20 +479,20 @@ del Soc & Crítico & Ocasional\\
 		\hline 
 		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
 		\hline
-		EL código RTL disponible en la web tiene fallas reconocidas durante el proceso de síntesis.&Retraso en los tiempos de implementación.& Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\		 
+	Código RTL disponible en la web tiene fallas reconocidas durante el proceso de síntesis.&Retraso en los tiempos de implementación.& Análisis previo de guías de resolución de problemas y preguntas frecuentes & Revisión de código y consulta a los desarrolladores \\		 
 		\hline
 		Falta de documentación de apoyo para la implentación
 del Soc& Perdida de tiempo en realizar la implementación
 del SoC & Revisión previa de la documentación existente para la elección del
 SoC & Dedicación de mayor tiempo para la implementación\\ 
 		\hline
-		 Imposibilidad de acceso a SDRAM DDR2 de lo kit & Falta de capacidad para la ejecución de aplicaciones & Analisis previa de guia de resolución de problemas y documentación del core RAM & Depuración del codigo RTL del proyecto\\
+		 Imposibilidad de acceso a SDRAM DDR2 de el kit & Falta de capacidad para la ejecución de aplicaciones & Análisis previo de guía de resolución de problemas y documentación del core RAM & Depuración del código RTL del proyecto\\
 		\hline
 		Problemas en la compilación e instalación de las herramientas de desarrollo de software & Imposibilidad de desarrollo de aplicaciones que se ejecuten en el proyecto ORPSoC & Verificar la posibilidad de ejecución de las herramientas en diferentes SO & Utilización de las herramientas en alguno de los SO compatibles\\			
 		\hline
-		Problemas de compatibilidad con el modulo de debug del proyecto OrpSoC con el programador JTAG-USB & Imposibilidad depuración de aplicaciones &Análisis de la documentación del proyecto& Utilización de otros  dispositivos compatibles.\\		
+		Problemas de compatibilidad con el modulo de debug del proyecto OrpSoC con el programador JTAG-USB & Imposibilidad de depuración de aplicaciones &Análisis de la documentación del proyecto& Utilización de otros  dispositivos compatibles.\\		
 		\hline
-		Problemas con el compilador para la generación del binario del benchmark CoreMark & Imposibilidad de medir el rendimiento de la unidade centrales de procesamiento (CPU) & Verificar la posibilidad de ejecución de las herramientas en diferentes SO & Utilización de métodos alternativos para medir el redimiento en sistemas embebidos.\\
+		Problemas con el compilador para la generación del binario del benchmark CoreMark & Imposibilidad de medir el rendimiento de la unidad central de procesamiento (CPU) & Verificar la posibilidad de ejecución de las herramientas en diferentes SO & Utilización de métodos alternativos para medir el redimiento en sistemas embebidos.\\
 		\hline
 		\end{tabular}
 		\caption{Planificación de riesgos del prototipo dos}
@@ -499,9 +502,9 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 
 \newpage
 		\section{Descripción de la Estructura del Prototipo Dos}
-		La Figura ~\ref{fig:orpsoc} muestra un esquema de la arquitectura planteada en el prototipo. Al igual que en el prototipo uno se utiliza un estación
+		La figura~\ref{fig:orpsoc} muestra un esquema de la arquitectura planteada en el prototipo. Al igual que en el prototipo uno se utiliza una estación
 		de trabajo corriendo las herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada. Se requiere de un servidor
-		que proporcione un puerto para la depuración con GDB y a diferencia del prototipo uno este servicio lo proporciona la aplicación OpenRISC Debug
+		que proporcione un puerto para la depuración con GDB y, a diferencia del prototipo uno, este servicio lo proporciona la aplicación OpenRISC Debug
 		Proxy.
 		
 		\begin{figure}[!h]
@@ -514,33 +517,23 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 	
 		\section{Implementación}
 
-		La implementación se realiza normalmente en cinco pasos básicos: 
-		\begin {itemize}
-		\item Descarga del script de instalación.
-		\item Ejecución del script de instalación.
-		\item Configuración de la placa especifica para la síntesis.
-		\item Generación del flujo de bits.
-		\item Programación de la FPGA Spartan 3a.
- 		\end {itemize}
- 
- 	Puede consultarse la Guía de ORPSoC en el Anexo ~\ref{app:apendice2} para una comprensión más profunda de los pasos a seguir en la implementación
- 	sobre la placa de desarrollo S3ADSP1800A.
-
-	El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee
+		La implementación se realiza siguiendo las mismas etapas que en el prototipo anterior. Para mas detalle en la implementación sobre la placa de desarrollo Xilinx puede ver el anexo~\ref{app:apendice2}.
+%Puede consultarse la Guía de ORPSoC en el Anexo ~\ref{app:apendice2} para una comprensión más profunda de los pasos a seguir en la implementación sobre la placa de desarrollo S3ADSP1800A.
+El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee
 	acceso a las memorias SDRAM on board de la placa S3ADSP1800A, un módulo SPI que interactúa con la memoria flash on board de la placa antes
 	mencionada, un módulo UART y un módulo ETHERNET.
 		
 
 		\section{Testing}
 		
-		El Prototipo Dos será evaluado de forma similar al anterior debido a que el cambio del SoC instanciado requiere nuevamente la verificación de los
+		El Prototipo Dos se evalúa de forma similar al anterior debido a que el cambio del SoC instanciado requiere nuevamente la verificación de los
 		dispositivos básicos de comunicación así como de las herramientas de diseño de hardware y software.
 		
 		Inicialmente se realizó un caso de prueba que compruebe la comunicación SoC - PC  Ethernet que de igual manera verifica el correcto funcionamiento
 		de la interfaz UART. La característica más importante de la implementación de ORPSoC es su capacidad de interactuar con las memorias SDRAM on board
 		dispuestas en la placa de desarrollo. Se realizó un caso de prueba especial que valide el funcionamiento de las mismas.
 
-		Para comprar el correcto funcionamiento de las capacidades de depuración se realizó un caso de prueba simple mediante un programa que calcula la
+		Para comprobar el correcto funcionamiento de las capacidades de depuración se realizó un caso de prueba simple mediante un programa que calcula la
 		cantidad de números primos existente en un intervalo seleccionado. Ante la necesidad de evaluar las capacidades del sistema embebido se realizó un
 		caso de prueba basado en el Benchmark Coremark.
 
@@ -573,15 +566,15 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 							\item Programas de prueba compilados correctamente
 							\end {itemize} \\
 		\hline
-		Secuencia de Ejecución &  Ejecutación de la aplicación de prueba ethmac-ping.or32\\
+		Secuencia de Ejecución &  Ejecutación de la aplicación de prueba \verb|ethmac-ping.or32|\\
 		\hline
-		Postcondiciones &  El programa de prueba ejecutándose sobre la RAM de la plataforma, lo que se manifiesta en la impresión de pantalla de la terminar serie en la PC y en los paquetes captados por la aplicación wireshark \\
+		Postcondiciones &  El programa de prueba ejecutándose sobre la RAM de la plataforma, lo que se manifiesta en la impresión de pantalla de la terminar serie en la PC y en los paquetes captados por la aplicación \verb|wireshark| \\
 		\hline
  		\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial una cadena de string indicando el inicio del envío de paquetes ICMP y verificar la llegada de los mismos por medio de una aplicación ICMP \\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la cadena mostrada en la Referencia ~\ref{lst:reseth}\\
+		Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la cadena mostrada en la código~\ref{lst:reseth}\\
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T005}
@@ -597,7 +590,7 @@ board IP : 192.168.1.2
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
 		\hline 
-	    \rowcolor[gray]{0.8}  Caso de Prueba&Interactuar correctamente con la memoria RAM. \\
+	    \rowcolor[gray]{0.8}  Caso de Prueba& Interactuar correctamente con la memoria RAM. \\
 		\hline 
 		Código de Requerimiento & RQX-PB 4 \\ 
 		\hline 
@@ -620,7 +613,7 @@ board IP : 192.168.1.2
 							\item Programas de prueba compilados correctamente
 							\end {itemize}\\
 		\hline
-		Secuencia de Ejecución & Ejecutación de la aplicación de prueba sdra-row.or32 \\
+		Secuencia de Ejecución & Ejecutación de la aplicación de prueba \verb|sdra-row.or32| \\
 		\hline
 		Postcondiciones & ORPSoC corriendo sobre FPGA, y la aplicación ejecutándose sobre la memoria RAM lo que se manifiesta en la impresión de pantalla de la terminar remota en la PC\\
 		\hline
@@ -628,7 +621,7 @@ board IP : 192.168.1.2
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial una cadena de string.\\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse la aplicación de prueba de RAM sdra-row.o32 se pudo observar la cadena de string esperada "TEST OK!" \\
+		Resultados Obtenidos & Al ejecutarse la aplicación de prueba de RAM \verb|sdra-row.o32| se pudo observar la cadena de string esperada "TEST OK!" \\
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T006}
@@ -643,11 +636,11 @@ board IP : 192.168.1.2
 		\hline 
 		Código de Requerimiento & RQX-PA 5\\ 
 		\hline 
-		Requerimiento  & El prototipo debe ser capaz de ejecutar programas con capacidad de depuración generados mediante compilación cruzada en una arquitectura x86 y/o x86-64 para arquitectura la Open-RISC\\ 
+		Requerimiento  & El prototipo debe ser capaz de ejecutar programas con capacidad de depuración generados mediante compilación cruzada en una arquitectura x86 y/o x86-64 para la arquitectura OpenRISC\\ 
 		\hline 
 		Código de Testing & T007\\ 
 		\hline
-		Propósito &  Compilación en modo debug y Ejecución de un programa de calculo de números primos en c.
+		Propósito &  Compilación en modo debug y ejecución de un programa de calculo de números primos en lenguaje C.
 \\
 		\hline
 		Realizado Por & Gomez, Pablo \\
@@ -664,7 +657,7 @@ board IP : 192.168.1.2
 							\end {itemize}
  \\
 		\hline
-		Secuencia de Ejecución & Ejecución de la aplicación  numprim.elf\\
+		Secuencia de Ejecución & Ejecución de la aplicación \verb|numprim.or32|\\
 		\hline
 		Postcondiciones & Aplicación corriendo sobre el ORPSoC instanciado en la FPGA, lo que se manifiesta en la impresión de pantalla de los números primos \\
 		\hline
@@ -672,7 +665,7 @@ board IP : 192.168.1.2
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial el resultado de la ejecución de la aplicación \\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse el programa contador de nuemros primos pudo observarse la salida mostrada en la Referencia ~\ref{lst:rescom}\\
+		Resultados Obtenidos & Al ejecutarse el programa contador de números primos pudo observarse la salida mostrada en la código~\ref{lst:rescom}\\
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T007}
@@ -710,7 +703,7 @@ Cantidad de numero primos entre 1 y 2000 : 303
 							\item Programa coremark compilado correctamente
 							\end {itemize}\\
 		\hline
-		Secuencia de Ejecución & Ejecución de la aplicación coremark.exe \\
+		Secuencia de Ejecución & Ejecución de la aplicación \verb|coremark| \\
 		\hline
 		Postcondiciones & ORPSoC corriendo sobre FPGA, lo que se manifiesta en la impresión de pantalla de la terminar serial en la PC de los resultados del programa de prueba \\
 		\hline
@@ -718,7 +711,7 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		\hline
 		Resultados Esperados & Poder observar por la terminal serial los resultados de medición de performance.\\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse la aplicación coremark.exe se pudo observar ~\ref{lst:rescrm} \\
+		Resultados Obtenidos & Al ejecutarse la aplicación \verb|coremark| se pudo observar el código~\ref{lst:rescrm} \\
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T008}
@@ -751,7 +744,7 @@ CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFO
 		sin problemas un Sistema Operativo Embebido. Al poseer mayores prestaciones de memoria que las del proyecto MinSoC permite ejecutar aplicaciones
 		complejas de exigencias elevadas compiladas para la arquitectura OpenRISC. 
 		 
-		Si bien el proyecto ORPSoC se encuentra documentado en mayor detalle, la documentación apoyo resulta bastante acotada cuando se pretende implementar
+		Si bien el proyecto ORPSoC se encuentra documentado en mayor detalle, la documentación resulta bastante acotada cuando se pretende implementar
 		proyectos para aplicaciones reales fuera de aquellas pruebas básicas del sistema. 		
 
 
@@ -759,21 +752,21 @@ CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFO
 \chapter{Prototipo Tres : Implementación del SoC ORPSoC en FPGA con Sistema Operativo eCos}
 		\section{Introducción}
 
-		Para el tercer prototipo se añadió al prototipo dos la funcionalidad aportada por el Sistema Operativo de tiempo real eCos(embedded configurable operating system) que adiciona la capacidad de la ejecución de múltiples hilos. 
+		Para el tercer prototipo se añadió al prototipo dos la funcionalidad aportada por el Sistema Operativo de tiempo real eCos (embedded configurable operating system) que adiciona la capacidad de la ejecución de múltiples hilos. 
 
 		\section{Requerimientos del Prototipo}
 		
 		\begin{table}[h!]
 		\centering		
-		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
+		\begin{tabular}{ p{2.5cm} p{14.5cm}}
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
 		\hline 
-		RQX-PC 1 & El prototipo debe implementar un sistema operativos de tiempo real\\ 
+		RQX-PC 1 & El prototipo debe implementar un sistema operativo de tiempo real\\ 
 		\hline 
-		RQX-PC 2 & Se debe garantizar el correcto funcionamiento de todos los periféricos utilizando los driver y librerías provistas por el SO \\ 
+		RQX-PC 2 & Se debe garantizar el correcto funcionamiento de todos los periféricos utilizando los driver y bibliotecas provistas por el SO \\ 
 		\hline 
-		RQX-PC 3 & Se debe poder ejecutar programas que requiere la ejecución de múltiples hilos  \\ 
+		RQX-PC 3 & Se debe poder ejecutar programas que requieren la ejecución de múltiples hilos  \\ 
 		\hline
 		RQX-PC 4 & Se requiere la ejecución de programas de prueba para determinar las limitaciones en la ejecución de hilos \\ 
 		\hline		
@@ -790,14 +783,14 @@ CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFO
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados& Riegos Asociados & Severidad  & Ocurrencia \\
 		\hline
-		RQX-PC 1& Fallas en la generación de la imagen del SO para ser montada en el SoC & Crítica       & Probable \\
+		RQX-PC 1& Fallas en la generación de la imagen del SO para montar en el SoC & Crítica       & Probable \\
 		\hline				
 				& Falta de documentación de apoyo para la implentación del SO bajo licencias de Software Libre & Crítico & Ocasional\\	
 		\hline				
 				 & Limitaciones para la ejecución de SO de tiempo real & Crítico & Ocasional\\	
  		
  		\hline	
-		RQX-PC 2 	& Librerías necesarias inexistentes o con fallos& Crítico & Ocasional\\	
+		RQX-PC 2 	& Bibliotecas necesarias inexistentes o con fallos& Crítico & Ocasional\\	
 		
 		\hline				
  					 & Drivers necesarios inexistentes o con fallos  & Severo  &  Ocasional\\ 
@@ -827,7 +820,7 @@ SO & Dedicación de mayor tiempo para la implementación\\
 		 Limitaciones para la ejecución de SO de tiempo real & Inviabilidad para la ejecución
 de aplicaciones en tiempo real & Análisis de los RTOS &Modificación del SO para el cumplimiento de las capacidades de ejecución en tiempo real\\
 		\hline
-		Librerías necesarias inexistentes o con fallos& Imposibilidad de desarrollo de aplicaciones para ejecutar sobre el SO de tiempo real& Análisis previo de las librerías disponibles y revisión de posibles bugs informados SO & Desarrollo de las librerías necesarias o corrección de errores\\			
+		Bibliotecas necesarias inexistentes o con fallos& Imposibilidad de desarrollo de aplicaciones para ejecutar sobre el SO de tiempo real& Análisis previo de las bibliotecas disponibles y revisión de posibles bugs informados& Desarrollo de las bibliotecas necesarias o corrección de errores\\			
 		\hline
 		Drivers necesarios inexistentes o con fallos & Imposibilidad de utilización
 de los dispositivos necesarios&Análisis previo de los driver de los dispositivos a utilizar& Desarrollo de los drivers necesarios\\		
@@ -845,7 +838,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 \newpage
 		
 		\section{Descripción de la Estructura del Prototipo Tres}
-		La Figura ~\ref{fig:ecos} muestra el diagrama de despliegue del prototipo tres. Este prototipo utiliza como base al prototipo dos pero se ejecutan 
+		La figura~\ref{fig:ecos} muestra el diagrama de despliegue del prototipo tres. Este prototipo utiliza como base al prototipo dos pero se ejecutan 
 		aplicaciones compiladas bajo ecOS.
 		
 		\begin{figure}[h!]
@@ -858,7 +851,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 	
 		\section{Implementación}	
 		
-		La implementación de sistema operativo de tiempo real ecOS ser realiza en una serie de etapas detalladas a continuación. 
+		La implementación de sistema operativo de tiempo real ecOS se realiza en una serie de etapas detalladas a continuación. 
 		\begin {itemize}
 		\item Descarga del código fuente del proyecto
 		\item Descarga de la aplicación de configuración de ecOS
@@ -869,9 +862,10 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\item Compilación de programas de prueba
 		\item Ejecución de aplicaciones bajo ecOS
  		\end {itemize}
- 
-		Consulte la Guía de ecOS en el Anexo ~\ref{app:apendice4} para una comprensión más profunda de los pasos a seguir en la implementación sobre la
- 		placa de desarrollo S3ADSP1800A.
+En el anexo~\ref{app:apendice4} se encuentra una guía mas detallada de los pasos antes nombrados para la implemetación sobre el kit de desarrollo.
+
+
+		%Consulte la Guía de ecOS en el Anexo ~\ref{app:apendice4} para una comprensión más profunda de los pasos a seguir en la implementación sobre la		placa de desarrollo S3ADSP1800A.
 		
 \newpage
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%TESTING TRES
@@ -885,7 +879,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\hline 
 		Código de Requerimiento & RQX-PC 2\\ 
 		\hline 
-		Requerimiento & Se debe garantizar el correcto funcionamiento de todos los periféricos utilizando los driver y librerías provistas por el SO \\ 
+		Requerimiento & Se debe garantizar el correcto funcionamiento de todos los periféricos utilizando los driver y bibliotecas provistas por el SO \\ 
 		\hline 
 		Código de Testing & T009\\ 
 		\hline
@@ -900,11 +894,11 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 							\item Ejecución de una terminal serie en la PC 
  							\item Comunicación establecida entre la placa de desarrollo y la PC
 							\item Herramientas de compilación cruzada funcionando correctamente
-							\item Sistema operativo correctamenta instalado
+							\item Sistema operativo correctamente instalado
 							\item Programas de prueba compilados correctamente
 							\end {itemize} \\
 		\hline
-		Secuencia de Ejecución &  Ejecutación de la aplicación de prueba hello.elf\\
+		Secuencia de Ejecución &  Ejecución de la aplicación de prueba \verb|hello.elf|\\
 		\hline
 		Postcondiciones &  El programa de prueba ejecutándose sobre el sistema operativo ecOS, lo que se manifiesta en la impresión de pantalla en la
 		terminal serie de la PC\\
@@ -926,11 +920,11 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\hline 
 		\rowcolor[gray]{0.8}  Caso de Prueba& Ejecución de hilos\\
 		\hline 
-		Código de Requerimiento & RQX-PC 3 , RQX-PC 4\\ 
+		Código de Requerimiento & RQX-PC 3, RQX-PC 4\\ 
 		\hline 
-		Requerimiento  	&  Se debe poder ejecutar programas que requiere la ejecución de múltiples hilos\\
+		Requerimiento  	& Se debe poder ejecutar programas que requiere la ejecución de múltiples hilos\\
 		\hline 
-						&  Problemas con el compilador para la generación del binario del programa de prueba\\
+						& Problemas con el compilador para la generación del binario del programa de prueba\\
 		\hline 
 		Código de Testing & T010\\ 
 		\hline
@@ -941,7 +935,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		Entorno de Ejecución & SO - ecOS \\
 		\hline
 		Precondiciones &    \begin {itemize}
-							\item Instanciación en la FPGA del SoC.
+							\item Instanciación en la FPGA del SoC
 							\item Ejecución de una terminal serie en la PC
 							\item Comunicación establecida entre la placa de desarrollo y la PC
 							\item Herramientas de compilación cruzada funcionando correctamente
@@ -950,7 +944,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 							\end {itemize}
 		\\
 		\hline
-		Secuencia de Ejecución & Ejecución de la aplicación de prueba twothreads.elf \\
+		Secuencia de Ejecución & Ejecución de la aplicación de prueba \verb|twothreads.elf| \\
 		\hline
 		Postcondiciones & Aplicación ejecutándose sobre el sistema operativo \\
 		\hline
@@ -958,7 +952,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\hline
 		Resultados Esperados & Poder observar por la terminal serie el resultado de la ejecución de la aplicación\\
 		\hline	
-		Resultados Obtenidos & Al ejecutarse el programa de prueba de hilos pudo observarse la salida mostrada en la Referencia ~\ref{lst:salhilos} \\
+		Resultados Obtenidos & Al ejecutarse el programa de prueba de hilos pudo observarse la salida mostrada en la código~\ref{lst:salhilos} \\
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T010}
@@ -983,11 +977,11 @@ Thead 0: and now a delay of 244 clock ticks
 
 		\section{Conclusión}
 		
-		Con el prototipo tres se verficó el correcto funcionamiento y soporte para sistemas de tiempo real sobre el microprocesador OpenRISC 1200. Mediante
+		Con el prototipo tres se verificó el correcto funcionamiento y soporte para sistemas de tiempo real sobre el microprocesador OpenRISC 1200. Mediante
 		la ejecución de los casos de prueba se probó, en primera instancia, que los periféricos funcionaran correctamente indicando a su vez que el sistema
 		operativo se encuentra corriendo en el núcleo como se esperaba. Se comprobó además, la capacidad del kernel de ecOS para ejecutar hilos a nivel de software. 
 		Todo lo anteriormente dicho permitió corroborar que mediante la implementación de un microprocesador Softcore OpenRISC en conjunto con un sistema
-		operativo, puede conformase una solución integral, efectiva para aplicaciones de tiempo real de código abierto.
+		operativo, puede darse una solución integral, efectiva para aplicaciones de tiempo real de código abierto.
 		
 \newpage
 \chapter{Prototipo Cuatro : Implementación del SoC ORPSoC en FPGA con Sistema Operativos Linux} \label{chap:proto4}
@@ -1000,7 +994,7 @@ Thead 0: and now a delay of 244 clock ticks
 		
 		\begin{table}[h!]
 		\centering	
-		\begin{tabular}{ p{2.5cm} p{8cm} p{3cm} }
+		\begin{tabular}{ p{2.5cm} p{14.5cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req  & Descripción\\
 		\hline                             	RQX-PD 1 & El prototipo debe implementar el sistema operativos Linux\\ 
@@ -1023,7 +1017,7 @@ Thead 0: and now a delay of 244 clock ticks
 		\hline RQX-PC 1 & Fallas en la generación de la imagen del SO para ser montada en el SoC & Crítica       & Probable \\
 		\hline			& Falta de documentación de apoyo para la implentación del SO bajo licencias de Software Libre & Crítico & Ocasional\\	
 		\hline			& Limitaciones para la ejecución de SO de tiempo real & Crítico & Ocasional\\	
- 		\hline RQX-PC 2 & Librerías necesarias inexistentes o con fallos& Crítico & Ocasional\\	
+ 		\hline RQX-PC 2 & bibliotecas necesarias inexistentes o con fallos& Crítico & Ocasional\\	
 		\hline			& Drivers necesarios inexistentes o con fallos  & Severo  &  Ocasional\\ 
 		\hline RQX-PC 3	& Problemas en la compilación e instalación de las herramientas de desarrollo de software& Severo  &  Ocasional\\ 
 		\hline RQX-PB 4 & Problemas con el compilador para la generación del binario del programa de prueba  & Crítico&  Ocasional\\
@@ -1055,10 +1049,10 @@ Thead 0: and now a delay of 244 clock ticks
 			   Fallos en la ejecución del sistema operativo & 
 		       Análisis previo de limitaciones en la documentación de los desarrolladores y guías de resolución de problemas & 
 		       Revisión y desarrollo de código del SO necesario para proveer soporte al hardware\\
-		\hline Librerías necesarias inexistentes o con fallos & 
+		\hline Bibliotecas necesarias inexistentes o con fallos & 
 			   Imposibilidad de desarrollo de aplicaciones para ejecutar sobre el SO &
-			   Análisis previo de las librerías disponibles y revisión de posibles bugs informados SO & 
-			   Desarrollo de las librerías necesarias o corrección de errores\\
+			   Análisis previo de las bibliotecas disponibles y revisión de posibles bugs informados SO & 
+			   Desarrollo de las bibliotecas necesarias o corrección de errores\\
 		\hline Drivers necesarios inexistentes o con fallos & 
 			   Imposibilidad de utilización de los dispositivos necesarios & 
 			   Análisis previo de los driver de los dispositivos a utilizar & 
@@ -1076,7 +1070,7 @@ Thead 0: and now a delay of 244 clock ticks
 		\newpage
 		
 		\section{Descripción de la Estructura del Prototipo Cuatro}
-		Se muestra a continuación (Figura ~\ref{fig:proto4}) el diagrama de despliegue del prototipo cuatro. Se utiliza como base nuevamente el prototipo
+		Se muestra a continuación figura~\ref{fig:proto4} el diagrama de despliegue del prototipo cuatro. Se utiliza como base nuevamente el prototipo
 		dos con un sistema operativo linux ejecutándose en él.
 
 		\begin{figure}[h!]
@@ -1089,7 +1083,7 @@ Thead 0: and now a delay of 244 clock ticks
 	
 		\section{Implementación}	
 		
-La implementación de sistema operativo de Linux ser realiza en una serie de etapas detalladas a continuación. 
+La implementación del sistema operativo Linux se realiza en una serie de etapas detalladas a continuación. 
 		\begin {itemize}
 		\item Descarga del código fuente del proyecto
 		\item Configuración de las variables de entorno
@@ -1097,9 +1091,10 @@ La implementación de sistema operativo de Linux ser realiza en una serie de eta
 		\item Confuguracion del kernel en el simulador or1ksim
 		\item Instalación sobre la placa 
 		\end {itemize}
+
+Para mas detalle de estas etapas en la implementación sobre el kit de desarrollo de Xilinx puede ver el anexo~\ref{app:apendice5}
  
-		Consulte la Guía de Linux en el Anexo ~\ref{app:apendice5} para una comprensión más profunda de los pasos a seguir en la implementación sobre la
- 		placa de desarrollo S3ADSP1800A.
+		%Consulte la Guía de Linux en el Anexo ~\ref{app:apendice5} para una comprensión más profunda de los pasos a seguir en la implementación sobre la		placa de desarrollo S3ADSP1800A.
 		\newpage
 				
 		\section{Testing}	
@@ -1125,12 +1120,12 @@ La implementación de sistema operativo de Linux ser realiza en una serie de eta
 												  \item Gestor de arranque y aplicación de prueba compilados correctamente
 												  \item Imagen de arranque sin errores
 												  \end {itemize} \\
-		\hline			 Secuencia de Ejecución &  Ejecutación de la aplicación de prueba numprim.elf a través de Uboot\\
+		\hline			 Secuencia de Ejecución &  Ejecutación de la aplicación de prueba \verb|numprim.elf| a través de Uboot\\
 		\hline					Postcondiciones &  El gestor de arranque inicia correctamente el programa de prueba, lo que se manifiesta en la impresión de la salida
 		del gestor de arranque y el programa prueba en la terminal serie de la PC\\
 		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
-		\hline			   Resultados Esperados & Poder observar por la terminal serial las salida de los programas \\
-		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la Referencia ~\ref{lst:salidauboot}\\
+		\hline			   Resultados Esperados & Poder observar por la terminal serial las salidas de los programas \\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba pudo observarse la salida mostrada en la código~\ref{lst:salidauboot}\\
 		\hline	
 		\end{tabular}
 		\caption{Caso de prueba T011}
@@ -1209,11 +1204,11 @@ Cantidad de numero primos entre 1 y 2000 : 303
 												  \item Imagen del gestor de arranque almacenada en la memoria Flash SPI de la placa de desarrollo
 												  \end {itemize} \\
 		\hline			 Secuencia de Ejecución &  Arranque inicial o reset del hardware\\
-		\hline					Postcondiciones &  El gestor de arranque inicia correctamente , lo que se manifiesta en la impresión de la salida
+		\hline					Postcondiciones &  El gestor de arranque inicia correctamente, lo que se manifiesta en la impresión de la salida
 		del gestor de arranque en la terminal serie de la PC\\
 		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline			   Resultados Esperados & Poder observar por la terminal serial las salida del Uboot \\
-		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba no pudo observarse la salida salida esperada\\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el programa de prueba no pudo observarse la salida esperada\\
 		\hline	
 		\end{tabular}
 		\caption{Caso de prueba T012}
@@ -1244,8 +1239,7 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		de la secuencia de arranque de linux en la terminal serie de la PC\\
 		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline			   Resultados Esperados & Lograr observar por la terminal serial la secuencia de arranque del Sistema Operativo\\
-		\hline	 		   Resultados Obtenidos & Al ejecutarse el Kernel del SO pudo observarse la salida esperada, mostrada en la Referencia
-		~\ref{lst:sallinux}\\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el Kernel del SO pudo observarse la salida esperada, mostrada en la código~\ref{lst:sallinux}\\
 		\hline	
 		\end{tabular}
 		\caption{Caso de prueba T013}
@@ -1271,7 +1265,7 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 		\hline 
 		\rowcolor[gray]{0.8} 	 Caso de Prueba & Implementación del SO Linux Embebido\\
 		\hline  		Código de Requerimiento & RQX-PD 1\\ 
-		\hline  				  Requerimiento & El prototipo debe implementar el sistema operativos Linux\\
+		\hline  				  Requerimiento & El prototipo debe implementar el Sistema Operativos Linux\\
 		\hline 				  Código de Testing & T013\\ 
 		\hline 						  Propósito & Implementar correctamente un Sistema Operativo Linux Embebido sobre un SoC ORPSoC\\
 		\hline					  Realizado Por & Lovaisa, Valeria \\
@@ -1289,7 +1283,7 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 		de la secuencia de arranque de linux en la terminal serie de la PC\\
 		\hline	\multicolumn{2}{>{\columncolor[gray]{.8}}c}{Resultados}\\
 		\hline			   Resultados Esperados & Lograr observar por la terminal serial la secuencia de arranque del Sistema Operativo\\
-		\hline	 		   Resultados Obtenidos & Al ejecutarse el Kernel del SO pudo observarse la salida mostrada en la Referencia ~\ref{lst:sallinux1}\\
+		\hline	 		   Resultados Obtenidos & Al ejecutarse el Kernel del SO pudo observarse la salida mostrada en la código~\ref{lst:sallinux1}\\
 		\hline	
 		\end{tabular}
 		\caption{Caso de prueba T014}
@@ -1389,31 +1383,31 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 		
 		\newpage
 		\section{Conclusión}
-		El prototipo cuatro ayudó a verificar la posibilidad de implementación del sistema operativo de código abierto más importante en Sistemas Embebidos.
+		El prototipo cuatro ayudó a verificar la posibilidad de implementación de uno de los sistema operativo más conocidos de código abierto en Sistemas Embebidos.
 		La posibilidad de obtener documentación de apoyo para la implementación de distintas soluciones que se ejecuten bajo este Kernel, facilita en gran
 		medida el desarrollo de aplicaciones de mayor complejidad que las desarrolladas para sistemas operativos de tiempo real como lo es ecOS.   
 		
-		Se verficó el correcto funcionamiento del gestor de arranque uboot, uno de los más conocidos y verificados. Este hecho posibilitó ejecutar desde el
+		Se verificó el correcto funcionamiento del gestor de arranque uBoot, uno de los más conocidos y verificados. Este hecho posibilitó ejecutar desde el
 		arranque del sistema la imagen de un programa de prueba con éxito. Asímismo, no se obtuvieron los resultados esperados al intentar cargar el gestor
 		de arranque directamente desde la memoria FLASH SPI de la placa de desarrollo. Cabe destacar que inicialmente se utilizaron las herramientas
 		provistas por el fabricante (Xilinx) para acceder a las memorias S33 y M25P64, que forman parte de los kits de desarrollo S3ADSP1800A, sin
 		resultados favorables. Como resultado de la investigación ante este problema, se encontraron herramientas alternativas de código abierto que
 		posibilitaron el acceso a las memorias mencionadas. Sin embargo, los intentos de cargar firmware directamente desde la memoria FLASH SPI no tuvieron
-		resultados satisfactorios. Si se pretende obtener solición a este problema será necesario realizar un análisis exhaustivo al módulo IP SPI
+		resultados satisfactorios. Si se pretende obtener solución a este problema, será necesario realizar un análisis exhaustivo del módulo IP SPI
 		implementado en el proyecto ORPSoC.
 		
-		El kernel de Linux pudo compilarse éxitosamente, con herramientas de compilación cruzada, sin mayores inconvenientes durante la construcción su
-		imágen y sus herramientas (Busybox). Luego, se ejecutó el kernel sobre el simulador de la arquitectura OpenRISC conocido como or1ksim. Pudo
+		El kernel de Linux pudo compilarse éxitosamente, con herramientas de compilación cruzada, sin mayores inconvenientes durante la construcción de su
+		imágen y sus herramientas (Busybox). Luego, se ejecutó el kernel sobre el simulador de la arquitectura OpenRISC conocido como \verb|or1ksim|. Pudo
 		comprobarse así, el correcto funcionamiento de la imágen construida y su correcta implementación para una arquitectura OpenRISC. Sin embargo, al
 		intentar ejecutar el Kernel sobre el kit de desarrollo S3ADSP1800A, surgieron inconvenientes respecto del acceso a memoria durante la secuencia de
 		inicio del Sistema Operativo. En el análisis efectuado ante este problema se presentaron diversos impedimientos. El primero de ellos fue la escasa
 		documentación que brinda el proveedor de la placa de desarrollo, que en ocaciones no funciona correctamente. En este trabajo se recurrió a
 		distintas notas de aplicación proporcionadas por Xilinx sin lograr resultados satisfactorios. 
 		
-		Como alternativa que permita resolver este problema se recurrió a la documentación, foros y mail lists de las comunidades Opensource. Es importante
+		Como alternativa que permita resolver este problema se recurrió a la documentación, foros y listas de correo de las comunidades Opensource. Es importante
 		destacar que los tiempos de respuesta en este tipo de canales no se corresponden con los tiempos de ejecución de este trabajo y mucho menos con los
 		tiempos de la industria. Finalmente, debe realizarse un profundo estudio sobre código del kernel que permita solucionar los problemas asociados a
-		la adapatación del SO a la placa de desarrollo. Si lo mencionado anteriormente no logra resolver el problema, deberá realizar un estudio de
+		la adapatación del SO a la placa de desarrollo. Si lo mencionado anteriormente no logra resolver el problema se deberá realizar un estudio de
 		depuración a nivel de hardware. Existen resultados satisfactorias que demuestan el correcto funcionamiento del SO en esta arquitectura sobre otras
 		placas de desarrollo, tales como Atlys de Xilinx y DE-Nano de Terasic ~\cite{rte.se} ~\cite{denano}.
 		
