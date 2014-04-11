@@ -890,6 +890,10 @@ En el anexo~\ref{app:apendice4} se encuentra una guía mas detallada de los paso
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%TESTING TRES
 		\section{Testing}
 
+Para llevar a cabo el testing del prototipo tres se planificó una serie de casos de prueba para validar los requerimiento planteados.
+El principal requisito para el comienzo de las pruebas fue implementar el sistema operativo de tiempo real eCos sobre el SoC, para lo cual necesitamos tener las herramientas de compilación funcionando correctamente. En una primera
+instancia fue necesario disponer de algún medio de respuesta de parte del sistema operativo, razón por la cual se realizó un caso de prueba que garantice el funcionamiento  de la comunicación SO - SoC - PC mediante UART (véase tabla~\ref{tab:cp9}). En una segunda instancia de prueba, se probó la capacidad del microprocesador softcore OpenRisc para ejecutar un programa de prueba realizado en lenguaje C que ejecute hilos, mediante un sistema operativo que maneja multihilo (véase tabla~\ref{tab:cp10}).
+
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -1124,7 +1128,8 @@ Para mas detalle de estas etapas en la implementación sobre el kit de desarroll
 		\newpage
 				
 		\section{Testing}	
-		
+Para el Prototipo cuatro se planificaron una serie de casos de prueba para validar los requerimiento planteados. El primer caso de prueba que se realizo fue para validar el correcto funcionamiento del gestor de arranque uBoot, mediante la carga de un programa de prueba realizado en lenguaje C (véase tabla~\ref{tab:cp11}). El siguiente caso se realizo cargando el gestor de arranque directamente desde la memoria FLASH SPI (véase tabla~\ref{tab:cp12}). Luego para validar el funcionamiento de la imagen creada del kernel de Linux en una arquitectura OpenRISC, se lo ejecuto sobre el simulador de la arquitectura OpenRISC conocido como \verb|or1ksim| (véase tabla~\ref{tab:cp13}). Finalmente, el ultimo caso de prueba que se realizo fue para validar la implemento del Kernel de Linux sobre el el kit de desarrollo S3ADSP1800A (véase tabla~\ref{tab:cp14}).
+
 		
 		\begin{table}[h!]
 		\centering
@@ -1179,8 +1184,8 @@ CPU:   OpenRISC-1200 (rev 8) @ 25 MHz
            ORBIS64: no
            ORFPX32: no
            ORFPX64: no
-           Hardware multiplier: yes
-           Hardware divider: yes
+           Hardware multiplier: no
+           Hardware divider: no
 BOARD: s3adsp1800a
 SF: Detected M25P64 with page size 64 KiB, total 8 MiB
 NET:   ETHOC-0
@@ -1427,7 +1432,7 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 		implementado en el proyecto ORPSoC.
 		
 		El kernel de Linux pudo compilarse éxitosamente, con herramientas de compilación cruzada, sin mayores inconvenientes durante la construcción de su
-		imágen y sus herramientas (Busybox). Luego, se ejecutó el kernel sobre el simulador de la arquitectura OpenRISC conocido como \verb|or1ksim|. Pudo
+		imágen y sus herramientas (Busybox). Luego, se ejecutó el kernel sobre el simulador \verb|or1ksim|. Pudo
 		comprobarse así, el correcto funcionamiento de la imágen construida y su correcta implementación para una arquitectura OpenRISC. Sin embargo, al
 		intentar ejecutar el Kernel sobre el kit de desarrollo S3ADSP1800A, surgieron inconvenientes respecto del acceso a memoria durante la secuencia de
 		inicio del Sistema Operativo. En el análisis efectuado ante este problema se presentaron diversos impedimientos. El primero de ellos fue la escasa
