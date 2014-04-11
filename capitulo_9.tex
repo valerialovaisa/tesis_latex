@@ -43,9 +43,11 @@ En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se a
 	En este primer prototipo se implementó el proyecto MinSoC en la placa de desarrollo de Xilinx con el fin de verificar el funcionamiento del procesador y sus periféricos. Para lograr este objetivo se requiere de la instalación y puesta en funcionamiento de las herramientas de síntensis, place \& route(PAR) y programación de la FPGA Spartan 3A. 
 
 	\section{Requerimientos del prototipo}
+En el Apartado~\ref{part:partestudio} hemos desarrollado el estudio del problema, donde se establecieron los requerimientos del usuario. Luego realizamos un estudio de la viabilidad, donde se selecciono la placa de desarrollo y las herramientas de trabajo que nos permitió plantear las bases sobre las cuales desarrollar el primer prototipo. Partimos de los siguientes requerimientos, expresados en la tabla~\ref{tab:tdr1}.
+
 		\begin{table}[h]
 		\centering
-		\begin{tabular}{ p{2.5cm} p{14.5cm} }
+		\begin{tabular}{ p{2.5cm} p{12.5cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
 		\hline 
@@ -62,16 +64,19 @@ En cada prototipo se tienen en cuenta los posibles riesgos ya mencionadas y se a
 		\hline		
 		\end{tabular}
 		\caption{Tabla de requerimientos del prototipo uno}
+		\label{tab:tdr1}
 		\end{table}
 
 %\newpage
 	
 	\section{Matriz de Riesgo para el Prototipo Uno}
+La gestión de riesgos es importante particularmente debido a las incertidumbres inherentes con las que se enfrentan muchos proyectos. En la tabla~\ref{tab:riegos} Tabla de riegos vs. Requerimientos del prototipo uno, se muestra el resultado del análisis de la identificación de los riesgos asociados a los requerimientos del prototipo uno, ordenado por importancia y ocurrencia.
+
 \hspace{-15mm}
 \vspace{-10mm}
 		\begin{table}[h!]
 		\centering
-		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\begin{tabular}{ p{2.5cm} p{9cm} p{1.5cm} p{2cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados& Riegos Asociados & Severidad  & Ocurrencia \\
 		\hline
@@ -96,9 +101,11 @@ de bugs & Crítica  & Ocasional\\
 		\hline
 		\end{tabular}
 		\caption{Tabla de riegos vs. Requerimientos del prototipo uno}
-		%\label{tab:riegos}
+		\label{tab:riegos}
 		\end{table}
 
+En la planificación de riesgos se considero cada uno de los riesgos identificados y se desarrollaron estrategias para manejar dichos riesgos. Por cada uno de los riesgos se pensaron acciones a llevar a cabo para minimizar el impacto que tendrá sobre el prototipo en caso de ocurrir, como así también qué información sería necesario observar para anticiparnos a estos problemas.
+En la tabla~\ref{tab:planificación} podemos ver los resultados de la planificación de riesgos.
 
 		\begin{table}[h!]
 		\centering
@@ -122,7 +129,7 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		\hline
 		\end{tabular}
 		\caption{Planificación de riesgos del prototipo uno}
-		%\label{tab:planificación}
+		\label{tab:planificación}
 		\end{table}
 
 
@@ -172,12 +179,12 @@ Para mas detalle de estas cinco etapas en la implementación sobre la placa de d
 Para llevar a cabo el testing del prototipo se planificó una serie de casos de prueba sencillos que validen cada uno de los requerimiento planteados.
 El principal requisito para el comienzo de las pruebas fueron las herramientas de compilación y depuración funcionando correctamente. En una primera
 instancia fue necesario disponer de algún medio de respuesta de parte del SoC, razón por la cual se realizó un caso de prueba que compruebe la
-comunicación SoC - PC mediante UART.  En una segunda instancia de prueba, se probó la unidad Ethernet para garantizar correcto funcionamiento, estableciendo una conexión entre el SoC y la PC de pruebas. 
+comunicación SoC - PC mediante UART (véase tabla~\ref{tab:cp1}).  En una segunda instancia de prueba, se probó la unidad Ethernet para garantizar correcto funcionamiento, estableciendo una conexión entre el SoC y la PC de pruebas (véase tabla~\ref{tab:cp2}). 
 
 Para evaluar las capacidades básicas del microprocesador se desarrolló un programa de prueba multiplicador de matrices binarias. Las matrices se
 generan a partir de una secuencia binaria pseudoaleatoria. El programa incrementa iteración a iteración el grado de las matrices multiplicadas y
-realiza los productos correspondientes registrando el tiempo que tarda en realizar el producto completo. En un último caso de prueba, el programa se
-depura paso a paso y mediante breakpoints para verificar su correcto funcionamiento.
+realiza los productos correspondientes registrando el tiempo que tarda en realizar el producto completo (véase tabla~\ref{tab:cp3}). En un último caso de prueba, el programa se
+depura paso a paso y mediante breakpoints para verificar su correcto funcionamiento(véase tabla~\ref{tab:cp4}).
 
  \begin{table}[h!]
 		\centering
@@ -214,6 +221,7 @@ depura paso a paso y mediante breakpoints para verificar su correcto funcionamie
 		Resultados Obtenidos & Al ejecutarse la aplicación de prueba del UART se pudo observar la cadena de string esperada "HELLO WORLD" \\
 		\hline
 		\end{tabular}
+		\label{tab:cp1}
 		\caption{Caso de prueba T001}
 		\end{table}
 
@@ -254,6 +262,7 @@ depura paso a paso y mediante breakpoints para verificar su correcto funcionamie
 		Resultados Obtenidos & Al ejecutarse un programa de prueba pudo observarse la cadena de string ``HELLO WORLD`` y observar 0xFF02B4050 en los paquetes captados por la aplicación \verb|wireshark| \\
 		\hline
 		\end{tabular}
+		\label{tab:cp2}
 		\caption{Caso de prueba T002}
 		\end{table}
 
@@ -298,6 +307,7 @@ depura paso a paso y mediante breakpoints para verificar su correcto funcionamie
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T003}
+		\label{tab:cp3}
 		\end{table}
 
 \newpage
@@ -394,6 +404,7 @@ Fin del programa
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T004}
+		\label{tab:cp4}
 		\end{table}
 
 
@@ -419,6 +430,8 @@ Fin del programa
 %\newpage
 %\clearpage				
 		\section{Requerimientos del Prototipo}
+Para la base de desarrollo del prototipo dos se partió de los requerimientos, expresados en la tabla~\ref{tab:tdr2}.
+
 		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{2.5cm} p{14.5cm} }
@@ -442,14 +455,15 @@ Fin del programa
 		\hline		
 		\end{tabular}
 		\caption{Tabla de requerimientos del prototipo dos}
+		\label{tab:tdr2}
 		\end{table}
 
 
 		\section{Matriz de Riesgo para el Prototipo Dos} 
-
+En la tabla~\ref{tab:riegos2} Tabla de riegos vs. Requerimientos del prototipo dos se muestra al igual que en el prototipo anterior el resultado del análisis de la identificación de los riesgos asociados a los requerimientos del prototipo dos, ordenado por importancia y ocurrencia.
 		\begin{table}[h!]
 		\centering
-		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\begin{tabular}{ p{2.5cm} p{9cm} p{1.5cm} p{2cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados& Riegos Asociados & Severidad  & Ocurrencia \\
 		\hline
@@ -468,10 +482,10 @@ del Soc & Crítico & Ocasional\\
 		\hline
 		\end{tabular}
 		\caption{Tabla de riegos vs. Requerimientos del prototipo dos}
-		%\label{tab:riegos}
+		\label{tab:riegos2}
 		\end{table}
 
-
+En la tabla~\ref{tab:planificación2} podemos ver los resultados de la planificación de riesgos.
 
  		\begin{table}[h!]
 		\centering
@@ -496,7 +510,7 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		\hline
 		\end{tabular}
 		\caption{Planificación de riesgos del prototipo dos}
-		%\label{tab:planificación}
+		\label{tab:planificación2}
 		\end{table}
 
 
@@ -530,12 +544,11 @@ El módulo de Debug proporciona soporte para la depuración via JTAG. Se conecta
 		dispositivos básicos de comunicación así como de las herramientas de diseño de hardware y software.
 		
 		Inicialmente se realizó un caso de prueba que compruebe la comunicación SoC - PC  Ethernet que de igual manera verifica el correcto funcionamiento
-		de la interfaz UART. La característica más importante de la implementación de ORPSoC es su capacidad de interactuar con las memorias SDRAM on board
-		dispuestas en la placa de desarrollo. Se realizó un caso de prueba especial que valide el funcionamiento de las mismas.
+		de la interfaz UART (véase tabla~\ref{tab:cp5}). La característica más importante de la implementación de ORPSoC es su capacidad de interactuar con las memorias SDRAM on board
+		dispuestas en la placa de desarrollo. Se realizó un caso de prueba especial que valide el funcionamiento de las mismas (véase tabla~\ref{tab:cp6}).
 
 		Para comprobar el correcto funcionamiento de las capacidades de depuración se realizó un caso de prueba simple mediante un programa que calcula la
-		cantidad de números primos existente en un intervalo seleccionado. Ante la necesidad de evaluar las capacidades del sistema embebido se realizó un
-		caso de prueba basado en el Benchmark Coremark.
+		cantidad de números primos existente en un intervalo seleccionado(véase tabla~\ref{tab:cp7}). Ante la necesidad de evaluar las capacidades del sistema embebido se realizó un caso de prueba basado en el Benchmark Coremark (véase tabla~\ref{tab:cp8}).
 
 \newpage
 		\begin{table}[h!]
@@ -578,6 +591,7 @@ El módulo de Debug proporciona soporte para la depuración via JTAG. Se conecta
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T005}
+		\label{tab:cp5}
 		\end{table}
 
 \begin{lstlisting}[frame=single,caption={Salida de la terminal serie durante la ejecución del programa ethmac-ping.or32},label={lst:reseth}]
@@ -625,6 +639,7 @@ board IP : 192.168.1.2
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T006}
+		\label{tab:cp6}
 		\end{table}
 
 \newpage
@@ -669,6 +684,7 @@ board IP : 192.168.1.2
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T007}
+		\label{tab:cp7}
 		\end{table}
 
 \begin{lstlisting}[frame=single,caption={Salida de la terminal serie durante la ejecución del programanumprim.elf},label={lst:rescom}]
@@ -715,6 +731,7 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T008}
+		\label{tab:cp8}
 		\end{table}
 
 
@@ -755,7 +772,8 @@ CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFO
 		Para el tercer prototipo se añadió al prototipo dos la funcionalidad aportada por el Sistema Operativo de tiempo real eCos (embedded configurable operating system) que adiciona la capacidad de la ejecución de múltiples hilos. 
 
 		\section{Requerimientos del Prototipo}
-		
+En la tabla~\ref{tab:tdr3} se muestran los requerimientos para la implemtación del prototipo tres.		
+
 		\begin{table}[h!]
 		\centering		
 		\begin{tabular}{ p{2.5cm} p{14.5cm}}
@@ -772,14 +790,15 @@ CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFO
 		\hline		
 		\end{tabular}
 		\caption{Tabla de requerimientos del prototipo tres}
+		\label{tab:tdr3}
 		\end{table}
 \newpage		
 
 		\section{Matriz de Riesgo para el Prototipo Tres} 
-
+En la tabla~\ref{tab:riegos3} se muestra el resultado del análisis de la identificación de los riesgos asociados a los requerimientos del prototipo tres, ordenado por importancia y ocurrencia.
 		\begin{table}[h!]
 		\centering
-		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\begin{tabular}{ p{2.5cm} p{9cm} p{1.5cm} p{2cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados& Riegos Asociados & Severidad  & Ocurrencia \\
 		\hline
@@ -801,11 +820,11 @@ CoreMark 1.0 : 40.000000 / GCC4.5.1-or32-1.0rc4 -O2  -mboard=s3adsp1800a -DPERFO
 		\hline
 		\end{tabular}
 		\caption{Tabla de riegos vs. Requerimientos del prototipo tres}
-		%\label{tab:riegos}
+		\label{tab:riegos3}
 		\end{table}
 
 \newpage
-
+En la tabla~\ref{tab:planificación3} podemos ver los resultados de la planificación de riesgos.
  		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
@@ -832,7 +851,7 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\hline
 		\end{tabular}
 		\caption{Planificación de riesgos del prototipo tres}
-		%\label{tab:planificación}
+		\label{tab:planificación3}
 		\end{table}
 
 \newpage
@@ -911,6 +930,7 @@ En el anexo~\ref{app:apendice4} se encuentra una guía mas detallada de los paso
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T009}
+		\label{tab:cp9}
 		\end{table}
 
 \newpage			
@@ -956,6 +976,7 @@ En el anexo~\ref{app:apendice4} se encuentra una guía mas detallada de los paso
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T010}
+		\label{tab:cp10}
 		\end{table}
 
 \newpage
@@ -991,7 +1012,8 @@ Thead 0: and now a delay of 244 clock ticks
 	    reducida del núcleo de Linux y herramientas provistas por el paquete BusyBox. 
 		
 		\section{Requerimientos del Prototipo}
-		
+Para la implementación del prototipo cuatro se tomaron los requerimientos, expuestos en la tabla~\ref{tab:tdr4}.		
+
 		\begin{table}[h!]
 		\centering	
 		\begin{tabular}{ p{2.5cm} p{14.5cm} }
@@ -1004,14 +1026,16 @@ Thead 0: and now a delay of 244 clock ticks
 		\hline 
 		\end{tabular}
 		\caption{Tabla de requerimientos del prototipo cuatro}
+		\label{tab:riegos4}
 		\end{table}
 		
 		\newpage
 		\section{Matriz de Riesgo para el Prototipo Cuatro} 
+En la tabla~\ref{tab:riegos4} Tabla de riegos vs. Requerimientos del prototipo cuatro se muestra el resultado del análisis de la identificación de los riesgos asociados a los requerimientos, ordenado por importancia y ocurrencia.
 
 		\begin{table}[h!]
 		\centering
-		\begin{tabular}{ p{2.5cm} p{9cm} p{2cm} p{2cm} }
+		\begin{tabular}{ p{2.5cm} p{9cm} p{1.5cm} p{2cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req Asociados  & Riegos Asociados & Severidad  & Ocurrencia \\
 		\hline RQX-PC 1 & Fallas en la generación de la imagen del SO para ser montada en el SoC & Crítica       & Probable \\
@@ -1024,8 +1048,10 @@ Thead 0: and now a delay of 244 clock ticks
 		\hline
 		\end{tabular}
 		\caption{Tabla de riegos vs. Requerimientos del prototipo cuatro}
-		%\label{tab:riegos}
+		\label{tab:riegos4}
 		\end{table}
+
+En la tabla~\ref{tab:planificación4} podemos ver los resultados de la planificación de riesgos.
 
 		\newpage
  		\begin{table}[h!]
@@ -1064,7 +1090,7 @@ Thead 0: and now a delay of 244 clock ticks
 		\hline
 		\end{tabular}
 		\caption{Planificación de riesgos del prototipo cuatro}
-		%\label{tab:planificación}
+		\label{tab:planificación4}
 		\end{table}
 
 		\newpage
@@ -1129,6 +1155,7 @@ Para mas detalle de estas etapas en la implementación sobre el kit de desarroll
 		\hline	
 		\end{tabular}
 		\caption{Caso de prueba T011}
+		\label{tab:cp11}
 		\end{table}
 
 \newpage		
@@ -1212,6 +1239,7 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		\hline	
 		\end{tabular}
 		\caption{Caso de prueba T012}
+		\label{tab:cp12}
 		\end{table}	
 \newpage
 
@@ -1243,6 +1271,7 @@ Cantidad de numero primos entre 1 y 2000 : 303
 		\hline	
 		\end{tabular}
 		\caption{Caso de prueba T013}
+		\label{tab:cp13}
 		\end{table}
 
 \begin{lstlisting}[frame=single,caption={Salida de la secuencia de inicio de linux embebido},label={lst:sallinux}]
@@ -1287,6 +1316,7 @@ bin	  dev   etc   init   mnt   proc   root   sbin   sys   usr   var
 		\hline	
 		\end{tabular}
 		\caption{Caso de prueba T014}
+		\label{tab:cp14}
 		\end{table}
 	
 \newpage 
