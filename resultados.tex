@@ -13,11 +13,7 @@ características.
 \end{itemize}				
 				
 	Para la ejecución de todas las pruebas se utilizó la placa desarrollo S3ADSP1800A del fabricante Xilinx que cumple con los requerimientos detallados
-	en la tabla~\ref{tab:requsr1} y se encontraba dentro de las alternativas disponibles al momento del desarrollo de este trabajo.
-
-
-La facilidad de adaptación del proyecto para portarse a otras arquitecturas reconfigurables le confiere gran versatilidad
-	ampliando notablemente su gama de aplicación. Durante el desarrollo de las pruebas se pretendió establecer los límites de aplicación del proyecto
+	en la tabla~\ref{tab:requsr1} y se encontraba dentro de las alternativas disponibles al momento del desarrollo de este trabajo. Durante el desarrollo de las pruebas se pretendió establecer los límites de aplicación del proyecto
 	que establezcan referencias sólidas para una futura elección del proyecto en aplicaciones reales.
 
 
@@ -72,13 +68,13 @@ Como se puede observar los resultados obtenidos luego del proceso completo de im
 	desplazamiento. Se utilizó el 5\% de los bloques de entrada/salida, el 20\% de los BUFGMUXs ó buffers de clock global, el 12\% de los DCMs, el 4\% de
 	los bloques DSP y el 83\% de los bloques de RAM. El proceso Technology Mapping utilizó un pico 415 MB de memoria.
 
-Teniendo en cuenta los datos obtenidos y la facilidad de adaptación del proyecto para portarse a otras arquitecturas reconfigurables, se pueden aproximar los límites de aplicación del proyecto para una futura elección en otras placas que representen menor costo para ser usadas en aplicaciones reales.
+Teniendo en cuenta los datos obtenidos y la facilidad de adaptación del proyecto para portarse a otras arquitecturas reconfigurables, se pueden aproximar los límites de la aplicación del proyecto para el uso mas eficiente de los recursos provistos de una futura elección en placas de desarrollo, derivando esto, por ejemplo en reducción de costos.
 
 
 \newpage
 	\section{Resultados de Utilización de FPGA en la Implementación del Proyecto ORPSoC}
-	
-	A continuación en la tabla ~\ref{tab:conbench1} se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.
+
+El proyecto ORPSoC también se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA de diversos desarrolladores. A continuación en la tabla~\ref{tab:conbench1} se presentan con éxito la  implementación del proyecto sobre el kit de desarrollo de Xilinx.
 		
 \begin{table}[h!]
 		\begin{tabular}{ |p{6cm} |p{3cm} |p{3cm}| p{3cm}| }    
@@ -126,6 +122,8 @@ Teniendo en cuenta los datos obtenidos y la facilidad de adaptación del proyect
 	como LUTs de paso o en inglés route-thru. El 36\% restante están utilizadas como lógica combinacional , puertos Dual RAM y registros de
 	desplazamiento. Se utilizó el 24\% de los bloques de entrada/salida, el 29\% de los BUFGMUXs ó buffers de clock global, el 25\% de los DCMs, el 4\%
 	de los bloques DSP y el 19\% de los bloques de RAM. El proceso Technology Mapping utilizó un pico 410 MB de memoria.  
+ 
+Al igual que en la implemetación del proyecto anterior en la placa de desarrollo de Xilinx,  teniendo en cuenta la capacidad de adaptación a otras arquitecturas reconfigurable que tiene el proyecto ORPSoC, con los datos obtenidos se llego a la conclusión de que seria viable implemtarlo en placas mas pequeñas y de menor costo.
 
 %		\subsection{Reporte de timing}	
 %
@@ -147,40 +145,7 @@ Teniendo en cuenta los datos obtenidos y la facilidad de adaptación del proyect
 %  Maximum output delay after clock:  13.126ns
 %\end{lstlisting}
 
-\newpage		
-\section {Estudio de Capacidades del Proyecto ORPSoC}	
-		\subsection{Condiciones de entorno de ejecución para benchmark}
-		
-		En la siguente tabla~\ref{tab:conbench} se muestran las condiciones del entorno de prueba durante los benchmarks.  
 
-		\begin{table}[h!]
-		\begin{tabular}{ |p{5cm} |p{10cm}| }    
-		\hline
-		\multicolumn{2}{|>{\columncolor[gray]{.8}}c}{Condiciónes de entorno de prueba|}\\
-		\hline
-		Placa de desarrollo & S3ADSP1800A  \\
-		\hline 
-		FPGA & Xilinx Spartan-3 XC3SD1800A \\ 
-		\hline 
-		Reloj del procesador & 25 MHz\\ 
-		\hline
-		Caché de instrucciones  & 8 KB \\ 
-		\hline
-		Caché de datos	  & 8 KB\\ 
-		\hline	
-		MMU & Sí \\	
-		\hline
-		Multiplicador hardware & Sí \\		
-		\hline	
-		División hardware & Sí \\		
-		\hline	
-		Punto Flotante & Precisión simple \\		
-		\hline
-\end{tabular}
-%\end{center}
-\caption{Condiciones del entorno de prueba}
-\label{tab:conbench}
-\end{table}
 
 \newpage
 \section {Estudio de Capacidades del Proyecto MinSoC}
@@ -199,11 +164,11 @@ Teniendo en cuenta los datos obtenidos y la facilidad de adaptación del proyect
 		\end{itemize} 
 		
 		Entendemos por tamaño de la entrada el número de componentes sobre los que  se va a ejecutar el algoritmo. Por ejemplo, la dimensión del vector a
-		ordenar o el tamaño de las matrices a multiplicar. La unidad de tiempo a la que debe hacer referencia estas medidas de eficiencia  no puede ser
-		expresada en segundos o en otra unidad de tiempo concreta, pues no existe un ordenador estándar al que puedan hacer referencia todas las medidas. 
+		ordenar o el tamaño de las matrices a multiplicar. La unidad de tiempo a la que debe hacer referencia estas medidas de eficiencia  no puede 
+		expresarse en segundos o en otra unidad de tiempo concreta, pues no existe un ordenador estándar al que puedan hacer referencia todas las medidas. 
         Denotaremos por T(n) el tiempo de ejecución de un algoritmo para una entrada de tamaño n. 
         
-        También es importante hacer notar que el comportamiento de un algoritmo puede cambiar notablemente para diferentes entradas (por ejemplo, lo
+        También es importante hacer notar que el comportamiento de un algoritmo puede cambiar notablemente para diferentes entradas (por ejemplo, los
         ordenados que se encuentren ya los datos a ordenar). De hecho, para muchos programas el tiempo de ejecución es en realidad una función de la
         entrada específica, y no sólo del tamaño de ésta. Así suelen estudiarse tres casos para un mismo algoritmo: caso peor, caso mejor y caso
         medio. El caso mejor corresponde a la traza (secuencia de sentencias) del algoritmo que realiza menos instrucciones. Análogamente, el caso
@@ -266,20 +231,20 @@ for (i=0;i<indice;i++){						(*1*)
 		\subsection{Resultados de la ejecución del multiplicador de matrices binarias}
 			
 		Se presentan a continuación los resultados de ejecución del programa multiplicador de matrices binarias. Se utilizó un gráfico que muestra el orden
-		de las matrices multiplicadas vs. la cantidad de ticks de ejecución. El gráfico ~\ref{fig:mulmat} muestra con claridad que el tiempo de ejecución
+		de las matrices multiplicadas vs. la cantidad de ticks de ejecución. El figura~\ref{fig:mulmat} muestra con claridad que el tiempo de ejecución
 		aumenta exponencialmente a medida que aumenta el orden de las matrices multiplicadas.
 		
 \begin{figure}[h!]
  	\begin{center}
-  	\includegraphics[width=0.6\textwidth,keepaspectratio=true]{./images/matrices}
+  	\includegraphics[width=0.9\textwidth,keepaspectratio=true]{./images/calculomatriz}
   	\caption{Multiplicación de matrices binarias}
   	\label{fig:mulmat}
  	\end{center}
 	\end{figure}
 
-		Teniendo en cuenta que la aplicación fue ejecutada en una versión sintentizada básica del proyecto minSoC, este no posee unidades de multiplicación
+		Teniendo en cuenta que la aplicación ejecutó en una versión sintentizada básica del proyecto minSoC, este no posee unidades de multiplicación
 		por hardware que efectuen cálculos con mayor eficiencia, reduciendo el tiempo de ejecución. Pueden considerarse también, las optimizaciones del
-		compilador pero este aspecto fue analizado en el Prototipo Tres con mayor detalle. 	
+		compilador, pero este aspecto fue analizado en el Prototipo Tres con mayor detalle. 	
 
         \subsection{Estudio de los niveles y banderas de optimización del compilador cruzado}
 		\subsubsection{Optimización de código}
@@ -294,7 +259,7 @@ El funcionamiento básico de este mecanismo consiste en que el compilador revisa
 optimizaciones aplicables al nivel de abstracción.
 \begin{itemize}
   	\item Árbol sintáctico abstracto: optimizar subexpresiones redundantes, reducción de frecuencia, etc.
-	\item Tuplas o cuadruplas: optimizar en uso de los registros o de las variables temporales.
+	\item Tuplas o cuadruplas: optimizar el uso de los registros o de las variables temporales.
 	\item Ensamblador/Código máquina: convertir saltos a saltos cortos, reordenar instrucciones
 \end{itemize}
 
@@ -316,8 +281,8 @@ este trabajo son:
   	\item -O2 : Este nivel de optimización activa una serie de flags que pueden consultarse en \cite{etiqueta_OptGcc}
 	\item -O3 : Este nivel de procura una mayor optimización de código y activa una serie de flags conjunto con los del nivel -O2 que pueden consultarse
 	en \cite{etiqueta_OptGcc}
-	\item -funroll-loops : Desenrrolla los bucles cuyo numero de iteraciones puede ser determinado en tiempo de compilación. 
-	\item -funroll-all-loops : Desentrolla todos los bucles aún cuando el numero de iteraciones no pueda ser determinado en tiempo de compilación. 
+	\item -funroll-loops : Desenrrolla los bucles cuyo número de iteraciones puede ser determinado en tiempo de compilación. 
+	\item -funroll-all-loops : Desentrolla todos los bucles aún cuando el número de iteraciones no pueda determinarse en tiempo de compilación. 
 	\item -fgcse-sm : Cuando este flag se encuentra activado, el compilador procura mover fuera de los bucles las operaciones store.
 \end{itemize}
 
@@ -350,10 +315,9 @@ void main () {
 	\end{lstlisting}
 		
 En una primera instancia se realizó el desensamblado del binario generado para las funciones set (inicialización) y calc (actualización) con un
-numero de 1000 iteraciones y para cada uno de los flags de optimización. Los códigos generados pueden observarse en detalle en el Apéndice
-~\ref{chap:CodPrueba} 
+numero de 1000 iteraciones y para cada uno de los flags de optimización. Los códigos generados pueden observarse en detalle en el apéndice~\ref{chap:CodPrueba}. 
 \newpage		
-A continuación se presenta una tabla que resume los resultados obtenidos para 1000 iteraciones y diversos flags de optimización:
+A continuación se presenta en la tabla~\ref{tab:conbench2} el resume de los resultados obtenidos para 1000 iteraciones y diversos flags de optimización:
 
 \begin{table}[!h]
 		\centering
@@ -387,21 +351,56 @@ A continuación se presenta una tabla que resume los resultados obtenidos para 1
 		\hline 
 		\end{tabular}
 \caption{Resultados de la compilación del programa de prueba con diversos flags de optimización}
-%\label{tab:conbench1}
+\label{tab:conbench2}
 \end{table}	
 
+%\newpage		
+
+\section {Estudio de Capacidades del Proyecto ORPSoC}	
+		\subsection{Condiciones de entorno de ejecución para benchmark}
+		
+		En la siguente tabla~\ref{tab:conbench} se muestran las condiciones del entorno de prueba durante los benchmarks.  
+
+		\begin{table}[h!]
+		\begin{tabular}{ |p{5cm} |p{10cm}| }    
+		\hline
+		\multicolumn{2}{|>{\columncolor[gray]{.8}}c}{Condiciónes de entorno de prueba|}\\
+		\hline
+		Placa de desarrollo & S3ADSP1800A  \\
+		\hline 
+		FPGA & Xilinx Spartan-3 XC3SD1800A \\ 
+		\hline 
+		Reloj del procesador & 25 MHz\\ 
+		\hline
+		Caché de instrucciones  & 8 KB \\ 
+		\hline
+		Caché de datos	  & 8 KB\\ 
+		\hline	
+		MMU & Sí \\	
+		\hline
+		Multiplicador hardware & Sí \\		
+		\hline	
+		División hardware & Sí \\		
+		\hline	
+		Punto Flotante & Precisión simple \\		
+		\hline
+\end{tabular}
+%\end{center}
+\caption{Condiciones del entorno de prueba}
+\label{tab:conbench}
+\end{table}
 
 
 		\subsection{Resultados de la ejecución del benchmark CoreMark}
 		
 Inicialmente se prensentan los valores obtenidos durante la ejecución del Benchmark compilado con optimizaciones de nivel 2 (-O2) del
 compilador cruzado. El Benchmark CoreMark arroja un valor de  41.288895/25MHz = 1.65/MHz como resultado de la prueba. Las condiciones de ensayo se
-detallaron en la tabla~\ref{tab:conbench} y la ejecución se realizó con 600 iteraciones. 
+detallan en la tabla~\ref{tab:conbench} y la ejecución se realizó con 600 iteraciones. 
 
 
-	\subsection {Presentación de los resultados de optimización} 
+%	\subsection {Presentación de los resultados de optimización} 
 
-En la siguiente tabla ~\ref{tab:conbench2} se presentan los resultados de ejecutar el CoreMark en la placa de desarrollo de Xilinx, obtenidos mediante la utilización de optimización en la fase de compilación. Sin ningún tipo de optimización el valor del CoreMark fue 0,49/MHz
+En la tabla~\ref{tab:conbench2} se presentan los resultados de ejecutar el CoreMark en la placa de desarrollo de Xilinx, obtenidos mediante la utilización de optimización en la fase de compilación. Sin ningún tipo de optimización el valor del CoreMark fue 0,49/MHz.
 
 \begin{table}[!h]
 \begin{center}
@@ -429,7 +428,7 @@ Todos	 					& 1.55	& 10\%		& 1.52 & 5\%\\
 \label{tab:conbench2}
 \end{table}
 
-Se puede observar que se mejoro el valor del CoreMark para un nivel de optimizacion -O2 en un 65\% y para un nivel de optimización -O3 en un 66\% con respecto al valor sin ningún tipo de optimización. Luego agregando flags a cada nivel de compilación se pudo obtener para un nivel de optimización -O2 una mejora del 10\% y para un nivel de optimización -O3 una mejora del 5\%  con respecto el valor obtenido sin ningún flag habilitado en cada nivel de optimización. 
+Se puede observar que se mejoró el valor del CoreMark para un nivel de optimizacion -O2 en un 65\% y para un nivel de optimización -O3 en un 66\% con respecto al valor sin ningún tipo de optimización. Luego agregando flags a cada nivel de compilación se pudo obtener para un nivel de optimización -O2 una mejora del 10\% y para un nivel de optimización -O3 una mejora del 5\%  con respecto el valor obtenido sin ningún flag habilitado en cada nivel de optimización. 
 
 
 %  A continuación se muestran en el bloque ~\ref{lst:salidasO2} algunas de las salidas que resultan de ejecutar el CoreMark compilado con el nivel de optimización -O2, -O3 y diferentes flags de optimización se observaron los resultados mostrados en el bloque ~\ref{lst:salidasO2}
@@ -557,7 +556,7 @@ Se puede observar que se mejoro el valor del CoreMark para un nivel de optimizac
 % Compiler flags   : -O3  -mboard=s3adsp1800a -FUNROLL-LOOPS -MSOFT-FLOAT -FUNROLL-ALL-LOOPS -FGCSE-SM -DVALIDATION_RUN=1  
 % \end{lstlisting}
 
-En la siguiente tabla ~\ref{tab:compcoremark} se presenta una comparativa con resultados Coremark de varios microprocesadores entre los que se
+En la siguiente tabla~\ref{tab:compcoremark}~\cite{compcoremark} se presenta una comparativa con resultados Coremark de varios microprocesadores entre los que se
 encuentran los microprocesadores softcore privativos de los principales Fabricantes.
 
 \begin{table}[h!]
@@ -605,12 +604,12 @@ encuentran los microprocesadores softcore privativos de los principales Fabrican
 
 \newpage
 
-		\subsection{Resultados de la ejecución del benchmark Dyrstone}
+		\subsection{Resultados de la ejecución del benchmark Dhrystone}
+El Dhrystone compara el rendimiento del procesador usando una máquina de referencia: la VAX 11/780 es la máquina que corre a 1 DMIP (logra 1757 Dhrystones por segundo).
 
-		En esta sección se muestran los resultados de la ejección del Benchmark Drystone. Inicialmente, se compiló la aplicación sin optimizaciones del
-		compilador con 1.000.000 y 500.000 iteraciones del benchmark. Luego, se realizaron compilaciones con diferentes niveles y flags de optimización. 
+En esta sección se muestran los resultados de la ejección del Benchmark Dhrystone. Inicialmente, se compiló la aplicación sin optimizaciones del compilador con 1.000.000 y 500.000 iteraciones del benchmark. Luego, se realizaron compilaciones con diferentes niveles y flags de optimización. 
 
-		Los resultados obtenidos al ejecutar Dhrystone en sus diferentes construcciones se presenta en la Referencia~\ref{lst:Dhrystone}
+		Los resultados obtenidos al ejecutar Dhrystone en sus diferentes construcciones se presenta en los códigos~\ref{lst:Dhrystone}
 
 \begin{lstlisting}[frame=single,caption={Sin optimizaciones },label={lst:Dhrystone},breaklines]
 
@@ -643,15 +642,10 @@ Microseconds for one run through Dhrystone: ( 27380000 uS / 500k ) = 54 uS
 Dhrystones per Second:                      18518 
 \end{lstlisting}
 
-
-	\subsection {Presentación de los resultados de optimización} 
-
-El Dhrystone compara el rendimiento del procesador usando una máquina de referencia: la VAX 11/780 es la máquina que corre a 1 DMIP (logra 1757
-Dhrystones por segundo). No se puede parametrizar, a diferencia del Whetstone donde los distintos tipos de instrucción están en bucles, aquí los
-mismos no existen por lo que no se puede cambiar la importancia de cada tipo de instrucción alterando la cantidad de veces que se itera cada bucle.
+%\subsection {Presentación de los resultados de optimización} 
 
 En base a los resultados de ejecución se calcularon los siguientes 
-
+tabla~\ref{tab:optimiza} 
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{ |l |l |l |l |}
@@ -662,6 +656,7 @@ DMIPS 					& 7.79 			&   7.90  &  10.53  \\
 \hline
 \end{tabular}
 \end{center}
+\label{tab:optimiza}
 \caption{Comparación de compilación con distintos niveles de optimización}
 \end{table}
 
@@ -700,6 +695,7 @@ Pentium          &133    &239   &38.3\\
 \hline
 \end{tabular}
 \end{center}
+\label{tab:conbench}
 \caption{Comparativa de resultados Dhrystone}
 \end{table}
 
