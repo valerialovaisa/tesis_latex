@@ -7,16 +7,16 @@
 \item Se instanciaron los proyectos MinSoC y ORPSoC, ambos con núcleo OpenRISC. 
 \item Se evaluó el funcionamiento del microprocesador OpenRISC con programa de prueba de multiplicación de matrices binarias cuadradas.
 \item Se evaluaron las capacidades del compilador cruzado or32-elf-gcc en lo referido a su capacidad de optimización de código. 
-\item Se ejecutaron los benchmarks de sistemas embebidos coremark y dhrystone para posicionar el microprocesador OpenRISC entre CPUs de similares
+\item Se ejecutaron los benchmarks de sistemas embebidos \verb|coremark| y \verb|dhrystone| para posicionar el microprocesador OpenRISC entre CPUs de similares
 características.
-\item Se realizó la implementación de dos sistemas operativos, uno de tiempo real (ecOS) y uno de mayores capacidades considerado un estándar
-\textit{de facto} en sistemas opensource (Linux). 
+\item Se realizó la implementación de dos sistemas operativos, uno de tiempo real (ecOS) y uno de mayores capacidades (Linux). 
 \end{itemize}				
 				
 	Para la ejecución de todas las pruebas se utilizó la placa desarrollo S3ADSP1800A del fabricante Xilinx que cumple con los requerimientos detallados
-	en la Tabla ~\ref{tab:requsr1} y se encontraba dentro de las alternativas disponibles al momento del desarrollo de este trabajo. El proyecto MinSoC
-	se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA de diversos
-	desarrolladores. La facilidad de adaptación del proyecto para ser portado a otras arquitecturas reconfigurables le confiere gran versatilidad
+	en la tabla~\ref{tab:requsr1} y se encontraba dentro de las alternativas disponibles al momento del desarrollo de este trabajo.
+
+
+La facilidad de adaptación del proyecto para portarse a otras arquitecturas reconfigurables le confiere gran versatilidad
 	ampliando notablemente su gama de aplicación. Durante el desarrollo de las pruebas se pretendió establecer los límites de aplicación del proyecto
 	que establezcan referencias sólidas para una futura elección del proyecto en aplicaciones reales.
 
@@ -24,7 +24,8 @@ características.
 	\newpage
 	\section{Resultados de Utilización de FPGA en la Implementación del Proyecto MinSoC}
 
-	A continuación en la tabla ~\ref{tab:conbench} se presentan los resultados obtenidos luego del proceso completo de implementación del proyecto.
+El proyecto MinSoC se encuentra enfocado a su utilización en sistemas embebidos de capacidades ajustadas sintetizables en una gran cantidad de FPGA de diversos desarrolladores. En la tabla ~\ref{tab:conbench} se presentan con éxito la implemantación del proyecto en uno de los kit de desarrollo soportado por el proyecto y disponible para su uso en el laboratorio CUDAR.
+
 \begin{table}[h!]
 		\begin{tabular}{ |p{6cm} |p{3cm} |p{3cm}| p{3cm}| }    
 		\hline
@@ -66,11 +67,12 @@ características.
 \label{tab:conbench}
 \end{table}
 
-	Como se puede observar que desde el punto de vista de utilización lógica se utilizó el 15\% de Slice Flip Flops y el 41\% de LUTs disponibles en
-	la FPGA. Respecto de la distribución lógica se tiene un 50\% de ocupación de Slices y un 42\% de LUTs de 4 entradas de las cuales el 1\% se utiliza
+Como se puede observar los resultados obtenidos luego del proceso completo de implementación del proyecto MinSoC, desde el punto de vista de utilización lógica se utilizó el 15\% de Slice Flip Flops y el 41\% de LUTs disponibles en la FPGA.  Respecto de la distribución lógica se tiene un 50\% de ocupación de Slices y un 42\% de LUTs de 4 entradas de las cuales el 1\% se utiliza
 	como LUTs de paso o en inglés route-thru. El 41\% restante están utilizadas como lógica combinacional , puertos Dual RAM y registros de
 	desplazamiento. Se utilizó el 5\% de los bloques de entrada/salida, el 20\% de los BUFGMUXs ó buffers de clock global, el 12\% de los DCMs, el 4\% de
 	los bloques DSP y el 83\% de los bloques de RAM. El proceso Technology Mapping utilizó un pico 415 MB de memoria.
+
+Teniendo en cuenta los datos obtenidos y la facilidad de adaptación del proyecto para portarse a otras arquitecturas reconfigurables, se pueden aproximar los límites de aplicación del proyecto para una futura elección en otras placas que representen menor costo para ser usadas en aplicaciones reales.
 
 
 \newpage
