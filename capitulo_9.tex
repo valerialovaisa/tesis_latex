@@ -141,10 +141,10 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada para la arquitecturas destino OpenRISC. Se requiere de un servidor que
 		proporcione un puerto para la depuración con GDB, acción realizada por la aplicación Advanced JTAG Bridge que provee la interfaz de comunicación
 		entre el TAP JTAG conectado al SoC a través el cable JTAG y la estación de trabajo.
-		
+
 		\begin{figure}[!h]
  		\begin{center}
-  		\includegraphics[width=1\textwidth,keepaspectratio=true]{./images/proto1}
+  		\includegraphics[width=1.3\textwidth,keepaspectratio=true,angle=90]{./images/proto1}
   		\caption{Diagrama de despliegue prototipo uno}
   		\label{fig:minsoc}
  		\end{center}
@@ -173,7 +173,7 @@ Para mas detalle de estas cinco etapas en la implementación sobre la placa de d
 		
 		%%%%%%%\subsection{Diagrama de Secuencia}
 		%\subsection{Selección y Desarrollo de aplicaciones de prueba}
-\newpage
+
 		\section{Testing} \label {testing:proto1}
 
 Para llevar a cabo el testing del prototipo se planificó una serie de casos de prueba sencillos que validen cada uno de los requerimiento planteados.
@@ -185,7 +185,7 @@ Para evaluar las capacidades básicas del microprocesador se desarrolló un prog
 generan a partir de una secuencia binaria pseudoaleatoria. El programa incrementa iteración a iteración el grado de las matrices multiplicadas y
 realiza los productos correspondientes registrando el tiempo que tarda en realizar el producto completo (véase tabla~\ref{tab:cp3}). En un último caso de prueba, el programa se
 depura paso a paso y mediante breakpoints para verificar su correcto funcionamiento(véase tabla~\ref{tab:cp4}).
-
+\newpage
  \begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -267,7 +267,7 @@ depura paso a paso y mediante breakpoints para verificar su correcto funcionamie
 		\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
+
 \begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{5cm} p{10cm}  }
@@ -303,7 +303,7 @@ depura paso a paso y mediante breakpoints para verificar su correcto funcionamie
 		\hline
 		Resultados Esperados & Poder ver la ejecución correcta de un programa de prueba desarrollado \\
 		\hline	
-		Resultados Obtenidos & Al ser ejecutado se observaron los resultados mostrados en el Bloque~\ref{lst:salidamult}   \\
+		Resultados Obtenidos & Al ser ejecutado se observaron los resultados mostrados en el código~\ref{lst:salidamult}   \\
 		\hline
 		\end{tabular}
 		\caption{Caso de prueba T003}
@@ -434,10 +434,10 @@ Para la base de desarrollo del prototipo dos se partió de los requerimientos, e
 
 		\begin{table}[h!]
 		\centering
-		\begin{tabular}{ p{2.5cm} p{14.5cm} }
+		\begin{longtable}{ p{2.5cm} p{12.5cm} }
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
-		\hline 
+		\hline 		
 		RQX-PB 1 & Al prototipo debe implementar un SoC ORPSoC en la placa desarrollo S3ADSP1800A\\ 
 		\hline 
 		RQX-PB 2 & El prototipo debe garantizar el correcto funcionamiento de todos los periféricos conectados al SoC mediante el bus Wishbone\\ 
@@ -453,12 +453,12 @@ Para la base de desarrollo del prototipo dos se partió de los requerimientos, e
 		\hline
 		RQX-PB 7 & El prototipo debe evaluarse mediante el benchmark CoreMark para el posterior análisis de las capacidades del SoC\\
 		\hline		
-		\end{tabular}
+		\end{longtable}
 		\caption{Tabla de requerimientos del prototipo dos}
 		\label{tab:tdr2}
 		\end{table}
 
-
+%\newpage
 		\section{Matriz de Riesgo para el Prototipo Dos} 
 En la tabla~\ref{tab:riegos2} Tabla de riegos vs. Requerimientos del prototipo dos se muestra al igual que en el prototipo anterior el resultado del análisis de la identificación de los riesgos asociados a los requerimientos del prototipo dos, ordenado por importancia y ocurrencia.
 		\begin{table}[h!]
@@ -486,7 +486,7 @@ del Soc & Crítico & Ocasional\\
 		\end{table}
 
 En la tabla~\ref{tab:planificación2} podemos ver los resultados de la planificación de riesgos.
-
+\clearpage
  		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
@@ -514,7 +514,7 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		\end{table}
 
 
-\newpage
+
 		\section{Descripción de la Estructura del Prototipo Dos}
 		La figura~\ref{fig:orpsoc} muestra un esquema de la arquitectura planteada en el prototipo. Al igual que en el prototipo uno se utiliza una estación
 		de trabajo corriendo las herramientas de compilación (GCC) y depuración (GDB) en sus versiones de compilación cruzada. Se requiere de un servidor
@@ -523,7 +523,7 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 		
 		\begin{figure}[!h]
  		\begin{center}
-  		\includegraphics[width=1\textwidth,keepaspectratio=true]{./images/ORPSoCdia}
+  		\includegraphics[width=1.3\textwidth,keepaspectratio=true,angle=90]{./images/ORPSoCdia}
   		\caption{Arquitectura prototipo dos}
   		\label{fig:orpsoc} 
  		\end{center}
@@ -531,11 +531,11 @@ SoC & Dedicación de mayor tiempo para la implementación\\
 	
 		\section{Implementación}
 
-		La implementación se realiza siguiendo las mismas etapas que en el prototipo anterior. Para mas detalle en la implementación sobre la placa de desarrollo Xilinx puede ver el anexo~\ref{app:apendice2}.
-%Puede consultarse la Guía de ORPSoC en el Anexo ~\ref{app:apendice2} para una comprensión más profunda de los pasos a seguir en la implementación sobre la placa de desarrollo S3ADSP1800A.
-El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee
+		La implementación se realiza siguiendo las mismas etapas que en el prototipo anterior. El módulo de Debug proporciona soporte para la depuración via JTAG. Se conectan al sistema mediante un Bus Wishbone: un modulo de RAM que provee
 	acceso a las memorias SDRAM on board de la placa S3ADSP1800A, un módulo SPI que interactúa con la memoria flash on board de la placa antes
 	mencionada, un módulo UART y un módulo ETHERNET.
+
+Para mas detalle en la implementación sobre la placa de desarrollo Xilinx puede ver el anexo~\ref{app:apendice2}.
 		
 
 		\section{Testing}
@@ -776,7 +776,7 @@ En la tabla~\ref{tab:tdr3} se muestran los requerimientos para la implemtación 
 
 		\begin{table}[h!]
 		\centering		
-		\begin{tabular}{ p{2.5cm} p{14.5cm}}
+		\begin{tabular}{ p{2.5cm} p{12.5cm}}
 		\hline 
 		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
 		\hline 
@@ -823,8 +823,29 @@ En la tabla~\ref{tab:riegos3} se muestra el resultado del análisis de la identi
 		\label{tab:riegos3}
 		\end{table}
 
-\newpage
 En la tabla~\ref{tab:planificación3} podemos ver los resultados de la planificación de riesgos.
+
+\section{Descripción de la Estructura del Prototipo Tres}
+		La figura~\ref{fig:ecos} muestra el diagrama de despliegue del prototipo tres. Este prototipo utiliza como base al prototipo dos pero se ejecutan 
+		aplicaciones compiladas bajo ecOS.
+
+\section{Implementación}	
+		
+		La implementación de sistema operativo de tiempo real ecOS se realiza en una serie de etapas detalladas a continuación. 
+		\begin {itemize}
+		\item Descarga del código fuente del proyecto
+		\item Descarga de la aplicación de configuración de ecOS
+		\item Instalación de dependencias de compilación
+		\item Compilación de la herramienta de configuración
+		\item Configuración del sistema
+		\item Contrucción del sistema 
+		\item Compilación de programas de prueba
+		\item Ejecución de aplicaciones bajo ecOS
+ 		\end {itemize}
+En el anexo~\ref{app:apendice4} se encuentra una guía mas detallada de los pasos antes nombrados para la implemetación sobre el kit de desarrollo.
+
+
+		
  		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
@@ -854,36 +875,17 @@ en diferentes SO & Utilización de las herramientas en alguno de los SO compatib
 		\label{tab:planificación3}
 		\end{table}
 
-\newpage
 		
-		\section{Descripción de la Estructura del Prototipo Tres}
-		La figura~\ref{fig:ecos} muestra el diagrama de despliegue del prototipo tres. Este prototipo utiliza como base al prototipo dos pero se ejecutan 
-		aplicaciones compiladas bajo ecOS.
-		
+	
 		\begin{figure}[h!]
  		\begin{center}
-  		\includegraphics[width=1\textwidth,keepaspectratio=true]{./images/ecos}
+  		\includegraphics[width=1.3\textwidth,keepaspectratio=true,angle=90]{./images/ecos}
   		\caption{Diagrama de despliegue del prototipo tres}
   		\label{fig:ecos} 
  		\end{center}
 		\end{figure}
 	
-		\section{Implementación}	
 		
-		La implementación de sistema operativo de tiempo real ecOS se realiza en una serie de etapas detalladas a continuación. 
-		\begin {itemize}
-		\item Descarga del código fuente del proyecto
-		\item Descarga de la aplicación de configuración de ecOS
-		\item Instalación de dependencias de compilación
-		\item Compilación de la herramienta de configuración
-		\item Configuración del sistema
-		\item Contrucción del sistema 
-		\item Compilación de programas de prueba
-		\item Ejecución de aplicaciones bajo ecOS
- 		\end {itemize}
-En el anexo~\ref{app:apendice4} se encuentra una guía mas detallada de los pasos antes nombrados para la implemetación sobre el kit de desarrollo.
-
-
 		%Consulte la Guía de ecOS en el Anexo ~\ref{app:apendice4} para una comprensión más profunda de los pasos a seguir en la implementación sobre la		placa de desarrollo S3ADSP1800A.
 		
 \newpage
@@ -1057,7 +1059,22 @@ En la tabla~\ref{tab:riegos4} Tabla de riegos vs. Requerimientos del prototipo c
 
 En la tabla~\ref{tab:planificación4} podemos ver los resultados de la planificación de riesgos.
 
-		\newpage
+\section{Descripción de la Estructura del Prototipo Cuatro}
+		Se muestra a continuación figura~\ref{fig:proto4} el diagrama de despliegue del prototipo cuatro. Se utiliza como base nuevamente el prototipo
+		dos con un sistema operativo linux ejecutándose en él.
+
+\section{Implementación}	
+		
+La implementación del sistema operativo Linux se realiza en una serie de etapas detalladas a continuación. 
+		\begin {itemize}
+		\item Descarga del código fuente del proyecto
+		\item Configuración de las variables de entorno
+		\item Configuración del sistema
+		\item Confuguracion del kernel en el simulador \verb|or1ksim|
+		\item Instalación sobre la placa 
+		\end {itemize}
+Para mas detalle de estas etapas en la implementación sobre el kit de desarrollo de Xilinx puede ver el anexo~\ref{app:apendice5}
+
  		\begin{table}[h!]
 		\centering
 		\begin{tabular}{ p{4cm} p{4cm} p{4cm} p{3cm} }
@@ -1097,32 +1114,15 @@ En la tabla~\ref{tab:planificación4} podemos ver los resultados de la planifica
 		\label{tab:planificación4}
 		\end{table}
 
-		\newpage
-		
-		\section{Descripción de la Estructura del Prototipo Cuatro}
-		Se muestra a continuación figura~\ref{fig:proto4} el diagrama de despliegue del prototipo cuatro. Se utiliza como base nuevamente el prototipo
-		dos con un sistema operativo linux ejecutándose en él.
-
 		\begin{figure}[h!]
  		\begin{center}
-  		\includegraphics[width=1\textwidth,keepaspectratio=true]{./images/proto4}
+  		\includegraphics[width=1.3\textwidth,keepaspectratio=true,angle=90]{./images/proto4}
   		\caption{Diagrama de despliegue del prototipo cuatro}
   		\label{fig:proto4} 
  		\end{center}
 		\end{figure}
 	
-		\section{Implementación}	
 		
-La implementación del sistema operativo Linux se realiza en una serie de etapas detalladas a continuación. 
-		\begin {itemize}
-		\item Descarga del código fuente del proyecto
-		\item Configuración de las variables de entorno
-		\item Configuración del sistema
-		\item Confuguracion del kernel en el simulador or1ksim
-		\item Instalación sobre la placa 
-		\end {itemize}
-
-Para mas detalle de estas etapas en la implementación sobre el kit de desarrollo de Xilinx puede ver el anexo~\ref{app:apendice5}
  
 		%Consulte la Guía de Linux en el Anexo ~\ref{app:apendice5} para una comprensión más profunda de los pasos a seguir en la implementación sobre la		placa de desarrollo S3ADSP1800A.
 		\newpage
