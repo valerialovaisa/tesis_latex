@@ -154,7 +154,7 @@ Al igual que en la implemetación del proyecto anterior en la placa de desarroll
 		
 		El tiempo de ejecución de un algoritmo va a depender de diversos factores como son: los datos de entrada que le suministremos, la calidad del
 		código generado por el compilador para crear el programa objeto, la naturaleza y rapidez  de las instrucciones máquina del procesador concreto que
-		ejecute el programa, y la complejidad intrínseca del algoritmo. Hay dos estudios posibles sobre el tiempo: 
+		ejecute el programa y la complejidad intrínseca del algoritmo. Hay dos estudios posibles sobre el tiempo: 
  
 		\begin{itemize}
 		  \item Uno que proporciona una medida teórica (a priori), que consiste en obtener una  función que acote (por arriba o por abajo) el tiempo de
@@ -200,19 +200,19 @@ for (i=0;i<indice;i++){						(*1*)
 		
 	    Para determinar el tiempo de ejecución, calcularemos primero el número de operaciones elementales (OE) que se realizan: 
  		\begin{itemize}
- 		  \item En la línea (1) En la primera iteración del bucle si tiene una asignación. Luego se efectúa la condición del bucle que depende de ``i'' con
+ 		  \item Línea (1) En la primera iteración del bucle si tiene una asignación. Luego se efectúa la condición del bucle que depende de ``i'' con
  		  una comparación y un post incremento de i. (2 OE)
- 		  \item En la línea (2) En la primera iteración del bucle si tiene una asignación. Se efectúa la condición del bucle que depende de ``j'' con una
+ 		  \item Línea (2) En la primera iteración del bucle si tiene una asignación. Se efectúa la condición del bucle que depende de ``j'' con una
  		  comparación y un post incremento de j. (2 OE)
- 		  \item En la línea (3) En la primera iteración del bucle si tiene una asignación. Se efectúa la condición del bucle que depende de ``k'' con una
+ 		  \item Línea (3) En la primera iteración del bucle si tiene una asignación. Se efectúa la condición del bucle que depende de ``k'' con una
  		  comparación y un post incremento de k. (2 OE)
- 		  \item La línea (4) está compuesta por una asignación, dos accesos a vectores, dos incrementos y tres productos. (8 OE) 
- 		  \item La línea (5) está compuesta por una asignación y una suma (2 OE)
- 		  \item En la línea (6) se tiene fin del bucle que depende de ``k'' (1 OE)
- 		  \item En la línea (7) se tiene una asignación , un incremento, un producto y un acceso a vector (4 OE)
- 		  \item En la línea (8) se tiene una asignación (1 OE)
- 		  \item En la línea (9) se tiene fin del bucle que depende de ``j'' (1 OE)
- 		  \item En la línea (10) se tiene fin del bucle que depende de ``i'' (1 OE)
+ 		  \item Línea (4) está compuesta por una asignación, dos accesos a vectores, dos incrementos y tres productos. (8 OE) 
+ 		  \item Línea (5) está compuesta por una asignación y una suma (2 OE)
+ 		  \item Línea (6) se tiene fin del bucle que depende de ``k'' (1 OE)
+ 		  \item Línea (7) se tiene una asignación , un incremento, un producto y un acceso a vector (4 OE)
+ 		  \item Línea (8) se tiene una asignación (1 OE)
+ 		  \item Línea (9) se tiene fin del bucle que depende de ``j'' (1 OE)
+ 		  \item Línea (10) se tiene fin del bucle que depende de ``i'' (1 OE)
  		\end{itemize}
 		
 		Se establece que indice = n (todas matrices cuadradas nxn). Se tiene entonces: 
@@ -278,7 +278,7 @@ identifican cada uno de los mecanismos de optimización que el compilador implem
 este trabajo son:
 
 \begin{itemize}
-  	\item -O2 : Este nivel de optimización activa una serie de flags que pueden consultarse en \cite{etiqueta_OptGcc}
+  	\item -O2 : Este nivel de optimización activa una serie de flags que pueden consultarse en \cite{etiqueta_OptGcc}, una características de este nivel es que baja las restricciones en las operaciones con punto flotante.
 	\item -O3 : Este nivel de procura una mayor optimización de código y activa una serie de flags conjunto con los del nivel -O2 que pueden consultarse
 	en \cite{etiqueta_OptGcc}
 	\item -funroll-loops : Desenrrolla los bucles cuyo número de iteraciones puede ser determinado en tiempo de compilación. 
@@ -393,14 +393,11 @@ A continuación se presenta en la tabla~\ref{tab:conbench2} el resume de los res
 
 		\subsection{Resultados de la ejecución del benchmark CoreMark}
 		
-Inicialmente se prensentan los valores obtenidos durante la ejecución del Benchmark compilado con optimizaciones de nivel 2 (-O2) del
-compilador cruzado. El Benchmark CoreMark arroja un valor de  41.288895/25MHz = 1.65/MHz como resultado de la prueba. Las condiciones de ensayo se
-detallan en la tabla~\ref{tab:conbench} y la ejecución se realizó con 600 iteraciones. 
 
+Inicialmente el benchmark CoreMark arroja como resultado un valor de 0,49/MHz, sin ningún tipo de optimización. Luego se presentan en la tabla~\ref{tab:conbench2} los resultados obtenidos durante la ejecución del benchmark CoreMark compilado con los optimizadores de nivel 2 (-O2) y nivel 3 (-O3) del compilador cruzado. 
 
 %	\subsection {Presentación de los resultados de optimización} 
-
-En la tabla~\ref{tab:conbench2} se presentan los resultados de ejecutar el CoreMark en la placa de desarrollo de Xilinx, obtenidos mediante la utilización de optimización en la fase de compilación. Sin ningún tipo de optimización el valor del CoreMark fue 0,49/MHz.
+% 41.288895(iteracions/segundos)/25MHz =1.65coremark/Mhz
 
 \begin{table}[!h]
 \begin{center}
@@ -428,7 +425,7 @@ Todos	 					& 1.55	& 10\%		& 1.52 & 5\%\\
 \label{tab:conbench2}
 \end{table}
 
-Se puede observar que se mejoró el valor del CoreMark para un nivel de optimizacion -O2 en un 65\% y para un nivel de optimización -O3 en un 66\% con respecto al valor sin ningún tipo de optimización. Luego agregando flags a cada nivel de compilación se pudo obtener para un nivel de optimización -O2 una mejora del 10\% y para un nivel de optimización -O3 una mejora del 5\%  con respecto el valor obtenido sin ningún flag habilitado en cada nivel de optimización. 
+Se puede observar que se mejoró el valor del CoreMark para un nivel de optimizacion -O2 en un 65\% y para un nivel de optimización -O3 en un 66\% con respecto al valor sin ningún tipo de optimización. Esta diferencia de mas del 65\% para un nivel de optimizador -02 era esperada, teniendo en cuenta que CoreMarks tiene operaciones con punto flotante, por lo tanto vale la pena realizar la optimización. Luego agregando flags en cada nivel de compilación se pudo obtener para un nivel de optimización -O2 una mejora del 10\% y para un nivel de optimización -O3 una mejora del 5\%  con respecto el valor obtenido sin ningún flag habilitado en cada nivel de optimización. 
 
 
 %  A continuación se muestran en el bloque ~\ref{lst:salidasO2} algunas de las salidas que resultan de ejecutar el CoreMark compilado con el nivel de optimización -O2, -O3 y diferentes flags de optimización se observaron los resultados mostrados en el bloque ~\ref{lst:salidasO2}
@@ -559,6 +556,7 @@ Se puede observar que se mejoró el valor del CoreMark para un nivel de optimiza
 En la siguiente tabla~\ref{tab:compcoremark}~\cite{compcoremark} se presenta una comparativa con resultados Coremark de varios microprocesadores entre los que se
 encuentran los microprocesadores softcore privativos de los principales Fabricantes.
 
+
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{ |p{4cm} |p{4cm}|p{0.8cm}|p{1.5cm}|p{2.1cm}|p{2.2cm}|}
@@ -609,7 +607,7 @@ El Dhrystone compara el rendimiento del procesador usando una máquina de refere
 
 En esta sección se muestran los resultados de la ejección del Benchmark Dhrystone. Inicialmente, se compiló la aplicación sin optimizaciones del compilador con 1.000.000 y 500.000 iteraciones del benchmark. Luego, se realizaron compilaciones con diferentes niveles y flags de optimización. 
 
-		Los resultados obtenidos al ejecutar Dhrystone en sus diferentes construcciones se presenta en los códigos~\ref{lst:Dhrystone}
+Los resultados obtenidos al ejecutar Dhrystone en sus diferentes construcciones se presenta en los códigos~\ref{lst:Dhrystone}
 
 \begin{lstlisting}[frame=single,caption={Sin optimizaciones },label={lst:Dhrystone},breaklines]
 
@@ -660,6 +658,8 @@ DMIPS 					& 7.79 			&   7.90  &  10.53  \\
 \caption{Comparación de compilación con distintos niveles de optimización}
 \end{table}
 
+Los resultados obtenidas al ejecutar el benchmark Dhrystone compilado con diferentes niveles de optimización, ponen en evidencia la influencia de la optimización con nivel -O3 del compilador cruzado, en el resultado final del test con una mejora de más del \%33. Por lo que se ha concluido, que es adecuado usar un nivel -O3 de optimización.
+
 
 En la siguiente tabla se presenta una comparativa con resultados Dhrystone de varios microprocesadores comerciales.
 
@@ -699,6 +699,8 @@ Pentium          &133    &239   &38.3\\
 \caption{Comparativa de resultados Dhrystone}
 \end{table}
 
+Como se pueden ver en la tabla~\ref{tab:conbench} ~\cite{compdhr} los resultados del benchmark Drystone permitieron posicionar al OpenRISC respecto de otros procesadores comerciales clásicos de fabricantes conocidos.
+
 \section{Conclusión}
  Aún cumpliendo con los requerimientos especificados, la placa de desarrollo no cuenta con un completo soporte de periféricos on board ni con amplia
  documentación de apoyo respecto de la materia. Se presentaron grandes dificultades en el acceso a la memoria SPI FLASH S33 de Intel la cual se
@@ -715,7 +717,7 @@ Respecto al análisis de las capacidades de optimización del compilador cruzado
 optimización de bucles verificando el correcto funcionamiento del compilador medianto la técnica de desenrrollado de bucles utilizando mayor cantidad
 de registros y reduciendo la cantidad de saltos.
 	
-En cuanto a los resultados obtenidos durante la ejecución de los benchmarks CoreMark y Dhrystone ejecutados sobre la plataforma ORPSoC se puede
+En cuanto a los resultados obtenidos durante la ejecución de los benchmarks CoreMark y Dhrystone sobre la plataforma ORPSoC se puede
 señalar que el microprocesador OpenRISC presenta capacidades comparables con otros desarrollados por los fabricantes mas importantes de
 FPGAs (Xilinx , Altera) y microprocesadores (ARM). Las métricas obtenidas al ejecutar el benchmark CoreMark compilado con diferentes flags de
 optimización ponen en evidencia la baja influencia de estas optimizaciones del compilador cruzado en el resultado final del test. Los resultados del
@@ -723,8 +725,8 @@ benchmark Drystone permitieron posicionar al OpenRISC respecto de otros procesad
 	
 Las pruebas realizadas con el sistema operativo de tiempo real ecOS proveyeron información útil para el desarrollo de sistemas embebidos de tiempo
 real. Se analizaron inicialmente las capacidades y limitaciones en la ejecución de hilos. Aunque estas pruebas tan solo verifican la utilización de
-una parte las capacidades, el sistema operativo ecOS posee mayor funcionalidad que no fue probada en este trabajo y presenta capacidades comparables
-a implementaciones como lo son FreeRTOS y su implentación comercial eCosPro.
+una parte de las capacidades, el sistema operativo ecOS posee mayor funcionalidad que no se probó en este trabajo y presenta capacidades comparables
+a implementaciones como lo son su implentación comercial eCosPro y FreeRTOS .
 	
 La capacidad, por defecto, del Kernel de Linux de ser compilado para arquitecturas OpenRISC posibilitó tener un entorno de ejecución de amplia
 funcionalidad y gran utilización en el ámbito de desarrollo de Sistemas Embebidos.
