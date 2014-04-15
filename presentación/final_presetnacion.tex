@@ -1,0 +1,1010 @@
+%\documentclass[serif,mathserif]{beamer}
+\documentclass[xcolor=dvipsnames,mathserif,9pt]{beamer} 
+%\usecolortheme[named=Blue]{structure}
+\usecolortheme[rgb={0.1,0.75,0.65}]{structure}
+%\usecolortheme[rgb={0.25,0.85,0.65}]{structure}
+%%--- Para cambial el fondo ----------------------
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{fibra_optica8.jpg}}
+%%-----------------------------------------------
+
+\usepackage[spanish]{babel} % Para separar correctamente las palabras de multitud de idiomas
+%\usepackage[latin1]{inputenc} %Este paquete permite poner acentos directamente y ees
+\usepackage{amsmath, amsfonts, epsfig, xspace}
+\usepackage{algorithm,algorithmic}
+\usepackage{pstricks,pst-node}
+\usepackage{multimedia}
+%\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}%acentos
+%\usepackage[tight,center]{subfigure}
+%\setlength{\subfigcapskip}{-.5em}
+%\usepackage{beamerthemesplit}
+%\usepackage{multirow}
+%\usepackage{slashbox} 
+%\usepackage{threeparttable}
+%\usetheme{lankton-keynote}
+
+ 
+%--------------------------------------------------------------------------------------------------%
+%Comandos Propios
+% \newcommand{\frametitleA}[1]{
+% \frametitle{\vspace{-2mm} \LARGE \color{white} \textsf{\textbf{\textit{#1}}} } }
+
+% \newcommand{\framesubtitleA}[2]{
+% \framesubtitle{\vspace{2mm} \LARGE \color{white} \textsf{\textbf{\textit{#1}}}} }
+
+% \setbeamertemplate{navigation symbols}{}
+  
+%--------------------------------------------------------------------------------------------------%
+   
+%\usetheme[height=8mm]{Rochester}
+\usetheme{Madrid}
+
+%\usetheme{Frankfurt}
+%\usetheme[height=9mm]{Marburg}
+%\usetheme{Warsaw}
+
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Copenhagen}
+%\usetheme{Goettingen}
+%\usetheme{Singapore}
+
+\setbeamertemplate{items}[ball]
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number] %Para insertar el n�mero de p�gina cambiando el pie de p�gina.}
+
+%\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{figuras/fibra_optica.ps}}
+ 
+\author[M. L. Ferster]{Roberto Pablo Gomez - Valeria Lovaisa Michelini \\ \ \\  Directores \\ Federico Paredes - Orlando Micolini}
+
+\title[\hspace{2cm}\insertframenumber/\inserttotalframenumber]{\large
+  Implementación de un Sistema en Chip con Microprocesador
+Soft-Core y Soporte Linux\\
+}
+
+\date{\today} %leave out for today's date to be insterted
+%\date{June 2, 2011} %leave out for today's date to be insterted
+
+%\institute{Fundaci�n Tarpuy - 
+%Universidad Nacional de C�rdoba - C�rdoba}
+%\parskip=0.9cm
+ \itemsep = 5cm
+\begin{document}
+
+%{\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{figuras/fondo7.eps}}
+\setbeamertemplate{navigation symbols}{}
+\begin{frame}
+  \titlepage
+  \vspace{-0.2cm}
+%  \includegraphics[scale=0.2]{figuras/logo.ps}
+  \scriptsize
+\end{frame}%}
+
+\begin{frame}
+  \frametitle{Contenidos}
+  \tableofcontents
+\end{frame}
+
+%  
+%  
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \section{Objetivos y Motivaci�n}
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  %{\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{figuras/fondo7.eps}}
+%  % \begin{frame} 
+%  %   \begin{center} 
+%  %     \textbf{\LARGE Objetivos y Motivaci�n}
+%  %   \end{center}
+%  % \end{frame}
+%  %}
+%  \begin{frame}
+%    \frametitle{Contenidos}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%  
+%  %\subsection{Motivaci�n}
+%  \begin{frame}[allowframebreaks] \frametitle{Motivaci�n}
+%    \begin{itemize}\itemsep=0.25cm
+%    \item La  demanda  de   ancho  de  banda  crece  en   forma  continua  y
+%      acelerada debido al r�pido creciemiento de:
+%      \begin{itemize}\itemsep=0.2cm
+%      \item aplicaciones de gesti�n de l�nea,\\
+%      \item difusi�n de servicios de voz personal (telefon�a m�vil),\\
+%      \end{itemize}
+%      
+%    \item Es necesario elevar la  velocidad  de  transmisi�n.\\
+%    \item M�ltiples efectos (lineales  y no lineales) ponen cota
+%      superior a la capacidad del medio de comunicaci�n.\\
+%   
+%  
+%    \item Mejorar las  caracter�sticas del canal: resulta anti-econ�mico
+%      reemplazar los grandes tendidos de fibra �ptica ya instalados.\\
+%      
+%    \item T�cnicas  de recuperaci�n de  portadora:
+%      \begin{itemize}\itemsep=0.2cm
+%      \item \textbf{Lazos  enganchados en fase  (PLL):} permite realizar
+%        el seguimiento de fluctuaciones  senoidales de fase y frecuencia
+%        y fluctuaciones de frecuencia del l�ser transmisor y receptor.
+%        
+%        % dependiendo de la
+%        % modulaci�n  utilizada  para  la  transmisi�n de  la  informaci�n
+%        % pueden encontrarse  diferentes m�todos. Cada uno  de ellos var�a
+%        % en la  t�cnica utilzada para eliminar  la informaci�ndel s�mbolo
+%        % transmitido  conel  objetivo  de  aislar  el  error  de  fase  a
+%        % corregir.
+%      \item  \textbf{Algoritmo de  Viterbi \&  Viterbi  (V\&V):} permite
+%        realizar el  seguimiento del  ruido de fase  del l�ser  con baja
+%        latencia y bajo costo de implementaci�n.
+%      \end{itemize}
+%    \end{itemize}
+%  
+%  \end{frame}
+%  
+%  %\subsection{Objetivos Generales}
+%  \begin{frame}   \frametitle{Objetivos  Generales}   El   objetivo  del
+%    presente  proyecto   integrador  es  obtener   una  arquitectura  de
+%    recuperaci�n de portadora (en ingl�s \textit{Carrier Recovery (CR)})
+%    que  permita  compensar  las  perturbaciones de  fase  y  frecuencia
+%    introducidas  por el canal  de comunicaciones.   Los pasos  a seguir
+%    para cumplir con dicho objetivo fueron:
+%    \begin{itemize}\itemsep=0.25cm
+%    \item An�lisis del canal de comunicaci�n.
+%    \item Estudio te�rico de los algoritmos de recuperaci�n de portadora.
+%    \item Modeldo y simulaci�n de los algoritmos de recuperaci�n de portadora
+%    \item Estudio de desempe�o.
+%    \item Conclusiones.
+%    \end{itemize}
+%    
+%  \end{frame}
+%  
+%  %\subsection{Objetivos Particulares}
+%  \begin{frame}[allowframebreaks] \frametitle{Objetivos Particulares}
+%    
+%    \begin{itemize}\itemsep=0.25cm
+%    \item Estudio  y  simulaci�n   de  algoritmos   tradicionales  de
+%      recuperaci�n de portadora mediante lazos enganchados en fase.
+%      
+%    \item  Modelado y simulaci�n para la implementaci�n en paralelo de baja latencia.
+%      \begin{itemize}\itemsep=0.2cm
+%      \item  En estas  aplicaciones  es necesario  utilizar t�cnicas  de
+%        procesamiento  en   paralelo  para  poder   alcanzar  las  altas
+%        velocidades de transmisi�n requeridas  debido al estado del arte
+%        de la tecnolog�a actual de circuitos integrados.
+%      \item Como  resultado del lazo de realimentaci�n  existente en las
+%        t�cnicas de recuperaci�n de portadora  mediante el uso de PLL se
+%        incorpora una aproximaci�n que permite disminuir la latencia del
+%        lazo.
+%      \item Con  el objetivo de disminuir  la complejidad computacional,
+%        el  m�todo de  recuperaci�n  de portadora  de  baja latencia  se
+%        desarrolla en el dominio de la fase de la se�al.
+%      \end{itemize}
+%  
+%    \item Modelado y  simulaci�n de algoritmos de estimaci�n  de ruido de
+%      fase 
+%      % \begin{itemize}
+%      % \item El algoritmo  de Viterbi \& Viterbi (V\&V)  ha sido motivado
+%      %   por  su  buena   tolerancia  al  ruido  de  fase   dle  l�ser  e
+%      %   implementaci�n de baja ltencia y baja complejidad.
+%      % \end{itemize}
+%  
+%    \newpage  
+%    \item Desarrollo  de una arquitectura de  recuperaci�n de portadora
+%      que combina las ventajas del PLL y el algoritmo de V\&V.
+%      \begin{itemize}\itemsep=0.2cm
+%      \item El  PLL posee
+%        ventajas  sobre  el algoritmo  de  V\&V  en aspectos  operativos
+%        relacionados a la capacidad  de recuperaci�n de la frecuencia de
+%        portadora y el  seguimiento de fluctuaciones senoidales  de fase.
+%      \item Sin embargo, el algoritmo de V\&V posee una mejor tolerancia
+%        en lo que respecta al ruido de fase del l�ser.
+%      \item  Finalmente,   una  soluci�n  �ptima  ser�a   un  m�todo  de
+%        recuperaci�n de portadora de dos etapas que combina las ventajas
+%        del PLL para  la sincronizaci�n de frecuencia y  el algoritmo de
+%        V\&V para el seguimiento de ruido de fase.
+%      \end{itemize}
+%    \end{itemize}
+%   
+%  \end{frame}
+%  
+%  
+%  
+%  
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \section{Efectos de degradaci�n en sistemas �pticos coherentes}
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%  % {\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{figuras/fondo.ps}}
+%  %   {\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{figuras/fondo7.eps}}
+%    % \begin{frame}
+%    %   \begin{center}  \textbf{\LARGE Efectos  de  degradaci�n en  sistemas
+%    %       �pticos coherentes}
+%    %   \end{center}
+%    % \end{frame}%}
+%    
+%  \begin{frame}
+%    \frametitle{Contenidos}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%  
+%  \begin{frame} \frametitle{Esquema b�sico del sistema �ptico coherente}
+%    \begin{figure}[!h]
+%      \centering
+%      \includegraphics[scale=0.6]{figuras/canal1.ps}
+%      \caption{\scriptsize{Diagrama  de bloques  del  canal de  comunicaciones
+%          optico coherente}}
+%    \end{figure}
+%   
+%    \begin{figure}[!h]
+%      \centering
+%      \includegraphics[scale=0.6]{figuras/canal2.ps}
+%      \caption{\scriptsize{Diagrama  de  bloques  simplificado  del  canal  de
+%          comunicaciones optico coherente}}
+%    \end{figure}
+%    
+%  \end{frame}
+%  
+%  \subsection{Ruido �ptico}
+%  \begin{frame} \frametitle{Ruido �ptico}
+%    \begin{itemize}\itemsep=0.25cm
+%    \item Modelado como un ruido Gaussiano, blanco y aditivo.
+%    \item El impacto sobre el sistema puede ser medido mediante su potencia (OSNR)
+%    \end{itemize}
+%    
+%    \scriptsize{
+%      \begin{equation}
+%        S_{RX}(k)=  S_{TX}(k) + N(k)
+%      \end{equation}
+%      \begin{equation}
+%        SNR = OSNR + 10log_{10}(\frac{12.5}{Fs})
+%      \end{equation}}
+%    
+%    \begin{figure}[!h]
+%      \centering
+%      \includegraphics[scale=0.25]{figuras/constela_rx_with_ase_19_dB.eps}
+%      \includegraphics[scale=0.25]{figuras/constela_rx_with_ase_11_dB.eps}
+%    \end{figure}
+%  \end{frame}
+%  
+%  \subsection{Efectos y perturbaciones de fase}
+%    \begin{frame} \frametitle{Efectos y perturbaciones de fase \\ \small Offset de  fase  constante}
+%  
+%      \begin{itemize}
+%      \item Produce un  corrimiento de fase  constante en el espectro  de la
+%      se�al.
+%      \end{itemize}
+%      
+%      \scriptsize{
+%        \begin{equation}
+%          S_{RX}(k)=  S_{TX}(k)e^{j(\phi_{N}^{(offset)}(k))}
+%        \end{equation}}
+%      
+%      \begin{figure}[!h] 
+%        \includegraphics[scale=0.25]{figuras/constela_rx_with_phase_offset_01pi.eps}
+%        \includegraphics[scale=0.25]{figuras/constela_rx_with_phase_offset_01pi_3d.eps}
+%        % \caption{\scriptsize{Efecto de  offset de  fase sobre una  modulaci�n QPSK. $\phi^{(Offset)}_{N}(k) = \pi/10$}}
+%      \end{figure}
+%    \end{frame}
+%    
+%    \begin{frame} \frametitle{Efectos y perturbaciones de fase \\ \small Ruido de fase del l�ser}
+%      \begin{itemize}\itemsep=0.25cm
+%      \item Fluctuaciones de fase del  l�ser. El ruido de fase del l�ser
+%        transmisor es independiente al ruidos de fase del receptor.
+%      \item Es modelado como un proceso de Wiener.
+%      \end{itemize}
+%         
+%      \scriptsize{
+%        \begin{equation}
+%          S_{RX}(k)=  S_{TX}(k)e^{j(\phi_{N}^{(laser)}(k))}
+%        \end{equation}
+%        \begin{equation}
+%          \phi_N^{(laser)}(k) = \sum^{k}_{m=-\inf}x_m
+%        \end{equation}}
+%      
+%      \begin{figure}[!h] 
+%        \includegraphics[scale=0.25]{figuras/constela_rx_with_lw_0.2MHz.eps}
+%        \includegraphics[scale=0.25]{figuras/constela_rx_with_freq_lw_0.2_MHz_con_3d.eps}
+%        % \caption{\scriptsize{Ruido de  fase del l�ser  sobre una modulaci�n
+%        %     QPSK. Frecuencia del ancho de l�nea = 0.2[MHz]}}
+%      \end{figure}
+%    \end{frame}
+%    
+%    \begin{frame} \frametitle{Efectos y perturbaciones de fase \\ \small Fluctuaciones de jitter senoidal de fase}
+%  
+%      \begin{itemize}
+%      \item Fluctuaciones  senoidales  de   fase  producido   por  los
+%        componentes  electromagn�ticos   que  componen  el  canal �ptico.
+%      \end{itemize}
+%      
+%      \scriptsize{\begin{equation}
+%          S_{RX}(k) =  S_{TX}(k)e^{j(\phi_{N}^{(jitter)}(k))}
+%        \end{equation}
+%        \begin{equation}
+%          \phi^{(jitter)}_{N}(k) = A_{jitter}sin(\frac{2\pi f_{jitter}t}{f_S})
+%        \end{equation}}
+%          
+%      \begin{figure}[!h] 
+%        \includegraphics[scale=0.25]{figuras/constela_rx_with_jitter.eps}
+%        \includegraphics[scale=0.25]{figuras/constela_rx_with_jitter_3d.eps}
+%        % \caption{\scriptsize{Jitter  de  fase sobre  una  modulaci�n
+%        %     QPSK.  Amplitud  =  $0.1\pi$  [rad]. Frecuencia = 10[MHz]}}
+%      \end{figure}
+%      
+%    \end{frame}
+%  
+%    \subsection{Efectos y perturbaciones de frecuencia}
+%    \begin{frame} \frametitle{Efectos y perturbaciones de frecuencia \\ \small Offset de Frecuencia}
+%  
+%      \begin{itemize}
+%      \item Produce  un desplazamiento  en el  espectro  de la se�al.\\
+%      \end{itemize}
+%      
+%      \scriptsize{
+%        \begin{equation}
+%          \centering
+%          S_{RX} = S_{TX}e^{j\omega^{(offset)(k)}}
+%        \end{equation}
+%        \begin{equation}
+%          \centering
+%          \omega^{(offset)}(k) = \frac{2\pi f_{Offset}k}{f_S}
+%        \end{equation}}
+%      
+%      \begin{figure}[!h]
+%        \centering
+%        \includegraphics[scale=0.25]{figuras/constela_rx_with_freq_offset_1500_KHz.eps}
+%        \includegraphics[scale=0.25]{figuras/constela_rx_with_freq_offset_1500_KHz_con_3d.eps}
+%        % \caption{\scriptsize{Offset   de   frecuencia  sobre   una
+%        %    modulaci�n QPSK. Offset de frecuencia = 1[MHz]}}
+%      \end{figure}
+%    \end{frame}
+%  
+%  
+%    \begin{frame} \frametitle{Efectos y perturbaciones de frecuencia \\ \small Fluctuaciones de jitter senoidal de frecuencia}
+%      
+%      \begin{itemize}
+%      \item Fluctuaciones de frecuencia  del l�ser  del  transmisor y  del  l�ser del  oscilador local.\\
+%      \end{itemize}
+%  
+%      \scriptsize{
+%        \begin{equation}
+%          \centering
+%          S_{RX} = S_{TX}e^{j\omega^{(jitter)(k)}}
+%        \end{equation}
+%        \begin{equation}
+%          \centering
+%          \omega^{(offset)}(k) = \frac{2\pi f_{jitter}k}{f_S}
+%        \end{equation}}
+%  
+%      \begin{figure}[!h] 
+%        \includegraphics[scale=0.25]{figuras/constela_rx_with_jitter_freq.eps}
+%        \includegraphics[scale=0.25]{figuras/constela_rx_with_jitter_freq_3d.eps}
+%        % \caption{\scriptsize{Jitter   de   frecuencia   sobre  una   modulaci�n
+%        %     QPSK. Amplitud = 1.5[MHz].  Frecuencia = 10[KHz]. }}
+%      \end{figure}
+%    \end{frame}
+%  
+%  
+%  
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \section{Recuperaci�n de portadora mediante lazos enganchados en fase (PLL)}
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \begin{frame}
+%    \frametitle{Contenidos}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%  
+%  \subsection{Introducci�n}
+%  
+%  \begin{frame} \frametitle{Introducci�n \\ \small Lazos enganchados en fase (PLL)}
+%    \begin{itemize}\itemsep=0.25cm
+%    \item  Motivado principalmente  por la  capacidad de  seguimiento de
+%      fluctuaciones sinusoidales.
+%    \item Utiliza un PLL de segundo orden tipo II.
+%    \item Permite alcanzar  error de fase cero frente  a valores de fase
+%      que var�an en el tiempo.
+%    \end{itemize}
+%    \begin{figure}[!h]
+%      \centering
+%      \includegraphics[scale=0.5]{figuras/pll_orig.ps}
+%    \end{figure}
+%  \end{frame}
+%  
+%  
+%  \begin{frame} \frametitle{Introducci�n \\ \small Proceso de recuperaci�n de portadora}
+%    \begin{enumerate}\itemsep=0.25cm
+%    \item Se remueve la informaci�n de los s�mbolos transmitidos una vez
+%      que la se�al recibida ha sido demodulada en fase.
+%    \item Seguimiento de  la  fase  mediante la  cual  se obtienen  las
+%      variaciones de fase y frecuencia.
+%    \item Se  utilizan  las  estimaciones  de fase  y  frecuencia  para
+%      corregir el s�mbolo recibido.
+%    \end{enumerate}
+%   
+%    \begin{figure}[!h]
+%      \centering
+%      \includegraphics[scale=0.55]{figuras/recup_port.ps}
+%      \caption{Diagrama de bloques simplificado del receptor coherente}
+%    \end{figure}
+%  
+%    \begin{itemize}
+%    \item Los diferentes algoritmos de  CR se diferencian entre s� en la
+%      t�nica   utilizada  para  remover   la  informaci�n   del  s�mbolo
+%      transmitido.
+%    \item El comportamiento din�mico del sistema queda definido por el PLL.
+%    \end{itemize}
+%  \end{frame}
+%  
+%  
+%  \subsection{Algoritmos de CR para modulaci�n QPSK}
+%  \begin{frame} \frametitle{Algotirmos de CR para modulaci�n QPSK \\ \small M�todo Decisiones Directas (DD)}
+%    \begin{itemize}\itemsep=0.25cm
+%    \item Utiliza un slicer para la detecci�n del s�mbolo transmitido.
+%    \item El funcionamiento apropiado del  sistema depende de que las decisiones
+%      sean  correctas.
+%    \end{itemize}
+%  
+%    \begin{figure}[!h]
+%      \centering
+%      \includegraphics[scale=0.5]{figuras/dd_bloque.ps}
+%    \end{figure}
+%  \end{frame}
+%  
+%  \begin{frame} \frametitle{Algotirmos de CR para modulaci�n QPSK \\ \small M�todo Potencia N (PN)}
+%    \begin{itemize}\itemsep=0.25cm
+%    \item Eleva el s�mbolo recibido a la potencia N. (N: factor de modulaci�n NPSK)
+%    \item Posibles s�mbolos transmitidos: \scriptsize{$\psi_k = \pm\frac{\pi}{4},\pm\frac{3\pi}{4}$}
+%    \item \small{Para QPSK, N=4.}
+%    \end{itemize}
+%    \scriptsize{
+%    \begin{equation}
+%      e^{4j\psi_k}=e^{j(\pm\pi\,;\,\pm3\pi)}=-1.
+%    \end{equation}}
+%    
+%    \begin{figure}[!h]
+%      \centering
+%      \includegraphics[scale=0.4]{figuras/pon.ps}
+%    \end{figure}
+%  \end{frame}
+%  
+%  \begin{frame} \frametitle{Algotirmos de CR para modulaci�n QPSK \\ \small M�todo en el dominio de la fase (DF)}
+%    \begin{itemize}
+%    \item  El lazo de  recuperaci�n de  portadora solamente  necesita la
+%      informaci�n  de  fase  de  la  se�al  recibida  para  estimar  las
+%      perturbaciones de fase y frecuencia del canal.
+%    \item  Trabajar en  el  dominio  de la  fase  permite minimizar  los
+%      recursos computacionales  logrando un procesamiento  digital de la
+%      se�al eficiente.
+%    \end{itemize}
+%  
+%    \begin{figure}[!h]
+%      \centering
+%      \includegraphics[scale=0.35]{figuras/operaciones2.ps}
+%    \end{figure}
+%    
+%    \begin{figure}[!h]
+%      \centering
+%      \includegraphics[scale=0.5]{figuras/arq.ps}
+%    \end{figure}
+%  \end{frame}
+%  
+%  \begin{frame} \frametitle{Algotirmos de CR para modulaci�n QPSK \\ \small Resultados de simulaci�n}
+%    \vspace{-0.4cm}
+%    \begin{figure}[!h]
+%      \centering
+%      \subfigure[\scriptsize{Respuesta en Frecuencia}]{\includegraphics[scale=0.23]{figuras/todos_qpsk_bw.eps}}
+%      \subfigure[\scriptsize{Rango de captura}]{\includegraphics[scale=0.23]{figuras/todos_qpsk_cr.eps}}\\
+%      \subfigure[\scriptsize{Tolerancia al ancho de l�nea del l�ser}]{\includegraphics[scale=0.23]{figuras/todos_qpsk_lw.eps}}
+%      \subfigure[\scriptsize{Tolerancia al jitter de frecuencia}]{\includegraphics[scale=0.23]{figuras/todos_qpsk_jt.eps}}
+%    \end{figure}  
+%  \end{frame}
+%  
+%  
+%  
+%  \subsection{Implementaci�n en paralelo de baja latencia}
+%  
+%  \begin{frame} \frametitle{Implementaci�n en paralelo de baja latencia \\ \small Introducci�n}
+%      \begin{itemize}\itemsep=0.25cm
+%      \item El PLL es en realidad un filtro no lineal que impide el uso de
+%        la t�cnicas  que se desarrollan  las cuales s�lo son  aplicables a
+%        los filtros estrictamente lineales.      
+%      \item Por otra  parte, la aplicaci�n del PLL  en arquitecturas serie
+%        no se puede realizar con la actual tecnolog�a CMOS.      
+%      \item  Para solucionar  el inconveniente  de latencia,  un algoritmo
+%        simplificado de  la computac�n del  NCO ha sido propuesto  para la
+%        modulaci�n QPSK.      
+%      \item En las  siguientes filminas se desarrollar� dicho  m�todo y se
+%        extender� a la modulacion 16QAM.      
+%      \end{itemize}
+%      \scriptsize{
+%      \begin{block}{Nomenclaturas}
+%        \centering
+%        \begin{itemize}\itemsep=0.25cm
+%        \item $\theta_k$: entrada al PLL.
+%        \item $e_k$: error de fase.
+%        \item $\phi_k$: salida del NCO.
+%        \item $K_p$: ganancia proporcional del filtro de lazo.
+%        \item $K_i$: ganancia integral del filtro de lazo.
+%        \end{itemize}
+%      \end{block}}
+%    \end{frame}
+%  
+%  
+%    \begin{frame} \frametitle{Implementaci�n en paralelo de baja latencia \\ \small Aproximaci�n}
+%      \begin{itemize}
+%      \item La salida del NCO esta dada por:
+%        \begin{equation}
+%          \scriptsize
+%          \phi_k=\phi_{k-1}+K_pe_k+K_i\sum_{n=0}^{k-1} e_n, 
+%        \end{equation}
+%  
+%      \item Es posible considerar al PLL de segundo  orden tipo II
+%        como dos lazos de  realimentaci�n separados colocando un NCO tanto
+%        en el lazo proporcional como en el lazo integral del filtro.
+%        
+%        \begin{equation}
+%          \scriptsize
+%          \phi_{k}=\phi_{k}^{(p)}+\phi_{k}^{(i)}
+%        \end{equation}
+%        
+%        \begin{figure}[h]
+%          \centering
+%          \includegraphics[scale=0.45]{figuras/arq22.ps}
+%        \end{figure}
+%      \end{itemize}
+%        % \item Error de fase:
+%        %   \begin{equation} 
+%        %     \scriptsize
+%        %     e_{k+m}=(\varphi_{k+m} - \phi_{k+m-1}^{(p)})_{\frac{\pi}{2}} - \displaystyle\frac{\pi}{4}.
+%        %   \end{equation}
+%    \end{frame}
+%  
+%    
+%    
+%    \begin{frame} [allowframebreaks]\frametitle{Implementaci�n en paralelo de baja latencia \\ \small Aproximaci�n: An�lisis del lazo proporcional}
+%      \begin{itemize}
+%      \item La salida del NCO proporcional esta dada por:
+%        \begin{equation}
+%          \scriptsize
+%          \phi_k^{(p)}=\phi_{k-1}^{(p)}+K_pe_k
+%        \end{equation}
+%        \begin{equation}
+%          \scriptsize
+%          \phi_{k+1}^{(p)}=\phi_k^{(p)}+K_pe_{k+1}
+%        \end{equation}
+%        
+%      \item Reemplazando $\phi_k^{(p)}$ en $\phi_{k+1}^{(p)}$:
+%        
+%        \begin{equation*}
+%          \scriptsize
+%          \phi_{k+1}^{(p)} \simeq \phi_{k-1}^{(p)} + K_p[(\theta_k - \phi_{k-1}^{(p)})_{\frac{\pi}{2}} - \frac{\pi}{4}] + ...
+%        \end{equation*}
+%        \begin{equation}
+%          \scriptsize
+%          ... + K_p[(\theta_{k+1} - \phi_{k-1}^{(p)} + K_p[(\theta_k - \phi_{k-1}^{(p)})_{\frac{\pi}{2}}- \frac{\pi}{4}])_{\frac{\pi}{2}} - \frac{\pi}{4}]
+%        \end{equation}
+%        
+%      \item Asumiendo que:
+%        \begin{equation}
+%          \scriptsize
+%          K_p[(\theta_{k+1} - \phi_{k-1}^{(p)} + K_p[(\theta_k - \phi_{k-1}^{(p)})_{\frac{\pi}{2}}-\displaystyle\frac{\pi}{4}])_{\frac{\pi}{2}}] \simeq K_p[(\theta_k - \phi_{k-1}^{(p)})_{\frac{\pi}{2}}]
+%        \end{equation}
+%          
+%      \item $\phi_{k+1}^{(p)}$ puede reescribirse como:
+%        \begin{equation}
+%          \scriptsize
+%          \phi_{k+1}^{(p)}\simeq\phi_{k-1}^{(p)}+K_p\sum_{n=0}^{1}[(\theta_{k+n} - \phi_{k-1})_{\frac{\pi}{2}}-\frac{\pi}{4})_{\frac{\pi}{2}}]-K_p\frac{\pi}{4}].
+%        \end{equation}
+%        
+%      \item Generalizando para un paralelismo de orden P:
+%        \begin{equation}
+%          \scriptsize
+%          \boxed{\phi_{k+P-1}^{(p)} \simeq \phi_{k-1}^{(p)}+K_p\sum_{n=0}^{P-1}[(\theta_{k+n} - \phi_{k-1}^{(p)})_{\frac{\pi}{2}} - K_p\frac{\pi}{4} ]-K_p\frac{\pi}{4}]}
+%        \end{equation}
+%      \end{itemize}
+%  
+%      \begin{figure}[h]
+%        \centering
+%        \includegraphics[scale=0.5]{figuras/prop_part_qpsk.ps}\\
+%        \vspace{0.2cm}
+%        \includegraphics[scale=0.5]{figuras/pe_block.ps}
+%  %      \caption{\scriptsize{Diagrama  de   bloques  detallado  del  lazo
+%  %          proporcional y la computaci�n del error}}
+%      \end{figure}
+%  
+%    \end{frame}
+%      
+%    \begin{frame}[allowframebreaks] \frametitle{Implementaci�n en paralelo de baja latencia \\ \small Aproximaci�n: An�lisis del lazo integral}
+%      \begin{itemize}
+%      \item Salida del NCO integral esta dada por:
+%        \begin{equation} 
+%          \scriptsize
+%          \phi_k^{(i)}=\phi_{k-1}^{(i)} + K_i\sum_{n=0}^{k-1} e_n,
+%        \end{equation}
+%        \begin{equation} 
+%          \scriptsize
+%          \phi_{k+1}^{(i)}=\phi_k^{(i)} + K_i\sum_{n=0}^{k} e_n, 
+%        \end{equation}        
+%          
+%      \item Reemplazando $\phi_k^{(i)}$ en $\phi_{k+1}^{(i)}$:
+%        \begin{equation} 
+%          \scriptsize
+%          \phi_{k+1}^{(i)}= \phi_{k-1}^{(i)} + K_i\sum_{n=0}^{k-1} e_n + K_i\sum_{n=0}^{k} e_n.
+%        \end{equation}        
+%        
+%      \item Asumiendo que:
+%        \begin{equation} 
+%          \scriptsize
+%          K_i\sum_{n=0}^{k-1} e_n \simeq K_i\sum_{n=0}^{k} e_n, 
+%        \end{equation} 
+%          
+%      \item $\phi_{k+1}^{(i)}$ puede reescribirse como:
+%        \begin{equation}
+%          \scriptsize
+%          \phi_{k+1}^{(i)}= \phi_{k-1}^{(i)} + 2K_i\sum_{n=0}^{k-1} e_n.
+%        \end{equation}
+%        
+%      \item Generalizando para un paralelismo de orden P:
+%        \begin{equation}
+%          \scriptsize
+%          \boxed{\phi_{k+P-1}^{(i)}=\phi_{k-1}^{(i)}+PK_i\sum_{n=0}^{k-1}e_n.}
+%        \end{equation}
+%        
+%      \end{itemize}
+%      
+%      \begin{figure}[h]
+%        \centering
+%        \includegraphics[scale=0.5]{figuras/foe_mio.ps}
+%  %      \caption{\scriptsize{Diagrama  de  bloques  detallado  del lazo  integral}}
+%      \end{figure}
+%  
+%    \end{frame}
+%  
+%    \begin{frame} \frametitle{Implementaci�n en paralelo de baja latencia \\ \small Arquitectura}
+%      \begin{figure}[!h]
+%        \centering
+%        \includegraphics[scale=0.5]{figuras/arq_p2.ps}
+%      \end{figure}
+%    \end{frame}
+%  
+%    \begin{frame} \frametitle{Implementaci�n en paralelo de baja latencia \\ \small Resultados de simulaci�n}
+%      \vspace{-0.4cm}
+%      \begin{figure}[!h]
+%        \centering
+%        \subfigure[\scriptsize{Respuesta en Frecuencia}]{\includegraphics[scale=0.23]{figuras/paral_vs_serie_qpsk_bw.eps}}
+%        \subfigure[\scriptsize{Rango de captura}]{\includegraphics[scale=0.23]{figuras/paral_vs_serie_qpsk_cr.eps}}\\
+%        \subfigure[\scriptsize{Tolerancia al ancho de l�nea del l�ser}]{\includegraphics[scale=0.23]{figuras/paral_vs_serie_qpsk_lw.eps}}
+%        \subfigure[\scriptsize{Tolerancia al jitter de frecuencia}]{\includegraphics[scale=0.23]{figuras/paral_vs_serie_qpsk_jt.eps}}
+%      \end{figure}
+%    \end{frame}
+%  
+%  
+%  
+%  
+%   \subsection{Algoritmos de CR para modulaci�n 16QAM}
+%   
+%   \begin{frame} \frametitle{Algotirmos de CR para modulaci�n 16QAM \\ \small Introducci�n}
+%     \begin{itemize}\itemsep=0.25cm
+%     \item Permite  transmitir informacion  extra a traves  del parametro
+%       amplitud.
+%     \item A  diferencia de QPSK en  la recuperaci�n de  portadora no es
+%       posible independizarse del m�dulo del simbolo recibido.
+%     \end{itemize}
+%     
+%     \begin{figure}[!h]
+%       \includegraphics[scale=0.2]{figuras/tx_qam.eps}
+%       \includegraphics[scale=0.2]{figuras/mod_qam.eps}
+%     \end{figure}
+%   \end{frame}
+%  
+%   \begin{frame}  \frametitle{Algotirmos de CR para modulaci�n 16QAM \\ \small Estimaci�n del error de fase}
+%     \begin{itemize}\itemsep=0.2cm
+%     \item \textit{ Estimaci�n mediante  regiones:}  es necesario  generar
+%       nuevamente el s�mbolo complejo para la toma de decisiones.
+%     \item \textit{Estimaci�n  mediante   m�dulo:}   Se  realiza   una
+%       clasificaci�n de los s�mbolos de la constelaci�n.
+%     \end{itemize}
+%     \begin{figure}[!h]
+%       \centering
+%       \includegraphics[scale=0.2]{figuras/des_reg_arq1.eps}
+%       \includegraphics[scale=0.2]{figuras/diff_mod.eps}\\
+%       \includegraphics[scale=0.2]{figuras/class1.eps}
+%       \includegraphics[scale=0.2]{figuras/class2.eps}
+%     \end{figure}
+%   \end{frame}
+%  
+%   % \begin{frame}  \frametitle{Algotirmos de CR para modulaci�n 16QAM \\ \small Estimaci�n del error de fase: clasificaci�n de s�mbolos seg�n el m�dulo}
+%   %   \begin{itemize}\itemsep=0.25cm
+%   %   \item S�mbolos Clase I contiene los s�mbolos del c�rculo medio (Simbolos no
+%   %     diagonales)
+%   %   \item S�mbolos Clase II: contiene los s�mbolos que pertenecen al c�rculo
+%   %     exterior e interior (S�mbolos diagonales).
+%  
+%   %     \begin{figure}[!h]
+%   %       \centering
+%   %       \includegraphics[scale=0.225]{figuras/class1.eps}
+%   %       \includegraphics[scale=0.225]{figuras/class2.eps}
+%   %     \end{figure}
+%   %   \item Error de fase:\\
+%   %     \vspace{0.25cm}
+%   %     \scriptsize{
+%   %       \( e_k = \left\{
+%   %         \begin{array}[h]{lll}
+%   %           (\theta_k - \phi_k)_{\frac{\pi}{2}} - \frac{\pi}{4} & \mathrm{si} \ &\frac{\sqrt{18}+\sqrt{10}}{2}<\left | A_k \right |<\frac{\sqrt{10}+\sqrt{2}}{2}\\
+%   %           (\theta_k - \phi_k)_{\frac{\pi}{2}} - \tan^{-1}(3) & \mathrm{si} &\frac{\sqrt{10}+\sqrt{2}}{2}<\left | A_k \right |<\frac{\sqrt{18}+\sqrt{10}}{2}, \, (\theta_k - \phi_k)_{\frac{\pi}{2}}>\frac{\pi}{4}\\
+%   %           (\theta_k - \phi_k)_{\frac{\pi}{2}} - \tan^{-1}(\frac{1}{3}) & \mathrm{si}& \frac{\sqrt{10}+\sqrt{2}}{2}<\left | A_k \right |<\frac{\sqrt{18}+\sqrt{10}}{2},\, (\theta_k - \phi_k)_{\frac{\pi}{2}}<\frac{\pi}{4} \\
+%   %         \end{array}
+%   %       \right. \)\\}
+%   %   \end{itemize}
+%   % \end{frame}
+%  
+%  
+%   \begin{frame}  \frametitle{Algotirmos de CR para modulaci�n 16QAM \\ \small M�todo Decisiones directas (DD) y S�mbolos diagonales (SD)}
+%     \begin{itemize}\itemsep=0.2cm
+%     \item M�todo Decisiones directas:
+%       
+%       \begin{figure}[!h]
+%         \centering
+%         \includegraphics[scale=0.5]{figuras_qam/aqr1.ps}
+%       \end{figure}
+%       
+%     \item M�todo S�mbolos diagonales:
+%       
+%       \begin{figure}[!h]
+%         \centering
+%         \includegraphics[scale=0.5]{figuras_qam/aqr2.ps}
+%       \end{figure}
+%  
+%     \end{itemize}
+%   \end{frame}
+%  
+%   \begin{frame}  \frametitle{Algotirmos de CR para modulaci�n 16QAM \\ \small M�todo Detecci�n del m�nimo error de fase (MEF)}
+%     \begin{figure}[!h]
+%       \centering
+%       \includegraphics[scale=0.5]{figuras_qam/arq_dm.ps}
+%     \end{figure}
+%    
+%     \begin{tabular}[t]{|c|c|c|}\hline 
+%       Clase & A & B \\ \hline
+%       I & $\frac{\pi}{4}$ & $\pi$ \\ \hline
+%       II & $\tan^{-1}(\frac{1}{3})$ & $\tan^{-1}(3)$ \\ \hline
+%     \end{tabular}
+%   \end{frame}
+%  
+%   \begin{frame}  \frametitle{Algotirmos de CR para modulaci�n 16QAM \\ \small M�todo Diagonalizaci�n de s�mbolos no diagonales (DSND)}
+%     \begin{figure}[!h]
+%       \centering
+%       \includegraphics[scale=0.75]{figuras_qam/qam16_3_method.ps}
+%     \end{figure}
+%     \begin{figure}[!h]
+%       \centering
+%       \includegraphics[scale=0.5]{figuras_qam/arq_dsnd.ps}
+%     \end{figure}
+%   \end{frame}
+%  
+%  \begin{frame}  \frametitle{Algotirmos de CR para modulaci�n 16QAM \\ \small Resultados de simulaci�n}
+%    \vspace{-0.4cm}
+%    \begin{figure}[!h]
+%      \centering
+%      \subfigure[\scriptsize{Respuesta en Frecuencia}]{\includegraphics[scale=0.23]{figuras/todos_qam16_bw.eps}}
+%      \subfigure[\scriptsize{Rango de captura}]{\includegraphics[scale=0.23]{figuras/todos_qam16_cr.eps}}
+%      \subfigure[\scriptsize{Tolerancia al ancho de l�nea del l�ser}]{\includegraphics[scale=0.23]{figuras/todos_qam16_lw.eps}}
+%      \subfigure[\scriptsize{Tolerancia al jitter de frecuencia}]{\includegraphics[scale=0.23]{figuras/todos_qam16_jt.eps}}
+%   \end{figure}  
+%  \end{frame}
+%  
+%  
+%  
+%  \begin{frame} \frametitle{Implementaci�n en paralelo de baja latencia \\ \small Propuesta}
+%      \begin{itemize}\itemsep=0.25cm
+%      \item La  estimaci�n del  error de fase  debe realizarse  sobre el
+%        s�mbolo recibido demodulado.
+%        
+%      \item La toma de decisiones por regi�n o por m�dulo tiene lugar en
+%        el lazo proporcional.
+%        
+%      \item  Una  de  las etapas  cr�ticas  del  PLL  al momento  de  su
+%        implementaci�n en paralelo y en lo que respecta a timming reside
+%        en el lazo proporcional.
+%        
+%      \item Mediante una detecci�n de m�dulo es posible distinguir fuera
+%        del lazo entre los s�mbolos de la clase I y la clase II.
+%  
+%      \item Los s�mbolos clase I son computados como s�mbolos QPSK.
+%        
+%      \item Los s�mbolos clase II  son demodulados fuera del lazo con la
+%        informaci�n  del �ltimo s�mbolo  de dos  paralelismos anteriores
+%        para detectar el s�mbolo transmitido.
+%        
+%      \end{itemize}
+%    \end{frame}
+%  
+%  % \begin{frame}[allowframebreaks] 
+%    \begin{frame} \frametitle{Implementaci�n en paralelo de baja latencia \\ \small Propuesta: Arquitectura}
+%      \begin{figure}[!h]
+%        \centering
+%        \includegraphics[scale=0.65]{figuras/aqr_2pa.ps}
+%      \end{figure}
+%    \end{frame}
+%  
+%    \begin{frame} \frametitle{Implementaci�n en paralelo de baja latencia \\ \small Resultados de simulaci�n}
+%      \vspace{-0.4cm}
+%      \begin{figure}[!h]
+%        \centering
+%        \subfigure[\scriptsize{Respuesta en Frecuencia}]{\includegraphics[scale=0.23]{figuras/pbl_qam16_bw_DNDS_vs_2PA.eps}}
+%        \subfigure[\scriptsize{Rango de captura}]{\includegraphics[scale=0.23]{figuras/pbl_qam16_cr_DNDS_vs_2PA.eps}}
+%        \subfigure[\scriptsize{Tolerancia al ancho de l�nea del l�ser}]{\includegraphics[scale=0.23]{figuras/pbl_qam16_lw_DNDS_vs_2PA.eps}}
+%        \subfigure[\scriptsize{Tolerancia al jitter de frecuencia}]{\includegraphics[scale=0.23]{figuras/pbl_qam16_jt_DNDS_vs_2PA.eps}}
+%      \end{figure}  
+%    \end{frame}
+%  
+%  
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    \section{Algoritmo V\&V para la estimaci�n de ruido de fase}
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%    \begin{frame}
+%      \frametitle{Contenidos}
+%      \tableofcontents[currentsection]
+%    \end{frame}
+%    
+%    \begin{frame} \frametitle{Algoritmo V\&V para la estimaci�n de ruido de fase \\ \small Introducci�n}
+%      \begin{itemize}\itemsep=0.2cm
+%      \item Motivado por su buena  tolerancia al ruido de fase del l�ser
+%        e implementaci�n de baja latencia y baja complejidad.
+%      \item Posee su base en un filtro de Wiener cuya salida es igual al
+%        m�nimo error medio cuadr�tico del ruido de fase a detectar.
+%      \item Permite  obtener la estimaci�n de la  fase residual mediante
+%        el promedio de 2L cantidad de muestras.
+%      \item  A  medida que  aumenta  la  cantidad  de muestras  para  el
+%        promedio  los efectos  del  ruido AWG  disminuyen.  Sin  embargo
+%        disminuye la tolerancia respecto del ruido de fase del l�ser.
+%  
+%        \begin{figure}[!h]
+%          \centering
+%          \includegraphics[scale=0.2]{figuras/vv_taps_bw.eps}
+%          \caption{Respuesta en frecuencia del filtro para diferentes tama�os de ventana.}
+%        \end{figure}
+%  
+%      \end{itemize}
+%  
+%    \end{frame}
+%    
+%    \begin{frame} \frametitle{Algoritmo V\&V para la estimaci�n de ruido de fase \\ \small Diagrama de bloques serie}
+%      \begin{figure}[!h]
+%        \centering
+%        \includegraphics[scale=0.425]{figuras/vv_serie_qpsk_qam.ps}
+%      \end{figure}
+%    \end{frame}
+%    
+%    \begin{frame} \frametitle{Algoritmo V\&V para la estimaci�n de ruido de fase \\ \small Implementaci�n en paralelo}
+%      \begin{figure}[!h] 
+%        \centering
+%        \includegraphics[scale=0.36]{figuras/vv_paral_block_qpsk_qam.ps}
+%      \end{figure}
+%    \end{frame}
+%  
+%    \begin{frame} \frametitle{Algoritmo V\&V para la estimaci�n de ruido de fase \\ \small Funci�n �ngulo y unwrap}
+%      \begin{figure}[!h] 
+%        \centering
+%        \includegraphics[scale=0.36]{figuras/vv_angle_and_unwrap.ps}
+%      \end{figure}
+%    \end{frame}
+%  
+%    \begin{frame} \frametitle{Algoritmo V\&V para la estimaci�n de ruido de fase \\ \small Resultados de simulaci�n}
+%      \vspace{-0.3cm}
+%      \begin{figure}[!h]
+%        \centering
+%        \subfigure[\scriptsize{Tolerancia al ancho de l�nea del l�ser (QPSK)}]{\includegraphics[scale=0.21]{figuras/qpsk_pll_vv_lw_var_DL.eps}}
+%        \subfigure[\scriptsize{Tolerancia al ancho de l�nea del l�ser (16QAM)}]{\includegraphics[scale=0.21]{figuras/qam_pll_vv_lw_var_DL.eps}}\\
+%        \subfigure[\scriptsize{Tolerancia a la amplitud del jitter de frecuencia (QPSK)}]{\includegraphics[scale=0.21]{figuras/qpsk_pll_vv_jt_var_DL.eps}}
+%      \end{figure}  
+%    \end{frame}
+%  
+%  
+%  
+%  
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%    \section{Arquitectura final de recuperaci�n de portadora}
+%    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%   \begin{frame}
+%     \frametitle{Contenidos}
+%     \tableofcontents[currentsection]
+%   \end{frame}
+%   
+%   \begin{frame} \frametitle{Arquitectura final de recuperaci�n de portadora \\ \small Diagrama de bloques}
+%     \begin{figure}[!h] 
+%       \centering
+%       \includegraphics[scale=0.45]{figuras/cr.ps}
+%     \end{figure}
+%    \begin{figure}[!h]
+%      \centering
+%      \includegraphics[scale=0.4]{figuras/sgs_qpsk.ps}\hspace{0.3cm}
+%      \includegraphics[scale=0.4]{figuras/sgs_qam.ps} 
+%    \end{figure}
+%  \end{frame}
+%  
+%  
+%  \begin{frame}[allowframebreaks] \frametitle{Arquitectura final de recuperaci�n de portadora \\ \small Resultados de simulaci�n}
+%    \vspace{-0.4cm}
+%    \begin{figure}[h]
+%      \centering
+%      \subfigure[\scriptsize{Respuesta en frecuencia - QPSK}]{\includegraphics[scale=0.2]{figuras/freq_resp_QPSK.eps}}
+%      \subfigure[\scriptsize{Respuesta en frecuencia - 16QAM}]{\includegraphics[scale=0.2]{figuras/freq_resp_QAM16.eps}}\\
+%      \subfigure[\scriptsize{Tolerancia al ancho de l�nea del l�ser - QPSK}]{\includegraphics[scale=0.2]{figuras/LW_TOL_QPSK.eps}}
+%      \subfigure[\scriptsize{Tolerancia al ancho de l�nea del l�ser - 16QAM}]{\includegraphics[scale=0.2]{figuras/LW_TOL_QAM16.eps}} 
+%    \end{figure}
+%    
+%    \newpage
+%    \vspace{-0.4cm}
+%     \begin{figure}[h]
+%       \centering
+%       \subfigure[\scriptsize{Tolerancia a la frecuencia  de jitter - QPSK}]{\includegraphics[scale=0.2]{figuras/JF_TOL_QPSK.eps}}
+%       \subfigure[\scriptsize{Tolerancia a la frecuencia  de jitter - 16QAM}]{\includegraphics[scale=0.2]{figuras/JF_TOL_QAM16.eps}}\\
+%       \subfigure[\scriptsize{Tolerancia a la amplitud  de jitter - QPSK}]{\includegraphics[scale=0.2]{figuras/JA_TOL_QPSK.eps}}
+%       \subfigure[\scriptsize{Tolerancia a la amplitud  de jitter - 16QAM}]{\includegraphics[scale=0.2]{figuras/JA_TOL_QAM16.eps}} 
+%     \end{figure}
+%    
+%  \end{frame}
+%  
+%  
+%  
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%   \section{Conclusiones}
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%   \begin{frame}
+%     \frametitle{Contenidos}
+%     \tableofcontents[currentsection]
+%   \end{frame}
+%   \begin{frame}[allowframebreaks] \frametitle{Conclusiones}
+%     \begin{itemize}\itemsep=0.25cm
+%     \item Recuperaci�n de portadora mediante lazos enganchados en fase:
+%       \begin{itemize}\itemsep=0.2cm
+%       \item Permite realizar el seguimiento de offset de frecuencia y principalmente de
+%         fluctuaciones sinusoidales de fase y frecuencia.
+%       \item La aplicaci�n de la t�cnica  de CR en el dominio de la fase
+%         permite   disminuir  el  costo   computacional  y   relizar  un
+%         procesamiento digital eficiente.
+%       \item A  causa de la  demanda de ancho  de banda y el  estado del
+%         arte  de  la  tecnolog�a  de  circuitos  integrados  actual  es
+%         necesario realizar implementaciones en paralelo.
+%       \item  Como  consecuencia  del  lazo de  realimentaci�n  del  PLL
+%         existen elevados ordenes de latencia.
+%       \item Se propone una  implementaci�n en paralelo de baja latencia
+%         que  permite  despreciar   las  realimentaciones  causantes  de
+%         algunos de los retardos del lazo con un coste en el desempe�o
+%         del sistema muy bajo.
+%       \item Para la  modulaci�n 16QAM se propone una  nueva t�cnica que
+%         permite  obtener la informaci�n  del s�mbolo  transmitido fuera
+%         del  lazo   cr�tico  del  PLL   para  poder  cumplir   con  las
+%         especificaciones de timming.
+%       \item Posee bajo desempe�o frente a ruido de fase del l�ser.
+%       \end{itemize}
+%  
+%       \newpage
+%     \item Algoritmo V\&V para la estimaci�n del error de fase:
+%       \begin{itemize}\itemsep=0.2cm
+%       \item   Buena  tolerancia   al  ruido   de  fase   del   l�ser  e
+%         implementaci�n de baja latencia y baja complejidad.
+%       \item   Sin  embargo   no   posee  buena   tolerancia  frente   a
+%         fluctuaciones sinusoidales de frecuencia.
+%       \item  Aumenta la tolerancia  al ruido  de fase  a medida  que la
+%         cantidad de coeficientes del filtro disminuye.
+%       \item Aumenta la tolerancia al ruido AWG a medida que la cantidad
+%         de coeficientes del filtro aumenta.
+%       \end{itemize}
+%  
+%     \item Arquitectura  final de  recuperaci�n de portadora:
+%       \begin{itemize}\itemsep=0.2cm
+%       \item  Combina   el  algoritmo  de  V\&V  con   las  t�cnicas  de
+%         recuperaci�n de  portadora basadas en el  PLL, aprovechando las
+%         cualidades  de  ambos  con  el  objetivo de  ofrecer  el  mejor
+%         desempe�o  frente  a   las  diferentes  perturbaciones  que  se
+%         producen en el canal de comunicaciones �ptico.
+%       \end{itemize}
+%       \item Desarrollo de un simulador en C++.
+%       \item Desarrollo de una interfaz gr�fica a trav�s del lenguaje de
+%         programaci�n \textit{Python}.
+%     \end{itemize}
+%   \end{frame}
+%  
+\end{document}
+
+
