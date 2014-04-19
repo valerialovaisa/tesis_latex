@@ -15,12 +15,12 @@
 \usepackage{multimedia}
 %\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}%acentos
-%\usepackage[tight,center]{subfigure}
-%\setlength{\subfigcapskip}{-.5em}
-%\usepackage{beamerthemesplit}
-%\usepackage{multirow}
+\usepackage[tight,center]{subfigure}
+\setlength{\subfigcapskip}{-.5em}
+\usepackage{beamerthemesplit}
+\usepackage{multirow}
 %\usepackage{slashbox} 
-%\usepackage{threeparttable}
+\usepackage{threeparttable}
 %\usetheme{lankton-keynote}
 
  
@@ -32,7 +32,7 @@
 % \newcommand{\framesubtitleA}[2]{
 % \framesubtitle{\vspace{2mm} \LARGE \color{white} \textsf{\textbf{\textit{#1}}}} }
 
-% \setbeamertemplate{navigation symbols}{}
+
   
 %--------------------------------------------------------------------------------------------------%
    
@@ -53,6 +53,10 @@
 \setbeamertemplate{blocks}[rounded][shadow=true]
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number] %Para insertar el n�mero de p�gina cambiando el pie de p�gina.}
+\usepackage{rotating}
+\usepackage{xcolor,colortbl}
+\usepackage{wasysym}
+
 
 %\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{figuras/fibra_optica.ps}}
  
@@ -72,14 +76,24 @@ Soft-Core y Soporte Linux\\
  \itemsep = 5cm
 \begin{document}
 
-%{\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{figuras/fondo7.eps}}
-\setbeamertemplate{navigation symbols}{}
 \begin{frame}
+  \begin{center}
   \titlepage
-  \vspace{-0.2cm}
-%  \includegraphics[scale=0.2]{figuras/logo.ps}
+  \vspace{0.75cm} 
+  \hspace{20mm}
+  \includegraphics[height=0.095\textheight]{figuras/logonuevo}
   \scriptsize
-\end{frame}%}
+  \end{center}
+\end{frame}
+
+
+\pgfdeclareimage[interpolate=true,height=0.07\textheight]{logonuevo}{figuras/logonuevo}
+\setbeamertemplate{sidebar left}{
+  \logo{\hspace{30mm}\pgfuseimage{logonuevo}}
+  \vfill%
+  \rlap{\hskip2cm\insertlogo}%
+  \vskip 5pt%
+}
 
 \begin{frame}
   \frametitle{Contenidos}
@@ -89,74 +103,73 @@ Soft-Core y Soporte Linux\\
 %  
 %  
 %  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  \section{Objetivos y Motivaci�n}
-%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  %{\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{figuras/fondo7.eps}}
-%  % \begin{frame} 
-%  %   \begin{center} 
-%  %     \textbf{\LARGE Objetivos y Motivaci�n}
-%  %   \end{center}
-%  % \end{frame}
-%  %}
-%  \begin{frame}
-%    \frametitle{Contenidos}
-%    \tableofcontents[currentsection]
-%  \end{frame}
-%  
+  \section{Objetivos y Motivación}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ 
+\begin{frame}
+   \frametitle{Contenidos}
+   \tableofcontents[currentsection]
+ \end{frame}
+  
 %  %\subsection{Motivaci�n}
-%  \begin{frame}[allowframebreaks] \frametitle{Motivaci�n}
-%    \begin{itemize}\itemsep=0.25cm
-%    \item La  demanda  de   ancho  de  banda  crece  en   forma  continua  y
-%      acelerada debido al r�pido creciemiento de:
-%      \begin{itemize}\itemsep=0.2cm
-%      \item aplicaciones de gesti�n de l�nea,\\
-%      \item difusi�n de servicios de voz personal (telefon�a m�vil),\\
-%      \end{itemize}
-%      
-%    \item Es necesario elevar la  velocidad  de  transmisi�n.\\
-%    \item M�ltiples efectos (lineales  y no lineales) ponen cota
-%      superior a la capacidad del medio de comunicaci�n.\\
-%   
-%  
-%    \item Mejorar las  caracter�sticas del canal: resulta anti-econ�mico
-%      reemplazar los grandes tendidos de fibra �ptica ya instalados.\\
-%      
-%    \item T�cnicas  de recuperaci�n de  portadora:
-%      \begin{itemize}\itemsep=0.2cm
-%      \item \textbf{Lazos  enganchados en fase  (PLL):} permite realizar
-%        el seguimiento de fluctuaciones  senoidales de fase y frecuencia
-%        y fluctuaciones de frecuencia del l�ser transmisor y receptor.
-%        
-%        % dependiendo de la
-%        % modulaci�n  utilizada  para  la  transmisi�n de  la  informaci�n
-%        % pueden encontrarse  diferentes m�todos. Cada uno  de ellos var�a
-%        % en la  t�cnica utilzada para eliminar  la informaci�ndel s�mbolo
-%        % transmitido  conel  objetivo  de  aislar  el  error  de  fase  a
-%        % corregir.
-%      \item  \textbf{Algoritmo de  Viterbi \&  Viterbi  (V\&V):} permite
-%        realizar el  seguimiento del  ruido de fase  del l�ser  con baja
-%        latencia y bajo costo de implementaci�n.
-%      \end{itemize}
-%    \end{itemize}
-%  
-%  \end{frame}
-%  
+  \begin{frame}[allowframebreaks] 
+	\frametitle{Motivación}
+    \begin{itemize}\itemsep=0.25cm
+    \item La  demanda  de   ancho  de  banda  crece  en   forma  continua  y
+      acelerada debido al rpido creciemiento de:
+      \begin{itemize}\itemsep=0.2cm
+      \item aplicaciones de gestin de lnea,\\
+      \item difusin de servicios de voz personal (telefona mvil),\\
+      \end{itemize}
+     
+    \item Es necesario elevar la  velocidad  de  transmisin.\\
+    \item Mtiples efectos (lineales  y no lineales) ponen cota
+      superior a la capacidad del medio de comunicacin.\\
+   
+  
+    \item Mejorar las  caractersticas del canal: resulta anti-econmico
+      reemplazar los grandes tendidos de fibra ptica ya instalados.\\
+      
+    \item Tcnicas  de recuperacin de  portadora:
+      \begin{itemize}\itemsep=0.2cm
+      \item \textbf{Lazos  enganchados en fase  (PLL):} permite realizar
+        el seguimiento de fluctuaciones  senoidales de fase y frecuencia
+        y fluctuaciones de frecuencia del lser transmisor y receptor.
+        
+        % dependiendo de la
+        % modulaci�n  utilizada  para  la  transmisi�n de  la  informaci�n
+        % pueden encontrarse  diferentes m�todos. Cada uno  de ellos var�a
+        % en la  t�cnica utilzada para eliminar  la informaci�ndel s�mbolo
+        % transmitido  conel  objetivo  de  aislar  el  error  de  fase  a
+        % corregir.
+    %  \item  \textbf{Algoritmo de  Viterbi \&  Viterbi  (V\&V):} permite
+      %  realizar el  seguimiento del  ruido de fase  del l�ser  con baja
+        %latencia y bajo costo de implementaci�n.
+     \end{itemize}
+    \end{itemize}
+  
+  \end{frame}
+  
 %  %\subsection{Objetivos Generales}
-%  \begin{frame}   \frametitle{Objetivos  Generales}   El   objetivo  del
-%    presente  proyecto   integrador  es  obtener   una  arquitectura  de
-%    recuperaci�n de portadora (en ingl�s \textit{Carrier Recovery (CR)})
-%    que  permita  compensar  las  perturbaciones de  fase  y  frecuencia
-%    introducidas  por el canal  de comunicaciones.   Los pasos  a seguir
-%    para cumplir con dicho objetivo fueron:
-%    \begin{itemize}\itemsep=0.25cm
-%    \item An�lisis del canal de comunicaci�n.
+  \begin{frame}  
+\frametitle{Objetivos  Generales} Implementación de un sistema embebido basado en hardware y software de código abierto.%\footnote{Entendiéndose por hardware de código abierto al código Register Transfer Level (RTL)} 
+Dicho hardware será un System on Chip (SoC) montado sobre una placa de desarrollo  que deberá además soportar un sistema operativo
+libre con la finalidad de proveer un sistema integral FPGA\-SoC\-SO completamente funcional de código abierto para aplicaciones de pequeña envergadura. Los pasos  a seguir para cumplir con dicho objetivo fueron:
+    \begin{itemize}\itemsep=0.25cm
+	\item Análisis de las diferentes alternativas disponibles en el mercado y en comunidades de hardware de código abierto para la implementación de microprocesadores diseñados en lenguaje de descripción de hardware.
+      \item Investigación respecto al hardware, las herramientas de desarrollo y el sistema operativo para determinar la posibilidad de implementar un SoC con licencia OpenSource en FPGA.
+% Las características relevadas durante la investigación aportaron información respecto al hardware, las herramientas de desarrollo y el sistema operativo necesario para llevar a cabo la implementación.
+	\item Análisis y selección del microprocesadore softcore y SoCs disponibles para la placa de desarrollo de Xilin disponible para la implementación.
+	\item Implementación de una serie de prototipos que incluirán mayor funcionalidad en cada iteración del modelo 
+    \item Conclusiones.
 %    \item Estudio te�rico de los algoritmos de recuperaci�n de portadora.
 %    \item Modeldo y simulaci�n de los algoritmos de recuperaci�n de portadora
 %    \item Estudio de desempe�o.
-%    \item Conclusiones.
-%    \end{itemize}
+ %   \item Conclusiones.
+    \end{itemize}
 %    
-%  \end{frame}
+  \end{frame}
 %  
 %  %\subsection{Objetivos Particulares}
 %  \begin{frame}[allowframebreaks] \frametitle{Objetivos Particulares}
@@ -211,38 +224,318 @@ Soft-Core y Soporte Linux\\
 %  
 %  
 %  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  \section{Efectos de degradaci�n en sistemas �pticos coherentes}
+  \section{Análisis de Requerimientos y Riesgos}
 %  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%  % {\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{figuras/fondo.ps}}
-%  %   {\setbeamertemplate{background}{\includegraphics[width=\paperwidth,height=\paperheight]{figuras/fondo7.eps}}
-%    % \begin{frame}
-%    %   \begin{center}  \textbf{\LARGE Efectos  de  degradaci�n en  sistemas
-%    %       �pticos coherentes}
-%    %   \end{center}
-%    % \end{frame}%}
-%    
-%  \begin{frame}
-%    \frametitle{Contenidos}
-%    \tableofcontents[currentsection]
-%  \end{frame}
-%  
-%  \begin{frame} \frametitle{Esquema b�sico del sistema �ptico coherente}
-%    \begin{figure}[!h]
-%      \centering
-%      \includegraphics[scale=0.6]{figuras/canal1.ps}
-%      \caption{\scriptsize{Diagrama  de bloques  del  canal de  comunicaciones
-%          optico coherente}}
-%    \end{figure}
-%   
-%    \begin{figure}[!h]
-%      \centering
-%      \includegraphics[scale=0.6]{figuras/canal2.ps}
-%      \caption{\scriptsize{Diagrama  de  bloques  simplificado  del  canal  de
-%          comunicaciones optico coherente}}
-%    \end{figure}
-%    
-%  \end{frame}
-%  
+
+  \begin{frame}
+    \frametitle{Contenidos}
+    \tableofcontents [currentsection]
+  \end{frame}
+  
+  \begin{frame}[allowframebreaks] 
+ \frametitle{Requerimientos de Usuario}
+
+    \begin{itemize}\itemsep=0.25cm
+	\item Se debe implementar un Microprocesador Softcore de núcleo simple.
+
+	\item Todo el codigo RTL implementado debe tener licencia LGPL o GPL en su defecto.
+	\item El sistema operativo elegido debe disponer de drivers y bibliotecas que permitan el acceso a todos los dispositivos incluídos en el SoC
+    \end{itemize}
+  \end{frame}
+  \begin{frame}%[allowframebreaks] 
+	\frametitle{Riesgo}
+    \begin{itemize}\itemsep=0.25cm
+	\item Código RTL con fallas reconocidas durante el proceso de síntesis
+	\item Capacidad insuficiente para implementar la lógica del proyecto  
+	\item Imposibilidad de acceso a alguno de los periféricos de la placa de desarrollo
+	\item Limitaciones de memoria RAM en las placas de desarrollo disponibles
+	\item Limitaciones de memoria FLASH en las placas de desarrollo disponibles
+	\item Inexistencia de los Cores Open Source necesarios 
+	\item Falta de documentación de apoyo para la implentación de los Cores
+	\item  Inexistencia de herramientas de desarrollo de hardware con licencias Open Source
+	\item Soporte de acceso a periféricos inexistente o con presencia de bugs
+   \end{itemize}
+
+  \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Microprocesador OpenRISC 1200}
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+    \frametitle{Contenidos}
+    \tableofcontents[currentsection]
+  \end{frame}  
+
+\begin{frame} \frametitle{OpenRISC 1200}%\\ \small Offset de  fase  constante}
+Algunas características de este SCP son:
+
+\begin{itemize}\itemsep=0.25cm
+		 \item  Arquitectura Harvard.
+	 	 \item \textit{Pipeline} de 5 etapas.
+	 	 \item  Unidad de manejo de memoria (MMU)
+		 \item  Cachés de instrucciones y de datos de 8 KB, de mapeo directo.
+ 		\item Unidades opcionales como: unidad de depuración,\textit{ tick-timer}, controlador de interrupciones y unidad de manejo de potencia (PMU).
+		\item Interfaz WISHBONE para los buses de instrucciones y de datos.
+\end{itemize}
+ 
+\begin{figure}[!h]
+      \centering
+     \includegraphics[scale=0.9]{figuras/OR1200}
+    \end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proyecto MinSoC}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{frame}
+    \frametitle{Contenidos}
+    \tableofcontents[currentsection]
+  \end{frame}
+
+\begin{frame} \frametitle{MinSoC}%\\ \small Offset de  fase  constante}
+ \begin{figure}[!h]
+      \centering
+     \includegraphics[scale=0.09]{figuras/minsoc}
+    \end{figure}
+\end{frame}
+
+\begin{frame} \frametitle{Implementación \\ \small Prototipo Uno}
+ \begin{figure}[!h]
+      \centering
+     \includegraphics[scale=0.09]{figuras/proto1}
+    \end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proyecto ORPSoC}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{frame}
+    \frametitle{Contenidos}
+    \tableofcontents[currentsection]
+  \end{frame}
+
+
+\begin{frame} \frametitle{ORPSoC}%\\ \small Offset de  fase  constante}
+\begin{figure}[!h]
+      \centering
+     \includegraphics[scale=0.3]{figuras/orpsoc}
+    \end{figure}
+\end{frame}
+
+
+\subsection{Implementación}
+\begin{frame} \frametitle{Implementación\\ \ Prototipo Dos}
+ \begin{figure}[!h]
+      \centering
+     \includegraphics[scale=0.09]{figuras/proto2}
+    \end{figure}
+\end{frame}
+
+\begin{frame} \frametitle{Implementación\\ \ Prototipo Tres}
+ \begin{figure}[!h]
+      \centering
+     \includegraphics[scale=0.09]{figuras/ecos}
+    \end{figure}
+\end{frame}
+
+\begin{frame} \frametitle{Implementación\\ \ Prototipo Cuatro}
+ \begin{figure}[!h]
+      \centering
+     \includegraphics[scale=0.09]{figuras/proto4}
+    \end{figure}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Resultados y Conclusión}
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}
+    \frametitle{Contenidos}
+    \tableofcontents[currentsection]
+  \end{frame}
+
+\begin{frame} \frametitle{Resultados}
+\begin{itemize}
+\item Se instanciaron los proyectos MinSoC y ORPSoC, ambos con núcleo OpenRISC. 
+\item Se evaluó el funcionamiento del microprocesador OpenRISC con programa de prueba de multiplicación de matrices binarias cuadradas.
+\item Se evaluaron las capacidades del compilador cruzado or32-elf-gcc en lo referido a su capacidad de optimización de código. 
+\item Se ejecutaron los benchmarks de sistemas embebidos Coremark y Dhrystone para posicionar el microprocesador OpenRISC entre CPUs de similares características.
+\item Se realizó la implementación de dos sistemas operativos, uno de tiempo real (ecOS) y uno de mayores capacidades (Linux). 
+\end{itemize}				
+\end{frame}
+
+\begin{frame} \frametitle{Implementación\\ \ Instanciación del proyectos MinSoC }
+ 
+\begin{table}[h!]
+		\begin{tabular}{ |p{3cm} |p{2cm} |p{2cm}| p{2cm}| }    
+		\hline
+		\multicolumn{4}{|>{\columncolor[gray]{.8}}c}{Resumen de utilización MinSoC}\\
+		\hline
+		\multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Logica utilizada} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Usado} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Disponible} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Utilizado} \\
+		\hline 
+		Slice Flip Flop & 5040 & 33280 & 15\%  \\ 
+		\hline 
+		LUTs de 4 entradas & 13901 & 33280 & 41\%  \\ 
+		\hline 
+\end{tabular}
+%\end{center}
+\caption{Resultados de la implementación del proyecto MinSoC}
+\end{table}
+\end{frame}
+
+\begin{frame} \frametitle{Implementación\\ \ Instanciación del proyectos ORPSoC }
+\begin{table}[h!]
+		\begin{tabular}{ |p{3cm} |p{2cm} |p{2cm}| p{2cm}| }    
+		\hline
+		\multicolumn{4}{|>{\columncolor[gray]{.8}}c}{Resumen de utilización ORPSoC}\\
+		\hline
+		\multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Logica utilizada} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Usado} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Disponible} & \multicolumn{1}{|>{\columncolor[gray]{.8}}c}{Utilizado} \\
+		\hline 
+		Slice Flip Flop & 4872 & 33280 & 14\%  \\ 
+		\hline 
+		LUTs de 4 entradas & 12093 & 33280 & 36\%  \\ 
+		\hline 
+\end{tabular}
+\caption{Resultados de la implementación del proyecto ORPSoC}
+\end{table}	
+\end{frame}
+
+\begin{frame} \frametitle{Implementación\\ \ Estudio del desempeño del sofcore OpenRISC }
+ \begin{figure}[!h]
+      \centering
+     \includegraphics[scale=0.3]{figuras/calculomatriz}
+    \end{figure}
+\end{frame}
+
+\begin{frame} \frametitle{Implementación\\ \ Benchmark CoreMark}
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{ |l |c |c| }
+\hline
+\rowcolor[gray]{0.8} Opciones del compilador&-O2&-O3 \\
+\hline
+Sin extras 					& 1.41 	 			& 1.45 \\
+\hline
+-mhard-div -mhard-mu 	& 1.41				& 1.45 \\
+\hline
+-funroll-loops			 	& 1.53				& 1.50 \\
+\hline
+-fgcse-sm					& 1.42				& 1.46\\
+\hline
+-msoft-float 				& 1.41				& 1.45 \\
+\hline
+-funroll-all-loops	 		& 1.55				& 1.52 \\
+\hline
+Todos	 					& 1.55				& 1.52 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Compilación con distintos niveles y flags de optimización}
+\end{table}
+\end{frame}
+
+\begin{frame} \frametitle{Implementación\\ \ Benchmark CoreMark }
+ 
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ |p{2cm} |p{3cm}|p{0.8cm}|p{1.5cm}|p{1cm}|p{1cm}|}
+\hline
+\rowcolor[gray]{0.8} Procesador &	Compilador &	 Mhz &	CoreMark / MHz &	Core Mark &	 Core Mark / Core \\
+\hline
+	Openrisc 1200 & or32-elf-gcc 4.5.1-or32.1.0rc4							&25		&1.45   &36.27		&36.27 \\
+\hline
+	Altera Nios II & nios2-elf-gcc.exe (Altera 12.1 Build 177) gcc 4.1.2	&200	&0.93 	&186.27 	&186.27\\
+\hline
+	Altera Nios II & nios2-elf-gcc.exe (Altera 12.1 Build 177) gcc 4.1.2	&200	&1.60 	&320.59 	&320.59\\
+\hline
+	ARM Cortex-A9  (Exynos4 Quad) &	armcc 5.03-24							&1400	&15.89 	&22243.00 	&5560.75\\
+\hline
+	ARM Cortex-A15 &	armcc 5.03-24											&1700	&9.36 	&15908.00 	&7954.00\\
+\hline
+	Xilinx XC7Z020 ARM Cortex-A9 MPcore &	GCC4.7.2							&800	&5.92 	&4737.47 	&2368.73\\
+\hline
+	Xilinx XC7Z7045 ARM Cortex-A9 MPcore&	GCC4.7.2						&1000	&5.93 	&5927.24 	&2963.62\\
+\hline
+	Xilinx XC7Z020 Dual Core ARM Cortex-A9 MPcore&	GCC4.6.1				&667	&3.38 	&2256.15 	&1128.07\\
+\hline
+	Xilinx MicroBlaze v8.20.b in Virtex5 FPGA, 5-stage pipeline, 16K/16K cache &	GCC4.1.2 20070214 (Xilinx 13.4 Build EDK\_O.87 25 Nov 2011)	
+																			&125	&1.90   &238.00 	&238.00 \\
+\hline
+	Altera Nios II &	nios2-elf-gcc.exe (Altera 10.1 Build 153) 4.1.2			&80		&1.49 	&119.00		&119.00\\
+\hline
+	Xilinx MicroBlaze 7.10d in Virtex4-FX20 FPGA, 5-stage pipeline, 16K/16K cache&	GCC4.1.2 20070214 (Xilinx 12.3 Build EDK\_MS3.66 14 Jul 2010)	
+																			&100	&1.75	&174.59 	&174.59\\
+\hline
+	ARMv7 Processor rev 3 (v7l) &	Android NDK-r5 (GCC 4.4.3)					&600	&2.04 	&1221.15	&1221.15\\ 
+\hline
+	ARM Cortex-A9 MPCore on FPGA &	GCC 4.3.3 (Sourcery G++ Lite 2009q1-203)		&1		&11.52 	&11.52 		&2.88 	 	\\
+\hline
+	ARM ARM1176JZ-S	on FPGA & GCC 4.3.3 (Sourcery G++ Lite 2009q1-203)				&1		&2.08 	&2.08 		&2.08		\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Compartiva de resultados Coremark}
+\label{tab:compcoremark}
+\end{table}
+\end{frame}
+
+
+\begin{frame} \frametitle{Implementación\\ \ Benchmark Dhrystone}
+ 
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ |l |l |l |l |}
+\hline
+\rowcolor[gray]{0.8} Opciones del compilador & Sin Optimizaciones & -O2 &-O3 \\
+\hline
+DMIPS 					& 7.79 			&   7.90  &  10.53  \\
+\hline
+\end{tabular}
+\end{center}
+\label{tab:optimiza}
+\caption{Comparación de compilación con distintos niveles de optimización}
+\end{table}
+\end{frame}
+
+\begin{frame} \frametitle{Implementación\\ \ Benchmark Dhrystone}
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ |l |l |l |l |}
+\hline
+\rowcolor[gray]{0.8} Microprocesador& MHz & DMIPS con Optimizaciones & DMIPS sin Optimizaciones \\
+\hline
+Openrisc		  &25	&10.53	&7.9\\
+\hline
+AMD 80386         &40   &17.5   &4.32\\
+\hline
+IBM 486D2         &50   &26.6   &7.89\\
+\hline
+80486 DX2         &66   &45.1   &12.0\\
+\hline
+IBM 486BL        &100   &53.9   &12.0\\
+\hline
+AMD 5X86         &133   &84.5   &9.37\\
+\hline
+Pentium           &75    &112   &19.3\\
+\hline
+Cyrix P150       &120    &175   &27.9\\
+\hline
+Pentium          &100    &169   &31.8\\
+\hline
+Cyrix PP166      &133    &219   &38.4\\
+\hline
+IBM 6x86         &150    &234   &44.1\\
+\hline
+Pentium          &133    &239   &38.3\\
+\hline
+\end{tabular}
+\end{center}
+\label{tab:conbench}
+\caption{Comparativa de resultados Dhrystone}
+\end{table}
+
+\end{frame}
 %  \subsection{Ruido �ptico}
 %  \begin{frame} \frametitle{Ruido �ptico}
 %    \begin{itemize}\itemsep=0.25cm
@@ -384,9 +677,9 @@ Soft-Core y Soporte Linux\\
 %  
 %  
 %  
-%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  \section{Recuperaci�n de portadora mediante lazos enganchados en fase (PLL)}
-%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  \section{Resultados y Conclusión}
+%%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  \begin{frame}
 %    \frametitle{Contenidos}
 %    \tableofcontents[currentsection]
