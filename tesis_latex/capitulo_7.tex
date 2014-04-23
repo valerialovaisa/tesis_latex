@@ -99,8 +99,8 @@
 		Driver y bibliotecas\\
 		\hline 
 		RQX-SO 2 &  El sistema operativo elegido debe tener la capacidad de ejecución multitarea e hilos & capacidad de ejecución del SO\\ 
-		\hline
-		RQX-SO 3 &  El sistema operativo elegido debe posibilitar la ejecución de aplicaciones de tiempo real & Sistema Operativo\\ 
+		%\hline
+		%RQX-SO 3 &  El sistema operativo elegido debe posibilitar la ejecución de aplicaciones de tiempo real & Sistema Operativo\\ 
 		\hline 
 		\end{tabular}
 		\caption{Listado de requerimientos de usuario - Sistema operativo}
@@ -223,8 +223,8 @@
 				& Bibliotecas necesarias inexistentes o con fallos & Severo &  Probable & 3\\
 		\hline
 		RQX-SO 2& Incapacidad de ejecución de hilos en los SO compatibles con el microprocesador elegido & Catastrófico & Improbable & 4\\
-		\hline
-		RQX-SO 3& Limitaciones para la ejecución de SO de tiempo real & Critico & Probable & 1\\
+		%\hline
+		%RQX-SO 3& Limitaciones para la ejecución de SO de tiempo real & Critico & Probable & 1\\
 		\hline
 		\end{tabular}
 		\caption{Tabla de riesgos vs. Requerimientos}
@@ -240,7 +240,7 @@
 			\item RQX-HD 2 C - Imposibilidad de depuración de programas en la arquitectura destino
 			\item RQX-HD 3   - Soporte de acceso a periféricos inexistente o con presencia de bugs
 			\item RQX-SO 1 A - Drivers necesarios inexistentes o con fallos
-			\item RQX-SO 3   - Limitaciones para la ejecución de SO de tiempo real
+			%\item RQX-SO 3   - Limitaciones para la ejecución de SO de tiempo real
 	    \end{itemize}
 	    
 	    Esta ponderación se utiliza en la Parte~\ref{part:partimple} de este trabajo para el diseño de los prototipos desarrollados durante la
@@ -310,8 +310,8 @@ Se presentan a continuación en la tabla~\ref {tab:planificación} las estrategi
 		\rowcolor[gray]{0.8} Riesgo & Consecuencia & Estrategia preventiva & Estrategia de contingencia\\
 		\hline
 		Incapacidad de ejecución de hilos en los SO compatibles con el microprocesador elegido &  Imposibilidad de ejecución para aplicaciones multitarea y/o multihilo & Análisis de los SO que cumplan con este requerimiento & Modificación del SO para el cumplimiento de las capacidades necesarias\\
-		\hline
-		Limitaciones para la ejecución de SO de tiempo real& Inviabilidad para la ejecución de aplicaciones en tiempo real & Análisis de los RTOS & Modificación del SO  para el cumplimiento de las capacidades de ejecución en tiempo real \\
+		%\hline
+		%Limitaciones para la ejecución de SO de tiempo real& Inviabilidad para la ejecución de aplicaciones en tiempo real & Análisis de los RTOS & Modificación del SO  para el cumplimiento de las capacidades de ejecución en tiempo real \\
 		\hline
 		\end{tabular}
 		\caption{Planificación de riesgos}

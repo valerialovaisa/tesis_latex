@@ -54,6 +54,37 @@ hoy en día permiten implementar una gran variedad de sistemas
 electrónicos que van desde dispositivos de comunicaciones, complejos
 algoritmos de procesamiento de señal hasta microprocesadores.
 
+\subsection{Tipo de tecnología} 
+
+Teniendo en cuenta el tipo de tecnología que utilizan las
+\textit{FPGAs} para almacenar sus datos de configuración, éstas se
+pueden clasificar en tres tipos:
+
+\begin{itemize}
+\item \textit {Basadas en memoria RAM estática (SRAM)}: Las
+  \textit{FPGAs} guardan su configuración en una memoria interna de
+  tipo SRAM. Cada vez que se enciende el sistema es necesario
+  reprogramar la \textit{FPGA} con su configuración. Esto hace que sea
+  necesario almacenar la configuración en un dispositivo ROM externo o
+  descargarla desde una computadora conectado a la \textit{FPGA}. Este tipo de
+  \textit{FPGA} es la más flexible y permite utilizar técnicas de
+  reconfiguración dinámica.
+\item \textit{Basadas en memoria ROM}: Las \textit{FPGAs} almacenan su
+  configuración en una memoria interna de tipo ROM. Normalmente se
+  utiliza una memoria tipo FLASH o EEPROM, siendo la tecnología FLASH
+  la dominante en estos momentos. La ventaja se encuentra en que al
+  desconectar la energía de la FPGA, la configuración no se pierde y
+  por lo tanto no son necesarios componentes externos para
+  almacenarla. Como desventaja frente a las FPGA basadas en SRAM, son
+  menos flexibles ya que la configuración es más lenta y no permite
+  utilizar técnicas de reconfiguración dinámica.
+\item \textit{Basadas en fusibles}: La configuración se almacena
+  “quemando” fusibles durante el proceso de programación. Actualmente
+  la tecnología más utilizada en estas \textit{FPGAs} es la basada en
+  anti-fusibles (anti-fuse). La configuración queda grabada en la
+  \textit{FPGA} de forma que no es posible reprogramarla, lo que
+  elimina cualquier tipo de flexibilidad.
+\end{itemize}
 
 \subsection{Arquitectura}
 
@@ -183,37 +214,6 @@ utilizados para interconectar los bloques lógicos figura
 \end{center}
 \end{figure}
 
-\subsection{Tipo de tecnología} 
-
-Teniendo en cuenta el tipo de tecnología que utilizan las
-\textit{FPGAs} para almacenar sus datos de configuración, éstas se
-pueden clasificar en tres tipos:
-
-\begin{itemize}
-\item \textit {Basadas en memoria RAM estática (SRAM)}: Las
-  \textit{FPGAs} guardan su configuración en una memoria interna de
-  tipo SRAM. Cada vez que se enciende el sistema es necesario
-  reprogramar la \textit{FPGA} con su configuración. Esto hace que sea
-  necesario almacenar la configuración en un dispositivo ROM externo o
-  descargarla desde una computadora conectado a la \textit{FPGA}. Este tipo de
-  \textit{FPGA} es la más flexible y permite utilizar técnicas de
-  reconfiguración dinámica.
-\item \textit{Basadas en memoria ROM}: Las \textit{FPGAs} almacenan su
-  configuración en una memoria interna de tipo ROM. Normalmente se
-  utiliza una memoria tipo FLASH o EEPROM, siendo la tecnología FLASH
-  la dominante en estos momentos. La ventaja se encuentra en que al
-  desconectar la energía de la FPGA, la configuración no se pierde y
-  por lo tanto no son necesarios componentes externos para
-  almacenarla. Como desventaja frente a las FPGA basadas en SRAM, son
-  menos flexibles ya que la configuración es más lenta y no permite
-  utilizar técnicas de reconfiguración dinámica.
-\item \textit{Basadas en fusibles}: La configuración se almacena
-  “quemando” fusibles durante el proceso de programación. Actualmente
-  la tecnología más utilizada en estas \textit{FPGAs} es la basada en
-  anti-fusibles (anti-fuse). La configuración queda grabada en la
-  \textit{FPGA} de forma que no es posible reprogramarla, lo que
-  elimina cualquier tipo de flexibilidad.
-\end{itemize}
 
 
 \section{IP-Core}
