@@ -1,5 +1,5 @@
 
-\chapter{Descripción Microprocesadores Disponibles en el Mercado}
+\chapter{Descripción Microprocesadores Disponibles en el Mercado} %\label {chap:sofcore}
 	\section{Microprocesadores Soft-Core}
 	Un microprocesador soft-core o abreviado SCP, es un microprocesador que puede implementarse utilizando síntesis lógica en diferentes dispositivos lógicos programables como CPLDs o FPGAs, o incluso puede incluirse en un diseño para ASIC.
  	Suelen distribuirse en forma de código fuente en algún lenguaje de descripción de hardware, principalmente VHDL o Verilog, aunque algunos SCPs
@@ -10,7 +10,7 @@
 	distribuidos en forma de código abierto, como el OpenRISC 1200 \cite{Etiqueta19} mantenido por la comunidad Opencores \cite{Etiqueta20}, o los  SCPs
 	LEON2 y LEON3 \cite{Etiqueta21} \cite{Etiqueta22} que proporciona la compañía Gaisler Research \cite{Etiqueta23}.
 		
-	A continuación se presentan más detalladamente las características de estos SCPs%, y un resumen comparativo de sus características
+Si bien solo OpenRISC 1200, LEON2 y LEON3 cumplen con los requerimientos de usuario definidos en el capitulo~\ref{chap:reqyries} por ciertos condicionamientos del proyecto se pidió analizar también con más detalle las características de los SCPs comerciales ante la duda de elegir un SCP de código abierto que no pueda cumplir con la viabilidad para el desarrollo del proyecto. %con respecto a opciones comerciales. %, y un resumen comparativo de sus características
 	\subsection{PicoBlaze}
 	
 	PicoBlaze es un microcontrolador RISC de 8 bits desarrollado por Xilinx y optimizado para sus FPGAs. Esta optimizado para ocupar muy poco área y en cuanto a velocidad puede llegar a ejecutar entre 44 y 100 millones de instrucciones por segundo(MIPS), dependiendo del speedgrade y la familia de FPGA sobre la que se implemente. Las principales características de PicoBlaze son:
