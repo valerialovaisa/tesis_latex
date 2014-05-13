@@ -160,30 +160,30 @@ Soft-Core y Soporte Linux\\
   \begin{frame}  
 \frametitle{Objetivos  Generales} Implementación de un sistema embebido basado en hardware y software de código abierto.%\footnote{Entendiéndose por hardware de código abierto al código Register Transfer Level (RTL)} 
 Dicho hardware será un System on Chip (SoC) montado sobre una placa de desarrollo  que deberá además soportar un sistema operativo
-libre con la finalidad de proveer un sistema integral FPGA\-SoC\-SO completamente funcional de código abierto para aplicaciones de pequeña envergadura. Los pasos  a seguir para cumplir con dicho objetivo fueron:
-    \begin{itemize}\itemsep=0.25cm
-	\item Análisis de las diferentes alternativas disponibles en el mercado y en comunidades de hardware de código abierto para la implementación de microprocesadores diseñados en lenguaje de descripción de hardware.
-      \item Investigación respecto al hardware, las herramientas de desarrollo y el sistema operativo para determinar la posibilidad de implementar un SoC con licencia OpenSource en FPGA.
-% Las características relevadas durante la investigación aportaron información respecto al hardware, las herramientas de desarrollo y el sistema operativo necesario para llevar a cabo la implementación.
-	\item Análisis y selección del microprocesadore softcore y SoCs disponibles para la placa de desarrollo de Xilin disponible para la implementación.
-	\item Implementación de una serie de prototipos que incluirán mayor funcionalidad en cada iteración del modelo 
-    \item Conclusiones.
+libre con la finalidad de proveer un sistema integral FPGA\-SoC\-SO completamente funcional de código abierto para aplicaciones de pequeña envergadura. 
+%Los pasos  a seguir para cumplir con dicho objetivo fueron:
+%    \begin{itemize}\itemsep=0.25cm
+%	\item Análisis de las diferentes alternativas disponibles en el mercado y en comunidades de hardware de código abierto para la implementación de microprocesadores diseñados en lenguaje de descripción de hardware.
+%      \item Investigación respecto al hardware, las herramientas de desarrollo y el sistema operativo para determinar la posibilidad de implementar un SoC con licencia OpenSource en FPGA.
+%	\item Análisis y selección del microprocesadore softcore y SoCs disponibles para la placa de desarrollo de Xilinx disponible para la implementación.
+%	\item Implementación de una serie de prototipos que incluirán mayor funcionalidad en cada iteración del modelo 
+%    \item Conclusiones.
 %    \item Estudio te�rico de los algoritmos de recuperaci�n de portadora.
 %    \item Modeldo y simulaci�n de los algoritmos de recuperaci�n de portadora
 %    \item Estudio de desempe�o.
  %   \item Conclusiones.
-    \end{itemize}
+  %  \end{itemize}
 %    
   \end{frame}
 %  
 \subsection{Objetivos Específicos}
  \begin{frame}[allowframebreaks] \frametitle{Objetivos Particulares}
-     \scriptsize
+     \scriptsize %acomoda la tabla
 \begin{table}
 \begin{center}
-\scalebox{0.99}{
+\scalebox{0.9}{ %tamaño de tabla
 %\centering
-\begin{tabular}{>{\columncolor[rgb]{0.8,0.8,0.8}} p{8cm} p{4cm} }
+\begin{tabular}{>{\columncolor[rgb]{0.8,0.8,0.8}} p{7cm} p{5cm} }
   %\multicolumn{2}{>{\columncolor[rgb]{1,1,1}}c }{\textbf{\LARGE{Objetivos Específicos}}}\\ 
 \hline 
 \LARGE{Objetivos} 								&  \LARGE{Metodología}    \\ 
@@ -193,12 +193,14 @@ libre con la finalidad de proveer un sistema integral FPGA\-SoC\-SO completament
 \item Seleccionar los SoCs de acuerdo al microprocesador softcore elegido y determinar la placa de desarrollo para su implementación.
 \item Estudiar y aplicar los mecanismos para la medición del rendimiento de sistemas embebidos. 
 \item Estudiar los Sistemas Operativos existentes soportados por las plataformas elegidas.												  
-\end {itemize}  & Análisis de Requerimientos del Sistema \\ 
+\end {itemize}  & \begin {itemize}
+					%\item Análisis de Requerimientos del Sistema.
+					\item Investigación respecto al hardware, las herramientas de desarrollo y el sistema operativo para determinar la posibilidad de implementar un SoC con licencia OpenSource en FPGA. \end {itemize}\\ 
 \hline 
  \begin {itemize}
  \item Implementar el flujo de diseño de hardware para cada SoC seleccionado y realizar las correcciones necesarias sobre el código RTL para su correcta implementación. 
 \item Poner en funcionamiento y configurar los sistemas operativos Linux y ecOS para los SoCs elegidos.										  
-\end {itemize}  & Implementación \\ 
+\end {itemize}  &\begin {itemize}\item Implementación de una serie de prototipos que incluirán mayor funcionalidad en cada iteración del modelo \end {itemize}  \\ 
 \hline 
  \begin {itemize}
  \item Verificar y validar cada prototipo implementado para la detección de deficiencias del microprocesador, los SoCs, sus modulos y las herramientas de entorno de software para la arquitectura seleccionada.									  
@@ -367,7 +369,9 @@ Algunas características de este SCP son:
 \end{frame}
 
 \begin{frame} \frametitle{Implementación\\ \ Prototipo Tres}
- \begin{figure}[!h]
+
+\begin{figure}[!h]
+
       \centering
      \includegraphics[scale=0.09]{figuras/ecos}
     \end{figure}
@@ -470,12 +474,13 @@ Todos	 					& 1.55				& 1.52 \\
 \end{frame}
 
 \begin{frame} \frametitle{Implementación\\ \ Benchmark CoreMark }
- 
-\begin{table}[h!]
+   \scriptsize
+\begin{table}
 \begin{center}
+\scalebox{0.8}{ %tamaño de tabla
 \begin{tabular}{ |p{2cm} |p{3cm}|p{0.8cm}|p{1.5cm}|p{1cm}|p{1cm}|}
 \hline
-\rowcolor[gray]{0.8} Procesador &	Compilador &	 Mhz &	CoreMark / MHz &	Core Mark &	 Core Mark / Core \\
+\rowcolor[gray]{0.5} Procesador &	Compilador &	 Mhz &	CoreMark / MHz &	Core Mark &	 Core Mark / Core \\
 \hline
 	Openrisc 1200 & or32-elf-gcc 4.5.1-or32.1.0rc4							&25		&1.45   &36.27		&36.27 \\
 \hline
@@ -502,15 +507,12 @@ Todos	 					& 1.55				& 1.52 \\
 																			&100	&1.75	&174.59 	&174.59\\
 \hline
 	ARMv7 Processor rev 3 (v7l) &	Android NDK-r5 (GCC 4.4.3)					&600	&2.04 	&1221.15	&1221.15\\ 
+
 \hline
-	ARM Cortex-A9 MPCore on FPGA &	GCC 4.3.3 (Sourcery G++ Lite 2009q1-203)		&1		&11.52 	&11.52 		&2.88 	 	\\
-\hline
-	ARM ARM1176JZ-S	on FPGA & GCC 4.3.3 (Sourcery G++ Lite 2009q1-203)				&1		&2.08 	&2.08 		&2.08		\\
-\hline
-\end{tabular}
+\end{tabular}}
 \end{center}
-\caption{Compartiva de resultados Coremark}
-\label{tab:compcoremark}
+%\caption{Compartiva de resultados Coremark}
+%\label{tab:compcoremark}
 \end{table}
 \end{frame}
 
