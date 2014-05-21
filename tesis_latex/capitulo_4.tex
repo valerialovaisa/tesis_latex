@@ -86,18 +86,6 @@ intentó extender el uso del termino Free and Open Source Software
 (FOSS) el cual se utiliza para referirse al software que se adhiere al
 OSD y FSF.
 
-% Es un término ambiguo, el acuerdo sobre la definición está
-%en el documento llamado Open Source Definition (OSD), publicado por la
-%Open Source Initiative (OSI). La OSD da grandes libertades a la hora
-%de relicenciar software, lo que no sucede con otras licencias de
-%código abierto. En particular la OSD permite ``mezclar'' software
-%privativo con software \textit{Open Source}.
-%El termino Free and Open Source Software (FOSS) se utiliza para
-%referirse al software que se adhiere al OSD y FSF. El software \textit{libre} y
-%de \textit{código abierto} es una sociedad inclusiva, el término abarca tanto
-%el software \textit{libre} y software de {código abierto} a pesar de describir
-%modelos de desarrollo similares, tienen diferentes culturas y
-%filosofías.
 
 \section{Licencias de Software Libre}
 
@@ -145,15 +133,7 @@ existen distintas variantes del concepto o grupos de licencias:
   utilicen GPL sin permiso. Sin embargo, esto último no se recomienda
   ya que tal licencia puede ser incompatible con la GPL.
 
-%Una de las más utilizadas es la Licencia Pública General de GNU (GNU GPL). El autor conserva los derechos de autor (copyright), y permite la redistribución y modificación bajo términos diseñados para asegurarse de que todas las versiones modificadas del software permanecen bajo los términos más restrictivos de la propia GNU GPL. Esto hace que sea imposible crear un producto con partes no licenciadas GPL: el conjunto tiene que ser GPL.
-%Es decir, la licencia GNU GPL posibilita la modificación y redistribución del software, pero únicamente bajo esa misma licencia. Y añade que si se reutiliza en un mismo programa código "A" licenciado bajo licencia GNU GPL y código "B" licenciado bajo otro tipo de licencia libre, el código final "C", independientemente de la cantidad y calidad de cada uno de los códigos "A" y "B", debe estar bajo la licencia GNU GPL.
-%En la práctica esto hace que las licencias de software libre se dividan en dos grandes grupos, aquellas que pueden ser mezcladas con código licenciado bajo GNU GPL (y que inevitablemente desaparecerán en el proceso, al ser el código resultante licenciado bajo GNU GPL) y las que no lo permiten al incluir mayores u otros requisitos que no contemplan ni admiten la GNU GPL y que por lo tanto no pueden ser enlazadas ni mezcladas con código gobernado por la licencia GNU GPL.
-%En el sitio web oficial de GNU hay una lista de licencias que cumplen las condiciones impuestas por la GNU GPL y otras que no.5
-%Aproximadamente el 60% del software licenciado como software libre emplea una licencia GPL o de manejo.
-%
-%Aquellos que no aceptan los términos de la GPL y sus condiciones no tienen permiso, en virtud del derecho de autor, a copiar o distribuir software con licencia GPL o trabajos derivados. Sin embargo, si no redistribuyen el programa, pueden utilizar el software en su organización a su gusto, y estas obras (incluidos los programas) construidas bajo este uso no requieren estár bajo esta licencia.
-%
-%La FSF permite al público crear nuevas licencias basadas en la GPL, siempre y cuando las licencias derivadas no utilicen GPL sin permiso. Esto no se recomienda, ya que tal licencia puede ser incompatible con la GPL. Otras licencias creadas por el proyecto GNU incluyen la GNU Lesser General Public License
+
 
 \item \textit{Lesser General Public License (GNU LGPL)}: La licencia
   LGPL de software fue creada por la FSF para tener derechos menos
@@ -193,38 +173,6 @@ existen distintas variantes del concepto o grupos de licencias:
   ilimitada con respecto al software.
 \end {itemize}
 
-
-
-%La GNU GPL se conoce como una \textit{licencia viral}, donde cualquier
-%desarrollo que se haga bajo el uso de código licenciado bajo la GNU
-%GPL debe ser entonces licenciado bajo la GNU GPL o cualquier
-%\textit{licencia} autorizada por la FSF. En pocas palabras, una
-%condición de uso del código licenciado bajo GPL es que su diseño se
-%debe tener bajo la licencia GPL o una licencia compatible. Las
-%licencias que se consideran compatibles con la GPL por la FSF son
-%generalmente similares en las libertades que garantiza el software
-%\textit{libre}.
-%
-%En la GNU se estipula que el código modificado debe estar disponible,
-%y que cualquier desarrollo que utilice código bajo esta licencia tiene
-%también que estar bajo la GNU GPL. Aunque, esto no es diferente a
-%cualquier licencia comercial, donde el código fuente creado o
-%modificado por los empleados de una empresa queda bajo la licencia
-%exclusiva de la empresa. En el caso de la licencia de GNU, sin
-%embargo, los usuarios están obligados a mantener sus diseños abiertos
-%y libres, de la misma manera que los empleados están obligados a
-%mantener su código propietario en secreto para cualquiera que no sea
-%de la empresa.
-%
-%Otro punto de controversia es el uso combinado del código fuente donde
-%cada uno esta bajo una licencia diferente, dando lugar al concepto de
-%\textit{compatibilidad de la licencia}.
-%
-%Estas diferencias de opinión con respecto a lo que constituye un
-%trabajo derivado, y la ambigüedad en torno a otros aspectos de la
-%concesión de licencias de código abierto podría tener consecuencias
-%para campos como el diseño de hardware, lo que se discutirá en una
-%sección posterior.
 
 \section{Desarrollos de Código Abierto}
 
@@ -455,15 +403,7 @@ cabrán en los dispositivos programables actuales. La reconfiguración
 será un elemento imprescindible. Las fronteras entre el hardware y el
 software se harán cada vez más difusas.
 
-% También la utilidad de cualquier diseño de hardware que se podría implementar en una FPGA está limitada por el hecho de que se realiza a un nivel muy bajo de abstracción, y para lograr un resultado positivo "útil" para los experimentador o aficionado, por lo general requiere un gran trabajo a través de muchos niveles de abstracción para lograr algo que sea fácilmente utilizable a partir de una interfaz en una PC.
-%%%%%
-%Un ejemplo podría ser el desarrollo de un core para que realice transacciones de I/O de un sensor, para proporcionar información a una aplicación por ejemplo que controle la temperatura en un espacio determinado. Esto requeriría el desarrollo y prueba del modelo de hardware y la implementación en FPGA . Asumiendo que es un microprocesador el que se encuentra corriendo sobre la FPGA, dando servicios de red a través de un sistema operativo de tiempo real (RTOS), este módulo personalizado debería requerir el desarrollo de una capa de software, lo que significa la necesidad de un driver para que permita al sistema operativo en tiempo real interactuar con el periférico, haciendo una abstracción del hardware y proporcionando una interfaz para usarlo. El sistema operativo en tiempo real se conecta con la aplicación que se ejecuta en el microprocesador de la FPGA para proporcionan lo datos a través del enlace de red, así los datos de este sensor se encontraran disponibles para la aplicación de nivel superior. This is just one example where, quite probably the designer might have chosen a solution that uses a standard bus, however there’s often cases for custom controller or interface cores in FPGAs to provide
-%access to legacy, or very-new or esoteric bus standards, and highlights the extra work required beyond writing RTL to provide the physical interface.
-%Viendo la cantidad de desarrollo y pruebas requeridas para poner en práctica estas soluciones, es fácil sentirse abrumado por la cantidad de trabajo necesario para completar una tarea tan aparentemente trivial.
 
-%Comparando esto con adoptar un programa de código abierto, que consiste en descargar un código fuente, compilarlo y ejecútalo en su computadora, donde la aplicación puede ser ejecutada en el host para comprobar la funcionalidad y allí finalice la mayor parte del ciclo de desarrollo, . Las diferencias son el acceso inherentes a la plataforma de desarrollo (el host), las herramientas de desarrollo mucho mas simples (gcc, make en el sistema host) el ciclo de desarrollo, pruebas más cortas y más fácil (que se ejecuta en el equipo host a través de un shell.)
-
-%A medida que mas proyectos opnesource son desarrollados y los sistemas de desarrollo sean mas ágiles, se puede esperar que estas barreras para los desarrolladores de diseño de hardware opensource puedan ser superadas. En los principios del del desarrollo de software opensource parecían igual de complicados. Se espera que con el tiempo y el aumento de participantes el hardware de código abierto alcance el mismo exito.En ese momento, los diseños serán tan grandes que no cabrán en los dispositivos programables actuales. La reconfigurabilidad será un elemento imprescindible. Las fronteras entre el hardware y el software se harán cada vez más difusas. El deseo, casi utópico, es lograr correr un kernel Linux hardware basándose en las posibilidades que nos ofrece la reconfigurabilidad.
 
 \section{Licencias de Hardware}
 
@@ -477,27 +417,7 @@ con preguntas frecuentes (FAQ) que afirma lo siguiente.
 \textit{Cualquier material que puede ser licenciado con derechos de
 autor puede ser licenciado bajo la GPL}.
 
-%GPLv3 también se puede utilizar para materiales de licencia cubiertos por otras leyes copyrightlike, como máscaras de semiconductores. Así, por ejemplo, puede liberar un dibujo de un diseño de hardware bajo la GPL. Sin embargo, si alguien utilizó esa información para crear hardware físico, que lo harían no tienen obligaciones de la licencia al distribuir o vender el dispositivo: se queda fuera del ámbito del derecho de autor y por lo tanto la propia GPL.}
 
-%Esto no es claro para los diseños específicos para FPGA o código, incluso RTL, ya que puede terminar como un conjunto de máscaras, o puede terminar como un flujo de bits binario para configuración de una FPGA.
-
-%Una indicación de la naciente idea del desarrollo de hardware de
-%código abierto proviene de la publicación reciente (febrero de 2011)
-%de un conjunto de principios para los participantes de la comunidad de
-%hardware de código abierto. El siguiente es el código abierto Hardware
-%(OSHW) Declaración de Principios 1.0 de FreedomDefined.org. Estas
-%publicaciones proporcionan un punto de referencia para saber si el
-%diseño puede estar bajo licencia de ``hardware de código abierto''.
-
-%\textit{El Hardware de código abierto cuyo diseño está a disposición del público
-%por lo que cualquier persona puede estudiar, modificar, distribuir, poner, y vender el
-%diseño o hardware basado en ese diseño. La fuente de hardware, el diseño
-%del que está hecho, está disponible en el formato preferido para realizar
-%modificaciones a el mismo. Idealmente, el hardware de código abierto utiliza fácilmente los componentes y materiales disponible, procesos estándares, una infraestructura abierta, sin restricciones
-%contenida, herramientas de diseño y de código abierto para maximizar la capacidad
-%de las personas para hacer y usar el hardware} \cite{Etiqueta11}
-
-%El FreedomDefined.org específica fuente y documentación, trabajos derivados y las limitaciones de la licencias.Se espera de acuerdo con estos principios, todo el material este disponible como código abierto y la documentación para el diseño. Cualquier trabajos derivados o modificado deba estar disponible.
 
 Cualquier licencia de hardware de código abierto se puede utilizar
 para restringir (o en este caso, para no restringir) los planos de un
@@ -516,10 +436,6 @@ producto basado en la documentación~\cite{Etiqueta12}. En
 consecuencia, la TAPR OHL esta siendo adoptada por varios aficionados
 y empresas comerciales.
 
-
-%Su licencia identifica patentes como un problema, pero afirma que quienes se beneficien de la OHL no podran presentar una demanda alegando que el diseño infringen sus patentes u otra propiedad intelectual.
-%How open source hardware licenses and patent law will be compatible with regards to handling infringement is yet to be seen
-
 En general, las licencias actuales de hardware de código abierto han
 recibido críticas del OSI, entre otras cosas, por la adopción de un
 significado diferente de la palabra
@@ -528,16 +444,5 @@ el futuro próximo surjan licencias alternativas de hardware de código
 abierto que resuelvan las ambigüedades presentes en las licencias
 actuales.
 
-%Para el proyecto OpenRISC hay un equilibrio para afrontar la adopción entre una licencia que es demasiado liberal, y por lo tanto menos probable que resulte en la contribución a la comunidad de desarrollo, y una licencia que fomenta mas el desarrollo de código abierto, pero se considera entonces demasiado restrictiva con respecto a la utilización de codigo abierto IP con una IP patentada.
-
-%Por un lado, hay un deseo de aumentar la participación en el desarrollo de hardware de código abierto en general, y específicamente en el proyecto OpenRISC MinSoc y OrpSoc,para aumentar el conjunto de trabajos disponibles, esto se puede lograr utilizando un licencia viral como lo es la GNU GPL (considerando la síntesis del codigo RTL como un proceso de compilación estatica).
 
 
-
-%\section{OpenRisc}
-
-%Como se dijo anteriormente en el debate sobre la tecnología de código abierto por lo general los modelos de desarrollo de código abierto no son imnovadores.
-%La mayor parte de los proyectos de software libre tienen como objetivo utilizar recursos ya existentes y bien conocidos de manera que permitan la apertura y eliminación de restricciones que se encuentran en otra implementaciones propietarias. Esta es la duda en el caso de la OpenRISC proyecto. Es en gran medida tomando ideas que ya son bien conocidos y comoditizados y la creación de una versión con más libertad para el usuario final. Había muy poco, si nada, innovador en la especificación arquitectónica OR1K. Esto no quiere decir los resultados no tienen ningún valor. Tampoco necesariamente excluye cualquier OpenRISC futuro5o implementaciones de arquitecturas con el objetivo de innovar.
-
-
-%Conclusión!!Trabajar con un sistema final bajo licencias de hardware siguiendo el modelo de la Licencia LGPL para el software. Estamos comprometidos con el ideal de libre disposición, de libre uso y hardware de código abierto reutilizable.

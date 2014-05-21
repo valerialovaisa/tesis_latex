@@ -115,8 +115,12 @@ Soft-Core y Soporte Linux\\
 %  %\subsection{Motivaci�n}
   \begin{frame}[allowframebreaks] 
 	\frametitle{Motivación}
-
- 
+   	¿Porque implementar un sistema embebido sobre una plataforma reconfigurable?
+  \begin{itemize}\itemsep=0.25cm
+ \item sistemas embebidos
+\item FPGA
+\item Sistema operativo
+    \end{itemize}
 
 
 
@@ -200,11 +204,11 @@ libre con la finalidad de proveer un sistema integral FPGA\-SoC\-SO completament
  \begin {itemize}
  \item Implementar el flujo de diseño de hardware para cada SoC seleccionado y realizar las correcciones necesarias sobre el código RTL para su correcta implementación. 
 \item Poner en funcionamiento y configurar los sistemas operativos Linux y ecOS para los SoCs elegidos.										  
-\end {itemize}  &\begin {itemize}\item Implementación de una serie de prototipos que incluirán mayor funcionalidad en cada iteración del modelo \end {itemize}  \\ 
+\end {itemize}  &\begin {itemize}\item Implementación de una serie de prototipos que incluirán mayor funcionalidad en cada iteración del modelo. \end {itemize}  \\ 
 \hline 
  \begin {itemize}
  \item Verificar y validar cada prototipo implementado para la detección de deficiencias del microprocesador, los SoCs, sus modulos y las herramientas de entorno de software para la arquitectura seleccionada.									  
-\end {itemize}  &Prueba del correcto funcionamiento ..... \\ 
+\end {itemize}  & \begin {itemize} \item Prueba del correcto funcionamiento de los SoCs, sus módulos y las herramientas de entorno de software para la arquitectura seleccionada mediante el desarrollo de aplicaciones en lenguaje C generadas mediante compilación cruzada.\end {itemize}  \\ 
 \hline 
 \end{tabular}}
 \end{center}
@@ -260,6 +264,45 @@ libre con la finalidad de proveer un sistema integral FPGA\-SoC\-SO completament
 %  
 %  
 %  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \section{Materiales y Metodologia}
+%  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+  \begin{frame}
+    \frametitle{Contenidos}
+    \tableofcontents [currentsection]
+  \end{frame}
+  
+  \begin{frame}[allowframebreaks] 
+ \frametitle{Metodología}
+
+%El modelo de desarrollo a utilizar es el \textit{Modelo en Espiral}. Dicho modelo fue tipificado por Ian Sommerville y originalmente propuesto por Boehm en
+%año 1988 en el artículo ``A Spiral Model of Software Development and Enhancement''.
+%Las fases metodológicas utilizadas para el desarrollo están representados en la Figura 1: 
+
+\begin{figure}[!h]
+      \centering
+     \includegraphics[scale=0.08]{figuras/espiral_paper}
+    \caption{Ciclo de vida de los prototipos}
+    \end{figure}
+
+  \end{frame}
+\begin{frame}%[allowframebreaks] 
+	\frametitle{Pasos}
+
+    \begin{itemize}\itemsep=0.25cm
+	\item Como primer paso se analizarán las diferentes
+alternativas disponibles en el mercado y en comunidades de hardware de
+código abierto para la implementación de microprocesadores diseñados
+en lenguaje de descripción de hardware. 
+	\item Como segundo paso 
+se analizarán y seleccionarán los componentes \footnote{Entiéndase como ``componente'' a microprocesadores softcore, SoC, placa de desarrollo.} por medio de un análisis comparativo que permitirá evidenciar las características relevantes de
+cada uno de ellos. 
+	\item EComo último paso debido a que se adoptara un modelo de desarrollo en espiral se plantearán una serie de prototipos que incluirán mayor funcionalidad en cada iteración del modelo.
+    \end{itemize}
+  \end{frame}
+
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \section{Análisis de Requerimientos y Riesgos}
 %  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
@@ -269,7 +312,7 @@ libre con la finalidad de proveer un sistema integral FPGA\-SoC\-SO completament
   \end{frame}
   
   \begin{frame}[allowframebreaks] 
- \frametitle{Requerimientos de Usuario}
+ \frametitle{Requerimientos}
 
     \begin{itemize}\itemsep=0.25cm
 	\item Se debe implementar un Microprocesador Softcore de núcleo simple.
@@ -327,7 +370,27 @@ Algunas características de este SCP son:
     \frametitle{Contenidos}
     \tableofcontents[currentsection]
   \end{frame}
-
+\begin{table}[h]
+		\centering
+		\begin{tabular}{ p{2.5cm} p{12.5cm} }
+		\hline 
+		\rowcolor[gray]{0.8} N\textordmasculine Req & Descripción\\
+		\hline 
+		RQX-PA 1 & El prototipo debe implementar un SoC MinSoC en la placa desarrollo S3ADSP1800A\\ 
+		\hline 
+		RQX-PA 2 & El prototipo debe garantizar el correcto funcionamiento de todos los periféricos conectados al SoC mediante el bus Wishbone\\ 
+		\hline 
+		RQX-PA 3 & El prototipo debe interactuar correctamente con las interfaces hardware soportadas de la placa de desarrollo S3ADSP1800A\\ 
+		\hline
+		RQX-PA 4 & El prototipo debe ser capaz de ejecutar programas con capacidad de depuración generados mediante compilación
+		cruzada en una arquitectura x86 y/o x86\_64 para la arquitectura OpenRISC\\
+		\hline
+		RQX-PA 5 & Se debe lograr depurar paso a paso y mediante break points las aplicaciones desarrolladas\\
+		\hline		
+		\end{tabular}
+		\caption{Tabla de requerimientos del prototipo uno}
+		\label{tab:tdr1}
+		\end{table}
 \begin{frame} \frametitle{MinSoC}%\\ \small Offset de  fase  constante}
  \begin{figure}[!h]
       \centering
@@ -482,7 +545,7 @@ Todos	 					& 1.55				& 1.52 \\
 \hline
 \rowcolor[gray]{0.5} Procesador &	Compilador &	 Mhz &	CoreMark / MHz &	Core Mark &	 Core Mark / Core \\
 \hline
-	Openrisc 1200 & or32-elf-gcc 4.5.1-or32.1.0rc4							&25		&1.45   &36.27		&36.27 \\
+\rowcolor[gray]{0.8} 	Openrisc 1200 & or32-elf-gcc 4.5.1-or32.1.0rc4							&25		&1.45   &36.27		&36.27 \\
 \hline
 	Altera Nios II & nios2-elf-gcc.exe (Altera 12.1 Build 177) gcc 4.1.2	&200	&0.93 	&186.27 	&186.27\\
 \hline
@@ -539,9 +602,9 @@ DMIPS 					& 7.79 			&   7.90  &  10.53  \\
 \begin{center}
 \begin{tabular}{ |l |l |l |l |}
 \hline
-\rowcolor[gray]{0.8} Microprocesador& MHz & DMIPS con Optimizaciones & DMIPS sin Optimizaciones \\
+\rowcolor[gray]{0.5} Microprocesador& MHz & DMIPS con Optimizaciones & DMIPS sin Optimizaciones \\
 \hline
-Openrisc		  &25	&10.53	&7.9\\
+\rowcolor[gray]{0.8} Openrisc		  &25	&10.53	&7.9\\
 \hline
 AMD 80386         &40   &17.5   &4.32\\
 \hline
